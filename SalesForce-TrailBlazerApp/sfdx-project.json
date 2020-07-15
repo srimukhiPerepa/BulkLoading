@@ -1,7 +1,7 @@
 {
     "packageDirectories": [
         {
-             "path": "SalesForce-TrailBlazerApp/objects",
+             "path": "objects",
              "default": true,
              "package": "SimplePackage",
              "versionName": "Winter ‘20",
@@ -10,7 +10,7 @@
              "definitionFile": "config/scratch-org-def.json"
         },
                 {
-             "path": "SalesForce-TrailBlazerApp/applications",
+             "path": "applications",
              "default": true,
              "package": "force-app",
              "versionName": "version1",
