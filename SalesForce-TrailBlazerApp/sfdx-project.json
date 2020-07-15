@@ -20,7 +20,7 @@
         }
         ,
           {
-             "path": "layouts",
+             "path": "nestedFolder1/NestedFolder2",
              "default": true,
              "package": "force-app",
              "versionName": "version1",
