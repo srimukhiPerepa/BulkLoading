@@ -3,7 +3,7 @@
         {
              "path": "objects",
              "default": true,
-             "package": "SimplePackage",
+             "package": "object package",
              "versionName": "Winter ‘20",
              "versionDescription": "Created automatically 1st",
              "versionNumber": "4.7.0.NEXT",
@@ -11,6 +11,16 @@
         },
                 {
              "path": "applications",
+             "default": true,
+             "package": "app package",
+             "versionName": "version1",
+             "versionDescription": "Auto created",
+             "versionNumber": "4.7.1.NEXT",
+             "definitionFile": "config/scratch-org-def.json"
+        }
+        ,
+          {
+             "path": "layouts",
              "default": true,
              "package": "force-app",
              "versionName": "version1",
