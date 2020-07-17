@@ -18,16 +18,6 @@
              "versionNumber": "4.7.1.NEXT",
              "definitionFile": "config/scratch-org-def.json"
         }
-        ,
-          {
-             "path": "nestedFolder1",
-             "default": true,
-             "package": "force-app",
-             "versionName": "version1",
-             "versionDescription": "Auto created",
-             "versionNumber": "4.7.1.NEXT",
-             "definitionFile": "config/scratch-org-def.json"
-        }
     ],
     "namespace": "",
     "sourceApiVersion": "48.0"
