@@ -5,7 +5,7 @@
              "default": true,
              "package": "object package",
              "versionName": "Winter ‘20",
-             "versionDescription": "Created automatically 1st",
+             "versionDescription": "Auto created package",
              "versionNumber": "4.7.0.NEXT",
              "definitionFile": "config/scratch-org-def.json"
         },
@@ -14,7 +14,7 @@
              "default": true,
              "package": "app package",
              "versionName": "version1",
-             "versionDescription": "Auto created",
+             "versionDescription": "Auto created package",
              "versionNumber": "4.7.1.NEXT",
              "definitionFile": "config/scratch-org-def.json"
         }
