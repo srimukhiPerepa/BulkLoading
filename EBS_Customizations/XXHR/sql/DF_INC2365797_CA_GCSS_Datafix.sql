@@ -85,5 +85,3 @@ BEGIN
 END;
 /
 
-EXIT
-/
