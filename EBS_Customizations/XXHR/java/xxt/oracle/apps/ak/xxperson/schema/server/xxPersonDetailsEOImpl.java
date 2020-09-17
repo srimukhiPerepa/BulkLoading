@@ -38,6 +38,7 @@ public class xxPersonDetailsEOImpl extends OAEntityImpl
 
   //comment
   //comment 2
+  //comment 3
   
   /**
    * 
