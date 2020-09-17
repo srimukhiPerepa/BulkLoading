@@ -36,6 +36,8 @@ public class xxPersonDetailsEOImpl extends OAEntityImpl
   {
   }
 
+  //comment
+  
   /**
    * 
    * Retrieves the definition object for this instance class.
