@@ -35,6 +35,8 @@ public class xxPersonDetailsEOImpl extends OAEntityImpl
    */
   public xxPersonDetailsEOImpl()
   {
+		System.out.println("hello");
+
   }
 
   //comment
