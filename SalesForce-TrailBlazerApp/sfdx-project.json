@@ -12,7 +12,7 @@
                 {
              "path": "layouts",
              "default": true,
-             "package": "app package",
+             "package": "layout package",
              "versionName": "version1",
              "versionDescription": "Auto created SFDX package",
              "versionNumber": "4.7.1.NEXT",
