@@ -1,9 +1,9 @@
 {
     "packageDirectories": [
         {
-             "path": "objects",
+             "path": "permissionsets",
              "default": true,
-             "package": "object package",
+             "package": "permission package",
              "versionName": "Winter ‘20",
              "versionDescription": "Auto created SFDX package",
              "versionNumber": "4.7.0.NEXT",
