@@ -1,7 +1,7 @@
 {
     "packageDirectories": [
         {
-             "path": "permissionsets",
+             "path": "objects",
              "default": true,
              "package": "app package",
              "versionName": "Winter ‘20",
