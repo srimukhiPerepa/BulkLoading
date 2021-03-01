@@ -14,6 +14,7 @@ import oracle.jbo.AttributeList;
 // Change 1/29/2021 12:27 AM
 //ticket 2270
 // Change 3/1/2021 4:19 PM 1
+// Change 2
 
 public class xxPersonDetailsEOImpl extends OAEntityImpl 
 {
