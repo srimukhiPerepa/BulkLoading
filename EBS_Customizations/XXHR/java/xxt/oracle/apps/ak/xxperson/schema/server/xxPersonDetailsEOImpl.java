@@ -17,7 +17,7 @@ import oracle.jbo.AttributeList;
 // Change 2
 // Change 4
 // Change 5
-// Change 6 7
+// Change 6 7 8
 
 public class xxPersonDetailsEOImpl extends OAEntityImpl 
 {
