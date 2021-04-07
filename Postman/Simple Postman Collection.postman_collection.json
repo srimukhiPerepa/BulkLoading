@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "f7217a38-d4b0-4837-93f0-7303f1f4219b",
+		"name": "Simple Postman Collection",
+		"description": "Using this to test the Postman plugin which executes a collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "welcome1",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "jayar",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://fdtlt80.flexagon.azure.com:8000/"
+		}
+	]
+}
