@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding='windows-1252'?>
 <!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
-<!-- forcing change 2 -->
+<!-- forcing change 3 -->
 <AppModule
    Name="xxPersonAM"
-   ComponentClass="xxt.oracle.apps.ak.xxperson.server.xxPersonAMImpl"
+   ComponentClass="xxt.oracle.apps.ak.xxprson.server.xxPersonAMImpl"
    LoadComponentsLazily="true" >
    <DesignTime>
       <Attr Name="_isCodegen" Value="true" />
