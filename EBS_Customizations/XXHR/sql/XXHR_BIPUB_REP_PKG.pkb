@@ -1,6 +1,6 @@
 --
 --XXHR_BIPUB_REP_PKG.pkb comment updated on 8/23/2019
---change
+--change 1
 CREATE OR REPLACE PACKAGE BODY APPS.xxhr_bipub_rep_pkg IS
 
   PROCEDURE generate_xml( p_errbuf  OUT VARCHAR2
