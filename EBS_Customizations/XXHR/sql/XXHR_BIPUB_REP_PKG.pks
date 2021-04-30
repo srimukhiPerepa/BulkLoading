@@ -19,7 +19,7 @@ CREATE OR REPLACE PACKAGE xxhr_bipub_rep_pkg AS
 --     1.0      03/09/20      Joe Anderson        N/A       Initial Version
 --     2.0      03/11/20      Dan Goerdt          NA        Forrester Wave 1
 -----------------------------------------------------------------------------------------------------
--- 2
+-- 3
                        
    PROCEDURE generate_xml(p_errbuf  OUT VARCHAR2
                          ,p_retcode OUT NUMBER);
