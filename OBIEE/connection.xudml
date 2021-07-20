@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Repository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<DECLARE>
+<ConnectionPool name="SampleApp_Lite_Xml" parentName=""Sample App Lite Data"" parentId="3023:3" id="3029:196" user="${{OBI_SAL_USER}}" password="${{OBI_SAL_PASSWORD}}"
+timeout="4294967295" maxConnDiff="10" maxConn="10" dataSource="${{OBI_SAL_DSN}}" type="NQSXML" reqQualifedTableName="false" isSharedLogin="false" isConcurrentQueriesInConnection="false"
+isCloseAfterEveryRequest="true" xmlRefreshInterval="2147483647" outputType="xml" ignoreFirstLine="false" bulkInsertBufferSize="0" transactionBoundary="0" xmlaUseSession="false" multiThreaded="false" supportParams="false" isSiebelJDBSecured="false">
+<Description><![CDATA[SampleAppLite connection pool to XML datasource. This connection pool points the database to the location where physical XML files are stored. The location uses the value of an RPD variable : NQ_SESSION.SERVICEINSTANCEROOT.
+]]></Description>
+</ConnectionPool>
+ 
+</DECLARE>
+</Repository>
