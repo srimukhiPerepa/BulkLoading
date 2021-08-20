@@ -1,5 +1,6 @@
 --
 --XXHR_BIPUB_REP_PKG.pkb comment updated on 8/23/2019
+--change 1
 CREATE OR REPLACE PACKAGE BODY APPS.xxhr_bipub_rep_pkg IS
 
   PROCEDURE generate_xml( p_errbuf  OUT VARCHAR2
@@ -41,7 +42,4 @@ CREATE OR REPLACE PACKAGE BODY APPS.xxhr_bipub_rep_pkg IS
       FND_FILE.put_line(fnd_file.output, '</Roster>');
   end generate_xml;
 END xxhr_bipub_rep_pkg;
-/
-
-SHOW ERRORS
 /
