@@ -1,1 +1,13 @@
-{}
+{
+  "OfferingCode" : "XLE_FINANCIALS_JUR",
+  "FunctionalAreaCode" : "ORA_ASK_ORGANIZATION_STRUCTURE",
+  "SetupOfferingCSVExportCriteria" : [
+    {  "OfferingCode" : "XLE_FINANCIALS_JUR" ,
+                        "BusinessObjectCode": "FUN_BUSINESS_UNIT",
+    		            "AttributeSet" : "Set1",
+	        	        "AttributeName" : "OrganizationCode",
+                		"AttributeValue" : "ANBU4$$?$$FUN_BUSINESS_UNIT1" 
+    }
+   ],
+  "SetupOfferingCSVExportProcess" : [{  "OfferingCode" : "XLE_FINANCIALS_JUR"}]
+}
