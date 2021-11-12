@@ -1,1 +1,1 @@
-Some dummy text so hash is generated from file content. More.
+Some dummy text so hash is generated from file content. More. 1
