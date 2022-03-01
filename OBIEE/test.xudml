@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Repository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<DECLARE>
+<ConnectionPool name="BSC" parentName="&quot;System DB (Update me)&quot;" parentId="3023:2" id="3029:195" user="BSC_USER" password="${{OBI_BSC_PASSWORD}}" timeout="300" maxConnDiff="10" maxConn="10" dataSource="${{OBI_BSC_DSN}}" type="OCI10G" reqQualifedTableName="false" isSharedLogin="true" isConcurrentQueriesInConnection="false" isCloseAfterEveryRequest="false" outputType="xml" ignoreFirstLine="false" bulkInsertBufferSize="10485760" tempTablePrefix="TT" transactionBoundary="1000" xmlaUseSession="false" appServerName="Null" isSiebelJDBSecured="false">
+<Description><![CDATA[This database is only used for Scorecard Annotations feature. It is not mandatory for SampleAppLite to work.
+It needs to be configured to point to the ORCL Database created by the installation process. Please update the connection pool with the correct host name and credentials.]]></Description>
+</ConnectionPool>
+
+<ConnectionPool name="SampleApp_Lite_Xml" parentName="&quot;Sample App Lite Data&quot;" parentId="3023:3" id="3029:196" password="6C6F0BE01FC4111F3AC2236A364D912E6CC6E805A7729CECC34915F82D6CA5D1B19AF813BD5ADC908750471E8F5D151A A886F77E060E2E17F45AD8D18CAB2E4D3EFA15B75E30D8B4BFA8C7B2D70552BD" timeout="4294967295" maxConnDiff="10" maxConn="10" dataSource="VALUEOF(NQ_SESSION.SERVICEINSTANCEROOT)/data/SampleAppLite" type="NQSXML" reqQualifedTableName="false" isSharedLogin="false" isConcurrentQueriesInConnection="false" isCloseAfterEveryRequest="true" xmlRefreshInterval="2147483647" outputType="xml" ignoreFirstLine="false" bulkInsertBufferSize="0" transactionBoundary="0" xmlaUseSession="false" multiThreaded="false" supportParams="false" isSiebelJDBSecured="false">
+<Description><![CDATA[SampleAppLite connection pool to XML datasource. This connection pool points the database to the location where physical XML files are stored. The location uses the value of an RPD variable : NQ_SESSION.SERVICEINSTANCEROOT.
+]]></Description>
+</ConnectionPool>
+
+</DECLARE>
+</Repository>
