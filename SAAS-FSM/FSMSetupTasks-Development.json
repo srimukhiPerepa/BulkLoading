@@ -1,0 +1,35 @@
+{
+  "tasks" :
+  [
+    {
+      "TaskCode" : "PAY_MANAGE_FAST_FORMULA",
+      "BusinessObjectCode" : "FF_FORMULA",
+      "AttributeName" : "FormulaName1",
+      "AttributeValue" : "Norway Self Certified Sick Leave"
+    },
+    {
+      "TaskCode" : "PAY_MANAGE_FAST_FORMULA",
+      "BusinessObjectCode" : "FF_FORMULA",
+      "AttributeName" : "FormulaName1",
+      "AttributeValue" : "EXT_ASSIGNMENTS_RECORD300000189455050_300000189455050"
+    },
+    {
+      "TaskCode" : "PAY_MANAGE_FAST_FORMULA",
+      "BusinessObjectCode" : "FF_FORMULA",
+      "AttributeName" : "FormulaName1",
+      "AttributeValue" : "EXT_BENEFITS_RECORD300000189455103_300000189455103"
+    },
+    {
+      "TaskCode" : "PAY_MANAGE_FAST_FORMULA",
+      "BusinessObjectCode" : "FF_FORMULA",
+      "AttributeName" : "FormulaName1",
+      "AttributeValue" : "EXT_PERFORMANCES_RECORD300000189455100_300000189455100"
+    },
+    {
+      "TaskCode" : "GL_MANAGE_CHART_OF_ACCOUNTS_VALUE_SETS",
+      "BusinessObjectCode" : "",
+      "AttributeName" : "",
+      "AttributeValue" : "FlexDeploy Value Set Accounts##FlexDeploy Value Set Currencies"
+    }
+  ]
+}
