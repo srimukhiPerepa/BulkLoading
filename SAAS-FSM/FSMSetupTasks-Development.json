@@ -2,6 +2,42 @@
   "tasks" :
   [
     {
+      "TaskCode" : "PER_MANAGE_LOCATION_LOOKUPS",
+      "BusinessObjectCode" : "",
+      "AttributeName" : "",
+      "AttributeValue" : ""
+    },
+    {
+      "TaskCode" : "HZ_MANAGE_GEOGRAPHY_LOOKUPS",
+      "BusinessObjectCode" : "",
+      "AttributeName" : "",
+      "AttributeValue" : ""
+    },
+    {
+      "TaskCode" : "XLE_MANAGE_APPLICATION_LOOKUP",
+      "BusinessObjectCode" : "",
+      "AttributeName" : "",
+      "AttributeValue" : ""
+    },
+    {
+      "TaskCode" : "HRX_MANAGE_CHINESE_ENTREPRISE_STRUCTURES_LOOKUPS",
+      "BusinessObjectCode" : "",
+      "AttributeName" : "",
+      "AttributeValue" : ""
+    },
+    {
+      "TaskCode" : "FND_MANAGE_SET_ENABLED_LOOKUPS",
+      "BusinessObjectCode" : "",
+      "AttributeName" : "",
+      "AttributeValue" : ""
+    },
+    {
+      "TaskCode" : "ORA_BENEFIT_PLAN_COMPARE_LOOKUP",
+      "BusinessObjectCode" : "",
+      "AttributeName" : "",
+      "AttributeValue" : ""
+    },
+    {
       "TaskCode" : "PAY_MANAGE_FAST_FORMULA",
       "BusinessObjectCode" : "FF_FORMULA",
       "AttributeName" : "FormulaName1",
