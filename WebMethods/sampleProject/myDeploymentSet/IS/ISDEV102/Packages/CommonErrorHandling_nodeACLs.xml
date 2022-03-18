@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_151" class="java.beans.XMLDecoder">
+ <object class="java.util.LinkedList">
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISNodeACL">
+    <void property="name">
+     <string>CommonErrorHandling.services:faultStringHandling</string>
+    </void>
+    <void property="nodeName">
+     <string>CommonErrorHandling.services:faultStringHandling</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISNodeACL">
+    <void property="name">
+     <string>CommonErrorHandling</string>
+    </void>
+    <void property="nodeName">
+     <string>CommonErrorHandling</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISNodeACL">
+    <void property="name">
+     <string>CommonErrorHandling.services</string>
+    </void>
+    <void property="nodeName">
+     <string>CommonErrorHandling.services</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISNodeACL">
+    <void property="name">
+     <string>CommonErrorHandling.docs</string>
+    </void>
+    <void property="nodeName">
+     <string>CommonErrorHandling.docs</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISNodeACL">
+    <void property="name">
+     <string>CommonErrorHandling.services:converterrorstringtoCanonical</string>
+    </void>
+    <void property="nodeName">
+     <string>CommonErrorHandling.services:converterrorstringtoCanonical</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISNodeACL">
+    <void property="name">
+     <string>CommonErrorHandling.java</string>
+    </void>
+    <void property="nodeName">
+     <string>CommonErrorHandling.java</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISNodeACL">
+    <void property="name">
+     <string>CommonErrorHandling.java:intToString</string>
+    </void>
+    <void property="nodeName">
+     <string>CommonErrorHandling.java:intToString</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISNodeACL">
+    <void property="name">
+     <string>CommonErrorHandling.services:converterrorstringtoCanonical_1</string>
+    </void>
+    <void property="nodeName">
+     <string>CommonErrorHandling.services:converterrorstringtoCanonical_1</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISNodeACL">
+    <void property="name">
+     <string>CommonErrorHandling.docs:errorDoc</string>
+    </void>
+    <void property="nodeName">
+     <string>CommonErrorHandling.docs:errorDoc</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISNodeACL">
+    <void property="name">
+     <string>CommonErrorHandling.java:extractwmerrorcode</string>
+    </void>
+    <void property="nodeName">
+     <string>CommonErrorHandling.java:extractwmerrorcode</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_151" class="java.beans.XMLDecoder">
+ <object class="java.util.LinkedList">
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISACL" id="ISACL0">
+    <void property="allowList">
+     <void method="add">
+      <string>local/Everybody</string>
+     </void>
+    </void>
+    <void property="name">
+     <string>Anonymous</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.wm.deployer.project.is.ISACL" id="ISACL1">
+    <void property="allowList">
+     <void method="add">
+      <string>local/Everybody</string>
+     </void>
+    </void>
+    <void property="denyList">
+     <void method="add">
+      <string>local/Anonymous</string>
+     </void>
+    </void>
+    <void property="name">
+     <string>Default</string>
+    </void>
+    <void property="version">
+     <string>4.0</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
