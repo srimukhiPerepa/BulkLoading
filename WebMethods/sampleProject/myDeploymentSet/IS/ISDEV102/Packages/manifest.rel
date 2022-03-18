@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">sampleProject_myBuild_1530554282370</value>
+  <value name="version">1.0</value>
+  <value name="build">10.1.3</value>
+  <value name="patch_nums"></value>
+  <value name="description">sampleProject_</value>
+  <value name="target_pkg_version">1.0</value>
+  <value name="jvm_version">1.8.0_151</value>
+  <value name="source_server_version">10.2.0.0</value>
+  <value name="target_server_version">10.2.0.0</value>
+  <value name="time">2018-07-02 12:58:02 CDT</value>
+  <value name="type">full</value>
+  <null name="retainPatchHistory"/>
+  <value name="target_pkg_name">CommonErrorHandling</value>
+  <null name="publisher"/>
+</Values>
