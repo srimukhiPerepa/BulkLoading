@@ -1,2 +1,2 @@
-Bacon=${{fd_var_1}}
-meatball=${{fd_var_2}}
+Bacon=${{TEST_PROPERTY1}}
+meatball=${{WFPROP1}}
