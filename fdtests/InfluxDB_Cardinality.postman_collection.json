@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "db879069-72a5-49f6-9301-8757c2def1c5",
+		"name": "InfluxDB Cardinality",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10082159"
+	},
+	"item": [
+		{
+			"name": "InfluxDB Cardinality",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/plain; charset=utf-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/csv",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.flux",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "application/gzip",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token flexagon1048",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "import \"influxdata/influxdb\"\r\n\r\ninfluxdb.cardinality(\r\n    bucket: \"flexbucket\",\r\n    start: -2y,\r\n)",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://172.16.0.18:8086/api/v2/query?org=flex",
+					"protocol": "http",
+					"host": [
+						"172",
+						"16",
+						"0",
+						"18"
+					],
+					"port": "8086",
+					"path": [
+						"api",
+						"v2",
+						"query"
+					],
+					"query": [
+						{
+							"key": "org",
+							"value": "flex"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
