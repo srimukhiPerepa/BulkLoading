@@ -5,7 +5,7 @@
     "TaskCode":"FND_MANAGE_COMMON_LOOKUPS",
     "BusinessObjectCode": "",
     "AttributeName": "",
-    "AttributeValue": "ADT_ORC_999_COMMON_CONFIG_LKP"
+    "AttributeValue": "ORA_PER_UNION_CODE"
   }
 ]
 }
