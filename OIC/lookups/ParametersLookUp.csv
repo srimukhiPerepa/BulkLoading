@@ -22,5 +22,4 @@ Inbound_SalesOrder,/home/users/hexaware_admin/oic/soa/salesorder
 Canonical_SalesOrderAck_Document_Type,SalesOrderAck
 Outbound_SalesOrderAck_File_Name_Pattern,*
 Notification_From_Email,no-reply@hnicorp.com
-Report_To_Email,"BharneN@hnicorp.com,yarlagaddav@hnicorp.com"
-${{FDBLD_ENVIRONMENT_CODE}}
+Report_To_Email,"BharneN@hnicorp.com,yarlagaddav@hnicorp.com,${{FDBLD_ENVIRONMENT_CODE}}"
