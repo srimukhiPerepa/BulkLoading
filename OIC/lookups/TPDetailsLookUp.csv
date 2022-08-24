@@ -1,0 +1,89 @@
+﻿DVM,TPDetailsLookUp,
+TP_Identifier,TP_Name,TP_EDI_ID,TP_EDI_ID_Qualifier,HOST_EDI_ID,HOST_EDI_ID_Qualifier,TP_Element_Separator,TP_Subelement_Separator,TP_Segment_Terminator,TP_File_Name_Prefix,TP_File_Location_Prefix,TP_Transformation_Type,TP_Integration_Code,TP_Integration_Version,TP_Intermediate_Integration_Identifier
+4147685686005269709HNIT,Bayview Industries Inc,4147685686,01,005269709HNIT,01,*,:,~,BayviewIndustries_,/home/users/hexaware_admin/oic/tradingpartner/outbound/bayview,Common,BAYVIEWINDUSTRIESINC_FTP_SEND,01.00.0000,LISTFILESFORBAYVIEW
+TESTBYR005269709HNIT,Byrne Electrical,TESTBYR,ZZ,005269709HNIT,01,|,>,*CRLF,ByrneElectrical_,/home/users/hexaware_admin/oic/tradingpartner/outbound/byrnelec,Common,BYRNEELECTRICAL_FTP_SEND,01.00.0000,LISTFILESFORBYRNEELECTRICAL
+796965168005269709HNIT,Dekko Inc,796965168,01,005269709HNIT,01,*,:,~,DekkoInc_,/home/users/hexaware_admin/oic/tradingpartner/outbound/dekko,Common,DEKKOINC_FTP_SEND,01.00.0000,LISTFILESFORDEKKOINC
+601102072005269709HNIT,Acclimate,601102072,01,005269709HNIT,01,*,:,~,Acclimate_,/home/users/hexaware_admin/oic/tradingpartner/outbound/acclimate,Common,COILPLUSIL_FTP_SEND,01.00.0000,LISTFILESFORACCLIMATE
+6184677382005269709HNIT,COPE Plastics Inc,6184677382,01,005269709HNIT,01,*,:,~,COPE_,/home/users/hexaware_admin/oic/tradingpartner/outbound/cope,Common,COPEPLASTICSINC_FTP_SEND,01.00.0000,LISTFILESFORCOPEPLASTIC
+4182279897005269709HNIT,DUVALTEX AMERICA INC VICTOR,4182279897,12,005269709HNIT,01,*,:,~,DUVALTEX_,/home/users/hexaware_admin/oic/tradingpartner/outbound/victor,Common,DUVALTEXAMERICAI_FTP_SEND,01.00.0000,LISTFILESFORDUVALTEXAMERICAVICTO
+2078763331005269709HNIT,DUVALTEX US INC TRUE,2078763331,12,005269709HNIT,01,*,:,~,DUVALTEX_,/home/users/hexaware_admin/oic/tradingpartner/outbound/truetextiles,Common,DUVALTEXUSINCTRU_FTP_SEND,01.00.0000,LISTFILESFORDUVALTEXUSINCTRUE
+006930879T005269709HNIT,Esmark Steel Group Midwest LLC,006930879T,01,005269709HNIT,01,*,:,~,Esmark_,/home/users/hexaware_admin/oic/tradingpartner/outbound/esmark,Common,ESMARKSTEELGROUP_FTP_SEND,01.00.0000,LISTFILESFORESMARK
+007140080005269709HNIT,Legget Platt Inc Carthage,007140080,01,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETANDPLATTIN_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATTINC
+MAHARAM005269709HNIT,Maharam,MAHARAM,ZZ,005269709HNIT,01,*,:,~,Maharam_,/home/users/hexaware_admin/oic/tradingpartner/outbound/maharam,Common,MAHARAM_FTP_SEND,01.00.0000,LISTFILESFORMAHARAM
+9498338886005269709HNIT,Momentum,9498338886,12,005269709HNIT,01,*,:,~,Momentum_,/home/users/hexaware_admin/oic/tradingpartner/outbound/mom,Common,MOMENTUM_FTP_SEND,01.00.0000,LISTFILESFORMOMENTUM
+OFCPANEL005269709HNIT,OFC Pannel Processing LLC,OFCPANEL,ZZ,005269709HNIT,01,*,:,~,OFC_,/home/users/hexaware_admin/oic/tradingpartner/outbound/ofc,Common,OFCPANNELPROCESS_FTP_SEND,01.00.0000,LISTFILESFOROFCPANNELPROCESSING
+PPG/CENTRALT005269709HNIT,PPG Industries Inc,CENTRAL2,ZZ,005269709HNIT,01,*,:,~,PPG_,/home/users/hexaware_admin/oic/tradingpartner/outbound/ppg,Common,PPGINDUSTRIESINC_FTP_SEND,01.00.0000,LISTFILESFORPPGINDUSTRIESINC
+PSCTEST3005269709HNIT,PSC Industries,192063601,01,005269709HNIT,01,*,:,~,PSC_,/home/users/hexaware_admin/oic/tradingpartner/outbound/pscind,Common,PSCINDUSTRIES_FTP_SEND,01.00.0000,LISTFILESFORPSCINDUSTRIES
+093863876005269709HNIT,Seaberg Industries,093863876,ZZ,005269709HNIT,01,*,:,~,Seaberg_,/home/users/hexaware_admin/oic/tradingpartner/outbound/seaberg,Common,SEABERGINDUSTRIES_FTP_SEND,01.00.0000,LISTFILESFORSEABERGINDUSTRIES
+RALPHWILSON005269709HNIT,WILSONART International,RALPHWILSON,ZZ,005269709HNIT,01,*,:,~,WILSONART_,/home/users/hexaware_admin/oic/tradingpartner/outbound/wilsonart,Common,WILSONARTINTERNA_FTP_SEND,01.00.0000,LISTFILESFORWILSONART
+783169753TST005269709HNIT,Arauco,783169753TST,ZZ,005269709HNIT,01,*,:,~,Arauco_,/home/users/hexaware_admin/oic/tradingpartner/outbound/sterling,Common,STERLING_AS2_SEND,01.00.0000,LISTFILESFORSTERLING
+MENASHA005269709HNIT,Menasha Packing Company,MENASHA,ZZ,005269709HNIT,01,*,:,~,Menasha_,/home/users/hexaware_admin/oic/tradingpartner/outbound/menasha,Common,MENASHA_AS2_SEND,01.00.0000,LISTFILESFORMENASHA
+006073126T005269709HNIT,Menasha Packing Company,006073126T,01,005269709HNIT,01,*,:,~,Menasha_,/home/users/hexaware_admin/oic/tradingpartner/outbound/menasha,Common,MENASHA_AS2_SEND,01.00.0000,
+SJTEST005269709HNIT,S & J Tube Inc.,SJTEST,ZZ,005269709HNIT,01,*,:,~,SJTube_,/home/users/hexaware_admin/oic/tradingpartner/outbound/acclimate,Common,SJTUBEINC_FTP_SEND,01.00.0000,ListFilesForSJTubeInc
+1596129-19194T005269709HNIT,Impact Office,1596129-19194T,ZZ,005269709HNIT,01,*,:,~,Impact Office_,/home/users/hexaware_admin/oic/tradingpartner/outbound/acclimate,Common,,01.00.0000,
+CARDINALPA005269709HNIT,Cardinal PA,CARDINALPA,ZZ,005269709HNIT,01,*,:,~,Cardinal_,/home/users/hexaware_admin/oic/tradingpartner/outbound/cardinal,Common,CARDINALPA_AS2_SEND,01.00.0000,LISTFILESFORCARDINALPA
+CARDINALWI005269709HNIT,Cardinal WI,CARDINALWI,ZZ,005269709HNIT,01,*,:,~,Cardinal_,/home/users/hexaware_admin/oic/tradingpartner/outbound/cardinal,Common,CARDINAL_AS2_SEND,01.00.0000,LISTFILESFORCARDINALWI
+8707432200005269709HNIT,Claridge Products and Equipment,8707432200,12,005269709HNIT,01,*,:,~,Claridge_,/home/users/hexaware_admin/oic/tradingpartner/outbound/claridge,Common,CLARIDGEPRODUCTSEQUI_AS2_SEND,01.00.0000,LISTFILESFORCLARIDGEPRODUCTS
+118038413005269709HNIT,Acclimate,118038413,01,005269709HNIT,01,*,:,~,Acclimate_,/home/users/hexaware_admin/oic/tradingpartner/outbound/acclimate,Common,COILPLUSAL_FTP_SEND,01.00.0000,
+8642861697005269709HNIT,COMPX Security Products,8642861697,12,005269709HNIT,01,*,:,~,COMPX_,/home/users/hexaware_admin/oic/tradingpartner/outbound/compx,Common,,,
+3368895161T005269709HNIT,Culp Inc,3368895161T,12,005269709HNIT,01,*,:,~,Culp_,/home/users/hexaware_admin/oic/tradingpartner/outbound/culp,Common,,,
+DECOTEST005269709HNIT,Deco Products Co,DECOTEST,ZZ,005269709HNIT,01,*,:,~,Deco_,/home/users/hexaware_admin/oic/tradingpartner/outbound/deco,Common,,,
+7655212000005269709HNIT,Foam Rubber Products LLC Monticello,7655212000,12,005269709HNIT,01,*,:,~,Foam_,/home/users/hexaware_admin/oic/tradingpartner/outbound/foam,Common,,,
+8089005269709HNIT,Foam Rubber Products LLC  New Castle,8089,ZZ,005269709HNIT,01,*,:,~,Foam_,/home/users/hexaware_admin/oic/tradingpartner/outbound/foam,Common,,01.00.0000,
+FRITEST005269709HNIT,Fort Recovery Industries Inc,FRITEST,ZZ,005269709HNIT,01,*,:,~,Fort_,/home/users/hexaware_admin/oic/tradingpartner/outbound/fort,Common,FORTRECOVERYINDUSTRI_AS2_SEND,01.00.0000,LISTFILESFORFORTRECOVERY
+ITGBCS005269709HNIT,ITG International Textile Group Inc,ITGBCS,ZZ,005269709HNIT,01,*,:,~,ITG_,/home/users/hexaware_admin/oic/tradingpartner/outbound/Itg,Common,,01.00.0000,
+KNTEST005269709HNIT,Kuehne & Nagel,KNTEST,ZZ,005269709HNIT,01,*,:,~,Kuehne_,/home/users/hexaware_admin/oic/tradingpartner/outbound/kuehne,KNN,KUEHNEANDNAGEL_AS2_SEND,01.00.0000,LISTFILESFORKUEHNEANDNAGEL
+006024699005269709HNIT,KNAPE & VOGT MFG  Grand Rapids,006024699,01,005269709HNIT,01,*,:,~,KNAPE_,/home/users/hexaware_admin/oic/tradingpartner/outbound/spsCommerce,Common,KNAPEANDVOGTMFG_AS2_SEND,01.00.0000,LISTFILESFORKNAPEANDVOGTMFG
+KVCEDAR005269709HNIT,KNAPE & VOGT MFG  Grand Rapids,KVCEDAR,ZZ,005269709HNIT,01,*,:,~,KNAPE_,/home/users/hexaware_admin/oic/tradingpartner/outbound/spsCommerce,Common,KNAPEANDVOGTMFG_AS2_SEND,01.00.0000,LISTFILESFORKNAPEANDVOGTMFG
+8473298530005269709HNIT,Legget Platt Inc Des Plaines,8473298530,ZZ,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+812407740005269709HNIT,Legget Platt Inc El Paso,812407740,01,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+6169560033005269709HNIT,Legget Platt Inc Grand Rapids,6169560033,12,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+6169541040005269709HNIT,Legget Platt Inc Grand Rapids,6169541040,12,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+3363797777005269709HNIT,Legget Platt Inc Greensboro,3363797777,12,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+3363731391005269709HNIT,Legget Platt Inc Greensboro,3363731391,12,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+3368892600005269709HNIT,Legget Platt Inc  High Point,3368892600,12,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+005476387005269709HNIT,Legget Platt Inc Kendallville,005476387,01,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+006397772005269709HNIT,Legget Platt Inc Liberty,006397772,01,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+7048731086005269709HNIT,Legget Platt Inc Statesville,7048731086,12,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+5198841860005269709HNIT,Legget Platt Inc Waterloo,5198841860,12,005269709HNIT,01,*,:,~,Legget_,/home/users/hexaware_admin/oic/tradingpartner/outbound/legget,Common,LEGGETPLATTINC_FTP_SEND,01.00.0000,LISTFILESFORLEGGETPLATT
+9058777300005269709HNIT,Olon Industries Inc,9058777300,12,005269709HNIT,01,*,:,~,Olon_,/home/users/hexaware_admin/oic/tradingpartner/outbound/spsCommerce,Common,OLONINDUSTRIES_AS2_SEND,01.00.0000,LISTFILESFOROLONINDUSTRIES
+3199390119005269709HNIT,Pries Enterprises,3199390119,12,005269709HNIT,01,*,:,~,Pries_,/home/users/hexaware_admin/oic/tradingpartner/outbound/pries,Common,PRIESENTERPRISES_AS2_SEND,01.00.0000,LISTFILESFORPRIESENTERPRISES
+178313383005269709HNIT,Royal Technologies Corp,178313383,01,005269709HNIT,01,*,:,~,Royal_,/home/users/hexaware_admin/oic/tradingpartner/outbound/royal,Common,,,
+3178443995T005269709HNIT,Seemac Inc,3178443995T,ZZ,005269709HNIT,01,*,:,~,Seemac_,/home/users/hexaware_admin/oic/tradingpartner/outbound/seemac,Common,,,
+8654262862005269709HNIT,Ultra Tech Extursions,8654262862,12,005269709HNIT,01,*,:,~,Ultra_,/home/users/hexaware_admin/oic/tradingpartner/outbound/spsCommerce,Common,ULTRATECHEXTURSIONS_AS2_SEND,01.00.0000,LISTFILESFORULTRATECHEXTURSIONS
+003147873005269709HNIT,Valdese  Weavers LLC,003147873,01,005269709HNIT,01,*,:,~,Valdese_,/home/users/hexaware_admin/oic/tradingpartner/outbound/valdese,Common,,,
+243944100WESKOT005269709HNIT,WESKO Systems LTD,243944100WESKOT,ZZ,005269709HNIT,01,*,:,~,WESKO_,/home/users/hexaware_admin/oic/tradingpartner/outbound/wesko,Common,WESKOSYSTEMSLTD_AS2_SEND,01.00.0000,LISTFILESFORWESKOSYSTEMSLTD
+006935308TPC005269709HNIT,White Distribution  Supply  Muscatine,006935308TPC,01,005269709HNIT,01,*,:,~,White_,/home/users/hexaware_admin/oic/tradingpartner/outbound/white,WhiteDistribution,,,
+002017440CUST005269709HNIT,Milliken & Company,002017440CUST,09,005269709HNIT,01,*,:,~,Milliken_,/home/users/hexaware_admin/oic/tradingpartner/outbound/milliken,Common,,,
+015106482CFST005269709HNIT,BI BY Staples,015106482CFST,01,005269709HNIT,01,,,,BIBYStaples_,/home/users/hexaware_admin/oic/tradingpartner/outbound/sterling,,,,
+8008934091005269709HNIT,Bison Office,8008934091,12,005269709HNIT,01,,,,Bison_,/home/users/hexaware_admin/oic/tradingpartner/outbound/bison,,BISONOFFICE_FTP_SEND,01.00.0000,
+054146402005269709HNIT,Clark Associates,054146402,01,005269709HNIT,01,,,,Clark_,/home/users/hexaware_admin/oic/tradingpartner/outbound/clark,,,,
+ECIPSN005269709HNIT,DDMS Supply,ECIPSN,ZZ,005269709HNIT,01,,,,DDMS_,/home/users/hexaware_admin/oic/tradingpartner/outbound/ecipsn,,,,
+EATON005269709HNIT,Eaton,EATON,ZZ,005269709HNIT,01,,,,Eaton_,/home/users/hexaware_admin/oic/tradingpartner/outbound/eaton,,,,
+233029143005269709HNIT,EOfficeDirect,233029143,01,005269709HNIT,01,,,,Eoffice_,,,,,
+18978783005269709HNIT,Essendant,18978783,01,005269709HNIT,01,,,,Essendant_,/home/users/hexaware_admin/oic/tradingpartner/outbound/essendant,,,,
+FMCNA005269709HNIT,Fresenius Medical Care,FMCNA,ZZ,005269709HNIT,01,,,,Fresenius_,/home/users/hexaware_admin/oic/tradingpartner/outbound/fresenius,,,,
+8665680524005269709HNIT,Ibuy Office Supply,8665680524,12,005269709HNIT,01,,,,Ibuy_,/home/users/hexaware_admin/oic/tradingpartner/outbound/ibuyoffice,,,,
+LBHITOUCHEDI005269709HNIT,MyOfficeProducts,LBHITOUCHEDI,ZZ,005269709HNIT,01,,,,MyOffice_,/home/users/hexaware_admin/oic/tradingpartner/outbound/myOfficeProduct,,,,
+NATBUSFURNITURE005269709HNIT,National Business Furniture -- SPS Commerce,NATBUSFURNITURE,ZZ,005269709HNIT,01,,,,National_,/home/users/hexaware_admin/oic/tradingpartner/outbound/spsCommerce,,,,
+3176321360005269709HNIT,Office 360,3176321360,12,005269709HNIT,01,,,,Office360_,/home/users/hexaware_admin/oic/tradingpartner/outbound/office360,,,,
+8005415855005269709HNIT,Office Basics,8005415855,12,005269709HNIT,01,,,,OfficeBasics_,/home/users/hexaware_admin/oic/tradingpartner/outbound/officebasics,,,,
+6123410000005269709HNIT,Office Depot,6123410000,08,005269709HNIT,01,,,,OfficeDepot_,/home/users/hexaware_admin/oic/tradingpartner/outbound/sterling,,,,
+6123410000VW005269709HNIT,Office Depot Virtual Warehouse,6123410000VW,08,005269709HNIT,01,,,,OfficeVirtual_,/home/users/hexaware_admin/oic/tradingpartner/outbound/sterling,,,,
+7146927412005269709HNIT,Office Solutions,7146927412,12,005269709HNIT,01,,,,OfficeSolutions_,/home/users/hexaware_admin/oic/tradingpartner/outbound/officesolutions,,,,
+5082531643CHQT005269709HNIT,Quill Commerce Hub,5082531643CHQT,12,005269709HNIT,01,,,,Quill_,/home/users/hexaware_admin/oic/tradingpartner/outbound/commercehub,,,,
+007976384005269709HNIT,S P Richards,007976384,01,005269709HNIT,01,,,,SPRichards_,/home/users/hexaware_admin/oic/tradingpartner/outbound/spRichards,,,,
+SCHOOLSP005269709HNIT,School Specialty,SCHOOLSP,ZZ,005269709HNIT,01,,,,School_,/home/users/hexaware_admin/oic/tradingpartner/outbound/schoolSpecialty,,,,
+5082531642CHQT005269709HNIT,Staples Advantage Commerce Hub,5082531642CHQT,12,005269709HNIT,01,,,,Staples_,/home/users/hexaware_admin/oic/tradingpartner/outbound/commercehub,,,,
+9055136116005269709HNIT,Staples Canada,9055136116,12,005269709HNIT,01,,,,Staples_,/home/users/hexaware_admin/oic/tradingpartner/outbound/staplesCanada,,,,
+015106482Y2K005269709HNIT,Staples Legacy,015106482Y2K,01,005269709HNIT,01,,,,Staples_,/home/users/hexaware_admin/oic/tradingpartner/outbound/sterling,,,,
+5082531648CHQT005269709HNIT,Staples.CA Commerce Hub,5082531648CHQT,12,005269709HNIT,01,,,,Staples_,/home/users/hexaware_admin/oic/tradingpartner/outbound/commercehub,,,,
+5082531640CHQT005269709HNIT,Staples.com Commerce Hub,5082531640CHQT,12,005269709HNIT,01,,,,Staples_,/home/users/hexaware_admin/oic/tradingpartner/outbound/commercehub,,,,
+5155586026005269709HNIT,Storey Kenworthy,5155586026,12,005269709HNIT,01,,,,Storey_,/home/users/hexaware_admin/oic/tradingpartner/outbound/storeykenworthy,,,,
+6019825650005269709HNIT,TriMega,6019825650,12,005269709HNIT,01,,,,TriMega_,/home/users/hexaware_admin/oic/tradingpartner/outbound/trimega,,,,
+052625005269709HNIT,Tylander Office,052625,ZZ,005269709HNIT,01,,,,Tylander_,/home/users/hexaware_admin/oic/tradingpartner/outbound/tylander,,,,
+078301641005269709HNIT,Zerbee Business Products,078301641,01,005269709HNIT,01,,,,Zerbee_,/home/users/hexaware_admin/oic/tradingpartner/outbound/zerbee,,,,
+Web,W B Mason,Web,,005269709HNIT,01,,,,WBMason_,,,,,
+WBMASON005269709HNIT,W B Mason,WBMASON,ZZ,005269709HNIT,01,,,,WBMason_,/home/users/hexaware_admin/oic/tradingpartner/outbound/wbmason,,,,
+web,Design Public Group,web,,005269709HNIT,01,,,,DesignPublicGroup_,,,,,
+109613192647056,DDMS Supply,ECIPSN,ZZ,005269709HNIT,01,*,:,~,DDMSSupply_,/home/users/hexaware_admin/oic/tradingpartner/outbound/ddms,,DDMSSUPPLY_FTP_SEND,01.00.0000,LISTCANONICALXMLFILESFORDDMSSUPP
