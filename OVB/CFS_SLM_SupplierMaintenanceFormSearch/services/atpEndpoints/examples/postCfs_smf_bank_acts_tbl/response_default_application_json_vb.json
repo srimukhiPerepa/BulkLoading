@@ -1,0 +1,56 @@
+{
+    "supplier_site_id": 300000062946765,
+    "supplier_id": 300000061710879,
+    "request_id": 1,
+    "account_number": null,
+    "allow_international_payments": null,
+    "bank": null,
+    "bank_branch": null,
+    "country": null,
+    "currency": null,
+    "iban": null,
+    "inactive_on": null,
+    "primary_flag": null,
+    "re_account_number": null,
+    "re_allow_international_payments": null,
+    "re_bank": null,
+    "re_bank_branch": null,
+    "re_country": null,
+    "re_currency": null,
+    "re_iban": null,
+    "re_inactive_on": null,
+    "re_primary_flag": null,
+    "action_requested": null,
+    "update_unpaid_invoices": null,
+    "re_update_unpaid_invoices": null,
+    "supplier_site": null,
+    "account_id": "12345678911",
+    "api_response": null,
+    "re_bank_id": null,
+    "re_bank_branch_id": null,
+    "created_by": null,
+    "creation_date": null,
+    "last_updated_by": null,
+    "last_update_date": null,
+    "record_status": null,
+    "bank_id": null,
+    "bank_branch_id": null,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bank_acts_tbl/300000062946765,300000061710879,1,12345678911"
+        },
+        {
+            "rel": "edit",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bank_acts_tbl/300000062946765,300000061710879,1,12345678911"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/metadata-catalog/cfs_smf_bank_acts_tbl/item"
+        },
+        {
+            "rel": "collection",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bank_acts_tbl/"
+        }
+    ]
+}

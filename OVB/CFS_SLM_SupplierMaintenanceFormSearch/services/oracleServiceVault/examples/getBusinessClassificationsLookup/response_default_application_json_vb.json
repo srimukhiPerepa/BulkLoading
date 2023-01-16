@@ -1,0 +1,1755 @@
+{
+    "items": [
+        {
+            "LookupCode": "A1",
+            "Meaning": "ASIAN MALE OWNED BUSINESS",
+            "Description": "ASIAN MALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 1,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:40:36.475+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:03.945+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A1/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "A2",
+            "Meaning": "ASIAN FEMALE OWNED BUSINESS",
+            "Description": "ASIAN FEMALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 2,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:42:44.158+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:03.960+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A2/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "A3",
+            "Meaning": "ASIAN MALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "ASIAN MALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 3,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:43:23.121+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:03.969+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A3/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A3/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "A4",
+            "Meaning": "ASIAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "ASIAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 4,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:43:45.521+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:03.976+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A4/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "AV",
+            "Meaning": "AMERICAN VETERAN",
+            "Description": "AMERICAN VETERAN",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 5,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:44:08.357+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:03.979+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/AV",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/AV",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/AV/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/AV/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "B1",
+            "Meaning": "AFRICAN AMERICAN MALE OWNED BUSINESS",
+            "Description": "AFRICAN AMERICAN MALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 6,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:44:58.967+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:03.985+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B1/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "B2",
+            "Meaning": "AFRICAN AMERICAN FEMALE OWNED BUSINESS",
+            "Description": "AFRICAN AMERICAN FEMALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 7,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:45:49.972+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:03.990+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B2/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "B3",
+            "Meaning": "AFRICAN AMERICAN MALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "AFRICAN AMERICAN MALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 8,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:46:14.879+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:03.997+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B3/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B3/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "B4",
+            "Meaning": "AFRICAN AMERICAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "AFRICAN AMERICAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 9,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:46:42.349+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.001+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B4/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "D1",
+            "Meaning": "SOCIO ECONOMICALLY DISADVANTAGE-OWNED BUSINESS MALE (8A)",
+            "Description": "SOCIO ECONOMICALLY DISADVANTAGE-OWNED BUSINESS MALE (8A)",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 10,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:47:09.380+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.016+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D1/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "D2",
+            "Meaning": "SOCIO ECONOMICALLY DISADVANTAGE-OWNED BUSINESS FEMALE (8A)",
+            "Description": "SOCIO ECONOMICALLY DISADVANTAGE-OWNED BUSINESS FEMALE (8A)",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 11,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:47:38.338+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.025+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D2/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "H1",
+            "Meaning": "HISPANIC MALE OWNED BUSINESS",
+            "Description": "HISPANIC MALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 12,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:48:00.993+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.030+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H1/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "H2",
+            "Meaning": "HISPANIC FEMALE OWNED BUSINESS",
+            "Description": "HISPANIC FEMALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 13,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:48:29.004+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.034+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H2/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "H3",
+            "Meaning": "HISPANIC MALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "HISPANIC MALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 14,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:48:54.243+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.037+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H3/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H3/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "H4",
+            "Meaning": "HISPANIC FEMALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "HISPANIC FEMALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 15,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:49:20.800+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.043+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H4/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "L1",
+            "Meaning": "LESBIAN GAY BISEXUAL TRANSGENDER MALE",
+            "Description": "LESBIAN GAY BISEXUAL TRANSGENDER MALE",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 16,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:50:02.432+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.046+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L1/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "L2",
+            "Meaning": "LESBIAN GAY BISEXUAL TRANSGENDER FEMALE",
+            "Description": "LESBIAN GAY BISEXUAL TRANSGENDER FEMALE",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 17,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:50:25.079+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.050+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L2/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "N1",
+            "Meaning": "NATIVE AMERICAN MALE OWNED BUSINESS",
+            "Description": "NATIVE AMERICAN MALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 18,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:50:50.725+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.053+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N1/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "N2",
+            "Meaning": "NATIVE AMERICAN FEMALE OWNED BUSINESS",
+            "Description": "NATIVE AMERICAN FEMALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 19,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:51:12.445+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.060+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N2/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "N3",
+            "Meaning": "NATIVE AMERICAN MALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "NATIVE AMERICAN MALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 20,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:51:37.153+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.065+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N3/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N3/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "N4",
+            "Meaning": "NATIVE AMERICAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "NATIVE AMERICAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 21,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:51:59.163+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.069+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N4/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "OT",
+            "Meaning": "OTHER",
+            "Description": "OTHER",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 22,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:52:23.131+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.072+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/OT",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/OT",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/OT/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/OT/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "S1",
+            "Meaning": "MALE OWNED SMALL BUSINESS",
+            "Description": "MALE OWNED SMALL BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 23,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:53:14.439+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.076+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S1/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "S2",
+            "Meaning": "FEMALE OWNED SMALL BUSINESS",
+            "Description": "FEMALE OWNED SMALL BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 24,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:53:40.315+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.079+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S2/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "SB",
+            "Meaning": "SMALL BUSINESS (SBA APPROVED)",
+            "Description": "SMALL BUSINESS (SBA APPROVED)",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 25,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:54:04.176+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.083+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SB",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SB",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SB/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SB/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "SD",
+            "Meaning": "SERVICE-DISABLE VETERAN OWNED BUSINESS",
+            "Description": "SERVICE-DISABLE VETERAN OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 26,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:54:30.698+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.087+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SD",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SD",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SD/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SD/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "T2",
+            "Meaning": "SECOND TIER REPORTING",
+            "Description": "SECOND TIER REPORTING",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 27,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:54:54.604+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.091+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/T2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/T2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/T2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/T2/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "V1",
+            "Meaning": "MALE VETERAN OWNED BUSINESS",
+            "Description": "MALE VETERAN OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 28,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:55:18.896+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.095+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V1/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "V2",
+            "Meaning": "FEMALE VETERAN OWNED BUSINESS",
+            "Description": "FEMALE VETERAN OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 29,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:55:43.642+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.103+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V2/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "V3",
+            "Meaning": "MALE VETERAN OWNED BUSINESS-CLASSIFIED",
+            "Description": "MALE VETERAN OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 30,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:56:04.493+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.110+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V3/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V3/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "V4",
+            "Meaning": "FEMALE VETERAN OWNED BUSINESS-CLASSIFIED",
+            "Description": "FEMALE VETERAN OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 31,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:56:29.823+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.115+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/V4/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "W4",
+            "Meaning": "WOMEN BUSINESS – CLASSIFIED",
+            "Description": "WOMEN BUSINESS – CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 32,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:56:53.427+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.124+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/W4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/W4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/W4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/W4/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "WB",
+            "Meaning": "WOMAN OWNED BUSINESS",
+            "Description": "WOMAN OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 33,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:57:16.891+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.127+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/WB",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/WB",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/WB/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/WB/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "Z1",
+            "Meaning": "HISTORICALLY UNDERUTILIZED BUSINESS ZONE (HUBZONE) MALE",
+            "Description": "HISTORICALLY UNDERUTILIZED BUSINESS ZONE (HUBZONE) MALE",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 34,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:58:04.370+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.129+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z1/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "Z2",
+            "Meaning": "HISTORICALLY UNDERUTILIZED BUSINESS ZONE (HUBZONE) FEMALE",
+            "Description": "HISTORICALLY UNDERUTILIZED BUSINESS ZONE (HUBZONE) FEMALE",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 35,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:58:24.291+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.133+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z2/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "Z3",
+            "Meaning": "HISTORICALLY UNDERUTILIZED BUSINESS ZONE(HUBZONE)MALE-CLASSI",
+            "Description": "HISTORICALLY UNDERUTILIZED BUSINESS ZONE(HUBZONE)MALE-CLASSI",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 36,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:58:45.579+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.141+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z3/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z3/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "Z4",
+            "Meaning": "HISTORICALLY UNDERUTILIZED BUSINESS ZONE(HUBZONE)FEMALE-CLAS",
+            "Description": "HISTORICALLY UNDERUTILIZED BUSINESS ZONE(HUBZONE)FEMALE-CLAS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 37,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-06T10:59:09.510+00:00",
+            "LastUpdateDate": "2022-06-06T11:00:04.147+00:00",
+            "LastUpdateLogin": "E0C2954F3C37A648E053CD61500AE149",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/Z4/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 37,
+    "hasMore": false,
+    "limit": 500,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes",
+            "name": "lookupCodes",
+            "kind": "collection"
+        }
+    ]
+}

@@ -1,0 +1,90 @@
+{
+  "root": "ifActionRequested",
+  "description": "",
+  "variables": {
+    "actionRequested": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "inactiveDate": {
+      "type": "any",
+      "required": false,
+      "input": "fromCaller"
+    }
+
+  },
+  "actions": {
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateContactInactiveDate",
+        "condition": "[[ $chain.results.callFunctionValidateInactiveDate ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Inactive Date cannot be a past date",
+        "summary": "Inactive Date Error"
+      }
+    },
+    "callFunctionValidateInactiveDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateInactiveDate",
+        "params": [
+          "{{ $variables.inactiveDate }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateContactInactiveDate2 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "You must provide a value for the Inactive Date that's on or before today's date",
+        "summary": "Inactive Date Error"
+      }
+    },
+    "ifActionRequested": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.actionRequested==\"New\" ]]"
+      },
+      "outcomes": {
+        "false": "callFunctionValidateInactiveDate",
+        "true": "callFunctionValidateContactInactiveDate2"
+      }
+    },
+    "callFunctionValidateContactInactiveDate2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateContactInactiveDate",
+        "params": [
+          "{{ $variables.inactiveDate }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if3"
+      }
+    }
+  }
+}

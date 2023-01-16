@@ -1,0 +1,16 @@
+{
+
+    "id": "main",
+    "description": "Flow main",
+    "defaultPage": "main-start",
+    "chains": {},
+    "services": {},
+    "types": {},
+    "variables": {} ,
+      "security": {
+      "access": {
+        "requiresAuthentication": true,
+        "roles": ["CFS_SMF_Requestor_Role","CFS_SMF_Admin_Role"]
+        }
+        }   
+}

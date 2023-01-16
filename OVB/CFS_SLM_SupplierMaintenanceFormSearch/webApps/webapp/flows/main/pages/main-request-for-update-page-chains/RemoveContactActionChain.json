@@ -1,0 +1,257 @@
+{
+  "description": "",
+  "root": "resetVariablesDummyPostContacts",
+  "actions": {
+    "resetVariablesDummyPostContacts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContacts",
+          "$page.variables.DummyPostContacts1",
+          "$page.variables.DummyPostContactAddress"          ,
+          "$page.variables.DummyPostContactAddress1"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInPostContacts"
+      }
+    },
+    "forEachInPostContacts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postContacts.data }}",
+        "actionId": "ifCurrent"
+      },
+      "outcomes": {
+        "success": "resetVariablesPostContacts"
+      }
+    },
+    "assignVariablesDummyPostContacts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContacts": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "email": "{{ $current.data.email }}",
+                "fax_number": "{{ $current.data.fax_number }}",
+                "first_name": "{{ $current.data.first_name }}",
+                "inactive_date": "{{ $current.data.inactive_date }}",
+                "job_title": "{{ $current.data.job_title }}",
+                "last_name": "{{ $current.data.last_name }}",
+                "mobile_number": "{{ $current.data.mobile_number }}",
+                "phone_number": "{{ $current.data.phone_number }}",
+                "re_address_name": "{{ $current.data.re_address_name }}",
+                "re_email": "{{ $current.data.re_email }}",
+                "re_fax_number": "{{ $current.data.re_fax_number }}",
+                "re_first_name": "{{ $current.data.re_first_name }}",
+                "re_inactive_date": "{{ $current.data.re_inactive_date }}",
+                "re_job_title": "{{ $current.data.re_job_title }}",
+                "re_last_name": "{{ $current.data.re_last_name }}",
+                "re_mobile_number": "{{ $current.data.re_mobile_number }}",
+                "re_phone_number": "{{ $current.data.re_phone_number }}",
+                "supplier_contact_id": "{{ $current.data.supplier_contact_id }}",
+                "record_status": "{{ $current.data.record_status }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostContacts1"
+      }
+    },
+    "assignVariablesDummyPostContacts1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContacts1": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostContacts.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "resetVariablesPostContacts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postContacts"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPostContacts"
+      }
+    },
+    "assignVariablesPostContacts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postContacts": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostContacts1.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostContacts"
+      }
+    },
+    "fireDataProviderEventPostContacts": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postContacts ]]"
+      },
+      "outcomes": {
+        "success": "forEachInContactAddressUpdates"
+      }
+    },
+    "ifCurrent": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_contact_id==$variables.current.supplier_contact_id ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesDummyPostContacts",
+        "true": "ifRequestStatus3"
+      }
+    },
+    "forEachInContactAddressUpdates": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.ContactAddressUpdates.data }}",
+        "actionId": "ifCurrent2"
+      },
+      "outcomes": {
+        "success": "resetVariablesContactAddressUpdates"
+      }
+    },
+    "ifCurrent2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_contact_id==$variables.current.supplier_contact_id ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesDummyPostContactAddress1",
+        "true": "ifRequestStatus"
+      }
+    },
+    "assignVariablesDummyPostContactAddress1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContactAddress1": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "resetVariablesContactAddressUpdates": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.ContactAddressUpdates"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesContactAddressUpdates"
+      }
+    },
+    "assignVariablesContactAddressUpdates": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ContactAddressUpdates": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostContactAddress1.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventContactAddressUpdates"
+      }
+    },
+    "fireDataProviderEventContactAddressUpdates": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.ContactAddressUpdates ]]"
+      }
+    },
+    "ifRequestStatus": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus==\"More Information Requested\" && $current.data.record_status == \"ACTIVE\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesInactivateContactAddresses"
+      }
+    },
+    "assignVariablesInactivateContactAddresses": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.InactivateContactAddresses": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "assignVariablesInactivateContacts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.InactivateContacts": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "ifRequestStatus3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus==\"More Information Requested\" && $current.data.record_status == \"ACTIVE\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesInactivateContacts"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

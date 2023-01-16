@@ -1,0 +1,1041 @@
+{
+    "items": [
+        {
+            "LookupCode": "A1",
+            "Meaning": "ASIAN MALE OWNED BUSINESS",
+            "Description": "ASIAN MALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 1,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:54:53+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.725+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "A2",
+            "Meaning": "ASIAN FEMALE OWNED BUSINESS",
+            "Description": "ASIAN FEMALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 2,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:55:22.035+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.737+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "A3",
+            "Meaning": "ASIAN MALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "ASIAN MALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 3,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:55:39.883+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.741+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A3/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "A4",
+            "Meaning": "ASIAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "ASIAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 4,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:55:51.569+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.746+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/A4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "AV",
+            "Meaning": "AMERICAN VETERAN",
+            "Description": "AMERICAN VETERAN",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 5,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:56:03.854+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.749+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/AV",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/AV",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/AV/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "B1",
+            "Meaning": "AFRICAN AMERICAN MALE OWNED BUSINESS",
+            "Description": "AFRICAN AMERICAN MALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 6,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:56:14.368+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.747+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "B2",
+            "Meaning": "AFRICAN AMERICAN FEMALE OWNED BUSINESS",
+            "Description": "AFRICAN AMERICAN FEMALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 7,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:56:36.512+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.750+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "B3",
+            "Meaning": "AFRICAN AMERICAN MALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "AFRICAN AMERICAN MALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 8,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:56:55.186+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.752+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B3/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "B4",
+            "Meaning": "AFRICAN AMERICAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "AFRICAN AMERICAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 9,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:57:06.107+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.753+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/B4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "D1",
+            "Meaning": "SOCIO ECONOMICALLY DISADVANTAGE-OWNED BUSINESS MALE (8A)",
+            "Description": "SOCIO ECONOMICALLY DISADVANTAGE-OWNED BUSINESS MALE (8A)",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 10,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:57:19.661+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.754+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "D2",
+            "Meaning": "SOCIO ECONOMICALLY DISADVANTAGE-OWNED BUSINESS FEMALE (8A)",
+            "Description": "SOCIO ECONOMICALLY DISADVANTAGE-OWNED BUSINESS FEMALE (8A)",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 11,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:57:38.777+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.755+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/D2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "H1",
+            "Meaning": "HISPANIC MALE OWNED BUSINESS",
+            "Description": "HISPANIC MALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 12,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:57:59.650+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.757+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "H2",
+            "Meaning": "HISPANIC FEMALE OWNED BUSINESS",
+            "Description": "HISPANIC FEMALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 13,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:58:12.264+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.759+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "H3",
+            "Meaning": "HISPANIC MALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "HISPANIC MALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 14,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:58:24.498+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.760+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H3/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "H4",
+            "Meaning": "HISPANIC FEMALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "HISPANIC FEMALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 15,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:58:38.670+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.762+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/H4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "L1",
+            "Meaning": "LESBIAN GAY BISEXUAL TRANSGENDER MALE",
+            "Description": "LESBIAN GAY BISEXUAL TRANSGENDER MALE",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 16,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:58:51.857+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.763+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "L2",
+            "Meaning": "LESBIAN GAY BISEXUAL TRANSGENDER FEMALE",
+            "Description": "LESBIAN GAY BISEXUAL TRANSGENDER FEMALE",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 17,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:59:08.450+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.765+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/L2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "N1",
+            "Meaning": "NATIVE AMERICAN MALE OWNED BUSINESS",
+            "Description": "NATIVE AMERICAN MALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 18,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:59:23.914+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.766+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "N2",
+            "Meaning": "NATIVE AMERICAN FEMALE OWNED BUSINESS",
+            "Description": "NATIVE AMERICAN FEMALE OWNED BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 19,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:59:35.717+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.768+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "N3",
+            "Meaning": "NATIVE AMERICAN MALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "NATIVE AMERICAN MALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 20,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T10:59:51.424+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.769+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N3",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N3/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "N4",
+            "Meaning": "NATIVE AMERICAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "Description": "NATIVE AMERICAN FEMALE OWNED BUSINESS-CLASSIFIED",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 21,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T11:00:03.667+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.771+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N4",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/N4/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "OT",
+            "Meaning": "OTHER",
+            "Description": "OTHER",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 22,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T11:00:15.002+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.772+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/OT",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/OT",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/OT/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "S1",
+            "Meaning": "MALE OWNED SMALL BUSINESS",
+            "Description": "MALE OWNED SMALL BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 23,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T11:00:31.724+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.773+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S1",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S1/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "S2",
+            "Meaning": "FEMALE OWNED SMALL BUSINESS",
+            "Description": "FEMALE OWNED SMALL BUSINESS",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 24,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T11:00:42.991+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.775+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S2",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/S2/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "SB",
+            "Meaning": "SMALL BUSINESS (SBA APPROVED)",
+            "Description": "SMALL BUSINESS (SBA APPROVED)",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 25,
+            "Tag": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2021-10-13T11:00:55.721+00:00",
+            "LastUpdateDate": "2021-10-13T11:03:53.776+00:00",
+            "LastUpdateLogin": "C8F2B35EF3EDFBDBE053BD61500A667F",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SB",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SB",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes/SB/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 25,
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes",
+            "name": "lookupCodes",
+            "kind": "collection"
+        }
+    ]
+}

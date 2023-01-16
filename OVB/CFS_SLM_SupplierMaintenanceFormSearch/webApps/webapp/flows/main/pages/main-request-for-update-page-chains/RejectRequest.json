@@ -1,0 +1,28 @@
+{
+  "description": "",
+  "root": "resetVariablesPostRequests",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14000\" }}"
+        ]
+      }
+    },
+    "resetVariablesPostRequests": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postRequests.approver_comment"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    }
+  },
+  "variables": {}
+}

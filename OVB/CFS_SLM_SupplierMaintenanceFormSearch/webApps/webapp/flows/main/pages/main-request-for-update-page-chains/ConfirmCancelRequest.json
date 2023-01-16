@@ -1,0 +1,122 @@
+{
+
+  "root": "callFunctionCloseDialogFunc",
+  "actions": {
+
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog1400\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "ifSourcePage"
+      }
+    },
+    "ifSourcePage": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SourcePage == \"ViewDetails\" ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetCfsSmfRequestsTbl",
+        "false": "callFunctionOpenDialogFunc"
+      }
+    },
+    "assignVariablesPostRequests": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postRequests": {
+          "source": {
+            "status": "{{ \"Cancelled\" }}",
+            "approver_comment": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.approver_comment }}",
+            "created_by": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.created_by }}",
+            "request_id": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.request_id }}",
+            "last_update_date": "{{ $chain.results.callFunctionReturnCurrentDate }}",
+            "approval_date": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.approval_date }}",
+            "approver": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.approver }}",
+            "creation_date": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.creation_date }}",
+            "last_updated_by": "{{ $application.user.username }}",
+            "request_date": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.request_date }}",
+            "requestor": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.requestor }}",
+            "supplier_id": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.supplier_id }}"
+          },
+          "auto": "always",
+          "reset": "none"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfRequestsTbl"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfRequestsTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestPutCfsSmfRequestsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_requests_tbl",
+        "uriParams": {
+          "requestId": "{{ $page.variables.requestId }}"
+        },
+        "body": "{{ $page.variables.postRequests }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetCfsSmfRequestsTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetCfsSmfRequestsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/getCfs_smf_requests_tbl",
+        "uriParams": {
+          "request_Id": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification2",
+        "success": "callFunctionReturnCurrentDate"
+      }
+    },
+    "callFunctionReturnCurrentDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "returnCurrentDate"
+      },
+      "outcomes": {
+        "success": "assignVariablesPostRequests"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15005\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

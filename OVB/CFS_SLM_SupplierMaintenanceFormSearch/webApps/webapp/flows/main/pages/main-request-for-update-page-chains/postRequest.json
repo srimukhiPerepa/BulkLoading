@@ -1,0 +1,294 @@
+{
+  "root": "if",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostCfsSmfRequestsTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to submit a request"
+      },
+      "outcomes": {
+        "success": "assignVariablesActionChainError"
+      }
+    },
+    "callRestPostCfsSmfRequestsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/postCfs_smf_requests_tbl",
+        "body": "{{ $page.variables.postRequests }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "return2"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariablesActionChainError": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfRequestsTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to update request information"
+      },
+      "outcomes": {
+        "success": "assignVariablesActionChainError2"
+      }
+    },
+    "return3": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return4": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariablesActionChainError2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return4"
+      }
+    },
+    "assignVariablesPostRequests": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postRequests": {
+          "auto": "always",
+          "reset": "none",
+          "source": {
+            "request_date": "{{ $page.variables.SystemDate }}",
+            "creation_date": "{{ $page.variables.SystemDate }}",
+            "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+            "requestor_name": "{{ $page.variables.displayNameOfUserVar }}"
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfRequestsTbl"
+      }
+    },
+    "callRestPutCfsSmfRequestsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_requests_tbl",
+        "uriParams": {
+          "requestId": "{{ $page.variables.requestId }}"
+        },
+        "body": "{{ $page.variables.postRequests }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification3",
+        "success": "return3"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus==\"Request for Approval\" || $page.variables.requestStatus==\"More Information Requested\" ]]"
+      },
+      "outcomes": {
+        "false": "resetVariablesDisplayNameOfUserVar",
+        "true": "ifRequestStatus"
+      }
+    },
+    "ifRequestStatus": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus==\"Request for Approval\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesPostRequests4",
+        "false": "callFunctionReturnCurrentDate"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfRequestsTbl2.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to update request information"
+      },
+      "outcomes": {
+        "success": "assignVariablesActionChainError3"
+      }
+    },
+    "callRestPutCfsSmfRequestsTbl2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_requests_tbl",
+        "uriParams": {
+          "requestId": "{{ $page.variables.requestId }}"
+        },
+        "body": "{{ $page.variables.postRequests }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification2",
+        "success": "return5"
+      }
+    },
+    "assignVariablesActionChainError3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return6"
+      }
+    },
+    "return5": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "callFunctionReturnCurrentDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "returnCurrentDate"
+      },
+      "outcomes": {
+        "success": "assignVariablesResubmittedOnDate"
+      }
+    },
+    "assignVariablesResubmittedOnDate": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ResubmittedOnDate": {
+          "source": "{{ $chain.results.callFunctionReturnCurrentDate }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostRequests2"
+      }
+    },
+    "assignVariablesPostRequests4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postRequests": {
+
+          "auto": "always",
+          "reset": "none",
+          "source": {
+
+            "approver": "{{ $page.variables.postRequests.approver }}",
+            "created_by": "{{ $page.variables.postRequests.created_by }}",
+            "creation_date": "{{ $page.variables.postRequests.creation_date }}",
+            "last_updated_by": "{{ $page.variables.postRequests.last_updated_by }}",
+            "request_date": "{{ $page.variables.postRequests.request_date }}",
+            "request_type": "{{ $page.variables.postRequests.request_type }}",
+            "requestor": "{{ $page.variables.postRequests.requestor }}",
+            "approver_comment": "{{ $page.variables.postRequests.approver_comment }}",
+            "approval_date": "{{ $page.variables.postRequests.approval_date }}",
+            "supplier_id": "{{ $page.variables.postRequests.supplier_id }}",
+            "last_update_date": "{{ $page.variables.SystemDate }}",
+            "approved_rejected_name": "{{ $page.variables.postRequests.approved_rejected_name }}",
+            "requestor_name": "{{ $page.variables.postRequests.requestor_name }}",
+            "status": "{{ \"Request for Approval\" }}"
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfRequestsTbl"
+      }
+    },
+    "callChainGetUsersList": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getUsersList",
+        "params": {
+          "CIDVar": "{{ $application.user.username }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostRequests"
+      }
+    },
+    "resetVariablesDisplayNameOfUserVar": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.displayNameOfUserVar"
+        ]
+      },
+      "outcomes": {
+        "success": "callChainGetUsersList"
+      }
+    },
+    "return6": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariablesPostRequests2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postRequests": {
+          "source": {
+            "resubmitted_on": "{{ $chain.results.callFunctionReturnCurrentDate }}",
+            "approver": "{{ $page.variables.postRequests.approver }}",
+            "created_by": "{{ $page.variables.postRequests.created_by }}",
+            "creation_date": "{{ $page.variables.postRequests.creation_date }}",
+            "last_updated_by": "{{ $page.variables.postRequests.last_updated_by }}",
+            "request_date": "{{ $page.variables.postRequests.request_date }}",
+            "request_type": "{{ $page.variables.postRequests.request_type }}",
+            "requestor": "{{ $page.variables.postRequests.requestor }}",
+            "approver_comment": "{{ $page.variables.postRequests.approver_comment }}",
+            "approval_date": "{{ $page.variables.postRequests.approval_date }}",
+            "supplier_id": "{{ $page.variables.postRequests.supplier_id }}",
+            "last_update_date": "{{ $chain.results.callFunctionReturnCurrentDate }}",
+            "approved_rejected_name": "{{ $page.variables.postRequests.approved_rejected_name }}",
+            "requestor_name": "{{ $page.variables.postRequests.requestor_name }}",
+            "status": "{{ \"Request for Approval\" }}"
+          },
+          "auto": "always",
+          "reset": "none"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfRequestsTbl2"
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "description": "",
+  "root": "navigateToMainUpdateStatus",
+  "actions": {
+    "navigateToMainUpdateStatus": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-update-status",
+        "params": {
+          "inputSupplierIdVar": "{{ $variables.current.row.supplier_id }}",
+          "SourcePage": "{{ \"Admin\" }}"
+        }
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

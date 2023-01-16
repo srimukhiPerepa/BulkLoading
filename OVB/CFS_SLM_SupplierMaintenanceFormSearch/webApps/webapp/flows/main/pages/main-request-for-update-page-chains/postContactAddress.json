@@ -1,0 +1,544 @@
+{
+  "root": "resetVariablesDummyPostContactAddress",
+  "description": "",
+  "actions": {
+    "forEachInContactAddressUpdates": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.ContactAddressUpdates.data }}",
+        "actionId": "resetVariablesDummyPostContactAddress2"
+      },
+      "outcomes": {
+        "success": "return2"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Failed to update contact addresses",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Contact Address Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables6"
+      }
+    },
+    "callRestPostCfsSmfContactAddTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/postCfs_smf_contact_add_tbl",
+        "body": "{{ $page.variables.DummyPostContactAddress.data[0] }}"
+      },
+      "outcomes": {
+        "failure": "if5"
+      }
+    },
+    "assignVariablesDummyPostContactAddress": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContactAddress": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "address_name": "{{ $current.data.address_name }}",
+                "supplier_contact_address_id": "{{ $current.data.supplier_contact_address_id }}",
+                "supplier_contact_id": "{{ $current.data.supplier_contact_id }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "record_status": "{{ \"ACTIVE\" }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfContactAddTbl"
+      }
+    },
+    "resetVariablesDummyPostContactAddress": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddress"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus == \"More Information Requested\"]]"
+      },
+      "outcomes": {
+        "false": "forEachInContactAddressUpdates",
+        "true": "forEachInContactAddressUpdates2"
+      }
+    },
+    "return3": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "forEachInContactAddressUpdates2": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.ContactAddressUpdates.data }}",
+        "actionId": "resetVariablesDummyPostContactAddress5"
+      },
+      "outcomes": {
+        "success": "forEachInInactivateContactAddresses"
+      }
+    },
+    "assignVariablesDummyPostContactAddress2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContactAddress": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "address_name": "{{ $current.data.address_name }}",
+                "supplier_contact_address_id": "{{ $current.data.supplier_contact_address_id }}",
+                "supplier_contact_id": "{{ $current.data.supplier_contact_id }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "record_status": "{{ \"ACTIVE\" }}"
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfContactAddTbl"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfContactAddTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Contact Address Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables10"
+      }
+    },
+    "callRestPutCfsSmfContactAddTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_contact_add_tbl",
+        "body": "{{ $page.variables.DummyPostContactAddress.data[0] }}",
+        "uriParams": {
+          "supplier_contact_address_id": "{{ $page.variables.DummyPostContactAddress.data[0].supplier_contact_address_id }}",
+          "supplier_contact_id": "{{ $page.variables.DummyPostContactAddress.data[0].supplier_contact_id }}",
+          "supplier_id": "{{ $page.variables.DummyPostContactAddress.data[0].supplier_id }}",
+          "request_id": "{{ $page.variables.DummyPostContactAddress.data[0].request_id }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if3"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContactAddress": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "address_name": "{{ $current.data.address_name }}",
+                "supplier_contact_address_id": "{{ $current.data.supplier_contact_address_id }}",
+                "supplier_contact_id": "{{ $current.data.supplier_contact_id }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "record_status": "{{ \"INACTIVE\" }}"
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfContactAddTbl2"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfContactAddTbl2.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Contact Address Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables8"
+      }
+    },
+    "resetVariablesDummyPostContactAddress2": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddress",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostContactAddress"
+      }
+    },
+    "resetVariablesDummyPostContactAddress3": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddress",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariables"
+      }
+    },
+    "callRestPutCfsSmfContactAddTbl2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_contact_add_tbl",
+        "body": "{{ $page.variables.DummyPostContactAddress.data[0] }}",
+        "uriParams": {
+          "supplier_contact_address_id": "{{ $page.variables.DummyPostContactAddress.data[0].supplier_contact_address_id }}",
+          "supplier_contact_id": "{{ $page.variables.DummyPostContactAddress.data[0].supplier_contact_id }}",
+          "supplier_id": "{{ $page.variables.DummyPostContactAddress.data[0].supplier_id }}",
+          "request_id": "{{ $page.variables.DummyPostContactAddress.data[0].request_id }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if4"
+      }
+    },
+    "forEachInInactivateContactAddresses": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "actionId": "resetVariablesDummyPostContactAddress3",
+        "items": "{{ $page.variables.InactivateContactAddresses.data }}"
+      },
+      "outcomes": {
+        "success": "return3"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfContactAddTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification2",
+        "true": "assignVariables2"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfContactAddTbl"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables7"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfContactAddTbl2.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3",
+        "true": "assignVariables3"
+      }
+    },
+    "callFunctionWaitForNextCall2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfContactAddTbl2"
+      }
+    },
+    "if5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPostCfsSmfContactAddTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariables4"
+      }
+    },
+    "callFunctionWaitForNextCall3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfContactAddTbl"
+      }
+    },
+    "resetVariablesDummyPostContactAddress5": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddress",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostContactAddress2"
+      }
+    },
+    "if2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification5"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "if2"
+      }
+    },
+    "assignVariables3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "assignVariables4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry2"
+      }
+    },
+    "fireNotification5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables11"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall2",
+        "false": "fireNotification7"
+      }
+    },
+    "ifReTry2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall3",
+        "false": "fireNotification4"
+      }
+    },
+    "fireNotification7": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables9"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables6": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "return4": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables7": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return4"
+      }
+    },
+    "return5": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables8": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return5"
+      }
+    },
+    "return6": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables9": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return6"
+      }
+    },
+    "return7": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables10": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return7"
+      }
+    },
+    "return8": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables11": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return8"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc2",
+  "actions": {
+    "CloseUpdateAccountDialogActionChain": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog11\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "forEachInPostAccounts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "actionId": "ifPopupNewAccounts",
+        "items": "{{ $page.variables.postAccounts.data }}"
+      },
+      "outcomes": {
+        "success": "resetVariablesPostAccounts"
+      }
+    },
+    "assignVariablesDummyPostAccounts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostAccounts": {
+          "source": {
+            "data": [
+              {
+                "account_number": "{{ $page.variables.popupNewAccounts.ReAccountNumber }}",
+                "allow_international_payments": "{{ $page.variables.popupNewAccounts.ReAllowInternationalPayments }}",
+                "bank": "{{ $page.variables.popupNewAccounts.ReBank }}",
+                "bank_branch": "{{ $page.variables.popupNewAccounts.ReBankBranch }}",
+                "country": "{{ $page.variables.popupNewAccounts.ReCountry }}",
+                "currency": "{{ $page.variables.popupNewAccounts.ReCurrency }}",
+                "iban": "{{ $page.variables.popupNewAccounts.ReIBAN }}",
+                "inactive_on": "{{ $page.variables.popupNewAccounts.ReInactiveOn }}",
+                "primary_flag": "{{ $page.variables.popupNewAccounts.RePrimary }}",
+                "re_update_unpaid_invoices": "{{ $page.variables.popupNewAccounts.ReUpdateUnpaidInvoices }}",
+                "update_unpaid_invoices": "{{ $page.variables.popupNewAccounts.ReUpdateUnpaidInvoices }}",
+                "re_primary_flag": "{{ $page.variables.popupNewAccounts.RePrimary }}",
+                "re_inactive_on": "{{ $page.variables.popupNewAccounts.ReInactiveOn }}",
+                "re_iban": "{{ $page.variables.popupNewAccounts.ReIBAN }}",
+                "re_currency": "{{ $page.variables.popupNewAccounts.ReCurrency }}",
+                "re_country": "{{ $page.variables.popupNewAccounts.ReCountry }}",
+                "re_bank_branch": "{{ $page.variables.popupNewAccounts.ReBankBranch }}",
+                "re_bank": "{{ $page.variables.popupNewAccounts.ReBank }}",
+                "re_allow_international_payments": "{{ $page.variables.popupNewAccounts.ReAllowInternationalPayments }}",
+                "re_account_number": "{{ $page.variables.popupNewAccounts.ReAccountNumber }}",
+                "action_requested": "{{ $current.data.action_requested }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "account_id": "{{ $current.data.account_id }}",
+                "supplier_site_id": "{{ $page.variables.SupplierSiteId }}"
+              }
+            ]
+          },
+          "reset": "toDefault",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostAccounts1"
+      }
+    },
+    "assignVariablesDummyPostAccounts1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostAccounts1": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostAccounts.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+
+        }
+      }
+    },
+    "ifPopupNewAccounts": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.account_id==$page.variables.popupNewAccounts.AccountId ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesDummyPostAccounts",
+        "false": "assignVariablesDummyPostAccounts3"
+      }
+    },
+    "resetVariablesPostAccounts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postAccounts"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPostAccounts"
+      }
+    },
+    "assignVariablesPostAccounts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postAccounts": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostAccounts1.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostAccounts"
+      }
+    },
+    "fireDataProviderEventPostAccounts": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postAccounts ]]"
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupNewAccounts.ReAllowInternationalPayments=='Yes' || $page.variables.popupNewAccounts.ReIBAN ]]"
+      },
+      "outcomes": {
+        "true": "if4",
+        "false": "assignVariablesFlag2"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupNewAccounts.ReBank && $page.variables.popupNewAccounts.ReBankBranch ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag",
+        "false": "assignVariablesFlag4"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "assignVariablesFlag2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "assignVariablesFlag4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "resetVariablesDummyPostAccounts",
+        "false": "fireNotification"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter all the mandatory fields marked with *",
+        "message": "Please enter all the mandatory fields marked with *"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "assignVariablesDummyPostAccounts3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostAccounts": {
+          "source": {
+            "data": [
+              {
+                "account_number": "{{ $current.data.account_number }}",
+                "action_requested": "{{ $current.data.action_requested }}",
+                "allow_international_payments": "{{ $current.data.allow_international_payments }}",
+                "bank": "{{ $current.data.bank }}",
+                "bank_branch": "{{ $current.data.bank_branch }}",
+                "country": "{{ $current.data.country }}",
+                "currency": "{{ $current.data.currency }}",
+                "iban": "{{ $current.data.iban }}",
+                "inactive_on": "{{ $current.data.inactive_on }}",
+                "primary_flag": "{{ $current.data.primary_flag }}",
+                "re_account_number": "{{ $current.data.re_account_number }}",
+                "re_allow_international_payments": "{{ $current.data.re_allow_international_payments }}",
+                "re_bank": "{{ $current.data.re_bank }}",
+                "re_bank_branch": "{{ $current.data.re_bank_branch }}",
+                "re_country": "{{ $current.data.re_country }}",
+                "re_currency": "{{ $current.data.re_currency }}",
+                "re_iban": "{{ $current.data.re_iban }}",
+                "re_inactive_on": "{{ $current.data.re_inactive_on }}",
+                "re_primary_flag": "{{ $current.data.re_primary_flag }}",
+                "re_update_unpaid_invoices": "{{ $current.data.re_update_unpaid_invoices }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "update_unpaid_invoices": "{{ $current.data.update_unpaid_invoices }}",
+                "account_id": "{{ $current.data.account_id }}",
+                "supplier_site_id": "{{ $page.variables.SupplierSiteId }}"
+              }
+            ]
+          },
+          "reset": "toDefault",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostAccounts1"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter all the mandatory fields marked with *",
+        "message": "Please enter all the mandatory fields marked with *"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "if2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupNewAccounts.ReAccountNumber && $page.variables.popupNewAccounts.ReCountry ]]"
+      },
+      "outcomes": {
+        "true": "if3",
+        "false": "fireNotification3"
+      }
+    },
+    "resetVariablesDummyPostAccounts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostAccounts",
+          "$page.variables.DummyPostAccounts1"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInPostAccounts"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15000\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "CloseUpdateAccountDialogActionChain"
+      }
+    },
+    "callFunctionOpenDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if2"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": false
+    }
+  }
+}

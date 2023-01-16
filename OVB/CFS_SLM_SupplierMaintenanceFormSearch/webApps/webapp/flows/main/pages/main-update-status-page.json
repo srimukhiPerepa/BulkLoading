@@ -1,0 +1,253 @@
+{
+  "title": "",
+  "description": "",
+  "security": {
+    "access": {
+      "requiresAuthentication": true,
+      "roles": ["CFS_SMF_Requestor_Role","CFS_SMF_Admin_Role"]
+      }
+      },  
+  "variables": {
+    "ATPErrorMessage": {
+      "type": "string",
+      "defaultValue": "503 - Error! Please try again later!"
+    },
+
+    "getCfsSmfRequestsTblListADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "endpoint": "atpEndpoints/getCfs_smf_requests_tbl",
+        "keyAttributes": "request_id",
+        "itemsPath": "items",
+        "responseType": "getCfsSmfRequestsTblResponse",
+        "filterCriterion": {
+          "criteria": [
+            {
+              "attribute": "\"supplier_id\"",
+              "op": "\"$eq\"",
+              "value": "{{ $variables.inputSupplierIdVar }}"
+            }
+          ],
+          "op": "\"$or\""
+        },
+        "sortCriteria": [
+          {
+            "attribute": "\"request_id\"",
+            "direction": "\"'descending'\""
+          }
+        ],
+        "itemType": "getCfsSmfRequestsTblResponse"
+      }
+    },
+    "getSupplierToUpdateVar": {
+      "type": "getSuppliersSupplierId"
+    },
+    "inputSupplierIdVar": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "SourcePage": {
+      "type": "string",
+      "defaultValue": "ViewDetails",
+      "input": "fromCaller"
+    },
+    "supplierNumberVar": {
+      "type": "string"
+    },
+    "supplierTypeVar": {
+      "type": "string",
+      "input": "none"
+    },
+    "taxpayerIDVar": {
+      "type": "string",
+      "input": "none"
+    },
+    "taxRegtNumberVar": {
+      "type": "string",
+      "input": "none"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+
+    "@decorators.getCfsSmfRequestsTblResponse": {
+      "endpoint": "getGet_supplier_requests_detailsSupplierId",
+      "service": "ordsEndpoints",
+      "path": "response"
+    },
+    "@decorators.getSuppliersSupplierId": {
+      "endpoint": "getSuppliersSupplierId",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "getCfsSmfRequestsTblResponse": 
+        {
+          "approval_date": "any",
+      "approved_rejected_name": "string",
+      "approver": "any",
+          "last_update_date": "string",
+          "request_date": "string",
+          "request_id": "number",
+          "requestor": "string",
+      "requestor_name": "string",
+      "status": "string",
+          "approver_comment": "string"
+
+        },
+    "getSuppliersSupplierId": {
+      "Alias": "any",
+      "AlternateName": "any",
+      "BusinessClassificationNotApplicableFlag": "any",
+      "BusinessRelationship": "string",
+      "BusinessRelationshipCode": "string",
+      "ChiefExecutiveName": "any",
+      "ChiefExecutiveTitle": "any",
+      "CorporateWebsite": "any",
+      "CreatedBy": "string",
+      "CreationDate": "string",
+      "CreationSource": "string",
+      "CreationSourceCode": "string",
+      "CurrentFiscalYearPotentialRevenue": "any",
+      "CustomerNumber": "any",
+      "DataFoxCompanyName": "any",
+      "DataFoxCompanyPrimaryURL": "any",
+      "DataFoxCountry": "any",
+      "DataFoxEIN": "any",
+      "DataFoxId": "any",
+      "DataFoxLastSyncDate": "any",
+      "DataFoxLegalName": "any",
+      "DataFoxNAICSCode": "any",
+      "DataFoxScore": "any",
+      "DUNSNumber": "any",
+      "FederalIncomeTaxType": "any",
+      "FederalIncomeTaxTypeCode": "any",
+      "FederalReportableFlag": "boolean",
+      "FiscalYearEndMonth": "any",
+      "FiscalYearEndMonthCode": "any",
+      "InactiveDate": "string",
+      "IndustryCategory": "any",
+      "IndustrySubcategory": "any",
+      "LastUpdateDate": "string",
+      "LastUpdatedBy": "string",
+      "links": [
+        {
+          "href": "string",
+          "kind": "string",
+          "name": "string",
+          "properties": {
+            "changeIndicator": "string"
+          },
+          "rel": "string"
+        }
+      ],
+      "MissionStatement": "any",
+      "NameControl": "any",
+      "NationalInsuranceNumber": "any",
+      "NationalInsuranceNumberExistsFlag": "boolean",
+      "OBNEnabledFlag": "any",
+      "OneTimeSupplierFlag": "any",
+      "ParentSupplier": "string",
+      "ParentSupplierId": "number",
+      "ParentSupplierNumber": "string",
+      "PreferredFunctionalCurrency": "any",
+      "PreferredFunctionalCurrencyCode": "any",
+      "PrincipalName": "any",
+      "PrincipalTitle": "any",
+      "RegistryId": "string",
+      "StandardIndustryClass": "any",
+      "StateReportableFlag": "any",
+      "Status": "string",
+      "Supplier": "string",
+      "SupplierId": "number",
+      "SupplierNumber": "string",
+      "SupplierPartyId": "number",
+      "SupplierType": "string",
+      "SupplierTypeCode": "string",
+      "TaxOrganizationType": "string",
+      "TaxOrganizationTypeCode": "string",
+      "TaxpayerCountry": "string",
+      "TaxpayerCountryCode": "string",
+      "TaxpayerId": "string",
+      "TaxpayerIdExistsFlag": "boolean",
+      "TaxRegistrationCountry": "any",
+      "TaxRegistrationCountryCode": "any",
+      "TaxRegistrationNumber": "any",
+      "TaxReportingName": "any",
+      "UseWithholdingTaxFlag": "any",
+      "VerificationDate": "any",
+      "WithholdingTaxGroup": "any",
+      "WithholdingTaxGroupId": "any",
+      "YearEstablished": "any",
+      "YearIncorporated": "any"
+    }
+
+  },
+  "eventListeners": {
+    "buttonAction": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain"
+        }
+      ]
+    },
+    "hyperlinkClick": {
+      "chains": [
+        {
+          "chainId": "NavigateToRequestForUpdatePage",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}"
+          }
+        }
+      ]
+    },
+    "ojButtonOjAction": {
+      "chains": [
+        {
+          "chainId": "CancelButtonActionChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "PageVbEnterActionChain"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-date-time": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-popup": {
+        "path": "ojs/ojpopup"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      }
+
+    },
+    "modules": {
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      }
+    }
+  }
+}

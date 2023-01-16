@@ -1,0 +1,46 @@
+{
+    "items": [
+        {
+            "config_code": "HELP_DOC_URL",
+            "config_value": "https://www.constellationenergy.com/our-work/suppliers/latest-updates.html",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_configs/AAAogNAAAAABABrAAA"
+                }
+            ]
+        },
+        {
+            "config_code": "DOCUMENTUM_URL",
+            "config_value": "https://cfsoicdev01-id7yz47ag41l-ia.integration.ocp.oraclecloud.com/ic/builder/design/CFS_DocumentumUploadUI/1.0/preview/webApps/documentum/",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_configs/AAAogNAAAAABABuAAA"
+                }
+            ]
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 2,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_configs/"
+        },
+        {
+            "rel": "edit",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_configs/"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/metadata-catalog/cfs_smf_configs/"
+        },
+        {
+            "rel": "first",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_configs/"
+        }
+    ]
+}

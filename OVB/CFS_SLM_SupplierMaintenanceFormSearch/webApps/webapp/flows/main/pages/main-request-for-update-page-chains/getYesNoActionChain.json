@@ -1,0 +1,33 @@
+{
+  "root": "callRestGetValues",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetValues.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetValues": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCONSTYesNoLOV"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetYesNoLOV"
+      }
+    },
+    "assignVariablesGetYesNoLOV": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getYesNoLOV": {
+          "source": "{{ $chain.results.callRestGetValues.body.items }}"
+        }
+      }
+    }
+  }
+}

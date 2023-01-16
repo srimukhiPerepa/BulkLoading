@@ -1,0 +1,1272 @@
+{
+    "items": [
+        {
+            "CategoryId": 300000034500375,
+            "CategoryCode": "X0.BRA.N/BB",
+            "CategoryName": "#N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "#N/A",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-10-04T12:27:01.934+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:28:13.001+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F170000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F17",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000B7371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F170000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F17",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F170000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F17/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F170000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F17/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F170000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F17/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000037040480,
+            "CategoryCode": "CHL,CLR,BAT",
+            "CategoryName": "#N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "#N/A",
+            "StartDate": "2021-09-30",
+            "EndDate": null,
+            "ItemsOnlyFlag": true,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-12-10T08:08:32.150+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:33:30.005+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A3F1600000000EACED00057708000110D9319726600000000EACED00057708000110D933A3F160",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A3F1600000000EACED00057708000110D9319726600000000EACED00057708000110D933A3F160",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A3F1600000000EACED00057708000110D9319726600000000EACED00057708000110D933A3F160/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A3F1600000000EACED00057708000110D9319726600000000EACED00057708000110D933A3F160/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A3F1600000000EACED00057708000110D9319726600000000EACED00057708000110D933A3F160/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000036953188,
+            "CategoryCode": "01.MIS.MISC",
+            "CategoryName": "#N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "#N/A",
+            "StartDate": "2021-12-03",
+            "EndDate": null,
+            "ItemsOnlyFlag": true,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-12-03T14:00:37.209+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:33:30.004+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A29C640000000EACED00057708000110D9319726600000000EACED00057708000110D933A29C64",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A29C640000000EACED00057708000110D9319726600000000EACED00057708000110D933A29C64",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A29C640000000EACED00057708000110D9319726600000000EACED00057708000110D933A29C64/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A29C640000000EACED00057708000110D9319726600000000EACED00057708000110D933A29C64/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A29C640000000EACED00057708000110D9319726600000000EACED00057708000110D933A29C64/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000036888836,
+            "CategoryCode": "sk",
+            "CategoryName": "#N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "#N/A",
+            "StartDate": "2021-11-30",
+            "EndDate": null,
+            "ItemsOnlyFlag": true,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-11-30T08:34:05.496+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:28:56.012+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A1A1040000000EACED00057708000110D9319726600000000EACED00057708000110D933A1A104",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A1A1040000000EACED00057708000110D9319726600000000EACED00057708000110D933A1A104",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A1A1040000000EACED00057708000110D9319726600000000EACED00057708000110D933A1A104/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A1A1040000000EACED00057708000110D9319726600000000EACED00057708000110D933A1A104/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933A1A1040000000EACED00057708000110D9319726600000000EACED00057708000110D933A1A104/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000059640097,
+            "CategoryCode": "AH.TPP.***",
+            "CategoryName": "; TOP; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "; TOP; NO TYPE ASSIGNED",
+            "StartDate": "2022-05-31",
+            "EndDate": null,
+            "ItemsOnlyFlag": true,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-05-31T17:15:11.002+00:00",
+            "LastUpdateDateTime": "2022-05-31T17:15:11.292+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D934FCC9210000000EACED00057708000110D9319726600000000EACED00057708000110D934FCC921",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000017371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D934FCC9210000000EACED00057708000110D9319726600000000EACED00057708000110D934FCC921",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D934FCC9210000000EACED00057708000110D9319726600000000EACED00057708000110D934FCC921/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D934FCC9210000000EACED00057708000110D9319726600000000EACED00057708000110D934FCC921/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D934FCC9210000000EACED00057708000110D9319726600000000EACED00057708000110D934FCC921/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000043715066,
+            "CategoryCode": "60.***.***",
+            "CategoryName": "ADMINISTRATIVE; ADMINISTRATIVE; ADMINISTRATIVE",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADMINISTRATIVE; ADMINISTRATIVE; ADMINISTRATIVE",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-04-08T06:38:26.101+00:00",
+            "LastUpdateDateTime": "2022-04-08T06:38:37.287+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D93409C9FA0000000EACED00057708000110D9319726600000000EACED00057708000110D93409C9FA",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000017371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D93409C9FA0000000EACED00057708000110D9319726600000000EACED00057708000110D93409C9FA",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D93409C9FA0000000EACED00057708000110D9319726600000000EACED00057708000110D93409C9FA/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D93409C9FA0000000EACED00057708000110D9319726600000000EACED00057708000110D93409C9FA/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D93409C9FA0000000EACED00057708000110D9319726600000000EACED00057708000110D93409C9FA/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000034500374,
+            "CategoryCode": "X0.ADV.N/A",
+            "CategoryName": "ADVERTISING AND MARKETING; ADVERTISING; N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; ADVERTISING; N/A",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-10-04T12:27:01.920+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:27:28.051+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F160000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F16",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000067371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F160000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F16",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F160000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F16/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F160000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F16/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F160000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F16/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000038010543,
+            "CategoryCode": "X0.ADV.***",
+            "CategoryName": "ADVERTISING AND MARKETING; ADVERTISING; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; ADVERTISING; NO TYPE ASSIGNED",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-02-02T08:07:26.963+00:00",
+            "LastUpdateDateTime": "2022-03-30T07:22:12.004+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEAF0000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEAF",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEAF0000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEAF",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEAF0000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEAF/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEAF0000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEAF/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEAF0000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEAF/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000038010544,
+            "CategoryCode": "X0.BRA.***",
+            "CategoryName": "ADVERTISING AND MARKETING; BRAND ADVERTISING; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; BRAND ADVERTISING; NO TYPE ASSIGNED",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-02-02T08:07:26.982+00:00",
+            "LastUpdateDateTime": "2022-03-30T07:22:12.004+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB00000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB0",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB00000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB0",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB00000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB0/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB00000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB0/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB00000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB0/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000043715577,
+            "CategoryCode": "X0.COM.***",
+            "CategoryName": "ADVERTISING AND MARKETING; COMMUNICATIONS",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; COMMUNICATIONS",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-04-08T06:39:20.113+00:00",
+            "LastUpdateDateTime": "2022-04-08T06:39:24.282+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D93409CBF90000000EACED00057708000110D9319726600000000EACED00057708000110D93409CBF9",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000017371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D93409CBF90000000EACED00057708000110D9319726600000000EACED00057708000110D93409CBF9",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D93409CBF90000000EACED00057708000110D9319726600000000EACED00057708000110D93409CBF9/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D93409CBF90000000EACED00057708000110D9319726600000000EACED00057708000110D93409CBF9/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D93409CBF90000000EACED00057708000110D9319726600000000EACED00057708000110D93409CBF9/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000034500377,
+            "CategoryCode": "X0.DIM.N/A",
+            "CategoryName": "ADVERTISING AND MARKETING; DIRECT MAIL / POSTAGE; N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; DIRECT MAIL / POSTAGE; N/A",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-10-04T12:27:01.960+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:28:13.001+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F190000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F19",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000047371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F190000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F19",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F190000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F19/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F190000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F19/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F190000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F19/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000038010546,
+            "CategoryCode": "X0.DIM.***",
+            "CategoryName": "ADVERTISING AND MARKETING; DIRECT MAIL / POSTAGE; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; DIRECT MAIL / POSTAGE; NO TYPE ASSIGNED",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-02-02T08:07:27.019+00:00",
+            "LastUpdateDateTime": "2022-03-30T07:22:12.004+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB20000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB2",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB20000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB2",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB20000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB2/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB20000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB2/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB20000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB2/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000034500378,
+            "CategoryCode": "X0.GRD.N/A",
+            "CategoryName": "ADVERTISING AND MARKETING; GRAPHIC DESIGN; N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; GRAPHIC DESIGN; N/A",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-10-04T12:27:01.975+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:28:13.001+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1A0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1A",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000047371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1A0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1A",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1A0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1A/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1A0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1A/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1A0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1A/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000038010547,
+            "CategoryCode": "X0.GRD.***",
+            "CategoryName": "ADVERTISING AND MARKETING; GRAPHIC DESIGN; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; GRAPHIC DESIGN; NO TYPE ASSIGNED",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-02-02T08:07:27.041+00:00",
+            "LastUpdateDateTime": "2022-03-30T07:22:12.005+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB30000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB3",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB30000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB3",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB30000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB3/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB30000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB3/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB30000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB3/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000034500379,
+            "CategoryCode": "X0.MKR.N/A",
+            "CategoryName": "ADVERTISING AND MARKETING; MARKET RESEARCH; N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; MARKET RESEARCH; N/A",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-10-04T12:27:01.988+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:28:13.001+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1B0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1B",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000047371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1B0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1B",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1B0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1B/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1B0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1B/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1B0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1B/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000038010548,
+            "CategoryCode": "X0.MKR.***",
+            "CategoryName": "ADVERTISING AND MARKETING; MARKET RESEARCH; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; MARKET RESEARCH; NO TYPE ASSIGNED",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-02-02T08:07:27.060+00:00",
+            "LastUpdateDateTime": "2022-03-30T07:22:12.005+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB40000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB4",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB40000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB4",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB40000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB4/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB40000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB4/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB40000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB4/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000034500381,
+            "CategoryCode": "X0.MMP.N/A",
+            "CategoryName": "ADVERTISING AND MARKETING; MARKETING MAT'LS & PROGR; N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; MARKETING MAT'LS & PROGR; N/A",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-10-04T12:27:02.015+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:28:13.002+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1D0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1D",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000047371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1D0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1D",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1D0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1D/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1D0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1D/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1D0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1D/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000038010550,
+            "CategoryCode": "X0.MMP.***",
+            "CategoryName": "ADVERTISING AND MARKETING; MARKETING MAT'LS & PROGR; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; MARKETING MAT'LS & PROGR; NO TYPE ASSIGNED",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-02-02T08:07:27.100+00:00",
+            "LastUpdateDateTime": "2022-03-30T07:22:12.005+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB60000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB6",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB60000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB6",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB60000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB6/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB60000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB6/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB60000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB6/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000034500380,
+            "CategoryCode": "X0.MKT.N/A",
+            "CategoryName": "ADVERTISING AND MARKETING; MARKETING; N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; MARKETING; N/A",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-10-04T12:27:02.002+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:28:13.001+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1C0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1C",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000047371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1C0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1C",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1C0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1C/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1C0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1C/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1C0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1C/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000038010549,
+            "CategoryCode": "X0.MKT.***",
+            "CategoryName": "ADVERTISING AND MARKETING; MARKETING; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; MARKETING; NO TYPE ASSIGNED",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-02-02T08:07:27.080+00:00",
+            "LastUpdateDateTime": "2022-03-30T07:22:12.005+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB50000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB5",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB50000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB5",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB50000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB5/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB50000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB5/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB50000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB5/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000034500382,
+            "CategoryCode": "X0.MUA.N/A",
+            "CategoryName": "ADVERTISING AND MARKETING; MULTICULTURAL ADVERTISIN; N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; MULTICULTURAL ADVERTISIN; N/A",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-10-04T12:27:02.028+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:28:13.002+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1E0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1E",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000047371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1E0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1E",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1E0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1E/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1E0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1E/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F1E0000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F1E/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000038010551,
+            "CategoryCode": "X0.MUA.***",
+            "CategoryName": "ADVERTISING AND MARKETING; MULTICULTURAL ADVERTISIN; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; MULTICULTURAL ADVERTISIN; NO TYPE ASSIGNED",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-02-02T08:07:27.121+00:00",
+            "LastUpdateDateTime": "2022-03-30T07:22:12.005+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB70000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB7",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB70000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB7",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB70000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB7/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB70000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB7/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEB70000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEB7/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000038010541,
+            "CategoryCode": "X0.***.***",
+            "CategoryName": "ADVERTISING AND MARKETING; NO NAME ASSIGNED; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; NO NAME ASSIGNED; NO TYPE ASSIGNED",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-02-02T08:07:26.925+00:00",
+            "LastUpdateDateTime": "2022-03-30T07:16:09.006+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEAD0000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEAD",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000027371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEAD0000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEAD",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEAD0000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEAD/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEAD0000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEAD/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BEAD0000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BEAD/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000038010738,
+            "CategoryCode": "X0.***",
+            "CategoryName": "ADVERTISING AND MARKETING; NOT APPLICABLE; NO TYPE ASSIGNED",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; NOT APPLICABLE; NO TYPE ASSIGNED",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2022-02-02T08:07:34.610+00:00",
+            "LastUpdateDateTime": "2022-03-30T07:22:12.004+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BF720000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BF72",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000037371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BF720000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BF72",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BF720000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BF72/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BF720000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BF72/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D933B2BF720000000EACED00057708000110D9319726600000000EACED00057708000110D933B2BF72/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "CategoryId": 300000034500376,
+            "CategoryCode": "X0.COR.N/A",
+            "CategoryName": "ADVERTISING AND MARKETING; PUBLIC / COMMUNITY RELATIONS; N/A",
+            "CatalogId": 300000002647648,
+            "CatalogCode": "Commodity_Codes",
+            "ParentCategoryCode": null,
+            "Description": "ADVERTISING AND MARKETING; PUBLIC / COMMUNITY RELATIONS; N/A",
+            "StartDate": "2021-09-24",
+            "EndDate": null,
+            "ItemsOnlyFlag": false,
+            "SharedFlag": false,
+            "CreationDateTime": "2021-10-04T12:27:01.947+00:00",
+            "LastUpdateDateTime": "2022-01-10T11:28:13.001+00:00",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F180000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F18",
+                    "name": "itemCategories",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000047371007E00020000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F180000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F18",
+                    "name": "itemCategories",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F180000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F18/child/DFF",
+                    "name": "DFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F180000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F18/child/attachments",
+                    "name": "attachments",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/00030000000EACED00057708000110D9337D2F180000000EACED00057708000110D9319726600000000EACED00057708000110D9337D2F18/child/translatableAttributes",
+                    "name": "translatableAttributes",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 25,
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories",
+            "name": "itemCategories",
+            "kind": "collection"
+        },
+        {
+            "rel": "action",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/itemCategories/action/shareCategory",
+            "name": "shareCategory",
+            "kind": "other"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "itemsPerPage": 1,
+    "startIndex": 1,
+    "Resources": [
+        {
+            "id": "E76FF26FB80E7FFBE053E1B5540AA257",
+            "schemas": [
+                "urn:scim:schemas:core:2.0:User",
+                "urn:scim:schemas:extension:fa:2.0:faUser"
+            ],
+            "userName": "C968365",
+            "displayName": "SUNITA NAYAK",
+            "active": true
+        }
+    ]
+}

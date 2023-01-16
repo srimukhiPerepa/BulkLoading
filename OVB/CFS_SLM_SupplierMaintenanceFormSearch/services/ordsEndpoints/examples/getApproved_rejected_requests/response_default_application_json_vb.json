@@ -1,0 +1,21 @@
+{
+    "items": [
+        {
+            "approved_rejected_requests": 0
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_extensions/approved_rejected_requests/"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/metadata-catalog/cfs_extensions/approved_rejected_requests/"
+        }
+    ]
+}

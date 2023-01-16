@@ -1,0 +1,226 @@
+{
+  "root": "callRestGetGetSitesUpdatesRequestId",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetGetSitesUpdatesRequestId.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get supplier site information"
+      }
+    },
+    "callRestGetGetSitesUpdatesRequestId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_sites_updatesRequestId",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "forEach"
+      }
+    },
+    "forEach": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "actionId": "resetVariablesDummyPostSites",
+        "items": "{{ $chain.results.callRestGetGetSitesUpdatesRequestId.body.items }}"
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostSites"
+      }
+    },
+    "assignVariablesPostSites": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postSites": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostSites.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "fireDataProviderEventPostSites": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postSites ]]"
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariablesDummyPostSites": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostSites": {
+          "source": {
+            "data": [
+              {
+                "supplier_site_id": "{{ $current.data.supplier_site_id }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "procurement_bu_id": "{{ $current.data.procurement_bu_id }}",
+                "procurement_bu": "{{ $current.data.procurement_bu }}",
+                "supplier_address_id": "{{ $current.data.supplier_address_id }}",
+                "supplier_address_name": "{{ $current.data.supplier_address_name}}",
+                "inactive_date": "{{ $current.data.inactive_date?$current.data.inactive_date.slice(0,-10):$current.data.inactive_date }}",
+                "site_status": "{{ $current.data.site_status }}",
+                "site_purpose_pay_flag": "{{ $current.data.site_purpose_pay_flag }}",
+                "site_purpose_primary_pay_flag": "{{ $current.data.site_purpose_primary_pay_flag }}",
+                "nuclear_qualified": "{{ $current.data.nuclear_qualified }}",
+                "status_reason_code": "{{ $current.data.status_reason_code }}",
+                "alternate_site_name": "{{ $current.data.alternate_site_name }}",
+                "income_tax_reporting_site_flag": "{{ $current.data.income_tax_reporting_site_flag }}",
+                "invoice_currency_code": "{{ $current.data.invoice_currency_code }}",
+                "payment_currency_code": "{{ $current.data.payment_currency_code }}",
+                "invoice_amount_limit": "{{ $current.data.invoice_amount_limit }}",
+                "hold_all_invoices_flag": "{{ $current.data.hold_all_invoices_flag }}",
+                "hold_unvalidated_invoices_flag": "{{ $current.data.hold_unvalidated_invoices_flag }}",
+                "payment_hold_reason": "{{ $current.data.payment_hold_reason }}",
+                "payment_terms": "{{ $current.data.payment_terms }}",
+                "payment_terms_id": "{{ $current.data.payment_terms_id }}",
+                "payment_terms_date_basis": "{{ $current.data.payment_terms_date_basis }}",
+                "payment_terms_date_basis_code": "{{ $current.data.payment_terms_date_basis_code }}",
+                "pay_date_basis": "{{ $current.data.pay_date_basis }}",
+                "pay_date_basis_code": "{{ $current.data.pay_date_basis_code }}",
+                "payment_method": "{{ $current.data.payment_method }}",
+                "remittance_delivery_method": "{{ $current.data.remittance_delivery_method }}",
+                "remittance_delivery_email": "{{ $current.data.remittance_delivery_email }}",
+                "client_bu": "{{ $current.data.client_bu }}",
+                "client_bu_id": "{{ $current.data.client_bu_id }}",
+                "bill_to_bu": "{{ $current.data.bill_to_bu }}",
+                "bill_to_bu_id": "{{ $current.data.bill_to_bu_id }}",
+                "action_requested": "{{ $current.data.action_requested }}",
+                "re_supplier_site": "{{ $current.data.re_supplier_site }}",
+                "re_procurement_bu_id": "{{ $current.data.re_procurement_bu_id }}",
+                "re_procurement_bu": "{{ $current.data.re_procurement_bu }}",
+                "re_supplier_address_id": "{{ $current.data.re_supplier_address_id }}",
+                "re_supplier_address_name": "{{ $current.data.re_supplier_address_name }}",
+                "re_inactive_date": "{{ $current.data.re_inactive_date?$current.data.re_inactive_date.slice(0,-10):$current.data.re_inactive_date }}",
+                "re_site_status": "{{ $current.data.re_site_status }}",
+                "re_site_purpose_pay_flag": "{{ $current.data.re_site_purpose_pay_flag }}",
+                "re_site_purpose_primary_pay_flag": "{{ $current.data.re_site_purpose_primary_pay_flag }}",
+                "re_nuclear_qualified": "{{ $current.data.re_nuclear_qualified }}",
+                "re_status_reason_code": "{{ $current.data.re_status_reason_code }}",
+                "re_alternate_site_name": "{{ $current.data.re_alternate_site_name }}",
+                "re_income_tax_reporting_site_flag": "{{ $current.data.re_income_tax_reporting_site_flag }}",
+                "re_invoice_currency_code": "{{ $current.data.re_invoice_currency_code }}",
+                "re_payment_currency_code": "{{ $current.data.re_payment_currency_code }}",
+                "re_invoice_amount_limit": "{{ $current.data.re_invoice_amount_limit }}",
+                "re_hold_all_invoices_flag": "{{ $current.data.re_hold_all_invoices_flag }}",
+                "re_hold_unvalidated_invoices_flag": "{{ $current.data.re_hold_unvalidated_invoices_flag }}",
+                "re_payment_hold_reason": "{{ $current.data.re_payment_hold_reason }}",
+                "re_payment_terms": "{{ $current.data.re_payment_terms }}",
+                "re_payment_terms_id": "{{ $current.data.re_payment_terms_id }}",
+                "re_payment_terms_date_basis": "{{ $current.data.re_payment_terms_date_basis }}",
+                "re_payment_terms_date_basis_code": "{{ $current.data.re_payment_terms_date_basis_code }}",
+                "re_pay_date_basis": "{{ $current.data.re_pay_date_basis }}",
+                "re_pay_date_basis_code": "{{ $current.data.re_pay_date_basis_code }}",
+                "re_payment_method": "{{ $current.data.re_payment_method }}",
+                "re_remittance_delivery_method": "{{ $current.data.re_remittance_delivery_method }}",
+                "re_remittance_delivery_email": "{{ $current.data.re_remittance_delivery_email }}",
+                "re_client_bu": "{{ $current.data.re_client_bu }}",
+                "re_client_bu_id": "{{ $current.data.re_client_bu_id }}",
+                "re_bill_to_bu": "{{ $current.data.re_bill_to_bu }}",
+                "re_bill_to_bu_id": "{{ $current.data.re_bill_to_bu_id }}",
+                "record_status": "{{ $current.data.record_status }}",
+                "payee_id": "{{ $current.data.payee_id }}"
+              }
+            ]
+          },
+          "reset": "toDefault",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostSites"
+      }
+    },
+    "resetVariablesDummyPostSites": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostSites"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostSites"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetSitesUpdatesRequestId.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3",
+        "true": "callFunctionWaitForNextCall"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetSitesUpdatesRequestId"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

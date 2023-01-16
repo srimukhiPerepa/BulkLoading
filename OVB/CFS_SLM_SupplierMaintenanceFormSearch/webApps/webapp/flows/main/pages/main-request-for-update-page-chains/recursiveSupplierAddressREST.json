@@ -1,0 +1,79 @@
+{
+  "root": "callRestGetSuppliersSupplierIdChildAddresses",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetSuppliersSupplierIdChildAddresses.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to load Supplier Addresses"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetSuppliersSupplierIdChildAddresses.body.hasMore ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesOffsetVarAddresses",
+        "false": "return"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "callRestGetSuppliersSupplierIdChildAddresses": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSuppliersSupplierIdChildAddresses",
+        "uriParams": {
+          "SupplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+          "offset": "{{ $page.variables.offsetVarAddresses }}",
+          "limit": "25"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetSupplierAddresses"
+      }
+    },
+    "assignVariablesGetSupplierAddresses": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSupplierAddresses": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetSuppliersSupplierIdChildAddresses.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "callChainRecursiveSupplierAddressREST": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "recursiveSupplierAddressREST"
+      }
+    },
+    "assignVariablesOffsetVarAddresses": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.offsetVarAddresses": {
+          "source": "{{ $page.variables.offsetVarAddresses+25 }}"
+        }
+      },
+      "outcomes": {
+        "success": "callChainRecursiveSupplierAddressREST"
+      }
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "description": "",
+  "root": "resetVariablesCurrentBusinessClassification",
+  "actions": {
+    "forEachInBusinessClassificationUpdates": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.businessClassificationUpdates.data }}",
+        "actionId": "resetVariablesCurrentBusinessClassification2"
+      },
+      "outcomes": {
+        "success": "resetVariablesCurrentBusinessClassification3"
+      }
+    },
+    "assignVariablesCurrentBusinessClassification": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.CurrentBusinessClassification": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "certificate": "{{ $current.data.certificate }}",
+                "certifying_agency": "{{ $current.data.certifying_agency }}",
+                "classification": "{{ $current.data.classification }}",
+                "other_certifying_agency": "{{ $current.data.other_certifying_agency }}",
+                "classification_id": "{{ $current.data.classification_id }}",
+                "expiration_date": "{{ $current.data.expiration_date }}",
+                "re_certificate": "{{ $current.data.re_certificate }}",
+                "re_certifying_agency": "{{ $current.data.re_certifying_agency }}",
+                "re_classification": "{{ $current.data.re_classification }}",
+                "re_expiration_date": "{{ $current.data.re_expiration_date }}",
+                "re_other_certifying_agency": "{{ $current.data.re_other_certifying_agency }}",
+                "status": "{{ $current.data.status }}",
+                "record_status": "{{ $current.data.record_status }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostBusinessClassification"
+      }
+    },
+    "assignVariablesPostBusinessClassification": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postBusinessClassification": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "resetVariablesBusinessClassificationUpdates": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.businessClassificationUpdates"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesBusinessClassificationUpdates"
+      }
+    },
+    "assignVariablesBusinessClassificationUpdates": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.businessClassificationUpdates": {
+          "source": {
+            "data": "{{ $page.variables.postBusinessClassification.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventBusinessClassificationUpdates"
+      }
+    },
+    "resetVariablesCurrentBusinessClassification": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.CurrentBusinessClassification",
+          "$page.variables.postBusinessClassification"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInBusinessClassificationUpdates"
+      }
+    },
+    "fireDataProviderEventBusinessClassificationUpdates": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.businessClassificationUpdates ]]"
+      }
+    },
+    "resetVariablesCurrentBusinessClassification2": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.CurrentBusinessClassification"
+        ]
+      },
+      "outcomes": {
+        "success": "ifKey"
+      }
+    },
+    "assignVariablesInactivateBusinessClassifications": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.InactivateBusinessClassifications": {
+          "source": {
+              "data": "{{ $current.data }}"
+            },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {}
+    },
+    "ifKey": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.classification_id == $variables.key ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesCurrentBusinessClassification",
+        "true": "ifRequestStatus"
+      }
+    },
+    "resetVariablesCurrentBusinessClassification3": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.CurrentBusinessClassification"
+        ]
+      },
+      "outcomes": {
+        "success": "resetVariablesBusinessClassificationUpdates"
+      }
+    },
+    "ifRequestStatus": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus==\"More Information Requested\" && $current.data.record_status==\"ACTIVE\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesInactivateBusinessClassifications"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

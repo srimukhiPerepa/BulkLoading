@@ -1,0 +1,112 @@
+{
+  "description": "",
+  "root": "resetVariablesDummyPostAccounts",
+  "actions": {
+    "resetVariablesDummyPostAccounts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostAccounts",
+          "$page.variables.DummyPostAccounts1"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInPostAccounts"
+      }
+    },
+    "forEachInPostAccounts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postAccounts.data }}",
+        "actionId": "ifKey"
+      },
+      "outcomes": {
+        "success": "resetVariablesPostAccounts"
+      }
+    },
+    "assignVariablesDummyPostAccountsDeleteBackup": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostAccountsDeleteBackup": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "assignVariablesDummyPostAccounts1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostAccounts1": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "resetVariablesPostAccounts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postAccounts"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPostAccounts"
+      }
+    },
+    "assignVariablesPostAccounts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postAccounts": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostAccounts1.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostAccounts"
+      }
+    },
+    "ifKey": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.account_id==$variables.key ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesDummyPostAccountsDeleteBackup",
+        "false": "assignVariablesDummyPostAccounts1"
+      }
+    },
+    "fireDataProviderEventPostAccounts": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postAccounts ]]"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

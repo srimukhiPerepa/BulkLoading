@@ -1,0 +1,22 @@
+{
+    "items": [
+        {
+            "supplier_name": "Dyson Corp Test",
+            "api_response": "Applying List binding LOV_TaxRegistrationCountry with given set of values leads to no matching row for a row of type :SupplierVO, key oracle.jbo.Key[300000042365175 300000042365173 300000042365237 300000042390302 300000042365175 300000042365173 null ]"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_extensions/get_supplier_header_error_msg/10000001674"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/metadata-catalog/cfs_extensions/get_supplier_header_error_msg/item"
+        }
+    ]
+}

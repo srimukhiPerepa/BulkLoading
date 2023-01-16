@@ -1,0 +1,190 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc2",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog8\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "assignVariablesDummyPostContacts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContacts": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ \"New\" }}",
+                "email": "{{ $page.variables.popupContact.ReEmail }}",
+                "fax_number": "{{ $page.variables.popupContact.ReFaxNumber }}",
+                "first_name": "{{ $page.variables.popupContact.ReFirstName }}",
+                "inactive_date": "{{ $page.variables.popupContact.ReInactiveDate }}",
+                "job_title": "{{ $page.variables.popupContact.ReJobTitle }}",
+                "last_name": "{{ $page.variables.popupContact.ReLastName }}",
+                "mobile_number": "{{ $page.variables.popupContact.ReMobileNumber }}",
+                "phone_number": "{{ $page.variables.popupContact.RePhoneNumber }}",
+                "re_phone_number": "{{ $page.variables.popupContact.RePhoneNumber }}",
+                "re_mobile_number": "{{ $page.variables.popupContact.ReMobileNumber }}",
+                "re_last_name": "{{ $page.variables.popupContact.ReLastName }}",
+                "re_job_title": "{{ $page.variables.popupContact.ReJobTitle }}",
+                "re_inactive_date": "{{ $page.variables.popupContact.ReInactiveDate }}",
+                "re_first_name": "{{ $page.variables.popupContact.ReFirstName }}",
+                "re_fax_number": "{{ $page.variables.popupContact.ReFaxNumber }}",
+                "re_email": "{{ $page.variables.popupContact.ReEmail }}",
+                "fax_area_code": "{{ $page.variables.popupContact.ReFaxAreaCode }}",
+                "fax_country_code": "{{ $page.variables.popupContact.ReFaxCountryCode }}",
+                "mobile_area_code": "{{ $page.variables.popupContact.ReMobileAreaCode }}",
+                "mobile_country_code": "{{ $page.variables.popupContact.ReMobileCountryCode }}",
+                "phone_area_code": "{{ $page.variables.popupContact.RePhoneAreaCode }}",
+                "phone_country_code": "{{ $page.variables.popupContact.RePhoneCountryCode }}",
+                "re_fax_area_code": "{{ $page.variables.popupContact.ReFaxAreaCode }}",
+                "re_fax_country_code": "{{ $page.variables.popupContact.ReFaxCountryCode }}",
+                "re_mobile_area_code": "{{ $page.variables.popupContact.ReMobileAreaCode }}",
+                "re_mobile_country_code": "{{ $page.variables.popupContact.ReMobileCountryCode }}",
+                "re_phone_area_code": "{{ $page.variables.popupContact.RePhoneAreaCode }}",
+                "re_phone_country_code": "{{ $page.variables.popupContact.RePhoneCountryCode }}",
+                "re_status": "{{ $page.variables.popupContact.ReStatus }}",
+                "administrative_contact_flag": "{{ $page.variables.popupContact.ReAdministrativeContactFlag }}",
+                "re_administrative_contact_flag": "{{ $page.variables.popupContact.ReAdministrativeContactFlag }}",
+                "status": "{{ $page.variables.popupContact.ReStatus }}",
+                "supplier_contact_id": "{{ $page.variables.SupplierContactId }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostContacts"
+      }
+    },
+    "assignVariablesPostContacts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postContacts": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostContacts.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        },
+        "$page.variables.ContactAddressUpdates": {
+          "source": {
+            "data": "{{ $page.variables.postContactAddress.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostContacts"
+      }
+    },
+    "fireDataProviderEventPostContacts": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postContacts ]]"
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SupplierContactEmailValidation ]]"
+      },
+      "outcomes": {
+        "true": "if3",
+        "false": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupContact.ReFirstName && $page.variables.popupContact.ReLastName ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesDummyPostContacts",
+        "false": "fireNotification2"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter all the mandatory fields marked with *",
+        "message": "Please enter all the mandatory fields marked with *"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "callChainInputTextValueChangeChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "CheckForDuplicateEmail",
+        "params": {
+          "value": "{{ $page.variables.popupContact.ReEmail }}"
+        }
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15000\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "callFunctionOpenDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callChainInputTextValueChangeChain"
+      }
+    },
+    "callFunctionCloseDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

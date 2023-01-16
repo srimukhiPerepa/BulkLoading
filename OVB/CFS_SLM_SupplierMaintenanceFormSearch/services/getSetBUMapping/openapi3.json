@@ -1,0 +1,83 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Ic Api",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://cfsoicdev01-id7yz47ag41l-ia.integration.ocp.oraclecloud.com:443/ic/api/integration/v1/flows/rest/CFS_SMF_SET_BU_MAP/1.0",
+            "description": "Ic Api",
+            "x-vb": {
+                "authentication": {
+                    "authenticated": {
+                        "type": "propagate"
+                    }
+                },
+                "forceProxy": "always"
+            }
+        }
+    ],
+    "paths": {
+        "/getSetBuMapping/": {
+            "post": {
+                "operationId": "postGetSetBuMapping",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostGetSetBuMappingRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "externalValue": "./examples/postGetSetBuMapping/request_application_json_vb.json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostGetSetBuMappingResponse"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/postGetSetBuMapping/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "create"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PostGetSetBuMappingRequest": {
+                "type": "object",
+                "properties": {
+                    "bu_name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PostGetSetBuMappingResponse": {
+                "type": "object",
+                "properties": {
+                    "set_id": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "root": "callFunctionCheckNumberFormat",
+  "description": "",
+  "actions": {
+    "callFunctionCheckNumberFormat": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "checkNumberFormat"
+      }
+    }
+  }
+}

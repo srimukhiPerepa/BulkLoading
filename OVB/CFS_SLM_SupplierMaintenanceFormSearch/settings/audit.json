@@ -1,0 +1,27 @@
+{
+    "paths": {
+        "exclude": [
+            "build/**",
+            "docs/**",
+            "scripts/**",
+            "tests/**",
+            "**/private",
+            "+(web|mobile)Apps/**/resources/components/**/lib/*"
+        ]
+    },
+    "rules": {
+        "type#unused-types": {
+            "enabled": false
+        },
+        "json#unused_import": {
+            "enabled": false
+        },
+        "variable#unused-chain-variables": {
+            "enabled": false
+        },
+        "variable#unused-variables": {
+            "enabled": false
+        }
+    },
+    "auditors": {}
+}

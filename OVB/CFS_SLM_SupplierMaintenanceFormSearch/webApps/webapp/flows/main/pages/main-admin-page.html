@@ -1,0 +1,148 @@
+<!--
+ Copyright (c) 2014, 2020, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<title>Update Status</title>
+
+<div class="oj-panel oj-flex-item oj-sm-12 oj-md-12">
+
+
+ 
+<!-- Sub header starts here-->
+
+<div class="" style="">
+    <div class="oj-sm-align-items-baseline oj-flex" style="font-family: Georgia, Times, Times New Roman, serif; padding-left:12px">
+      <h1 style="color:black" id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6">Supplier Updates Maintenance Dashboard</h1>
+      <div class="oj-flex-item oj-sm-4 oj-md-4"></div>
+      <div class="oj-flex-item oj-sm-2 oj-md-2" dir="rtl">
+        <oj-button aria-setsize="10pt" chroming="solid" on-oj-action="[[$listeners.buttonAction2]]"><span style="color:black">Refresh</span></oj-button> 
+      </div>
+    </div>
+  </div>
+
+<!-- Sub header Ends here-->
+
+  <div class="oj-sm-align-items-baseline oj-flex" style="font-family: Georgia, Times, Times New Roman, serif">
+    <h1 id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6"></h1>
+  </div>
+
+  <div class="oj-flex" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif">
+    <div class="oj-panel oj-flex-item oj-flex oj-helper-justify-content-center oj-panel-shadow-md"
+      style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif">
+    
+      <div class="oj-panel oj-flex-item" style="margin:10px;padding:20px">
+        <p style="font-weight:bold">Requests for <oj-bind-text value="[[ $functions.getMonthYear() ]]"></oj-bind-text></p>
+        <div class="oj-flex oj-flex-item oj-sm-12 oj-md-12">
+          
+          <div class="oj-panel oj-flex-item oj-margin oj-sm-flex-1 oj-panel-shadow-sm">
+            <p style="font-weight:bold">Total Requests Submitted</p>
+            <div class="oj-panel oj-flex-item oj-sm-12 oj-flex oj-md-12 oj-helper-justify-content-center oj-selected"
+              style="border:0px"><oj-bind-text value="[[ $variables.totalRequestsSubmittedVar ]]"></oj-bind-text>
+            </div>
+          </div>
+
+          <div class="oj-panel oj-flex-item oj-margin oj-sm-flex-1 oj-panel-shadow-sm">
+            <p style="font-weight:bold">Approved/Rejected</p>
+            <div class="oj-panel oj-flex-item oj-sm-12 oj-flex oj-md-12 oj-helper-justify-content-center"
+              style="border:0px" ><oj-bind-text value="[[ $variables.approvedRejectedRequestsVar ]]"></oj-bind-text></div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="oj-panel oj-flex-item" style="margin:10px;padding:20px">
+        <p style="font-weight:bold">Requests pending for action</p>
+        <div class="oj-flex oj-flex-item oj-sm-12 oj-md-12">
+          
+          <div class="oj-panel oj-flex-item oj-margin oj-sm-flex-1 oj-panel-shadow-sm">
+              <p style="font-weight:bold">Pending Actions</p>
+              <div class="oj-panel oj-flex-item oj-sm-12 oj-flex oj-md-12 oj-helper-justify-content-center"
+                style="border:0px">
+                <a target="_self" on-click="[[$listeners.hyperlinkClick4]]"><oj-bind-text value="[[ $variables.openRequestsVar ]]"></oj-bind-text>
+                </a>
+              </div>
+          </div>
+          </div>
+          </div>
+        <div class="oj-panel oj-flex-item" style="margin:10px;padding:20px">
+        <p style="font-weight:bold">Requests for <oj-bind-text value="[[ $functions.getMonthYearForErroredRequests() ]]"></oj-bind-text></p>
+        <div class="oj-flex oj-flex-item oj-sm-12 oj-md-12">
+          <div class="oj-panel oj-flex-item oj-margin oj-sm-flex-1 oj-panel-shadow-sm">
+              <p style="font-weight:bold">Errored Requests</p>
+              <div class="oj-panel oj-flex-item oj-sm-12 oj-flex oj-md-12 oj-helper-justify-content-center"
+                style="border:0px">
+                <a target="_self" on-click="[[$listeners.hyperlinkClick3]]" ><oj-bind-text value="[[ $variables.approvedSyncErrorsVar ]]" ></oj-bind-text>
+                </a>
+              </div>
+          </div>
+          
+        </div>
+          
+      </div>
+    </div>
+
+  <div class="oj-flex" style="width:100%;margin-top:30px; margin-bottom:10px">
+    <p style="font-weight:bold" class="oj-sm-flex-1"><oj-bind-text
+                                                         value="[[ $functions.erroredRequestHyperlinkClicked($page.variables.hyperlinkClickedVar) ]]"></oj-bind-text></p>
+
+    <div class="oj-divider-top oj-flex-item oj-sm-12 oj-md-12 oj-divider-padding" ></div>
+    
+  <oj-table scroll-policy="loadMoreOnScroll" selection-mode.row="single" data="[[ $variables.getOpenRequestsListADP ]]"
+    style="height:450px;width:100%"
+      columns='[{"headerText":"Request ID","field":"request_id","template":"RequestId","sortable":"enabled","minWidth":"14rem","resizable":"enabled"},{"headerText":"Supplier Name","field":"supplier_name","template":"SupplierName","sortable":"enabled","minWidth":"14rem","resizable":"enabled"},{"headerText":"Supplier Number","field":"supplier_number","sortable":"enabled","minWidth":"14rem","resizable":"enabled"},{"headerText":"Parent Supplier","field":"parent_supplier","sortable":"enabled","minWidth":"14rem","resizable":"enabled"},{"headerText":"Taxpayer ID","field":"taxpayer_id","sortable":"enabled","minWidth":"14rem","resizable":"enabled"},{"headerText":"Tax Registration Number","field":"tax_registration_number","sortable":"enabled","minWidth":"14rem","resizable":"enabled"},{"headerText":"Supplier Type","field":"supplier_type","sortable":"enabled","minWidth":"14rem","resizable":"enabled"},{"headerText":"Submission Date","template":"SubmissionDate","minWidth":"14rem","resizable":"enabled"},{"headerText":"Requested By","template":"RequestedBy","minWidth":"14rem","resizable":"enabled"},{"headerText":"Requestor Name","field":"requestor_name"},{"headerText":"Resubmitted On","template":"ResubmittedOn","minWidth":"14rem","resizable":"enabled"},{"headerText":"Status","field":"status","sortable":"enabled","minWidth":"14rem","resizable":"enabled"},{"headerText":"Age","template":"Age","sortable":"enabled","minWidth":"14rem","resizable":"enabled"}]'
+    class="oj-flex-item oj-sm-flex-initial">
+    
+    <template slot="SubmissionDate">
+      
+      <oj-input-date-time readonly="true" value="{{ $current.row.request_date }}"
+        converter='{"type": "datetime", "options": {"pattern":"yyyy-MM-dd hh:mm:ss a"}}'></oj-input-date-time>
+    
+    </template>
+    
+    <template slot="RequestedBy">
+      <oj-input-text  readonly="true" value='{{ $current.row.requestor }}'></oj-input-text>
+    </template>
+    
+    <template slot="ResubmittedOn">
+      
+      <oj-input-date-time readonly="true" value="{{ $current.row.resubmitted_on }}"
+        converter='{"type": "datetime", "options": {"pattern":"yyyy-MM-dd hh:mm:ss a"}}'></oj-input-date-time>
+    
+    </template>
+    
+    <template slot="Age">
+      
+      <oj-input-text readonly="true" value="{{ $functions.calculateAge($current.row.request_date) }}"></oj-input-text>
+    
+    </template>
+    
+    <template slot="RequestId">
+      
+      <a target="_blank" on-click="[[$listeners.hyperlinkClick2]]" >
+        
+        <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+      
+      </a>
+    
+    </template>
+    
+    <template slot="SupplierName">
+      
+      <a target="_blank" on-click="[[$listeners.hyperlinkClick]]" >
+        
+        <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+      
+      </a>
+    
+    </template>
+ 
+    
+  </oj-table>
+    </div>
+</div>
+<oj-popup class="demo-popup oj-focus-highlight" id="modalDialog14" tail="none" position.my.horizontal="center"
+  position.my.vertical="bottom" position.at.horizontal="center" position.at.vertical="center" position.of="window"
+  position.offset.y="-10" modality="modal" auto-dismiss="none">
+    <div >Processing. Please wait..<div class="oj-flex"></div>
+    </div>
+</oj-popup>
+</div>

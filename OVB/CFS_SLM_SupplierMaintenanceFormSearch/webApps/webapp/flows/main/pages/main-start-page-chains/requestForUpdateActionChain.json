@@ -1,0 +1,255 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc",
+  "actions": {
+    "navigateToMainRequestForUpdate": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-request-for-update",
+        "params": {
+          "inputSupplierNumberVar": "{{ $variables.key }}",
+          "requestId": "{{ $chain.results.callRestGetGenerateRequestId2.body.items[0].request_id }}"
+        }
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc"
+      },
+      "outcomes": {
+        "success": "callRestGetCheckOpenRequestsSupplierId"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetGenerateRequestId2.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to create a new Request"
+      },
+      "outcomes": {
+        "success": "return4"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetCheckOpenRequestsSupplierId.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to check Supplier Open Requests"
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetCheckOpenRequestsSupplierId.body.count>0 ]]"
+      },
+      "outcomes": {
+        "false": "callRestGetGenerateRequestId2",
+        "true": "fireNotification3"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc"
+      }
+    },
+    "callRestGetCheckOpenRequestsSupplierId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getCheck_open_requestsSupplierId",
+        "uriParams": {
+          "SupplierId": "{{ $variables.key }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if2",
+        "success": "if"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ \"This Supplier already has an open Request \"+$chain.results.callRestGetCheckOpenRequestsSupplierId.body.items[0].request_id ]]",
+        "message": "[[ \"This Supplier already has an open Request \"+$chain.results.callRestGetCheckOpenRequestsSupplierId.body.items[0].request_id ]]",
+        "type": "info"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "callRestGetGenerateRequestId2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGenerate_request_id2"
+      },
+      "outcomes": {
+        "failure": "if5",
+        "success": "navigateToMainRequestForUpdate"
+      }
+    },
+    "if2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetCheckOpenRequestsSupplierId.status==503 ]]"
+    },
+      "outcomes": {
+
+        "false": "fireNotification2",
+        "true": "assignVariables"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "if3"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification5",
+        "true": "callFunctionWaitForNextCall"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetCheckOpenRequestsSupplierId"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "fireNotification5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "type": "error",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "return2"
+      }
+    },
+    "if5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGenerateRequestId2.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification6",
+        "true": "callFunctionWaitForNextCall2"
+      }
+    },
+    "fireNotification6": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      },
+      "outcomes": {
+        "success": "return3"
+      }
+    },
+    "return3": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return4": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "callFunctionWaitForNextCall2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGenerateRequestId2"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

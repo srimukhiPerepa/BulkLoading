@@ -1,0 +1,158 @@
+{
+  "description": "",
+  "root": "resetVariablesDummyPostContacts",
+  "actions": {
+
+    "assignVariablesDummyPostContacts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContacts": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ \"Delete\" }}",
+                "fax_number": "{{ $variables.current.FaxNumber }}",
+                "first_name": "{{ $variables.current.FirstName }}",
+                "inactive_date": "{{ $variables.current.InactiveDate }}",
+                "job_title": "{{ $variables.current.JobTitle }}",
+                "last_name": "{{ $variables.current.LastName }}",
+                "mobile_number": "{{ $variables.current.MobileNumber }}",
+                "phone_number": "{{ $variables.current.PhoneNumber }}",
+                "supplier_contact_id": "{{ $variables.current.SupplierContactId }}",
+                "email": "{{ $variables.current.Email }}",
+                "re_status": "{{ $variables.current.Status }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostContacts"
+      }
+    },
+    "assignVariablesPostContacts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postContacts": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostContacts.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostContacts"
+      }
+    },
+    "fireDataProviderEventPostContacts": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postContacts ]]"
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "resetVariablesDummyPostContacts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContacts",
+          "$page.variables.DummyPostContacts1"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInPostContacts"
+      }
+    },
+    "forEachInPostContacts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postContacts.data }}",
+        "actionId": "ifKey2"
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "ifKey2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_contact_id==$variables.key ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "fireNotification",
+        "false": "assignVariablesDummyPostContacts"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "You have already requested updates for this Contact",
+        "summary": "You have already requested updates for this Contact",
+        "type": "info"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15000\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "secretId": "ocid1.vaultsecret.oc1.iad.amaaaaaaotul2pyapjc2ncpnyjuau43vku4u27a6t7tsof7ou5vw5q22qyvq",
+    "timeCreated": "2022-08-17T18:59:59.361Z",
+    "versionNumber": 1,
+    "versionName": null,
+    "secretBundleContent": {
+        "contentType": "BASE64",
+        "content": "U1ZDX0VSUF9TVVBQTElFUlVQREFURTpNK0R2OEVkJmQ9NmFhV34wRlFvSg=="
+    },
+    "timeOfDeletion": null,
+    "timeOfExpiry": null,
+    "stages": [
+        "CURRENT",
+        "LATEST"
+    ],
+    "metadata": null
+}

@@ -1,0 +1,31 @@
+{
+  "variables": {
+    "eventPayload": {
+      "type": "page:messageType",
+      "input": "fromCaller"
+    }
+  },
+  "root": "displayMessage",
+  "actions": {
+    "displayMessage": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "target": "{{ $page.variables.messagesADP }}",
+        "add": {
+          "data": "{{ [ $chain.variables.eventPayload ] }}"
+        }
+      },
+      "outcomes": {
+        "success": "updateMessageId"
+      }
+    },
+    "updateMessageId": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.messageId": {
+          "source": "{{ $page.variables.messageId + 1 }}"
+        }
+      }
+    }
+  }
+}

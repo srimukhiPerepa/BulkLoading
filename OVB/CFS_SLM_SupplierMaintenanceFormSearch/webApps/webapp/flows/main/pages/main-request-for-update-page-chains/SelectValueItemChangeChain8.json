@@ -1,0 +1,88 @@
+{
+  "description": "",
+  "root": "resetVariablesSetIdVar",
+  "actions": {
+    "resetVariablesSetIdVar": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.setIdVar"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "assignVariablesGetSetIdRequestVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSetIdRequestVar": {
+          "source": {
+            "bu_name": "{{ $page.variables.popupNewSite.ReProcurementBU }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostGetSetBuMapping"
+      }
+    },
+    "callRestPostGetSetBuMapping": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "getSetBUMapping/postGetSetBuMapping",
+        "body": "{{ $page.variables.getSetIdRequestVar }}"
+      },
+      "outcomes": {
+        "success": "assignVariablesSetIdVar"
+      }
+    },
+    "assignVariablesSetIdVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.setIdVar": {
+          "source": "{{ $chain.results.callRestPostGetSetBuMapping.body.set_id }}"
+        }
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupNewSite.ProcurementBU == $page.variables.popupNewSite.ReProcurementBU ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesGetSetIdRequestVar",
+        "false": "resetVariablesPopupNewSite"
+      }
+    },
+    "resetVariablesPopupNewSite": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupNewSite.RePaymentTerms"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesGetSetIdRequestVar"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "data": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "metadata": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

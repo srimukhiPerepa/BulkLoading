@@ -1,0 +1,326 @@
+{
+  "root": "resetVariablesGetAllAccounts",
+  "description": "",
+  "actions": {
+
+    "callRestGet1113185PaymentsExternalPayeesQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/get11_13_18_05PaymentsExternalPayeesQ",
+        "uriParams": {
+          "q": "{{ \"?finder=ExternalPayeeSearch;PayeePartyIdentifier=\"+$page.variables.getSupplierToUpdateVar.SupplierPartyId+\",SupplierSiteIdentifier=\"+$page.variables.popupNewSite.SupplierSiteId+\",OrganizationName=\"+$page.variables.popupNewSite.ProcurementBU+\",Intent=Supplier\" }}"
+        }
+      },
+      "outcomes": {
+
+        "success": "forEach"
+      }
+    },
+    "forEach": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $chain.results.callRestGet1113185PaymentsExternalPayeesQ.body.items }}",
+        "actionId": "callRestGetPaymentsExternalPayeesPayeeIdChildExternalPartyPaymentMethods"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetPaymentsExternalPayeesPayeeIdChildExternalPartyPaymentMethods.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Error In Getting Payment Method"
+      }
+    },
+    "callRestGetPaymentsExternalPayeesPayeeIdChildExternalPartyPaymentMethods": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getPaymentsExternalPayeesPayeeIdChildExternalPartyPaymentMethods",
+        "uriParams": {
+          "PayeeId": "{{ $current.data.PayeeId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification2",
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetPaymentsExternalPayeesPayeeIdChildExternalPartyPaymentMethods.body.count>0 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesPopupNewSite",
+        "false": "callRestGet1113185InstrumentAssignmentsQ"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGet1113185InstrumentAssignmentsQ.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Error in Getting Instrument Assignment"
+      }
+    },
+    "callRestGet1113185InstrumentAssignmentsQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/get11_13_18_05InstrumentAssignmentsQ",
+        "uriParams": {
+          "q": "{{ \"?finder=PaymentInstrumentAttributes;PaymentPartyId=\"+$current.data.PayeeId+\",Intent=Supplier\" }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification3",
+        "success": "if2"
+      }
+    },
+    "if2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGet1113185InstrumentAssignmentsQ.body.count>0 ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetPaymentsExternalPayeesQ"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Error In Getting Instrument Id"
+      }
+    },
+    "callRestGetExternalBankAccountsPayementInstrumentId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getExternalBankAccountsPayementInstrumentId",
+        "uriParams": {
+          "PayementInstrumentId": "{{ $current.data.PaymentInstrumentId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification4",
+        "success": "callRestGetCashBankBranchesBankBranchId"
+      }
+    },
+    "callRestGetCashBankBranchesBankBranchId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBankBranchesBankBranchId",
+        "uriParams": {
+          "BankBranchId": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankBranchIdentifier }}"
+        }
+      },
+      "outcomes": {
+        "failure": "assignVariablesGetAccounts3",
+        "success": "assignVariablesGetAccounts"
+      }
+    },
+    "assignVariablesGetAccounts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAccounts": {
+          "source": {
+            "data": [
+              {
+                "AccountSuffix": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.AccountSuffix }}",
+                "AccountType": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.AccountType }}",
+                "AgencyLocationCode": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.AgencyLocationCode }}",
+                "AllowInternationalPaymentIndicator": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.AllowInternationalPaymentIndicator }}",
+                "AlternateAccountName": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.AlternateAccountName }}",
+                "BankAccountId": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankAccountId }}",
+                "BankAccountName": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankAccountName }}",
+                "BankAccountNumber": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankAccountNumber }}",
+                "BankBranchIdentifier": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankBranchIdentifier }}",
+                "BankBranchPartyIndicator": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankBranchPartyIndicator }}",
+                "BankIdentifier": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankIdentifier }}",
+                "BIC": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BIC }}",
+                "CheckDigits": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.CheckDigits }}",
+                "CountryCode": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.CountryCode }}",
+                "CurrencyCode": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.CurrencyCode }}",
+                "EndDate": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.EndDate }}",
+                "IBAN": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.IBAN }}",
+                "Intent": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.Intent }}",
+                "PartyId": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.PartyId }}",
+                "PersonId": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.PersonId }}",
+                "SecondaryAccountReference": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.SecondaryAccountReference }}",
+                "StartDate": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.StartDate }}",
+                "VendorId": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.VendorId }}",
+                "BankBranchName": "{{ $chain.results.callRestGetCashBankBranchesBankBranchId.body.BankBranchName }}",
+                "BankName": "{{ $chain.results.callRestGetCashBankBranchesBankBranchId.body.BankName }}",
+                "BankBranchNumber": "{{ $chain.results.callRestGetCashBankBranchesBankBranchId.body.BranchNumber }}",
+                "BankNumber": "{{ $chain.results.callRestGetCashBankBranchesBankBranchId.body.BankNumber }}"
+              }
+            ]
+          },
+          "reset": "toDefault",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesGetAllAccounts"
+      }
+    },
+    "assignVariablesPopupNewSite": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewSite": {
+          "source": {
+            "PaymentMethod": "{{ $chain.results.callRestGetPaymentsExternalPayeesPayeeIdChildExternalPartyPaymentMethods.body.items[0].PaymentMethodName }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callRestGet1113185InstrumentAssignmentsQ"
+      }
+    },
+    "fireNotification6": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetPaymentsExternalPayeesQ.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get delivery method"
+      }
+    },
+    "callRestGetPaymentsExternalPayeesQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getPaymentsExternalPayeesQ",
+        "uriParams": {
+          "q": "{{ $chain.results.callRestGet1113185InstrumentAssignmentsQ.body.items[0].PaymentPartyId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification6",
+        "success": "assignVariablesPopupNewSite2"
+      }
+    },
+    "assignVariablesGetAllAccounts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAllAccounts": {
+          "source": {
+            "data": "{{ $page.variables.getAccounts.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "resetVariablesGetAllAccounts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getAllAccounts",
+          "$page.variables.getAccounts"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGet1113185PaymentsExternalPayeesQ"
+      }
+    },
+    "assignVariablesGetAllAccounts2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAllAccounts": {
+          "source": {
+            "data": "{{ $page.variables.getAccounts.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "forEach2": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "actionId": "callRestGetExternalBankAccountsPayementInstrumentId",
+        "items": "{{ $chain.results.callRestGet1113185InstrumentAssignmentsQ.body.items }}"
+      }
+    },
+    "assignVariablesGetAccounts3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAccounts": {
+          "source": {
+            "data": [
+              {
+                "AccountSuffix": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.AccountSuffix }}",
+                "AccountType": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.AccountType }}",
+                "AgencyLocationCode": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.AgencyLocationCode }}",
+                "AllowInternationalPaymentIndicator": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.AllowInternationalPaymentIndicator }}",
+                "AlternateAccountName": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.AlternateAccountName }}",
+                "BankAccountId": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankAccountId }}",
+                "BankAccountName": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankAccountName }}",
+                "BankAccountNumber": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankAccountNumber }}",
+                "BankBranchIdentifier": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankBranchIdentifier }}",
+                "BankBranchPartyIndicator": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankBranchPartyIndicator }}",
+                "BankIdentifier": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BankIdentifier }}",
+                "BIC": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.BIC }}",
+                "CheckDigits": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.CheckDigits }}",
+                "CountryCode": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.CountryCode }}",
+                "CurrencyCode": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.CurrencyCode }}",
+                "EndDate": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.EndDate }}",
+                "IBAN": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.IBAN }}",
+                "Intent": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.Intent }}",
+                "PartyId": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.PartyId }}",
+                "PersonId": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.PersonId }}",
+                "SecondaryAccountReference": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.SecondaryAccountReference }}",
+                "StartDate": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.StartDate }}",
+                "VendorId": "{{ $chain.results.callRestGetExternalBankAccountsPayementInstrumentId.body.VendorId }}"
+              }
+            ]
+          },
+          "reset": "toDefault",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesGetAllAccounts2"
+      }
+    },
+    "assignVariablesPopupNewSite2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewSite": {
+          "source": {
+            "RemittanceAdviceDeliveryEmailId": "{{ $chain.results.callRestGetPaymentsExternalPayeesQ.body.Email }}",
+            "RemittanceAdviceDelliveryMethod": "{{ $chain.results.callRestGetPaymentsExternalPayeesQ.body.DeliveryMethod }}",
+            "PayeeId": "{{ $chain.results.callRestGetPaymentsExternalPayeesQ.body.PayeeId }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "forEach2"
+      }
+    }
+  }
+}

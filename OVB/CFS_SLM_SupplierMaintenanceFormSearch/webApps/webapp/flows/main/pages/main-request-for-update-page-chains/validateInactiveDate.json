@@ -1,0 +1,43 @@
+{
+  "description": "",
+  "root": "callFunctionValidateInactiveDate",
+  "actions": {
+    "callFunctionValidateInactiveDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateInactiveDate",
+        "params": [
+          "{{ $variables.value }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateInactiveDate ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Inactive Date cannot be a past date",
+        "message": "Inactive Date cannot be a past date"
+      }
+    }
+  },
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

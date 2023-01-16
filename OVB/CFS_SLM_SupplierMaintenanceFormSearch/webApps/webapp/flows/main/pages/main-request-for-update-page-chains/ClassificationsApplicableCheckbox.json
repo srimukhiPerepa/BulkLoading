@@ -1,0 +1,39 @@
+{
+  "description": "",
+  "root": "ifValue",
+  "actions": {
+    "ifValue": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.value[0] == 'Y']]"
+      },
+      "outcomes": {
+        "true": "assignVariablesClassificationApplicableFlag",
+        "false": "assignVariablesClassificationApplicableFlag2"
+      }
+    },
+    "assignVariablesClassificationApplicableFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.classificationApplicableFlag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "assignVariablesClassificationApplicableFlag2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.classificationApplicableFlag": {
+          "source": "{{ false }}"
+        }
+      }
+    }
+  },
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any[]",
+      "input": "fromCaller"
+    }
+  }
+}

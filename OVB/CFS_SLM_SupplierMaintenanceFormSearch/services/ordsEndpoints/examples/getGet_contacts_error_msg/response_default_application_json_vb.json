@@ -1,0 +1,28 @@
+{
+    "items": [
+        {
+            "last_first_name": "malchom,linda",
+            "action_requested": "New",
+            "api_response": "You must provide a value for the InactiveDate attribute that's on or before today's date. (POZ-2130505)"
+        },
+        {
+            "last_first_name": "Joy,Moira",
+            "action_requested": "Update",
+            "api_response": "Inactive Date: You must provide a value for the InactiveDate attribute that's on or before today's date. (POZ-2130505)"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 2,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_extensions/get_contacts_error_msg/10000000593"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/metadata-catalog/cfs_extensions/get_contacts_error_msg/item"
+        }
+    ]
+}

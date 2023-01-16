@@ -1,0 +1,81 @@
+{
+  "description": "",
+  "root": "resetVariablesBankBranchesArray",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGet1113185CashBankBranchesQ.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Please select valid country and bank"
+      }
+    },
+    "callRestGet1113185CashBankBranchesQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/get11_13_18_05CashBankBranchesQ",
+        "uriParams": {
+          "q": "{{ \"BankName=\"+$page.variables.popupAccounts.ReBank+\";CountryName=\" + $chain.results.callRestGetHcmCountriesLovQ.body.items[0].CountryName }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesBankBranchesArray"
+      }
+    },
+    "assignVariablesBankBranchesArray": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.bankBranchesArray": {
+          "source": "{{ $chain.results.callRestGet1113185CashBankBranchesQ.body.items }}"
+        }
+      },
+      "outcomes": {}
+    },
+    "callRestGetHcmCountriesLovQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "uriParams": {
+          "q": "{{ \"ObsoleteFlag=false;TerritoryCode=\" + $page.variables.popupAccounts.ReCountry }}"
+        }
+      },
+      "outcomes": {
+
+        "success": "callRestGet1113185CashBankBranchesQ"
+      }
+    },
+    "resetVariablesBankBranchesArray": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.bankBranchesArray"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupAccounts.ReCountry==null || $page.variables.popupAccounts.ReBank==null ]]"
+      },
+      "outcomes": {
+        "false": "callRestGetHcmCountriesLovQ",
+        "true": "fireNotification3"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Please select valid country and bank",
+        "summary": "Please select valid country and bank"
+      }
+    }
+  },
+  "variables": {}
+}

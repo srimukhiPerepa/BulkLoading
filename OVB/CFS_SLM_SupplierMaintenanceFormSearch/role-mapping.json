@@ -1,0 +1,29 @@
+{
+    "roleMapping": {
+        "idcsHostUrl": "https://idcs-54fbbe54f037498db05313a618a96627.identity.oraclecloud.com:443",
+        "roles": {
+            "CFS_SMF_Requestor_Role": {
+                "development": {
+                    "users": [ ],
+                    "groups": [
+                        {
+                            "id": "9e03a7918d4649abb583801b39ada446",
+                            "displayName": "Z AP SUPPLIER INQUIRY TIN MASKED JR"
+                        }
+                    ]
+                }
+            },
+            "CFS_SMF_Admin_Role": {
+                "development": {
+                    "users": [ ],
+                    "groups": [
+                        {
+                            "id": "e24c25c4190647ada60214e686b03e3e",
+                            "displayName": "Z POS SUPPLIER MASTER JR"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

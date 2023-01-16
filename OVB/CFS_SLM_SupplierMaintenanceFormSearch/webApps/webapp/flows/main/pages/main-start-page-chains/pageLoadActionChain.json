@@ -1,0 +1,39 @@
+{
+  "description": "",
+  "root": "callRestGetSupplierTypeLookupCodesQ",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetSupplierTypeLookupCodesQ.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to load supplier types"
+      }
+    },
+    "assignVariablesSupplierTypeVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.supplierTypeVar": {
+          "source": "{{ $chain.results.callRestGetSupplierTypeLookupCodesQ.body.items }}"
+        }
+      }
+    },
+    "callRestGetSupplierTypeLookupCodesQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSupplierTypeLookupCodesQ",
+        "uriParams": {
+          "q": "{{\"?q=Tag='SMF'\"}}"
+        },
+        "responseType": "getSupplierTypesResponseType"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesSupplierTypeVar"
+      }
+    }
+  },
+  "variables": {}
+}

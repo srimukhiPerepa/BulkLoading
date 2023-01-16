@@ -1,0 +1,79 @@
+{
+  "root": "callRestGetLatestSuppliersQ",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetLatestSuppliersQ.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to load Suppliers"
+      }
+    },
+    "callRestGetLatestSuppliersQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "searchSMFSupplier/getLatestSuppliersQ",
+        "uriParams": {
+          "q": "{{ \"?q=(lower(Supplier) LIKE \"+$page.variables.searchStringRESTVar.supplierName+\" AND lower(SupplierNumber) LIKE \"+$page.variables.searchStringRESTVar.supplierNumber+\" AND lower(TaxpayerId) LIKE \"+$page.variables.searchStringRESTVar.taxpayerID+\") AND lower(TaxRegistrationNumber) LIKE \"+$page.variables.searchStringRESTVar.taxRegNumber+\" AND lower(ParentSupplier) LIKE \"+$page.variables.searchStringRESTVar.parentSupplier+\" AND lower(AlternateName) LIKE \"+$page.variables.searchStringRESTVar.alternateName+\" AND lower(BusinessRelationshipCode) LIKE 'SPEND_AUTHORIZED'\"+\" \"+$page.variables.supplierTypeRESTparamVar }}",
+          "offset": "{{ $page.variables.offsetVar }}",
+          "limit": "25"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetSuppliersListADPVar"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetLatestSuppliersQ.body.hasMore ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesOffsetVar",
+        "false": "return"
+      }
+    },
+    "assignVariablesOffsetVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.offsetVar": {
+          "source": "{{ $page.variables.offsetVar+25 }}"
+        }
+      },
+      "outcomes": {
+        "success": "callChainRecursiveRESTCallActionChain"
+      }
+    },
+    "callChainRecursiveRESTCallActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "recursiveRESTCallActionChain"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariablesGetSuppliersListADPVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSuppliersListADPVar": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetLatestSuppliersQ.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "description": "",
+  "root": "assignVariablesSupplierContactEmailValidation",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog7\" }}"
+        ]
+      }
+    },
+    "resetVariablesDummyPostContactAddressToBeAdded": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddressToBeAdded",
+          "$page.variables.DummyPostContactAddressDeleteBackup"
+        ]
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostContacts"
+      }
+    },
+    "fireDataProviderEventPostContacts": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postContacts ]]"
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostContactAddress"
+      }
+    },
+    "fireDataProviderEventPostContactAddress": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "target": "[[ $page.variables.postContactAddress ]]",
+        "refresh": null
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "assignVariablesSupplierContactEmailValidation": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierContactEmailValidation": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "resetVariablesDummyPostContactAddressToBeAdded"
+      }
+    }
+  },
+  "variables": {}
+}

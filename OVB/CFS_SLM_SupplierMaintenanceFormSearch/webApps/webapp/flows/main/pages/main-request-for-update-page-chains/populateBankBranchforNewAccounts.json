@@ -1,0 +1,172 @@
+{
+  "description": "",
+  "root": "resetVariablesBankBranchesArray",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGet1113185CashBankBranchesQ.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Please select valid country and bank."
+      }
+    },
+    "callRestGet1113185CashBankBranchesQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/get11_13_18_05CashBankBranchesQ",
+        "uriParams": {
+          "q": "{{ \"BankName=\"+$page.variables.popupNewAccounts.ReBank+\";CountryName=\" + $variables.CountryVar }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesBankBranchesArray"
+      }
+    },
+    "assignVariablesBankBranchesArray": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.bankBranchesArray": {
+          "source": "{{ $chain.results.callRestGet1113185CashBankBranchesQ.body.items }}"
+        }
+      },
+      "outcomes": {}
+    },
+    "callRestGetHcmCountriesLovQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "uriParams": {
+          "q": "{{ \"ObsoleteFlag=false;TerritoryCode=\" + $page.variables.popupNewAccounts.ReCountry }}"
+        }
+      },
+      "outcomes": {
+
+        "success": "assignVariablesCountryVar"
+      }
+    },
+    "resetVariablesBankBranchesArray": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.bankBranchesArray",
+          "$variables.CountryVar"
+        ]
+      },
+      "outcomes": {
+        "success": "ifpopupNewAccounts"
+      }
+    },
+    "ifpopupNewAccounts": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupNewAccounts.ReCountry ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetHcmCountriesLovQ",
+        "false": "ifpopupNewAccounts2"
+      }
+    },
+    "ifpopupNewAccounts2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupNewAccounts.Country ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetHcmCountriesLovQ2",
+        "false": "ifPopupNewAccounts"
+      }
+    },
+    "callRestGetHcmCountriesLovQ2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "uriParams": {
+          "q": "{{ \"ObsoleteFlag=false;TerritoryCode=\" + $page.variables.popupNewAccounts.Country }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCountryVar2"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGet1113185CashBankBranchesQ2.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Please select valid country and bank."
+      }
+    },
+    "callRestGet1113185CashBankBranchesQ2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/get11_13_18_05CashBankBranchesQ",
+        "uriParams": {
+          "q": "{{ \"BankName=\"+$page.variables.popupNewAccounts.Bank+\";CountryName=\" + $variables.CountryVar }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification2",
+        "success": "assignVariablesBankBranchesArray2"
+      }
+    },
+    "ifpopupNewAccounts4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupNewAccounts.Bank ]]"
+      },
+      "outcomes": {
+        "true": "callRestGet1113185CashBankBranchesQ2"
+      }
+    },
+    "assignVariablesBankBranchesArray2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.bankBranchesArray": {
+          "source": "{{ $chain.results.callRestGet1113185CashBankBranchesQ2.body.items }}"
+        }
+      }
+    },
+    "assignVariablesCountryVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.CountryVar": {
+          "source": "{{ $chain.results.callRestGetHcmCountriesLovQ.body.items[0].CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifPopupNewAccounts"
+      }
+    },
+    "assignVariablesCountryVar2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.CountryVar": {
+          "source": "{{ $chain.results.callRestGetHcmCountriesLovQ2.body.items[0].CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifPopupNewAccounts"
+      }
+    },
+    "ifPopupNewAccounts": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupNewAccounts.ReBank ]]"
+      },
+      "outcomes": {
+        "true": "callRestGet1113185CashBankBranchesQ",
+        "false": "ifpopupNewAccounts4"
+      }
+    }
+  },
+  "variables": {
+    "CountryVar": {
+      "type": "string"
+    }
+  }
+}

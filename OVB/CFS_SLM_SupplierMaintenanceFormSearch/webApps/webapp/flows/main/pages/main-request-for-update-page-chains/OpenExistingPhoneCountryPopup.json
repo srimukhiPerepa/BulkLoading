@@ -1,0 +1,29 @@
+{
+  "description": "",
+  "root": "resetVariablesSearchPhoneCountryVar7",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#PhoneCountryPopup7\" }}"
+        ]
+      }
+    },
+    "resetVariablesSearchPhoneCountryVar7": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.SearchPhoneCountryVar7",
+          "$page.variables.getHcmPhoneCountryCodeADP7"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    }
+  },
+  "variables": {}
+}

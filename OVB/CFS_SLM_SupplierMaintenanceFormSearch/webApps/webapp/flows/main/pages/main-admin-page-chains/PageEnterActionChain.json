@@ -1,0 +1,343 @@
+{
+  "root": "runInParallel",
+  "description": "",
+  "variables": {
+    "reTry1": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "reTry2": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "reTry3": {
+      "defaultValue": 0,
+      "type": "number"
+    },
+    "reTry4": {
+      "defaultValue": 0,
+      "type": "number"
+    }
+  },
+  "actions": {
+    "runInParallel": {
+      "module": "vb/action/builtin/forkAction",
+      "parameters": {
+        "actions": {
+          "callRest": "callRestGetApprovedSyncErrorsCount",
+          "callRestGetTotalRequestsSubmitted": "callRestGetTotalRequestsSubmitted",
+          "callRest2": "callRestGetOpenRequests",
+          "callRestGetApprovedRejectedRequests": "callRestGetApprovedRejectedRequests",
+          "callChain": "callChainPopulatePendingRequests"
+        }
+      }
+    },
+    "callRestGetTotalRequestsSubmitted": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getTotal_requests_submitted"
+      },
+      "outcomes": {
+        "failure": "if5",
+        "success": "assignVariablesTotalRequestsSubmittedVar"
+      }
+    },
+    "assignVariablesTotalRequestsSubmittedVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.totalRequestsSubmittedVar": {
+          "source": "{{ $chain.results.callRestGetTotalRequestsSubmitted.body.items[0].total_requests_submitted }}",
+          "reset": "toDefault"
+        }
+      }
+    },
+    "callRestGetApprovedRejectedRequests": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getApproved_rejected_requests"
+      },
+      "outcomes": {
+        "failure": "if4",
+        "success": "assignVariablesApprovedRejectedRequestsVar"
+      }
+    },
+    "callRestGetOpenRequests": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getOpen_requests"
+      },
+      "outcomes": {
+        "failure": "if3",
+        "success": "assignVariablesOpenRequestsVar"
+      }
+    },
+    "assignVariablesApprovedRejectedRequestsVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.approvedRejectedRequestsVar": {
+          "source": "{{ $chain.results.callRestGetApprovedRejectedRequests.body.items[0].approved_rejected_requests }}"
+        }
+      }
+    },
+    "assignVariablesOpenRequestsVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.openRequestsVar": {
+          "source": "{{ $chain.results.callRestGetOpenRequests.body.items[0].open_requests }}"
+        }
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "assignVariablesMoreInfoRequestedVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters":{
+        "$page.variables.approvedSyncErrorsVar": {
+          "source": "{{ $chain.results.callRestGetApprovedSyncErrorsCount.body.items[0].approved_sync_errors }}"
+        }
+      }
+    },
+    "callChainPopulatePendingRequests": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "populatePendingRequests"
+      }
+    },
+    "callRestGetApprovedSyncErrorsCount": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getApproved_sync_errorsCount"
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "assignVariablesMoreInfoRequestedVar"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetApprovedSyncErrorsCount.status==503 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesReTry1",
+        "false": "fireNotification"
+      }
+    },
+    "if5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetTotalRequestsSubmitted.status==503 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesReTry4",
+        "false": "fireNotification9"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetApprovedRejectedRequests.status==503 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesReTry3",
+        "false": "fireNotification8"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetOpenRequests.status==503 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesReTry2",
+        "false": "fireNotification7"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "Failed to get error request count"
+      }
+    },
+    "fireNotification7": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Failed to get open request count",
+        "summary": "test"
+      }
+    },
+    "fireNotification8": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Failed to get rejected request count",
+        "summary": "test"
+      }
+    },
+    "fireNotification9": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "Failed to get total request count"
+      }
+    },
+    "assignVariablesReTry1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry1": {
+          "source": "{{ $variables.reTry1+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry1"
+      }
+    },
+    "assignVariablesReTry2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry2": {
+          "source": "{{ $variables.reTry2+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry2"
+      }
+    },
+    "assignVariablesReTry3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry3": {
+          "source": "{{ $variables.reTry3+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry3"
+      }
+    },
+    "assignVariablesReTry4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry4": {
+          "source": "{{ $variables.reTry4+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry4"
+      }
+    },
+    "ifReTry4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry4==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall4",
+        "false": "fireNotification12"
+      }
+    },
+    "ifReTry3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry3==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall3",
+        "false": "fireNotification11"
+      }
+    },
+    "ifReTry2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry2==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall2",
+        "false": "fireNotification3"
+      }
+    },
+    "ifReTry1": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry1==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification10"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetApprovedSyncErrorsCount"
+      }
+    },
+    "callFunctionWaitForNextCall2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetOpenRequests"
+      }
+    },
+    "callFunctionWaitForNextCall3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetApprovedRejectedRequests"
+      }
+    },
+    "callFunctionWaitForNextCall4": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetTotalRequestsSubmitted"
+      }
+    },
+    "fireNotification10": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "fireNotification11": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "fireNotification12": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    }
+  }
+}

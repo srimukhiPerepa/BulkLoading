@@ -1,0 +1,201 @@
+{
+  "description": "",
+  "root": "ifValue",
+  "actions": {
+    "ifValue": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.value ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesSupplierContactEmailValidation2",
+        "false": "assignVariablesSupplierContactEmailValidation3"
+      }
+    },
+    "forEachInPostContacts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postContacts.data }}",
+        "actionId": "if2"
+      },
+      "outcomes": {
+        "success": "ifSupplierContactEmailValidation"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "This Email ID already exists. Please enter a unique valid Email ID",
+        "summary": "Email Id already used"
+      }
+    },
+    "assignVariablesSupplierContactEmailValidation": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierContactEmailValidation": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification"
+      }
+    },
+    "assignVariablesSupplierContactEmailValidation2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierContactEmailValidation": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "forEachInPostContacts"
+      }
+    },
+    "ifSupplierContactEmailValidation": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SupplierContactEmailValidation ]]"
+      },
+      "outcomes": {
+        "true": "forEachInGetSupplierContacts",
+        "false": "ifSupplierContactEmailValidation2"
+      }
+    },
+    "forEachInGetSupplierContacts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.getSupplierContacts.data }}",
+        "actionId": "ifValue4"
+      },
+      "outcomes": {
+        "success": "ifSupplierContactEmailValidation2"
+      }
+    },
+    "ifValue4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.Email==$variables.value ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesSupplierContactEmailValidation4"
+      }
+    },
+    "assignVariablesSupplierContactEmailValidation4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierContactEmailValidation": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification3"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Email Id already used",
+        "message": "This Email ID already exists. Please enter a unique valid Email ID"
+      }
+    },
+    "callFunctionValidateEmail": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateEmail",
+        "params": [
+          "{{ $variables.value }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateEmail ]]"
+      },
+      "outcomes": {
+        "false": "assignVariables",
+        "true": "return"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierContactEmailValidation": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification2"
+      }
+    },
+    "ifSupplierContactEmailValidation2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SupplierContactEmailValidation ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateEmail",
+        "false": "return"
+      }
+    },
+    "if2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.email==$variables.value || $current.data.re_email==$variables.value ]]"
+      },
+      "outcomes": {
+        "true": "ifPopupNewContact"
+      }
+    },
+    "assignVariablesSupplierContactEmailValidation3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierContactEmailValidation": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "ifPopupNewContact": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_contact_id==$page.variables.popupNewContact.SupplierContactId ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesSupplierContactEmailValidation"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter a valid email address",
+        "message": "Please enter a valid Email ID"
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    }
+  },
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

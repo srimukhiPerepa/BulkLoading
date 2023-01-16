@@ -1,0 +1,24 @@
+{
+  "description": "",
+  "root": "resetVariablesSearchStringRESTVar",
+  "actions": {
+    "resetVariablesSearchStringRESTVar": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.searchStringRESTVar",
+          "$page.variables.searchStringVar.alternateName",
+          "$page.variables.searchStringVar.parentSupplier",
+          "$page.variables.searchStringVar.supplierName",
+          "$page.variables.searchStringVar.supplierNumber"          ,
+          "$page.variables.searchStringVar.taxpayerID"          ,
+          "$page.variables.searchStringVar.taxRegNumber"          ,
+          "$page.variables.searchStringVar.supplierType",          
+          "$page.variables.getSuppliersListADPVar",
+          "$page.variables.mandatoryParamErrorVar"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

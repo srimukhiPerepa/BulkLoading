@@ -1,0 +1,33 @@
+{
+  "root": "callRestGetCurrenciesLOV",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetCurrenciesLOV.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetCurrenciesLOV": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getCurrenciesLOV"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetCurrenciesLOV"
+      }
+    },
+    "assignVariablesGetCurrenciesLOV": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getCurrenciesLOV": {
+          "source": "{{ $chain.results.callRestGetCurrenciesLOV.body.items }}"
+        }
+      }
+    }
+  }
+}

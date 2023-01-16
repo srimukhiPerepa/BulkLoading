@@ -1,0 +1,122 @@
+{
+  "description": "",
+  "root": "resetVariablesGetSuppliersListADPVar",
+  "actions": {
+
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.searchStringVar.alternateName || $page.variables.searchStringVar.parentSupplier || $page.variables.searchStringVar.supplierName || $page.variables.searchStringVar.supplierNumber || $page.variables.searchStringVar.taxpayerID || $page.variables.searchStringVar.taxRegNumber]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateSearchStrings",
+        "false": "resetVariablesGetSuppliersListADPVar3"
+      }
+    },
+    "callFunctionValidateSearchStrings": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateSearchStrings",
+        "params": [
+          "{{ $page.variables.searchStringVar }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if3"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateSearchStrings ]]"
+      },
+      "outcomes": {
+        "true": "callChainInitalizeAttributesToNull",
+        "false": "resetVariablesGetSuppliersListADPVar4"
+      }
+    },
+    "callChainInitalizeAttributesToNull": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "searchStringForRESTActionChain"
+      },
+      "outcomes": {
+        "success": "callChainRecursiveRESTCallActionChain"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.supplierTypeRESTparamVar": {
+          "source": "{{ $chain.results.callFunctionCreateSupplierTypeSearchCriteria }}"
+        }
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "callFunctionCreateSupplierTypeSearchCriteria": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "createSupplierTypeSearchCriteria",
+        "params": [
+          "{{ $page.variables.supplierTypeVar }}",
+          "{{ $page.variables.searchStringVar.supplierType }}"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariables"
+      }
+    },
+    "callChainRecursiveRESTCallActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "recursiveRESTCallActionChain"
+      }
+    },
+    "resetVariablesGetSuppliersListADPVar": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getSuppliersListADPVar",
+          "$page.variables.offsetVar",
+          "$page.variables.mandatoryParamErrorVar"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCreateSupplierTypeSearchCriteria"
+      }
+    },
+    "resetVariablesGetSuppliersListADPVar3": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getSuppliersListADPVar"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesMandatoryParamErrorVar"
+      }
+    },
+    "assignVariablesMandatoryParamErrorVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.mandatoryParamErrorVar": {
+          "source": "{{ \"true\" }}"
+        }
+      }
+    },
+    "resetVariablesGetSuppliersListADPVar4": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getSuppliersListADPVar",
+          "$page.variables.mandatoryParamErrorVar"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

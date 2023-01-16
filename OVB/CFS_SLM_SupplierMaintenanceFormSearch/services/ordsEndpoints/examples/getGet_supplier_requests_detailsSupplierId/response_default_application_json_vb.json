@@ -1,0 +1,102 @@
+{
+    "items": [
+        {
+            "request_id": 10000000504,
+            "status": "Request for Approval",
+            "request_date": "2022-08-24T11:26:33Z",
+            "approver": null,
+            "requestor": "C968365",
+            "approval_date": null,
+            "last_update_date": null,
+            "approver_comment": null,
+            "approved_rejected_name": null,
+            "requestor_name": "SUNITA NAYAK"
+        },
+        {
+            "request_id": 10000000374,
+            "status": "Rejected",
+            "request_date": "2022-08-24T05:44:22Z",
+            "approver": "C968365",
+            "requestor": "C968365",
+            "approval_date": "2022-08-09T12:14:43Z",
+            "last_update_date": "2022-08-09T12:14:43Z",
+            "approver_comment": null,
+            "approved_rejected_name": null,
+            "requestor_name": null
+        },
+        {
+            "request_id": 10000000440,
+            "status": "Rejected",
+            "request_date": "2022-08-24T05:44:22Z",
+            "approver": null,
+            "requestor": "C968365",
+            "approval_date": null,
+            "last_update_date": "2022-08-23T16:52:36Z",
+            "approver_comment": "na",
+            "approved_rejected_name": null,
+            "requestor_name": null
+        },
+        {
+            "request_id": 10000000439,
+            "status": "Rejected",
+            "request_date": "2022-08-24T05:44:22Z",
+            "approver": "watson.june",
+            "requestor": "C968365",
+            "approval_date": "2022-08-22T19:23:55Z",
+            "last_update_date": "2022-08-22T19:23:55Z",
+            "approver_comment": "ok",
+            "approved_rejected_name": null,
+            "requestor_name": null
+        },
+        {
+            "request_id": 10000000408,
+            "status": "Rejected",
+            "request_date": "2022-08-24T05:44:22Z",
+            "approver": "watson.june",
+            "requestor": "C968365",
+            "approval_date": "2022-08-22T12:30:32Z",
+            "last_update_date": "2022-08-22T12:30:32Z",
+            "approver_comment": null,
+            "approved_rejected_name": null,
+            "requestor_name": null
+        },
+        {
+            "request_id": 10000000435,
+            "status": "Rejected",
+            "request_date": "2022-08-24T05:44:22Z",
+            "approver": "C968365",
+            "requestor": "C968365",
+            "approval_date": "2022-08-22T18:06:04Z",
+            "last_update_date": "2022-08-22T18:06:04Z",
+            "approver_comment": "ok",
+            "approved_rejected_name": null,
+            "requestor_name": null
+        },
+        {
+            "request_id": 10000000378,
+            "status": "Rejected",
+            "request_date": "2022-08-24T05:44:22Z",
+            "approver": "watson.june",
+            "requestor": "C968365",
+            "approval_date": "2022-08-22T12:07:36Z",
+            "last_update_date": "2022-08-22T12:07:36Z",
+            "approver_comment": null,
+            "approved_rejected_name": null,
+            "requestor_name": null
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 7,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_extensions/get_supplier_requests_details/300000041029323"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/metadata-catalog/cfs_extensions/get_supplier_requests_details/item"
+        }
+    ]
+}

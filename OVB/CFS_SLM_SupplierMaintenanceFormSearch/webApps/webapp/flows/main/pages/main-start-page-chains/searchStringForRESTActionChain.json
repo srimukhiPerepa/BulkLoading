@@ -1,0 +1,252 @@
+{
+  "root": "runInParallel",
+  "description": "",
+  "actions": {
+    "runInParallel": {
+      "module": "vb/action/builtin/forkAction",
+      "parameters": {
+        "actions": {
+          "if": "ifSearchStringVar5",
+          "if2": "ifSearchStringVar2"
+        }
+      },
+      "outcomes": {
+        "join": "return"
+      }
+    },
+    "ifSearchStringVar": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.searchStringVar.alternateName ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesSearchStringRESTVar",
+        "false": "assignVariablesSearchStringRESTVar2"
+      }
+    },
+    "ifSearchStringVar2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.searchStringVar.parentSupplier ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesSearchStringRESTVar8",
+        "false": "assignVariablesSearchStringRESTVar4"
+      }
+    },
+    "assignVariablesSearchStringRESTVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "alternateName": "{{ \"'\"+$page.variables.searchStringVar.alternateName+\"'\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "assignVariablesSearchStringRESTVar2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "alternateName": "{{ \"''\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "assignVariablesSearchStringRESTVar3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "taxRegNumber": "{{ \"'\"+$page.variables.searchStringVar.taxRegNumber+\"'\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "ifSearchStringVar"
+      }
+    },
+    "assignVariablesSearchStringRESTVar4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "parentSupplier": "{{ \"''\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "ifSearchStringVar4"
+      }
+    },
+    "ifSearchStringVar3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.searchStringVar.supplierName ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesSearchStringRESTVar6",
+        "false": "assignVariablesSearchStringRESTVar14"
+      }
+    },
+    "ifSearchStringVar4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.searchStringVar.supplierNumber ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesSearchStringRESTVar5",
+        "false": "assignVariablesSearchStringRESTVar7"
+      }
+    },
+    "assignVariablesSearchStringRESTVar6": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "supplierName": "{{ \"'\"+$page.variables.searchStringVar.supplierName+\"'\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "assignVariablesSearchStringRESTVar7": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "supplierNumber": "{{ \"''\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "ifSearchStringVar3"
+      }
+    },
+    "ifSearchStringVar5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.searchStringVar.taxpayerID ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesSearchStringRESTVar13",
+        "false": "assignVariablesSearchStringRESTVar10"
+      }
+    },
+    "assignVariablesSearchStringRESTVar8": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "parentSupplier": "{{ \"'\"+$page.variables.searchStringVar.parentSupplier+\"'\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "ifSearchStringVar4"
+      }
+    },
+    "assignVariablesSearchStringRESTVar10": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "taxpayerID": "{{ \"''\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "ifSearchStringVar6"
+      }
+    },
+    "ifSearchStringVar6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.searchStringVar.taxRegNumber ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesSearchStringRESTVar3",
+        "false": "assignVariablesSearchStringRESTVar11"
+      }
+    },
+    "assignVariablesSearchStringRESTVar11": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "taxRegNumber": "{{ \"''\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "ifSearchStringVar"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariablesSearchStringRESTVar14": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "supplierName": "{{ \"''\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "assignVariablesSearchStringRESTVar13": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "taxpayerID": "{{ \"'\"+$page.variables.searchStringVar.taxpayerID+\"'\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "ifSearchStringVar6"
+      }
+    },
+    "assignVariablesSearchStringRESTVar5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.searchStringRESTVar": {
+          "source": {
+            "supplierNumber": "{{ \"'\"+$page.variables.searchStringVar.supplierNumber.replace(\"%\",\"*\")+\"'\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "ifSearchStringVar3"
+      }
+    }
+  }
+}

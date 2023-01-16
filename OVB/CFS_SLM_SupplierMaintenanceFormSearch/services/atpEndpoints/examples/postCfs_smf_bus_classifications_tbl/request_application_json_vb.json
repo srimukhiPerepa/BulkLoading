@@ -1,0 +1,22 @@
+{
+  "classification_id": "1",
+  "supplier_id": "1",
+  "request_id": "100",
+  "classification": "test",
+  "certifying_agency_id": "1",
+  "certifying_agency": "Other",
+  "other_certifying_agency": "ABCD",
+  "status": "New",
+  "certificate": "123456789",
+  "expiration_date": null,
+  "re_classification": "re_test",
+  "re_certifying_agency_id": "123",
+  "re_certifying_agency": "Other",
+  "re_other_certifying_agency": "PQR",
+  "re_status": "New",
+  "re_certificate": "123456789",
+  "re_expiration_date": null,
+  "action_requested": "Update",
+  "created_by": "Prajakta",
+  "last_updated_by": "Prajakta"
+}

@@ -1,0 +1,23 @@
+{
+    "items": [
+        {
+            "classification": "ASIAN MALE OWNED BUSINESS",
+            "action_requested": "New",
+            "api_response": "Applying List binding LOV_CertifyingAgency with given set of values leads to no matching row for a row of type :SupplierVO_businessClassifications_SupplierVOToBusinessClassificationVO_BusinessClassificationVO, key oracle.jbo.Key[300000060088254 ]"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_extensions/get_bus_classfications_error_msg/10000001714"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/metadata-catalog/cfs_extensions/get_bus_classfications_error_msg/item"
+        }
+    ]
+}

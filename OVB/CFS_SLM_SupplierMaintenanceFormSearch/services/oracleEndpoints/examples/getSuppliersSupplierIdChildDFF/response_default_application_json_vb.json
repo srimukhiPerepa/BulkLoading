@@ -1,0 +1,108 @@
+{
+    "items": [
+        {
+            "VendorId": 300000042390398,
+            "sicCode": null,
+            "legalStructure": "GOVERNMENT AGENCY",
+            "exelonPoc": null,
+            "employersLiabilityValue": 1,
+            "employersLiabilityExpirationDa": "2022-06-15",
+            "generalLiabilityValue": 2,
+            "generalLiabilityExpirationDate": "2022-06-22",
+            "autoLiabilityValue": 3,
+            "autoLiabilityExpirationDate": "2022-06-20",
+            "excessUmbrellaLiabilityValue": 4,
+            "excessUmbrellaLiabilityExpirat": "2022-06-14",
+            "workersCompLiabilityValue": 5,
+            "workersCompLiabilityExpiration": "2022-06-14",
+            "professionalLiabilityValue": 6,
+            "professionalLiabilityExpiratio": "2022-06-21",
+            "environPollutionLiabilityValue": 7,
+            "environPollutionLiabilityExpir": "2022-06-14",
+            "miscellaneousLiabilityInsuranc": 8,
+            "miscellaneousInsuranceExpirati": "2022-06-15",
+            "additionalInsured": "Yes",
+            "policiesArePrimary": "Yes",
+            "suppliersInsuranceProvidedWaiv": "Yes",
+            "__FLEX_Context": null,
+            "__FLEX_Context_DisplayValue": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF/300000042390398",
+                    "name": "DFF",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000004478"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF/300000042390398",
+                    "name": "DFF",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF/300000042390398/lov/LVVO_legalStructure",
+                    "name": "LVVO_legalStructure",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF/300000042390398/lov/LVVO_suppliersInsuranceProvidedWaiv",
+                    "name": "LVVO_suppliersInsuranceProvidedWaiv",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF/300000042390398/lov/LVVO_sicCode",
+                    "name": "LVVO_sicCode",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF/300000042390398/lov/LVVO___FLEX_Context",
+                    "name": "LVVO___FLEX_Context",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF/300000042390398/lov/LVVO_V___FLEX_Context",
+                    "name": "LVVO_V___FLEX_Context",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF/300000042390398/lov/LVVO_policiesArePrimary",
+                    "name": "LVVO_policiesArePrimary",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF/300000042390398/lov/LVVO_additionalInsured",
+                    "name": "LVVO_additionalInsured",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 1,
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF",
+            "name": "DFF",
+            "kind": "collection"
+        }
+    ]
+}

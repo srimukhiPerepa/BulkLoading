@@ -1,0 +1,31 @@
+{
+  "description": "",
+  "root": "resetVariablesPopupExistingBusinessClassification",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog4\" }}"
+        ]
+      }
+    },
+    "resetVariablesPopupExistingBusinessClassification": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupExistingBusinessClassification",
+          "$page.variables.popupNewBusinessClassification",
+          "$page.variables.popupAddBusinessClassification",
+          "$page.variables.BusClassExpDateValidation"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    }
+  },
+  "variables": {}
+}

@@ -1,0 +1,380 @@
+{
+
+  "title": "",
+  "description": "",
+    "security": {
+      "access": {
+        "requiresAuthentication": true,
+        "roles": ["CFS_SMF_Requestor_Role"]
+        }
+        }, 
+  "variables": {
+    "ATPErrorMessage": {
+      "type": "string",
+      "defaultValue": "503 - Error! Please try again later!"
+    },
+    "getPayDateBasisLOVListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleEndpoints/getPayDateBasisLOV",
+        "keyAttributes": "Meaning",
+        "itemsPath": "items",
+        "responseType": "getPayDateBasisLOVResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "LookupCode"
+          ]
+        }
+      }
+    },
+    "getSuppliersListADPVar": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getSuppliersResponseType",
+        "keyAttributes": "SupplierId"
+      }
+    },
+    "mandatoryParamErrorVar": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "offsetVar": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "searchStringRESTVar": {
+      "type": {
+        "alternateName": "string",
+        "parentSupplier": "string",
+        "supplierName": "string",
+        "supplierNumber": "string",
+        "supplierType": "string",
+        "taxpayerID": "string",
+        "taxRegNumber": "string"
+      }
+    },
+    "searchStringVar": {
+      "type": {
+        "alternateName": "string",
+        "parentSupplier": "string",
+        "supplierName": "string",
+        "supplierNumber": "string",
+        "supplierType": "string",
+        "taxpayerID": "string",
+        "taxRegNumber": "string"
+      }
+    },
+    "supplierTypeRESTparamVar": {
+      "type": "string"
+    },
+    "supplierTypeVar": {
+      "type": "supplierTypesLOVType"
+    }
+
+  },
+  "types": {
+    "@decorators.getPayDateBasisLOVResponse": {
+      "endpoint": "getPayDateBasisLOV",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+
+    "@decorators.getSuppliersResponseType": {
+      "endpoint": "getSuppliersSupplierId",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getSupplierTypesLOV": {
+      "endpoint": "getSupplierTypeLookupCodesQ",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getSupplierTypesResponseType": {
+      "endpoint": "getSupplierTypeLookupCodesQ",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "getPayDateBasisLOVResponse": {
+      "items": [
+        {
+          "LookupCode": "string",
+          "Meaning": "string"
+        }
+      ]
+    },
+    "getSuppliersResponseType": {
+      "Alias": "any",
+      "AlternateName": "any",
+      "BusinessClassificationNotApplicableFlag": "boolean",
+      "BusinessRelationship": "string",
+      "BusinessRelationshipCode": "string",
+      "ChiefExecutiveName": "any",
+      "ChiefExecutiveTitle": "any",
+      "CorporateWebsite": "any",
+      "CreatedBy": "string",
+      "CreationDate": "string",
+      "CreationSource": "string",
+      "CreationSourceCode": "string",
+      "CurrentFiscalYearPotentialRevenue": "any",
+      "CustomerNumber": "any",
+      "DataFoxCompanyName": "any",
+      "DataFoxCompanyPrimaryURL": "any",
+      "DataFoxCountry": "any",
+      "DataFoxEIN": "any",
+      "DataFoxId": "any",
+      "DataFoxLastSyncDate": "any",
+      "DataFoxLegalName": "any",
+      "DataFoxNAICSCode": "any",
+      "DataFoxScore": "any",
+      "DUNSNumber": "any",
+      "FederalIncomeTaxType": "any",
+      "FederalIncomeTaxTypeCode": "any",
+      "FederalReportableFlag": "boolean",
+      "FiscalYearEndMonth": "any",
+      "FiscalYearEndMonthCode": "any",
+      "InactiveDate": "string",
+      "IndustryCategory": "any",
+      "IndustrySubcategory": "any",
+      "LastUpdateDate": "string",
+      "LastUpdatedBy": "string",
+      "links": [
+        {
+          "href": "string",
+          "kind": "string",
+          "name": "string",
+          "properties": {
+            "changeIndicator": "string"
+          },
+          "rel": "string"
+        }
+      ],
+      "MissionStatement": "any",
+      "NameControl": "any",
+      "NationalInsuranceNumber": "any",
+      "NationalInsuranceNumberExistsFlag": "boolean",
+      "OBNEnabledFlag": "any",
+      "OneTimeSupplierFlag": "any",
+      "ParentSupplier": "any",
+      "ParentSupplierId": "any",
+      "ParentSupplierNumber": "any",
+      "PreferredFunctionalCurrency": "any",
+      "PreferredFunctionalCurrencyCode": "any",
+      "PrincipalName": "any",
+      "PrincipalTitle": "any",
+      "RegistryId": "string",
+      "StandardIndustryClass": "any",
+      "StateReportableFlag": "any",
+      "Status": "string",
+      "Supplier": "string",
+      "SupplierId": "number",
+      "SupplierNumber": "string",
+      "SupplierPartyId": "number",
+      "SupplierType": "string",
+      "SupplierTypeCode": "string",
+      "TaxOrganizationType": "string",
+      "TaxOrganizationTypeCode": "string",
+      "TaxpayerCountry": "string",
+      "TaxpayerCountryCode": "string",
+      "TaxpayerId": "string",
+      "TaxpayerIdExistsFlag": "boolean",
+      "TaxRegistrationCountry": "any",
+      "TaxRegistrationCountryCode": "any",
+      "TaxRegistrationNumber": "any",
+      "TaxReportingName": "any",
+      "UseWithholdingTaxFlag": "any",
+      "VerificationDate": "any",
+      "WithholdingTaxGroup": "any",
+      "WithholdingTaxGroupId": "any",
+      "YearEstablished": "any",
+      "YearIncorporated": "any"
+    },
+     "getSupplierTypesResponseType": {
+      "count": "number",
+      "hasMore": "boolean",
+      "items": [
+        {
+          "CreatedBy": "string",
+          "CreationDate": "string",
+          "Description": "string",
+          "DisplaySequence": "number",
+          "EnabledFlag": "string",
+          "EndDateActive": "any",
+          "LastUpdateDate": "string",
+          "LastUpdatedBy": "string",
+          "LastUpdateLogin": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "rel": "string"
+            }
+          ],
+          "LookupCode": "string",
+          "Meaning": "string",
+          "StartDateActive": "any",
+          "Tag": "string"
+        }
+      ],
+      "limit": "number",
+      "links": [
+        {
+          "href": "string",
+          "kind": "string",
+          "name": "string",
+          "rel": "string"
+        }
+      ],
+      "offset": "number"
+    },
+    "supplierTypesLOVType": [
+      {
+        "CreatedBy": "string",
+        "CreationDate": "string",
+        "Description": "string",
+        "DisplaySequence": "number",
+        "EnabledFlag": "string",
+        "EndDateActive": "any",
+        "LastUpdateDate": "string",
+        "LastUpdatedBy": "string",
+        "LastUpdateLogin": "string",
+        "links": [
+          {
+            "href": "string",
+            "kind": "string",
+            "name": "string",
+            "rel": "string"
+          }
+        ],
+        "LookupCode": "string",
+        "Meaning": "string",
+        "StartDateActive": "any",
+        "Tag": "string"
+      }
+    ]
+
+  },
+  "chains": {},
+  "eventListeners": {
+
+    "aClick2": {
+      "chains": [
+        {
+          "chainId": "requestForUpdateActionChain",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "aClick3": {
+      "chains": [
+        {
+          "chainId": "updateStatusActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}",
+            "key": "{{ $current.row.SupplierId }}"
+          }
+        }
+      ]
+    },
+    "buttonAction": {
+      "chains": [
+        {
+          "chainId": "ToBeDeletedNavigateToAdminScreen"
+        }
+      ]
+    },
+    "buttonAction2": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain"
+        }
+      ]
+    },
+    "buttonAction3": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain1"
+        }
+      ]
+    },
+    "ojButtonOjAction": {
+      "chains": [
+        {
+          "chainId": "searchSupplierActionChain"
+        }
+      ]
+    },
+    "ojButtonOjAction2": {
+      "chains": [
+        {
+          "chainId": "resetFieldsActionChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "pageLoadActionChain",
+          "parameters": {}
+        }
+      ],
+      "@dt": {
+        "showInDiagram": "off"
+      }
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-buttonset-many": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-combobox-one": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-highlight-text": {
+        "path": "ojs/ojhighlighttext"
+      },
+      "oj-input-date-time": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-popup": {
+        "path": "ojs/ojpopup"
+      },
+      "oj-select-one": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-text-area": {
+        "path": "ojs/ojinputtext"
+      }
+
+    },
+    "modules": {
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      }
+    },
+    "css": []
+  }
+}

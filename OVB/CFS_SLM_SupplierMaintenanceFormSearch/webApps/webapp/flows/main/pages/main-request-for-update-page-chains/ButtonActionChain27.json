@@ -1,0 +1,33 @@
+{
+  "description": "",
+  "root": "assignVariablesPopupNewContact",
+  "actions": {
+
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#PhoneCountryPopup10\" }}"
+        ]
+      }
+    },
+    "assignVariablesPopupNewContact": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewContact": {
+          "source": {
+            "RePhoneCountryCode": "{{ $page.variables.PhoneCountryCodeVar10 }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    }
+  },
+  "variables": {}
+}

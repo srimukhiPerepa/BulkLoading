@@ -1,0 +1,44 @@
+{
+    "classification_id": 300000065016293,
+    "supplier_id": 300000061785281,
+    "request_id": 10000001897,
+    "classification": null,
+    "certifying_agency_id": null,
+    "certifying_agency": null,
+    "other_certifying_agency": null,
+    "status": null,
+    "certificate": null,
+    "expiration_date": null,
+    "re_classification": null,
+    "re_certifying_agency_id": null,
+    "re_certifying_agency": null,
+    "re_other_certifying_agency": null,
+    "re_status": null,
+    "re_certificate": null,
+    "re_expiration_date": null,
+    "action_requested": null,
+    "creation_date": null,
+    "last_update_date": null,
+    "created_by": null,
+    "last_updated_by": null,
+    "classification_applicable_flag": null,
+    "api_response": null,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bus_classifications_tbl/300000065016293,300000061785281,10000001897"
+        },
+        {
+            "rel": "edit",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bus_classifications_tbl/300000065016293,300000061785281,10000001897"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/metadata-catalog/cfs_smf_bus_classifications_tbl/item"
+        },
+        {
+            "rel": "collection",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bus_classifications_tbl/"
+        }
+    ]
+}

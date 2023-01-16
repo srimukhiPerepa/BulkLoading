@@ -1,0 +1,69 @@
+{
+    "SupplierContactId": 300000042365177,
+    "SalutationCode": null,
+    "Salutation": null,
+    "FirstName": "LAURA",
+    "MiddleName": null,
+    "LastName": "HAMPTON",
+    "JobTitle": null,
+    "AdministrativeContactFlag": false,
+    "PhoneCountryCode": "1",
+    "PhoneAreaCode": "1234",
+    "PhoneNumber": "123456",
+    "PhoneExtension": null,
+    "MobileCountryCode": "1",
+    "MobileAreaCode": "2345",
+    "MobileNumber": "123456",
+    "FaxCountryCode": "1",
+    "FaxAreaCode": "1234",
+    "FaxNumber": "123456",
+    "Email": "laura@hampton.com",
+    "Status": "INACTIVE",
+    "InactiveDate": "2022-06-12",
+    "PersonProfileId": 300000042365177,
+    "CreationDate": "2022-03-14T09:31:28.433+00:00",
+    "CreatedBy": "anonymous",
+    "LastUpdateDate": "2022-06-14T17:36:03.289+00:00",
+    "LastUpdatedBy": "C987123",
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042365175/child/contacts/300000042365177",
+            "name": "contacts",
+            "kind": "item",
+            "properties": {
+                "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A6578700000000A77040000000A737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000057371007E0002000000067371007E0002000000017371007E0002000000027371007E0002000000017371007E0002000000027371007E0002000000017371007E0002000000017371007E0002000000017371007E00020000000478"
+            }
+        },
+        {
+            "rel": "canonical",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042365175/child/contacts/300000042365177",
+            "name": "contacts",
+            "kind": "item"
+        },
+        {
+            "rel": "parent",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042365175",
+            "name": "suppliers",
+            "kind": "item"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042365175/child/contacts/300000042365177/lov/SalutationLookup",
+            "name": "SalutationLookup",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042365175/child/contacts/300000042365177/child/DFF",
+            "name": "DFF",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042365175/child/contacts/300000042365177/child/addresses",
+            "name": "addresses",
+            "kind": "collection"
+        }
+    ]
+}

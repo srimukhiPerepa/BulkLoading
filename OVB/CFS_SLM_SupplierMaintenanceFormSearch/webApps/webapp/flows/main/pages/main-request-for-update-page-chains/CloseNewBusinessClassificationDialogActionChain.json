@@ -1,0 +1,200 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc2",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog4\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "fireDataProviderEventPostBusinessClassifications": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+
+        "target": "[[ $page.variables.businessClassificationUpdates ]]",
+        "refresh": null
+      },
+      "outcomes": {
+        "success": "resetVariablesPopupAddBusinessClassification"
+      }
+    },
+    "assignVariablesCurrentBusinessClassification": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.CurrentBusinessClassification": {
+          "source": {
+            "data": [
+              {
+
+                "action_requested": "{{ \"New\" }}",
+                "re_certificate": "{{ $page.variables.popupAddBusinessClassification.Certificate }}",
+                "re_certifying_agency": "{{ $page.variables.popupAddBusinessClassification.CertifyingAgency }}",
+                "re_classification": "{{ $page.variables.popupAddBusinessClassification.Classification }}",
+                "re_expiration_date": "{{ $page.variables.popupAddBusinessClassification.ExpirationDate }}",
+                "re_other_certifying_agency": "{{ $page.variables.popupAddBusinessClassification.OtherCertifyingAgency }}",
+
+                "certificate": "{{ $page.variables.popupAddBusinessClassification.Certificate }}",
+                "certifying_agency": "{{ $page.variables.popupAddBusinessClassification.CertifyingAgency }}",
+                "classification": "{{ $page.variables.popupAddBusinessClassification.Classification }}",
+                "expiration_date": "{{ $page.variables.popupAddBusinessClassification.ExpirationDate }}",
+                "other_certifying_agency": "{{ $page.variables.popupAddBusinessClassification.OtherCertifyingAgency }}",
+                "created_by": "{{ $application.user.userId }}",
+                "last_updated_by": "{{ $application.user.userId }}",
+                "classification_id": "{{ $chain.results.callRestGetGenerateClassificationId.body.items[0].classification_id }}"
+
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesBusinessClassificationUpdates"
+      }
+    },
+    "resetVariablesPopupAddBusinessClassification": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupAddBusinessClassification"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "assignVariablesBusinessClassificationUpdates": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.businessClassificationUpdates": {
+          "source": {
+            "data": "{{ $page.variables.CurrentBusinessClassification.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        },
+        "$page.variables.SupplierBusinessClassificationId": {
+          "source": "{{ $page.variables.SupplierBusinessClassificationId+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostBusinessClassifications"
+      }
+    },
+    "ifBusClassExpDateValidation": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.BusClassExpDateValidation ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetGenerateClassificationId",
+        "false": "fireNotification"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Expiration Date should be a future date",
+        "message": "Expiration Date should be a future date"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "ifPopupAddBusinessClassification": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupAddBusinessClassification.Classification ]]"
+      },
+      "outcomes": {
+        "true": "ifBusClassExpDateValidation",
+        "false": "fireNotification3"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Please enter all the mandatory fields marked with *",
+        "summary": "Please enter all the mandatory fields marked with *"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15000\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetGenerateClassificationId.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to generate classification id"
+      }
+    },
+    "callRestGetGenerateClassificationId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGenerate_classification_id"
+      },
+      "outcomes": {
+        "failure": "fireNotification2",
+        "success": "assignVariablesCurrentBusinessClassification"
+      }
+    },
+    "callFunctionOpenDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "ifPopupAddBusinessClassification"
+      }
+    },
+    "callFunctionCloseDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

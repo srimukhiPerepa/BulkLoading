@@ -1,0 +1,35 @@
+{
+  "description": "",
+  "root": "assignVariablesPopupNewAddress",
+  "actions": {
+    "assignVariablesPopupNewAddress": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewAddress": {
+          "source": {
+            "ReCountry": "{{ $variables.key }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "data": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "metadata": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

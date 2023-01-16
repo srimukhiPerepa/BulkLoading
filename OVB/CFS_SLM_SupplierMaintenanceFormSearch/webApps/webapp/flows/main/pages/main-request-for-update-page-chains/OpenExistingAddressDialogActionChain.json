@@ -1,0 +1,138 @@
+{
+  "description": "",
+  "root": "resetVariablesFlag",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog2\" }}"
+        ]
+      }
+    },
+    "assignVariablesPopupExistingAddress": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupExistingAddress": {
+          "source": {
+
+            "AddressLine1": "{{ $variables.current.AddressLine1 }}",
+            "AddressLine2": "{{ $variables.current.AddressLine2 }}",
+            "AddressLine3": "{{ $variables.current.AddressLine3 }}",
+            "AddressName": "{{ $variables.current.AddressName }}",
+            "City": "{{ $variables.current.City }}",
+            "Country": "{{ $variables.current.Country }}",
+            "County": "{{ $variables.current.County }}",
+            "Email": "{{ $variables.current.Email }}",
+            "Fax": "{{ $variables.current.FaxNumber?$variables.current.FaxNumber:\"\" }}",
+            "FaxAreaCode": "{{ $variables.current.FaxAreaCode }}",
+            "FaxCountryCode": "{{ $variables.current.FaxCountryCode }}",
+            "Phone": "{{ $variables.current.PhoneNumber?$variables.current.PhoneNumber:\"\" }}",
+            "PhoneAreaCode": "{{ $variables.current.PhoneAreaCode }}",
+            "PhoneCountryCode": "{{ $variables.current.PhoneCountryCode }}",
+            "PhoneExtensionCode": "{{ $variables.current.PhoneExtension }}",
+            "PostalCode": "{{ $variables.current.PostalCode }}",
+            "State": "{{ $variables.current.State }}",
+            "RemitTo": "{{ $variables.current.AddressPurposeRemitToFlag?\"Yes\":\"No\" }}",
+            "AddressId": "{{ $variables.key }}",
+            "DisplayFaxAreaCode": "{{ $variables.current.FaxAreaCode?\"(\"+$variables.current.FaxAreaCode+\")\":\"\" }}",
+            "DisplayFaxCountryCode": "{{ $variables.current.FaxCountryCode?\"+\"+$variables.current.FaxCountryCode+\" \":\"\" }}",
+            "DisplayPhoneAreaCode": "{{ $variables.current.PhoneAreaCode?\"(\"+$variables.current.PhoneAreaCode+\")\":\"\" }}",
+            "DisplayPhoneCountryCode": "{{ $variables.current.PhoneCountryCode?\"+\"+$variables.current.PhoneCountryCode+\" \":\"\" }}",
+            "DisplayPhoneExtensionCode": "{{ $variables.current.PhoneExtension?\" x\"+$variables.current.PhoneExtension:\"\" }}",
+            "ReRemitTo": "{{ $variables.current.AddressPurposeRemitToFlag?\"Yes\":\"No\" }}",
+            "Province": "{{ $variables.current.Province }}"
+          },
+          "reset": "toDefault",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "forEachInPostSupplierAddresses": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postSupplierAddresses.data }}",
+        "actionId": "ifKey"
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "ifKey": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_address_id==$variables.key ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "resetVariablesFlag": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$variables.flag",
+          "$page.variables.getAddressValidations"          ,
+          "$page.variables.validationsArray"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInPostSupplierAddresses"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "You have already requested updates for this address",
+        "summary": "You have already requested updates for this address",
+        "type": "info"
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesPopupExistingAddress",
+        "true": "fireNotification"
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+
+  }
+}

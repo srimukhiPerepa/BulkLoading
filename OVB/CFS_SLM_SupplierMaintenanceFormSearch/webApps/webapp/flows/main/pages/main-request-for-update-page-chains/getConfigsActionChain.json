@@ -1,0 +1,87 @@
+{
+  "root": "callRestGetCfsSmfConfigs",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetCfsSmfConfigs.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetCfsSmfConfigs": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/getCfs_smf_configs"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetConfigs"
+      }
+    },
+    "assignVariablesDocumentumURL": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DocumentumURL": {
+          "source": "{{ $current.data.config_value }}"
+        }
+      }
+    },
+    "assignVariablesGetConfigs": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getConfigs": {
+          "source": "{{ $chain.results.callRestGetCfsSmfConfigs.body.items }}"
+        }
+      },
+      "outcomes": {
+        "success": "forEachInGetConfigs"
+      }
+    },
+    "forEachInGetConfigs": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.getConfigs }}",
+        "actionId": "if"
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.config_code==\"DOCUMENTUM_URL\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesDocumentumURL",
+        "false": "if3"
+      }
+    },
+    "assignVariablesHelpDocURL": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.HelpDocURL": {
+          "source": "{{ $current.data.config_value }}"
+        }
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.config_code==\"HELP_DOC_URL\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesHelpDocURL"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "description": "",
+  "root": "resetVariablesPopupAddress",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog3\" }}"
+        ]
+      }
+    },
+    "resetVariablesPopupAddress": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupAddress",
+          "$page.variables.getAddressValidations",
+          "$page.variables.validationsArray"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    }
+  },
+  "variables": {}
+}

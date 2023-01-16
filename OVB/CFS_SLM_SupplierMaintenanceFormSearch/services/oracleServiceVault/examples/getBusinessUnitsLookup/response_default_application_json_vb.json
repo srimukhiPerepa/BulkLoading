@@ -1,0 +1,157 @@
+{
+    "items": [
+        {
+            "LookupCode": "Voucher Business Service Cente",
+            "Meaning": "Voucher Business Service Center",
+            "Description": "Voucher Business Service Center",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 1,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-07T13:27:28.773+00:00",
+            "LastUpdateDate": "2022-06-07T13:29:02.549+00:00",
+            "LastUpdateLogin": "E0D95B96F61AAB59E053CC61500A6035",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/Voucher%20Business%20Service%20Cente",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/Voucher%20Business%20Service%20Cente",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT",
+                    "name": "commonLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/Voucher%20Business%20Service%20Cente/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/Voucher%20Business%20Service%20Cente/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "UK Business Service Center",
+            "Meaning": "UK Business Service Center",
+            "Description": "UK Business Service Center",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 2,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-07T13:28:25.101+00:00",
+            "LastUpdateDate": "2022-06-07T13:29:02.553+00:00",
+            "LastUpdateLogin": "E0D95B96F61AAB59E053CC61500A6035",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/UK%20Business%20Service%20Center",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/UK%20Business%20Service%20Center",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT",
+                    "name": "commonLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/UK%20Business%20Service%20Center/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/UK%20Business%20Service%20Center/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "Canada Business Service Center",
+            "Meaning": "Canada Business Service Center",
+            "Description": "Canada Business Service Center",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "DisplaySequence": 3,
+            "Tag": null,
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "CreationDate": "2022-06-07T13:28:48.227+00:00",
+            "LastUpdateDate": "2022-06-07T13:29:02.555+00:00",
+            "LastUpdateLogin": "E0D95B96F61AAB59E053CC61500A6035",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/Canada%20Business%20Service%20Center",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/Canada%20Business%20Service%20Center",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT",
+                    "name": "commonLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/Canada%20Business%20Service%20Center/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes/Canada%20Business%20Service%20Center/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 3,
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/commonLookups/CFS_SMF_BUSINESS%20UNIT/child/lookupCodes",
+            "name": "lookupCodes",
+            "kind": "collection"
+        }
+    ]
+}

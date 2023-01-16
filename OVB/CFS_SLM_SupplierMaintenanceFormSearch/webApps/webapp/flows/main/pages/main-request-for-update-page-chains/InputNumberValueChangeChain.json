@@ -1,0 +1,62 @@
+{
+  "description": "",
+  "root": "fireNotification3",
+  "actions": {
+    "callFunctionCheckNumberFormat": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "checkNumberFormat",
+        "params": [
+          "{{ $variables.value }}"
+        ],
+        "returnType": "boolean"
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionCheckNumberFormat ]]"
+      },
+      "outcomes": {
+        "true": "return",
+        "false": "fireNotification"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "please enter numbers.",
+        "summary": "please enter numbers."
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "call func",
+        "message": "call func"
+      },
+      "outcomes": {
+        "success": "callFunctionCheckNumberFormat"
+      }
+    }
+  },
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

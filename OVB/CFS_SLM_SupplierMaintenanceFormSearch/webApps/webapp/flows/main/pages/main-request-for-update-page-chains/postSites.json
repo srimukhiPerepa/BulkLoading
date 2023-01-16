@@ -1,0 +1,830 @@
+{
+  "root": "ifRequestStatus",
+  "description": "",
+  "actions": {
+    "resetVariablesDummyPostSites": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostSites",
+          "$variables.vendorSiteIdVar",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "forEachInPostSites": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postSites.data }}",
+        "actionId": "resetVariablesDummyPostSites"
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Failed to update Sites",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Sites Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables7"
+      }
+    },
+    "callRestPostCfsSmfSitesTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/postCfs_smf_sites_tbl",
+        "body": "{{ $page.variables.DummyPostSites.data[0] }}"
+      },
+      "outcomes": {
+        "failure": "if7"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariablesDummyPostSites": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostSites": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "alternate_site_name": "{{ $current.data.alternate_site_name }}",
+                "bill_to_bu": "{{ $current.data.bill_to_bu }}",
+                "client_bu": "{{ $current.data.client_bu }}",
+                "hold_all_invoices_flag": "{{ $current.data.hold_all_invoices_flag }}",
+                "hold_unvalidated_invoices_flag": "{{ $current.data.hold_unvalidated_invoices_flag }}",
+                "inactive_date": "{{ $current.data.inactive_date?$current.data.inactive_date+\"T00:00:00Z\":$current.data.inactive_date }}",
+                "income_tax_reporting_site_flag": "{{ $current.data.income_tax_reporting_site_flag }}",
+                "invoice_amount_limit": "{{ $current.data.invoice_amount_limit }}",
+                "invoice_currency_code": "{{ $current.data.invoice_currency_code }}",
+                "nuclear_qualified": "{{ $current.data.nuclear_qualified }}",
+                "pay_date_basis": "{{ $current.data.pay_date_basis }}",
+                "payment_currency_code": "{{ $current.data.payment_currency_code }}",
+                "payment_hold_reason": "{{ $current.data.payment_hold_reason }}",
+                "payment_method": "{{ $current.data.payment_method }}",
+                "payment_terms": "{{ $current.data.payment_terms }}",
+                "payment_terms_date_basis": "{{ $current.data.payment_terms_date_basis }}",
+                "procurement_bu": "{{ $current.data.procurement_bu }}",
+                "re_alternate_site_name": "{{ $current.data.re_alternate_site_name }}",
+                "re_bill_to_bu": "{{ $current.data.re_bill_to_bu }}",
+                "re_client_bu": "{{ $current.data.re_client_bu }}",
+                "re_hold_all_invoices_flag": "{{ $current.data.re_hold_all_invoices_flag }}",
+                "re_hold_unvalidated_invoices_flag": "{{ $current.data.re_hold_unvalidated_invoices_flag }}",
+                "re_inactive_date": "{{ $current.data.re_inactive_date?$current.data.re_inactive_date+\"T00:00:00Z\":$current.data.re_inactive_date }}",
+                "re_income_tax_reporting_site_flag": "{{ $current.data.re_income_tax_reporting_site_flag }}",
+                "re_invoice_amount_limit": "{{ $current.data.re_invoice_amount_limit }}",
+                "re_invoice_currency_code": "{{ $current.data.re_invoice_currency_code }}",
+                "re_nuclear_qualified": "{{ $current.data.re_nuclear_qualified }}",
+                "re_pay_date_basis": "{{ $current.data.re_pay_date_basis }}",
+                "re_payment_currency_code": "{{ $current.data.re_payment_currency_code }}",
+                "re_payment_hold_reason": "{{ $current.data.re_payment_hold_reason }}",
+                "re_payment_method": "{{ $current.data.re_payment_method }}",
+                "re_payment_terms": "{{ $current.data.re_payment_terms }}",
+                "re_payment_terms_date_basis": "{{ $current.data.re_payment_terms_date_basis }}",
+                "re_procurement_bu": "{{ $current.data.re_procurement_bu }}",
+                "re_remittance_delivery_email": "{{ $current.data.re_remittance_delivery_email }}",
+                "re_remittance_delivery_method": "{{ $current.data.re_remittance_delivery_method }}",
+                "re_site_purpose_pay_flag": "{{ $current.data.re_site_purpose_pay_flag }}",
+                "re_site_status": "{{ $current.data.re_site_status }}",
+                "re_status_reason_code": "{{ $current.data.re_status_reason_code }}",
+                "re_supplier_address_name": "{{ $current.data.re_supplier_address_name }}",
+                "re_supplier_site": "{{ $current.data.re_supplier_site }}",
+                "remittance_delivery_email": "{{ $current.data.remittance_delivery_email }}",
+                "remittance_delivery_method": "{{ $current.data.remittance_delivery_method }}",
+                "site_purpose_pay_flag": "{{ $current.data.site_purpose_pay_flag }}",
+                "site_status": "{{ $current.data.site_status }}",
+                "status_reason_code": "{{ $current.data.status_reason_code }}",
+                "supplier_address_name": "{{ $current.data.supplier_address_name }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "supplier_site_id": "{{ $current.data.supplier_site_id }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "created_by": "{{ $application.user.username }}",
+                "payee_id": "{{$current.data.payee_id}}",
+                "record_status": "{{ \"ACTIVE\" }}",
+                "vendor_site_id": "{{ $variables.vendorSiteIdVar }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfSitesTbl"
+      }
+    },
+    "return3": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "callRestPutCfsSmfSitesTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_sites_tbl",
+        "uriParams": {
+          "request_id": "{{ $page.variables.DummyPostSites.data[0].request_id }}",
+          "supplier_id": "{{ $page.variables.DummyPostSites.data[0].supplier_id }}",
+          "supplier_site_id": "{{ $page.variables.DummyPostSites.data[0].supplier_site_id }}"
+        },
+        "body": "{{ $page.variables.DummyPostSites.data[0] }}"
+      },
+      "outcomes": {
+        "failure": "if5"
+      }
+    },
+    "forEachInPostSites2": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "actionId": "resetVariablesDummyPostSites4",
+        "items": "{{ $page.variables.postSites.data }}"
+      },
+      "outcomes": {
+        "success": "forEachInInactivateSites"
+      }
+    },
+    "ifRequestStatus": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus == \"More Information Requested\"]]"
+      },
+      "outcomes": {
+        "false": "forEachInPostSites",
+        "true": "forEachInPostSites2"
+      }
+    },
+    "assignVariablesDummyPostSites2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostSites": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "alternate_site_name": "{{ $current.data.alternate_site_name }}",
+                "bill_to_bu": "{{ $current.data.bill_to_bu }}",
+                "client_bu": "{{ $current.data.client_bu }}",
+                "hold_all_invoices_flag": "{{ $current.data.hold_all_invoices_flag }}",
+                "hold_unvalidated_invoices_flag": "{{ $current.data.hold_unvalidated_invoices_flag }}",
+                "inactive_date": "{{ $current.data.inactive_date?$current.data.inactive_date+\"T00:00:00Z\":$current.data.inactive_date }}",
+                "income_tax_reporting_site_flag": "{{ $current.data.income_tax_reporting_site_flag }}",
+                "invoice_amount_limit": "{{ $current.data.invoice_amount_limit }}",
+                "invoice_currency_code": "{{ $current.data.invoice_currency_code }}",
+                "nuclear_qualified": "{{ $current.data.nuclear_qualified }}",
+                "pay_date_basis": "{{ $current.data.pay_date_basis }}",
+                "payment_currency_code": "{{ $current.data.payment_currency_code }}",
+                "payment_hold_reason": "{{ $current.data.payment_hold_reason }}",
+                "payment_method": "{{ $current.data.payment_method }}",
+                "payment_terms": "{{ $current.data.payment_terms }}",
+                "payment_terms_date_basis": "{{ $current.data.payment_terms_date_basis }}",
+                "procurement_bu": "{{ $current.data.procurement_bu }}",
+                "re_alternate_site_name": "{{ $current.data.re_alternate_site_name }}",
+                "re_bill_to_bu": "{{ $current.data.re_bill_to_bu }}",
+                "re_client_bu": "{{ $current.data.re_client_bu }}",
+                "re_hold_all_invoices_flag": "{{ $current.data.re_hold_all_invoices_flag }}",
+                "re_hold_unvalidated_invoices_flag": "{{ $current.data.re_hold_unvalidated_invoices_flag }}",
+                "re_inactive_date": "{{ $current.data.re_inactive_date?$current.data.re_inactive_date+\"T00:00:00Z\":$current.data.re_inactive_date }}",
+                "re_income_tax_reporting_site_flag": "{{ $current.data.re_income_tax_reporting_site_flag }}",
+                "re_invoice_amount_limit": "{{ $current.data.re_invoice_amount_limit }}",
+                "re_invoice_currency_code": "{{ $current.data.re_invoice_currency_code }}",
+                "re_nuclear_qualified": "{{ $current.data.re_nuclear_qualified }}",
+                "re_pay_date_basis": "{{ $current.data.re_pay_date_basis }}",
+                "re_payment_currency_code": "{{ $current.data.re_payment_currency_code }}",
+                "re_payment_hold_reason": "{{ $current.data.re_payment_hold_reason }}",
+                "re_payment_method": "{{ $current.data.re_payment_method }}",
+                "re_payment_terms": "{{ $current.data.re_payment_terms }}",
+                "re_payment_terms_date_basis": "{{ $current.data.re_payment_terms_date_basis }}",
+                "re_procurement_bu": "{{ $current.data.re_procurement_bu }}",
+                "re_remittance_delivery_email": "{{ $current.data.re_remittance_delivery_email }}",
+                "re_remittance_delivery_method": "{{ $current.data.re_remittance_delivery_method }}",
+                "re_site_purpose_pay_flag": "{{ $current.data.re_site_purpose_pay_flag }}",
+                "re_site_status": "{{ $current.data.re_site_status }}",
+                "re_status_reason_code": "{{ $current.data.re_status_reason_code }}",
+                "re_supplier_address_name": "{{ $current.data.re_supplier_address_name }}",
+                "re_supplier_site": "{{ $current.data.re_supplier_site }}",
+                "remittance_delivery_email": "{{ $current.data.remittance_delivery_email }}",
+                "remittance_delivery_method": "{{ $current.data.remittance_delivery_method }}",
+                "site_purpose_pay_flag": "{{ $current.data.site_purpose_pay_flag }}",
+                "site_status": "{{ $current.data.site_status }}",
+                "status_reason_code": "{{ $current.data.status_reason_code }}",
+                "supplier_address_name": "{{ $current.data.supplier_address_name }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "supplier_site_id": "{{ $current.data.supplier_site_id }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "created_by": "{{ $application.user.username }}",
+                "payee_id": "{{$current.data.payee_id}}",
+                "record_status": "{{ \"ACTIVE\" }}",
+                "vendor_site_id": "{{ $variables.vendorSiteIdVar }}"
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfSitesTbl"
+      }
+    },
+    "forEachInInactivateSites": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.InactivateSites.data }}",
+        "actionId": "resetVariablesDummyPostSites2"
+      },
+      "outcomes": {
+        "success": "return3"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostSites": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "alternate_site_name": "{{ $current.data.alternate_site_name }}",
+                "bill_to_bu": "{{ $current.data.bill_to_bu }}",
+                "client_bu": "{{ $current.data.client_bu }}",
+                "hold_all_invoices_flag": "{{ $current.data.hold_all_invoices_flag }}",
+                "hold_unvalidated_invoices_flag": "{{ $current.data.hold_unvalidated_invoices_flag }}",
+                "inactive_date": "{{ $current.data.inactive_date?$current.data.inactive_date+\"T00:00:00Z\":$current.data.inactive_date }}",
+                "income_tax_reporting_site_flag": "{{ $current.data.income_tax_reporting_site_flag }}",
+                "invoice_amount_limit": "{{ $current.data.invoice_amount_limit }}",
+                "invoice_currency_code": "{{ $current.data.invoice_currency_code }}",
+                "nuclear_qualified": "{{ $current.data.nuclear_qualified }}",
+                "pay_date_basis": "{{ $current.data.pay_date_basis }}",
+                "payment_currency_code": "{{ $current.data.payment_currency_code }}",
+                "payment_hold_reason": "{{ $current.data.payment_hold_reason }}",
+                "payment_method": "{{ $current.data.payment_method }}",
+                "payment_terms": "{{ $current.data.payment_terms }}",
+                "payment_terms_date_basis": "{{ $current.data.payment_terms_date_basis }}",
+                "procurement_bu": "{{ $current.data.procurement_bu }}",
+                "re_alternate_site_name": "{{ $current.data.re_alternate_site_name }}",
+                "re_bill_to_bu": "{{ $current.data.re_bill_to_bu }}",
+                "re_client_bu": "{{ $current.data.re_client_bu }}",
+                "re_hold_all_invoices_flag": "{{ $current.data.re_hold_all_invoices_flag }}",
+                "re_hold_unvalidated_invoices_flag": "{{ $current.data.re_hold_unvalidated_invoices_flag }}",
+                "re_inactive_date": "{{ $current.data.re_inactive_date?$current.data.re_inactive_date+\"T00:00:00Z\":$current.data.re_inactive_date }}",
+                "re_income_tax_reporting_site_flag": "{{ $current.data.re_income_tax_reporting_site_flag }}",
+                "re_invoice_amount_limit": "{{ $current.data.re_invoice_amount_limit }}",
+                "re_invoice_currency_code": "{{ $current.data.re_invoice_currency_code }}",
+                "re_nuclear_qualified": "{{ $current.data.re_nuclear_qualified }}",
+                "re_pay_date_basis": "{{ $current.data.re_pay_date_basis }}",
+                "re_payment_currency_code": "{{ $current.data.re_payment_currency_code }}",
+                "re_payment_hold_reason": "{{ $current.data.re_payment_hold_reason }}",
+                "re_payment_method": "{{ $current.data.re_payment_method }}",
+                "re_payment_terms": "{{ $current.data.re_payment_terms }}",
+                "re_payment_terms_date_basis": "{{ $current.data.re_payment_terms_date_basis }}",
+                "re_procurement_bu": "{{ $current.data.re_procurement_bu }}",
+                "re_remittance_delivery_email": "{{ $current.data.re_remittance_delivery_email }}",
+                "re_remittance_delivery_method": "{{ $current.data.re_remittance_delivery_method }}",
+                "re_site_purpose_pay_flag": "{{ $current.data.re_site_purpose_pay_flag }}",
+                "re_site_status": "{{ $current.data.re_site_status }}",
+                "re_status_reason_code": "{{ $current.data.re_status_reason_code }}",
+                "re_supplier_address_name": "{{ $current.data.re_supplier_address_name }}",
+                "re_supplier_site": "{{ $current.data.re_supplier_site }}",
+                "remittance_delivery_email": "{{ $current.data.remittance_delivery_email }}",
+                "remittance_delivery_method": "{{ $current.data.remittance_delivery_method }}",
+                "site_purpose_pay_flag": "{{ $current.data.site_purpose_pay_flag }}",
+                "site_status": "{{ $current.data.site_status }}",
+                "status_reason_code": "{{ $current.data.status_reason_code }}",
+                "supplier_address_name": "{{ $current.data.supplier_address_name }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "supplier_site_id": "{{ $current.data.supplier_site_id }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "created_by": "{{ $application.user.username }}",
+                "payee_id": "{{$current.data.payee_id}}",
+                "record_status": "{{ \"INACTIVE\" }}",
+                "vendor_site_id": "{{ $variables.vendorSiteIdVar }}"
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfSitesTbl2"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfSitesTbl2.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Sites Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables9"
+      }
+    },
+    "callRestPutCfsSmfSitesTbl2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_sites_tbl",
+        "uriParams": {
+          "request_id": "{{ $page.variables.DummyPostSites.data[0].request_id }}",
+          "supplier_id": "{{ $page.variables.DummyPostSites.data[0].supplier_id }}",
+          "supplier_site_id": "{{ $page.variables.DummyPostSites.data[0].supplier_site_id }}"
+        },
+        "body": "{{ $page.variables.DummyPostSites.data[0] }}"
+      },
+      "outcomes": {
+        "failure": "if6"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Sites Updates: Failed"
+      }
+    },
+    "callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF",
+        "uriParams": {
+          "SupplierSiteId": "{{ $current.data.supplier_site_id }}",
+          "SupplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification4",
+        "success": "assignVariablesVendorSiteIdVar"
+      }
+    },
+    "fireNotification5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF2.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Sites Updates: Failed"
+      }
+    },
+    "callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF",
+        "uriParams": {
+          "SupplierSiteId": "{{ $current.data.supplier_site_id }}",
+          "SupplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification5",
+        "success": "assignVariablesVendorSiteIdVar3"
+      }
+    },
+    "fireNotification6": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF3.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Sites Updates: Failed"
+      }
+    },
+    "callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF3": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF",
+          "uriParams": {
+          "SupplierSiteId": "{{ $current.data.supplier_site_id }}",
+          "SupplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification6",
+        "success": "assignVariablesVendorSiteIdVar2"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.action_requested == \"Update\" ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF",
+        "false": "assignVariablesDummyPostSites"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.action_requested == \"Update\" ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF2",
+        "false": "assignVariablesDummyPostSites2"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.action_requested == \"Update\" ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF3",
+        "false": "assignVariables"
+      }
+    },
+    "assignVariablesVendorSiteIdVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.vendorSiteIdVar": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF.body.items[0].VendorSiteId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostSites"
+      }
+    },
+    "assignVariablesVendorSiteIdVar2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.vendorSiteIdVar": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF3.body.items[0].VendorSiteId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariables"
+      }
+    },
+    "assignVariablesVendorSiteIdVar3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.vendorSiteIdVar": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF2.body.items[0].VendorSiteId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostSites2"
+      }
+    },
+    "resetVariablesDummyPostSites2": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostSites",
+          "$variables.vendorSiteIdVar",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "if4"
+      }
+    },
+    "if5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfSitesTbl.status==503 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariables3",
+        "false": "fireNotification8"
+      }
+    },
+    "assignVariables3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfSitesTbl"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification2"
+      }
+    },
+    "fireNotification8": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Sites Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables2"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "fireNotification9": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables8"
+      }
+    },
+    "resetVariablesDummyPostSites4": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostSites",
+          "$variables.vendorSiteIdVar",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "if3"
+      }
+    },
+    "return5": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return6": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "if6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfSitesTbl2.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3",
+        "true": "assignVariables4"
+      }
+    },
+    "assignVariables4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry2"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables6"
+      }
+    },
+    "ifReTry2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall2",
+        "false": "fireNotification10"
+      }
+    },
+    "return7": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "callFunctionWaitForNextCall2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfSitesTbl2"
+      }
+    },
+    "return8": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "if7": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPostCfsSmfSitesTbl.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariables5"
+      }
+    },
+    "assignVariables5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry3"
+      }
+    },
+    "ifReTry3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification9",
+        "true": "callFunctionWaitForNextCall3"
+      }
+    },
+    "return9": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "callFunctionWaitForNextCall3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfSitesTbl"
+      }
+    },
+    "fireNotification10": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables10"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return2"
+      }
+    },
+    "assignVariables6": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return5"
+      }
+    },
+    "assignVariables7": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return8"
+      }
+    },
+    "assignVariables8": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return9"
+      }
+    },
+    "assignVariables9": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return6"
+      }
+    },
+    "assignVariables10": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return7"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "vendorSiteIdVar": {
+      "type": "string"
+    }
+
+  }
+}

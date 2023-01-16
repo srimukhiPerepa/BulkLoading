@@ -1,0 +1,213 @@
+{
+    "SupplierId": 300000042390398,
+    "SupplierPartyId": 300000042390396,
+    "Supplier": "Legend Textiles Test",
+    "SupplierNumber": "10062",
+    "AlternateName": "Textiles Corp Test",
+    "TaxOrganizationTypeCode": "CORPORATION",
+    "TaxOrganizationType": "Corporation",
+    "SupplierTypeCode": "Voucher Exempt",
+    "SupplierType": "Voucher Exempt",
+    "InactiveDate": "2022-06-30",
+    "Status": "ACTIVE",
+    "BusinessRelationshipCode": "SPEND_AUTHORIZED",
+    "BusinessRelationship": "Spend Authorized",
+    "ParentSupplierId": null,
+    "ParentSupplier": null,
+    "ParentSupplierNumber": null,
+    "CreationDate": "2022-03-14T10:17:42.056+00:00",
+    "CreatedBy": "anonymous",
+    "LastUpdateDate": "2022-06-17T11:41:04.244+00:00",
+    "LastUpdatedBy": "C987123",
+    "CreationSourceCode": "REGISTRATION",
+    "CreationSource": "Registration",
+    "DataFoxScore": null,
+    "DataFoxScoringCriteria": null,
+    "Alias": "Supplier Test",
+    "DUNSNumber": null,
+    "OneTimeSupplierFlag": null,
+    "RegistryId": "44072",
+    "CustomerNumber": null,
+    "StandardIndustryClass": null,
+    "IndustryCategory": null,
+    "IndustrySubcategory": null,
+    "NationalInsuranceNumber": null,
+    "NationalInsuranceNumberExistsFlag": false,
+    "CorporateWebsite": null,
+    "YearEstablished": null,
+    "MissionStatement": null,
+    "YearIncorporated": null,
+    "ChiefExecutiveTitle": null,
+    "ChiefExecutiveName": null,
+    "PrincipalTitle": null,
+    "PrincipalName": null,
+    "FiscalYearEndMonthCode": null,
+    "FiscalYearEndMonth": null,
+    "CurrentFiscalYearPotentialRevenue": null,
+    "PreferredFunctionalCurrencyCode": null,
+    "PreferredFunctionalCurrency": null,
+    "TaxRegistrationCountryCode": "US",
+    "TaxRegistrationCountry": "United States",
+    "TaxRegistrationNumber": "US12345",
+    "TaxpayerCountryCode": "US",
+    "TaxpayerCountry": "United States",
+    "TaxpayerId": "98-03376373",
+    "TaxpayerIdExistsFlag": true,
+    "FederalReportableFlag": false,
+    "FederalIncomeTaxTypeCode": null,
+    "FederalIncomeTaxType": null,
+    "StateReportableFlag": null,
+    "TaxReportingName": null,
+    "NameControl": null,
+    "VerificationDate": null,
+    "UseWithholdingTaxFlag": null,
+    "WithholdingTaxGroupId": null,
+    "WithholdingTaxGroup": null,
+    "BusinessClassificationNotApplicableFlag": null,
+    "DataFoxId": null,
+    "DataFoxCompanyName": null,
+    "DataFoxLegalName": null,
+    "DataFoxCompanyPrimaryURL": null,
+    "DataFoxNAICSCode": null,
+    "DataFoxCountry": null,
+    "DataFoxEIN": null,
+    "DataFoxLastSyncDate": null,
+    "OBNEnabledFlag": null,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+            "name": "suppliers",
+            "kind": "item",
+            "properties": {
+                "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000007770400000007737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000447371007E0002000000047371007E0002000000037371007E00020000000D7371007E0002000000027371007E0002000000047371007E00020000000178"
+            }
+        },
+        {
+            "rel": "canonical",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+            "name": "suppliers",
+            "kind": "item"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/CountryLookup",
+            "name": "CountryLookup",
+            "kind": "collection"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/FiscalYearEndMonthLookup",
+            "name": "FiscalYearEndMonthLookup",
+            "kind": "collection"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/ParentSupplierLookup",
+            "name": "ParentSupplierLookup",
+            "kind": "collection"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/CurrencyLookup",
+            "name": "CurrencyLookup",
+            "kind": "collection"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/BusinessRelationshipLookup",
+            "name": "BusinessRelationshipLookup",
+            "kind": "collection"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup",
+            "name": "TaxOrganizationTypeLookup",
+            "kind": "collection"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/SupplierTypeLookup",
+            "name": "SupplierTypeLookup",
+            "kind": "collection"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/FederalIncomeTaxTypeLookup",
+            "name": "FederalIncomeTaxTypeLookup",
+            "kind": "collection"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/WithholdingTaxGroupLookup",
+            "name": "WithholdingTaxGroupLookup",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/DFF",
+            "name": "DFF",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/addresses",
+            "name": "addresses",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/attachments",
+            "name": "attachments",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/businessClassifications",
+            "name": "businessClassifications",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/contacts",
+            "name": "contacts",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/globalDFF",
+            "name": "globalDFF",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/productsAndServices",
+            "name": "productsAndServices",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/child/sites",
+            "name": "sites",
+            "kind": "collection"
+        },
+        {
+            "rel": "action",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/action/scores",
+            "name": "scores",
+            "kind": "other"
+        },
+        {
+            "rel": "action",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/action/signals",
+            "name": "signals",
+            "kind": "other"
+        },
+        {
+            "rel": "action",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/action/submitSpendAuthorizationRequest",
+            "name": "submitSpendAuthorizationRequest",
+            "kind": "other"
+        }
+    ]
+}

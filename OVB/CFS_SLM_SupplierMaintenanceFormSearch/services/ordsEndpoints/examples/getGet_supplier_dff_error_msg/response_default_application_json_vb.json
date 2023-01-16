@@ -1,0 +1,23 @@
+{
+    "items": [
+        {
+            "supplier_name": "Dyson Corp Test",
+            "api_response": "Error",
+            "request_id": 10000001755
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_extensions/get_supplier_dff_error_msg/10000001755"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/metadata-catalog/cfs_extensions/get_supplier_dff_error_msg/item"
+        }
+    ]
+}

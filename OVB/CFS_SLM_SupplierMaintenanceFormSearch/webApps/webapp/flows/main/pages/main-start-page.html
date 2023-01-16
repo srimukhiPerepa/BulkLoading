@@ -1,0 +1,164 @@
+<!--
+ Copyright (c) 2014, 2020, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<title>Supplier Maintenance Form</title>
+<div class="oj-panel oj-flex-item oj-sm-12 oj-md-12">
+
+<!-- Sub header starts here-->
+
+  <div class="" style="">
+    <div class="oj-sm-align-items-baseline oj-flex" style="font-family: Georgia, Times, Times New Roman, serif; padding-left:12px">
+      <h1 style="color:black" id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6">Supplier Maintenance Form</h1>
+      <div class="oj-flex-item oj-sm-4 oj-md-4"></div>
+      <div class="oj-flex-item oj-sm-2 oj-md-2" dir="rtl">
+        <oj-button aria-setsize="10pt" chroming="solid" class=" "
+            on-oj-action="[[$listeners.ojButtonOjAction]]"><span style="color:black">Search</span>
+          </oj-button>
+        <oj-button aria-setsize="10pt" chroming="solid" class=" " on-oj-action="[[$listeners.ojButtonOjAction2]]"><span style="color:black">Reset</span></oj-button>    
+        <!--<oj-button chroming="outlined" on-oj-action="[[$listeners.buttonAction3]]">Admin</oj-button>-->
+      </div>
+    </div>
+
+  </div>
+
+<!-- Sub header Ends here-->
+
+<!--
+  <div class="oj-web-applayout-footer" style="background-color: #312d2a">
+    <div class="oj-sm-align-items-baseline oj-flex" style="font-family: Georgia, Times, Times New Roman, serif">
+      <h1 style="color:white" id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6">Supplier Maintenance Form</h1>
+      <div class="oj-flex-item oj-sm-4 oj-md-4"></div>
+      <div class="oj-flex-item oj-sm-2 oj-md-2" dir="rtl">
+        <oj-button chroming="outlined" on-oj-action="[[$listeners.ojButtonOjAction]]">Search</oj-button>
+        <oj-button chroming="outlined" on-oj-action="[[$listeners.ojButtonOjAction2]]">Reset</oj-button>    
+        <!--<oj-button chroming="outlined" on-oj-action="[[$listeners.buttonAction3]]">Admin</oj-button>
+      </div>
+    </div>
+
+  </div>
+ -->
+
+  <div class="oj-sm-align-items-baseline oj-flex" style="font-family: Georgia, Times, Times New Roman, serif">
+    <h1 id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6"></h1>
+  </div>
+
+  <div class="oj-flex" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif">
+
+    <div class="oj-panel oj-flex-item oj-sm-12 oj-md-12">
+      <div class="oj-sm-align-items-baseline oj-flex">
+        <h1 id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6 oj-typography-bold">Search Supplier</h1>
+      </div>
+
+      <div class="oj-divider-top oj-flex-item oj-sm-12 oj-md-12"></div>
+
+      <div class="oj-sm-align-items-baseline oj-flex">
+        <h5 id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6"></h5>
+      </div>  
+
+      <div class="oj-sm-align-items-baseline oj-flex" dir="rtl">
+        <oj-bind-if test="[[ $variables.mandatoryParamErrorVar ]]">
+          <h5 id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6" style="font-size:8pt;color:red" dir="rtl">Tip-Please provide search value of minimum 3 characters for at least one of the fields marked with asterisks (**)</h5>
+          </oj-bind-if>
+        <oj-bind-if test="[[ !$variables.mandatoryParamErrorVar ]]">
+          <h5 id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6" style="font-size:8pt;color:#0572ce" dir="rtl">Tip-Please provide search value of minimum 3 characters for at least one of the fields marked with asterisks (**)</h5>
+         </oj-bind-if>   
+        <h5 id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-12" style="font-size:8pt;color:#0572ce" dir="rtl">Supplier Search does not support '&' special character (**)</h5>
+      </div>       
+
+      <div class="oj-sm-align-items-baseline oj-flex">
+        <h5 id="h1-1084591017-1" class="oj-flex-item oj-sm-18 oj-md-18"></h5>
+      </div>         
+
+      <div class="oj-flex">
+        <oj-label for="oj-input-text-1084591017-1" class="oj-flex-item oj-sm-2 oj-md-2" dir="rtl" style="padding:10px">
+          Supplier **</oj-label>
+        <oj-input-text id="oj-input-text-1084591017-1" class="oj-flex-item oj-sm-2 oj-md-2"
+          value="{{ $variables.searchStringVar.supplierName }}"></oj-input-text>
+
+        <oj-label for="oj-text-area-1084591017-1000" class="oj-flex-item oj-sm-3 oj-md-3" dir="rtl" style="padding:10px">
+        </oj-label>
+
+        <oj-label for="oj-input-text-1084591017-2" class="oj-flex-item oj-sm-2 oj-md-2" dir="rtl" style="padding:10px">
+          Supplier Number **</oj-label>
+        <oj-input-text id="oj-input-text-1084591017-2" class="oj-flex-item oj-sm-2 oj-md-2"
+          value="{{ $variables.searchStringVar.supplierNumber }}"></oj-input-text>
+      </div>
+
+      <div class="oj-flex">
+        <oj-label for="oj-input-text-1084591017-3" class="oj-flex-item oj-sm-2 oj-md-2" dir="rtl" style="padding:10px">
+          Taxpayer ID **</oj-label>
+        <oj-input-text id="oj-input-text-1084591017-3" class="oj-flex-item oj-sm-12 oj-md-2"
+          value="{{ $variables.searchStringVar.taxpayerID }}"></oj-input-text>
+
+        <oj-label for="oj-text-area-1084591017-1000" class="oj-flex-item oj-sm-3 oj-md-3" dir="rtl" style="padding:10px">
+        </oj-label>      
+
+        <oj-label for="oj-input-text-1084591017-4" class="oj-flex-item oj-sm-2 oj-md-2" dir="rtl" style="padding:10px">
+          Tax Registration Number **</oj-label>
+        <oj-input-text id="oj-input-text-1084591017-4" class="oj-flex-item oj-sm-2 oj-md-2"
+          value="{{ $variables.searchStringVar.taxRegNumber }}"></oj-input-text>
+      </div>
+
+      <div class="oj-flex">
+        <oj-label for="oj-input-text-1084591017-5" class="oj-flex-item oj-sm-2 oj-md-2" dir="rtl" style="padding:10px">
+          Parent Supplier **</oj-label>
+        <oj-input-text id="oj-input-text-1084591017-5" class="oj-flex-item oj-sm-2 oj-md-2"
+          value="{{ $variables.searchStringVar.parentSupplier }}"></oj-input-text>
+
+        <oj-label for="oj-text-area-1084591017-1000" class="oj-flex-item oj-sm-3 oj-md-3" dir="rtl" style="padding:10px">
+        </oj-label>      
+
+        <oj-label for="oj-combobox-one-1084591017-1" class="oj-flex-item oj-sm-2 oj-md-2" dir="rtl" style="padding:10px">Supplier Type</oj-label>
+        <oj-combobox-one id="oj-combobox-one-1084591017-1" class="oj-flex-item oj-sm-2 oj-md-2"
+          options-keys.value="LookupCode" options-keys.label="Meaning" options="[[ $variables.supplierTypeVar ]]"
+          value="{{ $variables.searchStringVar.supplierType }}"></oj-combobox-one>
+      </div>
+
+      <div class="oj-flex">
+
+        <oj-label for="oj-input-text-1084591017-7" class="oj-flex-item oj-sm-2 oj-md-2" dir="rtl" style="padding:10px">
+          Alternate Name **</oj-label>
+        <oj-input-text id="oj-input-text-1084591017-7" class="oj-flex-item oj-sm-2 oj-md-2"
+          value="{{ $variables.searchStringVar.alternateName }}"></oj-input-text>
+
+      </div>  
+
+      <div class="oj-flex">
+        <div class="oj-divider-top oj-flex-item oj-sm-12 oj-md-12" style="margin-top:25px; margin-bottom:10px"></div>
+       
+        <oj-table class="oj-flex-item oj-sm-12 oj-md-12"
+          data="[[ $variables.getSuppliersListADPVar ]]" selection-mode.row="single"
+          columns='[{"headerText":"Supplier","field":"Supplier","template":"Supplier","sortable":"enabled"},{"headerText":"Supplier Number","field":"SupplierNumber","sortable":"enabled"},{"headerText":"Parent Supplier","field":"ParentSupplier"},{"headerText":"Taxpayer Id","field":"TaxpayerId"},{"headerText":"Tax Registration Number","field":"TaxRegistrationNumber"},{"headerText":"Taxpayer Country","field":"TaxpayerCountry"},{"headerText":"Supplier Type","field":"SupplierType","sortable":"enabled"},{"headerText":"Status","field":"Status","sortable":"enabled"},{"headerText":"Inactive Date","field":"InactiveDate","sortable":"enabled","template":"InactiveDate"},{"headerText":"Alternate Name","field":"AlternateName"},{"headerText":"Alias","field":"Alias"},{"headerText":"Update Status","field":"SupplierId","template":"Supplier Id"}]'
+          style="height:450px;max-height:450px;max-width:100%" scroll-policy="loadMoreOnScroll">        
+        <template slot="Supplier">
+          <a target="_blank" on-click="[[$listeners.aClick2]]" title="Request for Update Supplier">
+            <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+          </a>       
+        </template>
+        <template slot="InactiveDate" >
+          <oj-input-date-time readonly="true" value="{{ $current.row.inactive_date }}"
+            converter='{"type": "datetime", "options": {"pattern":"MM/dd/yy hh:mm:ss a"}}'></oj-input-date-time>
+        </template>
+        <template slot="Supplier Id">
+          <a target="_blank" on-click="[[$listeners.aClick3]]" title="Update Status">
+            <oj-bind-text value="View Details"></oj-bind-text>
+          </a>          
+        </template> 
+        <template slot="Supplier Id">
+          <a target="_blank">View Details</a>
+        </template>
+        </oj-table>       
+                
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<oj-popup class="demo-popup oj-focus-highlight" id="dialog" tail="none" position.my.horizontal="center"
+  position.my.vertical="bottom" position.at.horizontal="center" position.at.vertical="center" position.of="window"
+  position.offset.y="-10" modality="modal" auto-dismiss="none">
+    <div >Processing. Please wait..<div class="oj-flex"></div>
+    </div>
+    </oj-popup> 

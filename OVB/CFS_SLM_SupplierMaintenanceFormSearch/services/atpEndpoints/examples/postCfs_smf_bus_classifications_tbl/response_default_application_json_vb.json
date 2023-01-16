@@ -1,0 +1,45 @@
+{
+    "classification_id": 1,
+    "supplier_id": 300000061710879,
+    "request_id": 10000000910,
+    "classification": "test",
+    "certifying_agency_id": 1,
+    "certifying_agency": "Other",
+    "other_certifying_agency": "ABCD",
+    "status": "New",
+    "certificate": "123456789",
+    "expiration_date": null,
+    "re_classification": "re_test",
+    "re_certifying_agency_id": 123,
+    "re_certifying_agency": "Other",
+    "re_other_certifying_agency": "PQR",
+    "re_status": "New",
+    "re_certificate": "123456789",
+    "re_expiration_date": null,
+    "action_requested": "Update",
+    "classification_applicable_flag": null,
+    "api_response": null,
+    "created_by": "Prajakta",
+    "creation_date": null,
+    "last_updated_by": "Prajakta",
+    "last_update_date": null,
+    "record_status": null,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bus_classifications_tbl/1,300000061710879,10000000910"
+        },
+        {
+            "rel": "edit",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bus_classifications_tbl/1,300000061710879,10000000910"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/metadata-catalog/cfs_smf_bus_classifications_tbl/item"
+        },
+        {
+            "rel": "collection",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bus_classifications_tbl/"
+        }
+    ]
+}

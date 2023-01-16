@@ -1,0 +1,118 @@
+{
+  "description": "",
+  "root": "forEachInBusinessClassificationUpdates",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog1\" }}"
+        ]
+      }
+    },
+    "assignVariablesPopupExistingBusinessClassification": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupExistingBusinessClassification": {
+          "source": {
+            "Certificate": "{{ $variables.current.CertificateNumber }}",
+            "CertifyingAgency": "{{ $variables.current.CertifyingAgency }}",
+            "Classification": "{{ $variables.current.Classification }}",
+            "classificationId": "{{ $variables.current.ClassificationId }}",
+            "ExpirationDate": "{{ $variables.current.CertificateExpirationDate }}",
+            "OtherCertifyingAgency": "{{ $variables.current.OtherCertifyingAgency }}",
+            "Status": "{{ $variables.current.Status }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "resetVariablesPopupExistingBusinessClassification": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupExistingBusinessClassification"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPopupExistingBusinessClassification"
+      }
+    },
+    "forEachInBusinessClassificationUpdates": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.businessClassificationUpdates.data }}",
+        "actionId": "ifKey"
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "ifKey": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.classification_id==$variables.key ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "You have already requested updates for this classification",
+        "message": "You have already requested updates for this classification",
+        "type": "info"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification"
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "false": "resetVariablesPopupExistingBusinessClassification"
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+
+  }
+}

@@ -1,0 +1,306 @@
+{
+    "items": [
+        {
+            "LookupCode": "CORPORATION",
+            "LookupType": "POZ_ORGANIZATION_TYPE",
+            "DisplayedField": "Corporation",
+            "DisplaySequence": null,
+            "EnabledFlag": "Y",
+            "EndDateActive": null,
+            "StartDateActive": "2009-11-03",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/00020000000B434F52504F524154494F4E00000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/00020000000B434F52504F524154494F4E00000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "LookupCode": "FOREIGN CORPORATION",
+            "LookupType": "POZ_ORGANIZATION_TYPE",
+            "DisplayedField": "Foreign Corporation",
+            "DisplaySequence": null,
+            "EnabledFlag": "Y",
+            "EndDateActive": null,
+            "StartDateActive": "2009-11-03",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/000200000013464F524549474E20434F52504F524154494F4E00000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/000200000013464F524549474E20434F52504F524154494F4E00000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "LookupCode": "FOREIGN GOVERNMENT AGENCY",
+            "LookupType": "POZ_ORGANIZATION_TYPE",
+            "DisplayedField": "Foreign Government Agency",
+            "DisplaySequence": null,
+            "EnabledFlag": "Y",
+            "EndDateActive": null,
+            "StartDateActive": "2009-11-03",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/000200000019464F524549474E20474F5645524E4D454E54204147454E435900000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/000200000019464F524549474E20474F5645524E4D454E54204147454E435900000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "LookupCode": "FOREIGN INDIVIDUAL",
+            "LookupType": "POZ_ORGANIZATION_TYPE",
+            "DisplayedField": "Foreign Individual",
+            "DisplaySequence": null,
+            "EnabledFlag": "Y",
+            "EndDateActive": null,
+            "StartDateActive": "2009-11-03",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/000200000012464F524549474E20494E444956494455414C00000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/000200000012464F524549474E20494E444956494455414C00000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "LookupCode": "FOREIGN NON-REPORTABLE ENTITY",
+            "LookupType": "POZ_ORGANIZATION_TYPE",
+            "DisplayedField": "Foreign Non-Reportable Entity",
+            "DisplaySequence": null,
+            "EnabledFlag": "Y",
+            "EndDateActive": null,
+            "StartDateActive": "2022-02-18",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/00020000001D464F524549474E204E4F4E2D5245504F525441424C4520454E5449545900000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/00020000001D464F524549474E204E4F4E2D5245504F525441424C4520454E5449545900000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "LookupCode": "FOREIGN PARTNERSHIP",
+            "LookupType": "POZ_ORGANIZATION_TYPE",
+            "DisplayedField": "Foreign Partnership",
+            "DisplaySequence": null,
+            "EnabledFlag": "Y",
+            "EndDateActive": null,
+            "StartDateActive": "2009-11-03",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/000200000013464F524549474E20504152544E45525348495000000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/000200000013464F524549474E20504152544E45525348495000000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "LookupCode": "GOVERNMENT AGENCY",
+            "LookupType": "POZ_ORGANIZATION_TYPE",
+            "DisplayedField": "Government Agency",
+            "DisplaySequence": null,
+            "EnabledFlag": "Y",
+            "EndDateActive": null,
+            "StartDateActive": "2009-11-03",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/000200000011474F5645524E4D454E54204147454E435900000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/000200000011474F5645524E4D454E54204147454E435900000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "LookupCode": "INDIVIDUAL",
+            "LookupType": "POZ_ORGANIZATION_TYPE",
+            "DisplayedField": "Individual",
+            "DisplaySequence": null,
+            "EnabledFlag": "Y",
+            "EndDateActive": null,
+            "StartDateActive": "2009-11-03",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/00020000000A494E444956494455414C00000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/00020000000A494E444956494455414C00000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "LookupCode": "NON-REPORTABLE ENTITY",
+            "LookupType": "POZ_ORGANIZATION_TYPE",
+            "DisplayedField": "Non-Reportable Entity",
+            "DisplaySequence": null,
+            "EnabledFlag": "Y",
+            "EndDateActive": null,
+            "StartDateActive": "2022-02-18",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/0002000000154E4F4E2D5245504F525441424C4520454E5449545900000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/0002000000154E4F4E2D5245504F525441424C4520454E5449545900000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "LookupCode": "PARTNERSHIP",
+            "LookupType": "POZ_ORGANIZATION_TYPE",
+            "DisplayedField": "Partnership",
+            "DisplaySequence": null,
+            "EnabledFlag": "Y",
+            "EndDateActive": null,
+            "StartDateActive": "2009-11-03",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/00020000000B504152544E45525348495000000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup/00020000000B504152544E45525348495000000015504F5A5F4F5247414E495A4154494F4E5F54595045",
+                    "name": "TaxOrganizationTypeLookup",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398",
+                    "name": "suppliers",
+                    "kind": "item"
+                }
+            ]
+        }
+    ],
+    "count": 10,
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042390398/lov/TaxOrganizationTypeLookup",
+            "name": "TaxOrganizationTypeLookup",
+            "kind": "collection"
+        }
+    ]
+}

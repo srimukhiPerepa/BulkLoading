@@ -1,0 +1,56 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc",
+  "actions": {
+    "navigateToMainRequestForUpdate": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-request-for-update",
+        "params": {
+          "requestId": "{{ $variables.current.request_id }}",
+          "inputSupplierNumberVar": "{{ $page.variables.inputSupplierIdVar }}",
+          "requestStatus": "{{ $variables.current.status }}",
+          "SourcePage": "{{ $page.variables.SourcePage }}",
+          "approverComment": "{{ $variables.current.approver_comment }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc"
+      },
+      "outcomes": {
+        "success": "navigateToMainRequestForUpdate"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

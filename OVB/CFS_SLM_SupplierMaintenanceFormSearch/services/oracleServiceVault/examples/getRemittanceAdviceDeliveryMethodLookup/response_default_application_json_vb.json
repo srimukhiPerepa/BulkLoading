@@ -1,0 +1,204 @@
+{
+    "items": [
+        {
+            "LookupCode": "EMAIL",
+            "Meaning": "E-Mail",
+            "Description": "Remittance advice is delivered by E-Mail.",
+            "EnabledFlag": "Y",
+            "StartDateActive": "2005-06-20",
+            "EndDateActive": null,
+            "DisplaySequence": 1,
+            "Tag": null,
+            "CreatedBy": "SEED_DATA_FROM_APPLICATION",
+            "CreationDate": "2021-04-17T21:20:56.855+00:00",
+            "LastUpdateDate": "2022-08-20T03:58:24.509+00:00",
+            "LastUpdateLogin": "-1",
+            "LastUpdatedBy": "SEED_DATA_FROM_APPLICATION",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/EMAIL",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/EMAIL",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/EMAIL/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/EMAIL/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "FAX",
+            "Meaning": "Fax",
+            "Description": "Remittance advice is delivered by fax.",
+            "EnabledFlag": "Y",
+            "StartDateActive": "2005-06-20",
+            "EndDateActive": null,
+            "DisplaySequence": 2,
+            "Tag": null,
+            "CreatedBy": "SEED_DATA_FROM_APPLICATION",
+            "CreationDate": "2021-04-17T21:20:56.961+00:00",
+            "LastUpdateDate": "2022-08-20T03:58:24.509+00:00",
+            "LastUpdateLogin": "-1",
+            "LastUpdatedBy": "SEED_DATA_FROM_APPLICATION",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/FAX",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/FAX",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/FAX/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/FAX/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "PRINTED",
+            "Meaning": "Printed",
+            "Description": "Remittance advice is delivered in a printed format.",
+            "EnabledFlag": "Y",
+            "StartDateActive": "2005-06-20",
+            "EndDateActive": null,
+            "DisplaySequence": 3,
+            "Tag": null,
+            "CreatedBy": "SEED_DATA_FROM_APPLICATION",
+            "CreationDate": "2021-04-17T21:20:57.061+00:00",
+            "LastUpdateDate": "2022-08-20T03:58:24.509+00:00",
+            "LastUpdateLogin": "-1",
+            "LastUpdatedBy": "SEED_DATA_FROM_APPLICATION",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/PRINTED",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/PRINTED",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/PRINTED/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/PRINTED/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "EMAILPDF",
+            "Meaning": "Email with .pdf as attachment",
+            "Description": "Remittance advice is delivered by E-Mail as a PDF attachment",
+            "EnabledFlag": "Y",
+            "StartDateActive": "2019-01-16",
+            "EndDateActive": null,
+            "DisplaySequence": 4,
+            "Tag": null,
+            "CreatedBy": "SEED_DATA_FROM_APPLICATION",
+            "CreationDate": "2021-04-17T21:20:56.909+00:00",
+            "LastUpdateDate": "2022-08-20T03:58:24.509+00:00",
+            "LastUpdateLogin": "-1",
+            "LastUpdatedBy": "SEED_DATA_FROM_APPLICATION",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/EMAILPDF",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/EMAILPDF",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/EMAILPDF/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes/EMAILPDF/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 4,
+    "hasMore": false,
+    "limit": 500,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes",
+            "name": "lookupCodes",
+            "kind": "collection"
+        }
+    ]
+}

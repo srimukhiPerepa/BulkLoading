@@ -1,0 +1,62 @@
+{
+  "description": "",
+  "root": "assignVariablesPopupNewBusinessClassification",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog20\" }}"
+        ]
+      }
+    },
+    "assignVariablesPopupNewBusinessClassification": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewBusinessClassification": {
+          "source": {
+            "ActionRequested": "{{ $variables.current.action_requested }}",
+            "Certificate": "{{ $variables.current.certificate }}",
+            "CertifyingAgency": "{{ $variables.current.certifying_agency }}",
+            "Classification": "{{ $variables.current.classification }}",
+            "classificationId": "{{ $variables.current.classification_id }}",
+            "ExpirationDate": "{{ $variables.current.expiration_date }}",
+            "OtherCertifyingAgency": "{{ $variables.current.other_certifying_agency }}",
+            "ReCertificate": "{{ $variables.current.re_certificate }}",
+            "ReCertifyingAgency": "{{ $variables.current.re_certifying_agency }}",
+            "ReClassification": "{{ $variables.current.re_classification }}",
+            "ReExpirationDate": "{{ $variables.current.re_expiration_date }}",
+            "ReOtherCertifyingAgency": "{{ $variables.current.re_other_certifying_agency }}",
+            "RowIndex": "{{ $variables.index }}",
+            "Status": "{{ $variables.current.status }}",
+            "RecordStatus": "{{ $variables.current.record_status }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

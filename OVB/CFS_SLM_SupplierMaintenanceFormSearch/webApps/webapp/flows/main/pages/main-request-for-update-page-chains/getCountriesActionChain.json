@@ -1,0 +1,33 @@
+{
+  "root": "callRestGet1113185HcmCountriesLovQ",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGet1113185HcmCountriesLovQ.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGet1113185HcmCountriesLovQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/get11_13_18_05HcmCountriesLovQ"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetAllCountriesLOV"
+      }
+    },
+    "assignVariablesGetAllCountriesLOV": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAllCountriesLOV": {
+          "source": "{{ $chain.results.callRestGet1113185HcmCountriesLovQ.body.items }}"
+        }
+      }
+    }
+  }
+}

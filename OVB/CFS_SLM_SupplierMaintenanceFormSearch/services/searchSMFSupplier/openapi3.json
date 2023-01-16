@@ -1,0 +1,1041 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "FscmRestApi Resources",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources",
+            "description": "FscmRestApi Resources",
+            "x-vb": {
+                "authentication": {
+                    "authenticated": {
+                        "type": "propagate"
+                    }
+                },
+                "forceProxy": "always"
+            }
+        }
+    ],
+    "paths": {
+        "/latest/suppliers{q}": {
+            "parameters": [
+                {
+                    "name": "q",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getLatestSuppliersQ",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLatestSuppliersQ"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getLatestSuppliersQ/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "headers": {
+                        "REST-Framework-Version": "2",
+                        "Content-Type": "application/json"
+                    },
+                    "actionHint": "getMany"
+                },
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "0"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "1"
+                        }
+                    }
+                ]
+            }
+        },
+        "/11.13.18.05/suppliers/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getSupplierIdDummyService",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05SuppliersId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/get11_13_18_05SuppliersId/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/suppliers/{SupplierId}/lov/TaxOrganizationTypeLookup": {
+            "parameters": [
+                {
+                    "name": "SupplierId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getTaxOrganizationTypeLookup",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05SuppliersSupplierIdLovTaxOrganizationTypeLookup"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getTaxOrganizationTypeLookup/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes": {
+            "get": {
+                "operationId": "getBusinessClassificationsLookup",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05StandardLookupsPOZ_BUSINESS_CLASSIFICATIONSChildLookupCodes"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getBusinessClassificationsLookup/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                },
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "EnabledFlag='Y'"
+                        },
+                        "required": true
+                    }
+                ]
+            },
+            "parameters": []
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetLatestSuppliersQ": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "SupplierId": {
+                                    "type": "integer"
+                                },
+                                "SupplierPartyId": {
+                                    "type": "integer"
+                                },
+                                "Supplier": {
+                                    "type": "string"
+                                },
+                                "SupplierNumber": {
+                                    "type": "string"
+                                },
+                                "AlternateName": {
+                                    "nullable": true
+                                },
+                                "TaxOrganizationTypeCode": {
+                                    "type": "string"
+                                },
+                                "TaxOrganizationType": {
+                                    "type": "string"
+                                },
+                                "SupplierTypeCode": {
+                                    "type": "string"
+                                },
+                                "SupplierType": {
+                                    "type": "string"
+                                },
+                                "InactiveDate": {
+                                    "type": "string"
+                                },
+                                "Status": {
+                                    "type": "string"
+                                },
+                                "BusinessRelationshipCode": {
+                                    "type": "string"
+                                },
+                                "BusinessRelationship": {
+                                    "type": "string"
+                                },
+                                "ParentSupplierId": {
+                                    "nullable": true
+                                },
+                                "ParentSupplier": {
+                                    "nullable": true
+                                },
+                                "ParentSupplierNumber": {
+                                    "nullable": true
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationSourceCode": {
+                                    "type": "string"
+                                },
+                                "CreationSource": {
+                                    "type": "string"
+                                },
+                                "DataFoxScore": {
+                                    "nullable": true
+                                },
+                                "Alias": {
+                                    "nullable": true
+                                },
+                                "DUNSNumber": {
+                                    "nullable": true
+                                },
+                                "OneTimeSupplierFlag": {
+                                    "nullable": true
+                                },
+                                "RegistryId": {
+                                    "type": "string"
+                                },
+                                "CustomerNumber": {
+                                    "nullable": true
+                                },
+                                "StandardIndustryClass": {
+                                    "nullable": true
+                                },
+                                "IndustryCategory": {
+                                    "nullable": true
+                                },
+                                "IndustrySubcategory": {
+                                    "nullable": true
+                                },
+                                "NationalInsuranceNumber": {
+                                    "nullable": true
+                                },
+                                "NationalInsuranceNumberExistsFlag": {
+                                    "type": "boolean"
+                                },
+                                "CorporateWebsite": {
+                                    "nullable": true
+                                },
+                                "YearEstablished": {
+                                    "nullable": true
+                                },
+                                "MissionStatement": {
+                                    "nullable": true
+                                },
+                                "YearIncorporated": {
+                                    "nullable": true
+                                },
+                                "ChiefExecutiveTitle": {
+                                    "nullable": true
+                                },
+                                "ChiefExecutiveName": {
+                                    "nullable": true
+                                },
+                                "PrincipalTitle": {
+                                    "nullable": true
+                                },
+                                "PrincipalName": {
+                                    "nullable": true
+                                },
+                                "FiscalYearEndMonthCode": {
+                                    "nullable": true
+                                },
+                                "FiscalYearEndMonth": {
+                                    "nullable": true
+                                },
+                                "CurrentFiscalYearPotentialRevenue": {
+                                    "nullable": true
+                                },
+                                "PreferredFunctionalCurrencyCode": {
+                                    "nullable": true
+                                },
+                                "PreferredFunctionalCurrency": {
+                                    "nullable": true
+                                },
+                                "TaxRegistrationCountryCode": {
+                                    "nullable": true
+                                },
+                                "TaxRegistrationCountry": {
+                                    "nullable": true
+                                },
+                                "TaxRegistrationNumber": {
+                                    "nullable": true
+                                },
+                                "TaxpayerCountryCode": {
+                                    "type": "string"
+                                },
+                                "TaxpayerCountry": {
+                                    "type": "string"
+                                },
+                                "TaxpayerId": {
+                                    "type": "string"
+                                },
+                                "TaxpayerIdExistsFlag": {
+                                    "type": "boolean"
+                                },
+                                "FederalReportableFlag": {
+                                    "type": "boolean"
+                                },
+                                "FederalIncomeTaxTypeCode": {
+                                    "nullable": true
+                                },
+                                "FederalIncomeTaxType": {
+                                    "nullable": true
+                                },
+                                "StateReportableFlag": {
+                                    "nullable": true
+                                },
+                                "TaxReportingName": {
+                                    "nullable": true
+                                },
+                                "NameControl": {
+                                    "nullable": true
+                                },
+                                "VerificationDate": {
+                                    "nullable": true
+                                },
+                                "UseWithholdingTaxFlag": {
+                                    "nullable": true
+                                },
+                                "WithholdingTaxGroupId": {
+                                    "nullable": true
+                                },
+                                "WithholdingTaxGroup": {
+                                    "nullable": true
+                                },
+                                "BusinessClassificationNotApplicableFlag": {
+                                    "type": "boolean"
+                                },
+                                "DataFoxId": {
+                                    "nullable": true
+                                },
+                                "DataFoxCompanyName": {
+                                    "nullable": true
+                                },
+                                "DataFoxLegalName": {
+                                    "nullable": true
+                                },
+                                "DataFoxCompanyPrimaryURL": {
+                                    "nullable": true
+                                },
+                                "DataFoxNAICSCode": {
+                                    "nullable": true
+                                },
+                                "DataFoxCountry": {
+                                    "nullable": true
+                                },
+                                "DataFoxEIN": {
+                                    "nullable": true
+                                },
+                                "DataFoxLastSyncDate": {
+                                    "nullable": true
+                                },
+                                "OBNEnabledFlag": {
+                                    "nullable": true
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            },
+                                            "properties": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "changeIndicator": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05SuppliersId": {
+                "type": "object",
+                "properties": {
+                    "SupplierId": {
+                        "type": "integer"
+                    },
+                    "SupplierPartyId": {
+                        "type": "integer"
+                    },
+                    "Supplier": {
+                        "type": "string"
+                    },
+                    "SupplierNumber": {
+                        "type": "string"
+                    },
+                    "AlternateName": {
+                        "nullable": true
+                    },
+                    "TaxOrganizationTypeCode": {
+                        "type": "string"
+                    },
+                    "TaxOrganizationType": {
+                        "type": "string"
+                    },
+                    "SupplierTypeCode": {
+                        "type": "string"
+                    },
+                    "SupplierType": {
+                        "type": "string"
+                    },
+                    "InactiveDate": {
+                        "type": "string"
+                    },
+                    "Status": {
+                        "type": "string"
+                    },
+                    "BusinessRelationshipCode": {
+                        "type": "string"
+                    },
+                    "BusinessRelationship": {
+                        "type": "string"
+                    },
+                    "ParentSupplierId": {
+                        "nullable": true
+                    },
+                    "ParentSupplier": {
+                        "nullable": true
+                    },
+                    "ParentSupplierNumber": {
+                        "nullable": true
+                    },
+                    "CreationDate": {
+                        "type": "string"
+                    },
+                    "CreatedBy": {
+                        "type": "string"
+                    },
+                    "LastUpdateDate": {
+                        "type": "string"
+                    },
+                    "LastUpdatedBy": {
+                        "type": "string"
+                    },
+                    "CreationSourceCode": {
+                        "type": "string"
+                    },
+                    "CreationSource": {
+                        "type": "string"
+                    },
+                    "DataFoxScore": {
+                        "nullable": true
+                    },
+                    "Alias": {
+                        "nullable": true
+                    },
+                    "DUNSNumber": {
+                        "nullable": true
+                    },
+                    "OneTimeSupplierFlag": {
+                        "nullable": true
+                    },
+                    "RegistryId": {
+                        "type": "string"
+                    },
+                    "CustomerNumber": {
+                        "nullable": true
+                    },
+                    "StandardIndustryClass": {
+                        "nullable": true
+                    },
+                    "IndustryCategory": {
+                        "nullable": true
+                    },
+                    "IndustrySubcategory": {
+                        "nullable": true
+                    },
+                    "NationalInsuranceNumber": {
+                        "nullable": true
+                    },
+                    "NationalInsuranceNumberExistsFlag": {
+                        "type": "boolean"
+                    },
+                    "CorporateWebsite": {
+                        "nullable": true
+                    },
+                    "YearEstablished": {
+                        "nullable": true
+                    },
+                    "MissionStatement": {
+                        "nullable": true
+                    },
+                    "YearIncorporated": {
+                        "nullable": true
+                    },
+                    "ChiefExecutiveTitle": {
+                        "nullable": true
+                    },
+                    "ChiefExecutiveName": {
+                        "nullable": true
+                    },
+                    "PrincipalTitle": {
+                        "nullable": true
+                    },
+                    "PrincipalName": {
+                        "nullable": true
+                    },
+                    "FiscalYearEndMonthCode": {
+                        "nullable": true
+                    },
+                    "FiscalYearEndMonth": {
+                        "nullable": true
+                    },
+                    "CurrentFiscalYearPotentialRevenue": {
+                        "nullable": true
+                    },
+                    "PreferredFunctionalCurrencyCode": {
+                        "nullable": true
+                    },
+                    "PreferredFunctionalCurrency": {
+                        "nullable": true
+                    },
+                    "TaxRegistrationCountryCode": {
+                        "nullable": true
+                    },
+                    "TaxRegistrationCountry": {
+                        "nullable": true
+                    },
+                    "TaxRegistrationNumber": {
+                        "nullable": true
+                    },
+                    "TaxpayerCountryCode": {
+                        "type": "string"
+                    },
+                    "TaxpayerCountry": {
+                        "type": "string"
+                    },
+                    "TaxpayerId": {
+                        "type": "string"
+                    },
+                    "TaxpayerIdExistsFlag": {
+                        "type": "boolean"
+                    },
+                    "FederalReportableFlag": {
+                        "type": "boolean"
+                    },
+                    "FederalIncomeTaxTypeCode": {
+                        "nullable": true
+                    },
+                    "FederalIncomeTaxType": {
+                        "nullable": true
+                    },
+                    "StateReportableFlag": {
+                        "nullable": true
+                    },
+                    "TaxReportingName": {
+                        "nullable": true
+                    },
+                    "NameControl": {
+                        "nullable": true
+                    },
+                    "VerificationDate": {
+                        "nullable": true
+                    },
+                    "UseWithholdingTaxFlag": {
+                        "nullable": true
+                    },
+                    "WithholdingTaxGroupId": {
+                        "nullable": true
+                    },
+                    "WithholdingTaxGroup": {
+                        "nullable": true
+                    },
+                    "BusinessClassificationNotApplicableFlag": {
+                        "type": "boolean"
+                    },
+                    "DataFoxId": {
+                        "nullable": true
+                    },
+                    "DataFoxCompanyName": {
+                        "nullable": true
+                    },
+                    "DataFoxLegalName": {
+                        "nullable": true
+                    },
+                    "DataFoxCompanyPrimaryURL": {
+                        "nullable": true
+                    },
+                    "DataFoxNAICSCode": {
+                        "nullable": true
+                    },
+                    "DataFoxCountry": {
+                        "nullable": true
+                    },
+                    "DataFoxEIN": {
+                        "nullable": true
+                    },
+                    "DataFoxLastSyncDate": {
+                        "nullable": true
+                    },
+                    "OBNEnabledFlag": {
+                        "nullable": true
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                },
+                                "properties": {
+                                    "type": "object",
+                                    "properties": {
+                                        "changeIndicator": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05SuppliersSupplierIdLovTaxOrganizationTypeLookup": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "LookupCode": {
+                                    "type": "string"
+                                },
+                                "LookupType": {
+                                    "type": "string"
+                                },
+                                "DisplayedField": {
+                                    "type": "string"
+                                },
+                                "DisplaySequence": {
+                                    "nullable": true
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "StartDateActive": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05StandardLookupsPOZ_BUSINESS_CLASSIFICATIONSChildLookupCodesQEnabledFlagY": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "LookupCode": {
+                                    "type": "string"
+                                },
+                                "Meaning": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "nullable": true
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "DisplaySequence": {
+                                    "type": "integer"
+                                },
+                                "Tag": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05StandardLookupsPOZ_BUSINESS_CLASSIFICATIONSChildLookupCodes": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "LookupCode": {
+                                    "type": "string"
+                                },
+                                "Meaning": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "nullable": true
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "DisplaySequence": {
+                                    "type": "integer"
+                                },
+                                "Tag": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

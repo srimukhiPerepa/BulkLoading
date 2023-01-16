@@ -1,0 +1,23 @@
+{
+    "AddressName": "Legend 17Test Address",
+    "Country": "United States",
+    "AddressLine1": "Example Road",
+    "AddressLine2": null,
+    "AddressLine3": null,
+    "AddressLine4": null,
+    "City": "redwood city",
+    "State": "ca",
+    "PostalCode": "94065",
+    "PostalCodeExtension": null,
+    "Province": null,
+    "County": "abcd",
+    "AddressPurposeRemitToFlag": true,
+    "PhoneCountryCode": "1",
+    "PhoneAreaCode": "123",
+    "PhoneNumber": "234456",
+    "PhoneExtension": "34",
+    "FaxCountryCode": "1",
+    "FaxAreaCode": "345",
+    "FaxNumber": "23456",
+    "Email": "test@example.com"
+}

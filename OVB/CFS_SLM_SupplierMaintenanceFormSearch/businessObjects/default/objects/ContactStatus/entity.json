@@ -1,0 +1,65 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": true,
+            "key": true,
+            "oid": "f2a5bb33-2079-4e04-a7ef-42c3ffff7a38",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": true,
+            "oid": "4f313853-b22d-43b2-bcc5-d85f412650cc",
+            "displayLabel": "Created"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": true,
+            "oid": "3c8dc40d-33a8-49db-9373-167c06beb7a4",
+            "displayLabel": "Last Updated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": true,
+            "oid": "d7d75233-63f3-4626-a19c-8b0512c1a5aa",
+            "displayLabel": "Created By"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": true,
+            "oid": "9cdce1e1-67af-49ff-8267-0ddfd10ff3c8",
+            "displayLabel": "Last Updated By"
+        },
+{
+            "type": "number",
+            "hidden": true,
+            "name": "abcsChangeNumber",
+            "internal": true,
+            "oid": "9ce977d9-b360-4848-a065-3921d76b9b82",
+            "displayLabel": "<internal>"
+        },
+        {
+            "type": "string",
+            "name": "status",
+            "oid": "f5bd5a2a-678a-4ebe-85f0-1bd7dc91d187",
+            "displayLabel": "status",
+            "defaultValue": {
+                "server": {
+                    "type": "static",
+                    "value": ""
+                }
+            }
+        }
+    ],
+    "name": "ContactStatus",
+    "oid": "0c358fe8-1d3d-4a0c-8a75-7541b5262fa7",
+    "displayLabel": "ContactStatus"
+}

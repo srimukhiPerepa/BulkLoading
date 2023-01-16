@@ -1,0 +1,88 @@
+{
+    "items": [
+        {
+            "BankName": "NA",
+            "BankNameAlt": null,
+            "BranchPartyId": 100000012301870,
+            "BankNumber": null,
+            "BankBranchName": "011000138",
+            "BankBranchNameAlt": null,
+            "BranchNumber": "011000138",
+            "Description": null,
+            "EFTSWIFTCode": null,
+            "EFTUserNumber": null,
+            "EDIIdNumber": null,
+            "EDILocation": null,
+            "CreatedBy": "FUSION_APPS_HCM_ESS_LOADER_APPID",
+            "CreationDate": "2022-04-15T10:51:42+00:00",
+            "LastUpdateDate": "2022-04-15T10:51:42+00:00",
+            "LastUpdateLogin": "DCAEA439C10C0B42E053CE63500A20EF",
+            "LastUpdatedBy": "FUSION_APPS_HCM_ESS_LOADER_APPID",
+            "BankPartyNumber": "25001",
+            "BranchPartyNumber": "126338",
+            "CountryName": "United States",
+            "RFCIdentifier": null,
+            "BankBranchType": null,
+            "BranchNumberType": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/100000012301870",
+                    "name": "cashBankBranches",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/100000012301870",
+                    "name": "cashBankBranches",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/100000012301870/lov/BankSimplePVOVOVA",
+                    "name": "BankSimplePVOVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/100000012301870/lov/BankCodeVOVA",
+                    "name": "BankCodeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/100000012301870/lov/BankBranchTypeVOVA",
+                    "name": "BankBranchTypeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/100000012301870/lov/RFCIdentifierVOVA",
+                    "name": "RFCIdentifierVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/100000012301870/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 1,
+    "hasMore": false,
+    "limit": 500,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches",
+            "name": "cashBankBranches",
+            "kind": "collection"
+        }
+    ]
+}

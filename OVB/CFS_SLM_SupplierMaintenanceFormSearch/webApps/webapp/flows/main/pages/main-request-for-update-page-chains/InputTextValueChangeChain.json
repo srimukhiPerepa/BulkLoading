@@ -1,0 +1,35 @@
+{
+  "description": "",
+  "root": "resetVariablesSearchPhoneCountryVar1",
+  "actions": {
+    "existingAddressPhoneCountryCode": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#PhoneCountryPopup1\" }}"
+        ]
+      }
+    },
+    "resetVariablesSearchPhoneCountryVar1": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.SearchPhoneCountryVar1",
+          "$page.variables.getHcmPhoneCountryCodeADP"
+        ]
+      },
+      "outcomes": {
+        "success": "existingAddressPhoneCountryCode"
+      }
+    }
+  },
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

@@ -1,0 +1,484 @@
+{
+    "items": [
+        {
+            "BankPartyId": 300000041059127,
+            "BankName": "Bank of America",
+            "BankNameAlt": null,
+            "BankNumber": null,
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:01:37.261+00:00",
+            "LastUpdateDate": "2022-07-26T11:02:00.400+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8232",
+            "CountryName": "United States",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059127",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059127",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059127/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000041059132,
+            "BankName": "Citigroup",
+            "BankNameAlt": null,
+            "BankNumber": null,
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:02:20.301+00:00",
+            "LastUpdateDate": "2022-07-26T11:02:20.948+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8233",
+            "CountryName": "United States",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059132",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059132",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059132/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000041059331,
+            "BankName": "Goldman Sachs",
+            "BankNameAlt": null,
+            "BankNumber": null,
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:16:53.641+00:00",
+            "LastUpdateDate": "2022-07-26T11:16:54.241+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8239",
+            "CountryName": "United States",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059331",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059331",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059331/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000041059121,
+            "BankName": "JPMorgan Chase",
+            "BankNameAlt": null,
+            "BankNumber": null,
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:00:57.944+00:00",
+            "LastUpdateDate": "2022-07-26T11:01:17.074+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8231",
+            "CountryName": "United States",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059121",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059121",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059121/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000041059351,
+            "BankName": "Morgan Stanley",
+            "BankNameAlt": null,
+            "BankNumber": null,
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:26:18.341+00:00",
+            "LastUpdateDate": "2022-07-26T11:26:19.261+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8241",
+            "CountryName": "United States",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059351",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059351",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059351/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000039136863,
+            "BankName": "NA",
+            "BankNameAlt": null,
+            "BankNumber": null,
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2022-07-11T11:46:03.681+00:00",
+            "LastUpdateDate": "2022-07-11T11:46:09.968+00:00",
+            "LastUpdateLogin": "E31FB69F9CB76928E053BD61500AD6DD",
+            "LastUpdatedBy": "C987123",
+            "BankPartyNumber": "4230",
+            "CountryName": "United Kingdom",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000039136863",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000039136863",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000039136863/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000040847070,
+            "BankName": "NA",
+            "BankNameAlt": null,
+            "BankNumber": null,
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2022-07-19T08:54:42.012+00:00",
+            "LastUpdateDate": "2022-07-19T08:54:43.733+00:00",
+            "LastUpdateLogin": "E31F9D2AF33567F9E053BD61500ABA11",
+            "LastUpdatedBy": "C987123",
+            "BankPartyNumber": "5212",
+            "CountryName": "France",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000040847070",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000040847070",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000040847070/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000040858545,
+            "BankName": "NA",
+            "BankNameAlt": null,
+            "BankNumber": "BOFA",
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2022-07-19T14:07:08.512+00:00",
+            "LastUpdateDate": "2022-07-19T14:07:32.758+00:00",
+            "LastUpdateLogin": "E31F9D2AF33567F9E053BD61500ABA11",
+            "LastUpdatedBy": "C987123",
+            "BankPartyNumber": "5219",
+            "CountryName": "United States",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000040858545",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000040858545",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000040858545/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000040857972,
+            "BankName": "NA_TEST",
+            "BankNameAlt": null,
+            "BankNumber": "DEUT",
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2022-07-19T11:56:14.952+00:00",
+            "LastUpdateDate": "2022-07-19T11:56:25.557+00:00",
+            "LastUpdateLogin": "E31F9D2AF33567F9E053BD61500ABA11",
+            "LastUpdatedBy": "C987123",
+            "BankPartyNumber": "5213",
+            "CountryName": "Netherlands",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000040857972",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000278"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000040857972",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000040857972/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000038632182,
+            "BankName": "Test",
+            "BankNameAlt": null,
+            "BankNumber": null,
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C970455",
+            "CreationDate": "2022-07-05T11:07:14.848+00:00",
+            "LastUpdateDate": "2022-07-14T13:09:50.888+00:00",
+            "LastUpdateLogin": "E31FB6A1295B6928E053BD61500AD6DD",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "3198",
+            "CountryName": "United States",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000038632182",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000278"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000038632182",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000038632182/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000039168317,
+            "BankName": "Test 123",
+            "BankNameAlt": null,
+            "BankNumber": null,
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-12T11:36:55.276+00:00",
+            "LastUpdateDate": "2022-07-12T11:36:56.611+00:00",
+            "LastUpdateLogin": "E31F9CB44E9D6831E053BD61500AE14A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "4263",
+            "CountryName": "United States",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000039168317",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000039168317",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000039168317/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankPartyId": 300000041059301,
+            "BankName": "Wells Fargo",
+            "BankNameAlt": null,
+            "BankNumber": null,
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:14:18.749+00:00",
+            "LastUpdateDate": "2022-07-26T11:14:19.769+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8237",
+            "CountryName": "United States",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059301",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059301",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000041059301/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 12,
+    "hasMore": false,
+    "limit": 500,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks",
+            "name": "cashBanks",
+            "kind": "collection"
+        }
+    ]
+}

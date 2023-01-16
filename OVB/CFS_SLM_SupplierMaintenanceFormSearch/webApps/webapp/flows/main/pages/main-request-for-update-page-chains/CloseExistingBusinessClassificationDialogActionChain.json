@@ -1,0 +1,181 @@
+{
+  "root": "callFunctionOpenDialogFunc2",
+  "description": "",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog1\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "resetVariablesCurrentBusinessClassification": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.CurrentBusinessClassification"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesCurrentBusinessClassification"
+      }
+    },
+    "assignVariablesCurrentBusinessClassification": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.CurrentBusinessClassification": {
+          "source": {
+            "data": [
+              {
+
+                "action_requested": "{{ \"Update\" }}",
+                "certificate": "{{ $page.variables.popupExistingBusinessClassification.Certificate }}",
+                "certifying_agency": "{{ $page.variables.popupExistingBusinessClassification.CertifyingAgency }}",
+                "classification": "{{ $page.variables.popupExistingBusinessClassification.Classification }}",
+                "expiration_date": "{{ $page.variables.popupExistingBusinessClassification.ExpirationDate }}",
+                "other_certifying_agency": "{{ $page.variables.popupExistingBusinessClassification.OtherCertifyingAgency }}",
+                "re_certificate": "{{ $page.variables.popupExistingBusinessClassification.ReCertificate }}",
+                "re_certifying_agency": "{{ $page.variables.popupExistingBusinessClassification.ReCertifyingAgency }}",
+                "re_classification": "{{ $page.variables.popupExistingBusinessClassification.ReClassification }}",
+                "re_expiration_date": "{{ $page.variables.popupExistingBusinessClassification.ReExpirationDate }}",
+                "re_other_certifying_agency": "{{ $page.variables.popupExistingBusinessClassification.ReOtherCertifyingAgency }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "classification_id": "{{ $page.variables.popupExistingBusinessClassification.classificationId }}",
+                "created_by": "{{ $application.user.userId }}",
+                "last_updated_by": "{{ $application.user.userId }}",
+                "status": "{{ $page.variables.popupExistingBusinessClassification.Status }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesBusinessClassificationUpdates"
+      }
+    },
+    "assignVariablesBusinessClassificationUpdates": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.businessClassificationUpdates": {
+          "source": {
+            "data": "{{ $page.variables.CurrentBusinessClassification.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "resetVariablesPopupExistingBusinessClassification"
+      }
+    },
+    "resetVariablesPopupExistingBusinessClassification": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupExistingBusinessClassification.ReCertificate",
+          "$page.variables.popupExistingBusinessClassification.ReCertifyingAgency",
+          "$page.variables.popupExistingBusinessClassification.ReClassification"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Expiration Date should be a future date",
+        "summary": "Expiration Date should be a future date"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "ifBusClassExpDateValidation": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.BusClassExpDateValidation ]]"
+      },
+      "outcomes": {
+        "true": "resetVariablesCurrentBusinessClassification",
+        "false": "fireNotification"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15000\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingBusinessClassification.ReClassification||$page.variables.popupExistingBusinessClassification.ReCertifyingAgency||$page.variables.popupExistingBusinessClassification.ReCertificate||$page.variables.popupExistingBusinessClassification.ReOtherCertifyingAgency||$page.variables.popupExistingBusinessClassification.ReExpirationDate ]]"
+      },
+      "outcomes": {
+        "true": "ifBusClassExpDateValidation",
+        "false": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "callFunctionCloseDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog1\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "callFunctionOpenDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "callFunctionCloseDialogFunc3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      }
+    }
+  }
+}

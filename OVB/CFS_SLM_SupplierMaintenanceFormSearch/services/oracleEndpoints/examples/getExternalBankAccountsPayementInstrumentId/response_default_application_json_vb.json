@@ -1,0 +1,58 @@
+{
+    "BankAccountNumber": "XXXXXXX9439",
+    "CountryCode": "US",
+    "BankBranchIdentifier": 300000034539205,
+    "BankIdentifier": 300000034539167,
+    "BankAccountId": 17001,
+    "CurrencyCode": null,
+    "IBAN": null,
+    "CheckDigits": null,
+    "AccountType": null,
+    "AccountSuffix": null,
+    "AgencyLocationCode": null,
+    "AllowInternationalPaymentIndicator": "N",
+    "SecondaryAccountReference": null,
+    "StartDate": "2022-03-07",
+    "EndDate": "4712-12-31",
+    "BankAccountName": null,
+    "AlternateAccountName": null,
+    "BankBranchPartyIndicator": null,
+    "BankName": null,
+    "BankNumber": null,
+    "BankBranchName": null,
+    "BankBranchNumber": null,
+    "BIC": null,
+    "VendorId": null,
+    "PersonId": null,
+    "Intent": null,
+    "PartyId": null,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/externalBankAccounts/17001",
+            "name": "externalBankAccounts",
+            "kind": "item",
+            "properties": {
+                "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+            }
+        },
+        {
+            "rel": "canonical",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/externalBankAccounts/17001",
+            "name": "externalBankAccounts",
+            "kind": "item"
+        },
+        {
+            "rel": "lov",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/externalBankAccounts/17001/lov/PersonPVA",
+            "name": "PersonPVA",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/externalBankAccounts/17001/child/accountOwners",
+            "name": "accountOwners",
+            "kind": "collection"
+        }
+    ]
+}

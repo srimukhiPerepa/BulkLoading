@@ -1,0 +1,375 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc2",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog6\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "assignVariablesDummyPostSites": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostSites": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ \"New\" }}",
+                "alternate_site_name": "{{ $page.variables.popupSite.ReAlternateSiteName }}",
+                "bill_to_bu": "{{ $page.variables.popupSite.ReBillToBU }}",
+                "client_bu": "{{ $page.variables.popupSite.ReClientBU }}",
+                "hold_all_invoices_flag": "{{ $page.variables.popupSite.ReHoldAllInvoices }}",
+                "hold_unvalidated_invoices_flag": "{{ $page.variables.popupSite.ReHoldUnvalidatedInvoices }}",
+                "inactive_date": "{{ $page.variables.popupSite.ReInactiveDate }}",
+                "income_tax_reporting_site_flag": "{{ $page.variables.popupSite.ReIncomeTaxReportingSite }}",
+                "invoice_amount_limit": "{{ $page.variables.popupSite.ReInvoiceAmountLimit }}",
+                "invoice_currency_code": "{{ $page.variables.popupSite.ReInvoiceCurrency }}",
+                "pay_date_basis": "{{ $page.variables.popupSite.RePayDateBasis }}",
+                "payment_currency": "{{ $page.variables.popupSite.PaymentCurrency }}",
+                "payment_hold_reason": "{{ $page.variables.popupSite.ReHoldAllInvoices==\"Yes\"||$page.variables.popupSite.ReHoldUnvalidatedInvoices==\"Yes\"?$page.variables.popupSite.RePaymentHoldReason:\"\" }}",
+                "payment_terms": "{{ $page.variables.popupSite.RePaymentTerms }}",
+                "procurement_bu": "{{ $page.variables.popupSite.ReProcurementBU }}",
+                "re_alternate_site_name": "{{ $page.variables.popupSite.ReAlternateSiteName }}",
+                "re_bill_to_bu": "{{ $page.variables.popupSite.ReBillToBU }}",
+                "re_client_bu": "{{ $page.variables.popupSite.ReClientBU }}",
+                "re_hold_all_invoices_flag": "{{ $page.variables.popupSite.ReHoldAllInvoices }}",
+                "re_hold_unvalidated_invoices_flag": "{{ $page.variables.popupSite.ReHoldUnvalidatedInvoices }}",
+                "re_inactive_date": "{{ $page.variables.popupSite.ReInactiveDate }}",
+                "re_income_tax_reporting_site_flag": "{{ $page.variables.popupSite.ReIncomeTaxReportingSite }}",
+                "re_invoice_amount_limit": "{{ $page.variables.popupSite.ReInvoiceAmountLimit }}",
+                "re_pay_date_basis": "{{ $page.variables.popupSite.RePayDateBasis }}",
+                "re_payment_hold_reason": "{{ $page.variables.popupSite.ReHoldAllInvoices==\"Yes\"||$page.variables.popupSite.ReHoldUnvalidatedInvoices==\"Yes\"?$page.variables.popupSite.RePaymentHoldReason:\"\" }}",
+                "re_payment_currency_code": "{{ $page.variables.popupSite.RePaymentCurrency }}",
+                "re_invoice_currency_code": "{{ $page.variables.popupSite.ReInvoiceCurrency }}",
+                "re_payment_terms": "{{ $page.variables.popupSite.RePaymentTerms }}",
+                "re_procurement_bu": "{{ $page.variables.popupSite.ReProcurementBU }}",
+                "re_site_purpose_pay_flag": "{{ $page.variables.popupSite.ReSitePurposePay?$page.variables.popupSite.ReSitePurposePay:\"Yes\" }}",
+                "re_supplier_address_name": "{{ $page.variables.popupSite.ReAddressName }}",
+                "site_purpose_pay_flag": "{{ $page.variables.popupSite.ReSitePurposePay?$page.variables.popupSite.ReSitePurposePay:\"Yes\" }}",
+                "supplier_site": "{{ $page.variables.popupSite.ReSite }}",
+                "nuclear_qualified": "{{ $page.variables.popupSite.ReNuclearQualified }}",
+                "payment_currency_code": "{{ $page.variables.popupSite.RePaymentCurrency }}",
+                "payment_method": "{{ $page.variables.popupSite.RePaymentMethod }}",
+                "payment_terms_date_basis": "{{ $page.variables.popupSite.ReTermsDateBasis }}",
+                "re_nuclear_qualified": "{{ $page.variables.popupSite.ReNuclearQualified }}",
+                "re_payment_method": "{{ $page.variables.popupSite.RePaymentMethod }}",
+                "re_payment_terms_date_basis": "{{ $page.variables.popupSite.ReTermsDateBasis }}",
+                "re_remittance_delivery_email": "{{ $page.variables.popupSite.ReRemittanceAdviceDeliveryEmailId }}",
+                "re_remittance_delivery_method": "{{ $page.variables.popupSite.ReRemittanceAdviceDelliveryMethod }}",
+                "re_site_status": "{{ \"ACTIVE\" }}",
+                "re_status_reason_code": "{{ $page.variables.popupSite.ReStatusReasonCode }}",
+                "re_supplier_site": "{{ $page.variables.popupSite.ReSite }}",
+                "remittance_delivery_email": "{{ $page.variables.popupSite.ReRemittanceAdviceDeliveryEmailId }}",
+                "remittance_delivery_method": "{{ $page.variables.popupSite.ReRemittanceAdviceDelliveryMethod }}",
+                "site_status": "{{ \"ACTIVE\" }}",
+                "status_reason_code": "{{ $page.variables.popupSite.ReStatusReasonCode }}",
+                "supplier_address_name": "{{ $page.variables.popupSite.ReAddressName }}",
+                "supplier_site_id": "{{ $page.variables.SupplierSiteId }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostSites"
+      }
+    },
+    "fireDataProviderEventPostSites": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postSites ]]"
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter a valid email address",
+        "message": "Please enter a valid Email ID"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupSite.ReRemittanceAdviceDelliveryMethod && !$page.variables.popupSite.ReRemittanceAdviceDeliveryEmailId ]]"
+      },
+      "outcomes": {
+        "false": "if2",
+        "true": "fireNotification4"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Please enter a valid Email ID",
+        "summary": "Please enter a valid email address"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "if2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ ($page.variables.popupSite.ReHoldAllInvoices==\"Yes\"||$page.variables.popupSite.ReHoldUnvalidatedInvoices==\"Yes\")&&!$page.variables.popupSite.RePaymentHoldReason ]]"
+      },
+      "outcomes": {
+        "false": "forEachInPostSites",
+        "true": "fireNotification5"
+      }
+    },
+    "fireNotification5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter all the mandatory fields marked with *",
+        "message": "Please enter all the mandatory fields marked with *"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupSite.ReSite && $page.variables.popupSite.ReProcurementBU && $page.variables.popupSite.ReAddressName ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateEmail",
+        "false": "fireNotification3"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter all the mandatory fields marked with *",
+        "message": "Please enter all the mandatory fields marked with *"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15000\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "forEachInPostSites": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postSites.data }}",
+        "actionId": "if5"
+      },
+      "outcomes": {
+        "success": "forEachInGetSupplierSites"
+      }
+    },
+    "if5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupSite.ReProcurementBU==$current.data.re_procurement_bu && $page.variables.popupSite.ReSite==$current.data.re_supplier_site ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesDummyPostSites",
+        "false": "fireNotification6"
+      }
+    },
+    "fireNotification6": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Site Name already exists for this Procurement BU. Please enter a unique Site Name",
+        "summary": "Duplicate Site and BU combination"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "forEachInGetSupplierSites": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.getSupplierSites.data }}",
+        "actionId": "if6"
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "if6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupSite.ReProcurementBU==$current.data.ProcurementBU && $page.variables.popupSite.ReSite==$current.data.SupplierSite ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag2"
+      }
+    },
+    "assignVariablesFlag2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      }
+    },
+    "callFunctionValidateInactiveDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateInactiveDate",
+        "params": [
+          "{{ $page.variables.popupSite.ReInactiveDate }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if7"
+      }
+    },
+    "if7": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateInactiveDate ]]"
+      },
+      "outcomes": {
+        "true": "if4",
+        "false": "fireNotification7"
+      }
+    },
+    "fireNotification7": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Inactive date cannot be a past date",
+        "summary": "Inactive date cannot be a past date"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "callFunctionValidateEmail": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateEmail",
+        "params": [
+          "{{ $page.variables.popupSite.ReRemittanceAdviceDeliveryEmailId }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if3"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateEmail ]]"
+      },
+      "outcomes": {
+        "true": "if",
+        "false": "fireNotification"
+      }
+    },
+    "assignVariablesPostSites": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postSites": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostSites.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        },
+        "$page.variables.AccountsUpdates": {
+          "source": {
+            "data": "{{ $page.variables.postAccounts.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostSites"
+      }
+    },
+    "callFunctionOpenDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionValidateInactiveDate"
+      }
+    },
+    "callFunctionCloseDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": true
+    }
+  }
+}

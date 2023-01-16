@@ -1,0 +1,28 @@
+{
+  "description": "",
+  "root": "resetVariablesPopupAccounts",
+  "actions": {
+    "resetVariablesPopupAccounts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupAccounts"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog1200\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

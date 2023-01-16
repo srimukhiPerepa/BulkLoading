@@ -1,0 +1,117 @@
+{
+  "root": "resetVariablesGetOpenRequestsListADP",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetPendingRequests.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get pending request information"
+      }
+    },
+    "assignVariablesGetOpenRequestsListADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getOpenRequestsListADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetPendingRequests.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        },
+        "$page.variables.hyperlinkClickedVar": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventGetOpenRequestsListADP"
+      }
+    },
+    "fireDataProviderEventGetOpenRequestsListADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.getOpenRequestsListADP ]]"
+      }
+    },
+    "callRestGetPendingRequests": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getPendingRequests"
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "assignVariablesGetOpenRequestsListADP"
+      }
+    },
+    "resetVariablesGetOpenRequestsListADP": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getOpenRequestsListADP"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGetPendingRequests"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetPendingRequests.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariables"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3",
+        "true": "callFunctionWaitForNextCall"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetPendingRequests"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

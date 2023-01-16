@@ -1,0 +1,731 @@
+{
+    "items": [
+        {
+            "ValueId": 85032,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "501(C)(3)",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "501(C)(3)",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T09:36:34.784+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T09:37:19.614+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85032",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85032",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85032/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 86042,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "501(C)(4)",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "501(C)(4)",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T09:36:53.566+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T09:37:19.617+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/86042",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/86042",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/86042/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85016,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "501C5 LABOR UNION",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "501C5 LABOR UNION",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T06:53:31.102+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T06:55:02.265+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85016",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85016",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85016/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85017,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "501C6 NON-PROFIT TRADE ASSOCIATION",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "501C6 NON-PROFIT TRADE ASSOCIATION",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T06:53:41.870+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T06:55:02.267+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85017",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85017",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85017/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85018,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "501C9 EMPLOYEE BENEFICIARY ASSOC",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "501C9 EMPLOYEE BENEFICIARY ASSOC",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T06:53:50.882+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T06:55:02.269+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85018",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85018",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85018/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85014,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "CLAIM DEPARTMENT PAYMENT",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "CLAIM DEPARTMENT PAYMENT",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T06:53:11.524+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T06:55:02.259+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85014",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85014",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85014/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85031,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "FINANCIAL INSTITUTION",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "FINANCIAL INSTITUTION",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T09:34:24+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T09:37:19.606+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85031",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85031",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85031/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85015,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "HEALTH CORPORATION",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "HEALTH CORPORATION",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T06:53:21.530+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T06:55:02.262+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85015",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85015",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85015/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85020,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "JOINT POWERS AUTHORITY",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "JOINT POWERS AUTHORITY",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T06:54:07.614+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T06:55:02.276+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85020",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85020",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85020/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85021,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "POLITICAL ORG CAMPAIGN FUND OR PAC",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "POLITICAL ORG CAMPAIGN FUND OR PAC",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T06:54:16.111+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T06:55:02.279+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85021",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85021",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85021/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85022,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "PUBLIC CHARITY",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "PUBLIC CHARITY",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T06:54:25.582+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T06:55:02.281+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85022",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85022",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85022/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85023,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "PUBLIC COMMISSION",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "PUBLIC COMMISSION",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T06:54:34.309+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T06:55:02.284+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85023",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85023",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85023/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 85013,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "TAX EXEMPT CHARITY",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "TAX EXEMPT CHARITY",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-06-08T06:53:02.198+00:00",
+            "CreatedBy": "Nagarjuna.P@exeloncorp.com",
+            "LastUpdateDate": "2022-06-08T06:55:02.257+00:00",
+            "LastUpdatedBy": "Nagarjuna.P@exeloncorp.com",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85013",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85013",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/85013/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 13,
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values",
+            "name": "values",
+            "kind": "collection"
+        }
+    ]
+}

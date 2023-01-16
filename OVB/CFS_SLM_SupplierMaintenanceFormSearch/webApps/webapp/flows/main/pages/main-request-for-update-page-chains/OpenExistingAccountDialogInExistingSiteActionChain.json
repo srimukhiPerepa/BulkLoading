@@ -1,0 +1,129 @@
+{
+  "description": "",
+  "root": "assignVariablesFlag2",
+  "actions": {
+
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog1111\" }}"
+        ]
+      }
+    },
+    "resetVariablesPopupNewAccounts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupNewAccounts",
+          "$page.variables.popupExistingAccounts"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPopupExistingAccounts"
+      }
+    },
+    "forEachInPostAccounts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postAccounts.data }}",
+        "actionId": "ifCurrent"
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "ifCurrent": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.account_id==$variables.current.BankAccountId ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "false": "resetVariablesPopupNewAccounts",
+        "true": "fireNotification"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "You have already requested updates for this bank account",
+        "message": "You have already requested updates for this bank account"
+      }
+    },
+    "assignVariablesFlag2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "forEachInPostAccounts"
+      }
+    },
+    "assignVariablesPopupExistingAccounts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupExistingAccounts": {
+          "source": {
+            "AccountId": "{{ $variables.current.BankAccountId }}",
+            "AccountNumber": "{{ $variables.current.BankAccountNumber }}",
+            "AllowInternationalPayments": "{{ $variables.current.AllowInternationalPaymentIndicator==\"Y\"?\"Yes\":\"No\" }}",
+            "Bank": "{{ $variables.current.BankName }}",
+            "BankBranch": "{{ $variables.current.BankBranchName }}",
+            "Country": "{{ $variables.current.CountryCode }}",
+            "Currency": "{{ $variables.current.CurrencyCode }}",
+            "IBAN": "{{ $variables.current.IBAN }}",
+            "InactiveOn": "{{ $variables.current.EndDate }}",
+            "Primary": "{{ \"\" }}"
+          },
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean"
+    },
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+
+  }
+}

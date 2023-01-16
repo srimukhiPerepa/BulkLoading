@@ -1,0 +1,19 @@
+{
+  "description": "",
+  "root": "",
+  "actions": {
+  },
+  "variables": {
+    "eventPayload": {
+      "type": "any",
+      "required": false,
+      "input": "fromCaller"
+    },
+    "keyCode": {
+      "type": "any",
+      "required": false,
+      "input": "fromCaller"
+    }
+
+  }
+}

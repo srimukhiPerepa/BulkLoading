@@ -1,0 +1,48 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc",
+  "actions": {
+    "navigateToMainRequestForUpdate": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-request-for-update",
+        "params": {
+          "SourcePage": "{{ \"Admin\" }}",
+          "requestId": "{{ $variables.key }}",
+          "requestStatus": "{{ $variables.current.status }}",
+          "inputSupplierNumberVar": "{{ $variables.current.supplier_id }}"
+        }
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "navigateToMainRequestForUpdate"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

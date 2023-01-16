@@ -1,0 +1,28 @@
+{
+  "description": "",
+  "root": "assignVariablesBusClassExpDateValidation",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog1\" }}"
+        ]
+      }
+    },
+    "assignVariablesBusClassExpDateValidation": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.BusClassExpDateValidation": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    }
+  },
+  "variables": {}
+}

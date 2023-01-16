@@ -1,0 +1,51 @@
+{
+  "description": "",
+  "root": "if",
+  "actions": {
+
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog1500\" }}"
+        ]
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SourcePage==\"ViewDetails\" && [[$page.variables.requestStatus==\"Cancelled\"||$page.variables.requestStatus==\"Approved\"||$page.variables.requestStatus==\"Rejected\"||$page.variables.requestStatus==\"Approved with Errors\"]] ]]"
+      },
+      "outcomes": {
+        "false": "ifSourcePage",
+        "true": "navigateBack"
+      }
+    },
+    "navigateBack": {
+      "module": "vb/action/builtin/navigateBackAction"
+    },
+    "ifSourcePage": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SourcePage !=\"Admin\"]]"
+      },
+      "outcomes": {
+        "true": "callFunctionOpenDialogFunc",
+        "false": "callFunctionOpenDialogFunc2"
+      }
+    },
+    "callFunctionOpenDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15001\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

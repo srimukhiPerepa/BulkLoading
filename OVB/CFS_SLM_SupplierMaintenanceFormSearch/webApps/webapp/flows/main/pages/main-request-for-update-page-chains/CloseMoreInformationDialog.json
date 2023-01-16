@@ -1,0 +1,101 @@
+{
+  "description": "",
+  "root": "ifPostRequests",
+  "actions": {
+
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfRequestsTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "assignVariablesPostRequests": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postRequests": {
+          "auto": "always",
+          "reset": "none",
+          "source": {
+            "last_update_date": "{{ $chain.results.callFunctionReturnCurrentDate }}",
+            "created_by": "{{ $page.variables.postRequests.created_by }}",
+            "creation_date": "{{ $page.variables.postRequests.creation_date }}",
+            "last_updated_by": "{{ $application.user.username }}",
+            "request_date": "{{ $page.variables.postRequests.request_date }}",
+            "request_id": "{{ $page.variables.postRequests.request_id }}",
+            "request_type": "{{ $page.variables.postRequests.request_type }}",
+            "requestor": "{{ $page.variables.postRequests.requestor }}",
+            "requestor_name": "{{ $page.variables.postRequests.requestor_name }}",
+            "status": "{{ \"More Information Requested\" }}",
+            "approver_comment": "{{ $page.variables.postRequests.approver_comment }}",
+            "supplier_id": "{{ $page.variables.postRequests.supplier_id }}"
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfRequestsTbl"
+      }
+    },
+    "callRestPutCfsSmfRequestsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_requests_tbl",
+        "uriParams": {
+          "requestId": "{{ $page.variables.requestId }}"
+        },
+        "body": "{{ $page.variables.postRequests }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification2"
+      }
+    },
+    "ifPostRequests": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.postRequests.approver_comment ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionCloseDialogFunc"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog150000\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15002\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionReturnCurrentDate"
+      }
+    },
+    "callFunctionReturnCurrentDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "returnCurrentDate"
+      },
+      "outcomes": {
+        "success": "assignVariablesPostRequests"
+      }
+    }
+  },
+  "variables": {}
+}

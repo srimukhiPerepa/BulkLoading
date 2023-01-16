@@ -1,0 +1,492 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc",
+  "actions": {
+
+    "callRestGetSuppliersSupplierId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSuppliersSupplierId",
+        "uriParams": {
+          "SupplierId": "{{ $page.variables.inputSupplierNumberVar }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification3",
+        "success": "assignVariablesGetSupplierToUpdateVar"
+      }
+    },
+    "assignVariablesGetSupplierToUpdateVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSupplierToUpdateVar": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierId.body }}",
+          "auto": "always"
+        },
+        "$page.variables.classificationApplicableFlag": {
+          "source": "{{ $page.variables.getSupplierToUpdateVar.BusinessClassificationNotApplicableFlag }}"
+        }
+      },
+      "outcomes": {
+        "success": "runInParallel"
+      }
+    },
+    "callChainRecursiveSupplierSitesREST": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "recursiveSupplierSitesREST"
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventGetSupplierSites"
+      }
+    },
+    "fireDataProviderEventGetSupplierSites": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.getSupplierSites ]]"
+      }
+    },
+    "runInParallel": {
+      "module": "vb/action/builtin/forkAction",
+      "parameters": {
+        "actions": {
+
+          "callChain": "ifSourcePage2",
+          "callChainRecursiveBusinessClassificationREST": "callChainRecursiveBusinessClassificationREST",
+          "callChainRecursiveSupplierAddressREST": "callChainRecursiveSupplierAddressREST",
+          "callChainRecursiveSupplierSitesREST": "callChainRecursiveSupplierSitesREST",
+          "callChainRecursiveSupplierContactsREST": "callChainRecursiveSupplierContactsREST",
+          "assignVariablesPostRequests": "callChainGetConfigsActionChain",
+          "callChainSupplierDFFActionChain": "callChainSupplierDFFActionChain"
+        }
+      },
+      "outcomes": {
+        "join": "if2"
+      }
+    },
+    "callChainRecursiveBusinessClassificationREST": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "recursiveBusinessClassificationREST"
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventGetSupplierBusinessClassifications"
+      }
+    },
+    "callChainRecursiveSupplierAddressREST": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "recursiveSupplierAddressREST"
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventGetSupplierAddresses"
+      }
+    },
+    "fireDataProviderEventGetSupplierAddresses": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "target": "[[ $page.variables.getSupplierAddresses ]]",
+        "refresh": null
+      }
+    },
+    "fireDataProviderEventGetSupplierBusinessClassifications": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.getSupplierBusinessClassifications ]]"
+      }
+    },
+    "resetVariablesOffsetVarSites": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.offsetVarSites",
+          "$page.variables.getSupplierSites",
+          "$page.variables.getSupplierBusinessClassifications",
+          "$page.variables.getSupplierAddresses",
+          "$page.variables.offsetVarAddresses",
+          "$page.variables.offsetVarBusinessClassifications",
+          "$page.variables.offsetVarContacts",
+          "$page.variables.getSupplierContacts"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGetSuppliersSupplierId"
+      }
+    },
+    "callChainRecursiveSupplierContactsREST": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "recursiveSupplierContactsREST"
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventGetSupplierContacts"
+      }
+    },
+    "fireDataProviderEventGetSupplierContacts": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.getSupplierContacts ]]"
+      }
+    },
+    "callChainRecursiveProcuremtnBUREST": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "recursiveProcuremtnBUREST"
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventGetProcurementBULOV"
+      }
+    },
+    "fireDataProviderEventGetProcurementBULOV": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.getProcurementBULOV ]]"
+      }
+    },
+    "callChainSupplierDFFActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "SupplierDFFActionChain"
+      },
+      "outcomes": {
+        "success": "callChainGetCurrenciesActionChain"
+      }
+    },
+    "assignVariablesPostRequests": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postRequests": {
+          "source": {
+            "requestor": "{{ $application.user.username }}",
+            "created_by": "{{ $application.user.username }}",
+            "request_id": "{{ $page.variables.requestId }}",
+            "creation_date": "{{ $page.variables.SystemDate }}",
+            "last_update_date": "{{ $page.variables.SystemDate }}",
+            "last_updated_by": "{{ $application.user.username }}",
+            "request_date": "{{ $page.variables.SystemDate }}",
+            "status": "{{ \"Request for Approval\" }}"
+
+          },
+          "auto": "always",
+          "reset": "none"
+        },
+        "$page.variables.requestId": {
+          "source": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionReturnSupplierCreationDate"
+      }
+    },
+    "assignVariablesDocumentumURL": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DocumentumURL": {
+          "source": "{{ $page.variables.DocumentumURL+\"&transactionType=PO-Supplier&attribute2=\"+$chain.results.callFunctionReturnSupplierCreationDate+\"&attribute3=\"+$page.variables.getSupplierToUpdateVar.Supplier+\"&attribute4=\"+$page.variables.getSupplierToUpdateVar.TaxpayerId+\"&attribute6=\"+$page.variables.getSupplierToUpdateVar.SupplierId }}"
+        }
+      }
+    },
+    "callChainGetConfigsActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getConfigsActionChain"
+      },
+      "outcomes": {
+        "success": "assignVariablesPostRequests"
+      }
+    },
+    "callChainGetAllCashBanksActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getAllCashBanksActionChain"
+      },
+      "outcomes": {
+        "success": "callChainGetYesNoActionChain"
+      }
+    },
+    "callChainGetYesNoActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getYesNoActionChain"
+      },
+      "outcomes": {
+        "success": "callChainRecursiveProcuremtnBUREST"
+      }
+    },
+    "callChainGetCurrenciesActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getCurrenciesActionChain"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "resetVariablesOffsetVarSites"
+      }
+    },
+    "ifSourcePage": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SourcePage==\"ViewDetails\" ]]"
+      },
+      "outcomes": {
+        "true": "if",
+        "false": "ifRequestStatus"
+      }
+    },
+    "callChainGetSupplierUpdates": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getSupplierUpdatesActionChain"
+      },
+      "outcomes": {}
+    },
+    "callChainGetSupplierDFFUpdates": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getSupplierDFFUpdatesActionChain"
+      }
+    },
+    "callChainGetBusClassificationUpdates": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getBusClassificationUpdatesActionChain"
+      }
+    },
+    "callFunctionReturnSupplierCreationDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "returnSupplierCreationDate",
+        "params": [
+          "{{ $page.variables.getSupplierToUpdateVar.CreationDate }}"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesDocumentumURL"
+      }
+    },
+    "callChainGetSupplierAddressUpdates": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getSupplierAddressUpdatesActionChain"
+      }
+    },
+    "callChainGetSitesUpdates": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getSitesUpdatesActionChain"
+      }
+    },
+    "callChainGetBankAccountsUpdatesActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getBankAccountsUpdatesActionChain"
+      }
+    },
+    "callChainGetContactsUpdatesActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getContactsUpdatesActionChain"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus == \"Request for Approval\" || $page.variables.requestStatus == \"Cancelled\" || $page.variables.requestStatus == \"Approved\" || $page.variables.requestStatus == \"Rejected\" || $page.variables.requestStatus == \"Approved - Sync Errors\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesReadOnlyVariable",
+        "false": "runInParallel3"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {}
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Failed to load Supplier details",
+        "summary": "Get Supplier: Failed"
+      },
+      "outcomes": {
+        "success": "callChain"
+      }
+    },
+    "callChainGetContactAddressesUpdatesActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getContactAddressesUpdatesActionChain"
+      }
+    },
+    "if2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SourcePage==\"ViewDetails\" || $page.variables.SourcePage==\"Admin\" ]]"
+      },
+      "outcomes": {
+        "true": "ifSourcePage",
+        "false": "callRestGet1113185HcmCountriesLovQ"
+      }
+    },
+    "runInParallel3": {
+      "module": "vb/action/builtin/forkAction",
+      "parameters": {
+        "actions": {
+        }
+      },
+      "outcomes": {
+        "join": "callChainGetRequest"
+      }
+    },
+    "assignVariablesReadOnlyVariable": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ReadOnlyVariable": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "callChainErrorLogsTabActionChain"
+      }
+    },
+    "assignVariablesEnableSubmitButtonVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.enableSubmitButtonVar": {
+          "source": "{{ false }}"
+        },
+        "$page.variables.ReadOnlyVariable": {
+          "source": "{{ true }}"
+        },
+        "$page.variables.moreInformationRequestedSet": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "callChainGetRequest"
+      }
+    },
+    "runInParallel2": {
+      "module": "vb/action/builtin/forkAction",
+      "parameters": {
+        "actions": {
+          "callChainGetBankAccountsUpdatesActionChain": "callChainGetBankAccountsUpdatesActionChain",
+          "callChainGetBusClassificationUpdates": "callChainGetBusClassificationUpdates",
+          "callChainGetContactAddressesUpdatesActionChain": "callChainGetContactAddressesUpdatesActionChain",
+          "callChainGetContactsUpdatesActionChain": "callChainGetContactsUpdatesActionChain",
+          "callChainGetSitesUpdates": "callChainGetSitesUpdates",
+          "callChainGetSupplierAddressUpdates": "callChainGetSupplierAddressUpdates",
+          "callChainGetSupplierDFFUpdates": "callChainGetSupplierDFFUpdates",
+          "callChainGetSupplierUpdates": "callChainGetSupplierUpdates"
+        }
+      },
+      "outcomes": {
+        "join": "callRestGet1113185HcmCountriesLovQ"
+      }
+    },
+    "callChainGetRequest": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getRequest"
+      },
+      "outcomes": {
+        "success": "runInParallel2"
+      }
+    },
+    "callChainErrorLogsTabActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "ErrorLogsTabActionChain"
+      },
+      "outcomes": {
+        "success": "runInParallel3"
+      }
+    },
+    "ifRequestStatus": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus == \"Approved - Sync Errors\" ]]"
+      },
+      "outcomes": {
+        "true": "callChainErrorLogsTabActionChain2",
+        "false": "assignVariablesEnableSubmitButtonVar"
+      }
+    },
+    "callChainErrorLogsTabActionChain2": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "ErrorLogsTabActionChain"
+      },
+      "outcomes": {
+        "success": "assignVariablesEnableSubmitButtonVar"
+      }
+    },
+    "ifSourcePage2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SourcePage==\"Admin\" ]]"
+      },
+      "outcomes": {
+        "false": "callChainGetAllCashBanksActionChain"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGet1113185HcmCountriesLovQ.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get list of countries from ERP"
+      }
+    },
+    "callRestGet1113185HcmCountriesLovQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/get11_13_18_05HcmCountriesLovQ"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetCountriesArr"
+      }
+    },
+    "assignVariablesGetCountriesArr": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getCountriesArr": {
+          "source": "{{ $chain.results.callRestGet1113185HcmCountriesLovQ.body.items }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "callChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {}
+    }
+  },
+  "variables": {}
+}

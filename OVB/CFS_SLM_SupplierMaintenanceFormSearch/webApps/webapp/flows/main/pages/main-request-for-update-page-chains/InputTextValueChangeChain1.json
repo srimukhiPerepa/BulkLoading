@@ -1,0 +1,122 @@
+{
+  "description": "",
+  "root": "fireNotification5",
+  "actions": {
+    "ifValue": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.value ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateEmail",
+        "false": "ifPopupSite"
+      }
+    },
+    "callFunctionValidateEmail": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateEmail",
+        "params": [
+          "{{ $variables.value }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateEmail ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesSupplierSiteRemittanceEmailValidation",
+        "true": "assignVariablesSupplierSiteRemittanceEmailValidation2"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter a valid email address",
+        "message": "Please enter a valid Email ID 1"
+      }
+    },
+    "assignVariablesSupplierSiteRemittanceEmailValidation": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierSiteRemittanceEmailValidation": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification"
+      }
+    },
+    "assignVariablesSupplierSiteRemittanceEmailValidation2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierSiteRemittanceEmailValidation": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "assignVariablesSupplierSiteRemittanceEmailValidation3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierSiteRemittanceEmailValidation": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "ifPopupSite": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupSite.ReRemittanceAdviceDelliveryMethod ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesSupplierSiteRemittanceEmailValidation3",
+        "true": "assignVariablesSupplierSiteRemittanceEmailValidation4"
+      }
+    },
+    "assignVariablesSupplierSiteRemittanceEmailValidation4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierSiteRemittanceEmailValidation": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification3"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter a valid email address",
+        "message": "Please enter a valid Email ID 2"
+      }
+    },
+    "fireNotification5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $variables.value ]]",
+        "type": "warning"
+      },
+      "outcomes": {
+        "success": "ifValue"
+      }
+    }
+  },
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "description": "",
+  "root": "resetVariablesDummyPostContactAddress",
+  "actions": {
+    "resetVariablesDummyPostContactAddress": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddress"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInPostContactAddress"
+      }
+    },
+    "assignVariablesPostContactAddress": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postContactAddress": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostContactAddress.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostContactAddressToBeAdded"
+      }
+    },
+    "assignVariablesDummyPostContactAddressToBeAdded": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContactAddressToBeAdded": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostContactAddress.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostContactAddress"
+      }
+    },
+    "fireDataProviderEventPostContactAddress": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postContactAddress ]]"
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "assignVariablesDummyPostContactAddress": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContactAddress": {
+          "source": {
+            "data": [
+              {
+                "supplier_contact_address_id": "{{ $variables.current.SupplierContactAddressId }}",
+                "action_requested": "{{ \"Delete\" }}",
+                "address_name": "{{ $variables.current.AddressName }}",
+                "supplier_contact_id": "{{ $page.variables.popupNewContact.SupplierContactId }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostContactAddress"
+      }
+    },
+    "forEachInPostContactAddress": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postContactAddress.data }}",
+        "actionId": "ifKey"
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "You have already requested updates for this address",
+        "message": "You have already requested updates for this address",
+        "type": "info"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification"
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesDummyPostContactAddress"
+      }
+    },
+    "ifKey": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_contact_address_id==$variables.key ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15000\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+
+  }
+}

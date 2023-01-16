@@ -1,0 +1,2798 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Ords Extensions",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_extensions",
+            "description": "Ords Extensions",
+            "x-vb": {
+                "authentication": {
+                    "authenticated": {
+                        "type": "oauth2_client_credentials",
+                        "clientIdCredentials": "",
+                        "authUrl": ""
+                    }
+                },
+                "forceProxy": "always"
+            }
+        }
+    ],
+    "paths": {
+        "/check_open_requests/{SupplierId}": {
+            "parameters": [
+                {
+                    "name": "SupplierId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getCheck_open_requestsSupplierId",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetCheck_open_requestsSupplierId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getCheck_open_requestsSupplierId/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getOne"
+                }
+            }
+        },
+        "/generate_request_id/": {
+            "get": {
+                "operationId": "getGenerate_request_id2",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGenerate_request_id"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGenerate_request_id2/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getOne"
+                }
+            }
+        },
+        "/more_info_requested/": {
+            "get": {
+                "operationId": "getMore_info_requested",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetMore_info_requested"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getMore_info_requested/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/open_requests/": {
+            "get": {
+                "operationId": "getOpen_requests",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetOpen_requests"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getOpen_requests/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_supplier_requests_details/{SupplierId}": {
+            "parameters": [
+                {
+                    "name": "SupplierId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_supplier_requests_detailsSupplierId",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_supplier_requests_detailsSupplierId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_supplier_requests_detailsSupplierId/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/total_requests_submitted/": {
+            "get": {
+                "operationId": "getTotal_requests_submitted",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetTotal_requests_submitted"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getTotal_requests_submitted/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/approved_rejected_requests/": {
+            "get": {
+                "operationId": "getApproved_rejected_requests",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApproved_rejected_requests"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApproved_rejected_requests/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_sites_updates/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_sites_updatesRequestId",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_sites_updatesRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_sites_updatesRequestId/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_bank_accts_updates/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_bank_accts_updatesRequestId",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_bank_accts_updatesRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_bank_accts_updatesRequestId/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_supplier_bus_classifications_updates/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getBusClassificationUpdates",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_supplier_bus_classifications_updatesRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getBusClassificationUpdates/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_contact_addresses_updates/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_contact_addresses_updatesRequestId",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_contact_addresses_updatesRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_contact_addresses_updatesRequestId/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_contacts_updates/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_contacts_updatesRequestId",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_contacts_updatesRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_contacts_updatesRequestId/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_supplier_address_updates/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_supplier_address_updatesRequestId",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_supplier_address_updatesRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_supplier_address_updatesRequestId/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_bus_classfications_error_msg/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_bus_classfications_error_msg",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_bus_classfications_error_msgRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_bus_classfications_error_msg/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_supplier_header_error_msg/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_supplier_header_error_msg",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_supplier_header_error_msgRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_supplier_header_error_msg/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getOne"
+                }
+            }
+        },
+        "/get_supplier_dff_error_msg/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_supplier_dff_error_msg",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_supplier_dff_error_msgRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_supplier_dff_error_msg/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getOne"
+                }
+            }
+        },
+        "/get_address_error_msg/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_address_error_msg",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_address_error_msgRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_address_error_msg/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+               },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_sites_error_msg/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_sites_error_msg",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_sites_error_msgRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_sites_error_msg/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_bank_accts_error_msg/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_bank_accts_error_msg",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_bank_accts_error_msgRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_bank_accts_error_msg/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_contacts_error_msg/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_contacts_error_msg",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_contacts_error_msgRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_contacts_error_msg/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/get_contact_add_error_msg/{RequestId}": {
+            "parameters": [
+                {
+                    "name": "RequestId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getGet_contact_add_error_msg",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGet_contact_add_error_msgRequestId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGet_contact_add_error_msg/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/requests/{Status}": {
+            "parameters": [
+                {
+                    "name": "Status",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "x-vb": {
+                        "defaultValue": "Request for Approval"
+                    }
+                }
+            ]
+        },
+        "/pendingRequests/": {
+            "get": {
+                "operationId": "getPendingRequests",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetPendingRequests"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getPendingRequests/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/approvedSyncErrorsRequests/": {
+            "get": {
+                "operationId": "getApprovedSyncErrorsRequests",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApprovedSyncErrorsRequests"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApprovedSyncErrorsRequests/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/approved_sync_errors/": {
+            "get": {
+                "operationId": "getApproved_sync_errorsCount",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetApproved_sync_errors"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getApproved_sync_errorsCount/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getOne"
+                }
+            }
+        },
+        "/generate_classification_id/": {
+            "get": {
+                "operationId": "getGenerate_classification_id",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGenerate_classification_id"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGenerate_classification_id2/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/generate_address_id/": {
+            "get": {
+                "operationId": "getGenerate_address_id",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGenerate_address_id"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGenerate_address_id/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/generate_site_id/": {
+            "get": {
+                "operationId": "getGenerate_site_id",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGenerate_site_id"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGenerate_site_id/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/generate_bank_account_id/": {
+            "get": {
+                "operationId": "getGenerate_bank_account_id",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGenerate_bank_account_id"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGenerate_bank_account_id/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/generate_contact_id/": {
+            "get": {
+                "operationId": "getGenerate_contact_id",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGenerate_contact_id"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGenerate_contact_id/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/generate_contact_address_id/": {
+            "get": {
+                "operationId": "getGenerate_contact_address_id",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetGenerate_contact_address_id"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getGenerate_contact_address_id/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetCheck_open_requestsSupplierId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {}
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGenerate_request_id": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "request_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetMore_info_requested": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "more_info_requested": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetRequests": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "request_id": {
+                                    "type": "integer"
+                                },
+                                "supplier_id": {
+                                    "type": "integer"
+                                },
+                                "supplier_name": {
+                                    "type": "string"
+                                },
+                                "supplier_number": {
+                                    "type": "string"
+                                },
+                                "parent_supplier": {
+                                    "nullable": true
+                                },
+                                "taxpayer_id": {
+                                    "type": "string"
+                                },
+                                "tax_registration_number": {
+                                    "nullable": true
+                                },
+                                "supplier_type": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "request_date": {
+                                    "type": "string"
+                                },
+                                "requestor": {
+                                    "type": "string"
+                                },
+                                "resubmitted_on": {
+                                    "nullable": true
+                                }
+                            }
+                     }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetOpen_requests": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "open_requests": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_supplier_requests_detailsSupplierId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "request_id": {
+                                    "type": "integer"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "request_date": {
+                                    "type": "string"
+                                },
+                                "approver": {
+                                    "type": "string"
+                                },
+                                "requestor": {
+                                    "type": "string"
+                                },
+                                "approval_date": {
+                                    "type": "string"
+                                },
+                                "last_update_date": {
+                                    "type": "string"
+                                },
+                                "approver_comment": {
+                                    "type": "string"
+                                },
+                                "approved_rejected_name": {
+                                    "nullable": true
+                                },
+                                "requestor_name": {
+                                    "type": "string",
+                                    "nullable": true
+                                }
+                            }
+                     }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetTotal_requests_submitted": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "total_requests_submitted": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApproved_rejected_requests": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "approved_rejected_requests": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_sites_updatesRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "supplier_site_id": {
+                                    "type": "integer"
+                                },
+                                "supplier_id": {
+                                    "type": "integer"
+                                },
+                                "request_id": {
+                                    "type": "integer"
+                                },
+                                "supplier_site": {
+                                    "type": "string"
+                                },
+                                "procurement_bu_id": {
+                                    "nullable": true
+                                },
+                                "procurement_bu": {
+                                    "type": "string"
+                                },
+                                "supplier_address_id": {
+                                    "nullable": true
+                                },
+                                "supplier_address_name": {
+                                    "type": "string"
+                                },
+                                "inactive_date": {
+                                    "nullable": true
+                                },
+                                "site_status": {
+                                    "type": "string"
+                                },
+                                "site_purpose_pay_flag": {
+                                    "type": "string"
+                                },
+                                "site_purpose_primary_pay_flag": {
+                                    "nullable": true
+                                },
+                                "nuclear_qualified": {
+                                    "nullable": true
+                                },
+                                "status_reason_code": {
+                                    "type": "string"
+                                },
+                                "alternate_site_name": {
+                                    "nullable": true
+                                },
+                                "income_tax_reporting_site_flag": {
+                                    "type": "string"
+                                },
+                                "invoice_currency_code": {
+                                    "nullable": true
+                                },
+                                "payment_currency_code": {
+                                    "nullable": true
+                                },
+                                "invoice_amount_limit": {
+                                    "nullable": true
+                                },
+                                "hold_all_invoices_flag": {
+                                    "type": "string"
+                                },
+                                "hold_unvalidated_invoices_flag": {
+                                    "type": "string"
+                                },
+                                "payment_hold_reason": {
+                                    "nullable": true
+                                },
+                                "payment_terms": {
+                                    "type": "string"
+                                },
+                                "payment_terms_id": {
+                                    "nullable": true
+                                },
+                                "payment_terms_date_basis": {
+                                    "nullable": true
+                                },
+                                "payment_terms_date_basis_code": {
+                                    "nullable": true
+                                },
+                                "pay_date_basis": {
+                                    "nullable": true
+                                },
+                                "pay_date_basis_code": {
+                                    "nullable": true
+                                },
+                                "payment_method": {
+                                    "type": "string"
+                                },
+                                "remittance_delivery_method": {
+                                    "nullable": true
+                                },
+                                "remittance_delivery_email": {
+                                    "nullable": true
+                                },
+                                "client_bu": {
+                                    "type": "string"
+                                },
+                                "client_bu_id": {
+                                    "nullable": true
+                                },
+                                "bill_to_bu": {
+                                    "type": "string"
+                                },
+                                "bill_to_bu_id": {
+                                    "nullable": true
+                                },
+                                "action_requested": {
+                                    "type": "string"
+                                },
+                                "re_supplier_site": {
+                                    "nullable": true
+                                },
+                                "re_procurement_bu_id": {
+                                    "nullable": true
+                                },
+                                "re_procurement_bu": {
+                                    "nullable": true
+                                },
+                                "re_supplier_address_id": {
+                                    "nullable": true
+                                },
+                                "re_supplier_address_name": {
+                                    "nullable": true
+                                },
+                                "re_inactive_date": {
+                                    "nullable": true
+                                },
+                                "re_site_status": {
+                                    "nullable": true
+                                },
+                                "re_site_purpose_pay_flag": {
+                                    "nullable": true
+                                },
+                                "re_site_purpose_primary_pay_flag": {
+                                    "nullable": true
+                                },
+                                "re_nuclear_qualified": {
+                                    "nullable": true
+                                },
+                                "re_status_reason_code": {
+                                    "nullable": true
+                                },
+                                "re_alternate_site_name": {
+                                    "nullable": true
+                                },
+                                "re_income_tax_reporting_site_flag": {
+                                    "nullable": true
+                                },
+                                "re_invoice_currency_code": {
+                                    "nullable": true
+                                },
+                                "re_payment_currency_code": {
+                                    "nullable": true
+                                },
+                                "re_invoice_amount_limit": {
+                                    "nullable": true
+                                },
+                                "re_hold_all_invoices_flag": {
+                                    "nullable": true
+                                },
+                                "re_hold_unvalidated_invoices_flag": {
+                                    "nullable": true
+                                },
+                                "re_payment_hold_reason": {
+                                    "nullable": true
+                                },
+                                "re_payment_terms": {
+                                    "nullable": true
+                                },
+                                "re_payment_terms_id": {
+                                    "nullable": true
+                                },
+                                "re_payment_terms_date_basis": {
+                                    "nullable": true
+                                },
+                                "re_payment_terms_date_basis_code": {
+                                    "nullable": true
+                                },
+                                "re_pay_date_basis": {
+                                    "nullable": true
+                                },
+                                "re_pay_date_basis_code": {
+                                    "nullable": true
+                                },
+                                "re_payment_method": {
+                                    "nullable": true
+                                },
+                                "re_remittance_delivery_method": {
+                                    "type": "string"
+                                },
+                                "re_remittance_delivery_email": {
+                                    "type": "string"
+                                },
+                                "re_client_bu": {
+                                    "nullable": true
+                                },
+                                "re_client_bu_id": {
+                                    "nullable": true
+                                },
+                                "re_bill_to_bu": {
+                                    "nullable": true
+                                },
+                                "re_bill_to_bu_id": {
+                                    "nullable": true
+                                },
+                                "payee_id": {
+                                    "type": "string"
+                                }
+                            }
+                     }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_bank_accts_updatesRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {}
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_supplier_bus_classifications_updatesRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "classification_id": {
+                                    "type": "integer"
+                                },
+                                "classification": {
+                                    "type": "string"
+                                },
+                                "certifying_agency": {
+                                    "type": "string"
+                                },
+                                "other_certifying_agency": {
+                                    "type": "string"
+                                },
+                                "certificate": {
+                                    "type": "string"
+                                },
+                                "expiration_date": {
+                                    "type": "string"
+                                },
+                                "re_classification": {
+                                    "type": "string",
+                                    "nullable": true
+                                },
+                                "re_certifying_agency": {
+                                    "type": "string",
+                                    "nullable": true
+                                },
+                                "re_other_certifying_agency": {
+                                    "type": "string",
+                                    "nullable": true
+                                },
+                                "re_certificate": {
+                                    "type": "string"
+                                },
+                                "re_expiration_date": {
+                                    "type": "string"
+                                },
+                                "action_requested": {
+                                    "type": "string"
+                                }
+                            }
+                     }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_contact_addresses_updatesRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {}
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_contacts_updatesRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "supplier_contact_id": {
+                                    "type": "integer"
+                                },
+                                "supplier_id": {
+                                    "type": "integer"
+                                },
+                                "request_id": {
+                                    "type": "integer"
+                                },
+                                "salutation_code": {
+                                    "nullable": true
+                                },
+                                "salutation": {
+                                    "nullable": true
+                                },
+                                "first_name": {
+                                    "type": "string"
+                                },
+                                "last_name": {
+                                    "type": "string"
+                                },
+                                "job_title": {
+                                    "nullable": true
+                                },
+                                "administrative_contact_flag": {
+                                    "type": "string"
+                                },
+                                "phone_country_code": {
+                                    "nullable": true
+                                },
+                                "phone_area_code": {
+                                    "nullable": true
+                                },
+                                "phone_number": {
+                                    "nullable": true
+                                },
+                                "phone_extension": {
+                                    "nullable": true
+                                },
+                                "fax_country_code": {
+                                    "nullable": true
+                                },
+                                "fax_area_code": {
+                                    "nullable": true
+                                },
+                                "fax_number": {
+                                    "nullable": true
+                                },
+                                "mobile_country_code": {
+                                    "nullable": true
+                                },
+                                "mobile_area_code": {
+                                    "nullable": true
+                                },
+                                "mobile_number": {
+                                    "nullable": true
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "inactive_date": {
+                                    "nullable": true
+                                },
+                                "action_requested": {
+                                    "type": "string"
+                                },
+                                "address_name": {
+                                    "nullable": true
+                                },
+                                "contact_purpose": {
+                                    "type": "string"
+                                },
+                                "re_salutation_code": {
+                                    "nullable": true
+                                },
+                                "re_salutation": {
+                                    "nullable": true
+                                },
+                                "re_first_name": {
+                                    "nullable": true
+                                },
+                                "re_last_name": {
+                                    "nullable": true
+                                },
+                                "re_job_title": {
+                                    "nullable": true
+                                },
+                                "re_administrative_contact_flag": {
+                                    "nullable": true
+                                },
+                                "re_phone_country_code": {
+                                    "nullable": true
+                                },
+                                "re_phone_area_code": {
+                                    "nullable": true
+                                },
+                                "re_phone_number": {
+                                    "nullable": true
+                                },
+                                "re_phone_extension": {
+                                    "nullable": true
+                                },
+                                "re_fax_country_code": {
+                                    "nullable": true
+                                },
+                                "re_fax_area_code": {
+                                    "nullable": true
+                                },
+                                "re_fax_number": {
+                                    "nullable": true
+                                },
+                                "re_mobile_country_code": {
+                                    "nullable": true
+                                },
+                                "re_mobile_area_code": {
+                                    "nullable": true
+                                },
+                                "re_mobile_number": {
+                                    "nullable": true
+                                },
+                                "re_email": {
+                                    "type": "string"
+                                },
+                                "re_inactive_date": {
+                                    "nullable": true
+                                },
+                                "re_status": {
+                                    "type": "string"
+                                },
+                                "re_address_name": {
+                                    "nullable": true
+                                },
+                                "status": {
+                                    "nullable": true
+                                }
+                            }
+                     }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_supplier_address_updatesRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {}
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_bus_classfications_error_msgRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "classification": {
+                                    "type": "string"
+                                },
+                                "action_requested": {
+                                    "type": "string"
+                                },
+                                "api_response": {
+                                    "type": "string"
+                                }
+                            }
+                     }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_supplier_header_error_msgRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "supplier_name": {
+                                    "type": "string"
+                                },
+                                "api_response": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_supplier_dff_error_msgRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "supplier_name": {
+                                    "type": "string"
+                                },
+                                "api_response": {
+                                    "type": "string"
+                                },
+                                "request_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_address_error_msgRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "address_name": {
+                                    "type": "string"
+                                },
+                                "action_requested": {
+                                    "type": "string"
+                                },
+                                "api_response": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_sites_error_msgRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "supplier_site": {
+                                    "type": "string"
+                                },
+                                "action_requested": {
+                                    "type": "string"
+                                },
+                                "api_response": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_bank_accts_error_msgRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "account_number": {
+                                    "type": "string"
+                                },
+                                "action_requested": {
+                                    "type": "string"
+                                },
+                                "api_response": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_contacts_error_msgRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "last_first_name": {
+                                    "type": "string"
+                                },
+                                "action_requested": {
+                                    "type": "string"
+                                },
+                                "api_response": {
+                                    "type": "string"
+                                }
+
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGet_contact_add_error_msgRequestId": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {}
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetPendingRequests": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "request_id": {
+                                    "type": "integer"
+                                },
+                                "supplier_id": {
+                                    "type": "integer"
+                                },
+                                "supplier_name": {
+                                    "type": "string"
+                                },
+                                "supplier_number": {
+                                    "type": "string"
+                                },
+                                "parent_supplier": {
+                                    "type": "string"
+                                },
+                                "taxpayer_id": {
+                                    "type": "string",
+                                    "nullable": true
+                                },
+                                "tax_registration_number": {
+                                    "type": "string"
+                                },
+                                "supplier_type": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "request_date": {
+                                    "type": "string"
+                                },
+                                "requestor": {
+                                    "type": "string"
+                                },
+                                "resubmitted_on": {
+                                    "type": "string"
+                                },
+                                "requestor_name": {
+
+                                    "nullable": true
+                                },
+                                "approved_rejected_name": {
+                                    "nullable": true
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApprovedSyncErrorsRequests": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "request_id": {
+                                    "type": "integer"
+                                },
+                                "supplier_id": {
+                                    "type": "integer"
+                                },
+                                "supplier_name": {
+                                    "type": "string"
+                                },
+                                "supplier_number": {
+                                    "type": "string"
+                                },
+                                "parent_supplier": {
+                                    "nullable": true
+                                },
+                                "taxpayer_id": {
+                                    "type": "string"
+                                },
+                                "tax_registration_number": {
+                                    "nullable": true
+                                },
+                                "supplier_type": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "request_date": {
+                                    "type": "string"
+                                },
+                                "requestor": {
+                                    "type": "string"
+                                },
+                                "resubmitted_on": {
+                                    "nullable": true
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApproved_sync_errors": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "approved_sync_errors": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGenerate_classification_id": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "classification_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGenerate_address_id": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "address_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGenerate_site_id": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "site_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGenerate_bank_account_id": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "bank_account_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGenerate_contact_id": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "contact_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetGenerate_contact_address_id": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "contact_add_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

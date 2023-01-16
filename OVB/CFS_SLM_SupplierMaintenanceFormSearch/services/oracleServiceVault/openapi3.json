@@ -1,0 +1,2643 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "oracleServiceVault",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources",
+            "description": "FscmRestApi 11.13.18.05",
+            "x-vb": {
+                "forceProxy": "always",
+                "authentication": {
+                    "authenticated": {
+                        "type": "basic",
+                        "credentials": ""
+                    }
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/11.13.18.05/payablesPaymentTerms": {
+            "get": {
+                "operationId": "getPayablesPaymentTerms",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": ""
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "500"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05PayablesPaymentTerms"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getPayablesPaymentTerms/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+               },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/cashBanks/": {
+            "get": {
+                "operationId": "getCashBanks",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CashBanks"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getCashBanks/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/valueSets/Legal Structure/child/values": {
+            "get": {
+                "operationId": "getLegalStructureLOV",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "EnabledFlag='Y'"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05ValueSetsLegalStructureChildValues"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getLegalStructureLOV/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/valueSets/Status Reason Code/child/values": {
+            "get": {
+                "operationId": "getStatusReasonCodeLOV",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05ValueSetsStatusReasonCodeChildValues"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getStatusReasonCodeLOV/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "queryParameters": {
+                        "q": "EnabledFlag='Y'"
+                    },
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/valueSets/YES_NO/child/values": {
+            "get": {
+                "operationId": "getCONSTYesNoLOV",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "EnabledFlag='Y'"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05ValueSetsYES_NOChildValues"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getCONSTYesNoLOV/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/commonLookups/CFS_SMF_BUSINESS UNIT/child/lookupCodes": {
+            "get": {
+                "operationId": "getBusinessUnitsLookup",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CommonLookupsCFS_SMF_BUSINESSUNITChildLookupCodes"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getBusinessUnitsLookup/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "queryParameters": {
+                        "q": "EnabledFlag=\"Y\""
+                    },
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/commonLookups/CFS_SMF_TERMS DATE BASIS/child/lookupCodes": {
+            "get": {
+                "operationId": "getTermsDateBasisLookup",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CommonLookupsCFS_SMF_TERMSDATEBASISChildLookupCodes"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getTermsDateBasisLookup/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "queryParameters": {
+                        "q": "EnabledFlag=\"Y\""
+                    },
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/commonLookups/CFS_SMF_CERTIFYING AGENCIES/child/lookupCodes": {
+            "get": {
+                "operationId": "getCertifyingAgenciesLookup",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CommonLookupsCFS_SMF_CERTIFYINGAGENCIESChildLookupCodes"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getCertifyingAgenciesLookup/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "queryParameters": {
+                        "q": "EnabledFlag=\"Y\""
+                    },
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/disbursementPaymentMethodsLOV{q}": {
+            "parameters": [
+                {
+                    "name": "q",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "x-vb": {
+                        "defaultValue": "?q=AutoPayeeAssignIndicator='Y';ApplicationId=222"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getDisbursementPaymentMethodsLOV",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05DisbursementPaymentMethodsLOVQ"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getDisbursementPaymentMethodsLOV/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/cashBankBranches": {
+            "get": {
+                "operationId": "getCashBankBranches",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CashBankBranches"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getCashBankBranches/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/cashBankBranches/{BankBranchId}": {
+            "parameters": [
+                {
+                    "name": "BankBranchId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getCashBankBranchesBankBranchId",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CashBankBranchesBankBranchId"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getCashBankBranchesBankBranchId/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/cashBankBranches{q}": {
+            "parameters": [
+                {
+                    "name": "q",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getCashBankBranchesQ",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CashBankBranchesQ"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getCashBankBranchesQ/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getOne"
+                }
+            }
+        },
+        "/11.13.18.05/cashBanks/{q}": {
+            "parameters": [
+                {
+                    "name": "q",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "getCashBanksQ",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CashBanksQ"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getCashBanksQ/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getOne"
+                }
+            }
+        },
+        "/11.13.18.05/commonLookups/CFS_SMF_ADDRESS VALIDATION/child/lookupCodes": {
+            "get": {
+                "operationId": "getAddressValidationsLookup",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CommonLookupsCFS_SMF_ADDRESSVALIDATIONChildLookupCodes"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getAddressValidationsLookup/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/finBusinessUnitsLOV": {
+            "get": {
+                "operationId": "getFinBusinessUnitsLOV",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05FinBusinessUnitsLOV"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getFinBusinessUnitsLOV/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/cashBanks": {
+            "get": {
+                "operationId": "get11_13_18_05CashBanks",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CashBanks"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/get11_13_18_05CashBanks2/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/cashBankBranches/": {
+            "get": {
+                "operationId": "get11_13_18_05CashBankBranchesQ",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05CashBankBranches"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/get11_13_18_05CashBankBranchesQ/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getOne"
+                }
+            }
+        },
+        "/11.13.18.05/standardLookups/POZ_BUSINESS_CLASSIFICATIONS/child/lookupCodes": {
+            "get": {
+                "operationId": "getBusinessClassificationsLookup",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05StandardLookupsPOZ_BUSINESS_CLASSIFICATIONSChildLookupCodes"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getBusinessClassificationsLookup/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "queryParameters": {
+                        "q": "EnabledFlag='Y'",
+                        "limit": "500"
+                    },
+                    "actionHint": "getMany"
+                }
+            }
+        },
+        "/11.13.18.05/standardLookups/IBY_DELIVERY_METHODS/child/lookupCodes": {
+            "get": {
+                "operationId": "getRemittanceAdviceDeliveryMethodLookup",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "500"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get11_13_18_05StandardLookupsIBY_DELIVERY_METHODSChildLookupCodes"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getRemittanceAdviceDeliveryMethodLookup/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Get11_13_18_05PayablesPaymentTerms": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "termsId": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "enabledFlag": {
+                                    "type": "boolean"
+                                },
+                                "fromDate": {
+                                    "type": "string"
+                                },
+                                "toDate": {
+                                    "nullable": true
+                                },
+                                "cutoffDay": {
+                                    "nullable": true
+                                },
+                                "rank": {
+                                    "nullable": true
+                                },
+                                "createdBy": {
+                                    "type": "string"
+                                },
+                                "creationDate": {
+                                    "type": "string"
+                                },
+                                "lastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "lastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "lastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "setId": {
+                                    "type": "integer"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            },
+                                            "properties": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "changeIndicator": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05CashBanks": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "BankPartyId": {
+                                    "type": "integer"
+                                },
+                                "BankName": {
+                                    "type": "string"
+                                },
+                                "BankNameAlt": {
+                                    "type": "string",
+                                    "nullable": true
+
+                                },
+                                "BankNumber": {
+                                    "nullable": true
+                                },
+                                "Description": {
+                                    "nullable": true
+                                },
+                                "TaxpayerIdNumber": {
+                                    "nullable": true
+                                },
+                                "TaxRegistrationNumber": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "BankPartyNumber": {
+                                    "type": "string"
+                                },
+                                "CountryName": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            },
+                                            "properties": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "changeIndicator": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05ValueSetsLegalStructureChildValues": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "ValueId": {
+                                    "type": "integer"
+                                },
+                                "IndependentValue": {
+                                    "nullable": true
+                                },
+                                "IndependentValueNumber": {
+                                    "nullable": true
+                                },
+                                "IndependentValueDate": {
+                                    "nullable": true
+                                },
+                                "IndependentValueTimestamp": {
+                                    "nullable": true
+                                },
+                                "Value": {
+                                    "type": "string"
+                                },
+                                "ValueNumber": {
+                                    "nullable": true
+                                },
+                                "ValueDate": {
+                                    "nullable": true
+                                },
+                                "ValueTimestamp": {
+                                    "nullable": true
+                                },
+                                "TranslatedValue": {
+                                    "nullable": true
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "nullable": true
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "SortOrder": {
+                                    "nullable": true
+                                },
+                                "SummaryFlag": {
+                                    "nullable": true
+                                },
+                                "DetailPostingAllowed": {
+                                    "nullable": true
+                                },
+                                "DetailBudgetingAllowed": {
+                                    "nullable": true
+                                },
+                                "AccountType": {
+                                    "nullable": true
+                                },
+                                "ControlAccount": {
+                                    "nullable": true
+                                },
+                                "ReconciliationFlag": {
+                                    "nullable": true
+                                },
+                                "FinancialCategory": {
+                                    "nullable": true
+                                },
+                                "ExternalDataSource": {
+                                    "nullable": true
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05ValueSetsStatusReasonCodeChildValues": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "ValueId": {
+                                    "type": "integer"
+                                },
+                                "IndependentValue": {
+                                    "nullable": true
+                                },
+                                "IndependentValueNumber": {
+                                    "nullable": true
+                                },
+                                "IndependentValueDate": {
+                                    "nullable": true
+                                },
+                                "IndependentValueTimestamp": {
+                                    "nullable": true
+                                },
+                                "Value": {
+                                    "type": "string"
+                                },
+                                "ValueNumber": {
+                                    "nullable": true
+                                },
+                                "ValueDate": {
+                                    "nullable": true
+                                },
+                                "ValueTimestamp": {
+                                    "nullable": true
+                                },
+                                "TranslatedValue": {
+                                    "nullable": true
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "nullable": true
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "SortOrder": {
+                                    "nullable": true
+                                },
+                                "SummaryFlag": {
+                                    "nullable": true
+                                },
+                                "DetailPostingAllowed": {
+                                    "nullable": true
+                                },
+                                "DetailBudgetingAllowed": {
+                                    "nullable": true
+                                },
+                                "AccountType": {
+                                    "nullable": true
+                                },
+                                "ControlAccount": {
+                                    "nullable": true
+                                },
+                                "ReconciliationFlag": {
+                                    "nullable": true
+                                },
+                                "FinancialCategory": {
+                                    "nullable": true
+                                },
+                                "ExternalDataSource": {
+                                    "nullable": true
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05ValueSetsYES_NOChildValues": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "ValueId": {
+                                    "type": "integer"
+                                },
+                                "IndependentValue": {
+                                    "nullable": true
+                                },
+                                "IndependentValueNumber": {
+                                    "nullable": true
+                                },
+                                "IndependentValueDate": {
+                                    "nullable": true
+                                },
+                                "IndependentValueTimestamp": {
+                                    "nullable": true
+                                },
+                                "Value": {
+                                    "type": "string"
+                                },
+                                "ValueNumber": {
+                                    "nullable": true
+                                },
+                                "ValueDate": {
+                                    "nullable": true
+                                },
+                                "ValueTimestamp": {
+                                    "nullable": true
+                                },
+                                "TranslatedValue": {
+                                    "nullable": true
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "nullable": true
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "SortOrder": {
+                                    "nullable": true
+                                },
+                                "SummaryFlag": {
+                                    "nullable": true
+                                },
+                                "DetailPostingAllowed": {
+                                    "nullable": true
+                                },
+                                "DetailBudgetingAllowed": {
+                                    "nullable": true
+                                },
+                                "AccountType": {
+                                    "nullable": true
+                                },
+                                "ControlAccount": {
+                                    "nullable": true
+                                },
+                                "ReconciliationFlag": {
+                                    "nullable": true
+                                },
+                                "FinancialCategory": {
+                                    "nullable": true
+                                },
+                                "ExternalDataSource": {
+                                    "nullable": true
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05CommonLookupsCFS_SMF_BUSINESSUNITChildLookupCodes": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "LookupCode": {
+                                    "type": "string"
+                                },
+                                "Meaning": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "nullable": true
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "DisplaySequence": {
+                                    "type": "integer"
+                                },
+                                "Tag": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05CommonLookupsCFS_SMF_TERMSDATEBASISChildLookupCodes": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "LookupCode": {
+                                    "type": "string"
+                                },
+                                "Meaning": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "nullable": true
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "DisplaySequence": {
+                                    "type": "integer"
+                                },
+                                "Tag": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05CommonLookupsCFS_SMF_CERTIFYINGAGENCIESChildLookupCodes": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "LookupCode": {
+                                    "type": "string"
+                                },
+                                "Meaning": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "nullable": true
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "DisplaySequence": {
+                                    "type": "integer"
+                                },
+                                "Tag": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05DisbursementPaymentMethodsLOVQ": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "PaymentMethodCode": {
+                                    "type": "string"
+                                },
+                                "PaymentMethodName": {
+                                    "type": "string"
+                                },
+                                "PaymentMethodDescription": {
+                                    "type": "string"
+                                },
+                                "BillsPayablePaymentMethodIndicator": {
+                                    "type": "string"
+                                },
+                                "MaturityDateOverride": {
+                                    "nullable": true
+                                },
+                                "ApplicationId": {
+                                    "type": "integer"
+                                },
+                                "AutoPayeeAssignIndicator": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05CashBankBranches": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "BankName": {
+                                    "type": "string"
+                                },
+                                "BankNameAlt": {
+                                    "type": "string"
+                                },
+                                "BranchPartyId": {
+                                    "type": "integer"
+                                },
+                                "BankNumber": {
+                                    "nullable": true
+                                },
+                                "BankBranchName": {
+                                    "type": "string"
+                                },
+                                "BankBranchNameAlt": {
+                                    "nullable": true
+                                },
+                                "BranchNumber": {
+                                    "nullable": true
+                                },
+                                "Description": {
+                                    "nullable": true
+                                },
+                                "EFTSWIFTCode": {
+
+                                    "nullable": true
+                                },
+                                "EFTUserNumber": {
+                                    "nullable": true
+                                },
+                                "EDIIdNumber": {
+                                    "nullable": true
+                                },
+                                "EDILocation": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "BankPartyNumber": {
+                                    "type": "string"
+                                },
+                                "BranchPartyNumber": {
+                                    "type": "string"
+                                },
+                                "CountryName": {
+                                    "type": "string"
+                                },
+                                "RFCIdentifier": {
+                                    "nullable": true
+                                },
+                                "BankBranchType": {
+                                    "nullable": true
+                                },
+                                "BranchNumberType": {
+                                    "nullable": true
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            },
+                                            "properties": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "changeIndicator": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05CashBankBranchesBankBranchId": {
+                "type": "object",
+                "properties": {
+                    "BankName": {
+                        "type": "string"
+                    },
+                    "BankNameAlt": {
+                        "nullable": true
+                    },
+                    "BranchPartyId": {
+                        "type": "integer"
+                    },
+                    "BankNumber": {
+                        "nullable": true
+                    },
+                    "BankBranchName": {
+                        "type": "string"
+                    },
+                    "BankBranchNameAlt": {
+                        "nullable": true
+                    },
+                    "BranchNumber": {
+                        "type": "string"
+                    },
+                    "Description": {
+                        "nullable": true
+                    },
+                    "EFTSWIFTCode": {
+                        "type": "string"
+                    },
+                    "EFTUserNumber": {
+                        "nullable": true
+                    },
+                    "EDIIdNumber": {
+                        "nullable": true
+                    },
+                    "EDILocation": {
+                        "nullable": true
+                    },
+                    "CreatedBy": {
+                        "type": "string"
+                    },
+                    "CreationDate": {
+                        "type": "string"
+                    },
+                    "LastUpdateDate": {
+                        "type": "string"
+                    },
+                    "LastUpdateLogin": {
+                        "type": "string"
+                    },
+                    "LastUpdatedBy": {
+                        "type": "string"
+                    },
+                    "BankPartyNumber": {
+                        "type": "string"
+                    },
+                    "BranchPartyNumber": {
+                        "type": "string"
+                    },
+                    "CountryName": {
+                        "type": "string"
+                    },
+                    "RFCIdentifier": {
+                        "nullable": true
+                    },
+                    "BankBranchType": {
+                        "nullable": true
+                    },
+                    "BranchNumberType": {
+                        "nullable": true
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                },
+                                "properties": {
+                                    "type": "object",
+                                    "properties": {
+                                        "changeIndicator": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05CashBankBranchesQ": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "BankName": {
+                                    "type": "string"
+                                },
+                                "BankNameAlt": {
+                                    "nullable": true
+                                },
+                                "BranchPartyId": {
+                                    "type": "integer"
+                                },
+                                "BankNumber": {
+                                    "nullable": true
+                                },
+                                "BankBranchName": {
+                                    "type": "string"
+                                },
+                                "BankBranchNameAlt": {
+                                    "nullable": true
+                                },
+                                "BranchNumber": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "nullable": true
+                                },
+                                "EFTSWIFTCode": {
+                                    "type": "string"
+                                },
+                                "EFTUserNumber": {
+                                    "nullable": true
+                                },
+                                "EDIIdNumber": {
+                                    "nullable": true
+                                },
+                                "EDILocation": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "BankPartyNumber": {
+                                    "type": "string"
+                                },
+                                "BranchPartyNumber": {
+                                    "type": "string"
+                                },
+                                "CountryName": {
+                                    "type": "string"
+                                },
+                                "RFCIdentifier": {
+                                    "nullable": true
+                                },
+                                "BankBranchType": {
+                                    "nullable": true
+                                },
+                                "BranchNumberType": {
+                                    "nullable": true
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            },
+                                            "properties": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "changeIndicator": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05CashBanksQ": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "BankPartyId": {
+                                    "type": "integer"
+                                },
+                                "BankName": {
+                                    "type": "string"
+                                },
+                                "BankNameAlt": {
+                                    "type": "string"
+                                },
+                                "BankNumber": {
+                                    "nullable": true
+                                },
+                                "Description": {
+                                    "nullable": true
+                                },
+                                "TaxpayerIdNumber": {
+                                    "nullable": true
+                                },
+                                "TaxRegistrationNumber": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "BankPartyNumber": {
+                                    "type": "string"
+                                },
+                                "CountryName": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            },
+                                            "properties": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "changeIndicator": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+
+                }
+            },
+            "Get11_13_18_05CommonLookupsCFS_SMF_ADDRESSVALIDATIONChildLookupCodes": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "LookupCode": {
+                                    "type": "string"
+                                },
+                                "Meaning": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "type": "string"
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "DisplaySequence": {
+                                    "type": "integer"
+                                },
+                                "Tag": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05FinBusinessUnitsLOV": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "BusinessUnitId": {
+                                    "type": "integer"
+                                },
+                                "BusinessUnitName": {
+                                    "type": "string"
+                                },
+                                "ActiveFlag": {
+                                    "type": "boolean"
+                                },
+                                "PrimaryLedgerId": {
+                                    "type": "string"
+                                },
+                                "LocationId": {
+                                    "nullable": true
+                                },
+                                "ManagerId": {
+                                    "nullable": true
+                                },
+                                "LegalEntityId": {
+                                    "type": "string"
+                                },
+                                "ProfitCenterFlag": {
+                                    "type": "boolean"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05StandardLookupsPOZ_BUSINESS_CLASSIFICATIONSChildLookupCodes": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "LookupCode": {
+                                    "type": "string"
+                                },
+                                "Meaning": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "nullable": true
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "DisplaySequence": {
+                                    "type": "integer"
+                                },
+                                "Tag": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Get11_13_18_05StandardLookupsIBY_DELIVERY_METHODSChildLookupCodes": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "LookupCode": {
+                                    "type": "string"
+                                },
+                                "Meaning": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "EnabledFlag": {
+                                    "type": "string"
+                                },
+                                "StartDateActive": {
+                                    "type": "string"
+                                },
+                                "EndDateActive": {
+                                    "nullable": true
+                                },
+                                "DisplaySequence": {
+                                    "type": "integer"
+                                },
+                                "Tag": {
+                                    "nullable": true
+                                },
+                                "CreatedBy": {
+                                    "type": "string"
+                                },
+                                "CreationDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateDate": {
+                                    "type": "string"
+                                },
+                                "LastUpdateLogin": {
+                                    "type": "string"
+                                },
+                                "LastUpdatedBy": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

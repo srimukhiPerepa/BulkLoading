@@ -1,0 +1,35 @@
+{
+  "description": "",
+  "root": "ifMenuId",
+  "actions": {
+
+    "logout": {
+      "module": "vb/action/builtin/logoutAction",
+      "parameters": {
+        "logoutUrl": "https://www.google.com"
+      }
+    },
+    "login": {
+      "module": "vb/action/builtin/loginAction",
+      "parameters": {
+        "returnPath": "/shell"
+      }
+    },
+    "ifMenuId": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.menuId =='out']]"
+      },
+      "outcomes": {
+        "true": "logout",
+        "false": "login"
+      }
+    }
+  },
+  "variables": {
+    "menuId": {
+      "type": "string",
+      "input": "fromCaller"
+    }
+  }
+}

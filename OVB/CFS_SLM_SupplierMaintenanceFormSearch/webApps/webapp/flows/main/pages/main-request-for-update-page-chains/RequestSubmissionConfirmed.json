@@ -1,0 +1,26 @@
+{
+  "description": "",
+  "root": "callFunctionCloseDialogFunc",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog150\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callChainRequestForApprovalActionChain"
+      }
+    },
+    "callChainRequestForApprovalActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "requestForApprovalActionChain"
+      }
+    }
+  },
+  "variables": {}
+}

@@ -1,0 +1,69 @@
+{
+  "description": "",
+  "root": "resetVariablesSetIdVar",
+  "actions": {
+
+    "callRestPostGetSetBuMapping": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "getSetBUMapping/postGetSetBuMapping",
+        "body": "{{ $page.variables.getSetIdRequestVar }}"
+      },
+      "outcomes": {
+        "success": "assignVariablesSetIdVar"
+      }
+    },
+    "assignVariablesSetIdVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.setIdVar": {
+          "source": "{{ $chain.results.callRestPostGetSetBuMapping.body.set_id }}"
+        }
+      }
+    },
+    "resetVariablesSetIdVar": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.setIdVar",
+          "$page.variables.popupSite.RePaymentTerms"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesGetSetIdRequestVar"
+      }
+    },
+    "assignVariablesGetSetIdRequestVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSetIdRequestVar": {
+          "source": {
+            "bu_name": "{{ $page.variables.popupSite.ReProcurementBU }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostGetSetBuMapping"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "data": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "metadata": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

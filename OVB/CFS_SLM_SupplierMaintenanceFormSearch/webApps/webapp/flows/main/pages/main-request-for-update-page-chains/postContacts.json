@@ -1,0 +1,673 @@
+{
+  "root": "resetVariablesDummyPostContacts",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Failed to update Supplier Contacts",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Contact Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables7"
+      }
+    },
+    "callRestPostCfsSmfContactsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/postCfs_smf_contacts_tbl",
+        "body": "{{ $page.variables.DummyPostContacts.data[0] }}"
+      },
+      "outcomes": {
+        "failure": "if4"
+      }
+    },
+    "forEachInPostContacts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postContacts.data }}",
+        "actionId": "resetVariablesDummyPostContacts2"
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "assignVariablesDummyPostContacts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContacts": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "address_name": "{{ $current.data.address_name }}",
+                "administrative_contact_flag": "{{ $current.data.administrative_contact_flag }}",
+                "email": "{{ $current.data.email }}",
+                "fax_area_code": "{{ $current.data.fax_area_code }}",
+                "fax_country_code": "{{ $current.data.fax_country_code }}",
+                "fax_number": "{{ $current.data.fax_number }}",
+                "first_name": "{{ $current.data.first_name }}",
+                "inactive_date": "{{ $current.data.inactive_date?$current.data.inactive_date+\"T00:00:00Z\":$current.data.inactive_date }}",
+                "job_title": "{{ $current.data.job_title }}",
+                "last_name": "{{ $current.data.last_name }}",
+                "mobile_area_code": "{{ $current.data.mobile_area_code }}",
+                "mobile_country_code": "{{ $current.data.mobile_country_code }}",
+                "mobile_number": "{{ $current.data.mobile_number }}",
+                "phone_area_code": "{{ $current.data.phone_area_code }}",
+                "phone_country_code": "{{ $current.data.phone_country_code }}",
+                "phone_extension": "{{ $current.data.phone_extension }}",
+                "phone_number": "{{ $current.data.phone_number }}",
+                "re_address_name": "{{ $current.data.re_address_name }}",
+                "re_administrative_contact_flag": "{{ $current.data.re_administrative_contact_flag }}",
+                "re_email": "{{ $current.data.re_email }}",
+                "re_fax_area_code": "{{ $current.data.re_fax_area_code }}",
+                "re_fax_country_code": "{{ $current.data.re_fax_country_code }}",
+                "re_fax_number": "{{ $current.data.re_fax_number }}",
+                "re_first_name": "{{ $current.data.re_first_name }}",
+                "re_inactive_date": "{{ $current.data.re_inactive_date?$current.data.re_inactive_date+\"T00:00:00Z\":$current.data.re_inactive_date }}",
+                "re_job_title": "{{ $current.data.re_job_title }}",
+                "re_last_name": "{{ $current.data.re_last_name }}",
+                "re_mobile_area_code": "{{ $current.data.re_mobile_area_code }}",
+                "re_mobile_country_code": "{{ $current.data.re_mobile_country_code }}",
+                "re_mobile_number": "{{ $current.data.re_mobile_number }}",
+                "re_phone_area_code": "{{ $current.data.re_phone_area_code }}",
+                "re_phone_country_code": "{{ $current.data.re_phone_country_code }}",
+                "re_phone_extension": "{{ $current.data.re_phone_extension }}",
+                "re_phone_number": "{{ $current.data.re_phone_number }}",
+                "re_salutation": "{{ $current.data.re_salutation }}",
+                "re_salutation_code": "{{ $current.data.re_salutation_code }}",
+                "re_status": "{{ $current.data.re_status }}",
+                "salutation": "{{ $current.data.salutation }}",
+                "salutation_code": "{{ $current.data.salutation_code }}",
+                "supplier_contact_id": "{{ $current.data.supplier_contact_id }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "contact_purpose": "{{ $current.data.contact_purpose }}",
+                "status": "{{ $current.data.status }}",
+                "record_status": "{{ \"ACTIVE\" }}"
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfContactsTbl"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "resetVariablesDummyPostContacts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContacts"
+        ]
+      },
+      "outcomes": {
+        "success": "ifRequestStatus"
+      }
+    },
+    "ifRequestStatus": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus == \"More Information Requested\"]]"
+      },
+      "outcomes": {
+        "false": "forEachInPostContacts",
+        "true": "forEachInPostContacts3"
+      }
+    },
+    "return3": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "forEachInPostContacts3": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postContacts.data }}",
+        "actionId": "resetVariablesDummyPostContacts5"
+      },
+      "outcomes": {
+        "success": "forEachInInactivateContacts"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfContactsTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Contact Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables9"
+      }
+    },
+    "callRestPutCfsSmfContactsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_contacts_tbl",
+        "body": "{{ $page.variables.DummyPostContacts.data[0] }}",
+        "uriParams": {
+          "request_id": "{{ $page.variables.DummyPostContacts.data[0].request_id }}",
+          "supplier_contact_id": "{{ $page.variables.DummyPostContacts.data[0].supplier_contact_id }}",
+          "supplier_id": "{{ $page.variables.DummyPostContacts.data[0].supplier_id }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if"
+      }
+    },
+    "assignVariablesDummyPostContacts3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContacts": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "address_name": "{{ $current.data.address_name }}",
+                "administrative_contact_flag": "{{ $current.data.administrative_contact_flag }}",
+                "email": "{{ $current.data.email }}",
+                "fax_area_code": "{{ $current.data.fax_area_code }}",
+                "fax_country_code": "{{ $current.data.fax_country_code }}",
+                "fax_number": "{{ $current.data.fax_number }}",
+                "first_name": "{{ $current.data.first_name }}",
+                "inactive_date": "{{ $current.data.inactive_date?$current.data.inactive_date+\"T00:00:00Z\":$current.data.inactive_date }}",
+                "job_title": "{{ $current.data.job_title }}",
+                "last_name": "{{ $current.data.last_name }}",
+                "mobile_area_code": "{{ $current.data.mobile_area_code }}",
+                "mobile_country_code": "{{ $current.data.mobile_country_code }}",
+                "mobile_number": "{{ $current.data.mobile_number }}",
+                "phone_area_code": "{{ $current.data.phone_area_code }}",
+                "phone_country_code": "{{ $current.data.phone_country_code }}",
+                "phone_extension": "{{ $current.data.phone_extension }}",
+                "phone_number": "{{ $current.data.phone_number }}",
+                "re_address_name": "{{ $current.data.re_address_name }}",
+                "re_administrative_contact_flag": "{{ $current.data.re_administrative_contact_flag }}",
+                "re_email": "{{ $current.data.re_email }}",
+                "re_fax_area_code": "{{ $current.data.re_fax_area_code }}",
+                "re_fax_country_code": "{{ $current.data.re_fax_country_code }}",
+                "re_fax_number": "{{ $current.data.re_fax_number }}",
+                "re_first_name": "{{ $current.data.re_first_name }}",
+                "re_inactive_date": "{{ $current.data.re_inactive_date?$current.data.re_inactive_date+\"T00:00:00Z\":$current.data.re_inactive_date }}",
+                "re_job_title": "{{ $current.data.re_job_title }}",
+                "re_last_name": "{{ $current.data.re_last_name }}",
+                "re_mobile_area_code": "{{ $current.data.re_mobile_area_code }}",
+                "re_mobile_country_code": "{{ $current.data.re_mobile_country_code }}",
+                "re_mobile_number": "{{ $current.data.re_mobile_number }}",
+                "re_phone_area_code": "{{ $current.data.re_phone_area_code }}",
+                "re_phone_country_code": "{{ $current.data.re_phone_country_code }}",
+                "re_phone_extension": "{{ $current.data.re_phone_extension }}",
+                "re_phone_number": "{{ $current.data.re_phone_number }}",
+                "re_salutation": "{{ $current.data.re_salutation }}",
+                "re_salutation_code": "{{ $current.data.re_salutation_code }}",
+                "re_status": "{{ $current.data.re_status }}",
+                "salutation": "{{ $current.data.salutation }}",
+                "salutation_code": "{{ $current.data.salutation_code }}",
+                "supplier_contact_id": "{{ $current.data.supplier_contact_id }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "contact_purpose": "{{ $current.data.contact_purpose }}",
+                "status": "{{ $current.data.status }}",
+                "record_status": "{{ \"ACTIVE\" }}" 
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfContactsTbl"
+      }
+    },
+    "forEachInInactivateContacts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.InactivateContacts.data }}",
+        "actionId": "resetVariablesDummyPostContacts3"
+      },
+      "outcomes": {
+        "success": "return3"
+      }
+    },
+    "resetVariablesDummyPostContacts2": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContacts",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostContacts"
+      }
+    },
+    "resetVariablesDummyPostContacts3": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContacts",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariables"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContacts": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "address_name": "{{ $current.data.address_name }}",
+                "administrative_contact_flag": "{{ $current.data.administrative_contact_flag }}",
+                "email": "{{ $current.data.email }}",
+                "fax_area_code": "{{ $current.data.fax_area_code }}",
+                "fax_country_code": "{{ $current.data.fax_country_code }}",
+                "fax_number": "{{ $current.data.fax_number }}",
+                "first_name": "{{ $current.data.first_name }}",
+                "inactive_date": "{{ $current.data.inactive_date?$current.data.inactive_date+\"T00:00:00Z\":$current.data.inactive_date }}",
+                "job_title": "{{ $current.data.job_title }}",
+                "last_name": "{{ $current.data.last_name }}",
+                "mobile_area_code": "{{ $current.data.mobile_area_code }}",
+                "mobile_country_code": "{{ $current.data.mobile_country_code }}",
+                "mobile_number": "{{ $current.data.mobile_number }}",
+                "phone_area_code": "{{ $current.data.phone_area_code }}",
+                "phone_country_code": "{{ $current.data.phone_country_code }}",
+                "phone_extension": "{{ $current.data.phone_extension }}",
+                "phone_number": "{{ $current.data.phone_number }}",
+                "re_address_name": "{{ $current.data.re_address_name }}",
+                "re_administrative_contact_flag": "{{ $current.data.re_administrative_contact_flag }}",
+                "re_email": "{{ $current.data.re_email }}",
+                "re_fax_area_code": "{{ $current.data.re_fax_area_code }}",
+                "re_fax_country_code": "{{ $current.data.re_fax_country_code }}",
+                "re_fax_number": "{{ $current.data.re_fax_number }}",
+                "re_first_name": "{{ $current.data.re_first_name }}",
+                "re_inactive_date": "{{ $current.data.re_inactive_date?$current.data.re_inactive_date+\"T00:00:00Z\":$current.data.re_inactive_date }}",
+                "re_job_title": "{{ $current.data.re_job_title }}",
+                "re_last_name": "{{ $current.data.re_last_name }}",
+                "re_mobile_area_code": "{{ $current.data.re_mobile_area_code }}",
+                "re_mobile_country_code": "{{ $current.data.re_mobile_country_code }}",
+                "re_mobile_number": "{{ $current.data.re_mobile_number }}",
+                "re_phone_area_code": "{{ $current.data.re_phone_area_code }}",
+                "re_phone_country_code": "{{ $current.data.re_phone_country_code }}",
+                "re_phone_extension": "{{ $current.data.re_phone_extension }}",
+                "re_phone_number": "{{ $current.data.re_phone_number }}",
+                "re_salutation": "{{ $current.data.re_salutation }}",
+                "re_salutation_code": "{{ $current.data.re_salutation_code }}",
+                "re_status": "{{ $current.data.re_status }}",
+                "salutation": "{{ $current.data.salutation }}",
+                "salutation_code": "{{ $current.data.salutation_code }}",
+                "supplier_contact_id": "{{ $current.data.supplier_contact_id }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "contact_purpose": "{{ $current.data.contact_purpose }}",
+                "status": "{{ $current.data.status }}",
+                "record_status": "{{ \"INACTIVE\" }}" 
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfContactsTbl2"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfContactsTbl2.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Contact Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables4"
+      }
+    },
+    "callRestPutCfsSmfContactsTbl2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_contacts_tbl",
+        "body": "{{ $page.variables.DummyPostContacts.data[0] }}",
+        "uriParams": {
+          "request_id": "{{ $page.variables.DummyPostContacts.data[0].request_id }}",
+          "supplier_contact_id": "{{ $page.variables.DummyPostContacts.data[0].supplier_contact_id }}",
+          "supplier_id": "{{ $page.variables.DummyPostContacts.data[0].supplier_id }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if3"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfContactsTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification2",
+        "true": "assignVariables5"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfContactsTbl"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfContactsTbl2.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3",
+        "true": "assignVariables3"
+      }
+    },
+    "callFunctionWaitForNextCall2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfContactsTbl2"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPostCfsSmfContactsTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "callFunctionWaitForNextCall3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfContactsTbl"
+      }
+    },
+    "resetVariablesDummyPostContacts5": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContacts",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostContacts3"
+      }
+    },
+    "assignVariables3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry2"
+      }
+    },
+    "assignVariables5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification6"
+      }
+    },
+    "ifReTry2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall2",
+        "false": "fireNotification7"
+      }
+    },
+    "fireNotification5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables6"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry3"
+      }
+    },
+    "fireNotification6": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables10"
+      }
+    },
+    "ifReTry3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall3",
+        "false": "fireNotification5"
+      }
+    },
+    "fireNotification7": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables2"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return2"
+      }
+    },
+    "assignVariables4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return6"
+      }
+    },
+    "assignVariables6": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return5"
+      }
+    },
+    "assignVariables7": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return4"
+      }
+    },
+    "return4": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return5": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return6": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return7": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables9": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return7"
+      }
+    },
+    "return8": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables10": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return8"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

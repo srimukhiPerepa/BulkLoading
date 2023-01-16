@@ -1,0 +1,23 @@
+{
+  "description": "",
+  "root": "callFunctionCloseDialogFunc",
+  "actions": {
+    "navigateBack": {
+      "module": "vb/action/builtin/navigateBackAction"
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog1500\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "navigateBack"
+      }
+    }
+  },
+  "variables": {}
+}

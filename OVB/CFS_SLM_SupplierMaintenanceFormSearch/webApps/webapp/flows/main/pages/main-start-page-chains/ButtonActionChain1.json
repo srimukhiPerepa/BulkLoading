@@ -1,0 +1,13 @@
+{
+  "description": "",
+  "root": "navigateToMainAdmin",
+  "actions": {
+    "navigateToMainAdmin": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-admin"
+      }
+    }
+  },
+  "variables": {}
+}

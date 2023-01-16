@@ -1,0 +1,350 @@
+{
+  "root": "ifSourcePage",
+  "description": "",
+  "actions": {
+    "assignVariablesPostDFF": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postDFF": {
+          "source": {
+            "additional_insured": "{{ $page.variables.getSupplierDFF.additionalInsured }}",
+            "auto_liability_expiration_date": "{{ $page.variables.getSupplierDFF.autoLiabilityExpirationDate?$page.variables.getSupplierDFF.autoLiabilityExpirationDate+\"T00:00:00Z\":$page.variables.getSupplierDFF.autoLiabilityExpirationDate }}",
+            "auto_liability_value": "{{ $page.variables.getSupplierDFF.autoLiabilityValue }}",
+            "employer_liability_expiration_date": "{{ $page.variables.getSupplierDFF.employersLiabilityExpirationDa?$page.variables.getSupplierDFF.employersLiabilityExpirationDa+\"T00:00:00Z\":$page.variables.getSupplierDFF.employersLiabilityExpirationDa }}",
+            "employee_liability_value": "{{ $page.variables.getSupplierDFF.employersLiabilityValue }}",
+            "environ_pollution_liability_expiration_date": "{{ $page.variables.getSupplierDFF.environPollutionLiabilityExpir?$page.variables.getSupplierDFF.environPollutionLiabilityExpir+\"T00:00:00Z\":$page.variables.getSupplierDFF.environPollutionLiabilityExpir }}",
+            "environ_pollution_liability_value": "{{ $page.variables.getSupplierDFF.environPollutionLiabilityValue }}",
+            "excess_umbrella_liability_expiration_date": "{{ $page.variables.getSupplierDFF.excessUmbrellaLiabilityExpirat?$page.variables.getSupplierDFF.excessUmbrellaLiabilityExpirat+\"T00:00:00Z\":$page.variables.getSupplierDFF.excessUmbrellaLiabilityExpirat }}",
+            "excess_umbrella_liability_value": "{{ $page.variables.getSupplierDFF.excessUmbrellaLiabilityValue }}",
+            "exelon_poc": "{{ $page.variables.getSupplierDFF.exelonPoc }}",
+            "general_liability_expiration_date": "{{ $page.variables.getSupplierDFF.generalLiabilityExpirationDate?$page.variables.getSupplierDFF.generalLiabilityExpirationDate+\"T00:00:00Z\":$page.variables.getSupplierDFF.generalLiabilityExpirationDate }}",
+            "general_liability_value": "{{ $page.variables.getSupplierDFF.generalLiabilityValue }}",
+            "legal_structure": "{{ $page.variables.getSupplierDFF.legalStructure }}",
+            "created_by": "{{ $application.user.username }}",
+            "last_updated_by": "{{ $application.user.username }}",
+            "miscellaneous_insurance_expiration_date": "{{ $page.variables.getSupplierDFF.miscellaneousInsuranceExpirati?$page.variables.getSupplierDFF.miscellaneousInsuranceExpirati+\"T00:00:00Z\":$page.variables.getSupplierDFF.miscellaneousInsuranceExpirati }}",
+            "miscellaneous_liability_insurance_value": "{{ $page.variables.getSupplierDFF.miscellaneousLiabilityInsuranc }}",
+            "policies_are_primary": "{{ $page.variables.getSupplierDFF.policiesArePrimary }}",
+            "professional_liability_expiration_date": "{{ $page.variables.getSupplierDFF.professionalLiabilityExpiratio?$page.variables.getSupplierDFF.professionalLiabilityExpiratio+\"T00:00:00Z\":$page.variables.getSupplierDFF.professionalLiabilityExpiratio }}",
+            "professional_liability_value": "{{ $page.variables.getSupplierDFF.professionalLiabilityValue }}",
+            "supplier_insurance_waiver_of_subrogation": "{{ $page.variables.getSupplierDFF.suppliersInsuranceProvidedWaiv }}",
+            "workers_comp_liability_value": "{{ $page.variables.getSupplierDFF.workersCompLiabilityValue }}",
+            "workers_comp_liability_expiration_date": "{{ $page.variables.getSupplierDFF.workersCompLiabilityExpiration?$page.variables.getSupplierDFF.workersCompLiabilityExpiration+\"T00:00:00Z\":$page.variables.getSupplierDFF.workersCompLiabilityExpiration }}",
+            "supplier_id": "{{ $page.variables.getSupplierDFF.VendorId }}",
+            "request_id": "{{ $page.variables.requestId }}",
+            "re_auto_liability_expiration_date": "{{ $page.variables.postDFF.re_auto_liability_expiration_date?$page.variables.postDFF.re_auto_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_auto_liability_expiration_date }}",
+            "re_employer_liability_expiration_date": "{{ $page.variables.postDFF.re_employer_liability_expiration_date?$page.variables.postDFF.re_employer_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_employer_liability_expiration_date }}",
+            "re_environ_pollution_liability_expiration_date": "{{ $page.variables.postDFF.re_environ_pollution_liability_expiration_date?$page.variables.postDFF.re_environ_pollution_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_environ_pollution_liability_expiration_date }}",
+            "re_excess_umbrella_liability_expiration_date": "{{ $page.variables.postDFF.re_excess_umbrella_liability_expiration_date?$page.variables.postDFF.re_excess_umbrella_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_excess_umbrella_liability_expiration_date }}",
+            "re_general_liability_expiration_date": "{{ $page.variables.postDFF.re_general_liability_expiration_date?$page.variables.postDFF.re_general_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_general_liability_expiration_date }}",
+            "re_miscellaneous_insurance_expiration_date": "{{ $page.variables.postDFF.re_miscellaneous_insurance_expiration_date?$page.variables.postDFF.re_miscellaneous_insurance_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_miscellaneous_insurance_expiration_date }}",
+            "re_professional_liability_expiration_date": "{{ $page.variables.postDFF.re_professional_liability_expiration_date?$page.variables.postDFF.re_professional_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_professional_liability_expiration_date }}",
+            "re_workers_comp_liability_expiration_date": "{{ $page.variables.postDFF.re_workers_comp_liability_expiration_date?$page.variables.postDFF.re_workers_comp_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_workers_comp_liability_expiration_date }}",
+            "re_legal_structure": "{{ $page.variables.postDFF.re_legal_structure }}",
+            "re_general_liability_value": "{{ $page.variables.postDFF.re_general_liability_value }}",
+            "re_exelon_poc": "{{ $page.variables.postDFF.re_exelon_poc }}",
+            "re_additional_insured": "{{ $page.variables.postDFF.re_additional_insured }}",
+            "re_auto_liability_value": "{{ $page.variables.postDFF.re_auto_liability_value }}",
+            "re_employee_liability_value": "{{ $page.variables.postDFF.re_employee_liability_value }}",
+            "re_environ_pollution_liability_value": "{{ $page.variables.postDFF.re_environ_pollution_liability_value }}",
+            "re_excess_umbrella_liability_value": "{{ $page.variables.postDFF.re_excess_umbrella_liability_value }}",
+            "re_miscellaneous_liability_insurance_value": "{{ $page.variables.postDFF.re_miscellaneous_liability_insurance_value }}",
+            "re_policies_are_primary": "{{ $page.variables.postDFF.re_policies_are_primary }}",
+            "re_professional_liability_value": "{{ $page.variables.postDFF.re_professional_liability_value }}",
+            "re_supplier_insurance_waiver_of_subrogation": "{{ $page.variables.postDFF.re_supplier_insurance_waiver_of_subrogation }}",
+            "re_workers_comp_liability_value": "{{ $page.variables.postDFF.re_workers_comp_liability_value }}",
+            "creation_date": "{{ $page.variables.SystemDate }}",
+            "last_update_date": "{{ $page.variables.SystemDate }}"
+          },
+          "auto": "always",
+          "reset": "none"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfSuppliersDffTbl"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Failed to update DFF",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Supplier DFF Update: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables5"
+      }
+    },
+    "callRestPostCfsSmfSuppliersDffTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/postCfs_smf_suppliers_dff_tbl",
+        "body": "{{ $page.variables.postDFF }}"
+      },
+      "outcomes": {
+        "failure": "if3",
+        "success": "return"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "ifSourcePage": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SourcePage==\"ViewDetails\" ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesPostDFF",
+        "true": "assignVariablesPostDFF2"
+      }
+    },
+    "return3": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfSuppliersDffTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Supplier DFF Update: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables3"
+      }
+    },
+    "callRestPutCfsSmfSuppliersDffTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_suppliers_dff_tbl",
+        "uriParams": {
+          "requestId": "{{ $page.variables.requestId }}",
+          "supplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}"
+        },
+        "body": "{{ $page.variables.postDFF }}"
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "return3"
+      }
+    },
+    "assignVariablesPostDFF2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postDFF": {
+          "source": {
+            "re_workers_comp_liability_expiration_date": "{{ $page.variables.postDFF.re_workers_comp_liability_expiration_date?$page.variables.postDFF.re_workers_comp_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_workers_comp_liability_expiration_date }}",
+            "re_professional_liability_expiration_date": "{{ $page.variables.postDFF.re_professional_liability_expiration_date?$page.variables.postDFF.re_professional_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_professional_liability_expiration_date }}",
+            "re_miscellaneous_insurance_expiration_date": "{{ $page.variables.postDFF.re_miscellaneous_insurance_expiration_date?$page.variables.postDFF.re_miscellaneous_insurance_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_miscellaneous_insurance_expiration_date }}",
+            "re_general_liability_expiration_date": "{{ $page.variables.postDFF.re_general_liability_expiration_date?$page.variables.postDFF.re_general_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_general_liability_expiration_date }}",
+            "re_excess_umbrella_liability_expiration_date": "{{ $page.variables.postDFF.re_excess_umbrella_liability_expiration_date?$page.variables.postDFF.re_excess_umbrella_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_excess_umbrella_liability_expiration_date }}",
+            "re_environ_pollution_liability_expiration_date": "{{ $page.variables.postDFF.re_environ_pollution_liability_expiration_date?$page.variables.postDFF.re_environ_pollution_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_environ_pollution_liability_expiration_date }}",
+            "re_employer_liability_expiration_date": "{{ $page.variables.postDFF.re_employer_liability_expiration_date?$page.variables.postDFF.re_employer_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_employer_liability_expiration_date }}",
+            "re_auto_liability_expiration_date": "{{ $page.variables.postDFF.re_auto_liability_expiration_date?$page.variables.postDFF.re_auto_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.re_auto_liability_expiration_date }}",
+            "professional_liability_expiration_date": "{{ $page.variables.postDFF.professional_liability_expiration_date?$page.variables.postDFF.professional_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.professional_liability_expiration_date }}",
+            "miscellaneous_insurance_expiration_date": "{{ $page.variables.postDFF.miscellaneous_insurance_expiration_date?$page.variables.postDFF.miscellaneous_insurance_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.miscellaneous_insurance_expiration_date }}",
+            "general_liability_expiration_date": "{{ $page.variables.postDFF.general_liability_expiration_date?$page.variables.postDFF.general_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.general_liability_expiration_date }}",
+            "excess_umbrella_liability_expiration_date": "{{ $page.variables.postDFF.excess_umbrella_liability_expiration_date?$page.variables.postDFF.excess_umbrella_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.excess_umbrella_liability_expiration_date }}",
+            "environ_pollution_liability_expiration_date": "{{ $page.variables.postDFF.environ_pollution_liability_expiration_date?$page.variables.postDFF.environ_pollution_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.environ_pollution_liability_expiration_date }}",
+            "employer_liability_expiration_date": "{{ $page.variables.postDFF.employer_liability_expiration_date?$page.variables.postDFF.employer_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.employer_liability_expiration_date }}",
+            "auto_liability_expiration_date": "{{ $page.variables.postDFF.auto_liability_expiration_date?$page.variables.postDFF.auto_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.auto_liability_expiration_date }}",
+            "workers_comp_liability_expiration_date": "{{ $page.variables.postDFF.workers_comp_liability_expiration_date?$page.variables.postDFF.workers_comp_liability_expiration_date+\"T00:00:00Z\":$page.variables.postDFF.workers_comp_liability_expiration_date }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfSuppliersDffTbl"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfSuppliersDffTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification2",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPostCfsSmfSuppliersDffTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariables2"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry2"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall3",
+        "false": "fireNotification4"
+      }
+    },
+    "ifReTry2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall4",
+        "false": "fireNotification3"
+      }
+    },
+    "callFunctionWaitForNextCall3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfSuppliersDffTbl"
+      }
+    },
+    "callFunctionWaitForNextCall4": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfSuppliersDffTbl"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables4"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return2"
+      }
+    },
+    "assignVariables3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return4"
+      }
+    },
+    "assignVariables4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return5"
+      }
+    },
+    "assignVariables5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return6"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return4": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return5": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return6": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

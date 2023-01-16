@@ -1,0 +1,28 @@
+{
+  "description": "",
+  "root": "resetVariablesPopupContactAddresses",
+  "actions": {
+    "resetVariablesPopupContactAddresses": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupContactAddresses"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog900\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

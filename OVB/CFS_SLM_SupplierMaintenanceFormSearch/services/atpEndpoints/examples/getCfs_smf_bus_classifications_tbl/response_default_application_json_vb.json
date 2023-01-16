@@ -1,0 +1,44 @@
+{
+    "classification_id": 1,
+    "supplier_id": 300000065427463,
+    "request_id": 10000000729,
+    "classification": "HISPANIC FEMALE OWNED BUSINESS-CLASSIFIED",
+    "certifying_agency_id": null,
+    "certifying_agency": "Other",
+    "other_certifying_agency": "SBA",
+    "status": null,
+    "certificate": "823723974692",
+    "expiration_date": "2023-09-30T00:00:00Z",
+    "re_classification": "HISPANIC FEMALE OWNED BUSINESS-CLASSIFIED",
+    "re_certifying_agency_id": null,
+    "re_certifying_agency": "Other",
+    "re_other_certifying_agency": "SBA",
+    "re_status": null,
+    "re_certificate": "823723974692",
+    "re_expiration_date": "2023-09-30T00:00:00Z",
+    "action_requested": "New",
+    "classification_applicable_flag": "No",
+    "api_response": null,
+    "created_by": "maddy.chevron",
+    "creation_date": "2022-09-12T11:58:48Z",
+    "last_updated_by": "maddy.chevron",
+    "last_update_date": "2022-09-12T11:58:48Z",
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bus_classifications_tbl/1,300000065427463,10000000729"
+        },
+        {
+            "rel": "edit",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bus_classifications_tbl/1,300000065427463,10000000729"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/metadata-catalog/cfs_smf_bus_classifications_tbl/item"
+        },
+        {
+            "rel": "collection",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_bus_classifications_tbl/"
+        }
+    ]
+}

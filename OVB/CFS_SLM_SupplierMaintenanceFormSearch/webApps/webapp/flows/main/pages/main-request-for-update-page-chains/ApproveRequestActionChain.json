@@ -1,0 +1,134 @@
+{
+  "description": "",
+  "root": "ifPostRequests",
+  "actions": {
+
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog140000\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfRequestsTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callChainApprovalWorkflowTrigger": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "ApprovalWorkflowTrigger"
+      }
+    },
+    "ifPostRequests": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.postRequests.approver_comment ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionCloseDialogFunc"
+      }
+    },
+    "assignVariablesPostRequests": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postRequests": {
+          "source": {
+
+            "status": "{{ \"ERP Sync In Progress\" }}",
+            "approver_comment": "{{ $page.variables.postRequests.approver_comment }}",
+            "created_by": "{{ $page.variables.postRequests.created_by }}",
+            "creation_date": "{{ $page.variables.postRequests.creation_date }}",
+            "request_date": "{{ $page.variables.postRequests.request_date }}",
+            "request_id": "{{ $page.variables.postRequests.request_id }}",
+            "supplier_id": "{{ $page.variables.postRequests.supplier_id }}",
+            "last_updated_by": "{{ $application.user.username }}",
+            "last_update_date": "{{ $chain.results.callFunctionReturnCurrentDate }}",
+            "approval_date": "{{ $page.variables.ApprovedRejectedDate }}",
+            "approver": "{{ $application.user.username }}",
+            "approved_rejected_name": "{{ $page.variables.displayNameOfUserVar }}",
+            "requestor": "{{ $page.variables.postRequests.requestor }}",
+            "requestor_name": "{{ $page.variables.postRequests.requestor_name }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfRequestsTbl"
+      }
+    },
+    "callRestPutCfsSmfRequestsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_requests_tbl",
+        "uriParams": {
+          "requestId": "{{ $page.variables.requestId }}"
+        },
+        "body": "{{ $page.variables.postRequests }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "callChainApprovalWorkflowTrigger"
+      }
+    },
+    "callFunctionReturnCurrentDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "returnCurrentDate"
+      },
+      "outcomes": {
+        "success": "assignVariablesApprovedRejectedDate"
+      }
+    },
+    "assignVariablesApprovedRejectedDate": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ApprovedRejectedDate": {
+          "source": "{{ $chain.results.callFunctionReturnCurrentDate }}"
+        }
+      },
+      "outcomes": {
+        "success": "callChainGetUsersList"
+      }
+    },
+    "callChainGetUsersList": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getUsersList",
+        "params": {
+          "CIDVar": "{{ $application.user.username }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostRequests"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionReturnCurrentDate"
+      }
+    }
+  },
+  "variables": {}
+}

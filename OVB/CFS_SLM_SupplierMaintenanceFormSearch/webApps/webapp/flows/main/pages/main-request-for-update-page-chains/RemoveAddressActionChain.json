@@ -1,0 +1,119 @@
+{
+  "description": "",
+  "root": "resetVariablesDummyPostSupplierAddresses",
+  "actions": {
+    "forEachInPostSupplierAddresses": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postSupplierAddresses.data }}",
+        "actionId": "ifKey"
+      },
+      "outcomes": {
+        "success": "resetVariablesPostSupplierAddresses"
+      }
+    },
+    "ifKey": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_address_id==$variables.key ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesDummyPostSupplierAddresses",
+        "true": "ifRequestStatus"
+      }
+    },
+    "assignVariablesDummyPostSupplierAddresses": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostSupplierAddresses": {
+          "source": {
+            "data": "{{ $current.data }}"          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "resetVariablesDummyPostSupplierAddresses": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostSupplierAddresses"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInPostSupplierAddresses"
+      }
+    },
+    "assignVariablesPostSupplierAddresses": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postSupplierAddresses": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostSupplierAddresses.data }}"
+          },
+          "reset": "toDefault",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostSupplierAddresses"
+      }
+    },
+    "fireDataProviderEventPostSupplierAddresses": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postSupplierAddresses ]]"
+      }
+    },
+    "resetVariablesPostSupplierAddresses": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postSupplierAddresses"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPostSupplierAddresses"
+      }
+    },
+    "assignVariablesInactivateAddresses": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.InactivateAddresses": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "ifRequestStatus": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus==\"More Information Requested\" && $current.data.record_status == \"ACTIVE\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesInactivateAddresses"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

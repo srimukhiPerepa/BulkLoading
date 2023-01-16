@@ -1,0 +1,121 @@
+{
+  "description": "",
+  "root": "resetVariablesGetAddressValidations",
+  "actions": {
+    "resetVariablesGetAddressValidations": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getAddressValidations",
+          "$page.variables.validationsArray"
+        ]
+      },
+      "outcomes": {
+        "success": "ifPopupAddress"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetLookupCodes.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetLookupCodes": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getAddressValidationsLookup",
+        "uriParams": {
+          "q": "{{ \"Meaning=\"+$page.variables.popupAddress.Country }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetLookupCodes.body.count>0 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesGetAddressValidations",
+        "false": "return"
+      }
+    },
+    "assignVariablesGetAddressValidations": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAddressValidations": {
+          "source": "{{ $chain.results.callRestGetLookupCodes.body.items[0] }}",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionIsAddressFormatValid"
+      }
+    },
+    "callFunctionIsAddressFormatValid": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "isAddressFormatValid",
+        "params": [
+          "{{ $chain.results.callRestGetLookupCodes.body.items[0].Description }}",
+          "{{ $page.variables.validationsArray }}"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesValidationsArray"
+      }
+    },
+    "assignVariablesValidationsArray": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.validationsArray": {
+          "source": "{{ $chain.results.callFunctionIsAddressFormatValid }}",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "ifPopupAddress": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupAddress.Country ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetLookupCodes",
+        "false": "return"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "data": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "metadata": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

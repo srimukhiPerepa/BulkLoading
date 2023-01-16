@@ -1,0 +1,96 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "getSecretVault",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://secrets.vaults.us-ashburn-1.oci.oraclecloud.com/20190301/secretbundles",
+            "description": "20190301 Secretbundles",
+            "x-vb": {
+                "authentication": {
+                    "authenticated": {
+                        "type": "http_signature_oci",
+                        "credentials": ""
+                    }
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/ocid1.vaultsecret.oc1.iad.amaaaaaaotul2pyapjc2ncpnyjuau43vku4u27a6t7tsof7ou5vw5q22qyvq": {
+            "get": {
+                "operationId": "getOcid1Vaultsecret",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetOcid1VaultsecretOc1IadAmaaaaaaotul2pyapjc2ncpnyjuau43vku4u27a6t7tsof7ou5vw5q22qyvq"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getOcid1Vaultsecret/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetOcid1VaultsecretOc1IadAmaaaaaaotul2pyapjc2ncpnyjuau43vku4u27a6t7tsof7ou5vw5q22qyvq": {
+                "type": "object",
+                "properties": {
+                    "secretId": {
+                        "type": "string"
+                    },
+                    "timeCreated": {
+                        "type": "string"
+                    },
+                    "versionNumber": {
+                        "type": "integer"
+                    },
+                    "versionName": {
+                        "nullable": true
+                    },
+                    "secretBundleContent": {
+                        "type": "object",
+                        "properties": {
+                            "contentType": {
+                                "type": "string"
+                            },
+                            "content": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "timeOfDeletion": {
+                        "nullable": true
+                    },
+                    "timeOfExpiry": {
+                        "nullable": true
+                    },
+                    "stages": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "metadata": {
+                        "nullable": true
+                    }
+                }
+            }
+        }
+    }
+}

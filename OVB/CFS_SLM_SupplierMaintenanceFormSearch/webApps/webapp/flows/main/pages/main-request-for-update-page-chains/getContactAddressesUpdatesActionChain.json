@@ -1,0 +1,175 @@
+{
+  "root": "resetVariablesContactAddressUpdates",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetGetContactAddressesUpdatesRequestId.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get contact address information"
+      }
+    },
+    "callRestGetGetContactAddressesUpdatesRequestId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_contact_addresses_updatesRequestId",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "forEach"
+      }
+    },
+    "forEach": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "actionId": "resetVariablesDummyPostContactAddress",
+        "items": "{{ $chain.results.callRestGetGetContactAddressesUpdatesRequestId.body.items }}"
+    },
+      "outcomes": {
+        "success": "fireDataProviderEventContactAddressUpdates"
+      }
+    },
+    "assignVariablesContactAddressUpdates": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ContactAddressUpdates": {
+          "source": "{{ $page.variables.DummyPostContactAddress }}",
+          "auto": "always",
+          "reset": "none"
+        }
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "resetVariablesContactAddressUpdates": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.ContactAddressUpdates",
+          "$page.variables.postContactAddress"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGetGetContactAddressesUpdatesRequestId"
+      }
+    },
+    "resetVariablesDummyPostContactAddress": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddress"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostContactAddress"
+      }
+    },
+    "assignVariablesDummyPostContactAddress": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContactAddress": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "address_name": "{{ $current.data.address_name }}",
+                "request_id": "{{ $current.data.request_id }}",
+                "supplier_contact_address_id": "{{ $current.data.supplier_contact_address_id }}",
+                "supplier_contact_id": "{{ $current.data.supplier_contact_id }}",
+                "supplier_id": "{{ $current.data.supplier_id }}",
+                "record_status": "{{ $current.data.record_status }}"
+              }
+            ]
+          },
+          "reset": "toDefault",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesContactAddressUpdates"
+      }
+    },
+    "fireDataProviderEventContactAddressUpdates": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.ContactAddressUpdates ]]"
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetContactAddressesUpdatesRequestId.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification4"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetContactAddressesUpdatesRequestId"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

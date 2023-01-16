@@ -1,0 +1,14 @@
+{"userroles":[
+        {
+            "name": "CFS_SMF_Admin_Role",
+            "description": "CFS_SMF_Admin_Role",
+            "id": "CFS_SMF_Admin_Role",
+            "defaultMapping": {}
+        },        
+        {
+            "name": "CFS_SMF_Requestor_Role",
+            "description": "CFS_SMF_Requestor_Role",
+            "id": "CFS_SMF_Requestor_Role",
+            "defaultMapping": {}
+        }
+      ]}

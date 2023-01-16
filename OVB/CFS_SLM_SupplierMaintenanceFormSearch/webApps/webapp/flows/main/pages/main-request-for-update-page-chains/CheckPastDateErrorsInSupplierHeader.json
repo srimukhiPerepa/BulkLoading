@@ -1,0 +1,313 @@
+{
+  "root": "resetVariablesErrorExpirationAndInactiveDateFlag",
+  "description": "",
+  "actions": {
+    "callFunctionValidateInactiveDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateInactiveDate",
+        "params": [
+          "{{ $page.variables.postSupplier.re_inactive_date }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateInactiveDate ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateExpirationDate",
+        "false": "fireNotification"
+      }
+    },
+    "callFunctionValidateExpirationDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateExpirationDate",
+        "params": [
+          "{{ $page.variables.postDFF.re_auto_liability_expiration_date }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if10"
+      }
+    },
+    "callFunctionValidateExpirationDate2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateExpirationDate",
+        "params": [
+          "{{ $page.variables.postDFF.re_employer_liability_expiration_date }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if2"
+      }
+    },
+    "callFunctionValidateExpirationDate3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateExpirationDate",
+        "params": [
+          "{{ $page.variables.postDFF.re_environ_pollution_liability_expiration_date }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if3"
+      }
+    },
+    "callFunctionValidateExpirationDate4": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateExpirationDate",
+        "params": [
+          "{{ $page.variables.postDFF.re_excess_umbrella_liability_expiration_date }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if4"
+      }
+    },
+    "callFunctionValidateExpirationDate5": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateExpirationDate",
+        "params": [
+          "{{ $page.variables.postDFF.re_general_liability_expiration_date }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if5"
+      }
+    },
+    "callFunctionValidateExpirationDate6": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateExpirationDate",
+        "params": [
+          "{{ $page.variables.postDFF.re_miscellaneous_insurance_expiration_date }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if6"
+      }
+    },
+    "callFunctionValidateExpirationDate7": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateExpirationDate",
+        "params": [
+          "{{ $page.variables.postDFF.re_professional_liability_expiration_date }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if7"
+      }
+    },
+    "callFunctionValidateExpirationDate8": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateExpirationDate",
+        "params": [
+          "{{ $page.variables.postDFF.re_workers_comp_liability_expiration_date }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if8"
+      }
+    },
+    "if10": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateExpirationDate ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateExpirationDate2",
+        "false": "fireNotification2"
+      }
+    },
+    "if2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateExpirationDate2 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateExpirationDate3",
+        "false": "fireNotification4"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateExpirationDate3 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateExpirationDate4",
+        "false": "fireNotificationErrorExpirationDate"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateExpirationDate4 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateExpirationDate5",
+        "false": "fireNotificationErrorExpirationDate2"
+      }
+    },
+    "if5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateExpirationDate5 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateExpirationDate6",
+        "false": "fireNotificationErrorExpirationDate3"
+      }
+    },
+    "if6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateExpirationDate6 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateExpirationDate7",
+        "false": "fireNotificationErrorExpirationDate4"
+      }
+    },
+    "if7": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateExpirationDate7 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateExpirationDate8",
+        "false": "fireNotificationErrorExpirationDate5"
+      }
+    },
+    "if8": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateExpirationDate8 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotificationErrorExpirationDate6",
+        "true": "assignVariablesErroExpirationAndInactiveDateFlag"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Inactive Date Error",
+        "message": "[[ $page.variables.ErrorInactiveDate ]]"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Expiration Date Error",
+        "message": "[[ $page.variables.ErrorExpirationDate ]]"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ErrorExpirationDate ]]",
+        "summary": "Expiration Date Error"
+      }
+    },
+    "fireNotificationErrorExpirationDate": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $page.variables.ErrorExpirationDate ]]",
+        "message": "[[ $page.variables.ErrorExpirationDate ]]"
+      }
+    },
+    "fireNotificationErrorExpirationDate2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $page.variables.ErrorExpirationDate ]]",
+        "message": "[[ $page.variables.ErrorExpirationDate ]]"
+      }
+    },
+    "fireNotificationErrorExpirationDate3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $page.variables.ErrorExpirationDate ]]",
+        "message": "[[ $page.variables.ErrorExpirationDate ]]"
+      }
+    },
+    "fireNotificationErrorExpirationDate4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $page.variables.ErrorExpirationDate ]]",
+        "message": "[[ $page.variables.ErrorExpirationDate ]]"
+      }
+    },
+    "fireNotificationErrorExpirationDate5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $page.variables.ErrorExpirationDate ]]",
+        "message": "[[ $page.variables.ErrorExpirationDate ]]"
+      }
+    },
+    "fireNotificationErrorExpirationDate6": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $page.variables.ErrorExpirationDate ]]",
+        "message": "[[ $page.variables.ErrorExpirationDate ]]"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariablesErroExpirationAndInactiveDateFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ErrorExpirationAndInactiveDateFlag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "resetVariablesErrorExpirationAndInactiveDateFlag": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.ErrorExpirationAndInactiveDateFlag"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionValidateInactiveDate"
+      }
+    }
+  }
+}

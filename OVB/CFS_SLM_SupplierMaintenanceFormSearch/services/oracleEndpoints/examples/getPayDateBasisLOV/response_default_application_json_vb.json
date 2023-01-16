@@ -1,0 +1,110 @@
+{
+    "items": [
+        {
+            "LookupCode": "DISCOUNT",
+            "Meaning": "Discount",
+            "Description": "Payment date is derived from the discount date.",
+            "EnabledFlag": "Y",
+            "StartDateActive": "2010-03-31",
+            "EndDateActive": null,
+            "DisplaySequence": null,
+            "Tag": null,
+            "CreatedBy": "SEED_DATA_FROM_APPLICATION",
+            "CreationDate": "2021-04-17T21:22:11.638+00:00",
+            "LastUpdateDate": "2022-05-21T04:07:45.998+00:00",
+            "LastUpdateLogin": "-1",
+            "LastUpdatedBy": "SEED_DATA_FROM_APPLICATION",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS/child/lookupCodes/DISCOUNT",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS/child/lookupCodes/DISCOUNT",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS/child/lookupCodes/DISCOUNT/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS/child/lookupCodes/DISCOUNT/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "LookupCode": "DUE",
+            "Meaning": "Due",
+            "Description": "Payment date is derived from the due date.",
+            "EnabledFlag": "Y",
+            "StartDateActive": "2010-03-31",
+            "EndDateActive": null,
+            "DisplaySequence": null,
+            "Tag": null,
+            "CreatedBy": "SEED_DATA_FROM_APPLICATION",
+            "CreationDate": "2021-04-17T21:22:11.702+00:00",
+            "LastUpdateDate": "2022-05-21T04:07:45.998+00:00",
+            "LastUpdateLogin": "-1",
+            "LastUpdatedBy": "SEED_DATA_FROM_APPLICATION",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS/child/lookupCodes/DUE",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS/child/lookupCodes/DUE",
+                    "name": "lookupCodes",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS",
+                    "name": "standardLookups",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS/child/lookupCodes/DUE/child/lookupsDFF",
+                    "name": "lookupsDFF",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS/child/lookupCodes/DUE/child/translations",
+                    "name": "translations",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 2,
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_PAY_DATE_BASIS/child/lookupCodes",
+            "name": "lookupCodes",
+            "kind": "collection"
+        }
+    ]
+}

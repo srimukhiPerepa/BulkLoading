@@ -1,0 +1,58 @@
+{
+  "root": "assignVariablesRequestIdForRollback",
+  "description": "",
+  "actions": {
+
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostCfsSmfDeleteTbls.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      },
+      "outcomes": {
+        "success": "return2"
+      }
+    },
+    "callRestPostCfsSmfDeleteTbls": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/postCfs_smf_delete_tbls",
+        "body": "{{ $page.variables.requestIdForRollback }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "return"
+      }
+    },
+    "assignVariablesRequestIdForRollback": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.requestIdForRollback": {
+          "source": {
+            "p_in_request_id": "{{ $page.variables.requestId }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfDeleteTbls"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success",
+        "payload": "{{ $chain.results.callRestPostCfsSmfDeleteTbls.message.summary }}"
+      }
+    }
+  }
+}

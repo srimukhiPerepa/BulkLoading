@@ -1,0 +1,38 @@
+{
+  "root": "callRestGetPayablesPaymentTerms",
+  "description": "",
+  "actions": {
+
+    "callRestGetPayablesPaymentTerms": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getPayablesPaymentTerms",
+        "uriParams": {
+          "limit": "{{ \"250\" }}",
+          "q": "{{ \"setId=\" + $page.variables.setIdVar }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification2",
+        "success": "assignVariablesPayablePaymentTermsADP"
+      }
+    },
+    "assignVariablesPayablePaymentTermsADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.payablePaymentTermsADP": {
+          "source": "{{ $chain.results.callRestGetPayablesPaymentTerms.body.items }}"
+        }
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetPayablesPaymentTerms.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    }
+  }
+}

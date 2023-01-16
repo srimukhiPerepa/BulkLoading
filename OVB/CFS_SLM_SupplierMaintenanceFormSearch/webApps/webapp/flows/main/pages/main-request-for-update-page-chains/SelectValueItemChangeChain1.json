@@ -1,0 +1,67 @@
+{
+  "description": "",
+  "root": "ifKey",
+  "actions": {
+    "ifKey": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.key ]]"
+      },
+      "outcomes": {
+        "true": "ifPopupNewSite",
+        "false": "assignVariablesSupplierSiteRemittanceEmailValidation3"
+      }
+    },
+    "ifPopupNewSite": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupNewSite.ReRemittanceAdviceDeliveryEmailId ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesSupplierSiteRemittanceEmailValidation",
+        "false": "assignVariablesSupplierSiteRemittanceEmailValidation2"
+      }
+    },
+    "assignVariablesSupplierSiteRemittanceEmailValidation": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierSiteRemittanceEmailValidation": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "assignVariablesSupplierSiteRemittanceEmailValidation2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierSiteRemittanceEmailValidation": {
+          "source": "{{ false }}"
+        }
+      }
+    },
+    "assignVariablesSupplierSiteRemittanceEmailValidation3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierSiteRemittanceEmailValidation": {
+          "source": "{{ true }}"
+        }
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "data": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "metadata": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

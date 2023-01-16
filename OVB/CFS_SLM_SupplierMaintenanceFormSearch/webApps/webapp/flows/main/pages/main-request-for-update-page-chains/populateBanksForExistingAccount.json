@@ -1,0 +1,122 @@
+{
+  "description": "",
+  "root": "resetVariablesBankNamesADP",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGet1113185CashBanks.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Please select a valid country"
+      }
+    },
+    "callRestGet1113185CashBanks": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/get11_13_18_05CashBanks",
+        "uriParams": {
+          "q": "{{ \"CountryName=\\\"\" + $variables.CountryVar +\"\\\"\" }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesBankNamesADP"
+      }
+    },
+    "assignVariablesBankNamesADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.bankNamesADP": {
+          "source": "{{ $chain.results.callRestGet1113185CashBanks.body.items }}"
+        }
+      },
+      "outcomes": {}
+    },
+    "callRestGetHcmCountriesLovQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "uriParams": {
+          "q": "{{ \"ObsoleteFlag=false;TerritoryCode=\" + $page.variables.popupExistingAccounts.ReCountry }}"
+        }
+      },
+      "outcomes": {
+
+        "success": "assignVariablesCountryVar"
+      }
+    },
+    "resetVariablesBankNamesADP": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.bankNamesADP",
+          "$variables.CountryVar"
+        ]
+      },
+      "outcomes": {
+        "success": "ifpopupExistingAccounts"
+      }
+    },
+    "ifpopupExistingAccounts": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAccounts.ReCountry ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetHcmCountriesLovQ",
+        "false": "ifpopupExistingAccounts2"
+      }
+    },
+    "callRestGetHcmCountriesLovQ2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "uriParams": {
+          "q": "{{ \"ObsoleteFlag=false;TerritoryCode=\" + $page.variables.popupExistingAccounts.Country }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCountryVar2"
+      }
+    },
+    "ifpopupExistingAccounts2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAccounts.Country ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetHcmCountriesLovQ2",
+        "false": "callRestGet1113185CashBanks"
+      }
+    },
+    "assignVariablesCountryVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.CountryVar": {
+          "source": "{{ $chain.results.callRestGetHcmCountriesLovQ.body.items[0].CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "callRestGet1113185CashBanks"
+      }
+    },
+    "assignVariablesCountryVar2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.CountryVar": {
+          "source": "{{ $chain.results.callRestGetHcmCountriesLovQ2.body.items[0].CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "callRestGet1113185CashBanks"
+      }
+    }
+  },
+  "variables": {
+    "CountryVar": {
+      "type": "string"
+    }
+  }
+}

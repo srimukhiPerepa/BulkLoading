@@ -1,0 +1,33 @@
+{
+    "supplier_contact_address_id": 300000065427455,
+    "supplier_contact_id": 300000065427445,
+    "supplier_id": 300000065427417,
+    "request_id": 10000000593,
+    "action_requested": null,
+    "address_name": null,
+    "email": null,
+    "api_response": null,
+    "created_by": null,
+    "creation_date": null,
+    "last_updated_by": null,
+    "last_update_date": null,
+    "record_status": null,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_contact_add_tbl/300000065427455,300000065427445,300000065427417,10000000593"
+        },
+        {
+            "rel": "edit",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_contact_add_tbl/300000065427455,300000065427445,300000065427417,10000000593"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/metadata-catalog/cfs_smf_contact_add_tbl/item"
+        },
+        {
+            "rel": "collection",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_smf_contact_add_tbl/"
+        }
+    ]
+}

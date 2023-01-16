@@ -1,0 +1,82 @@
+{
+  "description": "",
+  "root": "ifValue",
+  "actions": {
+    "callFunctionValidateExpirationDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateExpirationDate",
+        "params": [
+          "{{ $variables.value }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Expiration Date should be a future date",
+        "message": "Expiration Date should be a future date",
+        "type": "error"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateExpirationDate ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesBusClassExpDateValidation2",
+        "true": "assignVariablesBusClassExpDateValidation"
+      }
+    },
+    "ifValue": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.value ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateExpirationDate",
+        "false": "assignVariablesBusClassExpDateValidation3"
+      }
+    },
+    "assignVariablesBusClassExpDateValidation": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.BusClassExpDateValidation": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "assignVariablesBusClassExpDateValidation2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.BusClassExpDateValidation": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification"
+      }
+    },
+    "assignVariablesBusClassExpDateValidation3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.BusClassExpDateValidation": {
+          "source": "{{ true }}"
+        }
+      }
+    }
+  },
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

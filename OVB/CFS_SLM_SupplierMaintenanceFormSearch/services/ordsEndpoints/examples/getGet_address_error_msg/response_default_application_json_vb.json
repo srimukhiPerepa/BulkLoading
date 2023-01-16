@@ -1,0 +1,23 @@
+{
+    "items": [
+        {
+            "address_name": "Dyson-2",
+            "action_requested": "New",
+            "api_response": "Applying List binding LOV_Country with given set of values leads to no matching row for a row of type :SupplierVO_addresses_SupplierVOToSupplierAddressVO_SupplierAddressVO, key oracle.jbo.Key[300000060097876 300000060097877 null null null null null null ]"
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_extensions/get_address_error_msg/10000001725"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/metadata-catalog/cfs_extensions/get_address_error_msg/item"
+        }
+    ]
+}

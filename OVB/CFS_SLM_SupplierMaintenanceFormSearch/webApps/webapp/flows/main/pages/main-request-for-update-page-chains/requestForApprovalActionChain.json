@@ -1,0 +1,803 @@
+{
+  "description": "",
+  "root": "callChainCheckPastDateErrorsInSupplierHeader",
+  "actions": {
+
+    "assignVariablesSubmitForApprovalClicked": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.submitForApprovalClicked": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag2"
+      }
+    },
+    "callFunctionOpenDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callChainPostRequest"
+      }
+    },
+    "callChainPostSupplierDFF": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "postSupplierDFF"
+      },
+      "outcomes": {
+        "success": "ifActionChainError3"
+      }
+    },
+    "callChainPostSupplier": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "postSupplier"
+      },
+      "outcomes": {
+        "success": "ifActionChainError2"
+      }
+    },
+    "callChainPostBusinessClassification": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "postBusinessClassification"
+      },
+      "outcomes": {
+        "success": "ifActionChainError4"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter a valid change description",
+        "message": "[[ $page.variables.ErrorMandatoryFields+\" Change Description\" ]]"
+      },
+      "outcomes": {
+        "success": "assignVariablesSubmitForApprovalClicked4"
+      }
+    },
+    "assignVariablesSubmitForApprovalClicked3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.submitForApprovalClicked": {
+          "source": "{{ true }}"
+        },
+        "$page.variables.SystemDate": {
+          "source": "{{ $chain.results.callFunctionReturnCurrentDate }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifPostSupplier3"
+      }
+    },
+    "assignVariablesSubmitForApprovalClicked4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.submitForApprovalClicked": {
+          "source": "{{ false }}"
+        }
+      }
+    },
+    "ifPostSupplier": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.postSupplier.re_tax_registration_country ]]"
+      },
+      "outcomes": {
+        "true": "ifPostSupplier2",
+        "false": "assignVariablesFlag3"
+      }
+    },
+    "ifPostSupplier2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.postSupplier.re_tax_registration_number ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateTaxRegistrationNumber2",
+        "false": "assignVariablesFlag2"
+      }
+    },
+    "assignVariablesFlag2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification3"
+      }
+    },
+    "assignVariablesFlag3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag2"
+      }
+    },
+    "ifPostSupplier3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.postSupplier.change_description ]]"
+      },
+      "outcomes": {
+        "true": "if4",
+        "false": "fireNotification2"
+      }
+    },
+    "fireNotification5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please select a valid tax organization type",
+        "message": "[[ $page.variables.ErrorMandatoryFields+\" Tax Organization Type\" ]]"
+      },
+      "outcomes": {
+        "success": "assignVariablesSubmitForApprovalClicked5"
+      }
+    },
+    "assignVariablesSubmitForApprovalClicked5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.submitForApprovalClicked": {
+          "source": "{{ false }}"
+        }
+      }
+    },
+    "resetVariablesFlag": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$variables.flag",
+          "$variables.flag1"          ,
+          "$variables.flag2",
+          "$page.variables.ActionChainError"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionReturnCurrentDate"
+      }
+    },
+    "ifFlag2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "ifPostSupplier5",
+        "false": "ifGetSupplierToUpdateVar"
+      }
+    },
+    "ifPostSupplier5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.postSupplier.re_taxpayer_country ]]"
+      },
+      "outcomes": {
+        "true": "ifPostSupplier6",
+        "false": "assignVariablesFlag6"
+      }
+    },
+    "ifPostSupplier6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.postSupplier.re_taxpayer_id ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag4",
+        "false": "assignVariablesFlag5"
+      }
+    },
+    "assignVariablesFlag4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifGetSupplierToUpdateVar"
+      }
+    },
+    "assignVariablesFlag5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        },
+        "$page.variables.submitForApprovalClicked": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification7"
+      }
+    },
+    "assignVariablesFlag6": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifGetSupplierToUpdateVar"
+      }
+    },
+    "callFunctionReturnCurrentDate": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "returnCurrentDate"
+      },
+      "outcomes": {
+        "success": "assignVariablesSubmitForApprovalClicked3"
+      }
+    },
+    "callChainPostContacts": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "postContacts"
+      },
+      "outcomes": {
+        "success": "ifActionChainError5"
+      }
+    },
+    "callChainPostContactAddress": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "postContactAddress"
+      },
+      "outcomes": {
+        "success": "ifActionChainError6"
+      }
+    },
+    "callFunctionValidateTaxRegistrationNumber2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateTaxRegistrationNumber",
+        "params": [
+          "{{ $page.variables.postSupplier.re_tax_registration_number }}",
+          "{{ $page.variables.postSupplier.re_tax_registration_country }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if3"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateTaxRegistrationNumber2 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag10",
+        "false": "assignVariablesFlag"
+      }
+    },
+    "assignVariablesFlag10": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag2"
+      }
+    },
+    "fireNotification9": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Invalid Tax Registration Number",
+        "message": "Please enter a valid tax registration number"
+      },
+      "outcomes": {
+        "success": "ifFlag2"
+      }
+    },
+    "callChainPostSites": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "postSites"
+      },
+      "outcomes": {
+        "success": "ifActionChainError7"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        },
+        "$page.variables.submitForApprovalClicked": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification9"
+      }
+    },
+    "assignVariablesFlag11": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag1"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag1"
+      }
+    },
+    "assignVariablesFlag12": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag1"
+      }
+    },
+    "assignVariablesFlag13": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag1"
+      }
+    },
+    "assignVariablesFlag14": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag1"
+      }
+    },
+    "assignVariablesFlag16": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag1"
+      }
+    },
+    "ifFlag1": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag1 ]]"
+      },
+      "outcomes": {
+        "false": "callFunctionOpenDialogFunc3"
+      }
+    },
+    "callFunctionCloseDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      }
+    },
+    "callFunctionOpenDialogFunc3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "assignVariablesFlag21": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag2": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag22"
+      }
+    },
+    "callChainValidateIncomeTaxReportingSiteFlag2": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "validateIncomeTaxReportingSiteFlag"
+      },
+      "outcomes": {
+        "success": "if10"
+      }
+    },
+    "if10": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callChainValidateIncomeTaxReportingSiteFlag2 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesSubmitForApprovalClicked6",
+        "false": "assignVariablesFlag24"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "At least one site should have Income Tax Reporting Site marked as Yes",
+        "message": "At least one site should have Income Tax Reporting Site marked as Yes"
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "callChainPostBankAccounts": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "postBankAccounts"
+      },
+      "outcomes": {
+        "success": "ifActionChainError"
+      }
+    },
+    "assignVariablesFlag110": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag1"
+      }
+    },
+    "assignVariablesFlag22": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag2": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag22"
+      }
+    },
+    "ifFlag22": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag2 ]]"
+      },
+      "outcomes": {
+        "true": "callChainValidateIncomeTaxReportingSiteFlag2",
+        "false": "assignVariablesFlag23"
+      }
+    },
+    "ifActionChainError": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.ActionChainError ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag110",
+        "false": "callChainPostAddresses"
+      }
+    },
+    "ifActionChainError2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.ActionChainError ]]"
+      },
+      "outcomes": {
+        "false": "callChainPostSupplierDFF",
+        "true": "assignVariablesFlag11"
+      }
+    },
+    "ifActionChainError3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.ActionChainError ]]"
+      },
+      "outcomes": {
+        "false": "callChainPostBusinessClassification",
+        "true": "assignVariablesFlag16"
+      }
+    },
+    "ifActionChainError4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.ActionChainError ]]"
+      },
+      "outcomes": {
+        "false": "callChainPostContacts",
+        "true": "assignVariables2"
+      }
+    },
+    "ifActionChainError5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.ActionChainError ]]"
+      },
+      "outcomes": {
+        "false": "callChainPostContactAddress",
+        "true": "assignVariablesFlag14"
+      }
+    },
+    "ifActionChainError6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.ActionChainError ]]"
+      },
+      "outcomes": {
+        "false": "callChainPostSites",
+        "true": "assignVariablesFlag13"
+      }
+    },
+    "ifActionChainError7": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.ActionChainError ]]"
+      },
+      "outcomes": {
+        "false": "callChainPostBankAccounts",
+        "true": "assignVariablesFlag12"
+      }
+    },
+    "callChainPostAddresses": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "postAddresses"
+      },
+      "outcomes": {
+        "success": "ifActionChainError8"
+      }
+    },
+    "ifActionChainError8": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.ActionChainError ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag19",
+        "false": "callFunctionOpenDialogFunc"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog13\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesSubmissionConfirmationMsg2"
+      }
+    },
+    "assignVariablesSubmissionConfirmationMsg2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SubmissionConfirmationMsg": {
+          "source": "{{ \"Update request submitted successfully. Request Id - \"+$page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "ifFlag1"
+      }
+    },
+    "assignVariablesFlag19": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifFlag1"
+      }
+    },
+    "assignVariablesFlag24": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag2": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "assignVariablesSubmitForApprovalClicked6": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.submitForApprovalClicked": {
+          "source": "{{ false }}"
+        },
+        "$variables.flag2": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification4"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag && $variables.flag2 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionOpenDialogFunc2"
+      }
+    },
+    "fireNotification7": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Please enter all the mandatory fields marked with *",
+        "message": "[[ $page.variables.ErrorMandatoryFields+\" Taxpayer ID\" ]]"
+      },
+      "outcomes": {
+        "success": "ifGetSupplierToUpdateVar"
+      }
+    },
+    "assignVariablesFlag23": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag2": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "ifGetSupplierToUpdateVar": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.getSupplierToUpdateVar.FederalReportableFlag ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag22",
+        "false": "assignVariablesFlag21"
+      }
+    },
+    "callChainCheckPastDateErrorsInSupplierHeader": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "CheckPastDateErrorsInSupplierHeader"
+      },
+      "outcomes": {
+        "success": "ifErrorExpirationAndInactiveDateFlag"
+      }
+    },
+    "ifErrorExpirationAndInactiveDateFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ !$page.variables.ErrorExpirationAndInactiveDateFlag ]]"
+      },
+      "outcomes": {
+        "true": "resetVariablesFlag"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $page.variables.ErrorMandatoryFields || \" \" || $page.variables.postSupplier.re_tax_registration_number ]]",
+        "message": "[[ $page.variables.ErrorMandatoryFields+\" Registration Number\" ]]"
+      },
+      "outcomes": {
+        "success": "assignVariablesSubmitForApprovalClicked"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.postSupplier.re_tax_organization_type || $page.variables.getSupplierToUpdateVar.TaxOrganizationType ]]"
+      },
+      "outcomes": {
+        "true": "ifPostSupplier",
+        "false": "fireNotification5"
+      }
+    },
+    "callChainPostRequest": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "postRequest"
+      },
+      "outcomes": {
+        "success": "ifActionChainError9"
+      }
+    },
+    "ifActionChainError9": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.ActionChainError ]]"
+      },
+      "outcomes": {
+        "false": "callChainPostSupplier",
+        "true": "assignVariablesFlag15"
+      }
+    },
+    "assignVariablesFlag15": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ false }}"
+        }
+      }
+    }
+
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "flag1": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "flag2": {
+      "type": "boolean",
+      "defaultValue": false
+    }
+  }
+}

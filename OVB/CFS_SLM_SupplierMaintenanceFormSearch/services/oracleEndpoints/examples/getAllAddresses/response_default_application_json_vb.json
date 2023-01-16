@@ -1,0 +1,48 @@
+{
+    "items": [
+        {
+            "SupplierContactAddressId": 300000059832752,
+            "SupplierAddressId": 300000042365185,
+            "AddressName": "Dyson-1",
+            "CreationDate": "2022-06-14T17:36:04.003+00:00",
+            "CreatedBy": "C987123",
+            "LastUpdateDate": "2022-06-14T17:36:04.084+00:00",
+            "LastUpdatedBy": "C987123",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042365175/child/contacts/300000042365177/child/addresses/300000059832752",
+                    "name": "addresses",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042365175/child/contacts/300000042365177/child/addresses/300000059832752",
+                    "name": "addresses",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042365175/child/contacts/300000042365177",
+                    "name": "contacts",
+                    "kind": "item"
+                }
+            ]
+        }
+    ],
+    "count": 1,
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/suppliers/300000042365175/child/contacts/300000042365177/child/addresses",
+            "name": "addresses",
+            "kind": "collection"
+        }
+    ]
+}

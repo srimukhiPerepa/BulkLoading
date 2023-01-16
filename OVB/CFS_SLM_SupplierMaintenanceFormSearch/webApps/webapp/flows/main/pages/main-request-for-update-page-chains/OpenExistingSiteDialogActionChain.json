@@ -1,0 +1,286 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc2",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog30\" }}"
+        ]
+      },
+      "outcomes": {}
+    },
+    "resetVariablesPopupExistingSite": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupExistingSite",
+          "$page.variables.postAccounts",
+          "$page.variables.DummyPostAccountsToBeAdded",
+          "$page.variables.DummyPostAccounts",
+          "$page.variables.DummyPostAccounts1",
+          "$page.variables.DummyPostAccountsDeleteBackup",
+          "$page.variables.DummyPostAccountsDeleteBackup.data",
+          "$page.variables.SupplierSiteRemittanceEmailValidation",
+          "$page.variables.setIdVar"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInPostSites"
+      }
+    },
+    "forEachInPostSites": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postSites.data }}",
+        "actionId": "ifKey"
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "ifKey": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_site_id==$variables.key ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "fireNotification",
+        "false": "callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "You have already requested updates for this Site",
+        "summary": "You have already requested updates for this Site",
+        "type": "info"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "assignVariablesPopupExistingSite": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupExistingSite": {
+          "source": {
+            "AddressName": "{{ $variables.current.SupplierAddressName }}",
+            "AlternateSiteName": "{{ $variables.current.AlternateSiteName }}",
+            "ProcurementBU": "{{ $variables.current.ProcurementBU }}",
+            "InactiveDate": "{{ $variables.current.InactiveDate }}",
+            "Status": "{{ $variables.current.Status }}",
+            "Site": "{{ $variables.current.SupplierSite }}",
+            "IncomeTaxReportingSite": "{{ $variables.current.IncomeTaxReportingSiteFlag?\"Yes\":\"No\" }}",
+            "SupplierSiteId": "{{ $variables.current.SupplierSiteId }}",
+            "TermDateBasis": "{{ $variables.current.PaymentTermsDateBasis }}",
+            "SitePurposePay": "{{ $variables.current.SitePurposePayFlag?\"Yes\":\"No\" }}",
+            "InvoiceAmountLimit": "{{ $variables.current.InvoiceAmountLimit }}",
+            "InvoiceCurrency": "{{ $variables.current.InvoiceCurrency }}",
+            "PayDateBasis": "{{ $variables.current.PayDateBasis }}",
+            "PaymentCurrency": "{{ $variables.current.PaymentCurrency }}",
+            "PaymentHoldReason": "{{ $variables.current.PaymentHoldReason }}",
+            "PaymentTerms": "{{ $variables.current.PaymentTerms }}",
+            "HoldAllInvoices": "{{ $variables.current.HoldAllInvoicesFlag?\"Yes\":\"No\" }}",
+            "HoldUnvalidatedInvoices": "{{ $variables.current.HoldUnvalidatedInvoicesFlag?\"Yes\":\"No\" }}",
+            "BillToBU": "{{ $variables.current.ProcurementBU }}",
+            "ClientBU": "{{ $variables.current.ProcurementBU }}",
+            "NuclearQualified": "{{ $page.variables.getSiteDFF.nuclearQualified }}",
+            "StatusReasonCode": "{{ $page.variables.getSiteDFF.statusReasonCode }}"
+
+          },
+          "auto": "always",
+          "reset": "none"
+        }
+      },
+      "outcomes": {
+        "success": "callChainGetSupplierSiteAccountsActionChain"
+      }
+    },
+    "callChainGetSupplierSiteAccountsActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "GetSupplierSiteAccountsActionChain"
+      },
+      "outcomes": {
+        "success": "assignVariablesGetSetIdRequestVar"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to load Site DFF"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF",
+        "uriParams": {
+          "SupplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+          "SupplierSiteId": "{{ $variables.key }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification2",
+        "success": "assignVariablesGetSiteDFF"
+      }
+    },
+    "assignVariablesGetSiteDFF": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSiteDFF": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF.body.items[0] }}",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPopupExistingSite"
+      }
+    },
+    "callFunctionOpenDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "resetVariablesPopupExistingSite2"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "callFunctionCloseDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      }
+    },
+    "callFunctionCloseDialogFunc3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      }
+    },
+    "resetVariablesPopupExistingSite2": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupExistingSite.ReRemittanceAdviceDelliveryMethod"
+        ]
+      },
+      "outcomes": {
+        "success": "resetVariablesPopupExistingSite"
+      },
+      "description": "This reset is required to handle state management. Removing this will cause un-necessary 'Invalid Email Id' error notifications."
+    },
+    "callRestPostGetSetBuMapping": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "getSetBUMapping/postGetSetBuMapping",
+        "body": "{{ $page.variables.getSetIdRequestVar }}"
+      },
+      "outcomes": {
+        "success": "assignVariablesSetIdVar"
+      }
+    },
+    "assignVariablesGetSetIdRequestVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSetIdRequestVar": {
+          "source": {
+            "bu_name": "{{ $page.variables.popupExistingSite.ProcurementBU }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostGetSetBuMapping"
+      }
+    },
+    "assignVariablesSetIdVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.setIdVar": {
+          "source": "{{ $chain.results.callRestPostGetSetBuMapping.body.set_id }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+
+  }
+}

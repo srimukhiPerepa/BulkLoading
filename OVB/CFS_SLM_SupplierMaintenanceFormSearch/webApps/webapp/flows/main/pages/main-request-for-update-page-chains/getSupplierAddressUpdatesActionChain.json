@@ -1,0 +1,200 @@
+{
+  "root": "callRestGetGetSupplierAddressUpdatesRequestId",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetGetSupplierAddressUpdatesRequestId.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get supplier address information"
+      }
+    },
+    "callRestGetGetSupplierAddressUpdatesRequestId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_supplier_address_updatesRequestId",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "forEach"
+      }
+    },
+    "forEach": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "actionId": "assignVariablesDummyPostSupplierAddresses",
+        "items": "{{ $chain.results.callRestGetGetSupplierAddressUpdatesRequestId.body.items }}"
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostSupplierAddresses"
+      }
+    },
+    "assignVariablesDummyPostSupplierAddresses": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostSupplierAddresses": {
+          "source": {
+            "data": [
+              {
+                "supplier_address_id": "{{ $current.data.supplier_address_id }}",
+                "address_name": "{{ $current.data.address_name }}",
+                "country_code": "{{ $current.data.country_code }}",
+                "country": "{{ $current.data.country }}",
+                "address_line1": "{{ $current.data.address_line1 }}",
+                "address_line2": "{{ $current.data.address_line2 }}",
+                "address_line3": "{{ $current.data.address_line3 }}",
+                "address_line4": "{{ $current.data.address_line4 }}",
+                "city": "{{ $current.data.city }}",
+                "state": "{{ $current.data.state }}",
+                "postal_code": "{{ $current.data.postal_code }}",
+                "postal_code_extension": "{{ $current.data.postal_code_extension }}",
+                "province": "{{ $current.data.province }}",
+                "county": "{{ $current.data.county }}",
+                "building": "{{ $current.data.county }}",
+                "floor_number": "{{ $current.data.floor_number }}",
+                "addressee": "{{ $current.data.floor_number }}",
+                "address_purpose_remit_to_flag": "{{ $current.data.address_purpose_remit_to_flag }}",
+                "phone_country_code": "{{ $current.data.phone_country_code }}",
+                "phone_area_code": "{{ $current.data.phone_area_code }}",
+                "phone_number": "{{ $current.data.phone_number }}",
+                "phone_extension": "{{ $current.data.phone_extension }}",
+                "fax_country_code": "{{ $current.data.fax_country_code }}",
+                "fax_area_code": "{{ $current.data.fax_area_code }}",
+                "fax_number": "{{ $current.data.fax_number }}",
+                "email": "{{ $current.data.email }}",
+                "action_requested": "{{ $current.data.action_requested }}",
+                "re_address_name": "{{ $current.data.re_address_name }}",
+                "re_country_code": "{{ $current.data.re_country_code }}",
+                "re_country": "{{ $current.data.re_country }}",
+                "re_address_line1": "{{ $current.data.re_address_line1 }}",
+                "re_address_line2": "{{ $current.data.re_address_line2 }}",
+                "re_address_line3": "{{ $current.data.re_address_line3 }}",
+                "re_address_line4": "{{ $current.data.re_address_line4 }}",
+                "re_city": "{{ $current.data.re_city }}",
+                "re_state": "{{ $current.data.re_state }}",
+                "re_postal_code": "{{ $current.data.re_postal_code }}",
+                "re_postal_code_extension": "{{ $current.data.re_postal_code_extension }}",
+                "re_province": "{{ $current.data.re_province }}",
+                "re_county": "{{ $current.data.re_county }}",
+                "re_building": "{{ $current.data.re_building }}",
+                "re_floor_number": "{{ $current.data.re_floor_number }}",
+                "re_addressee": "{{ $current.data.re_addressee }}",
+                "re_address_purpose_remit_to_flag": "{{ $current.data.re_address_purpose_remit_to_flag }}",
+                "re_phone_country_code": "{{ $current.data.re_phone_country_code }}",
+                "re_phone_area_code": "{{ $current.data.re_phone_area_code }}",
+                "re_phone_number": "{{ $current.data.re_phone_number }}",
+                "re_phone_extension": "{{ $current.data.re_phone_extension }}",
+                "re_fax_country_code": "{{ $current.data.re_fax_country_code }}",
+                "re_fax_area_code": "{{ $current.data.re_fax_area_code }}",
+                "re_fax_number": "{{ $current.data.re_fax_number }}",
+                "re_email": "{{ $current.data.re_email }}",
+                "record_status": "{{ $current.data.record_status }}"
+              }
+            ]
+          },
+          "reset": "toDefault",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostSupplierAddresses"
+      }
+    },
+    "assignVariablesPostSupplierAddresses": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postSupplierAddresses": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostSupplierAddresses.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "fireDataProviderEventPostSupplierAddresses": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postSupplierAddresses ]]"
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetSupplierAddressUpdatesRequestId.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3",
+        "true": "callFunctionWaitForNextCall"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetSupplierAddressUpdatesRequestId"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

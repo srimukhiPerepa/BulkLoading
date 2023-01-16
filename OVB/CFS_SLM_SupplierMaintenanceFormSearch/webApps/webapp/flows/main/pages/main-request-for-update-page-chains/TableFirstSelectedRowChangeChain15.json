@@ -1,0 +1,26 @@
+{
+  "description": "",
+  "root": "assignVariablesPhoneCountryCodeVar4",
+  "actions": {
+    "assignVariablesPhoneCountryCodeVar4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.PhoneCountryCodeVar4": {
+          "source": "{{ $variables.rowData.PhoneCountryCode }}"
+        }
+      }
+    }
+  },
+  "variables": {
+    "rowKey": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "rowData": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

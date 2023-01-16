@@ -1,0 +1,33 @@
+{
+  "root": "callRestGetPayablesIncomeTaxTypes",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetPayablesIncomeTaxTypes.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetPayablesIncomeTaxTypes": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getPayablesIncomeTaxTypes"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesIncomeTaxTypesLOV"
+      }
+    },
+    "assignVariablesIncomeTaxTypesLOV": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.IncomeTaxTypesLOV": {
+          "source": "{{ $chain.results.callRestGetPayablesIncomeTaxTypes.body.items }}"
+        }
+      }
+    }
+  }
+}

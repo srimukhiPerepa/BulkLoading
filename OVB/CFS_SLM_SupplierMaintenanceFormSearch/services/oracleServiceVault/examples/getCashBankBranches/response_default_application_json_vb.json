@@ -1,0 +1,664 @@
+{
+    "items": [
+        {
+            "BankName": "NA",
+            "BankNameAlt": null,
+            "BranchPartyId": 300000039136867,
+            "BankNumber": null,
+            "BankBranchName": "123456",
+            "BankBranchNameAlt": null,
+            "BranchNumber": "123456",
+            "Description": null,
+            "EFTSWIFTCode": "BARCGB22",
+            "EFTUserNumber": null,
+            "EDIIdNumber": null,
+            "EDILocation": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2022-07-11T11:46:25.350+00:00",
+            "LastUpdateDate": "2022-07-18T12:12:12.167+00:00",
+            "LastUpdateLogin": "E31F9D00C6716818E053BD61500AFC2E",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "4230",
+            "BranchPartyNumber": "4231",
+            "CountryName": "United Kingdom",
+            "RFCIdentifier": null,
+            "BankBranchType": null,
+            "BranchNumberType": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039136867",
+                    "name": "cashBankBranches",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000378"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039136867",
+                    "name": "cashBankBranches",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039136867/lov/BankSimplePVOVOVA",
+                    "name": "BankSimplePVOVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039136867/lov/BankCodeVOVA",
+                    "name": "BankCodeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039136867/lov/BankBranchTypeVOVA",
+                    "name": "BankBranchTypeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039136867/lov/RFCIdentifierVOVA",
+                    "name": "RFCIdentifierVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039136867/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankName": "Bank of America",
+            "BankNameAlt": null,
+            "BranchPartyId": 300000041059183,
+            "BankNumber": null,
+            "BankBranchName": "Bank of America",
+            "BankBranchNameAlt": null,
+            "BranchNumber": "026009593",
+            "Description": null,
+            "EFTSWIFTCode": null,
+            "EFTUserNumber": null,
+            "EDIIdNumber": null,
+            "EDILocation": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:04:31.268+00:00",
+            "LastUpdateDate": "2022-07-26T11:04:53.828+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8232",
+            "BranchPartyNumber": "8235",
+            "CountryName": "United States",
+            "RFCIdentifier": null,
+            "BankBranchType": null,
+            "BranchNumberType": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059183",
+                    "name": "cashBankBranches",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059183",
+                    "name": "cashBankBranches",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059183/lov/BankSimplePVOVOVA",
+                    "name": "BankSimplePVOVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059183/lov/BankCodeVOVA",
+                    "name": "BankCodeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059183/lov/BankBranchTypeVOVA",
+                    "name": "BankBranchTypeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059183/lov/RFCIdentifierVOVA",
+                    "name": "RFCIdentifierVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059183/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankName": "Citigroup",
+            "BankNameAlt": null,
+            "BranchPartyId": 300000041059192,
+            "BankNumber": null,
+            "BankBranchName": "Citigroup",
+            "BankBranchNameAlt": null,
+            "BranchNumber": "021000089",
+            "Description": null,
+            "EFTSWIFTCode": null,
+            "EFTUserNumber": null,
+            "EDIIdNumber": null,
+            "EDILocation": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:05:13.874+00:00",
+            "LastUpdateDate": "2022-07-26T11:05:30.377+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8233",
+            "BranchPartyNumber": "8236",
+            "CountryName": "United States",
+            "RFCIdentifier": null,
+            "BankBranchType": null,
+            "BranchNumberType": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059192",
+                    "name": "cashBankBranches",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059192",
+                    "name": "cashBankBranches",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059192/lov/BankSimplePVOVOVA",
+                    "name": "BankSimplePVOVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059192/lov/BankCodeVOVA",
+                    "name": "BankCodeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059192/lov/BankBranchTypeVOVA",
+                    "name": "BankBranchTypeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059192/lov/RFCIdentifierVOVA",
+                    "name": "RFCIdentifierVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059192/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankName": "Goldman Sachs",
+            "BankNameAlt": null,
+            "BranchPartyId": 300000041059335,
+            "BankNumber": null,
+            "BankBranchName": "Goldman Sachs Branch ",
+            "BankBranchNameAlt": null,
+            "BranchNumber": "124085260",
+            "Description": null,
+            "EFTSWIFTCode": null,
+            "EFTUserNumber": null,
+            "EDIIdNumber": null,
+            "EDILocation": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:17:33.370+00:00",
+            "LastUpdateDate": "2022-07-26T11:17:51.709+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8239",
+            "BranchPartyNumber": "8240",
+            "CountryName": "United States",
+            "RFCIdentifier": null,
+            "BankBranchType": null,
+            "BranchNumberType": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059335",
+                    "name": "cashBankBranches",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059335",
+                    "name": "cashBankBranches",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059335/lov/BankSimplePVOVOVA",
+                    "name": "BankSimplePVOVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059335/lov/BankCodeVOVA",
+                    "name": "BankCodeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059335/lov/BankBranchTypeVOVA",
+                    "name": "BankBranchTypeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059335/lov/RFCIdentifierVOVA",
+                    "name": "RFCIdentifierVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059335/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankName": "JPMorgan Chase",
+            "BankNameAlt": null,
+            "BranchPartyId": 300000041059174,
+            "BankNumber": null,
+            "BankBranchName": "JPMorgan Chase",
+            "BankBranchNameAlt": null,
+            "BranchNumber": "021000021",
+            "Description": null,
+            "EFTSWIFTCode": null,
+            "EFTUserNumber": null,
+            "EDIIdNumber": null,
+            "EDILocation": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:03:30.572+00:00",
+            "LastUpdateDate": "2022-07-26T11:04:02.583+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8231",
+            "BranchPartyNumber": "8234",
+            "CountryName": "United States",
+            "RFCIdentifier": null,
+            "BankBranchType": null,
+            "BranchNumberType": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059174",
+                    "name": "cashBankBranches",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059174",
+                    "name": "cashBankBranches",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059174/lov/BankSimplePVOVOVA",
+                    "name": "BankSimplePVOVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059174/lov/BankCodeVOVA",
+                    "name": "BankCodeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059174/lov/BankBranchTypeVOVA",
+                    "name": "BankBranchTypeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059174/lov/RFCIdentifierVOVA",
+                    "name": "RFCIdentifierVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059174/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankName": "Morgan Stanley",
+            "BankNameAlt": null,
+            "BranchPartyId": 300000041059356,
+            "BankNumber": null,
+            "BankBranchName": "Morgan Stanley Branch ",
+            "BankBranchNameAlt": null,
+            "BranchNumber": "021272778",
+            "Description": null,
+            "EFTSWIFTCode": null,
+            "EFTUserNumber": null,
+            "EDIIdNumber": null,
+            "EDILocation": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:27:27.178+00:00",
+            "LastUpdateDate": "2022-07-26T11:27:42.527+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8241",
+            "BranchPartyNumber": "8242",
+            "CountryName": "United States",
+            "RFCIdentifier": null,
+            "BankBranchType": null,
+            "BranchNumberType": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059356",
+                    "name": "cashBankBranches",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059356",
+                    "name": "cashBankBranches",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059356/lov/BankSimplePVOVOVA",
+                    "name": "BankSimplePVOVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059356/lov/BankCodeVOVA",
+                    "name": "BankCodeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059356/lov/BankBranchTypeVOVA",
+                    "name": "BankBranchTypeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059356/lov/RFCIdentifierVOVA",
+                    "name": "RFCIdentifierVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059356/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankName": "Test 123",
+            "BankNameAlt": null,
+            "BranchPartyId": 300000039168341,
+            "BankNumber": null,
+            "BankBranchName": "Test 123 Branch",
+            "BankBranchNameAlt": null,
+            "BranchNumber": "000588548",
+            "Description": null,
+            "EFTSWIFTCode": "PMFAUS66HKG",
+            "EFTUserNumber": null,
+            "EDIIdNumber": null,
+            "EDILocation": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-12T11:38:49.075+00:00",
+            "LastUpdateDate": "2022-07-19T12:04:13.323+00:00",
+            "LastUpdateLogin": "E31F9CE5C74768A2E053BD61500AE2BC",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "4263",
+            "BranchPartyNumber": "4264",
+            "CountryName": "United States",
+            "RFCIdentifier": null,
+            "BankBranchType": null,
+            "BranchNumberType": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039168341",
+                    "name": "cashBankBranches",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000478"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039168341",
+                    "name": "cashBankBranches",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039168341/lov/BankSimplePVOVOVA",
+                    "name": "BankSimplePVOVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039168341/lov/BankCodeVOVA",
+                    "name": "BankCodeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039168341/lov/BankBranchTypeVOVA",
+                    "name": "BankBranchTypeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039168341/lov/RFCIdentifierVOVA",
+                    "name": "RFCIdentifierVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000039168341/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankName": "Test",
+            "BankNameAlt": null,
+            "BranchPartyId": 300000038632187,
+            "BankNumber": null,
+            "BankBranchName": "Test Branch",
+            "BankBranchNameAlt": null,
+            "BranchNumber": "091000022",
+            "Description": null,
+            "EFTSWIFTCode": "FSBWUS62",
+            "EFTUserNumber": null,
+            "EDIIdNumber": null,
+            "EDILocation": null,
+            "CreatedBy": "C970455",
+            "CreationDate": "2022-07-05T11:07:48.038+00:00",
+            "LastUpdateDate": "2022-08-11T09:06:19.029+00:00",
+            "LastUpdateLogin": "E320D1984BE77C3FE053BF61500A4718",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "3198",
+            "BranchPartyNumber": "3199",
+            "CountryName": "United States",
+            "RFCIdentifier": null,
+            "BankBranchType": null,
+            "BranchNumberType": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000038632187",
+                    "name": "cashBankBranches",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000478"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000038632187",
+                    "name": "cashBankBranches",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000038632187/lov/BankSimplePVOVOVA",
+                    "name": "BankSimplePVOVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000038632187/lov/BankCodeVOVA",
+                    "name": "BankCodeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000038632187/lov/BankBranchTypeVOVA",
+                    "name": "BankBranchTypeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000038632187/lov/RFCIdentifierVOVA",
+                    "name": "RFCIdentifierVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000038632187/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "BankName": "Wells Fargo",
+            "BankNameAlt": null,
+            "BranchPartyId": 300000041059307,
+            "BankNumber": null,
+            "BankBranchName": "Wells Fargo Branch ",
+            "BankBranchNameAlt": null,
+            "BranchNumber": "121000248",
+            "Description": null,
+            "EFTSWIFTCode": null,
+            "EFTUserNumber": null,
+            "EDIIdNumber": null,
+            "EDILocation": null,
+            "CreatedBy": "C987165",
+            "CreationDate": "2022-07-26T11:15:24.417+00:00",
+            "LastUpdateDate": "2022-07-26T11:15:43.098+00:00",
+            "LastUpdateLogin": "E320D07753367BA4E053BF61500A253A",
+            "LastUpdatedBy": "C987165",
+            "BankPartyNumber": "8237",
+            "BranchPartyNumber": "8238",
+            "CountryName": "United States",
+            "RFCIdentifier": null,
+            "BankBranchType": null,
+            "BranchNumberType": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059307",
+                    "name": "cashBankBranches",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059307",
+                    "name": "cashBankBranches",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059307/lov/BankSimplePVOVOVA",
+                    "name": "BankSimplePVOVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059307/lov/BankCodeVOVA",
+                    "name": "BankCodeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059307/lov/BankBranchTypeVOVA",
+                    "name": "BankBranchTypeVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059307/lov/RFCIdentifierVOVA",
+                    "name": "RFCIdentifierVOVA",
+                    "kind": "collection"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches/300000041059307/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 9,
+    "hasMore": false,
+    "limit": 500,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranches",
+            "name": "cashBankBranches",
+            "kind": "collection"
+        }
+    ]
+}

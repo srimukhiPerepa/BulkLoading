@@ -1,0 +1,129 @@
+{
+  "root": "callRestGetCashBanks",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetCashBanks.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetCashBanks": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBanks"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetAllCashBanksLOV"
+      }
+    },
+    "assignVariablesGetAllCashBanksLOV": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAllCashBanksLOV": {
+          "source": "{{ $chain.results.callRestGetCashBanks.body.items }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionGetUniqueBanks"
+      }
+    },
+    "callFunctionGetUniqueBanks": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "getUniqueBanks",
+        "params": [
+          "{{ $page.variables.getAllCashBanksLOV }}"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesBankNamesLOV"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetCashBankBranches.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetCashBankBranches": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBankBranches"
+      },
+      "outcomes": {
+        "failure": "fireNotification2",
+        "success": "assignVariablesGetAllCashBankBranchesLOV"
+      }
+    },
+    "assignVariablesGetAllCashBankBranchesLOV": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAllCashBankBranchesLOV": {
+          "source": "{{ $chain.results.callRestGetCashBankBranches.body.items }}",
+          "reset": "toDefault"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionGetUniqueBankBranches"
+      }
+    },
+    "callFunctionGetUniqueBankBranches": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "getUniqueBankBranches",
+        "params": [
+          "{{ $page.variables.getAllCashBankBranchesLOV }}"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesBankBranchesLOV"
+      }
+    },
+    "assignVariablesBankBranchesLOV": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.BankBranchesLOV": {
+          "source": "{{ $chain.results.callFunctionGetUniqueBankBranches }}"
+        },
+        "$page.variables.BankBranchesLovADP": {
+          "source": {
+            "data": [
+              "$chain.results.callFunctionGetUniqueBankBranches"
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      }
+    },
+    "assignVariablesBankNamesLOV": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.BankNamesLOV": {
+          "source": "{{ $chain.results.callFunctionGetUniqueBanks }}",
+          "reset": "toDefault"
+        }
+      },
+      "outcomes": {
+        "success": "callRestGetCashBankBranches"
+      }
+    }
+  }
+}

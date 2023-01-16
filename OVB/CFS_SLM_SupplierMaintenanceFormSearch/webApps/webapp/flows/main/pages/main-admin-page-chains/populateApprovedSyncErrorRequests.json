@@ -1,0 +1,117 @@
+{
+  "root": "resetVariablesGetOpenRequestsListADP",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetApprovedSyncErrorsRequests.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get error request information"
+      }
+    },
+    "assignVariablesGetOpenRequestsListADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getOpenRequestsListADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetApprovedSyncErrorsRequests.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        },
+        "$page.variables.hyperlinkClickedVar": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventGetOpenRequestsListADP"
+      }
+    },
+    "fireDataProviderEventGetOpenRequestsListADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.getOpenRequestsListADP ]]"
+      }
+    },
+    "callRestGetApprovedSyncErrorsRequests": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getApprovedSyncErrorsRequests"
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "assignVariablesGetOpenRequestsListADP"
+      }
+    },
+    "resetVariablesGetOpenRequestsListADP": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getOpenRequestsListADP"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGetApprovedSyncErrorsRequests"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetApprovedSyncErrorsRequests.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification3"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetApprovedSyncErrorsRequests"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

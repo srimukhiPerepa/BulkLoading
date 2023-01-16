@@ -1,0 +1,24 @@
+{
+  "description": "",
+  "root": "callChainPageEnterActionChain",
+  "actions": {
+    "callChainPageEnterActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "PageEnterActionChain"
+      },
+      "outcomes": {
+        "success": "assignVariablesHyperlinkClickedVar"
+      }
+    },
+    "assignVariablesHyperlinkClickedVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.hyperlinkClickedVar": {
+          "source": "{{ false }}"
+        }
+      }
+    }
+  },
+  "variables": {}
+}

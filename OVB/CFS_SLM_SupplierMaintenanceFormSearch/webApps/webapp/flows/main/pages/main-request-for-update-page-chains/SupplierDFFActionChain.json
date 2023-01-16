@@ -1,0 +1,38 @@
+{
+  "root": "callRestGetSuppliersSupplierIdChildDFF",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Get DFF: Failed",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to load Supplier DFF"
+      }
+    },
+    "callRestGetSuppliersSupplierIdChildDFF": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSuppliersSupplierIdChildDFF",
+        "uriParams": {
+          "SupplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetSupplierDFF"
+      }
+    },
+    "assignVariablesGetSupplierDFF": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSupplierDFF": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierIdChildDFF.body.items[0] }}",
+          "auto": "always"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "defaultPage" : "shell",
+  "types" : { },
+  "variables" : {
+  }, 
+   "security": {
+    "access": {
+      "requiresAuthentication": true,
+      "roles": ["CFS_SMF_Requestor_Role","CFS_SMF_Admin_Role"]
+      }
+      },
+  "chains" : { },
+  "translations" : {
+    "app" : {
+      "path" : "./resources/strings/app/nls/app-strings"
+    }
+  },
+  "description" : "An application created from ApplicationsCloudUI Theme Template 5.1.0",
+  "id" : "starter",
+  "services" : { },
+  "userConfig" : {
+    "type" : "vb/DefaultSecurityProvider",
+    "configuration" : {
+      "authentication" : {
+        "type" : "oraclecloud"
+      }
+    },
+    "embedding" : "deny"
+  },
+  "imports": {
+    "css": [
+      "https://static.oracle.com/cdn/fnd/gallery/2107.2.0/images/iconfont/ojuxIconFont.min.css",
+      "https://static.oracle.com/cdn/vb/vb-icon-font/1/vb-icon-font.css"
+    ],
+    "components": {
+      "oj-validation-base": {
+        "path": "ojs/ojvalidation-base"
+      },
+      "oj-validation-datetime": {
+        "path": "ojs/ojvalidation-datetime"
+      },
+      "oj-validation-number": {
+        "path": "ojs/ojvalidation-number"
+      }
+    }
+  },
+  "events": {}
+}

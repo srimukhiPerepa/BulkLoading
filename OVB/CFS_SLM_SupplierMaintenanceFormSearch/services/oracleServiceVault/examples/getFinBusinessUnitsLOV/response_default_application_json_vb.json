@@ -1,0 +1,616 @@
+{
+    "items": [
+        {
+            "BusinessUnitId": 300000005093539,
+            "BusinessUnitName": "10100 Nuclear",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004625035",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093539",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093539",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005093565,
+            "BusinessUnitName": "10105 Nuclear",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004625035",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093565",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093565",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096313,
+            "BusinessUnitName": "10128 Framingham",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978130",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096313",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096313",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096391,
+            "BusinessUnitName": "10131 West Medway",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978144",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096391",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096391",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005093578,
+            "BusinessUnitName": "10138 West Medway II",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000037784531",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093578",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093578",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096326,
+            "BusinessUnitName": "10140 PowerLabs",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978172",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096326",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096326",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005093552,
+            "BusinessUnitName": "10182 Power",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004625035",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093552",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093552",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005093591,
+            "BusinessUnitName": "10183 Genco Corp",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004625035",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093591",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093591",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096417,
+            "BusinessUnitName": "10701 Constellation Wind",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978298",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096417",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096417",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096300,
+            "BusinessUnitName": "10818 Handley",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978744",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096300",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096300",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096235,
+            "BusinessUnitName": "10819 Colorado Bend II",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978772",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096235",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096235",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096404,
+            "BusinessUnitName": "10821 Wolf Hollow II",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978800",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096404",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096404",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005093609,
+            "BusinessUnitName": "10848 Const. Ventures Hldg II",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306654",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000037784546",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093609",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005093609",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096196,
+            "BusinessUnitName": "20027 Calvert Cliffs",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978815",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096196",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096196",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096274,
+            "BusinessUnitName": "20028 Constellation Power Source Generation",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978843",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096274",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096274",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096378,
+            "BusinessUnitName": "20033 Nine Mile Point",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978857",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096378",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096378",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096261,
+            "BusinessUnitName": "20034 Constellation NewEnergy",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978871",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096261",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096261",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096339,
+            "BusinessUnitName": "20036 Ginna",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978885",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096339",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096339",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096287,
+            "BusinessUnitName": "20053 Distrigas of Massachusetts",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004962076",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096287",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096287",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096365,
+            "BusinessUnitName": "20118 Handsome Lake",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978899",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096365",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096365",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096352,
+            "BusinessUnitName": "20425 Grande Prairie",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306657",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004625034",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096352",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096352",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096222,
+            "BusinessUnitName": "20464 CER Generation",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978913",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096222",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096222",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000005096248,
+            "BusinessUnitName": "20588 Mystic",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004978927",
+            "ProfitCenterFlag": true,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096248",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000005096248",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000004748001,
+            "BusinessUnitName": "Canada Business Service Center",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306657",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004625034",
+            "ProfitCenterFlag": false,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000004748001",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000004748001",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        },
+        {
+            "BusinessUnitId": 300000004794001,
+            "BusinessUnitName": "Healthcare",
+            "ActiveFlag": true,
+            "PrimaryLedgerId": "300000004306651",
+            "LocationId": null,
+            "ManagerId": null,
+            "LegalEntityId": "300000004983068",
+            "ProfitCenterFlag": false,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000004794001",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV/300000004794001",
+                    "name": "finBusinessUnitsLOV",
+                    "kind": "item"
+                }
+            ]
+        }
+    ],
+    "count": 25,
+    "hasMore": true,
+    "limit": 25,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/finBusinessUnitsLOV",
+            "name": "finBusinessUnitsLOV",
+            "kind": "collection"
+        }
+    ]
+}

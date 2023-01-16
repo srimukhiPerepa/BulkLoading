@@ -1,0 +1,16 @@
+{
+  "root": "callFunctionOpenDialogFunc",
+  "description": "",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog1400\" }}"
+        ]
+      }
+    }
+  }
+}

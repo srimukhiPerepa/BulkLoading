@@ -1,0 +1,17 @@
+{
+  "description": "",
+  "root": "callFunctionCloseDialogFunc",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog4\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

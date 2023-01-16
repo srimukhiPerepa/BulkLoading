@@ -1,0 +1,1055 @@
+{
+  "root": "resetVariablesDummyPostAccounts",
+  "description": "",
+  "actions": {
+    "resetVariablesDummyPostAccounts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostAccounts",
+          "$page.variables.ReBankId"          ,
+          "$page.variables.ReBankBranchId",
+          "$page.variables.BankId"          ,
+          "$page.variables.BankBranchId"
+        ]
+      },
+      "outcomes": {
+        "success": "ifRequestStatus"
+      }
+    },
+    "forEachInAccountsUpdates": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.AccountsUpdates.data }}",
+        "actionId": "resetVariablesDummyPostAccounts2"
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "assignVariablesDummyPostAccounts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostAccounts": {
+          "source": {
+            "data": [
+              {
+                "account_id": "{{ $current.data.account_id }}",
+                "account_number": "{{ $current.data.account_number }}",
+                "action_requested": "{{ $current.data.action_requested }}",
+                "allow_international_payments": "{{ $current.data.allow_international_payments }}",
+                "bank": "{{ $current.data.bank }}",
+                "bank_branch": "{{ $current.data.bank_branch }}",
+                "country": "{{ $current.data.country }}",
+                "currency": "{{ $current.data.currency }}",
+                "iban": "{{ $current.data.iban }}",
+                "inactive_on": "{{ $current.data.inactive_on?$current.data.inactive_on+\"T00:00:00Z\":$current.data.inactive_on }}",
+                "primary_flag": "{{ $current.data.primary_flag }}",
+                "re_account_number": "{{ $current.data.re_account_number }}",
+                "re_allow_international_payments": "{{ $current.data.re_allow_international_payments }}",
+                "re_bank": "{{ $current.data.re_bank }}",
+                "re_bank_branch": "{{ $current.data.re_bank_branch }}",
+                "re_country": "{{ $current.data.re_country }}",
+                "re_currency": "{{ $current.data.re_currency }}",
+                "re_iban": "{{ $current.data.re_iban }}",
+                "re_inactive_on": "{{ $current.data.re_inactive_on?$current.data.re_inactive_on+\"T00:00:00Z\":$current.data.re_inactive_on }}",
+                "re_primary_flag": "{{ $current.data.re_primary_flag }}",
+                "re_update_unpaid_invoices": "{{ $current.data.re_update_unpaid_invoices }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "supplier_site_id": "{{ $current.data.supplier_site_id }}",
+                "update_unpaid_invoices": "{{ $current.data.update_unpaid_invoices }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "re_bank_branch_id": "{{ $page.variables.ReBankBranchId }}",
+                "re_bank_id": "{{ $page.variables.ReBankId }}",
+                "record_status": "{{ \"ACTIVE\" }}",
+                "bank_branch_id": "{{ $page.variables.BankBranchId }}",
+                "bank_id": "{{ $page.variables.BankId }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfBankActsTbl"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Failed to update bank accounts",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Bank Account Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables5"
+      }
+    },
+    "callRestPostCfsSmfBankActsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/postCfs_smf_bank_acts_tbl",
+        "body": "{{ $page.variables.DummyPostAccounts.data[0] }}"
+      },
+      "outcomes": {
+        "failure": "if16"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.re_bank!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetCashBanksQ2",
+        "false": "if12"
+      }
+    },
+    "assignVariablesReBankId": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ReBankId": {
+          "source": "{{ $chain.results.callRestGetCashBanksQ2.body.items[0].BankPartyId }}"
+        }
+      },
+      "outcomes": {
+        "success": "if3"
+      }
+    },
+    "assignVariablesReBankBranchId": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ReBankBranchId": {
+          "source": "{{ $chain.results.callRestGetCashBankBranchesQ2.body.items[0].BranchPartyId }}",
+          "reset": "none"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostAccounts"
+      }
+    },
+    "callRestGet1113185HcmCountriesLovQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "uriParams": {
+          "q": "{{ \"ObsoleteFlag=false;TerritoryCode=\"+$current.data.re_country }}",
+          "limit": "500"
+        },
+        "responseType": "get1113185HcmCountriesLovQResponse"
+      },
+      "outcomes": {
+        "success": "assignVariablesCountryName3"
+      }
+    },
+    "ifRequestStatus": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus == \"More Information Requested\"]]"
+      },
+      "outcomes": {
+        "false": "forEachInAccountsUpdates",
+        "true": "forEachInAccountsUpdates3"
+      }
+    },
+    "return3": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "forEachInAccountsUpdates3": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.AccountsUpdates.data }}",
+        "actionId": "resetVariablesDummyPostAccounts3"
+      },
+      "outcomes": {
+        "success": "forEachInInactivateBankAccounts"
+      }
+    },
+    "if5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.re_country!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGet1113185HcmCountriesLovQ2",
+        "false": "if4"
+      }
+    },
+    "callRestGet1113185HcmCountriesLovQ2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "uriParams": {
+          "q": "{{ \"ObsoleteFlag=false;TerritoryCode=\"+$current.data.re_country }}",
+          "limit": "{{ 500 }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCountryName"
+      }
+    },
+    "if6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.re_bank!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetCashBanksQ3",
+        "false": "if9"
+      }
+    },
+    "if7": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.re_bank_branch!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetCashBankBranchesQ3",
+        "false": "if10"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfBankActsTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Bank Account Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables7"
+      }
+    },
+    "callRestPutCfsSmfBankActsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_bank_acts_tbl",
+        "body": "{{ $page.variables.DummyPostAccounts.data[0] }}",
+        "uriParams": {
+          "account_id": "{{ $page.variables.DummyPostAccounts.data[0].account_id }}",
+          "request_id": "{{ $page.variables.DummyPostAccounts.data[0].request_id }}",
+          "supplier_id": "{{ $page.variables.DummyPostAccounts.data[0].supplier_id }}",
+          "supplier_site_id": "{{ $page.variables.DummyPostAccounts.data[0].supplier_site_id }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if14"
+      }
+    },
+    "callRestGetCashBankBranchesQ3": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBankBranchesQ",
+        "uriParams": {
+          "q": "{{ \"?finder=BankBranchSearchFinder;bindBranchName=\"+$current.data.re_bank_branch+\",bindCountryName=\" + $variables.CountryName }}"
+        }
+      },
+      "outcomes": {
+
+        "success": "assignVariablesReBankBranchId2"
+      }
+    },
+    "assignVariablesReBankBranchId2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ReBankBranchId": {
+          "source": "{{ $chain.results.callRestGetCashBankBranchesQ3.body.items[0].BranchPartyId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostAccounts4"
+      }
+    },
+    "callRestGetCashBanksQ3": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBanksQ",
+        "uriParams": {
+          "q": "{{ \"?finder=BanksSearchFinder;bindBankName=\"+ $current.data.re_bank +\",bindCountryName=\" + $variables.CountryName }}"
+        }
+      },
+      "outcomes": {
+
+        "success": "assignVariablesReBankId2"
+      }
+    },
+    "callRestGetCashBanksQ2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBanksQ",
+        "uriParams": {
+          "q": "{{ \"?finder=BanksSearchFinder;bindBankName=\"+ $current.data.re_bank +\",bindCountryName=\" + $variables.CountryName }}"
+        }
+      },
+      "outcomes": {
+
+        "success": "assignVariablesReBankId"
+
+      }
+    },
+    "callRestGetCashBankBranchesQ2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBankBranchesQ",
+        "uriParams": {
+          "q": "{{ \"?finder=BankBranchSearchFinder;bindBranchName=\"+$current.data.re_bank_branch+\",bindCountryName=\" + $variables.CountryName }}"
+        }
+      },
+      "outcomes": {
+
+        "success": "assignVariablesReBankBranchId"
+
+      }
+    },
+    "resetVariablesDummyPostAccounts3": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostAccounts",
+          "$page.variables.ReBankId"          ,
+          "$page.variables.ReBankBranchId",
+          "$page.variables.BankId"          ,
+          "$page.variables.BankBranchId",
+          "$variables.CountryName",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "if5"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfBankActsTbl2.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Bank Account Updates: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables4"
+      }
+    },
+    "callRestPutCfsSmfBankActsTbl2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_bank_acts_tbl",
+        "body": "{{ $page.variables.DummyPostAccounts.data[0] }}",
+        "uriParams": {
+          "account_id": "{{ $page.variables.DummyPostAccounts.data[0].account_id }}",
+          "request_id": "{{ $page.variables.DummyPostAccounts.data[0].request_id }}",
+          "supplier_id": "{{ $page.variables.DummyPostAccounts.data[0].supplier_id }}",
+          "supplier_site_id": "{{ $page.variables.DummyPostAccounts.data[0].supplier_site_id }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if15"
+      }
+    },
+    "forEachInInactivateBankAccounts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.InactivateBankAccounts.data }}",
+        "actionId": "resetVariablesDummyPostAccounts5"
+      },
+      "outcomes": {
+        "success": "return3"
+      }
+    },
+    "if8": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.re_country!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGet1113185HcmCountriesLovQ",
+        "false": "if13"
+      }
+    },
+    "callRestGetCashBanksQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBanksQ",
+        "uriParams": {
+          "q": "{{ \"?finder=BanksSearchFinder;bindBankName=\"+ $current.data.bank +\",bindCountryName=\" + $variables.CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesBankId"
+      }
+    },
+    "assignVariablesBankId": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.BankId": {
+          "source": "{{ $chain.results.callRestGetCashBanksQ.body.items[0].BankPartyId }}"
+        }
+      },
+      "outcomes": {
+        "success": "if7"
+      }
+    },
+    "callRestGetCashBankBranchesQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBankBranchesQ",
+        "uriParams": {
+          "q": "{{ \"?finder=BankBranchSearchFinder;bindBranchName=\"+$current.data.bank_branch+\",bindCountryName=\" + $variables.CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesBankBranchId"
+      }
+    },
+    "assignVariablesBankBranchId": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.BankBranchId": {
+          "source": "{{ $chain.results.callRestGetCashBankBranchesQ.body.items[0].BranchPartyId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostAccounts4"
+      }
+    },
+    "assignVariablesDummyPostAccounts3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostAccounts": {
+          "source": {
+            "data": [
+              {
+                "account_id": "{{ $current.data.account_id }}",
+                "account_number": "{{ $current.data.account_number }}",
+                "action_requested": "{{ $current.data.action_requested }}",
+                "allow_international_payments": "{{ $current.data.allow_international_payments }}",
+                "bank": "{{ $current.data.bank }}",
+                "bank_branch": "{{ $current.data.bank_branch }}",
+                "country": "{{ $current.data.country }}",
+                "currency": "{{ $current.data.currency }}",
+                "iban": "{{ $current.data.iban }}",
+                "inactive_on": "{{ $current.data.inactive_on?$current.data.inactive_on+\"T00:00:00Z\":$current.data.inactive_on }}",
+                "primary_flag": "{{ $current.data.primary_flag }}",
+                "re_account_number": "{{ $current.data.re_account_number }}",
+                "re_allow_international_payments": "{{ $current.data.re_allow_international_payments }}",
+                "re_bank": "{{ $current.data.re_bank }}",
+                "re_bank_branch": "{{ $current.data.re_bank_branch }}",
+                "re_country": "{{ $current.data.re_country }}",
+                "re_currency": "{{ $current.data.re_currency }}",
+                "re_iban": "{{ $current.data.re_iban }}",
+                "re_inactive_on": "{{ $current.data.re_inactive_on?$current.data.re_inactive_on+\"T00:00:00Z\":$current.data.re_inactive_on }}",
+                "re_primary_flag": "{{ $current.data.re_primary_flag }}",
+                "re_update_unpaid_invoices": "{{ $current.data.re_update_unpaid_invoices }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "supplier_site_id": "{{ $current.data.supplier_site_id }}",
+                "update_unpaid_invoices": "{{ $current.data.update_unpaid_invoices }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "re_bank_branch_id": "{{ $page.variables.ReBankBranchId }}",
+                "re_bank_id": "{{ $page.variables.ReBankId }}",
+                "record_status": "{{ \"INACTIVE\" }}",
+                "bank_branch_id": "{{ $page.variables.BankBranchId }}",
+                "bank_id": "{{ $page.variables.BankId }}"
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfBankActsTbl2"
+      }
+    },
+    "callRestGetCashBanksQ4": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBanksQ",
+        "uriParams": {
+          "q": "{{ \"?finder=BanksSearchFinder;bindBankName=\"+$current.data.bank+\",bindCountryName=\" + $variables.CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesBankId3"
+      }
+    },
+    "callRestGetCashBankBranchesQ4": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getCashBankBranchesQ",
+        "uriParams": {
+          "q": "{{ \"?finder=BankBranchSearchFinder;bindBranchName=\"+$current.data.bank_branch+\",bindCountryName=\" + $variables.CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesBankBranchId2"
+      }
+    },
+    "assignVariablesBankBranchId2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.BankBranchId": {
+          "source": "{{ $chain.results.callRestGetCashBankBranchesQ4.body.items[0].BranchPartyId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostAccounts"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.re_bank_branch!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetCashBankBranchesQ2",
+        "false": "if11"
+      }
+    },
+    "callRestGetHcmCountriesLovQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "uriParams": {
+          "q": "{{ \"ObsoleteFlag=false;TerritoryCode=\"+$current.data.country }}",
+          "limit": "{{ \"500\" }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCountryName2"
+      }
+    },
+    "assignVariablesCountryName": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.CountryName": {
+          "source": "{{ $chain.results.callRestGet1113185HcmCountriesLovQ2.body.items[0].CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "if6"
+      }
+    },
+    "assignVariablesCountryName2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.CountryName": {
+          "source": "{{ $chain.results.callRestGetHcmCountriesLovQ.body.items[0].CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "if6"
+      }
+    },
+    "callRestGetHcmCountriesLovQ2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "uriParams": {
+          "q": "{{ \"ObsoleteFlag=false;TerritoryCode=\"+$current.data.country }}",
+          "limit": "{{ \"500\" }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCountryName4"
+      }
+    },
+    "assignVariablesCountryName3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.CountryName": {
+          "source": "{{ $chain.results.callRestGet1113185HcmCountriesLovQ.body.items[0].CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "assignVariablesCountryName4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.CountryName": {
+          "source": "{{ $chain.results.callRestGetHcmCountriesLovQ2.body.items[0].CountryName }}"
+        }
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "resetVariablesDummyPostAccounts5": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostAccounts",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostAccounts3"
+      }
+    },
+    "assignVariablesDummyPostAccounts4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostAccounts": {
+          "source": {
+            "data": [
+              {
+                "account_id": "{{ $current.data.account_id }}",
+                "account_number": "{{ $current.data.account_number }}",
+                "action_requested": "{{ $current.data.action_requested }}",
+                "allow_international_payments": "{{ $current.data.allow_international_payments }}",
+                "bank": "{{ $current.data.bank }}",
+                "bank_branch": "{{ $current.data.bank_branch }}",
+                "country": "{{ $current.data.country }}",
+                "currency": "{{ $current.data.currency }}",
+                "iban": "{{ $current.data.iban }}",
+                "inactive_on": "{{ $current.data.inactive_on?$current.data.inactive_on+\"T00:00:00Z\":$current.data.inactive_on }}",
+                "primary_flag": "{{ $current.data.primary_flag }}",
+                "re_account_number": "{{ $current.data.re_account_number }}",
+                "re_allow_international_payments": "{{ $current.data.re_allow_international_payments }}",
+                "re_bank": "{{ $current.data.re_bank }}",
+                "re_bank_branch": "{{ $current.data.re_bank_branch }}",
+                "re_country": "{{ $current.data.re_country }}",
+                "re_currency": "{{ $current.data.re_currency }}",
+                "re_iban": "{{ $current.data.re_iban }}",
+                "re_inactive_on": "{{ $current.data.re_inactive_on?$current.data.re_inactive_on+\"T00:00:00Z\":$current.data.re_inactive_on }}",
+                "re_primary_flag": "{{ $current.data.re_primary_flag }}",
+                "re_update_unpaid_invoices": "{{ $current.data.re_update_unpaid_invoices }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "supplier_site_id": "{{ $current.data.supplier_site_id }}",
+                "update_unpaid_invoices": "{{ $current.data.update_unpaid_invoices }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "re_bank_branch_id": "{{ $page.variables.ReBankBranchId }}",
+                "re_bank_id": "{{ $page.variables.ReBankId }}",
+                "record_status": "{{ \"ACTIVE\" }}",
+                "bank_id": "{{ $page.variables.BankId }}",
+                "bank_branch_id": "{{ $page.variables.BankBranchId }}"
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfBankActsTbl"
+      }
+    },
+    "assignVariablesReBankId2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ReBankId": {
+          "source": "{{ $chain.results.callRestGetCashBanksQ3.body.items[0].BankPartyId }}"
+        }
+      },
+      "outcomes": {
+        "success": "if7"
+      }
+    },
+    "assignVariablesBankId3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.BankId": {
+          "source": "{{ $chain.results.callRestGetCashBanksQ4.body.items[0].BankPartyId }}"
+        }
+      },
+      "outcomes": {
+        "success": "if3"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.country!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetHcmCountriesLovQ",
+        "false": "if6"
+      }
+    },
+    "if9": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.bank!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetCashBanksQ",
+        "false": "if7"
+      }
+    },
+    "if10": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.bank_branch!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetCashBankBranchesQ",
+        "false": "assignVariablesDummyPostAccounts4"
+      }
+    },
+    "if11": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.bank_branch!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetCashBankBranchesQ4",
+        "false": "assignVariablesDummyPostAccounts"
+      }
+    },
+    "if12": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.bank!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetCashBanksQ4",
+        "false": "if3"
+      }
+    },
+    "if13": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.country!=null ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetHcmCountriesLovQ2",
+        "false": "if"
+      }
+    },
+    "if14": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfBankActsTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification2",
+        "true": "assignVariables2"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfBankActsTbl"
+      }
+    },
+    "if15": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfBankActsTbl2.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3",
+        "true": "assignVariables3"
+      }
+    },
+    "callFunctionWaitForNextCall2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfBankActsTbl2"
+      }
+    },
+    "fireNotification5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables9"
+      }
+    },
+    "if16": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPostCfsSmfBankActsTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariables"
+      }
+    },
+    "callFunctionWaitForNextCall3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfBankActsTbl"
+      }
+    },
+    "resetVariablesDummyPostAccounts2": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostAccounts",
+          "$page.variables.ReBankId",
+          "$page.variables.ReBankBranchId",
+          "$page.variables.BankId",
+          "$page.variables.BankBranchId",
+          "$variables.CountryName",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "if8"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry2"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification6"
+      }
+    },
+    "fireNotification7": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables6"
+      }
+    },
+    "ifReTry2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall3",
+        "false": "fireNotification7"
+      }
+    },
+    "assignVariables3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry3"
+      }
+    },
+    "fireNotification6": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables8"
+      }
+    },
+    "ifReTry3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall2",
+        "false": "fireNotification5"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return2"
+      }
+    },
+    "return4": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables6": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return4"
+      }
+    },
+    "return5": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables7": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return5"
+      }
+    },
+    "return6": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "assignVariables8": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return6"
+      }
+    },
+    "assignVariables4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return7"
+      }
+    },
+    "assignVariables9": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return8"
+      }
+    },
+    "return7": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return8": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    }
+  },
+  "variables": {
+    "CountryName": {
+      "type": "string"
+    },
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

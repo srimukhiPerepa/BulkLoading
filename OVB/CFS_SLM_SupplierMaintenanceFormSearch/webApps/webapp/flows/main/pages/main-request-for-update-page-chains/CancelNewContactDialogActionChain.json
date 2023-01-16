@@ -1,0 +1,43 @@
+{
+  "description": "",
+  "root": "assignVariablesSupplierContactEmailValidation",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog8\" }}"
+        ]
+      }
+    },
+    "resetVariablesPopupContact": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupContact",
+          "$page.variables.DummyPostContactAddress",
+          "$page.variables.DummyPostContactAddress1",
+          "$page.variables.DummyPostContacts",
+          "$page.variables.DummyPostContacts1"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "assignVariablesSupplierContactEmailValidation": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierContactEmailValidation": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "resetVariablesPopupContact"
+      }
+    }
+  },
+  "variables": {}
+}

@@ -1,0 +1,329 @@
+{
+  "description": "",
+  "root": "resetVariablesDummyPostSites",
+  "actions": {
+    "resetVariablesDummyPostSites": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostSites",
+          "$page.variables.DummyPostSites1",
+          "$page.variables.DummyPostAccounts1"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInPostSites"
+      }
+    },
+    "forEachInPostSites": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postSites.data }}",
+        "actionId": "assignVariablesDummyPostSites"
+      },
+      "outcomes": {
+        "success": "resetVariablesPostSites"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostAccounts": {
+          "source": {
+            "data": [
+              {
+                "account_number": "{{ $current.data.account_number }}",
+                "action_requested": "{{ $current.data.action_requested }}",
+                "allow_international_payments": "{{ $current.data.allow_international_payments }}",
+                "bank": "{{ $current.data.bank }}",
+                "bank_branch": "{{ $current.data.bank_branch }}",
+                "country": "{{ $current.data.country }}",
+                "currency": "{{ $current.data.currency }}",
+                "iban": "{{ $current.data.iban }}",
+                "inactive_on": "{{ $current.data.inactive_on }}",
+                "primary_flag": "{{ $current.data.primary_flag }}",
+                "re_account_number": "{{ $current.data.re_account_number }}",
+                "re_allow_international_payments": "{{ $current.data.re_allow_international_payments }}",
+                "re_bank": "{{ $current.data.re_bank }}",
+                "re_bank_branch": "{{ $current.data.re_bank_branch }}",
+                "re_country": "{{ $current.data.re_country }}",
+                "re_currency": "{{ $current.data.re_currency }}",
+                "re_iban": "{{ $current.data.re_iban }}",
+                "re_inactive_on": "{{ $current.data.re_inactive_on }}",
+                "re_primary_flag": "{{ $current.data.re_primary_flag }}",
+                "re_update_unpaid_invoices": "{{ $current.data.re_update_unpaid_invoices }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "update_unpaid_invoices": "{{ $current.data.update_unpaid_invoices }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostAccounts1"
+      }
+    },
+    "assignVariablesDummyPostSites1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostSites1": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "forEachInAccountsUpdates"
+      }
+    },
+    "resetVariablesPostSites": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postSites",
+          "$page.variables.AccountsUpdates"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPostSites"
+      }
+    },
+    "assignVariablesPostSites": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postSites": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostSites1.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        },
+        "$page.variables.AccountsUpdates": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostAccounts1.data }}"
+          },
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostSites"
+      }
+    },
+    "fireDataProviderEventPostSites": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postSites ]]"
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventAccountsUpdates"
+      }
+    },
+    "assignVariablesDummyPostSites": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostSites": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "alternate_site_name": "{{ $current.data.alternate_site_name }}",
+                "bill_to_bu": "{{ $current.data.bill_to_bu }}",
+                "client_bu": "{{ $current.data.client_bu }}",
+                "hold_all_invoices_flag": "{{ $current.data.hold_all_invoices_flag }}",
+                "hold_unvalidated_invoices_flag": "{{ $current.data.hold_unvalidated_invoices_flag }}",
+                "inactive_date": "{{ $current.data.inactive_date }}",
+                "income_tax_reporting_site_flag": "{{ $current.data.income_tax_reporting_site_flag }}",
+                "invoice_amount_limit": "{{ $current.data.invoice_amount_limit }}",
+                "invoice_currency_code": "{{ $current.data.invoice_currency_code }}",
+                "nuclear_qualified": "{{ $current.data.nuclear_qualified }}",
+                "pay_date_basis": "{{ $current.data.pay_date_basis }}",
+                "payment_currency_code": "{{ $current.data.payment_currency_code }}",
+                "payment_hold_reason": "{{ $current.data.payment_hold_reason }}",
+                "payment_method": "{{ $current.data.payment_hold_reason }}",
+                "payment_terms": "{{ $current.data.payment_terms }}",
+                "payment_terms_date_basis": "{{ $current.data.payment_terms_date_basis }}",
+                "procurement_bu": "{{ $current.data.procurement_bu }}",
+                "re_alternate_site_name": "{{ $current.data.re_alternate_site_name }}",
+                "re_bill_to_bu": "{{ $current.data.re_bill_to_bu }}",
+                "re_client_bu": "{{ $current.data.re_client_bu }}",
+                "re_hold_all_invoices_flag": "{{ $current.data.re_hold_all_invoices_flag }}",
+                "re_hold_unvalidated_invoices_flag": "{{ $current.data.re_hold_unvalidated_invoices_flag }}",
+                "re_inactive_date": "{{ $current.data.re_inactive_date }}",
+                "re_income_tax_reporting_site_flag": "{{ $current.data.re_income_tax_reporting_site_flag }}",
+                "re_invoice_amount_limit": "{{ $current.data.re_invoice_amount_limit }}",
+                "re_invoice_currency_code": "{{ $current.data.re_invoice_currency_code }}",
+                "re_nuclear_qualified": "{{ $current.data.re_nuclear_qualified }}",
+                "re_pay_date_basis": "{{ $current.data.re_pay_date_basis }}",
+                "re_payment_currency_code": "{{ $current.data.re_payment_currency_code }}",
+                "re_payment_hold_reason": "{{ $current.data.re_payment_hold_reason }}",
+                "re_payment_method": "{{ $current.data.re_payment_method }}",
+                "re_payment_terms": "{{ $current.data.re_payment_terms }}",
+                "re_payment_terms_date_basis": "{{ $current.data.re_payment_terms_date_basis }}",
+                "re_procurement_bu": "{{ $current.data.re_procurement_bu }}",
+                "re_remittance_delivery_email": "{{ $current.data.re_remittance_delivery_email }}",
+                "re_remittance_delivery_method": "{{ $current.data.re_remittance_delivery_method }}",
+                "re_site_purpose_pay_flag": "{{ $current.data.re_site_purpose_pay_flag }}",
+                "re_site_purpose_primary_pay_flag": "{{ $current.data.re_site_purpose_primary_pay_flag }}",
+                "re_site_status": "{{ $current.data.re_site_status }}",
+                "re_status_reason_code": "{{ $current.data.re_status_reason_code }}",
+                "re_supplier_address_name": "{{ $current.data.re_supplier_address_name }}",
+                "re_supplier_site": "{{ $current.data.re_supplier_site }}",
+                "remittance_delivery_email": "{{ $current.data.remittance_delivery_email }}",
+                "remittance_delivery_method": "{{ $current.data.remittance_delivery_method }}",
+                "site_purpose_pay_flag": "{{ $current.data.site_purpose_pay_flag }}",
+                "site_purpose_primary_pay_flag": "{{ $current.data.site_purpose_primary_pay_flag }}",
+                "site_status": "{{ $current.data.site_status }}",
+                "status_reason_code": "{{ $current.data.status_reason_code }}",
+                "supplier_address_name": "{{ $current.data.supplier_address_name }}",
+                "supplier_site": "{{ $current.data.supplier_site }}",
+                "supplier_site_id": "{{ $current.data.supplier_site_id }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        },
+        "$page.variables.CurrentSupplierSite": {
+          "source": "{{ $current.data.supplier_site_id }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifKey"
+      }
+    },
+    "ifCurrentSupplierSite": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_site_id==$page.variables.CurrentSupplierSite ]]"
+      },
+      "outcomes": {
+        "true": "assignVariables"
+      }
+    },
+    "assignVariablesDummyPostAccounts1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostAccounts1": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "forEachInAccountsUpdates": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.AccountsUpdates.data }}",
+        "actionId": "ifCurrentSupplierSite"
+      },
+      "outcomes": {}
+    },
+    "fireDataProviderEventAccountsUpdates": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.AccountsUpdates ]]"
+      }
+    },
+    "assignVariablesInactivateBankAccounts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.InactivateBankAccounts": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "forEachInAccountsUpdates3": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.AccountsUpdates.data }}",
+        "actionId": "ifCurrentSupplierSite3"
+      }
+    },
+    "assignVariablesInactivateSites": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.InactivateSites": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "forEachInAccountsUpdates3"
+      }
+    },
+    "ifRequestStatus2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus==\"More Information Requested\" && $current.data.record_status == \"ACTIVE\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesInactivateSites"
+      }
+    },
+    "ifKey": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_site_id==$variables.key ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesDummyPostSites1",
+        "true": "ifRequestStatus2"
+      }
+    },
+    "ifCurrentSupplierSite3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_site_id==$page.variables.CurrentSupplierSite ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesInactivateBankAccounts"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

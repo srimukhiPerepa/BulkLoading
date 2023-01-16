@@ -1,0 +1,80 @@
+{
+  "description": "",
+  "root": "assignVariablesTriggerSmfApprovalWf",
+  "actions": {
+
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostSmfApprovalWf.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Unknown Error occurred in Approval Workflow"
+      }
+    },
+    "callRestPostSmfApprovalWf": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ApprovalWorkflowTrigger/postSmfApprovalWf",
+        "body": "{{ $page.variables.triggerSmfApprovalWf }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "assignVariablesTriggerSmfApprovalWf": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.triggerSmfApprovalWf": {
+          "source": {
+            "request_id": "{{ $page.variables.requestId }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification3"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "type": "info",
+        "displayMode": "persist",
+        "message": "Approval Workflow triggerred",
+        "summary": "Approval Workflow triggerred"
+      },
+      "outcomes": {
+        "success": "callRestPostSmfApprovalWf"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15004\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {}
+}

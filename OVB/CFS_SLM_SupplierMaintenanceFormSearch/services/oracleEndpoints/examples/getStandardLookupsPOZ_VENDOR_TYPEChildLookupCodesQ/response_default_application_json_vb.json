@@ -1,0 +1,47 @@
+{
+    "LookupCode": "Voucher",
+    "Meaning": "Voucher",
+    "Description": "Voucher Suppliers",
+    "EnabledFlag": "Y",
+    "StartDateActive": null,
+    "EndDateActive": null,
+    "DisplaySequence": 1,
+    "Tag": "SMF",
+    "CreatedBy": "C987761",
+    "CreationDate": "2021-09-23T09:50:18.950+00:00",
+    "LastUpdateDate": "2022-02-28T06:54:03+00:00",
+    "LastUpdateLogin": "D85A4862A9D70026E053BD61500A3C71",
+    "LastUpdatedBy": "C987123",
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_VENDOR_TYPE/child/lookupCodes/Voucher",
+            "name": "lookupCodes",
+            "kind": "item"
+        },
+        {
+            "rel": "canonical",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_VENDOR_TYPE/child/lookupCodes/Voucher",
+            "name": "lookupCodes",
+            "kind": "item"
+        },
+        {
+            "rel": "parent",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_VENDOR_TYPE",
+            "name": "standardLookups",
+            "kind": "item"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_VENDOR_TYPE/child/lookupCodes/Voucher/child/lookupsDFF",
+            "name": "lookupsDFF",
+            "kind": "collection"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardLookups/POZ_VENDOR_TYPE/child/lookupCodes/Voucher/child/translations",
+            "name": "translations",
+            "kind": "collection"
+        }
+    ]
+}

@@ -1,0 +1,118 @@
+{
+  "root": "callRestGetCfsSmfRequestsTbl",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetCfsSmfRequestsTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get request details"
+      }
+    },
+    "callRestGetCfsSmfRequestsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/getCfs_smf_requests_tbl",
+        "uriParams": {
+          "request_Id": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "assignVariablesPostRequests"
+      }
+    },
+    "assignVariablesPostRequests": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postRequests": {
+          "source": {
+            "approval_date": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.approval_date }}",
+            "approver": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.approver }}",
+            "approved_rejected_name": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.approved_rejected_name }}",
+            "approver_comment": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.approver_comment }}",
+            "created_by": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.created_by }}",
+            "creation_date": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.creation_date }}",
+            "last_update_date": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.last_update_date }}",
+            "last_updated_by": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.last_updated_by }}",
+            "request_date": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.request_date }}",
+            "request_id": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.request_id }}",
+            "requestor": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.requestor }}",
+            "requestor_name": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.requestor_name }}",
+            "supplier_id": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.supplier_id }}",
+            "status": "{{ $chain.results.callRestGetCfsSmfRequestsTbl.body.status }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetCfsSmfRequestsTbl.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3",
+        "true": "callFunctionWaitForNextCall"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetCfsSmfRequestsTbl"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

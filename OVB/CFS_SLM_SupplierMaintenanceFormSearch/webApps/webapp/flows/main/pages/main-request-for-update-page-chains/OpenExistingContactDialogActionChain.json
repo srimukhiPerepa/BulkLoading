@@ -1,0 +1,197 @@
+{
+  "description": "",
+  "root": "resetVariablesPostContactAddress",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog70\" }}"
+        ]
+      }
+    },
+    "assignVariablesPopupExistingContact": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupExistingContact": {
+          "source": {
+            "SupplierContactId": "{{ $variables.key }}",
+            "Email": "{{ $variables.current.Email }}",
+            "FaxNumber": "{{ $variables.current.FaxNumber?$variables.current.FaxNumber:\"\" }}",
+            "FirstName": "{{ $variables.current.FirstName }}",
+            "InactiveDate": "{{ $variables.current.InactiveDate }}",
+            "JobTitle": "{{ $variables.current.JobTitle }}",
+            "LastName": "{{ $variables.current.LastName }}",
+            "MobileNumber": "{{ $variables.current.MobileNumber?$variables.current.MobileNumber:\"\" }}",
+            "PhoneNumber": "{{ $variables.current.PhoneNumber?$variables.current.PhoneNumber:\"\" }}",
+            "MobileAreaCode": "{{ $variables.current.MobileAreaCode }}",
+            "MobileCountryCode": "{{ $variables.current.MobileCountryCode }}",
+            "PhoneAreaCode": "{{ $variables.current.PhoneAreaCode }}",
+            "PhoneCountryCode": "{{ $variables.current.PhoneCountryCode }}",
+            "FaxAreaCode": "{{ $variables.current.FaxAreaCode }}",
+            "FaxCountryCode": "{{ $variables.current.FaxCountryCode }}",
+            "Status": "{{ $variables.current.Status }}",
+            "DisplayPhoneAreaCode": "{{ $variables.current.PhoneAreaCode?\"(\"+$variables.current.PhoneAreaCode+\")\":\"\" }}",
+            "DisplayPhoneCountryCode": "{{ $variables.current.PhoneCountryCode?\"+\"+$variables.current.PhoneCountryCode+\" \":\"\" }}",
+            "DisplayFaxAreaCode": "{{ $variables.current.FaxAreaCode?\"(\"+$variables.current.FaxAreaCode+\")\":\"\" }}",
+            "DisplayFaxCountryCode": "{{ $variables.current.FaxCountryCode?\"+\"+$variables.current.FaxCountryCode+\" \":\"\" }}",
+            "DisplayMobileAreaCode": "{{ $variables.current.MobileAreaCode?\"(\"+$variables.current.MobileAreaCode+\")\":\"\" }}",
+            "DisplayMobileCountryCode": "{{ $variables.current.MobileCountryCode?\"+\"+$variables.current.MobileCountryCode+\" \":\"\" }}",
+            "ContactPurpose": "{{ $chain.results.callRestGetSupplierContactDFF.body.items[0].contactPurpose }}",
+            "AdministrativeContactFlag": "{{ $variables.current.AdministrativeContactFlag?\"Yes\":\"No\" }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callRestGetAllAddresses"
+      }
+    },
+    "resetVariablesPostContactAddress": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postContactAddress",
+          "$page.variables.popupExistingContact",
+          "$page.variables.getAllAddresses"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInPostContacts"
+      }
+    },
+    "forEachInPostContacts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postContacts.data }}",
+        "actionId": "ifKey"
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "ifKey": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_contact_id==$variables.key ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "false": "callRestGetSupplierContactDFF",
+        "true": "fireNotification"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "You have already requested updates for this Contact",
+        "message": "You have already requested updates for this Contact",
+        "type": "info"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetSupplierContactDFF.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get Supplier Contact DFF"
+      }
+    },
+    "callRestGetSupplierContactDFF": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSupplierContactDFF",
+        "uriParams": {
+          "SupplierContactId": "{{ $variables.key }}",
+          "SupplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification2",
+        "success": "assignVariablesPopupExistingContact"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetAllAddresses.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetAllAddresses": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getAllAddresses",
+        "uriParams": {
+          "SupplierContactId": "{{ $page.variables.popupExistingContact.SupplierContactId }}",
+          "SupplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification3",
+        "success": "assignVariables"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAllAddresses": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetAllAddresses.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+
+  }
+}

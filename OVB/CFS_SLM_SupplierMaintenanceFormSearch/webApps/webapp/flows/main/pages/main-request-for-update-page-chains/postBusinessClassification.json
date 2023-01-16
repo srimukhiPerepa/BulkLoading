@@ -1,0 +1,583 @@
+{
+  "root": "resetVariablesPostBusinessClassification",
+  "description": "",
+  "actions": {
+    "forEachInBusinessClassificationUpdates": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.businessClassificationUpdates.data }}",
+        "actionId": "resetVariablesPostBusinessClassification3"
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "assignVariablesPostBusinessClassification": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postBusinessClassification": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "certificate": "{{ $current.data.certificate }}",
+                "certifying_agency": "{{ $current.data.certifying_agency }}",
+                "certifying_agency_id": "{{ $current.data.certifying_agency_id }}",
+                "classification": "{{ $current.data.classification }}",
+                "classification_id": "{{ $current.data.classification_id }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "expiration_date": "{{ $current.data.expiration_date?$current.data.expiration_date+\"T00:00:00Z\":$current.data.expiration_date }}",
+                "other_certifying_agency": "{{ $current.data.other_certifying_agency }}",
+                "re_certificate": "{{ $current.data.re_certificate }}",
+                "re_certifying_agency": "{{ $current.data.re_certifying_agency }}",
+                "re_certifying_agency_id": "{{ $current.data.re_certifying_agency_id }}",
+                "re_classification": "{{ $current.data.re_classification }}",
+                "re_expiration_date": "{{ $current.data.re_expiration_date?$current.data.re_expiration_date+\"T00:00:00Z\":$current.data.re_expiration_date }}",
+                "re_other_certifying_agency": "{{ $current.data.re_other_certifying_agency }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "supplier_id": "{{ $page.variables.inputSupplierNumberVar }}",
+                "status": "{{ $current.data.status }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "classification_applicable_flag": "{{ $page.variables.classificationApplicableFlag?\"Yes\":\"No\" }}",
+                "record_status": "{{ \"ACTIVE\" }}"
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfBusClassificationsTbl"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Failed to update Business Classifications",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Business Classifications Update: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables7"
+      }
+    },
+    "callRestPostCfsSmfBusClassificationsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/postCfs_smf_bus_classifications_tbl",
+        "body": "{{ $page.variables.postBusinessClassification.data[0] }}"
+      },
+      "outcomes": {
+        "failure": "if4"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "ifRequestStatus": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.requestStatus == \"More Information Requested\"]]"
+      },
+      "outcomes": {
+        "false": "forEachInBusinessClassificationUpdates",
+        "true": "forEachInBusinessClassificationUpdates2"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfBusClassificationsTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Business Classifications Update: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables9"
+      }
+    },
+    "callRestPutCfsSmfBusClassificationsTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_bus_classifications_tbl",
+        "uriParams": {
+          "classification_id": "{{ $page.variables.postBusinessClassification.data[0].classification_id }}",
+          "request_id": "{{ $page.variables.postBusinessClassification.data[0].request_id }}",
+          "supplier_id": "{{ $page.variables.postBusinessClassification.data[0].supplier_id }}"
+        },
+        "body": "{{ $page.variables.postBusinessClassification.data[0] }}"
+      },
+      "outcomes": {
+        "failure": "if"
+      }
+    },
+    "return4": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "resetVariablesPostBusinessClassification": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postBusinessClassification"
+        ]
+      },
+      "outcomes": {
+        "success": "ifRequestStatus"
+      }
+    },
+    "forEachInInactivateBusinessClassifications": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.InactivateBusinessClassifications.data }}",
+        "actionId": "resetVariablesPostBusinessClassification2"
+      },
+      "outcomes": {
+        "success": "return4"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfBusClassificationsTbl2.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Business Classifications Update: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables5"
+      }
+    },
+    "assignVariablesPostBusinessClassification2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postBusinessClassification": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "certificate": "{{ $current.data.certificate }}",
+                "certifying_agency": "{{ $current.data.certifying_agency }}",
+                "certifying_agency_id": "{{ $current.data.certifying_agency_id }}",
+                "classification": "{{ $current.data.classification }}",
+                "classification_id": "{{ $current.data.classification_id }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "expiration_date": "{{ $current.data.expiration_date?$current.data.expiration_date+\"T00:00:00Z\":$current.data.expiration_date }}",
+                "other_certifying_agency": "{{ $current.data.other_certifying_agency }}",
+                "re_certificate": "{{ $current.data.re_certificate }}",
+                "re_certifying_agency": "{{ $current.data.re_certifying_agency }}",
+                "re_certifying_agency_id": "{{ $current.data.re_certifying_agency_id }}",
+                "re_classification": "{{ $current.data.re_classification }}",
+                "re_expiration_date": "{{ $current.data.re_expiration_date?$current.data.re_expiration_date+\"T00:00:00Z\":$current.data.re_expiration_date }}",
+                "re_other_certifying_agency": "{{ $current.data.re_other_certifying_agency }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "supplier_id": "{{ $page.variables.inputSupplierNumberVar }}",
+                "status": "{{ $current.data.status }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "classification_applicable_flag": "{{ $page.variables.classificationApplicableFlag?\"Yes\":\"No\" }}",
+                "record_status": "{{ \"INACTIVE\" }}"
+              }
+            ]
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfBusClassificationsTbl2"
+      }
+    },
+    "callRestPutCfsSmfBusClassificationsTbl2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_bus_classifications_tbl",
+        "uriParams": {
+          "classification_id": "{{ $page.variables.postBusinessClassification.data[0].classification_id }}",
+          "request_id": "{{ $page.variables.postBusinessClassification.data[0].request_id }}",
+          "supplier_id": "{{ $page.variables.postBusinessClassification.data[0].supplier_id }}"
+        },
+        "body": "{{ $page.variables.postBusinessClassification.data[0] }}"
+      },
+      "outcomes": {
+        "failure": "if3"
+      }
+    },
+    "forEachInBusinessClassificationUpdates2": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.businessClassificationUpdates.data }}",
+        "actionId": "resetVariablesPostBusinessClassification5"
+      },
+      "outcomes": {
+        "success": "forEachInInactivateBusinessClassifications"
+      }
+    },
+    "resetVariablesPostBusinessClassification2": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postBusinessClassification",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPostBusinessClassification2"
+      }
+    },
+    "assignVariablesPostBusinessClassification4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postBusinessClassification": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "certificate": "{{ $current.data.certificate }}",
+                "certifying_agency": "{{ $current.data.certifying_agency }}",
+                "certifying_agency_id": "{{ $current.data.certifying_agency_id }}",
+                "classification": "{{ $current.data.classification }}",
+                "classification_id": "{{ $current.data.classification_id }}",
+                "created_by": "{{ $application.user.username }}",
+                "last_updated_by": "{{ $application.user.username }}",
+                "expiration_date": "{{ $current.data.expiration_date?$current.data.expiration_date+\"T00:00:00Z\":$current.data.expiration_date }}",
+                "other_certifying_agency": "{{ $current.data.other_certifying_agency }}",
+                "re_certificate": "{{ $current.data.re_certificate }}",
+                "re_certifying_agency": "{{ $current.data.re_certifying_agency }}",
+                "re_certifying_agency_id": "{{ $current.data.re_certifying_agency_id }}",
+                "re_classification": "{{ $current.data.re_classification }}",
+                "re_expiration_date": "{{ $current.data.re_expiration_date?$current.data.re_expiration_date+\"T00:00:00Z\":$current.data.re_expiration_date }}",
+                "re_other_certifying_agency": "{{ $current.data.re_other_certifying_agency }}",
+                "request_id": "{{ $page.variables.requestId }}",
+                "supplier_id": "{{ $page.variables.inputSupplierNumberVar }}",
+                "status": "{{ $current.data.status }}",
+                "creation_date": "{{ $page.variables.SystemDate }}",
+                "last_update_date": "{{ $page.variables.SystemDate }}",
+                "classification_applicable_flag": "{{ $page.variables.classificationApplicableFlag?\"Yes\":\"No\" }}",
+                "record_status": "{{ \"ACTIVE\" }}"
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "none",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfBusClassificationsTbl"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfBusClassificationsTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification2",
+        "true": "assignVariables"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfBusClassificationsTbl2.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3",
+        "true": "assignVariables2"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPostCfsSmfBusClassificationsTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariables3"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall2",
+        "false": "fireNotification5"
+      }
+    },
+    "fireNotification7": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables6"
+      }
+    },
+    "resetVariablesPostBusinessClassification5": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postBusinessClassification",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPostBusinessClassification4"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry2"
+      }
+    },
+    "fireNotification8": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables4"
+      }
+    },
+    "ifReTry2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall4",
+        "false": "fireNotification8"
+      }
+    },
+    "resetVariablesPostBusinessClassification3": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.postBusinessClassification",
+          "$variables.reTry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPostBusinessClassification"
+      }
+    },
+    "assignVariables3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry3"
+      }
+    },
+    "ifReTry3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification7"
+      }
+    },
+    "callFunctionWaitForNextCall4": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfBusClassificationsTbl2"
+      }
+    },
+    "callFunctionWaitForNextCall2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfBusClassificationsTbl"
+      }
+    },
+    "fireNotification5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      },
+      "outcomes": {
+        "success": "assignVariables8"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfBusClassificationsTbl"
+      }
+    },
+    "assignVariables4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return8"
+      }
+    },
+    "assignVariables5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return7"
+      }
+    },
+    "assignVariables6": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return5"
+      }
+    },
+    "assignVariables7": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return6"
+      }
+    },
+    "assignVariables8": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return3"
+      }
+    },
+    "assignVariables9": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return2"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return3": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return5": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return6": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return7": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return8": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

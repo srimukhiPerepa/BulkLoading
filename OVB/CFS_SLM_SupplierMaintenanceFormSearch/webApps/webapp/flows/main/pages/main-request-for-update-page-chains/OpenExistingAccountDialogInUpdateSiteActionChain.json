@@ -1,0 +1,143 @@
+{
+  "description": "",
+  "root": "resetVariablesPopupNewAccounts2",
+  "actions": {
+
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "forEachInPostAccounts"
+      }
+    },
+    "forEachInPostAccounts": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postAccounts.data }}",
+        "actionId": "ifCurrent"
+      },
+      "outcomes": {
+        "success": "ifFlag"
+      }
+    },
+    "ifCurrent": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.account_id==$variables.current.BankAccountId ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag2"
+      }
+    },
+    "assignVariablesFlag2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "fireNotification",
+        "false": "resetVariablesPopupNewAccounts"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "You have already requested updates for this bank account",
+        "message": "You have already requested updates for this bank account"
+      }
+    },
+    "resetVariablesPopupNewAccounts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupNewAccounts"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPopupNewAccounts"
+      }
+    },
+    "assignVariablesPopupNewAccounts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewAccounts": {
+          "source": {
+            "AccountId": "{{ $variables.current.BankAccountId }}",
+            "AccountNumber": "{{ $variables.current.BankAccountNumber }}",
+            "AllowInternationalPayments": "{{ $variables.current.AllowInternationalPaymentIndicator==\"Y\"?\"Yes\":\"No\" }}",
+            "Bank": "{{ $variables.current.BankName }}",
+            "BankBranch": "{{ $variables.current.BankBranchName }}",
+            "Country": "{{ $variables.current.CountryCode }}",
+            "Currency": "{{ $variables.current.CurrencyCode }}",
+            "IBAN": "{{ $variables.current.IBAN }}",
+            "InactiveOn": "{{ $variables.current.EndDate }}"
+          },
+          "auto": "always",
+          "reset": "none"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog2222\" }}"
+        ]
+      }
+    },
+    "resetVariablesPopupNewAccounts2": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupNewAccounts",
+          "$page.variables.popupNewAccounts.Bank",
+          "$page.variables.popupNewAccounts.BankBranch",
+          "$page.variables.popupNewAccounts.ReBank",
+          "$page.variables.popupNewAccounts.ReBankBranch"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesFlag"
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+    "supplier_id": 300000042390398,
+    "request_id": 1000000000001,
+    "legal_structure": null,
+    "exelon_poc": null,
+    "employee_liability_value": null,
+    "employer_liability_expiration_date": null,
+    "general_liability_value": null,
+    "general_liability_expiration_date": null,
+    "auto_liability_value": null,
+    "auto_liability_expiration_date": null,
+    "excess_umbrella_liability_value": null,
+    "excess_umbrella_liability_expiration_date": null,
+    "workers_comp_liability_value": null,
+    "workers_comp_liability_expiration_date": null,
+    "professional_liability_value": null,
+    "professional_liability_expiration_date": null,
+    "environ_pollution_liability_value": null,
+    "environ_pollution_liability_expiration_date": null,
+    "miscellaneous_liability_insurance_value": null,
+    "miscellaneous_insurance_expiration_date": null,
+    "additional_insured": null,
+    "policies_are_primary": null,
+    "supplier_insurance_waiver_of_subrogation": null,
+    "re_legal_structure": null,
+    "re_exelon_poc": null,
+    "re_employee_liability_value": null,
+    "re_employer_liability_expiration_date": null,
+    "re_general_liability_value": null,
+    "re_general_liability_expiration_date": null,
+    "re_auto_liability_value": null,
+    "re_auto_liability_expiration_date": null,
+    "re_excess_umbrella_liability_value": null,
+    "re_excess_umbrella_liability_expiration_date": null,
+    "re_workers_comp_liability_value": null,
+    "re_workers_comp_liability_expiration_date": null,
+    "re_professional_liability_value": null,
+    "re_professional_liability_expiration_date": null,
+    "re_environ_pollution_liability_value": null,
+    "re_environ_pollution_liability_expiration_date": null,
+    "re_miscellaneous_liability_insurance_value": null,
+    "re_miscellaneous_insurance_expiration_date": null,
+    "re_additional_insured": null,
+    "re_policies_are_primary": null,
+    "re_supplier_insurance_waiver_of_subrogation": null,
+    "creation_date": null,
+    "last_update_date": null,
+    "created_by": null,
+    "last_updated_by": null,
+    "api_response": null,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_suppliers_dff_tbl/300000042390398,1000000000001"
+        },
+        {
+            "rel": "edit",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_suppliers_dff_tbl/300000042390398,1000000000001"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/metadata-catalog/cfs_smf_suppliers_dff_tbl/item"
+        },
+        {
+            "rel": "collection",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_suppliers_dff_tbl/"
+        }
+    ]
+}

@@ -1,0 +1,227 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "HcmRestApi 11.13.18.05",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05",
+            "description": "HcmRestApi 11.13.18.05",
+            "x-vb": {
+                "authentication": {
+                    "authenticated": {
+                        "type": "basic",
+                        "credentials": ""
+                    }
+                },
+                "forceProxy": "always"
+            }
+        }
+    ],
+    "paths": {
+        "/hcmCountriesLov": {
+            "get": {
+                "operationId": "get11_13_18_05HcmCountriesLovQ",
+                "parameters": [
+{
+                        "name": "q",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "ObsoleteFlag=false"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "x-vb": {
+                            "defaultValue": "500"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetHcmCountriesLov"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/get11_13_18_05HcmCountriesLovQ/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getMany",
+                    "headers": {
+                        "REST-Framework-Version": "2"
+                    }
+                }
+            }
+        },
+        "/hcmCountriesLov/": {
+            "get": {
+                "operationId": "getHcmCountriesLovQ",
+                "parameters": [
+{
+                        "name": "q",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "x-vb": {
+                            "defaultValue": "ObsoleteFllag=false"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "x-vb": {
+                            "defaultValue": "500"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetHcmCountriesLov"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getHcmCountriesLovQ/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getOne"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetHcmCountriesLov": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "CountryName": {
+                                    "type": "string"
+                                },
+                                "TerritoryCode": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string",
+                                    "nullable": true
+                                },
+                                "AlternateTerritoryCode": {
+                                    "type": "string"
+                                },
+                                "PhoneCountryCodeId": {
+                                    "type": "integer",
+                                    "nullable": true
+                                },
+                                "PhoneCountryCode": {
+                                    "type": "string",
+                                    "nullable": true
+                                },
+                                "CurrencyCode": {
+                                    "type": "string",
+                                    "nullable": true
+                                },
+                                "NlsTerritory": {
+                                    "type": "string"
+                                },
+                                "ObsoleteFlag": {
+                                    "type": "boolean"
+                                },
+                                "links": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rel": {
+                                                "type": "string"
+                                            },
+                                            "href": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "kind": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer"
+                    },
+                    "hasMore": {
+                        "type": "boolean"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

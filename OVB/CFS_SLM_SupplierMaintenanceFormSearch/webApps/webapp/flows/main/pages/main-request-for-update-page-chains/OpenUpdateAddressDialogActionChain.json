@@ -1,0 +1,204 @@
+{
+  "description": "",
+  "root": "resetVariablesPopupNewAddress",
+  "actions": {
+    "resetVariablesPopupNewAddress": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupNewAddress",
+          "$page.variables.get1113185HcmCountriesLovQListSDP2"          ,
+          "$page.variables.popupNewAddress.ReCountry"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPopupNewAddress"
+      }
+    },
+    "assignVariablesPopupNewAddress": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewAddress": {
+          "source": {
+            "AddressLine1": "{{ $variables.current.address_line1 }}",
+            "AddressLine2": "{{ $variables.current.address_line2 }}",
+            "AddressLine3": "{{ $variables.current.address_line3 }}",
+            "AddressName": "{{ $variables.current.address_name }}",
+            "City": "{{ $variables.current.city }}",
+            "Country": "{{ $variables.current.country }}",
+            "County": "{{ $variables.current.county }}",
+            "Email": "{{ $variables.current.email }}",
+            "Fax": "{{ $variables.current.fax_number?$variables.current.fax_number:\"\" }}",
+            "FaxAreaCode": "{{ $variables.current.fax_area_code }}",
+            "FaxCountryCode": "{{ $variables.current.fax_country_code }}",
+            "Phone": "{{ $variables.current.phone_number?$variables.current.phone_number:\"\" }}",
+            "PhoneAreaCode": "{{ $variables.current.phone_area_code }}",
+            "PhoneCountryCode": "{{ $variables.current.phone_country_code }}",
+            "PhoneExtensionCode": "{{ $variables.current.phone_extension }}",
+            "PostalCode": "{{ $variables.current.postal_code }}",
+            "RemitTo": "{{ $variables.current.address_purpose_remit_to_flag }}",
+            "State": "{{ $variables.current.state }}",
+            "ReAddressLine1": "{{ $variables.current.re_address_line1 }}",
+            "ReAddressLine2": "{{ $variables.current.re_address_line2 }}",
+            "ReAddressLine3": "{{ $variables.current.re_address_line3 }}",
+            "ReAddressName": "{{ $variables.current.re_address_name }}",
+            "ReCity": "{{ $variables.current.re_city }}",
+            "ReCounty": "{{ $variables.current.re_county }}",
+            "ReEmail": "{{ $variables.current.re_email }}",
+            "ReFax": "{{ $variables.current.re_fax_number }}",
+            "ReFaxAreaCode": "{{ $variables.current.re_fax_area_code }}",
+            "ReFaxCountryCode": "{{ $variables.current.re_fax_country_code }}",
+            "RePhone": "{{ $variables.current.re_phone_number }}",
+            "RePhoneAreaCode": "{{ $variables.current.re_phone_area_code }}",
+            "RePhoneCountryCode": "{{ $variables.current.re_phone_country_code }}",
+            "RePhoneExtensionCode": "{{ $variables.current.re_phone_extension }}",
+            "RePostalCode": "{{ $variables.current.re_postal_code }}",
+            "ReRemitTo": "{{ $variables.current.re_address_purpose_remit_to_flag }}",
+            "ReState": "{{ $variables.current.re_state }}",
+            "AddressId": "{{ $variables.key }}",
+            "DisplayFaxAreaCode": "{{ $variables.current.fax_area_code?\"(\"+$variables.current.fax_area_code+\")\":\"\" }}",
+            "DisplayFaxCountryCode": "{{ $variables.current.fax_country_code?\"+\"+$variables.current.fax_country_code+\" \":\"\" }}",
+            "DisplayPhoneAreaCode": "{{ $variables.current.phone_area_code?\"(\"+$variables.current.phone_area_code+\")\":\"\" }}",
+            "DisplayPhoneExtensionCode": "{{ $variables.current.phone_extension?\" x\"+$variables.current.phone_extension:\"\" }}",
+            "DisplayPhoneCountryCode": "{{ $variables.current.phone_country_code?\"+\"+$variables.current.phone_country_code+\" \":\"\" }}",
+            "ActionRequested": "{{ $variables.current.action_requested }}",
+            "Province": "{{ $variables.current.province }}",
+            "ReProvince": "{{ $variables.current.re_province }}",
+            "ReCountry": "{{ $variables.current.re_country }}",
+            "RecordStatus": "{{ $variables.current.record_status }}"
+          },
+          "reset": "toDefault",
+          "auto": "always",
+          "mapping": {
+            "$target.ReCountry": {
+              "source": "$source.ReCountry",
+              "reset": "none"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "resetVariablesGetAddressValidations"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog33\" }}"
+        ]
+      }
+    },
+    "ifPopupNewAddress": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupNewAddress.ReCountry ]]"
+      },
+      "outcomes": {
+        "true": "callRestGetLookupCodes",
+        "false": "callFunctionOpenDialogFunc"
+      }
+    },
+    "resetVariablesGetAddressValidations": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getAddressValidations",
+          "$page.variables.validationsArray"
+        ]
+      },
+      "outcomes": {
+        "success": "ifPopupNewAddress"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetLookupCodes.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetLookupCodes": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getAddressValidationsLookup",
+        "uriParams": {
+          "q": "{{ \"LookupCode=\"+$page.variables.popupNewAddress.ReCountry }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetLookupCodes.body.count>0 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesGetAddressValidations",
+        "false": "callFunctionOpenDialogFunc"
+      }
+    },
+    "assignVariablesGetAddressValidations": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAddressValidations": {
+          "source": "{{ $chain.results.callRestGetLookupCodes.body.items[0] }}",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionIsAddressFormatValid"
+      }
+    },
+    "callFunctionIsAddressFormatValid": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "isAddressFormatValid",
+        "params": [
+          "{{ $chain.results.callRestGetLookupCodes.body.items[0].Description }}",
+          "{{ $page.variables.validationsArray }}"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesValidationsArray"
+      }
+    },
+    "assignVariablesValidationsArray": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.validationsArray": {
+          "source": "{{ $chain.results.callFunctionIsAddressFormatValid }}",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

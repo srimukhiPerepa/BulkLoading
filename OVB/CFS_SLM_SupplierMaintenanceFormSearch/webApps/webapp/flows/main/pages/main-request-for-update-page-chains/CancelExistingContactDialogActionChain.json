@@ -1,0 +1,28 @@
+{
+  "description": "",
+  "root": "assignVariablesSupplierContactEmailValidation",
+  "actions": {
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog70\" }}"
+        ]
+      }
+    },
+    "assignVariablesSupplierContactEmailValidation": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierContactEmailValidation": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    }
+  },
+  "variables": {}
+}

@@ -1,0 +1,66 @@
+{
+    "PayeeId": 300000042366721,
+    "PaymentFunctionCode": "PAYABLES_DISB",
+    "OrganizationIdentifier": null,
+    "OrganizationName": null,
+    "OrganizationType": null,
+    "PayEachDocumentAloneOption": "N",
+    "DefaultPaymentMethodCode": null,
+    "DefaultPaymentMethodName": null,
+    "BankChargeBearerCode": null,
+    "BankChargeBearerName": null,
+    "BankInstructionCodeOne": null,
+    "BankInstructionNameOne": null,
+    "BankInstructionCodeTwo": null,
+    "BankInstructionNameTwo": null,
+    "BankInstructionDetails": null,
+    "PaymentReasonCode": null,
+    "PaymentReasonName": null,
+    "PaymentReasonComments": null,
+    "PaymentTextMessageOne": null,
+    "PaymentTextMessageTwo": null,
+    "PaymentTextMessageThree": null,
+    "DeliveryChannelCode": null,
+    "DeliveryChannelName": null,
+    "ServiceLevelCode": null,
+    "ServiceLevelName": null,
+    "SettlementPriority": null,
+    "DeliveryMethod": null,
+    "Email": null,
+    "Fax": null,
+    "PayeePartyIdentifier": 300000042365173,
+    "PartyName": null,
+    "PayeePartyNumber": null,
+    "PayeePartySiteIdentifier": 300000042365185,
+    "SupplierNumber": null,
+    "SupplierSiteCode": null,
+    "SupplierSiteIdentifier": 300000042366720,
+    "PayeePartySiteNumber": null,
+    "PaymentFormatCode": null,
+    "PaymentFormatName": null,
+    "PersonId": null,
+    "Intent": null,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/paymentsExternalPayees/300000042366721",
+            "name": "paymentsExternalPayees",
+            "kind": "item",
+            "properties": {
+                "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+            }
+        },
+        {
+            "rel": "canonical",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/paymentsExternalPayees/300000042366721",
+            "name": "paymentsExternalPayees",
+            "kind": "item"
+        },
+        {
+            "rel": "child",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/paymentsExternalPayees/300000042366721/child/externalPartyPaymentMethods",
+            "name": "externalPartyPaymentMethods",
+            "kind": "collection"
+        }
+    ]
+}

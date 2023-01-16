@@ -1,0 +1,128 @@
+{
+  "root": "callRestGetCfsSmfSupplierHeaderTbl",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetCfsSmfSupplierHeaderTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get supplier header information"
+      }
+    },
+    "assignVariablesPostSupplier": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postSupplier": {
+          "source": "{{ $chain.results.callRestGetCfsSmfSupplierHeaderTbl.body }}",
+          "auto": "always"
+        },
+        "$page.variables.classificationApplicableFlag": {
+          "source": "{{ $chain.results.callRestGetCfsSmfSupplierHeaderTbl.body.classification_not_applicable_flag==\"Yes\"?true:false }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostSupplier3"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "callRestGetCfsSmfSupplierHeaderTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/getCfs_smf_supplier_header_tbl",
+        "uriParams": {
+          "supplierId": "{{ $page.variables.postRequests.supplier_id }}",
+          "requestId": "{{ $page.variables.postRequests.request_id }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "assignVariablesPostSupplier"
+      }
+    },
+    "assignVariablesPostSupplier3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postSupplier": {
+          "source": {
+            "re_inactive_date": "{{ $page.variables.postSupplier.re_inactive_date?$page.variables.postSupplier.re_inactive_date.slice(0,-10):$page.variables.postSupplier.re_inactive_date }}",
+            "inactive_date": "$page.variables.postSupplier.inactive_date?$page.variables.postSupplier.inactive_date.slice(0,-10):$page.variables.postSupplier.inactive_date"
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.re_inactive_date": {
+              "source": "$source.re_inactive_date",
+              "reset": "none"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetCfsSmfSupplierHeaderTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetCfsSmfSupplierHeaderTbl"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification4"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

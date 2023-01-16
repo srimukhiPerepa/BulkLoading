@@ -1,0 +1,179 @@
+{
+  "description": "",
+  "root": "callFunctionTestFunc",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetSuppliersSupplierId.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetSuppliersSupplierId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSuppliersSupplierId",
+        "uriParams": {
+          "SupplierId": "{{ $page.variables.inputSupplierIdVar }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetSupplierToUpdateVar"
+      }
+    },
+    "assignVariablesGetSupplierToUpdateVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSupplierToUpdateVar": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierId.body }}",
+          "auto": "always"
+        },
+        "$page.variables.supplierNumberVar": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierId.body.SupplierNumber }}"
+        },
+        "$page.variables.supplierTypeVar": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierId.body.SupplierType }}"
+        },
+        "$page.variables.taxpayerIDVar": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierId.body.TaxpayerId }}"
+        },
+        "$page.variables.taxRegtNumberVar": {
+          "source": "{{ $chain.results.callRestGetSuppliersSupplierId.body.TaxRegistrationNumber }}"
+        }
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetGetSupplierRequestsDetailsSupplierId.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get supplier request information"
+      }
+    },
+    "assignVariablesGetCfsSmfRequestsTblListADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getCfsSmfRequestsTblListADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetGetSupplierRequestsDetailsSupplierId.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventGetCfsSmfRequestsTblListADP"
+      }
+    },
+    "fireDataProviderEventGetCfsSmfRequestsTblListADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "target": "[[ $page.variables.getCfsSmfRequestsTblListADP ]]",
+        "refresh": null
+      }
+    },
+    "runInParallel": {
+      "module": "vb/action/builtin/forkAction",
+      "parameters": {
+        "actions": {
+          "callRestGetSuppliersSupplierId": "callRestGetSuppliersSupplierId",
+          "callRestGetCfsSmfRequestsTbl": "resetVariablesGetCfsSmfRequestsTblListADP"
+        }
+      }
+    },
+    "callRestGetGetSupplierRequestsDetailsSupplierId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_supplier_requests_detailsSupplierId",
+        "uriParams": {
+          "SupplierId": "{{ $page.variables.inputSupplierIdVar }}"
+        }
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "assignVariablesGetCfsSmfRequestsTblListADP"
+      }
+    },
+    "resetVariablesGetCfsSmfRequestsTblListADP": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getCfsSmfRequestsTblListADP"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGetGetSupplierRequestsDetailsSupplierId"
+      }
+    },
+    "callFunctionTestFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "testFunc"
+      },
+      "outcomes": {
+        "success": "runInParallel"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetSupplierRequestsDetailsSupplierId.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification2",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification4"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetSupplierRequestsDetailsSupplierId"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "test"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

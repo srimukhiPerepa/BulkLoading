@@ -1,0 +1,13 @@
+{
+  "description": "",
+  "root": "callChainPageVbEnterActionChain",
+  "actions": {
+    "callChainPageVbEnterActionChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "PageVbEnterActionChain"
+      }
+    }
+  },
+  "variables": {}
+}

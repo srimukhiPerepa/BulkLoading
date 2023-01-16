@@ -1,0 +1,341 @@
+{
+  "root": "ifSourcePage",
+  "description": "",
+  "actions": {
+    "assignVariablesPostSupplier": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postSupplier": {
+          "source": {
+            "alias": "{{ $page.variables.getSupplierToUpdateVar.Alias }}",
+            "alternate_name": "{{ $page.variables.getSupplierToUpdateVar.AlternateName }}",
+            "business_relationship": "{{ $page.variables.getSupplierToUpdateVar.BusinessRelationship }}",
+            "federal_income_taxtype": "{{ $page.variables.getSupplierToUpdateVar.FederalIncomeTaxType }}",
+            "federal_income_taxtype_code": "{{ $page.variables.getSupplierToUpdateVar.FederalIncomeTaxTypeCode }}",
+            "inactive_date": "{{ $page.variables.getSupplierToUpdateVar.InactiveDate?$page.variables.getSupplierToUpdateVar.InactiveDate+\"T00:00:00Z\":$page.variables.getSupplierToUpdateVar.InactiveDate }}",
+            "parent_supplier": "{{ $page.variables.getSupplierToUpdateVar.ParentSupplier }}",
+            "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+            "state_reportable_flag": "{{ $page.variables.getSupplierToUpdateVar.StateReportableFlag?\"Yes\":\"No\" }}",
+            "status": "{{ $page.variables.getSupplierToUpdateVar.Status }}",
+            "supplier_name": "{{ $page.variables.getSupplierToUpdateVar.Supplier }}",
+            "supplier_number": "{{ $page.variables.getSupplierToUpdateVar.SupplierNumber }}",
+            "supplier_type": "{{ $page.variables.getSupplierToUpdateVar.SupplierType }}",
+            "tax_organization_type": "{{ $page.variables.getSupplierToUpdateVar.TaxOrganizationType }}",
+            "tax_registration_country": "{{ $page.variables.getSupplierToUpdateVar.TaxRegistrationCountry }}",
+            "tax_registration_number": "{{ $page.variables.getSupplierToUpdateVar.TaxRegistrationNumber }}",
+            "taxpayer_country": "{{ $page.variables.getSupplierToUpdateVar.TaxpayerCountry }}",
+            "taxpayer_id": "{{ $page.variables.getSupplierToUpdateVar.TaxpayerId }}",
+            "request_id": "{{ $page.variables.requestId }}",
+            "re_inactive_date": "{{ $page.variables.postSupplier.re_inactive_date?$page.variables.postSupplier.re_inactive_date+\"T00:00:00Z\":$page.variables.postSupplier.re_inactive_date }}",
+            "party_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierPartyId }}",
+            "created_by": "{{ $application.user.username }}",
+            "last_updated_by": "{{ $application.user.username }}",
+            "creation_date": "{{ $page.variables.SystemDate }}",
+            "last_update_date": "{{ $page.variables.SystemDate }}",
+            "classification_not_applicable_flag": "{{ $page.variables.classificationApplicableFlag?\"Yes\":\"No\" }}",
+            "federal_reportable_flag": "{{ $page.variables.getSupplierToUpdateVar.FederalReportableFlag?\"Yes\":\"No\" }}"
+          },
+          "auto": "always",
+          "reset": "none"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfSupplierHeaderTbl"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Supplier Update: Failed",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Supplier Update: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables5"
+      }
+    },
+    "callRestPostCfsSmfSupplierHeaderTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/postCfs_smf_supplier_header_tbl",
+        "body": "{{ $page.variables.postSupplier }}"
+      },
+      "outcomes": {
+        "failure": "if3",
+        "success": "return"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success",
+        "payload": "{{ $chain.results.callRestPostCfsSmfSupplierHeaderTbl.error }}"
+      }
+    },
+    "ifSourcePage": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SourcePage==\"ViewDetails\" ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesPostSupplier",
+        "true": "assignVariablesPostSupplier3"
+      }
+    },
+    "return3": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "fireNotification2": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPutCfsSmfSupplierHeaderTbl.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Supplier Update: Failed"
+      },
+      "outcomes": {
+        "success": "assignVariables3"
+      }
+    },
+    "callRestPutCfsSmfSupplierHeaderTbl": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "atpEndpoints/putCfs_smf_supplier_header_tbl",
+        "uriParams": {
+
+          "supplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+          "requestId": "{{ $page.variables.requestId }}"
+        },
+        "body": "{{ $page.variables.postSupplier }}"
+      },
+      "outcomes": {
+        "failure": "if",
+        "success": "return3"
+      }
+    },
+    "assignVariablesPostSupplier3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postSupplier": {
+          "auto": "always",
+          "reset": "none",
+          "source": {
+            "alias": "{{ $page.variables.getSupplierToUpdateVar.Alias }}",
+            "alternate_name": "{{ $page.variables.getSupplierToUpdateVar.AlternateName }}",
+            "business_relationship": "{{ $page.variables.getSupplierToUpdateVar.BusinessRelationship }}",
+            "federal_income_taxtype": "{{ $page.variables.getSupplierToUpdateVar.FederalIncomeTaxType }}",
+            "federal_income_taxtype_code": "{{ $page.variables.getSupplierToUpdateVar.FederalIncomeTaxTypeCode }}",
+            "inactive_date": "{{ $page.variables.getSupplierToUpdateVar.InactiveDate?$page.variables.getSupplierToUpdateVar.InactiveDate+\"T00:00:00Z\":$page.variables.getSupplierToUpdateVar.InactiveDate }}",
+            "parent_supplier": "{{ $page.variables.getSupplierToUpdateVar.ParentSupplier }}",
+            "state_reportable_flag": "{{ $page.variables.getSupplierToUpdateVar.StateReportableFlag?\"Yes\":\"No\" }}",
+            "status": "{{ $page.variables.getSupplierToUpdateVar.Status }}",
+            "supplier_name": "{{ $page.variables.getSupplierToUpdateVar.Supplier }}",
+            "supplier_number": "{{ $page.variables.getSupplierToUpdateVar.SupplierNumber }}",
+            "supplier_type": "{{ $page.variables.getSupplierToUpdateVar.SupplierType }}",
+            "tax_organization_type": "{{ $page.variables.getSupplierToUpdateVar.TaxOrganizationType }}",
+            "tax_registration_country": "{{ $page.variables.getSupplierToUpdateVar.TaxRegistrationCountry }}",
+            "tax_registration_number": "{{ $page.variables.getSupplierToUpdateVar.TaxRegistrationNumber }}",
+            "taxpayer_country": "{{ $page.variables.getSupplierToUpdateVar.TaxpayerCountry }}",
+            "taxpayer_id": "{{ $page.variables.getSupplierToUpdateVar.TaxpayerId }}",
+            "re_inactive_date": "{{ $page.variables.postSupplier.re_inactive_date?$page.variables.postSupplier.re_inactive_date+\"T00:00:00Z\":$page.variables.postSupplier.re_inactive_date }}",
+            "party_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierPartyId }}",
+            "last_updated_by": "{{ $application.user.username }}",
+            "last_update_date": "{{ $page.variables.SystemDate }}",
+            "classification_not_applicable_flag": "{{ $page.variables.classificationApplicableFlag?\"Yes\":\"No\" }}",
+            "federal_reportable_flag": "{{ $page.variables.getSupplierToUpdateVar.FederalReportableFlag?\"Yes\":\"No\" }}",
+            "creation_date": "{{ $page.variables.postSupplier.creation_date }}",
+            "created_by": "{{ $page.variables.postSupplier.created_by }}"
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfSupplierHeaderTbl"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPutCfsSmfSupplierHeaderTbl.status == 503 ]]"
+    },
+      "outcomes": {
+
+        "false": "fireNotification2",
+        "true": "assignVariablesReTry"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestPostCfsSmfSupplierHeaderTbl.status == 503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification",
+        "true": "assignVariables"
+      }
+    },
+    "callFunctionWaitForNextCall2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPutCfsSmfSupplierHeaderTbl"
+      }
+    },
+    "assignVariablesReTry": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry"
+      }
+    },
+    "ifReTry": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall2",
+        "false": "fireNotification6"
+      }
+    },
+    "fireNotification6": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "503 error"
+      },
+      "outcomes": {
+        "success": "assignVariables2"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry": {
+          "source": "{{ $variables.reTry+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry2"
+      }
+    },
+    "ifReTry2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall3",
+        "false": "fireNotification7"
+      }
+    },
+    "fireNotification7": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "[[ $page.variables.ATPErrorMessage ]]",
+        "summary": "503 - Error"
+      },
+      "outcomes": {
+        "success": "assignVariables4"
+      }
+    },
+    "callFunctionWaitForNextCall3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestPostCfsSmfSupplierHeaderTbl"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return2"
+      }
+    },
+    "assignVariables3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return4"
+      }
+    },
+    "assignVariables4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return5"
+      }
+    },
+    "assignVariables5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ActionChainError": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "return6"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return4": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return5": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return6": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    }
+  },
+  "variables": {
+    "reTry": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  }
+}

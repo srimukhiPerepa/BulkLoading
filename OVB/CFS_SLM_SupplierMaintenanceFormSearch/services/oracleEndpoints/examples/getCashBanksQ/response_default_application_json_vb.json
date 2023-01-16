@@ -1,0 +1,55 @@
+{
+    "items": [
+        {
+            "BankPartyId": 300000043103894,
+            "BankName": "ABCDEFGH",
+            "BankNameAlt": null,
+            "BankNumber": "12345",
+            "Description": null,
+            "TaxpayerIdNumber": null,
+            "TaxRegistrationNumber": null,
+            "CreatedBy": "C987123",
+            "CreationDate": "2022-03-23T11:53:21.180+00:00",
+            "LastUpdateDate": "2022-03-23T11:53:50.574+00:00",
+            "LastUpdateLogin": "D85B0D027E5C4636E053BF61500A624B",
+            "LastUpdatedBy": "C987123",
+            "BankPartyNumber": "49055",
+            "CountryName": "Italy",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000043103894",
+                    "name": "cashBanks",
+                    "kind": "item",
+                    "properties": {
+                        "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000001770400000001737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000178"
+                    }
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000043103894",
+                    "name": "cashBanks",
+                    "kind": "item"
+                },
+                {
+                    "rel": "lov",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks/300000043103894/lov/TerritoryPVOVOVA",
+                    "name": "TerritoryPVOVOVA",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 1,
+    "hasMore": false,
+    "limit": 500,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBanks",
+            "name": "cashBanks",
+            "kind": "collection"
+        }
+    ]
+}

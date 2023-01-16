@@ -1,0 +1,575 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc2",
+  "actions": {
+
+    "resetVariablesFlag": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$variables.flag",
+          "$page.variables.DummyPostSupplierAddresses",
+          "$variables.flag1"
+        ]
+      },
+      "outcomes": {
+        "success": "ifPopupExistingAddress7"
+      }
+    },
+    "ifValidationsArray": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.validationsArray.ADDRESS1==\"Mandatory\" ]]"
+      },
+      "outcomes": {
+        "true": "ifPopupExistingAddress",
+        "false": "if3"
+      }
+    },
+    "ifPopupExistingAddress": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAddress.ReAddressLine1 ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesFlag6",
+        "true": "if3"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.validationsArray.COUNTRY==\"Mandatory\" && $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "ifPopupExistingAddress2",
+        "false": "if4"
+      }
+    },
+    "ifPopupExistingAddress2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAddress.ReCountry ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesFlag5",
+        "true": "if4"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.validationsArray.CITY==\"Mandatory\" && $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "ifPopupExistingAddress3",
+        "false": "if5"
+      }
+    },
+    "ifPopupExistingAddress3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAddress.ReCity ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesFlag4",
+        "true": "if5"
+      }
+    },
+    "if5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.validationsArray.STATE==\"Mandatory\" && $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "ifPopupExistingAddress4",
+        "false": "if6"
+      }
+    },
+    "ifPopupExistingAddress4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAddress.ReState ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesFlag3",
+        "true": "if6"
+      }
+    },
+    "if6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.validationsArray.POSTAL_CODE==\"Mandatory\" && $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "ifPopupExistingAddress5",
+        "false": "if7"
+      }
+    },
+    "ifPopupExistingAddress5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAddress.RePostalCode ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesFlag2",
+        "true": "if7"
+      }
+    },
+    "if7": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.validationsArray.COUNTY==\"Mandatory\" && $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "ifPopupExistingAddress6",
+        "false": "if2"
+      }
+    },
+    "ifPopupExistingAddress6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAddress.ReCounty ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesFlag",
+        "true": "if2"
+      }
+    },
+    "ifFlag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+
+        "false": "fireNotification",
+        "true": "ifFlag2"
+      }
+    },
+    "assignVariablesDummyPostSupplierAddresses": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostSupplierAddresses": {
+          "source": {
+            "data": [
+              {
+                "address_line1": "{{ $page.variables.popupExistingAddress.AddressLine1 }}",
+                "supplier_address_id": "{{ $page.variables.popupExistingAddress.AddressId }}",
+                "address_line2": "{{ $page.variables.popupExistingAddress.AddressLine2 }}",
+                "address_line3": "{{ $page.variables.popupExistingAddress.AddressLine3 }}",
+                "address_name": "{{ $page.variables.popupExistingAddress.AddressName }}",
+                "city": "{{ $page.variables.popupExistingAddress.City }}",
+                "county": "{{ $page.variables.popupExistingAddress.County }}",
+                "email": "{{ $page.variables.popupExistingAddress.Email }}",
+                "fax_area_code": "{{ $page.variables.popupExistingAddress.FaxAreaCode }}",
+                "fax_country_code": "{{ $page.variables.popupExistingAddress.FaxCountryCode }}",
+                "fax_number": "{{ $page.variables.popupExistingAddress.Fax }}",
+                "phone_area_code": "{{ $page.variables.popupExistingAddress.PhoneAreaCode }}",
+                "phone_country_code": "{{ $page.variables.popupExistingAddress.PhoneCountryCode }}",
+                "phone_extension": "{{ $page.variables.popupExistingAddress.PhoneExtensionCode }}",
+                "phone_number": "{{ $page.variables.popupExistingAddress.Phone }}",
+                "postal_code": "{{ $page.variables.popupExistingAddress.PostalCode }}",
+                "address_purpose_remit_to_flag": "{{ $page.variables.popupExistingAddress.RemitTo }}",
+                "re_address_line1": "{{ $page.variables.popupExistingAddress.ReAddressLine1 }}",
+                "re_address_line2": "{{ $page.variables.popupExistingAddress.ReAddressLine2 }}",
+                "re_address_line3": "{{ $page.variables.popupExistingAddress.ReAddressLine3 }}",
+                "re_address_name": "{{ $page.variables.popupExistingAddress.ReAddressName }}",
+                "re_city": "{{ $page.variables.popupExistingAddress.ReCity }}",
+                "re_country_code": "{{ $page.variables.popupExistingAddress.ReCountry }}",
+                "re_county": "{{ $page.variables.popupExistingAddress.ReCounty }}",
+                "re_email": "{{ $page.variables.popupExistingAddress.ReEmail }}",
+                "re_fax_area_code": "{{ $page.variables.popupExistingAddress.ReFaxAreaCode }}",
+                "re_fax_country_code": "{{ $page.variables.popupExistingAddress.ReFaxCountryCode }}",
+                "re_fax_number": "{{ $page.variables.popupExistingAddress.ReFax }}",
+                "re_phone_area_code": "{{ $page.variables.popupExistingAddress.RePhoneAreaCode }}",
+                "re_phone_country_code": "{{ $page.variables.popupExistingAddress.RePhoneCountryCode }}",
+                "re_phone_extension": "{{ $page.variables.popupExistingAddress.RePhoneExtensionCode }}",
+                "re_phone_number": "{{ $page.variables.popupExistingAddress.RePhone }}",
+                "re_postal_code": "{{ $page.variables.popupExistingAddress.RePostalCode }}",
+                "re_state": "{{ $page.variables.popupExistingAddress.ReState }}",
+                "state": "{{ $page.variables.popupExistingAddress.State }}",
+                "action_requested": "{{ \"Update\" }}",
+                "country": "{{ $page.variables.popupExistingAddress.Country }}",
+                "province": "{{ $page.variables.popupExistingAddress.Province }}",
+                "re_province": "{{ $page.variables.popupExistingAddress.ReProvince }}",
+                "re_country": "{{ $page.variables.popupExistingAddress.ReCountry }}"
+              }
+            ]
+          },
+          "auto": "always",
+          "reset": "toDefault",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostSupplierAddresses"
+      }
+    },
+    "assignVariablesPostSupplierAddresses": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postSupplierAddresses": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostSupplierAddresses.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostSupplierAddresses"
+      }
+    },
+    "fireDataProviderEventPostSupplierAddresses": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postSupplierAddresses ]]"
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "if2"
+      }
+    },
+    "assignVariablesFlag2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "if7"
+      }
+    },
+    "assignVariablesFlag3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "if6"
+      }
+    },
+    "assignVariablesFlag4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "if5"
+      }
+    },
+    "assignVariablesFlag5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "if4"
+      }
+    },
+    "assignVariablesFlag6": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "if3"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog2\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Please enter all the mandatory fields marked with *",
+        "summary": "Please enter all the mandatory fields marked with *"
+      },
+      "outcomes": {
+        "success": "ifFlag2"
+      }
+    },
+    "ifPopupExistingAddress7": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAddress.ReEmail ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionValidateEmail",
+        "false": "ifValidationsArray"
+      }
+    },
+    "callFunctionValidateEmail": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "validateEmail",
+        "params": [
+          "{{ $page.variables.popupExistingAddress.ReEmail }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callFunctionValidateEmail ]]"
+      },
+      "outcomes": {
+        "true": "ifValidationsArray",
+        "false": "assignVariablesFlag1"
+      }
+    },
+    "assignVariablesFlag1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "fireNotification3"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Email address format is invalid",
+        "summary": "Email address format is invalid"
+      },
+      "outcomes": {
+        "success": "ifValidationsArray"
+      }
+    },
+    "if8": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.address_name==$page.variables.popupExistingAddress.ReAddressName && $current.data.supplier_address_id!=$page.variables.popupExistingAddress.AddressId ]]"
+      },
+      "outcomes": {
+        "true": "assignVariables2"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15000\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "forEach2": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "actionId": "if8",
+        "items": "{{ $page.variables.postSupplierAddresses.data }}"
+      },
+      "outcomes": {
+        "success": "if9"
+      }
+    },
+    "forEachInGetSupplierAddresses": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "actionId": "if10",
+        "items": "{{ $page.variables.getSupplierAddresses.data }}"
+      },
+      "outcomes": {
+        "success": "forEach2"
+      }
+    },
+    "if10": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.AddressName==$page.variables.popupExistingAddress.AddressName && $current.data.SupplierAddressId!=$page.variables.popupExistingAddress.AddressId ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag22"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag2": {
+          "source": "{{ false }}"
+        }
+      }
+    },
+    "assignVariablesFlag22": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag2": {
+          "source": "{{ false }}"
+        }
+      }
+    },
+    "if9": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag && $variables.flag1 && $variables.flag2 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesDummyPostSupplierAddresses",
+        "false": "ifFlag"
+      }
+    },
+    "ifFlag2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag2 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification4",
+        "true": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Duplicate Address Name",
+        "message": "Address name already exists. Please enter a unique Address Name"
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "if11": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAddress.ReAddressLine1||$page.variables.popupExistingAddress.ReAddressLine2||$page.variables.popupExistingAddress.ReAddressLine3||$page.variables.popupExistingAddress.ReAddressName||$page.variables.popupExistingAddress.ReCity||$page.variables.popupExistingAddress.ReCountry||$page.variables.popupExistingAddress.ReCounty||$page.variables.popupExistingAddress.ReEmail||$page.variables.popupExistingAddress.ReFax||$page.variables.popupExistingAddress.ReFaxAreaCode||$page.variables.popupExistingAddress.ReFaxCountryCode||$page.variables.popupExistingAddress.RePhone||$page.variables.popupExistingAddress.RePhoneAreaCode||$page.variables.popupExistingAddress.RePhoneCountryCode||$page.variables.popupExistingAddress.RePhoneExtensionCode||$page.variables.popupExistingAddress.RePostalCode||$page.variables.popupExistingAddress.ReState ]]"
+      },
+      "outcomes": {
+        "true": "resetVariablesFlag",
+        "false": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "callFunctionCloseDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog2\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "if2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.validationsArray.PROVINCE==\"Mandatory\" && $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "ifPopupExistingAddress9",
+        "false": "forEachInGetSupplierAddresses"
+      }
+    },
+    "assignVariablesFlag7": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ false }}"
+        }
+      },
+      "outcomes": {
+        "success": "forEachInGetSupplierAddresses"
+      }
+    },
+    "ifPopupExistingAddress9": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingAddress.ReProvince ]]"
+      },
+      "outcomes": {
+        "true": "forEachInGetSupplierAddresses",
+        "false": "assignVariablesFlag7"
+      }
+    },
+    "callFunctionOpenDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if11"
+      }
+    },
+    "callFunctionCloseDialogFunc3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "flag1": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "flag2": {
+      "type": "boolean",
+      "defaultValue": true
+    }
+  }
+}

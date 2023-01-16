@@ -1,0 +1,422 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc2",
+  "actions": {
+
+    "assignVariablesDummyPostContacts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContacts": {
+          "source": {
+            "data": [
+              {
+                "email": "{{ $page.variables.popupExistingContact.Email }}",
+                "fax_number": "{{ $page.variables.popupExistingContact.FaxNumber }}",
+                "first_name": "{{ $page.variables.popupExistingContact.FirstName }}",
+                "inactive_date": "{{ $page.variables.popupExistingContact.InactiveDate }}",
+                "job_title": "{{ $page.variables.popupExistingContact.JobTitle }}",
+                "last_name": "{{ $page.variables.popupExistingContact.LastName }}",
+                "mobile_number": "{{ $page.variables.popupExistingContact.MobileNumber }}",
+                "phone_number": "{{ $page.variables.popupExistingContact.PhoneNumber }}",
+                "re_email": "{{ $page.variables.popupExistingContact.ReEmail }}",
+                "re_fax_number": "{{ $page.variables.popupExistingContact.ReFaxNumber }}",
+                "re_first_name": "{{ $page.variables.popupExistingContact.ReFirstName }}",
+                "re_inactive_date": "{{ $page.variables.popupExistingContact.ReInactiveDate }}",
+                "re_job_title": "{{ $page.variables.popupExistingContact.ReJobTitle }}",
+                "re_last_name": "{{ $page.variables.popupExistingContact.ReLastName }}",
+                "re_mobile_number": "{{ $page.variables.popupExistingContact.ReMobileNumber }}",
+                "re_phone_number": "{{ $page.variables.popupExistingContact.RePhoneNumber }}",
+                "supplier_contact_id": "{{ $page.variables.popupExistingContact.SupplierContactId }}",
+                "supplier_id": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+                "action_requested": "{{ \"Update\" }}",
+                "fax_area_code": "{{ $page.variables.popupExistingContact.FaxAreaCode }}",
+                "fax_country_code": "{{ $page.variables.popupExistingContact.FaxCountryCode }}",
+                "mobile_area_code": "{{ $page.variables.popupExistingContact.MobileAreaCode }}",
+                "mobile_country_code": "{{ $page.variables.popupExistingContact.MobileCountryCode }}",
+                "phone_area_code": "{{ $page.variables.popupExistingContact.PhoneAreaCode }}",
+                "phone_country_code": "{{ $page.variables.popupExistingContact.PhoneCountryCode }}",
+                "re_fax_area_code": "{{ $page.variables.popupExistingContact.ReFaxAreaCode }}",
+                "re_fax_country_code": "{{ $page.variables.popupExistingContact.ReFaxCountryCode }}",
+                "re_mobile_area_code": "{{ $page.variables.popupExistingContact.ReMobileAreaCode }}",
+                "re_mobile_country_code": "{{ $page.variables.popupExistingContact.ReMobileCountryCode }}",
+                "re_phone_area_code": "{{ $page.variables.popupExistingContact.RePhoneAreaCode }}",
+                "re_phone_country_code": "{{ $page.variables.popupExistingContact.RePhoneCountryCode }}",
+                "re_status": "{{ $page.variables.popupExistingContact.ReStatus }}",
+                "contact_purpose": "{{ $page.variables.popupExistingContact.ContactPurpose }}",
+                "administrative_contact_flag": "{{ $page.variables.popupExistingContact.AdministrativeContactFlag }}",
+                "re_administrative_contact_flag": "{{ $page.variables.popupExistingContact.ReAdministrativeContactFlag }}",
+                "status": "{{ $page.variables.popupExistingContact.Status }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPostContacts"
+      }
+    },
+    "fireDataProviderEventPostContacts": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.postContacts ]]"
+      },
+      "outcomes": {
+        "success": "resetVariablesDummyPostContactAddress2"
+      }
+    },
+    "assignVariablesPostContacts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.postContacts": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostContacts.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventPostContacts"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog70\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "resetVariablesDummyPostContacts1": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContacts1",
+          "$page.variables.DummyPostContacts"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesDummyPostContacts"
+      }
+    },
+    "forEachInDummyPostContactAddressToBeAdded": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.DummyPostContactAddressToBeAdded.data }}",
+        "actionId": "assignVariablesDummyPostContactAddress"
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventContactAddressUpdates"
+      }
+    },
+    "assignVariablesDummyPostContactAddress": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContactAddress": {
+          "source": {
+            "data": [
+              {
+                "action_requested": "{{ $current.data.action_requested }}",
+                "address_name": "{{ $current.data.address_name }}",
+                "supplier_contact_address_id": "{{ $current.data.supplier_contact_address_id }}",
+                "supplier_contact_id": "{{ $current.data.supplier_contact_id }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesContactAddressUpdates"
+      }
+    },
+    "assignVariablesContactAddressUpdates": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ContactAddressUpdates": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostContactAddress.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "fireDataProviderEventContactAddressUpdates": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "target": "[[ $page.variables.ContactAddressUpdates ]]",
+        "refresh": null
+      },
+      "outcomes": {
+        "success": "resetVariablesDummyPostContactAddress"
+      }
+    },
+    "resetVariablesDummyPostContactAddress": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddress",
+          "$page.variables.DummyPostContactAddress1",
+          "$page.variables.DummyPostContactAddressToBeAdded"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInDummyPostContactAddressDeleteBackup"
+      }
+    },
+    "forEachInDummyPostContactAddressDeleteBackup": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.DummyPostContactAddressDeleteBackup.data }}",
+        "actionId": "resetVariablesCurrentSupplierContactAddressId"
+      },
+      "outcomes": {
+        "success": "ifCurrentSupplierContactAddressId2"
+      }
+    },
+    "resetVariablesCurrentSupplierContactAddressId": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$variables.currentSupplierContactAddressId"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesCurrentSupplierContactAddressId"
+      }
+    },
+    "assignVariablesCurrentSupplierContactAddressId": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.currentSupplierContactAddressId": {
+          "source": "{{ $current.data.supplier_contact_address_id }}"
+        }
+      },
+      "outcomes": {
+        "success": "forEachInContactAddressUpdates"
+      }
+    },
+    "forEachInContactAddressUpdates": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.ContactAddressUpdates.data }}",
+        "actionId": "ifCurrentSupplierContactAddressId"
+      }
+    },
+    "ifCurrentSupplierContactAddressId": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.supplier_contact_address_id==$variables.currentSupplierContactAddressId ]]"
+      },
+      "outcomes": {
+        "false": "assignVariablesDummyPostContactAddress1"
+      }
+    },
+    "assignVariablesDummyPostContactAddress1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.DummyPostContactAddress1": {
+          "source": {
+            "data": "{{ $current.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "ifCurrentSupplierContactAddressId2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.currentSupplierContactAddressId ]]"
+      },
+      "outcomes": {
+        "true": "resetVariablesContactAddressUpdates",
+        "false": "resetVariablesDummyPostContactAddress4"
+      }
+    },
+    "resetVariablesContactAddressUpdates": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.ContactAddressUpdates"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesContactAddressUpdates2"
+      }
+    },
+    "assignVariablesContactAddressUpdates2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.ContactAddressUpdates": {
+          "source": {
+            "data": "{{ $page.variables.DummyPostContactAddress1.data }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventContactAddressUpdates2"
+      }
+    },
+    "fireDataProviderEventContactAddressUpdates2": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.ContactAddressUpdates ]]"
+      },
+      "outcomes": {
+        "success": "resetVariablesDummyPostContactAddress4"
+      }
+    },
+    "resetVariablesDummyPostContactAddress2": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddress"
+        ]
+      },
+      "outcomes": {
+        "success": "forEachInDummyPostContactAddressToBeAdded"
+      }
+    },
+    "resetVariablesDummyPostContactAddress4": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddress",
+          "$page.variables.DummyPostContactAddress1",
+          "$page.variables.DummyPostContactAddressDeleteBackup",
+          "$page.variables.DummyPostContactAddressToBeAdded"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "ifSupplierContactEmailValidation": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.SupplierContactEmailValidation ]]"
+      },
+      "outcomes": {
+        "true": "resetVariablesDummyPostContacts1",
+        "false": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "callChainInputTextValueChangeChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "CheckForDuplicateEmail",
+        "params": {
+          "value": "{{ $page.variables.popupExistingContact.ReEmail }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifSupplierContactEmailValidation"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog15000\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    },
+    "callFunctionCloseDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog70\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc3"
+      }
+    },
+    "resetVariablesDummyPostContactAddress3": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.DummyPostContactAddress",
+          "$page.variables.DummyPostContactAddressToBeAdded",
+          "$page.variables.DummyPostContactAddressDeleteBackup"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc2"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.popupExistingContact.ReFirstName||$page.variables.popupExistingContact.ReLastName||$page.variables.popupExistingContact.ReJobTitle||$page.variables.popupExistingContact.ReInactiveDate||$page.variables.popupExistingContact.ReStatus||$page.variables.popupExistingContact.ReEmail||$page.variables.popupExistingContact.RePhoneNumber||$page.variables.popupExistingContact.RePhoneCountryCode||$page.variables.popupExistingContact.RePhoneAreaCode||$page.variables.popupExistingContact.ReFaxNumber||$page.variables.popupExistingContact.ReFaxCountryCode||$page.variables.popupExistingContact.ReFaxAreaCode||$page.variables.popupExistingContact.ReMobileNumber||$page.variables.popupExistingContact.ReMobileCountryCode||$page.variables.popupExistingContact.ReMobileAreaCode||$page.variables.postContactAddress.data[0] || $page.variables.popupExistingContact.ReAdministrativeContactFlag ]]"
+      },
+      "outcomes": {
+        "true": "callChainInputTextValueChangeChain",
+        "false": "resetVariablesDummyPostContactAddress3"
+      }
+    },
+    "callFunctionOpenDialogFunc2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "callFunctionCloseDialogFunc3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc",
+        "params": [
+          "{{ \"#modalDialog14\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {
+    "currentSupplierContactAddressId": {
+      "type": "number"
+    }
+  }
+}

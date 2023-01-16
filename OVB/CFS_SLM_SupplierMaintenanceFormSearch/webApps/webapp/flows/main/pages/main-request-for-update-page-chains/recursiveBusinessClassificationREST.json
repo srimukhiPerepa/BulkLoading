@@ -1,0 +1,79 @@
+{
+  "root": "callRestGetSuppliersSupplierIdChildBusinessClassifications",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "get Business Classifications: Failed",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to load Business Classifications"
+      }
+    },
+    "callRestGetSuppliersSupplierIdChildBusinessClassifications": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getSuppliersSupplierIdChildBusinessClassifications",
+        "uriParams": {
+          "SupplierId": "{{ $page.variables.getSupplierToUpdateVar.SupplierId }}",
+          "limit": "25",
+          "offset": "{{ $page.variables.offsetVarBusinessClassifications }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetSupplierBusinessClassifications"
+      }
+    },
+    "assignVariablesGetSupplierBusinessClassifications": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSupplierBusinessClassifications": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetSuppliersSupplierIdChildBusinessClassifications.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetSuppliersSupplierIdChildBusinessClassifications.body.hasMore ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesOffsetVarBusinessClassifications",
+        "false": "return"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "callChainRecursiveBusinessClassificationREST": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "recursiveBusinessClassificationREST"
+      }
+    },
+    "assignVariablesOffsetVarBusinessClassifications": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.offsetVarBusinessClassifications": {
+          "source": "{{ $page.variables.offsetVarBusinessClassifications+25 }}"
+        }
+      },
+      "outcomes": {
+        "success": "callChainRecursiveBusinessClassificationREST"
+      }
+    }
+  }
+}

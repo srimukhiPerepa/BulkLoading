@@ -1,0 +1,28 @@
+{
+  "description": "",
+  "root": "assignVariablesPaymentHoldReason",
+  "actions": {
+    "assignVariablesPaymentHoldReason": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.PaymentHoldReason": {
+          "source": "{{ $variables.value }}"
+        },
+        "$page.variables.popupExistingSite": {
+          "source": {
+            "RePaymentHoldReason": "{{ $variables.value }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    }
+  },
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

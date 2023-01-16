@@ -1,0 +1,63 @@
+{
+  "description": "",
+  "root": "resetVariablesPopupSite",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog6\" }}"
+        ]
+      }
+    },
+    "resetVariablesPopupSite": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupSite",
+          "$page.variables.popupAccounts"          ,
+          "$page.variables.postAccounts",          
+          "$page.variables.SupplierSiteRemittanceEmailValidation",
+          "$page.variables.getSupplierSites.data.SupplierSiteId"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGetGenerateSiteId"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetGenerateSiteId.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to generate site id"
+      }
+    },
+    "callRestGetGenerateSiteId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGenerate_site_id"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesSupplierSiteId"
+      }
+    },
+    "assignVariablesSupplierSiteId": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierSiteId": {
+          "source": "{{ $chain.results.callRestGetGenerateSiteId.body.items[0].site_id }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    }
+  },
+  "variables": {}
+}

@@ -1,0 +1,162 @@
+{
+  "title": "",
+  "description": "",
+    "security": {
+      "access": {
+        "requiresAuthentication": true,
+        "roles": ["CFS_SMF_Admin_Role"]
+        }
+        }, 
+  "variables": {
+    "approvedRejectedRequestsVar": {
+      "type": "string"
+    },
+    "ATPErrorMessage": {
+      "type": "string",
+      "defaultValue": "503 - Error! Please try again later!"
+    },
+    "getOpenRequestsListADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getPendingRequests"
+      }
+    },
+    "approvedSyncErrorsVar": {
+      "type": "string"
+    },
+    "hyperlinkClickedVar": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "openRequestsVar": {
+      "type": "string"
+    },
+    "totalRequestsSubmittedVar": {
+      "type": "string"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+
+    "@decorators.getPendingRequests": {
+      "endpoint": "getPendingRequests",
+      "service": "ordsEndpoints",
+      "path": "response"
+    },
+    "getPendingRequests": {
+      "approved_rejected_name": "string",
+          "parent_supplier": "any",
+          "request_date": "string",
+          "request_id": "number",
+          "requestor": "string",
+      "requestor_name": "string",
+      "resubmitted_on": "any",
+          "status": "string",
+          "supplier_id": "number",
+          "supplier_name": "string",
+          "supplier_number": "string",
+          "supplier_type": "string",
+          "tax_registration_number": "any",
+          "taxpayer_id": "string"
+
+    }
+},
+  "eventListeners": {
+    "buttonAction": {
+      "chains": [
+        {
+          "chainId": "BackToSearchScreen"
+        }
+      ]
+    },
+    "buttonAction2": {
+      "chains": [
+        {
+          "chainId": "RefreshButtonActionChain"
+        }
+      ]
+    },
+    "hyperlinkClick": {
+      "chains": [
+        {
+          "chainId": "NavigateToViewDetails",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick2": {
+      "chains": [
+        {
+          "chainId": "NavigateToRequestForUpdate",
+          "parameters": {
+            "index": "{{ $current.index }}",
+            "key": "{{ $current.row.request_id }}",
+            "current": "{{ $current.row }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick3": {
+      "chains": [
+        {
+          "chainId": "populateApprovedSyncErrorRequests"
+        }
+      ]
+    },
+    "hyperlinkClick4": {
+      "chains": [
+        {
+          "chainId": "populatePendingRequests"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "PageEnterActionChain",
+          "parameters": {}
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-highlight-text": {
+        "path": "ojs/ojhighlighttext"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-date-time": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-popup": {
+        "path": "ojs/ojpopup"
+      },
+      "oj-tab-bar": {
+        "path": "ojs/ojnavigationlist"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      }
+
+    },
+    "modules": {
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      }
+    }
+  }
+}

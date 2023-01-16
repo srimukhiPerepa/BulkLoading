@@ -1,0 +1,56 @@
+{
+  "description": "",
+  "root": "callFunctionOpenDialogFunc",
+  "actions": {
+
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"dialog\" }}"
+        ]
+      },
+      "outcomes": {
+        "success": "navigateToMainUpdateStatus"
+      }
+    },
+    "callFunctionCloseDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "closeDialogFunc"
+      }
+    },
+    "navigateToMainUpdateStatus": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-update-status",
+        "params": {
+          "inputSupplierIdVar": "{{ $variables.current.row.SupplierId }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionCloseDialogFunc"
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

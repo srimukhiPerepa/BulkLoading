@@ -1,0 +1,19 @@
+{
+  "description": "",
+  "root": "assignVariablesPopupContact",
+  "actions": {
+    "assignVariablesPopupContact": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupContact": {
+          "source": {
+            "MobileCountryCode": "{{ $page.variables.PhoneCountryCodeVar15 }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    }
+  },
+  "variables": {}
+}

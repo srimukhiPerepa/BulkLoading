@@ -1,0 +1,71 @@
+{
+    "fields": [
+        {
+            "displayLabel": "Id",
+            "internal": true,
+            "key": true,
+            "name": "id",
+            "oid": "44c4bd83-3d8e-4939-8db1-ce25754d3ad3",
+            "required": true,
+            "type": "number",
+            "unique": true
+        },
+        {
+            "displayLabel": "Created",
+            "internal": true,
+            "name": "creationDate",
+            "oid": "91b9b087-f628-4496-a151-5ecb253f2c39",
+            "type": "datetime"
+        },
+        {
+            "displayLabel": "Last Updated",
+            "internal": true,
+            "name": "lastUpdateDate",
+            "oid": "b2a4341a-6f8d-4c0d-b5fe-1ec63b4f6c5a",
+            "type": "datetime"
+        },
+        {
+            "displayLabel": "Created By",
+            "internal": true,
+            "name": "createdBy",
+            "oid": "0f19318d-2244-44ab-aa19-65887b16e9d6",
+            "type": "string"
+        },
+        {
+            "displayLabel": "Last Updated By",
+            "internal": true,
+            "name": "lastUpdatedBy",
+            "oid": "f71c4aa7-3f11-4135-b007-8a7b2c3a8989",
+            "type": "string"
+        },
+{
+            "displayLabel": "<internal>",
+            "hidden": true,
+            "internal": true,
+            "name": "abcsChangeNumber",
+            "oid": "37ae494d-b9e0-4dc0-b0cb-08745032b8ee",
+            "type": "number"
+        },
+        {
+            "type": "string",
+            "name": "lookupcode",
+            "oid": "90e8a619-c040-43cf-84db-921440776a7b",
+            "displayLabel": "lookupcode"
+        }        ,
+        {
+            "type": "string",
+            "name": "meaning",
+            "oid": "edf6ed8b-de1f-4f63-8822-878c2eb91178",
+            "displayLabel": "meaning"
+        }        ,
+        {
+            "type": "string",
+            "name": "tag",
+            "oid": "2c1323da-6d20-4b77-a134-c69cefe5881c",
+            "displayLabel": "tag"
+        }
+    ],
+    "name": "SupplierTypeSMF",
+    "oid": "a8cbd4c2-54ee-4303-b4ad-523b3870dd24",
+    "displayLabel": "supplierTypeSMF"
+}

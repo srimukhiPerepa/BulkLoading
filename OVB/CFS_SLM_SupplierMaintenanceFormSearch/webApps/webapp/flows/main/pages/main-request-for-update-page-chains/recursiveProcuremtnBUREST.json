@@ -1,0 +1,78 @@
+{
+  "root": "callRestGetFinBusinessUnitsLOV",
+  "description": "",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "Get Procurement BU: Failed",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to load Business Units"
+      }
+    },
+    "callRestGetFinBusinessUnitsLOV": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleServiceVault/getFinBusinessUnitsLOV",
+        "uriParams": {
+          "limit": "25",
+          "offset": "{{ $page.variables.offsetVarProcurementBU }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetProcurementBULOV"
+      }
+    },
+    "assignVariablesGetProcurementBULOV": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getProcurementBULOV": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetFinBusinessUnitsLOV.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "if"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetFinBusinessUnitsLOV.body.hasMore ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesOffsetVarProcurementBU",
+        "false": "return"
+      }
+    },
+    "assignVariablesOffsetVarProcurementBU": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.offsetVarProcurementBU": {
+          "source": "{{ $page.variables.offsetVarProcurementBU+25 }}"
+        }
+      },
+      "outcomes": {
+        "success": "callChainRecursiveProcuremtnBUREST"
+      }
+    },
+    "callChainRecursiveProcuremtnBUREST": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "recursiveProcuremtnBUREST"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    }
+  }
+}

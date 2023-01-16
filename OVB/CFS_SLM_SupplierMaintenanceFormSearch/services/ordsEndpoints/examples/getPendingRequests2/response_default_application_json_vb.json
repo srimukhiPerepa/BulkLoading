@@ -1,0 +1,32 @@
+{
+    "items": [
+        {
+            "request_id": 10000001761,
+            "supplier_id": 300000042365175,
+            "supplier_name": "Dyson Corp Test",
+            "supplier_number": "10060",
+            "parent_supplier": null,
+            "taxpayer_id": "37428375193",
+            "tax_registration_number": null,
+            "supplier_type": "Voucher",
+            "status": "Request for Approval",
+            "request_date": "2022-07-13T15:49:27Z",
+            "requestor": "C968365",
+            "resubmitted_on": null
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_extensions/pendingRequests/"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/metadata-catalog/cfs_extensions/pendingRequests/"
+        }
+    ]
+}

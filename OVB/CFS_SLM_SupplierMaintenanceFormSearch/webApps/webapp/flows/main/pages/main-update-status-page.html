@@ -1,0 +1,125 @@
+<!--
+ Copyright (c) 2014, 2020, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<title>Update Status</title>
+<div class="oj-panel oj-flex-item oj-sm-12 oj-md-12">
+
+
+<!-- Sub header starts here-->
+
+   <div class="" style="">
+    <div class="oj-sm-align-items-baseline oj-flex" style="font-family: Georgia, Times, Times New Roman, serif; padding-left:12px">
+      <h1 style="color:black" id="h1-1084591017-1" class="oj-flex-item oj-sm-12 oj-md-10">Supplier Requests Details
+</h1>
+      <div class="oj-flex-item oj-sm-12 oj-md-2" dir="rtl">
+        <oj-button aria-setsize="10pt" chroming="solid" on-oj-action="[[$listeners.buttonAction]]"><span style="color:black">Refresh</span></oj-button> 
+        <oj-button aria-setsize="10pt" chroming="solid" on-oj-action="[[$listeners.ojButtonOjAction]]"><span style="color:black">Cancel</span></oj-button>        
+      </div>
+    </div>
+
+  </div>
+
+<!-- Sub header Ends here-->
+
+
+  <div class="oj-sm-align-items-baseline oj-flex" style="font-family: Georgia, Times, Times New Roman, serif">
+    <h1 id="h1-1084591017-1" class="oj-flex-item oj-sm-12 oj-md-6"></h1>
+  </div>
+  
+
+  <div class="oj-flex" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif">
+
+    <div class="oj-panel oj-flex-item oj-sm-12 oj-md-12">
+
+      <div class="oj-sm-align-items-baseline oj-flex">
+        <h1 id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6 oj-typography-bold">Supplier <oj-bind-text value="[[ $variables.getSupplierToUpdateVar.Supplier ]]"></oj-bind-text></h1>
+      </div>
+
+      <div class="oj-divider-top oj-flex-item oj-sm-12 oj-md-12"></div>
+
+      <div class="oj-sm-align-items-baseline oj-flex">
+        <h5 id="h1-1084591017-1" class="oj-flex-item oj-sm-6 oj-md-6"></h5>
+      </div>  
+
+      <div class="oj-flex">
+        <oj-label for="oj-input-text-supplier-number" class="oj-flex-item oj-sm-12 oj-md-2"
+          dir="rtl" style="padding:10px" draggable="false" 
+        >Supplier Number</oj-label>
+        <oj-input-text id="oj-input-text-supplier-number" class="oj-flex-item oj-sm-12 oj-md-4"
+        value="{{ $variables.supplierNumberVar }}" readonly="true" style="padding-top:3px"></oj-input-text>
+        <oj-label for="oj-input-text-supplier-type"
+          class="oj-flex-item oj-sm-12 oj-md-2" dir="rtl" style="padding:10px" >Supplier Type</oj-label>
+        <oj-input-text id="oj-input-text-supplier-type"
+          class="oj-flex-item oj-sm-12 oj-md-4"
+          value="{{ $variables.supplierTypeVar }}" readonly="true" style="padding-top:3px"></oj-input-text>
+      </div>
+      <div class="oj-flex">
+        <oj-label for="oj-input-text-taxpayer-id" class="oj-flex-item oj-sm-12 oj-md-2" dir="rtl" style="padding:10px">Taxpayer ID</oj-label>
+        <oj-input-text id="oj-input-text-taxpayer-id" class="oj-flex-item oj-sm-12 oj-md-4" value="{{ $variables.taxpayerIDVar }}"
+          readonly="true" style="padding-top:3px" ></oj-input-text>
+        <oj-label for="oj-input-text-tax-registration-number" class="oj-flex-item oj-sm-12 oj-md-2" dir="rtl"
+          style="padding:10px">Tax Registeration Number</oj-label>
+        <oj-input-text id="oj-input-text-tax-registration-number" class="oj-flex-item oj-sm-12 oj-md-4"
+          value="{{ $variables.taxRegtNumberVar }}" readonly="true" style="padding-top:3px"></oj-input-text>
+      </div>
+  
+    
+  <div class="oj-flex-item oj-flex" style="width:100%;margin-top:25px; margin-bottom:10px">
+     <p style="font-weight:bold">Requests Submitted:</p>
+     <div class="oj-divider-top oj-flex-item oj-sm-12 oj-md-12 oj-divider-padding"></div>
+      <oj-table scroll-policy="loadMoreOnScroll" class="oj-flex-item oj-sm-12 oj-md-12"
+        data="[[ $variables.getCfsSmfRequestsTblListADP ]]" style="height:450px"
+        columns='[{"headerText":"Request ID","field":"request_id","template":"RequestId","minWidth":"14rem"},{"headerText":"Status","field":"status","minWidth":"14rem"},{"headerText":"Submission Date","template":"RequestDate","sortable":"disabled","minWidth":"14rem"},{"headerText":"Submitted By","field":"requestor","minWidth":"14rem"},{"headerText":"Requestor Name","field":"requestor_name"},{"headerText":"Last Updated On","template":"LastUpdatedOn","sortable":"disabled","minWidth":"14rem"},{"headerText":"Approved/Rejected Date","template":"ApprovalDate","sortable":"disabled","minWidth":"14rem"},{"headerText":"Approved/Rejected By","field":"approver","minWidth":"14rem"},{"headerText":"Approver/Rejector Name","field":"approved_rejected_name"},{"headerText":"Age","template":"Age","sortable":"disabled","minWidth":"14rem"}]'
+        selection-mode.row="single">
+        <template slot="LastUpdatedOn" >
+          <oj-input-date-time readonly="true" value="{{ $current.row.last_update_date }}"
+            converter='{"type": "datetime", "options": {"pattern":"yyyy-MM-dd hh:mm:ss a"}}'></oj-input-date-time>
+        </template>
+        <template slot="Requestor" >
+          <oj-input-text style="font-size: 12px"
+          readonly="true" value='{{ $current.row.requestor+"("+$current.row.requestor_name+")" }}'
+            ></oj-input-text>
+        </template>
+        <template slot="Approved/Rejected by" >
+          <oj-input-text style="font-size: 12px"
+          readonly="true" value='{{ $current.row.approver+"("+$current.row.approved_rejected_name+")" }}'
+            ></oj-input-text>
+        </template>
+        <template slot="RequestDate" >
+          <oj-input-date-time readonly="true" value="{{ $current.row.request_date }}"
+           converter='{"type": "datetime", "options": {"pattern":"yyyy-MM-dd hh:mm:ss a"}}'></oj-input-date-time>
+        </template>
+        <template slot="ApprovalDate">
+          <oj-input-text readonly="true" value="{{ $current.row.approval_date }}" 
+           converter='{"type": "datetime", "options": {"pattern":"yyyy-MM-dd hh:mm:ss a"}}'></oj-input-text>
+        </template>
+        <template slot="Age">
+          <oj-input-text readonly="true" value="{{ $functions.calculateAge($current.row.request_date) }}"></oj-input-text>
+        </template>
+        <template slot="RequestId">
+          
+          <oj-bind-if test="[[$functions.enableHyperlink($current.row.status) === 'true' ]]">
+            <a target="_blank" on-click="[[$listeners.hyperlinkClick]]" >
+                    
+              <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+                  
+            </a>
+          </oj-bind-if>
+          <oj-bind-if test="[[$functions.enableHyperlink($current.row.status) === 'false']]">
+            <oj-bind-text value="[[$current.row.request_id]]"></oj-bind-text>
+          </oj-bind-if>
+        </template>
+      </oj-table>
+
+  </div>
+    </div>
+  </div>
+  </div>
+
+  <oj-popup class="demo-popup oj-focus-highlight" id="dialog1" tail="none" position.my.horizontal="center"
+  position.my.vertical="bottom" position.at.horizontal="center" position.at.vertical="center" position.of="window"
+  position.offset.y="-10" modality="modal" auto-dismiss="none">
+    <div >Processing. Please wait..<div class="oj-flex"></div>
+    </div>
+    </oj-popup>

@@ -1,0 +1,81 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Ic Api",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://cfsoicdev01-id7yz47ag41l-ia.integration.ocp.oraclecloud.com/ic/api/integration/v1/flows/rest/CFS_SMF_APPROVAL_WORKFLOW/1.0",
+            "description": "Ic Api",
+            "x-vb": {
+                "authentication": {
+                    "authenticated": {
+                        "type": "propagate"
+                    }
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/smfApprovalWf": {
+            "post": {
+                "operationId": "postSmfApprovalWf",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostSmfApprovalWfRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "externalValue": "./examples/postSmfApprovalWf/request_application_json_vb.json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "Default response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostSmfApprovalWfResponse"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "externalValue": "./examples/postSmfApprovalWf/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+               },
+                "x-vb": {
+                    "actionHint": "create"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PostSmfApprovalWfRequest": {
+                "type": "object",
+                "properties": {
+                    "request_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PostSmfApprovalWfResponse": {
+                "type": "object",
+                "properties": {
+                    "request_id": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

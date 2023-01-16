@@ -1,0 +1,12 @@
+{
+  "description": "",
+  "root": "",
+  "actions": {},
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

@@ -1,0 +1,5808 @@
+{
+  "title": "",
+  "description": "",
+    "security": {
+      "access": {
+        "requiresAuthentication": true,
+        "roles": ["CFS_SMF_Requestor_Role","CFS_SMF_Admin_Role"]
+        }
+        },  
+  "variables": {
+    "AccountsRowIndex": {
+      "type": "any",
+      "defaultValue": "[]"
+    },
+    "AccountsUpdates": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bank_acts_tbl",
+        "keyAttributes": "account_id"      }
+    },
+    "ActionChainError": {
+      "type": "boolean"
+    },
+    "ApprovedRejectedDate": {
+      "type": "string"
+    },
+    "approverComment": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "ATPErrorMessage": {
+      "type": "string",
+      "defaultValue": "503 - Error! Please try again later!"
+    },
+    "bankBranchesArray": {
+      "type": [
+        {
+          "BankBranchName": "string",
+          "BankBranchNameAlt": "any",
+          "BankBranchType": "any",
+          "BankName": "string",
+          "BankNameAlt": "any",
+          "BankNumber": "any",
+          "BankPartyNumber": "string",
+          "BranchNumber": "string",
+          "BranchNumberType": "any",
+          "BranchPartyId": "number",
+          "BranchPartyNumber": "string",
+          "CountryName": "string",
+          "CreatedBy": "string",
+          "CreationDate": "string",
+          "Description": "string",
+          "EDIIdNumber": "any",
+          "EDILocation": "any",
+          "EFTSWIFTCode": "any",
+          "EFTUserNumber": "any",
+          "LastUpdateDate": "string",
+          "LastUpdatedBy": "string",
+          "LastUpdateLogin": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "properties": {
+                "changeIndicator": "string"
+              },
+              "rel": "string"
+            }
+          ],
+          "RFCIdentifier": "any"
+        }
+      ]
+    },
+    "BankBranchesLOV": {
+      "type": "getAllCashBankBranches"
+    },
+    "BankBranchesLovADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getAllCashBankBranches",
+        "keyAttributes": "BranchPartyId",
+        "textFilterAttributes": [
+          "BankBranchName"
+        ]
+      }
+    },
+    "BankBranchId": {
+      "type": "any"
+    },
+    "BankId": {
+      "type": "any"
+    },
+    "bankNamesADP": {
+      "type": [
+          {
+            "BankName": "string",
+            "BankNameAlt": "any",
+            "BankNumber": "any",
+            "BankPartyId": "number",
+            "BankPartyNumber": "string",
+            "CountryName": "string"
+          }
+        ]
+    },
+    "BankNamesLOV": {
+      "type": "getAllCashBanks"
+    },
+    "BusClassExpDateValidation": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "businessClassificationUpdates": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bus_classifications_tbl"
+      }
+    },
+    "cfsSmfAddressTblErrorADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getGet_address_error_msg"
+      }
+    },
+    "cfsSmfBankAcctsTblErrorADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getGet_bank_accts_error_msg"
+      }
+    },
+    "cfsSmfBusClassificationsTblErrorADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getGet_bus_classfications_error_msg"
+      }
+    },
+    "cfsSmfContactAddTblErrorADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getGet_contact_add_error_msg"
+      }
+    },
+    "cfsSmfContactsTblErrorADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getGet_contacts_error_msg"
+      }
+    },
+    "cfsSmfSitesTblErrorADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getGet_sites_error_msg"
+      }
+    },
+    "cfsSmfSupplierDffTblErrorADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getGet_supplier_dff_error_msg"
+      }
+    },
+    "cfsSmfSupplierHeaderTblErrorADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getGet_supplier_header_error_msg"
+      }
+    },
+    "classificationApplicableFlag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "ContactAddressUpdates": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contact_add_tbl"
+      }
+    },
+    "contactStatusListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_ContactStatus",
+        "keyAttributes": "status",
+        "itemsPath": "items",
+        "responseType": "getallContactStatusResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "status"
+          ]
+        }
+      }
+    },
+    "CurrentBusinessClassification": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bus_classifications_tbl",
+        "keyAttributes": "rowid"
+      }
+    },
+    "CurrentSupplierSite": {
+      "type": "string"
+    },
+    "displayNameOfUserVar": {
+      "type": "string"
+    },
+    "DocumentumURL": {
+      "type": "string"
+    },
+    "DummyPostAccounts": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bank_acts_tbl",
+        "keyAttributes": "account_id"
+      }
+    },
+    "DummyPostAccounts1": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bank_acts_tbl",
+        "keyAttributes": "account_id"
+      }
+    },
+    "DummyPostAccountsDeleteBackup": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bank_acts_tbl",
+        "keyAttributes": "account_id"
+      }
+    },
+    "DummyPostAccountsToBeAdded": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bank_acts_tbl",
+        "keyAttributes": "account_id"
+      }
+    },
+    "DummyPostContactAddress": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contact_add_tbl",
+        "keyAttributes": "supplier_contact_address_id"
+      }
+    },
+    "DummyPostContactAddress1": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contact_add_tbl",
+        "keyAttributes": "supplier_contact_address_id"
+      }
+    },
+    "DummyPostContactAddressDeleteBackup": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contact_add_tbl",
+        "keyAttributes": "supplier_contact_address_id"
+      }
+    },
+    "DummyPostContactAddressToBeAdded": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contact_add_tbl",
+        "keyAttributes": "supplier_contact_address_id"
+      }
+    },
+    "DummyPostContacts": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contacts_tbl",
+        "keyAttributes": "supplier_contact_id"
+      }
+    },
+    "DummyPostContacts1": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contacts_tbl",
+        "keyAttributes": "supplier_contact_id"
+      }
+    },
+    "DummyPostSites": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_sites_tbl",
+        "keyAttributes": "supplier_site_id"
+      }
+    },
+    "DummyPostSites1": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_sites_tbl",
+        "keyAttributes": "supplier_site_id"
+      }
+    },
+    "DummyPostSupplierAddresses": {
+      "defaultValue": {
+        "itemType": "postCfs_smf_address_tbl",
+        "keyAttributes": "supplier_address_id"
+      },
+      "type": "vb/ArrayDataProvider2"
+    },
+    "DummyPostSupplierAddresses1": {
+      "defaultValue": {
+        "itemType": "postCfs_smf_address_tbl",
+        "keyAttributes": "supplier_address_id"
+      },
+      "type": "vb/ArrayDataProvider2"
+    },
+    "enableSubmitButtonVar": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "ErrorExpirationAndInactiveDateFlag": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "ErrorExpirationDate": {
+      "type": "string",
+      "defaultValue": "Expiration date cannot be a past date or system date"
+    },
+    "ErrorInactiveDate": {
+      "type": "string",
+      "defaultValue": "Inactive date cannot be a past date"
+    },
+    "ErrorMandatoryFields": {
+      "type": "string",
+      "defaultValue": "Please provide value for the mandatory field -"
+    },
+    "get1113185HcmCountriesLovQListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "keyAttributes": "TerritoryCode",
+        "itemsPath": "items",
+        "responseType": "get1113185HcmCountriesLovQResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "CountryName"
+          ]
+        },
+        "uriParameters": {
+          "limit": "{{ \"500\" }}",
+          "q": "{{ \"ObsoleteFlag=false\" }}"
+        }
+      }
+    },
+    "get1113185HcmCountriesLovQListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleHcmEndpoints/get11_13_18_05HcmCountriesLovQ",
+        "responseType": "get1113185HcmCountriesLovQResponse2",
+        "itemsPath": "items",
+        "keyAttributes": "TerritoryCode",
+        "uriParameters": {
+          "limit": "1000"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "CountryName"
+          ]
+        },
+        "capabilities": {
+          "fetchFirst": {
+            "implementation": "iteration"
+          }
+        }
+      }
+    },
+    "get1113185HcmCountriesLovQListSDP3": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleHcmEndpoints/get11_13_18_05HcmCountriesLovQ",
+        "keyAttributes": "CountryName",
+        "itemsPath": "items",
+        "responseType": "get1113185HcmCountriesLovQResponse3",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "CountryName"
+          ]
+        }
+      }
+    },
+    "get1113185HcmCountriesLovQListSDP4": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleHcmEndpoints/get11_13_18_05HcmCountriesLovQ",
+        "keyAttributes": "PhoneCountryCode",
+        "itemsPath": "items",
+        "responseType": "get1113185HcmCountriesLovQResponse4",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "PhoneCountryCode"
+          ]
+        }
+      }
+    },
+    "get1113185HcmCountriesLovQListSDP5": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleHcmEndpoints/get11_13_18_05HcmCountriesLovQ",
+        "keyAttributes": "TerritoryCode",
+        "itemsPath": "items",
+        "responseType": "get1113185HcmCountriesLovQResponse5",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "CountryName"
+          ]
+        }
+      }
+    },
+    "get1113185HcmCountriesLovQListSDP6": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleHcmEndpoints/get11_13_18_05HcmCountriesLovQ",
+        "keyAttributes": "PhoneCountryCode",
+        "itemsPath": "items",
+        "responseType": "get1113185HcmCountriesLovQResponse6",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "PhoneCountryCode"
+          ]
+        }
+      }
+    },
+    "get1113185HcmCountriesLovQListSDP7": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleHcmEndpoints/get11_13_18_05HcmCountriesLovQ",
+        "keyAttributes": "PhoneCountryCodeId",
+        "itemsPath": "items",
+        "responseType": "get1113185HcmCountriesLovQResponse8",
+        "uriParameters": {
+          "limit": "{{ \"500\" }}",
+          "q": "{{ \"ObsoleteFlag=false;CountryName LIKE \\\"%\" + $variables.SearchPhoneCountryVar1+\"\\\"%\" }}"
+        }
+      }
+    },
+    "getAccounts": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getAccounts",
+        "keyAttributes": "BankAccountId"
+      }
+    },
+    "getAddressValidations": {
+      "type": "getAddressValidations"
+    },
+    "getAllAccounts": {
+      "defaultValue": {
+        "itemType": "getAccounts",
+        "keyAttributes": "BankAccountId"
+      },
+      "type": "vb/ArrayDataProvider2"
+    },
+    "getAllAddresses": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getAllAddresses",
+        "keyAttributes": "SupplierContactAddressId"
+      }
+    },
+    "getAllAddressesListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleEndpoints/getAllAddresses",
+        "keyAttributes": "SupplierContactAddressId",
+        "itemsPath": "items",
+        "responseType": "getAllAddressesResponse2",
+        "uriParameters": {
+          "SupplierContactId": "{{ $variables.popupExistingContact.SupplierContactId }}",
+          "SupplierId": "{{ $variables.getSupplierToUpdateVar.SupplierId }}"
+        }
+      }
+    },
+    "getAllAddressesListSDP3": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleEndpoints/getAllAddresses",
+        "keyAttributes": "SupplierContactAddressId",
+        "itemsPath": "items",
+        "responseType": "getAllAddressesResponse3",
+        "uriParameters": {
+          "SupplierContactId": "{{ $variables.popupNewContact.SupplierContactId }}",
+          "SupplierId": "{{ $variables.getSupplierToUpdateVar.SupplierId }}"
+        }
+      }
+    },
+    "getAllAddressesListSDP30": {
+      "type": "vb/ServiceDataProvider"
+    },
+    "getAllCashBankBranchesLOV": {
+      "type": "getAllCashBankBranches"
+    },
+    "getAllCashBanksLOV": {
+      "type": "getAllCashBanks"
+    },
+    "getAllCountriesLOV": {
+      "type": "getAllCountriesLOV"
+    },
+    "getBusinessClassificationsLookupListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getBusinessClassificationsLookup",
+        "keyAttributes": "Meaning",
+        "itemsPath": "items",
+        "responseType": "getBusinessClassificationsLookupResponse2",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "Meaning"
+          ]
+        }
+      }
+    },
+    "getCashBankBranchesListSDP6": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getCashBankBranches",
+        "itemsPath": "items",
+        "responseType": "getCashBankBranchesResponse6",
+        "uriParameters": {
+          "finder": "{{ \"BankBranchSearchFinder;bindBankName=\\\"\"+$variables.popupAccounts.ReBank+\"\\\",bindCountryName=\\\"\"+$variables.popupAccounts.ReCountry+\"\\\"\" }}"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "BankBranchName"
+          ]
+        },
+        "keyAttributes": "BranchPartyId"
+      }
+    },
+    "getCashBankBranchesListSDP7": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getCashBankBranches",
+        "itemsPath": "items",
+        "responseType": "getCashBankBranchesResponse7",
+        "uriParameters": {
+          "finder": "{{ \"BankBranchSearchFinder;bindBankName=\\\"\"+$variables.popupNewAccounts.ReBank+\"\\\",bindCountryName=\\\"\"+$variables.popupNewAccounts.ReCountry+\"\\\"\" }}"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "BankBranchName"
+          ]
+        }
+      }
+    },
+    "getCashBanksListSDP4": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getCashBanks",
+        "itemsPath": "items",
+        "responseType": "getCashBanksResponse4",
+        "uriParameters": {
+          "q": "{{ \"CountryName='\"+$variables.popupAccounts.ReCountry+\"'\" }}"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "BankName",
+            "BankPartyId"
+          ]
+        },
+        "keyAttributes": "BankPartyId"
+      }
+    },
+    "getCashBanksListSDP6": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getCashBanks",
+        "itemsPath": "items",
+        "responseType": "getCashBanksResponse6",
+        "uriParameters": {
+          "q": "{{ \"CountryName='\"+$variables.popupNewAccounts.ReCountry+\"'\" }}"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "BankName"
+          ]
+        }
+      }
+    },
+    "getConfigs": {
+      "type": "getCfs_smf_configs"
+    },
+    "getCountriesADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "data": "{{ $variables.getCountriesArr }}",
+        "itemType": "getCountriesType",
+        "keyAttributes": "TerritoryCode",
+        "textFilterAttributes": [
+          "CountryName"
+        ]
+      }
+    },
+    "getCountriesADP1": {
+      "defaultValue": {
+        "data": "{{ $variables.getCountriesArr }}",
+        "itemType": "getCountriesType",
+        "textFilterAttributes": [
+          "CountryName"
+        ],
+        "keyAttributes": "CountryName"
+      },
+      "type": "vb/ArrayDataProvider2"
+    },
+    "getCountriesArr": {
+      "type": "getCountriesType[]"
+    },
+    "getCurrenciesLOV": {
+      "type": "getCurrenciesLOV"
+    },
+    "getCurrenciesLOVListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleEndpoints/getCurrenciesLOV",
+        "keyAttributes": "CurrencyCode",
+        "itemsPath": "items",
+        "responseType": "getCurrenciesLOVResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "CurrencyCode"
+          ]
+        }
+      }
+    },
+    "getDisbursementPaymentMethodsLOVListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getDisbursementPaymentMethodsLOV",
+        "itemsPath": "items",
+        "responseType": "getDisbursementPaymentMethodsLOVResponse2",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "PaymentMethodName"
+          ]
+        },
+        "keyAttributes": "PaymentMethodCode"
+      }
+    },
+    "getHcmPhoneCountryCodeADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP10": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP11": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP12": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP13": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP14": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP15": {
+      "type": "vb/ArrayDataProvider2"
+    },
+    "getHcmPhoneCountryCodeADP2": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP3": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP4": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP5": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP6": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP7": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP8": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getHcmPhoneCountryCodeADP9": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "get11_13_18_05HcmCountriesLovQ"
+      }
+    },
+    "getLookupCodesListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getRemittanceAdviceDeliveryMethodLookup",
+        "keyAttributes": "LookupCode",
+        "itemsPath": "items",
+        "responseType": "getLookupCodesResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "Meaning"
+          ]
+        }
+      }
+    },
+    "getLookupCodesListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleEndpoints/getPayDateBasisLOV",
+        "keyAttributes": "Meaning",
+        "itemsPath": "items",
+        "responseType": "getLookupCodesResponse2",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "Meaning"
+          ]
+        }
+      }
+    },
+    "getLookupCodesListSDP3": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getTermsDateBasisLookup",
+        "keyAttributes": "Meaning",
+        "itemsPath": "items",
+        "responseType": "getLookupCodesResponse3",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "Meaning"
+          ]
+        }
+      }
+    },
+    "getLookupCodesListSDP4": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getCertifyingAgenciesLookup",
+        "keyAttributes": "Meaning",
+        "itemsPath": "items",
+        "responseType": "getLookupCodesResponse4",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "Meaning"
+          ]
+        }
+      }
+    },
+    "getLookupCodesListSDP5": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getBusinessUnitsLookup",
+        "keyAttributes": "Meaning",
+        "itemsPath": "items",
+        "responseType": "getLookupCodesResponse5",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "Meaning"
+          ]
+        }
+      }
+    },
+    "getPayablesPaymentTermsListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getPayablesPaymentTerms",
+        "keyAttributes": "name",
+        "itemsPath": "items",
+        "responseType": "getPayablesPaymentTermsResponse2",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "name"
+          ]
+        }
+      }
+    },
+    "getProcurementBULOV": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getProcurementBULookup",
+        "keyAttributes": "BusinessUnitId"
+      }
+    },
+    "getSetIdRequestVar": {
+      "type": "postGetSetBuMapping"
+    },
+    "getSiteDFF": {
+      "type": "getSiteDFF"
+    },
+    "getSupplierAddresses": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getOneSupplierAddress",
+        "keyAttributes": "SupplierAddressId"
+      }
+    },
+    "getSupplierBusinessClassifications": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getOneSupplierBusinessClassification",
+        "keyAttributes": "ClassificationId"
+      }
+    },
+    "getSupplierContacts": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getOneContact",
+        "keyAttributes": "SupplierContactId"
+      }
+    },
+    "getSupplierDFF": {
+      "type": "getSupplierDFF"
+    },
+    "getSupplierSites": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getOneSupplierSite",
+        "keyAttributes": "SupplierSiteId"
+      }
+    },
+    "getSuppliersSupplierIdChildAddressesListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleEndpoints/getSuppliersSupplierIdChildAddresses",
+        "keyAttributes": "AddressName",
+        "itemsPath": "items",
+        "responseType": "getSuppliersSupplierIdChildAddressesResponse3",
+        "uriParameters": {
+          "limit": "{{ \"500\" }}",
+          "offset": "{{ \"0\" }}",
+          "SupplierId": "{{ $variables.getSupplierToUpdateVar.SupplierId }}"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "AddressName"
+          ]
+        }
+      }
+    },
+    "getSupplierToUpdateVar": {
+      "type": "getSuppliersSupplierId"
+    },
+    "getSupplierUpdates": {
+      "type": "getSupplierUpdates"
+    },
+    "getTaxOrganizationTypeLookupListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleEndpoints/getTaxOrganizationTypeLookup",
+        "keyAttributes": "LookupCode",
+        "itemsPath": "items",
+        "responseType": "getTaxOrganizationTypeLookupResponse",
+        "uriParameters": {
+          "SupplierId": "{{ $variables.getSupplierToUpdateVar.SupplierId }}"
+        },
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "DisplayedField"
+          ]
+        }
+      }
+    },
+    "getValues2ListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getStatusReasonCodeLOV",
+        "keyAttributes": "Value",
+        "itemsPath": "items",
+        "responseType": "getValues2Response",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "Value"
+          ]
+        }
+      }
+    },
+    "getValuesListSDP4": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getCONSTYesNoLOV",
+        "keyAttributes": "Value",
+        "itemsPath": "items",
+        "responseType": "getValuesResponse4",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "Value"
+          ]
+        }
+      }
+    },
+    "getValuesListSDP5": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "oracleServiceVault/getLegalStructureLOV",
+        "keyAttributes": "Value",
+        "itemsPath": "items",
+        "responseType": "getValuesResponse5",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "Value"
+          ]
+        }
+      }
+    },
+    "getYesNoLOV": {
+      "type": "getYesNoLOV"
+    },
+    "HelpDocURL": {
+      "type": "string"
+    },
+    "InactivateAddresses": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_address_tbl",
+        "keyAttributes": "supplier_address_id"
+      }
+    },
+    "InactivateBankAccounts": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bank_acts_tbl",
+        "keyAttributes": "account_id"
+      }
+    },
+    "InactivateBusinessClassifications": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bus_classifications_tbl",
+        "keyAttributes": "classification_id"
+      }
+    },
+    "InactivateContactAddresses": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contact_add_tbl",
+        "keyAttributes": "supplier_contact_address_id"
+      }
+    },
+    "InactivateContacts": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contacts_tbl",
+        "keyAttributes": "supplier_contact_id"
+      }
+    },
+    "InactivateSites": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_sites_tbl",
+        "keyAttributes": "supplier_site_id"
+      }
+    },
+    "IncomeTaxTypesLOV": {
+      "type": "getIncomeTaxTypesLOV"
+    },
+    "inputSupplierNumberVar": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "moreInformationRequestedSet": {
+      "type": "boolean"
+    },
+    "offsetVarAddresses": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "offsetVarBusinessClassifications": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "offsetVarCategories": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "offsetVarContacts": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "offsetVarProcurementBU": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "offsetVarSites": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "ojTabBar1262042221SelectedItem": {
+      "type": "string",
+      "defaultValue": "oj-tab-bar-126204222-1-tab-1"
+    },
+    "ojTabBar1262042222SelectedItem3": {
+      "type": "string",
+      "defaultValue": "oj-tab-bar-126204222-2-tab-1"
+    },
+    "payablePaymentTermsADP": {
+      "type": [
+          {
+            "name": "string",
+            "termsId": "string"
+          }
+        ]
+    },
+    "PaymentHoldReason": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar1": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar10": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar11": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar12": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar13": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar14": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar15": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar2": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar3": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar4": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar5": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar6": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar7": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar8": {
+      "type": "string"
+    },
+    "PhoneCountryCodeVar9": {
+      "type": "string"
+    },
+    "popupAccounts": {
+      "type": {
+        "AccountNumber": "string",
+        "AllowInternationalPayments": "string",
+        "Bank": "string",
+        "BankBranch": "string",
+        "Country": "string",
+        "Currency": "string",
+        "IBAN": "string",
+        "InactiveOn": "string",
+        "Primary": "string",
+        "ReAccountNumber": "string",
+        "ReAllowInternationalPayments": "string",
+        "ReBank": "string",
+        "ReBankBranch": "string",
+        "ReBankBranchId": "number",
+        "ReBankId": "number",
+        "ReCountry": "string",
+        "ReCurrency": "string",
+        "ReIBAN": "string",
+        "ReInactiveOn": "string",
+        "RePrimary": "string",
+        "ReUpdateUnpaidInvoices": "string",
+        "RowIndex": "any",
+        "UpdateUnpaidInvoices": "string"
+
+      }
+    },
+    "popupAddBusinessClassification": {
+      "type": {
+        "ActionRequested": "string",
+        "Certificate": "string",
+        "CertifyingAgency": "string",
+        "Classification": "string",
+        "classificationId": "string",
+        "ExpirationDate": "any",
+        "OtherCertifyingAgency": "string"
+      }
+    },
+    "popupAddress": {
+      "type": {
+        "AddressLine1": "string",
+        "AddressLine2": "string",
+        "AddressLine3": "string",
+        "AddressName": "string",
+        "City": "string",
+        "Country": "string",
+        "County": "string",
+        "Email": "string",
+        "Fax": "string",
+        "FaxAreaCode": "string",
+        "FaxCountryCode": "string",
+        "Phone": "string",
+        "PhoneAreaCode": "string",
+        "PhoneCountryCode": "string",
+        "PhoneExtensionCode": "string",
+        "PostalCode": "string",
+        "Province": "string",
+        "RemitTo": "string",
+        "State": "string"
+
+      }
+    },
+    "popupContact": {
+      "type": {
+        "AdministrativeContactFlag": "string",
+        "ContactPurpose": "string",
+        "Email": "string",
+        "FaxAreaCode": "string",
+        "FaxCountryCode": "string",
+        "FaxNumber": "string",
+        "FirstName": "string",
+        "InactiveDate": "string",
+        "JobTitle": "string",
+        "LastName": "string",
+        "MobileAreaCode": "string",
+        "MobileCountryCode": "string",
+        "MobileNumber": "string",
+        "PhoneAreaCode": "string",
+        "PhoneCountryCode": "string",
+        "PhoneNumber": "string",
+        "ReAdministrativeContactFlag": "string",
+        "ReContactPurpose": "string",
+        "ReEmail": "string",
+        "ReFaxAreaCode": "string",
+        "ReFaxCountryCode": "string",
+        "ReFaxNumber": "string",
+        "ReFirstName": "string",
+        "ReInactiveDate": "string",
+        "ReJobTitle": "string",
+        "ReLastName": "string",
+        "ReMobileAreaCode": "string",
+        "ReMobileCountryCode": "string",
+        "ReMobileNumber": "string",
+        "RePhoneAreaCode": "string",
+        "RePhoneCountryCode": "string",
+        "RePhoneNumber": "string",
+        "ReStatus": "string",
+        "Status": "string"
+
+      }
+    },
+    "popupContactAddresses": {
+      "type": {
+        "AddressName": "string",
+        "Email": "string",
+        "RecordStatus": "string",
+        "Status": "string",
+        "SupplierContactId": "string"
+
+      }
+    },
+    "popupExistingAccounts": {
+      "type": {
+        "AccountId": "any",
+        "AccountNumber": "string",
+        "AllowInternationalPayments": "string",
+        "Bank": "string",
+        "BankBranch": "string",
+        "Country": "string",
+        "Currency": "string",
+        "IBAN": "string",
+        "InactiveOn": "string",
+        "Primary": "string",
+        "ReAccountNumber": "string",
+        "ReAllowInternationalPayments": "string",
+        "ReBank": "string",
+        "ReBankBranch": "string",
+        "ReCountry": "string",
+        "ReCurrency": "string",
+        "ReIBAN": "string",
+        "ReInactiveOn": "string",
+        "RePrimary": "string",
+        "ReUpdateUnpaidInvoices": "string",
+        "RowIndex": "any",
+        "UpdateUnpaidInvoices": "string"
+      }
+    },
+    "popupExistingAddress": {
+      "type": {
+        "AddressId": "string",
+        "AddressLine1": "string",
+        "AddressLine2": "string",
+        "AddressLine3": "string",
+        "AddressName": "string",
+        "City": "string",
+        "Country": "string",
+        "County": "string",
+        "DisplayFaxAreaCode": "string",
+        "DisplayFaxCountryCode": "string",
+        "DisplayPhoneAreaCode": "string",
+        "DisplayPhoneCountryCode": "string",
+        "DisplayPhoneExtensionCode": "string",
+        "Email": "string",
+        "Fax": "string",
+        "FaxAreaCode": "string",
+        "FaxCountryCode": "string",
+        "Phone": "string",
+        "PhoneAreaCode": "string",
+        "PhoneCountryCode": "string",
+        "PhoneExtensionCode": "string",
+        "PostalCode": "string",
+        "Province": "string",
+        "ReAddressLine1": "string",
+        "ReAddressLine2": "string",
+        "ReAddressLine3": "string",
+        "ReAddressName": "string",
+        "ReCity": "string",
+        "ReCountry": "string",
+        "ReCounty": "string",
+        "ReEmail": "string",
+        "ReFax": "string",
+        "ReFaxAreaCode": "string",
+        "ReFaxCountryCode": "string",
+        "RePhone": "string",
+        "RePhoneAreaCode": "string",
+        "RePhoneCountryCode": "string",
+        "RePhoneExtensionCode": "string",
+        "RePostalCode": "string",        
+        "RemitTo": "string",
+        "ReProvince": "string",
+        "ReRemitTo": "string",
+        "ReState": "string",        
+        "State": "string"
+
+      }
+    },
+    "popupExistingBusinessClassification": {
+      "type": {
+        "Certificate": "string",
+        "CertifyingAgency": "string",
+        "Classification": "string",
+        "classificationId": "string",
+        "ExpirationDate": "any",
+        "OtherCertifyingAgency": "string",
+        "ReCertificate": "string",
+        "ReCertifyingAgency": "string",
+        "ReClassification": "string",
+        "ReExpirationDate": "any",
+        "ReOtherCertifyingAgency": "string",
+        "Status": "string"
+      }
+    },
+    "popupExistingContact": {
+      "type": {
+        "AdministrativeContactFlag": "string",
+        "ContactPurpose": "string",
+        "DisplayFaxAreaCode": "string",
+        "DisplayFaxCountryCode": "string",
+        "DisplayMobileAreaCode": "string",
+        "DisplayMobileCountryCode": "string",
+        "DisplayPhoneAreaCode": "string",
+        "DisplayPhoneCountryCode": "string",
+        "Email": "string",
+        "FaxAreaCode": "string",
+        "FaxCountryCode": "string",
+        "FaxNumber": "string",
+        "FirstName": "string",
+        "InactiveDate": "string",
+        "JobTitle": "string",
+        "LastName": "string",
+        "MobileAreaCode": "string",
+        "MobileCountryCode": "string",
+        "MobileNumber": "string",
+        "PhoneAreaCode": "string",
+        "PhoneCountryCode": "string",
+        "PhoneNumber": "string",
+        "ReAdministrativeContactFlag": "string",
+        "ReContactPurpose": "string",
+        "ReEmail": "string",
+        "ReFaxAreaCode": "string",
+        "ReFaxCountryCode": "string",
+        "ReFaxNumber": "string",
+        "ReFirstName": "string",
+        "ReInactiveDate": "string",
+        "ReJobTitle": "string",
+        "ReLastName": "string",
+        "ReMobileAreaCode": "string",
+        "ReMobileCountryCode": "string",
+        "ReMobileNumber": "string",
+        "RePhoneAreaCode": "string",
+        "RePhoneCountryCode": "string",
+        "RePhoneNumber": "string",
+        "ReStatus": "string",
+        "RowIndex": "any",
+        "Status": "string",
+        "SupplierContactId": "string"
+
+      }
+    },
+    "popupExistingSite": {
+      "type": {
+        "ActionRequested": "string",
+        "AddressName": "string",
+        "AllowInternationalPayment": "string",
+        "AlternateSiteName": "string",
+        "BillToBU": "string",
+        "ClientBU": "string",
+        "Country": "string",
+        "Currency": "string",
+        "HoldAllInvoices": "string",
+        "HoldUnvalidatedInvoices": "string",
+        "InactiveDate": "string",
+        "IncomeTaxReportingSite": "string",
+        "InvoiceAmountLimit": "string",
+        "InvoiceCurrency": "string",
+        "NuclearQualified": "string",
+        "PayDateBasis": "string",
+        "PayeeId": "string",
+        "PaymentCurrency": "string",
+        "PaymentHoldReason": "string",
+        "PaymentMethod": "string",
+        "PaymentTerms": "string",
+        "PrimaryFlag": "string",
+        "ProcurementBU": "string",
+        "ReAccountNumber": "string",
+        "ReAddressName": "string",
+        "ReAlternateSiteName": "string",
+        "ReBank": "string",
+        "ReBankInactiveOn": "string",
+        "ReBillToBU": "string",
+        "ReBranch": "string",
+        "ReClientBU": "string",
+        "ReCountry": "string",
+        "ReCurrency": "string",
+        "ReHoldAllInvoices": "string",
+        "ReHoldUnvalidatedInvoices": "string",
+        "ReIBAN": "string",
+        "ReInactiveDate": "string",
+        "ReIncomeTaxReportingSite": "string",
+        "ReInvoiceAmountLimit": "string",
+        "ReInvoiceCurrency": "string",
+        "RemittanceAdviceDeliveryEmailId": "string",
+        "RemittanceAdviceDelliveryMethod": "string",
+        "ReNuclearQualified": "string",
+        "RePayDateBasis": "string",
+        "RePaymentCurrency": "string",
+        "RePaymentHoldReason": "string",
+        "RePaymentMethod": "string",
+        "RePaymentTerms": "string",
+        "RePrimaryFlag": "string",
+        "ReProcurementBU": "string",
+        "ReRemittanceAdviceDeliveryEmailId": "string",
+        "ReRemittanceAdviceDelliveryMethod": "string",
+        "ReSite": "string",
+        "ReSitePurposePay": "string",
+        "ReStatus": "string",
+        "ReStatusReasonCode": "string",
+        "ReSupplierSiteId": "string",
+        "ReTermsDateBasis": "string",
+        "ReUpdateUnpaidInvoices": "string",
+        "Site": "string",
+        "SitePurposePay": "string",
+        "Status": "string",
+        "StatusReasonCode": "string",
+        "SupplierSiteId": "string",
+        "TermDateBasis": "string",
+        "UpdateUnpaidInvoices": "string"
+
+      }
+    },
+    "popupNewAccounts": {
+      "type": {
+        "AccountId": "any",
+        "AccountNumber": "string",
+        "ActionRequested": "string",
+        "AllowInternationalPayments": "string",
+        "Bank": "string",
+        "BankBranch": "string",
+        "Country": "string",
+        "Currency": "string",
+        "IBAN": "string",
+        "InactiveOn": "string",
+        "Primary": "string",
+        "ReAccountNumber": "string",
+        "ReAllowInternationalPayments": "string",
+        "ReBank": "string",
+        "ReBankBranch": "string",
+        "ReBankBranchId": "number",
+        "ReBankId": "number",
+        "RecordStatus": "string",
+        "ReCountry": "string",
+        "ReCurrency": "string",
+        "ReIBAN": "string",
+        "ReInactiveOn": "string",
+        "RePrimary": "string",
+        "ReUpdateUnpaidInvoices": "string",
+        "RowIndex": "any",
+        "UpdateUnpaidInvoices": "string"
+
+      }
+    },
+    "popupNewAddress": {
+      "type": {
+        "ActionRequested": "string",
+        "AddressId": "string",
+        "AddressLine1": "string",
+        "AddressLine2": "string",
+        "AddressLine3": "string",
+        "AddressName": "string",
+        "City": "string",
+        "Country": "string",
+        "County": "string",
+        "DisplayFaxAreaCode": "string",
+        "DisplayFaxCountryCode": "string",
+        "DisplayPhoneAreaCode": "string",
+        "DisplayPhoneCountryCode": "string",
+        "DisplayPhoneExtensionCode": "string",
+        "Email": "string",
+        "Fax": "string",
+        "FaxAreaCode": "string",
+        "FaxCountryCode": "string",
+        "Phone": "string",
+        "PhoneAreaCode": "string",
+        "PhoneCountryCode": "string",
+        "PhoneExtensionCode": "string",
+        "PostalCode": "string",
+        "Province": "string",
+        "ReAddressLine1": "string",
+        "ReAddressLine2": "string",
+        "ReAddressLine3": "string",
+        "ReAddressName": "string",
+        "ReCity": "string",
+        "RecordStatus": "string",
+        "ReCountry": "string",
+        "ReCounty": "string",
+        "ReEmail": "string",
+        "ReFax": "string",
+        "ReFaxAreaCode": "string",
+        "ReFaxCountryCode": "string",
+        "RePhone": "string",
+        "RePhoneAreaCode": "string",
+        "RePhoneCountryCode": "string",
+        "RePhoneExtensionCode": "string",
+        "RePostalCode": "string",
+        "RemitTo": "string",
+        "ReProvince": "string",
+        "ReRemitTo": "string",
+        "ReState": "string",
+        "State": "string"
+
+      }
+    },
+    "popupNewBusinessClassification": {
+      "type": {
+        "ActionRequested": "string",
+        "Certificate": "string",
+        "CertifyingAgency": "string",
+        "Classification": "string",
+        "classificationId": "string",
+        "ExpirationDate": "any",
+        "OtherCertifyingAgency": "string",
+        "ReCertificate": "string",
+        "ReCertifyingAgency": "string",
+        "ReClassification": "string",
+        "RecordStatus": "string",
+        "ReExpirationDate": "any",
+        "ReOtherCertifyingAgency": "string",
+        "RowIndex": "any",
+        "Status": "string"
+
+      }
+    },
+    "popupNewContact": {
+      "type": {
+        "ActionRequested": "string",
+        "AdministrativeContactFlag": "string",
+        "ContactPurpose": "string",
+        "DisplayFaxAreaCode": "string",
+        "DisplayFaxCountryCode": "string",
+        "DisplayMobileAreaCode": "string",
+        "DisplayMobileCountryCode": "string",
+        "DisplayPhoneAreaCode": "string",
+        "DisplayPhoneCountryCode": "string",
+        "Email": "string",
+        "FaxAreaCode": "string",
+        "FaxCountryCode": "string",
+        "FaxNumber": "string",
+        "FirstName": "string",
+        "InactiveDate": "string",
+        "JobTitle": "string",
+        "LastName": "string",
+        "MobileAreaCode": "string",
+        "MobileCountryCode": "string",
+        "MobileNumber": "string",
+        "PhoneAreaCode": "string",
+        "PhoneCountryCode": "string",
+        "PhoneNumber": "string",
+        "ReAdministrativeContactFlag": "string",
+        "ReContactPurpose": "string",
+        "RecordStatus": "string",
+        "ReEmail": "string",
+        "ReFaxAreaCode": "string",
+        "ReFaxCountryCode": "string",
+        "ReFaxNumber": "string",
+        "ReFirstName": "string",
+        "ReInactiveDate": "string",
+        "ReJobTitle": "string",
+        "ReLastName": "string",
+        "ReMobileAreaCode": "string",
+        "ReMobileCountryCode": "string",
+        "ReMobileNumber": "string",
+        "RePhoneAreaCode": "string",
+        "RePhoneCountryCode": "string",
+        "RePhoneNumber": "string",
+        "ReStatus": "string",
+        "Status": "string",
+        "SupplierContactId": "number"
+
+      }
+    },
+    "popupNewSite": {
+      "type": {
+        "ActionRequested": "string",
+        "AddressName": "string",
+        "AllowInternationalPayment": "string",
+        "AlternateSiteName": "string",
+        "BillToBU": "string",
+        "ClientBU": "string",
+        "Country": "string",
+        "Currency": "string",
+        "HoldAllInvoices": "string",
+        "HoldUnvalidatedInvoices": "string",
+        "InactiveDate": "string",
+        "IncomeTaxReportingSite": "string",
+        "InvoiceAmountLimit": "string",
+        "InvoiceCurrency": "string",
+        "NuclearQualified": "string",
+        "PayDateBasis": "string",
+        "PayeeId": "string",
+        "PaymentCurrency": "string",
+        "PaymentHoldReason": "string",
+        "PaymentMethod": "string",
+        "PaymentTerms": "string",
+        "PrimaryFlag": "string",
+        "ProcurementBU": "string",
+        "ReAccountNumber": "string",
+        "ReAddressName": "string",
+        "ReAlternateSiteName": "string",
+        "ReBank": "string",
+        "ReBankInactiveOn": "string",
+        "ReBillToBU": "string",
+        "ReBranch": "string",
+        "ReClientBU": "string",
+        "RecordStatus": "string",
+        "ReCountry": "string",
+        "ReCurrency": "string",
+        "ReHoldAllInvoices": "string",
+        "ReHoldUnvalidatedInvoices": "string",
+        "ReIBAN": "string",
+        "ReInactiveDate": "string",
+        "ReIncomeTaxReportingSite": "string",
+        "ReInvoiceAmountLimit": "string",
+        "ReInvoiceCurrency": "string",
+        "RemittanceAdviceDeliveryEmailId": "string",
+        "RemittanceAdviceDelliveryMethod": "string",
+        "ReNuclearQualified": "string",
+        "RePayDateBasis": "string",
+        "RePaymentCurrency": "string",
+        "RePaymentHoldReason": "string",
+        "RePaymentMethod": "string",
+        "RePaymentTerms": "string",
+        "RePrimaryFlag": "string",
+        "ReProcurementBU": "string",
+        "ReRemittanceAdviceDeliveryEmailId": "string",
+        "ReRemittanceAdviceDelliveryMethod": "string",
+        "ReSite": "string",
+        "ReSitePurposePay": "string",
+        "ReStatus": "string",
+        "ReStatusReasonCode": "string",
+        "ReSupplierSiteId": "string",
+        "ReTermsDateBasis": "string",
+        "ReUpdateUnpaidInvoices": "string",
+        "RowIndex": "string",
+        "Site": "string",
+        "SitePurposePay": "string",
+        "Status": "string",
+        "StatusReasonCode": "string",
+        "SupplierSiteId": "string",
+        "TermDateBasis": "string",
+        "UpdateUnpaidInvoices": "string"
+
+      }
+    },
+    "popupSite": {
+      "type": {
+
+        "AddressName": "string",
+        "AllowInternationalPayment": "string",
+        "AlternateSiteName": "string",
+        "BillToBU": "string",
+        "ClientBU": "string",
+        "Country": "string",
+        "Currency": "string",
+        "HoldAllInvoices": "string",
+        "HoldUnvalidatedInvoices": "string",
+        "InactiveDate": "string",
+        "IncomeTaxReportingSite": "string",
+        "InvoiceAmountLimit": "string",
+        "InvoiceCurrency": "string",
+        "NuclearQualified": "string",
+        "PayDateBasis": "string",
+        "PayeeId": "string",
+        "PaymentCurrency": "string",
+        "PaymentHoldReason": "string",
+        "PaymentMethod": "string",
+        "PaymentTerms": "string",
+        "PrimaryFlag": "string",
+        "ProcurementBU": "string",
+        "ReAccountNumber": "string",
+        "ReAddressName": "string",
+        "ReAlternateSiteName": "string",
+        "ReBank": "string",
+        "ReBankInactiveOn": "string",
+        "ReBillToBU": "string",
+        "ReBranch": "string",
+        "ReClientBU": "string",
+        "ReCountry": "string",
+        "ReCurrency": "string",
+        "ReHoldAllInvoices": "string",
+        "ReHoldUnvalidatedInvoices": "string",
+        "ReIBAN": "string",
+        "ReInactiveDate": "string",
+        "ReIncomeTaxReportingSite": "string",
+        "ReInvoiceAmountLimit": "string",
+        "ReInvoiceCurrency": "string",
+        "RemittanceAdviceDeliveryEmailId": "string",
+        "RemittanceAdviceDelliveryMethod": "string",
+        "ReNuclearQualified": "string",
+        "RePayDateBasis": "string",
+        "RePaymentCurrency": "string",
+        "RePaymentHoldReason": "string",
+        "RePaymentMethod": "string",
+        "RePaymentTerms": "string",
+        "RePrimaryFlag": "string",
+        "ReProcurementBU": "string",
+        "ReRemittanceAdviceDeliveryEmailId": "string",
+        "ReRemittanceAdviceDelliveryMethod": "string",
+        "ReSite": "string",
+        "ReSitePurposePay": "string",
+        "ReStatus": "string",
+        "ReStatusReasonCode": "string",
+        "ReSupplierSiteId": "string",
+        "ReTermsDateBasis": "string",
+        "ReUpdateUnpaidInvoices": "string",
+        "Site": "string",
+        "SitePurposePay": "string",
+        "Status": "string",
+        "StatusReasonCode": "string",
+        "SupplierSiteId": "string",
+        "TermDateBasis": "string",
+        "UpdateUnpaidInvoices": "string"
+
+      }
+    },
+    "postAccounts": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bank_acts_tbl",
+        "keyAttributes": "account_id"      }
+    },
+    "postBusinessClassification": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_bus_classifications_tbl",
+        "keyAttributes": "rowid"
+      }
+    },
+    "postContactAddress": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contact_add_tbl",
+        "keyAttributes": "supplier_contact_address_id"
+      }
+    },
+    "postContacts": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_contacts_tbl"
+      }
+    },
+    "postDFF": {
+      "type": "postCfs_smf_suppliers_dff_tbl"
+    },
+    "postRequests": {
+      "type": "postCfs_smf_requests_tbl"
+    },
+    "postSites": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_sites_tbl"
+      }
+    },
+    "postSupplier": {
+      "type": "postCfs_smf_supplier_header_tbl"
+    },
+    "postSupplierAddresses": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "postCfs_smf_address_tbl",
+        "keyAttributes": "supplier_address_id"
+      }
+    },
+    "ReadOnlyVariable": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "ReBankBranchId": {
+      "type": "any"
+    },
+    "ReBankId": {
+      "type": "any"
+    },
+    "requestId": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "requestIdForRollback": {
+      "type": "postCfs_smf_delete_tbls"
+    },
+    "requestStatus": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "ResubmittedOnDate": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar1": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar10": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar11": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar12": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar13": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar14": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar15": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar2": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar3": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar4": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar5": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar6": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar7": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar8": {
+      "type": "string"
+    },
+    "SearchPhoneCountryVar9": {
+      "type": "string"
+    },
+    "setIdVar": {
+      "type": "string"
+    },
+    "SourcePage": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "SubmissionConfirmationMsg": {
+      "type": "string"
+    },
+    "submitForApprovalClicked": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "SupplierAccountId": {
+      "type": "number",
+      "defaultValue": 1
+    },
+    "SupplierAddressId": {
+      "type": "number",
+      "defaultValue": 1
+    },
+    "SupplierBusinessClassificationId": {
+      "type": "number",
+      "defaultValue": 1
+    },
+    "SupplierContactAddressId": {
+      "type": "number",
+      "defaultValue": 1
+    },
+    "SupplierContactEmailValidation": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "SupplierContactId": {
+      "type": "number",
+      "defaultValue": 1
+    },
+    "SupplierSiteId": {
+      "type": "number",
+      "defaultValue": 1
+    },
+    "SupplierSiteRemittanceEmailValidation": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "SystemDate": {
+      "type": "string"
+    },
+    "triggerSmfApprovalWf": {
+      "type": "triggerSmfApprovalWf"
+    },
+    "validationsArray": {
+      "type": {
+          "ADDRESS1": "string",
+          "CITY": "string",
+          "COUNTRY": "string",
+          "COUNTY": "string",
+          "POSTAL_CODE": "string",
+        "PROVINCE": "string",
+        "STATE": "string"
+
+        },
+      "defaultValue": {
+        "COUNTRY": "Non-Mandatory",
+        "ADDRESS1": "Non-Mandatory",
+        "CITY": "Non-Mandatory",
+        "COUNTY": "Non-Mandatory",
+        "POSTAL_CODE": "Non-Mandatory",
+        "STATE": "Non-Mandatory",
+        "PROVINCE": "Non-Mandatory"
+      }
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.get11_13_18_05HcmCountriesLovQ": {
+      "endpoint": "get11_13_18_05HcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+
+    "@decorators.get1113185HcmCountriesLovQResponse": {
+      "endpoint": "get11_13_18_05HcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+    "@decorators.get1113185HcmCountriesLovQResponse2": {
+      "endpoint": "get11_13_18_05HcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+    "@decorators.get1113185HcmCountriesLovQResponse3": {
+      "endpoint": "get11_13_18_05HcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+    "@decorators.get1113185HcmCountriesLovQResponse4": {
+      "endpoint": "get11_13_18_05HcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+    "@decorators.get1113185HcmCountriesLovQResponse5": {
+      "endpoint": "get11_13_18_05HcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+    "@decorators.get1113185HcmCountriesLovQResponse6": {
+      "endpoint": "get11_13_18_05HcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+    "@decorators.get1113185HcmCountriesLovQResponse7": {
+      "endpoint": "get11_13_18_05HcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+    "@decorators.get1113185HcmCountriesLovQResponse8": {
+      "endpoint": "get11_13_18_05HcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+    "@decorators.getAccounts": {
+      "endpoint": "getExternalBankAccountsPayementInstrumentId",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getAddressValidations": {
+      "endpoint": "getAddressValidationsLookup",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getAllAddresses": {
+      "endpoint": "getAllAddresses",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getAllAddressesResponse2": {
+      "endpoint": "getAllAddresses",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getAllAddressesResponse3": {
+      "endpoint": "getAllAddresses",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getAllCashBankBranches": {
+      "endpoint": "getCashBankBranches",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getAllCashBanks": {
+      "endpoint": "getCashBanks",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getallContactStatusResponse": {
+      "endpoint": "getall_ContactStatus",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getAllCountriesLOV": {
+      "endpoint": "get11_13_18_05HcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+    "@decorators.getBusinessClassificationsLookupResponse2": {
+      "endpoint": "getBusinessClassificationsLookup",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getCashBankBranchesResponse6": {
+      "endpoint": "getCashBankBranches",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getCashBankBranchesResponse7": {
+      "endpoint": "getCashBankBranches",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getCashBanks": {
+      "endpoint": "getCashBanks",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getCashBanksResponse4": {
+      "endpoint": "getCashBanks",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getCashBanksResponse6": {
+      "endpoint": "getCashBanks",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getCfs_smf_configs": {
+      "endpoint": "getCfs_smf_configs",
+      "service": "atpEndpoints",
+      "path": "response"
+    },
+    "@decorators.getCountriesType": {
+      "endpoint": "getHcmCountriesLovQ",
+      "service": "oracleHcmEndpoints",
+      "path": "response"
+    },
+    "@decorators.getCurrenciesLOV": {
+      "endpoint": "getCurrenciesLOV",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getCurrenciesLOVResponse": {
+      "endpoint": "getCurrenciesLOV",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getDisbursementPaymentMethodsLOVResponse2": {
+      "endpoint": "getDisbursementPaymentMethodsLOV",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getGet_address_error_msg": {
+      "endpoint": "getGet_address_error_msg",
+      "service": "ordsEndpoints",
+      "path": "response"
+    },
+    "@decorators.getGet_bank_accts_error_msg": {
+      "endpoint": "getGet_bank_accts_error_msg",
+      "service": "ordsEndpoints",
+      "path": "response"
+    },
+    "@decorators.getGet_bus_classfications_error_msg": {
+      "endpoint": "getGet_bus_classfications_error_msg",
+      "service": "ordsEndpoints",
+      "path": "response"
+    },
+    "@decorators.getGet_contact_add_error_msg": {
+      "endpoint": "getGet_contact_add_error_msg",
+      "service": "ordsEndpoints",
+      "path": "response"
+    },
+    "@decorators.getGet_contacts_error_msg": {
+      "endpoint": "getGet_contacts_error_msg",
+      "service": "ordsEndpoints",
+      "path": "response"
+    },
+    "@decorators.getGet_sites_error_msg": {
+      "endpoint": "getGet_sites_error_msg",
+      "service": "ordsEndpoints",
+      "path": "response"
+    },
+    "@decorators.getGet_supplier_dff_error_msg": {
+      "endpoint": "getGet_supplier_dff_error_msg",
+      "service": "ordsEndpoints",
+      "path": "response"
+    },
+    "@decorators.getGet_supplier_header_error_msg": {
+      "endpoint": "getGet_supplier_header_error_msg",
+      "service": "ordsEndpoints",
+      "path": "response"
+    },
+    "@decorators.getIncomeTaxTypesLOV": {
+      "endpoint": "getPayablesIncomeTaxTypes",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getLookupCodesResponse": {
+      "endpoint": "getRemittanceAdviceDeliveryMethodLookup",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getLookupCodesResponse2": {
+      "endpoint": "getPayDateBasisLOV",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getLookupCodesResponse3": {
+      "endpoint": "getTermsDateBasisLookup",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getLookupCodesResponse4": {
+      "endpoint": "getCertifyingAgenciesLookup",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getLookupCodesResponse5": {
+      "endpoint": "getBusinessUnitsLookup",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getOneContact": {
+      "endpoint": "getOneContact",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getOneSupplierAddress": {
+      "endpoint": "getOneSupplierAddress",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getOneSupplierBusinessClassification": {
+      "endpoint": "getOneSupplierBusinessClassification",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getOneSupplierSite": {
+      "endpoint": "getOneSupplierSite",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getPayablesPaymentTermsResponse2": {
+      "endpoint": "getPayablesPaymentTerms",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getPayablesPaymentTermsType": {
+      "endpoint": "getPayablesPaymentTerms",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getProcurementBULookup": {
+      "endpoint": "getFinBusinessUnitsLOV",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getSiteDFF": {
+      "endpoint": "getSuppliersSupplierIdChildSitesSupplierSiteIdChildDFF",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getSupplierDFF": {
+      "endpoint": "getSuppliersSupplierIdChildDFF",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getSuppliersSupplierId": {
+      "endpoint": "getSuppliersSupplierId",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getSuppliersSupplierIdChildAddressesResponse3": {
+      "endpoint": "getSuppliersSupplierIdChildAddresses",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getSupplierUpdates": {
+      "endpoint": "getCfs_smf_supplier_header_tbl",
+      "service": "atpEndpoints",
+      "path": "response"
+    },
+    "@decorators.getTaxOrganizationTypeLookupResponse": {
+      "endpoint": "getTaxOrganizationTypeLookup",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "@decorators.getValues2Response": {
+      "endpoint": "getStatusReasonCodeLOV",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getValuesResponse4": {
+      "endpoint": "getCONSTYesNoLOV",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getValuesResponse5": {
+      "endpoint": "getLegalStructureLOV",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.getYesNoLOV": {
+      "endpoint": "getCONSTYesNoLOV",
+      "service": "oracleServiceVault",
+      "path": "response"
+    },
+    "@decorators.postCfs_smf_address_tbl": {
+      "endpoint": "postCfs_smf_address_tbl",
+      "service": "atpEndpoints",
+      "path": "response"
+    },
+    "@decorators.postCfs_smf_bank_acts_tbl": {
+      "endpoint": "postCfs_smf_bank_acts_tbl",
+      "service": "atpEndpoints",
+      "path": "response"
+    },
+    "@decorators.postCfs_smf_bus_classifications_tbl": {
+      "endpoint": "postCfs_smf_bus_classifications_tbl",
+      "service": "atpEndpoints",
+      "path": "response"
+    },
+    "@decorators.postCfs_smf_contact_add_tbl": {
+      "endpoint": "postCfs_smf_contact_add_tbl",
+      "service": "atpEndpoints",
+      "path": "response"
+    },
+    "@decorators.postCfs_smf_contacts_tbl": {
+      "endpoint": "postCfs_smf_contacts_tbl",
+      "service": "atpEndpoints",
+      "path": "response"
+    },
+    "@decorators.postCfs_smf_delete_tbls": {
+      "endpoint": "postCfs_smf_delete_tbls",
+      "service": "atpEndpoints",
+      "path": "request"
+    },
+    "@decorators.postCfs_smf_requests_tbl": {
+      "endpoint": "postCfs_smf_requests_tbl",
+      "service": "atpEndpoints",
+      "path": "request"
+    },
+    "@decorators.postCfs_smf_sites_tbl": {
+      "endpoint": "postCfs_smf_sites_tbl",
+      "service": "atpEndpoints",
+      "path": "response"
+    },
+    "@decorators.postCfs_smf_supplier_header_tbl": {
+      "endpoint": "postCfs_smf_supplier_header_tbl",
+      "service": "atpEndpoints",
+      "path": "request"
+    },
+    "@decorators.postCfs_smf_suppliers_dff_tbl": {
+      "endpoint": "postCfs_smf_suppliers_dff_tbl",
+      "service": "atpEndpoints",
+      "path": "response"
+    },
+    "@decorators.postGetSetBuMapping": {
+      "endpoint": "postGetSetBuMapping",
+      "service": "getSetBUMapping",
+      "path": "request"
+    },
+    "@decorators.triggerSmfApprovalWf": {
+      "endpoint": "postSmfApprovalWf",
+      "service": "ApprovalWorkflowTrigger",
+      "path": "response"
+    },
+    "get11_13_18_05HcmCountriesLovQ": {
+          "CountryName": "string",
+          "PhoneCountryCode": "string"
+    },
+    "get1113185HcmCountriesLovQResponse": {
+      "items": [
+        {
+          "CountryName": "string",
+          "TerritoryCode": "string"
+        }
+      ]
+    },
+    "get1113185HcmCountriesLovQResponse2": {
+      "items": [
+        {
+          "CountryName": "string",
+          "TerritoryCode": "string"
+        }
+      ]
+    },
+    "get1113185HcmCountriesLovQResponse3": {
+      "items": [
+        {
+          "AlternateTerritoryCode": "string",
+          "CountryName": "string",
+          "CurrencyCode": "string",
+          "TerritoryCode": "string"
+        }
+      ]
+    },
+    "get1113185HcmCountriesLovQResponse4": {
+      "items": [
+        {
+          "CountryName": "string",
+          "ObsoleteFlag": "boolean",
+          "PhoneCountryCode": "string",
+          "TerritoryCode": "string"
+        }
+      ]
+    },
+    "get1113185HcmCountriesLovQResponse5": {
+      "items": [
+        {
+          "CountryName": "string",
+          "TerritoryCode": "string"
+        }
+      ]
+    },
+    "get1113185HcmCountriesLovQResponse6": {
+      "items": [
+        {
+          "CountryName": "string",
+          "PhoneCountryCode": "string"
+        }
+      ]
+    },
+    "get1113185HcmCountriesLovQResponse7": {
+      "items": [
+        {
+          "CountryName": "string",
+          "PhoneCountryCode": "string",
+          "PhoneCountryCodeId": "number"
+        }
+      ]
+    },
+    "get1113185HcmCountriesLovQResponse8": {
+      "items": [
+        {
+          "CountryName": "string",
+          "PhoneCountryCode": "string",
+          "PhoneCountryCodeId": "number"
+        }
+      ]
+    },
+    "getAccounts": {
+      "AccountSuffix": "any",
+      "AccountType": "any",
+      "AgencyLocationCode": "any",
+      "AllowInternationalPaymentIndicator": "string",
+      "AlternateAccountName": "any",
+      "BankAccountId": "number",
+      "BankAccountName": "any",
+      "BankAccountNumber": "string",
+      "BankBranchIdentifier": "number",
+      "BankBranchName": "any",
+      "BankBranchNumber": "any",
+      "BankBranchPartyIndicator": "any",
+      "BankIdentifier": "number",
+      "BankName": "any",
+      "BankNumber": "any",
+      "BIC": "any",
+      "CheckDigits": "any",
+      "CountryCode": "string",
+      "CurrencyCode": "any",
+      "EndDate": "string",
+      "IBAN": "any",
+      "Intent": "any",
+      "links": [
+        {
+          "href": "string",
+          "kind": "string",
+          "name": "string",
+          "properties": {
+            "changeIndicator": "string"
+          },
+          "rel": "string"
+        }
+      ],
+      "PartyId": "any",
+      "PersonId": "any",
+      "yondaryAccountReference": "any",
+      "StartDate": "string",
+      "VendorId": "any"
+    },
+    "getAddressValidations": {
+          "CreatedBy": "string",
+          "CreationDate": "string",
+          "Description": "string",
+          "DisplaySequence": "number",
+          "EnabledFlag": "string",
+          "EndDateActive": "any",
+          "LastUpdateDate": "string",
+          "LastUpdatedBy": "string",
+          "LastUpdateLogin": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "rel": "string"
+            }
+          ],
+          "LookupCode": "string",
+          "Meaning": "string",
+          "StartDateActive": "any",
+          "Tag": "any"
+    },
+    "getAllAddresses": {
+          "AddressName": "string",
+          "CreatedBy": "string",
+          "CreationDate": "string",
+          "LastUpdateDate": "string",
+          "LastUpdatedBy": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "properties": {
+                "changeIndicator": "string"
+              },
+              "rel": "string"
+            }
+          ],
+          "SupplierAddressId": "number",
+          "SupplierContactAddressId": "number"
+        },
+    "getAllAddressesResponse2": {
+      "items": [
+        {
+          "AddressName": "string",
+          "SupplierAddressId": "number",
+          "SupplierContactAddressId": "number"
+        }
+      ]
+    },
+    "getAllAddressesResponse3": {
+      "items": [
+        {
+          "AddressName": "string",
+          "SupplierAddressId": "number",
+          "SupplierContactAddressId": "number"
+        }
+      ]
+    },
+    "getAllCashBankBranches": [
+        {
+          "BankBranchName": "string",
+          "BankBranchNameAlt": "any",
+          "BankBranchType": "any",
+          "BankName": "string",
+          "BankNameAlt": "any",
+          "BankNumber": "any",
+          "BankPartyNumber": "string",
+          "BranchNumber": "string",
+          "BranchNumberType": "any",
+          "BranchPartyId": "number",
+          "BranchPartyNumber": "string",
+          "CountryName": "string",
+          "CreatedBy": "string",
+          "CreationDate": "string",
+          "Description": "string",
+          "EDIIdNumber": "any",
+          "EDILocation": "any",
+          "EFTSWIFTCode": "any",
+          "EFTUserNumber": "any",
+          "LastUpdateDate": "string",
+          "LastUpdatedBy": "string",
+          "LastUpdateLogin": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "properties": {
+                "changeIndicator": "string"
+              },
+              "rel": "string"
+            }
+          ],
+          "RFCIdentifier": "any"
+        }
+      ],
+    "getAllCashBanks": [
+        {
+          "BankName": "string",
+          "BankNameAlt": "any",
+          "BankNumber": "any",
+          "BankPartyId": "number",
+          "BankPartyNumber": "string",
+          "CountryName": "string",
+          "CreatedBy": "string",
+          "CreationDate": "string",
+          "Description": "any",
+          "LastUpdateDate": "string",
+          "LastUpdatedBy": "string",
+          "LastUpdateLogin": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "properties": {
+                "changeIndicator": "string"
+              },
+              "rel": "string"
+            }
+          ],
+          "TaxpayerIdNumber": "any",
+          "TaxRegistrationNumber": "any"
+        }
+      ],
+    "getallContactStatusResponse": {
+      "items": [
+        {
+          "status": "string"
+        }
+      ]
+    },
+    "getAllCountriesLOV": [
+        {
+          "AlternateTerritoryCode": "string",
+          "CountryName": "string",
+          "CurrencyCode": "string",
+          "Description": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "rel": "string"
+            }
+          ],
+          "NlsTerritory": "string",
+          "ObsoleteFlag": "boolean",
+          "PhoneCountryCode": "string",
+          "PhoneCountryCodeId": "number",
+          "TerritoryCode": "string"
+        }
+      ],
+    "getBusinessClassificationsLookupResponse2": {
+      "items": [
+        {
+          "Meaning": "string"
+        }
+      ]
+    },
+    "getCashBankBranchesResponse6": {
+      "items": [
+        {
+          "BankBranchName": "string",
+          "BranchNumber": "string",
+          "BranchPartyId": "number",
+          "CountryName": "string"
+        }
+      ]
+    },
+    "getCashBankBranchesResponse7": {
+      "items": [
+        {
+          "BankBranchName": "string",
+          "BankName": "string",
+          "BranchNumber": "string",
+          "BranchPartyId": "number",
+          "CountryName": "string"
+
+        }
+      ]
+    },
+    "getCashBanks": {
+      "items": [
+        {
+          "BankName": "string",
+          "BankNumber": "string",
+          "BankPartyId": "number"
+        }
+      ]
+    },
+    "getCashBanksResponse4": {
+      "items": [
+        {
+          "BankName": "string",
+          "BankNameAlt": "any",
+          "BankNumber": "any",
+          "BankPartyId": "number",
+          "BankPartyNumber": "string",
+          "CountryName": "string",
+          "Description": "any"
+        }
+      ]
+    },
+    "getCashBanksResponse6": {
+      "items": [
+        {
+          "BankName": "string",
+          "BankNumber": "string",
+          "BankPartyId": "number",
+          "CountryName": "string"
+
+        }
+      ]
+    },
+    "getCfs_smf_configs": [
+        {
+          "config_code": "string",
+          "config_value": "string",
+          "links": [
+            {
+              "href": "string",
+              "rel": "string"
+            }
+          ]
+        }
+      ],
+    "getCountriesType": 
+      {
+            "AlternateTerritoryCode": "string",
+            "CountryName": "string",
+            "CurrencyCode": "string",
+            "Description": "string",
+            "NlsTerritory": "string",
+            "ObsoleteFlag": "boolean",
+            "PhoneCountryCode": "string",
+            "PhoneCountryCodeId": "number",
+            "TerritoryCode": "string"
+      }
+    ,
+    "getCurrenciesLOV": [
+        {
+          "ActiveDate": "any",
+          "CurrencyCode": "string",
+          "CurrencyFlag": "string",
+          "CurrencyFormat": "string",
+          "CurrencyFormatWithCode": "string",
+          "CurrencyFormatWithSymbol": "string",
+          "Description": "string",
+          "EnabledFlag": "string",
+          "EndDateActive": "string",
+          "ExtendedPrecision": "number",
+          "IssuingTerritoryCode": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "rel": "string"
+            }
+          ],
+          "Name": "string",
+          "Precision": "number",
+          "StartDateActive": "string",
+          "Symbol": "string"
+        }
+      ],
+    "getCurrenciesLOVResponse": {
+      "items": [
+        {
+          "CurrencyCode": "string"
+        }
+      ]
+    },
+    "getDisbursementPaymentMethodsLOVResponse2": {
+      "items": [
+        {
+          "PaymentMethodCode": "string",
+          "PaymentMethodName": "string"
+        }
+      ]
+    },
+    "getGet_address_error_msg": {
+          "action_requested": "string",
+          "address_name": "string",
+          "api_response": "string"
+    },
+    "getGet_bank_accts_error_msg": {
+          "account_number": "string",
+          "action_requested": "string",
+          "api_response": "string"
+    },
+    "getGet_bus_classfications_error_msg": {
+            "action_requested": "string",
+            "api_response": "string",
+            "classification": "string"
+      },
+    "getGet_contact_add_error_msg": {
+      "address_name": "string",
+      "action_requested": "string",
+      "api_response": "string"
+    },
+    "getGet_contacts_error_msg": {
+          "action_requested": "string",
+          "api_response": "string",
+      "last_first_name": "string"
+    },
+    "getGet_sites_error_msg": {
+          "action_requested": "string",
+          "api_response": "string",
+          "supplier_site": "string"
+    },
+    "getGet_supplier_dff_error_msg": {
+            "api_response": "any",
+            "request_id": "number",
+            "supplier_name": "string"
+      },
+    "getGet_supplier_header_error_msg": {
+          "api_response": "string",
+          "supplier_name": "string"
+    },
+    "getIncomeTaxTypesLOV": [
+        {
+          "createdBy": "string",
+          "creationDate": "string",
+          "description": "string",
+          "inactiveDate": "string",
+          "incomeTaxType": "string",
+          "lastUpdateDate": "string",
+          "lastUpdatedBy": "string",
+          "lastUpdateLogin": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "properties": {
+                "changeIndicator": "string"
+              },
+              "rel": "string"
+            }
+          ]
+        }
+      ],
+    "getLookupCodesResponse": {
+      "items": [
+        {
+          "LookupCode": "string",
+          "Meaning": "string"
+        }
+      ]
+    },
+    "getLookupCodesResponse2": {
+      "items": [
+        {
+          "Description": "string",
+          "Meaning": "string"
+        }
+      ]
+    },
+    "getLookupCodesResponse3": {
+      "items": [
+        {
+          "Meaning": "string"
+        }
+      ]
+    },
+    "getLookupCodesResponse4": {
+      "items": [
+        {
+          "Meaning": "string"
+        }
+      ]
+    },
+    "getLookupCodesResponse5": {
+      "items": [
+        {
+          "Meaning": "string"
+        }
+      ]
+    },
+    "getOneContact": {
+      "AdministrativeContactFlag": "boolean",
+      "CreatedBy": "string",
+      "CreationDate": "string",
+      "Email": "string",
+      "FaxAreaCode": "any",
+      "FaxCountryCode": "any",
+      "FaxNumber": "any",
+      "FirstName": "string",
+      "InactiveDate": "any",
+      "JobTitle": "any",
+      "LastName": "string",
+      "LastUpdateDate": "string",
+      "LastUpdatedBy": "string",
+      "links": [
+        {
+          "href": "string",
+          "kind": "string",
+          "name": "string",
+          "properties": {
+            "changeIndicator": "string"
+          },
+          "rel": "string"
+        }
+      ],
+      "MiddleName": "any",
+      "MobileAreaCode": "any",
+      "MobileCountryCode": "any",
+      "MobileNumber": "any",
+      "PersonProfileId": "number",
+      "PhoneAreaCode": "any",
+      "PhoneCountryCode": "any",
+      "PhoneExtension": "any",
+      "PhoneNumber": "any",
+      "Salutation": "any",
+      "SalutationCode": "any",
+      "Status": "string",
+      "SupplierContactId": "number"
+    },
+    "getOneSupplierAddress": {
+      "AdditionalAddressAttribute1": "any",
+      "AdditionalAddressAttribute2": "any",
+      "AdditionalAddressAttribute3": "any",
+      "AdditionalAddressAttribute4": "any",
+      "AdditionalAddressAttribute5": "any",
+      "Addressee": "any",
+      "AddressLine1": "string",
+      "AddressLine2": "any",
+      "AddressLine3": "any",
+      "AddressLine4": "any",
+      "AddressName": "string",
+      "AddressPurposeOrderingFlag": "boolean",
+      "AddressPurposeRemitToFlag": "boolean",
+      "AddressPurposeRFQOrBiddingFlag": "boolean",
+      "Building": "any",
+      "City": "string",
+      "Country": "string",
+      "CountryCode": "string",
+      "County": "string",
+      "CreatedBy": "string",
+      "CreationDate": "string",
+      "Email": "any",
+      "FaxAreaCode": "any",
+      "FaxCountryCode": "any",
+      "FaxNumber": "any",
+      "FloorNumber": "any",
+      "GlobalLocationNumber": "any",
+      "InactiveDate": "string",
+      "Language": "any",
+      "LanguageCode": "any",
+      "LastUpdateDate": "string",
+      "LastUpdatedBy": "string",
+      "links": [
+        {
+          "href": "string",
+          "kind": "string",
+          "name": "string",
+          "properties": {
+            "changeIndicator": "string"
+          },
+          "rel": "string"
+        }
+      ],
+      "PhoneAreaCode": "any",
+      "PhoneCountryCode": "any",
+      "PhoneExtension": "any",
+      "PhoneNumber": "any",
+      "PhoneticAddress": "any",
+      "PostalCode": "string",
+      "PostalCodeExtension": "any",
+      "Province": "any",
+      "State": "string",
+      "Status": "string",
+      "SupplierAddressId": "number"
+    },
+    "getOneSupplierBusinessClassification": {
+      "CertificateExpirationDate": "string",
+      "CertificateNumber": "string",
+      "CertificateStartDate": "any",
+      "CertifyingAgency": "string",
+      "CertifyingAgencyId": "number",
+      "Classification": "string",
+      "ClassificationCode": "string",
+      "ClassificationId": "number",
+      "ConfirmedOnDate": "any",
+      "CreatedBy": "string",
+      "CreationDate": "string",
+      "LastUpdateDate": "string",
+      "LastUpdatedBy": "string",
+      "links": [
+        {
+          "href": "string",
+          "kind": "string",
+          "name": "string",
+          "properties": {
+            "changeIndicator": "string"
+          },
+          "rel": "string"
+        }
+      ],
+      "Notes": "any",
+      "OtherCertifyingAgency": "string",
+      "ProvidedByContactId": "any",
+      "ProvidedByEmail": "any",
+      "ProvidedByUserFirstName": "any",
+      "ProvidedByUserLastName": "any",
+      "Status": "string",
+      "Subclassification": "any",
+      "SubclassificationCode": "any"
+    },
+    "getOneSupplierSite": {
+      "AcknowledgmentWithinDays": "any",
+      "AgingOnsetPoint": "any",
+      "AgingOnsetPointCode": "any",
+      "AgingPeriodDays": "any",
+      "AllNewPurchasingDocumentsHoldBy": "any",
+      "AllNewPurchasingDocumentsHoldDate": "any",
+      "AllowSubstituteReceipts": "any",
+      "AllowSubstituteReceiptsCode": "any",
+      "AllowUnorderedReceiptsFlag": "any",
+      "AlternatePaySite": "any",
+      "AlternatePaySiteId": "any",
+      "AlternateSiteName": "any",
+      "AlwaysTakeDiscount": "string",
+      "AlwaysTakeDiscountCode": "string",
+      "AmountTolerances": "any",
+      "AmountTolerancesId": "any",
+      "B2BCommunicationMethod": "string",
+      "B2BCommunicationMethodCode": "string",
+      "B2BSupplierSiteCode": "any",
+      "BankChargeDeductionType": "string",
+      "BankChargeDeductionTypeCode": "string",
+      "BuyerManagedTransportation": "any",
+      "BuyerManagedTransportationCode": "any",
+      "Carrier": "any",
+      "CarrierId": "any",
+      "CommunicationMethod": "any",
+      "CommunicationMethodCode": "any",
+      "ConsumptionAdviceFrequency": "any",
+      "ConsumptionAdviceFrequencyCode": "any",
+      "ConsumptionAdviceSummary": "any",
+      "ConsumptionAdviceSummaryCode": "any",
+      "CountryOfOrigin": "any",
+      "CountryOfOriginCode": "any",
+      "CreatedBy": "string",
+      "CreateDebitMemoFromReturnFlag": "boolean",
+      "CreateInterestInvoices": "string",
+      "CreateInterestInvoicesCode": "string",
+      "CreationDate": "string",
+      "CustomerNumber": "any",
+      "EarlyReceiptToleranceInDays": "any",
+      "Email": "any",
+      "ExcludeFreightFromDiscount": "string",
+      "ExcludeFreightFromDiscountCode": "string",
+      "ExcludeTaxFromDiscount": "string",
+      "ExcludeTaxFromDiscountCode": "string",
+      "FaxAreaCode": "any",
+      "FaxCountryCode": "any",
+      "FaxNumber": "any",
+      "FOB": "any",
+      "FOBCode": "any",
+      "FreightTerms": "any",
+      "FreightTermsCode": "any",
+      "GaplessInvoiceNumberingFlag": "boolean",
+      "HoldAllInvoicesFlag": "boolean",
+      "HoldAllNewPurchasingDocumentsFlag": "boolean",
+      "HoldUnmatchedInvoices": "string",
+      "HoldUnmatchedInvoicesCode": "string",
+      "HoldUnvalidatedInvoicesFlag": "boolean",
+      "InactiveDate": "any",
+      "IncomeTaxReportingSiteFlag": "boolean",
+      "InvoiceAmountLimit": "any",
+      "InvoiceChannel": "any",
+      "InvoiceChannelCode": "any",
+      "InvoiceCurrency": "any",
+      "InvoiceCurrencyCode": "any",
+      "InvoiceMatchOption": "any",
+      "InvoiceMatchOptionCode": "any",
+      "InvoiceSummaryLevel": "any",
+      "InvoiceSummaryLevelCode": "any",
+      "LastUpdateDate": "string",
+      "LastUpdatedBy": "string",
+      "LateReceiptToleranceInDays": "any",
+      "links": [
+        {
+          "href": "string",
+          "kind": "string",
+          "name": "string",
+          "properties": {
+            "changeIndicator": "string"
+          },
+          "rel": "string"
+        }
+      ],
+      "MatchApprovalLevel": "any",
+      "MatchApprovalLevelCode": "any",
+      "ModeOfTransport": "any",
+      "ModeOfTransportCode": "any",
+      "OverReceiptAction": "any",
+      "OverReceiptActionCode": "any",
+      "OverReceiptTolerance": "any",
+      "PayDateBasis": "any",
+      "PayDateBasisCode": "any",
+      "PayGroup": "any",
+      "PayGroupCode": "any",
+      "PaymentCurrency": "any",
+      "PaymentCurrencyCode": "any",
+      "PaymentHoldDate": "any",
+      "PaymentHoldReason": "any",
+      "PaymentPriority": "any",
+      "PaymentTerms": "any",
+      "PaymentTermsDateBasis": "any",
+      "PaymentTermsDateBasisCode": "any",
+      "PaymentTermsId": "any",
+      "PayOnReceiptFlag": "any",
+      "PayOnUseFlag": "any",
+      "ProcurementBU": "string",
+      "ProcurementBUId": "number",
+      "PurchasingHoldReason": "any",
+      "QuantityTolerances": "any",
+      "QuantityTolerancesId": "any",
+      "ReceiptDateException": "any",
+      "ReceiptDateExceptionCode": "any",
+      "ReceiptRouting": "any",
+      "ReceiptRoutingId": "any",
+      "RequiredAcknowledgment": "any",
+      "RequiredAcknowledgmentCode": "any",
+      "SellingCompanyIdentifier": "any",
+      "ServiceLevel": "any",
+      "ServiceLevelCode": "any",
+      "ShipToException": "any",
+      "ShipToExceptionCode": "any",
+      "SitePurposePayFlag": "boolean",
+      "SitePurposePrimaryPayFlag": "any",
+      "SitePurposeProcurementCardFlag": "boolean",
+      "SitePurposePurchasingFlag": "any",
+      "SitePurposeSourcingOnlyFlag": "any",
+      "Status": "string",
+      "SupplierAddressId": "number",
+      "SupplierAddressName": "string",
+      "SupplierSite": "string",
+      "SupplierSiteId": "number"
+    },
+    "getPayablesPaymentTermsResponse2": {
+      "items": [
+        {
+          "name": "string",
+          "termsId": "number"
+        }
+      ]
+    },
+    "getPayablesPaymentTermsType": [{
+          "name": "string",
+          "termsId": "number"
+    }],
+    "getProcurementBULookup": {
+          "ActiveFlag": "boolean",
+          "BusinessUnitId": "number",
+          "BusinessUnitName": "string",
+          "LegalEntityId": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "rel": "string"
+            }
+          ],
+          "LocationId": "number",
+          "ManagerId": "any",
+          "PrimaryLedgerId": "string",
+          "ProfitCenterFlag": "boolean"
+    },
+    "getSiteDFF": {
+          "__FLEX_Context": "any",
+          "__FLEX_Context_DisplayValue": "any",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "properties": {
+                "changeIndicator": "string"
+              },
+              "rel": "string"
+            }
+          ],
+          "nuclearQualified": "any",
+          "statusReasonCode": "string",
+          "vendorCode": "any",
+          "VendorSiteId": "number",
+          "vendorSuffix": "any"
+    },
+    "getSupplierDFF": {
+          "__FLEX_Context": "any",
+          "__FLEX_Context_DisplayValue": "any",
+          "additionalInsured": "any",
+          "autoLiabilityExpirationDate": "any",
+          "autoLiabilityValue": "any",
+          "employersLiabilityExpirationDa": "string",
+          "employersLiabilityValue": "string",
+          "environPollutionLiabilityExpir": "any",
+          "environPollutionLiabilityValue": "any",
+          "excessUmbrellaLiabilityExpirat": "string",
+          "excessUmbrellaLiabilityValue": "string",
+          "exelonPoc": "any",
+          "generalLiabilityExpirationDate": "any",
+          "generalLiabilityValue": "any",
+          "legalStructure": "string",
+          "miscellaneousInsuranceExpirati": "any",
+          "miscellaneousLiabilityInsuranc": "any",
+          "policiesArePrimary": "any",
+          "professionalLiabilityExpiratio": "string",
+          "professionalLiabilityValue": "string",
+          "sicCode": "any",
+          "suppliersInsuranceProvidedWaiv": "any",
+          "VendorId": "number",
+          "workersCompLiabilityExpiration": "any",
+          "workersCompLiabilityValue": "any"
+    },
+    "getSuppliersSupplierId": {
+      "Alias": "any",
+      "AlternateName": "any",
+      "BusinessClassificationNotApplicableFlag": "any",
+      "BusinessRelationship": "string",
+      "BusinessRelationshipCode": "string",
+      "ChiefExecutiveName": "any",
+      "ChiefExecutiveTitle": "any",
+      "CorporateWebsite": "any",
+      "CreatedBy": "string",
+      "CreationDate": "string",
+      "CreationSource": "string",
+      "CreationSourceCode": "string",
+      "CurrentFiscalYearPotentialRevenue": "any",
+      "CustomerNumber": "any",
+      "DataFoxCompanyName": "any",
+      "DataFoxCompanyPrimaryURL": "any",
+      "DataFoxCountry": "any",
+      "DataFoxEIN": "any",
+      "DataFoxId": "any",
+      "DataFoxLastSyncDate": "any",
+      "DataFoxLegalName": "any",
+      "DataFoxNAICSCode": "any",
+      "DataFoxScore": "any",
+      "DUNSNumber": "any",
+      "FederalIncomeTaxType": "any",
+      "FederalIncomeTaxTypeCode": "any",
+      "FederalReportableFlag": "boolean",
+      "FiscalYearEndMonth": "any",
+      "FiscalYearEndMonthCode": "any",
+      "InactiveDate": "string",
+      "IndustryCategory": "any",
+      "IndustrySubcategory": "any",
+      "LastUpdateDate": "string",
+      "LastUpdatedBy": "string",
+      "links": [
+        {
+          "href": "string",
+          "kind": "string",
+          "name": "string",
+          "properties": {
+            "changeIndicator": "string"
+          },
+          "rel": "string"
+        }
+      ],
+      "MissionStatement": "any",
+      "NameControl": "any",
+      "NationalInsuranceNumber": "any",
+      "NationalInsuranceNumberExistsFlag": "boolean",
+      "OBNEnabledFlag": "any",
+      "OneTimeSupplierFlag": "any",
+      "ParentSupplier": "string",
+      "ParentSupplierId": "number",
+      "ParentSupplierNumber": "string",
+      "PreferredFunctionalCurrency": "any",
+      "PreferredFunctionalCurrencyCode": "any",
+      "PrincipalName": "any",
+      "PrincipalTitle": "any",
+      "RegistryId": "string",
+      "StandardIndustryClass": "any",
+      "StateReportableFlag": "any",
+      "Status": "string",
+      "Supplier": "string",
+      "SupplierId": "number",
+      "SupplierNumber": "string",
+      "SupplierPartyId": "number",
+      "SupplierType": "string",
+      "SupplierTypeCode": "string",
+      "TaxOrganizationType": "string",
+      "TaxOrganizationTypeCode": "string",
+      "TaxpayerCountry": "string",
+      "TaxpayerCountryCode": "string",
+      "TaxpayerId": "string",
+      "TaxpayerIdExistsFlag": "boolean",
+      "TaxRegistrationCountry": "any",
+      "TaxRegistrationCountryCode": "any",
+      "TaxRegistrationNumber": "any",
+      "TaxReportingName": "any",
+      "UseWithholdingTaxFlag": "any",
+      "VerificationDate": "any",
+      "WithholdingTaxGroup": "any",
+      "WithholdingTaxGroupId": "any",
+      "YearEstablished": "any",
+      "YearIncorporated": "any"
+    },
+    "getSuppliersSupplierIdChildAddressesResponse3": {
+      "items": [
+        {
+          "AddressName": "string",
+          "SupplierAddressId": "number"
+        }
+      ]
+    },
+    "getSupplierUpdates": {
+      "alias": "string",
+      "alternate_name": "string",
+      "business_relationship": "string",
+          "change_description": "string",
+      "classification_not_applicable_flag": "string",
+      "created_by": "string",
+      "creation_date": "string",
+      "federal_income_taxtype": "any",
+      "federal_income_taxtype_code": "any",
+      "federal_reportable_flag": "string",
+      "inactive_date": "any",
+      "last_update_date": "string",
+      "last_updated_by": "string",
+      "links": [
+        {
+          "href": "string",
+          "rel": "string"
+        }
+      ],
+      "parent_supplier": "any",
+      "party_id": "number",
+      "re_alias": "any",
+          "re_alternate_name": "any",
+      "re_federal_income_taxtype": "any",
+      "re_federal_income_taxtype_code": "any",
+      "re_federal_reportable_flag": "any",
+      "re_inactive_date": "any",
+      "re_parent_supplier": "any",
+      "re_state_reportable_flag": "any",
+      "re_supplier_name": "any",
+          "re_tax_organization_type": "any",
+          "re_tax_registration_country": "any",
+          "re_tax_registration_number": "any",
+          "re_taxpayer_country": "any",
+          "re_taxpayer_id": "any",
+      "request_id": "number",
+      "state_reportable_flag": "string",
+      "status": "string",
+      "supplier_id": "number",
+      "supplier_name": "string",
+      "supplier_number": "string",
+      "supplier_type": "string",
+      "tax_organization_type": "string",
+      "tax_registration_country": "any",
+      "tax_registration_number": "any",
+      "taxpayer_country": "string",
+      "taxpayer_id": "string"
+    },
+    "getTaxOrganizationTypeLookupResponse": {
+      "items": [
+        {
+          "DisplayedField": "string",
+          "LookupCode": "string"
+        }
+      ]
+    },
+    "getValues2Response": {
+      "items": [
+        {
+          "Value": "string"
+        }
+      ]
+    },
+    "getValuesResponse4": {
+      "items": [
+        {
+          "Value": "string"
+        }
+      ]
+    },
+    "getValuesResponse5": {
+      "items": [
+        {
+          "EnabledFlag": "string",
+          "Value": "string"
+        }
+      ]
+    },
+    "getYesNoLOV": [
+        {
+          "AccountType": "any",
+          "ControlAccount": "any",
+          "CreatedBy": "string",
+          "CreationDate": "string",
+          "Description": "string",
+          "DetailBudgetingAllowed": "any",
+          "DetailPostingAllowed": "any",
+          "EnabledFlag": "string",
+          "EndDateActive": "any",
+          "ExternalDataSource": "any",
+          "FinancialCategory": "any",
+          "IndependentValue": "any",
+          "IndependentValueDate": "any",
+          "IndependentValueNumber": "any",
+          "IndependentValueTimestamp": "any",
+          "LastUpdateDate": "string",
+          "LastUpdatedBy": "string",
+          "links": [
+            {
+              "href": "string",
+              "kind": "string",
+              "name": "string",
+              "rel": "string"
+            }
+          ],
+          "ReconciliationFlag": "any",
+          "SortOrder": "any",
+          "StartDateActive": "any",
+          "SummaryFlag": "any",
+          "TranslatedValue": "any",
+          "Value": "string",
+          "ValueDate": "any",
+          "ValueId": "number",
+          "ValueNumber": "any",
+          "ValueTimestamp": "any"
+        }
+      ],
+    "postCfs_smf_address_tbl": {
+      "action_requested": "string",
+      "address_line1": "any",
+      "address_line2": "any",
+      "address_line3": "any",
+      "address_line4": "any",
+      "address_name": "string",
+      "address_purpose_remit_to_flag": "any",
+      "addressee": "any",
+      "building": "any",
+      "city": "string",
+      "country": "string",
+      "country_code": "any",
+      "county": "any",
+      "created_by": "any",
+      "creation_date": "any",
+      "email": "any",
+      "fax_area_code": "any",
+      "fax_country_code": "any",
+      "fax_number": "any",
+      "floor_number": "any",
+      "last_update_date": "any",
+      "last_updated_by": "any",
+      "phone_area_code": "any",
+      "phone_country_code": "any",
+      "phone_extension": "any",
+      "phone_number": "any",
+      "postal_code": "any",
+      "postal_code_extension": "any",
+      "province": "any",
+      "re_address_line1": "any",
+      "re_address_line2": "any",
+      "re_address_line3": "any",
+      "re_address_line4": "any",
+      "re_address_name": "any",
+      "re_address_purpose_remit_to_flag": "any",
+      "re_addressee": "any",
+      "re_building": "any",
+      "re_city": "any",
+      "re_country": "any",
+      "re_country_code": "any",
+      "re_county": "any",
+      "re_email": "any",
+      "re_fax_area_code": "any",
+      "re_fax_country_code": "any",
+      "re_fax_number": "any",
+      "re_floor_number": "any",
+      "re_phone_area_code": "any",
+      "re_phone_country_code": "any",
+      "re_phone_extension": "any",
+      "re_phone_number": "any",
+      "re_postal_code": "any",
+      "re_postal_code_extension": "any",
+      "re_province": "any",
+      "re_state": "any",
+      "record_status": "any",
+      "request_id": "number",
+      "state": "any",
+      "supplier_address_id": "number",
+      "supplier_id": "number"
+
+    },
+    "postCfs_smf_bank_acts_tbl": {
+      "account_id": "string",
+      "account_number": "any",
+      "action_requested": "any",
+      "allow_international_payments": "any",
+      "api_response": "any",
+      "bank": "any",
+      "bank_branch": "any",
+      "bank_branch_id": "any",
+      "bank_id": "any",
+      "country": "any",
+      "created_by": "any",
+      "creation_date": "any",
+      "currency": "any",
+      "iban": "any",
+      "inactive_on": "any",
+      "last_update_date": "any",
+      "last_updated_by": "any",
+      "primary_flag": "any",
+      "re_account_number": "any",
+      "re_allow_international_payments": "any",
+      "re_bank": "any",
+      "re_bank_branch": "any",
+      "re_bank_branch_id": "any",
+      "re_bank_id": "any",
+      "re_country": "any",
+      "re_currency": "any",
+      "re_iban": "any",
+      "re_inactive_on": "any",
+      "re_primary_flag": "any",
+      "re_update_unpaid_invoices": "any",
+      "record_status": "any",
+      "request_id": "number",
+      "supplier_id": "number",
+      "supplier_site": "any",
+      "supplier_site_id": "number",
+      "update_unpaid_invoices": "any",
+      "re_bank__branch_id": "any"
+
+    },
+    "postCfs_smf_bus_classifications_tbl": {
+      "action_requested": "string",
+      "certificate": "string",
+      "certifying_agency": "string",
+      "certifying_agency_id": "number",
+      "classification": "string",
+      "classification_applicable_flag": "any",
+      "classification_id": "number",
+      "created_by": "string",
+      "creation_date": "any",
+      "expiration_date": "any",
+      "last_update_date": "any",
+      "last_updated_by": "string",
+      "other_certifying_agency": "string",
+      "re_certificate": "string",
+      "re_certifying_agency": "string",
+      "re_certifying_agency_id": "number",
+      "re_classification": "string",
+      "re_expiration_date": "any",
+      "re_other_certifying_agency": "string",
+      "re_status": "string",
+      "record_status": "any",
+      "request_id": "number",
+      "status": "string",
+      "supplier_id": "number"
+
+    },
+    "postCfs_smf_contact_add_tbl": {
+      "action_requested": "any",
+      "address_name": "any",
+      "created_by": "any",
+      "creation_date": "any",
+      "email": "any",
+      "last_update_date": "any",
+      "last_updated_by": "any",
+      "record_status": "any",
+      "request_id": "number",
+      "supplier_contact_address_id": "number",
+      "supplier_contact_id": "number",
+      "supplier_id": "number"
+
+    },
+    "postCfs_smf_contacts_tbl": {
+      "action_requested": "any",
+      "address_name": "any",
+      "administrative_contact_flag": "any",
+      "contact_purpose": "any",
+      "created_by": "any",
+      "creation_date": "any",
+      "email": "any",
+      "fax_area_code": "any",
+      "fax_country_code": "any",
+      "fax_number": "any",
+      "first_name": "any",
+      "inactive_date": "any",
+      "job_title": "any",
+      "last_name": "any",
+      "last_update_date": "any",
+      "last_updated_by": "any",
+      "mobile_area_code": "any",
+      "mobile_country_code": "any",
+      "mobile_number": "any",
+      "phone_area_code": "any",
+      "phone_country_code": "any",
+      "phone_extension": "any",
+      "phone_number": "any",
+      "re_address_name": "any",
+      "re_administrative_contact_flag": "any",
+      "re_email": "any",
+      "re_fax_area_code": "any",
+      "re_fax_country_code": "any",
+      "re_fax_number": "any",
+      "re_first_name": "any",
+      "re_inactive_date": "any",
+      "re_job_title": "any",
+      "re_last_name": "any",
+      "re_mobile_area_code": "any",
+      "re_mobile_country_code": "any",
+      "re_mobile_number": "any",
+      "re_phone_area_code": "any",
+      "re_phone_country_code": "any",
+      "re_phone_extension": "any",
+      "re_phone_number": "any",
+      "re_salutation": "any",
+      "re_salutation_code": "any",
+      "re_status": "any",
+      "record_status": "any",
+      "request_id": "number",
+      "salutation": "any",
+      "salutation_code": "any",
+      "status": "string",
+      "supplier_contact_id": "number",
+      "supplier_id": "number"
+
+    },
+    "postCfs_smf_delete_tbls": {
+      "p_in_request_id": "any"
+    },
+    "postCfs_smf_requests_tbl": {
+      "approval_date": "any",
+      "approved_rejected_name": "any",
+      "approver": "any",
+      "approver_comment": "any",
+      "created_by": "any",
+      "creation_date": "any",
+      "last_update_date": "any",
+      "last_updated_by": "any",
+      "request_date": "any",
+      "request_id": "number",
+      "requestor": "any",
+      "requestor_name": "any",
+      "resubmitted_on": "any",
+      "status": "any",
+      "supplier_id": "string",
+      "request_type": "string"
+
+    },
+    "postCfs_smf_sites_tbl": {
+      "action_requested": "any",
+      "alternate_site_name": "any",
+      "bill_to_bu": "any",
+      "bill_to_bu_id": "any",
+      "client_bu": "any",
+      "client_bu_id": "any",
+      "created_by": "any",
+      "creation_date": "any",
+      "hold_all_invoices_flag": "any",
+      "hold_unvalidated_invoices_flag": "any",
+      "inactive_date": "any",
+      "income_tax_reporting_site_flag": "any",
+      "invoice_amount_limit": "any",
+      "invoice_currency_code": "any",
+      "last_update_date": "any",
+      "last_updated_by": "any",
+      "nuclear_qualified": "any",
+      "pay_date_basis": "any",
+      "pay_date_basis_code": "any",
+      "payee_id": "any",
+      "payment_currency_code": "any",
+      "payment_hold_reason": "any",
+      "payment_method": "any",
+      "payment_terms": "any",
+      "payment_terms_date_basis": "any",
+      "payment_terms_date_basis_code": "any",
+      "payment_terms_id": "any",
+      "procurement_bu": "any",
+      "procurement_bu_id": "any",
+      "re_alternate_site_name": "any",
+      "re_bill_to_bu": "any",
+      "re_bill_to_bu_id": "any",
+      "re_client_bu": "any",
+      "re_client_bu_id": "any",
+      "re_hold_all_invoices_flag": "any",
+      "re_hold_unvalidated_invoices_flag": "any",
+      "re_inactive_date": "any",
+      "re_income_tax_reporting_site_flag": "any",
+      "re_invoice_amount_limit": "any",
+      "re_invoice_currency_code": "any",
+      "re_nuclear_qualified": "any",
+      "re_pay_date_basis": "any",
+      "re_pay_date_basis_code": "any",
+      "re_payment_currency_code": "any",
+      "re_payment_hold_reason": "any",
+      "re_payment_method": "any",
+      "re_payment_terms": "any",
+      "re_payment_terms_date_basis": "any",
+      "re_payment_terms_date_basis_code": "any",
+      "re_payment_terms_id": "any",
+      "re_procurement_bu": "any",
+      "re_procurement_bu_id": "any",
+      "re_remittance_delivery_email": "any",
+      "re_remittance_delivery_method": "any",
+      "re_site_purpose_pay_flag": "any",
+      "re_site_purpose_primary_pay_flag": "any",
+      "re_site_status": "any",
+      "re_status_reason_code": "any",
+      "re_supplier_address_id": "any",
+      "re_supplier_address_name": "any",
+      "re_supplier_site": "any",
+      "record_status": "any",
+      "remittance_delivery_email": "any",
+      "remittance_delivery_method": "any",
+      "request_id": "number",
+      "site_purpose_pay_flag": "any",
+      "site_purpose_primary_pay_flag": "any",
+      "site_status": "any",
+      "status_reason_code": "any",
+      "supplier_address_id": "any",
+      "supplier_address_name": "any",
+      "supplier_id": "number",
+      "supplier_site": "string",
+      "supplier_site_id": "number",
+      "vendor_site_id": "any"
+
+    },
+    "postCfs_smf_supplier_header_tbl": {
+      "alias": "string",
+      "alternate_name": "string",
+      "business_relationship": "string",
+      "change_description": "string",
+      "classification_not_applicable_flag": "string",
+      "created_by": "string",
+      "creation_date": "string",
+      "federal_income_taxtype": "string",
+      "federal_income_taxtype_code": "string",
+      "federal_reportable_flag": "string",
+      "inactive_date": "string",
+      "last_update_date": "string",
+      "last_updated_by": "string",
+      "parent_supplier": "string",
+      "party_id": "string",
+      "re_alias": "string",
+      "re_alternate_name": "string",
+      "re_federal_income_taxtype": "string",
+      "re_federal_income_taxtype_code": "string",
+      "re_federal_reportable_flag": "string",
+      "re_inactive_date": "string",
+      "re_parent_supplier": "string",
+      "re_state_reportable_flag": "string",
+      "re_supplier_name": "string",
+      "re_tax_organization_type": "string",
+      "re_tax_registration_country": "string",
+      "re_tax_registration_number": "string",
+      "re_taxpayer_country": "string",
+      "re_taxpayer_id": "string",
+      "request_id": "string",
+      "state_reportable_flag": "string",
+      "status": "string",
+      "supplier_id": "string",
+      "supplier_name": "string",
+      "supplier_number": "string",
+      "supplier_type": "string",
+      "tax_organization_type": "string",
+      "tax_registration_country": "string",
+      "tax_registration_number": "string",
+      "taxpayer_country": "string",
+      "taxpayer_id": "string"
+
+    },
+    "postCfs_smf_suppliers_dff_tbl": {
+      "additional_insured": "any",
+      "api_response": "any",
+      "auto_liability_expiration_date": "any",
+      "auto_liability_value": "any",
+      "created_by": "any",
+      "creation_date": "any",
+      "employee_liability_value": "any",
+      "employer_liability_expiration_date": "any",
+      "environ_pollution_liability_expiration_date": "any",
+      "environ_pollution_liability_value": "any",
+      "excess_umbrella_liability_expiration_date": "any",
+      "excess_umbrella_liability_value": "any",
+      "exelon_poc": "any",
+      "general_liability_expiration_date": "any",
+      "general_liability_value": "any",
+      "last_update_date": "any",
+      "last_updated_by": "any",
+      "legal_structure": "any",
+      "miscellaneous_insurance_expiration_date": "any",
+      "miscellaneous_liability_insurance_value": "any",
+      "policies_are_primary": "any",
+      "professional_liability_expiration_date": "any",
+      "professional_liability_value": "any",
+      "re_additional_insured": "any",
+      "re_auto_liability_expiration_date": "any",
+      "re_auto_liability_value": "number",
+      "re_employee_liability_value": "number",
+      "re_employer_liability_expiration_date": "any",
+      "re_environ_pollution_liability_expiration_date": "any",
+      "re_environ_pollution_liability_value": "number",
+      "re_excess_umbrella_liability_expiration_date": "any",
+      "re_excess_umbrella_liability_value": "number",
+      "re_exelon_poc": "any",
+      "re_general_liability_expiration_date": "any",
+      "re_general_liability_value": "number",
+      "re_legal_structure": "any",
+      "re_miscellaneous_insurance_expiration_date": "any",
+      "re_miscellaneous_liability_insurance_value": "number",
+      "re_policies_are_primary": "any",
+      "re_professional_liability_expiration_date": "any",
+      "re_professional_liability_value": "number",
+      "re_supplier_insurance_waiver_of_subrogation": "any",
+      "re_workers_comp_liability_expiration_date": "any",
+      "re_workers_comp_liability_value": "number",
+      "request_id": "number",
+      "supplier_id": "number",
+      "supplier_insurance_waiver_of_subrogation": "any",
+      "workers_comp_liability_expiration_date": "any",
+      "workers_comp_liability_value": "any"
+
+    },
+    "@decorators.getAccounts_copy": {
+      "endpoint": "getExternalBankAccountsPayementInstrumentId",
+      "service": "oracleEndpoints",
+      "path": "response"
+    },
+    "postGetSetBuMapping": {
+      "bu_name": "string"
+    },
+    "statusCondition": "string[]",
+    "triggerSmfApprovalWf": {
+      "request_id": "string"
+    }
+
+  },
+  "eventListeners": {
+    "aClick": {
+      "chains": [
+        {
+          "chainId": "OpenExistingAddressDialogActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.SupplierAddressId }}"
+          }
+        }
+      ]
+    },
+    "aClick2": {
+      "chains": [
+        {
+          "chainId": "OpenUpdateSiteDialogActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.supplier_site_id }}"
+          }
+        }
+      ]
+    },
+    "aClick3": {
+      "chains": [
+        {
+          "chainId": "OpenUpdateContactDialogActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "key": "{{ $current.row.supplier_contact_id }}",
+            "current": "{{ $current.row }}"
+          }
+        }
+      ]
+    },
+    "aClick4": {
+      "chains": [
+        {
+          "chainId": "OpenUpdateAccountDialogInAddSiteActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.account_id }}"
+          }
+        }
+      ]
+    },
+    "buttonAction": {
+      "chains": [
+        {
+          "chainId": "requestForApprovalActionChain"
+        }
+      ]
+    },
+    "buttonAction10": {
+      "chains": [
+        {
+          "chainId": "OpenNewAddressInUpdateContactDialogActionChain"
+        }
+      ]
+    },
+    "buttonAction11": {
+      "chains": [
+        {
+          "chainId": "RemoveContactActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.supplier_contact_id }}"
+          }
+        }
+      ]
+    },
+    "buttonAction12": {
+      "chains": [
+        {
+          "chainId": "DeleteContactActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.SupplierContactId }}"
+          }
+        }
+      ]
+    },
+    "buttonAction13": {
+      "chains": [
+        {
+          "chainId": "ApprovalWorkflowTrigger"
+        }
+      ]
+    },
+    "buttonAction14": {
+      "chains": [
+        {
+          "chainId": "OpenNewAddressInExistingContactDialogActionChain"
+        }
+      ]
+    },
+    "buttonAction15": {
+      "chains": [
+        {
+          "chainId": "DeleteAddressInExistingContactActionChain",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}"
+          }
+        }
+      ]
+    },
+    "buttonAction16": {
+      "chains": [
+        {
+          "chainId": "DeleteExistingContactInUpdateContactActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.SupplierContactAddressId }}"
+          }
+        }
+      ]
+    },
+    "buttonAction17": {
+      "chains": [
+        {
+          "chainId": "OpenNewAccountDialogInUpdateSiteActionChain"
+        }
+      ]
+    },
+    "buttonAction18": {
+      "chains": [
+        {
+          "chainId": "OpenNewAccountDialogInExistingSiteActionChain"
+        }
+      ]
+    },
+    "buttonAction19": {
+      "chains": [
+        {
+          "chainId": "RemoveBankAccountInExistingSiteActionChain",
+          "parameters": {
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.account_id }}"
+          }
+        }
+      ]
+    },
+    "buttonAction2": {
+      "chains": [
+        {
+          "chainId": "RemoveBusinessClassificationActionChain",
+          "parameters": {
+            "key": "{{ $current.row.classification_id }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}"
+          }
+        }
+      ]
+    },
+    "buttonAction20": {
+      "chains": [
+        {
+          "chainId": "DeleteExistingAccountInExistingSiteActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.BankAccountId }}"
+          }
+        }
+      ]
+    },
+    "buttonAction21": {
+      "chains": [
+        {
+          "chainId": "DeleteExistingAccountInUpdateSiteActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.BankAccountId }}"
+          }
+        }
+      ]
+    },
+    "buttonAction22": {
+      "chains": [
+        {
+          "chainId": "ApproveRequest"
+        }
+      ]
+    },
+    "buttonAction23": {
+      "chains": [
+        {
+          "chainId": "MoreInformationRequested"
+        }
+      ]
+    },
+    "buttonAction24": {
+      "chains": [
+        {
+          "chainId": "SearchCountryButtonActionChain"
+        }
+      ]
+    },
+    "buttonAction25": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain2"
+        }
+      ]
+    },
+    "buttonAction26": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain4"
+        }
+      ]
+    },
+    "buttonAction27": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain7"
+        }
+      ]
+    },
+    "buttonAction28": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain10"
+        }
+      ]
+    },
+    "buttonAction29": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain13"
+        }
+      ]
+    },
+    "buttonAction3": {
+      "chains": [
+        {
+          "chainId": "SubmitForApprovalClicked"
+        }
+      ]
+    },
+    "buttonAction30": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain16"
+        }
+      ]
+    },
+    "buttonAction31": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain19"
+        }
+      ]
+    },
+    "buttonAction32": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain22"
+        }
+      ]
+    },
+    "buttonAction33": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain25"
+        }
+      ]
+    },
+    "buttonAction34": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain28"
+        }
+      ]
+    },
+    "buttonAction35": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain31"
+        }
+      ]
+    },
+    "buttonAction36": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain35"
+        }
+      ]
+    },
+    "buttonAction37": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain38"
+        }
+      ]
+    },
+    "buttonAction38": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain41"
+        }
+      ]
+    },
+    "buttonAction39": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain50"
+        }
+      ]
+    },
+    "buttonAction4": {
+      "chains": [
+        {
+          "chainId": "OpenDialogCancelButtonActionChain"
+        }
+      ]
+    },
+    "buttonAction5": {
+      "chains": [
+        {
+          "chainId": "RemoveSiteActionChain",
+          "parameters": {
+            "key": "{{ $current.row.supplier_site_id }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction6": {
+      "chains": [
+        {
+          "chainId": "RemoveBankAccountInUpdateSiteActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.account_id }}"
+          }
+        }
+      ]
+    },
+    "buttonAction7": {
+      "chains": [
+        {
+          "chainId": "RemoveAddressInContactDialogActionChain",
+          "parameters": {
+            "key": "{{ $current.row.supplier_contact_address_id }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "buttonAction8": {
+      "chains": [
+        {
+          "chainId": "RejectRequestActionChain"
+        }
+      ]
+    },
+    "buttonAction9": {
+      "chains": [
+        {
+          "chainId": "RejectRequest"
+        }
+      ]
+    },
+    "checkboxSetValue": {
+      "chains": [
+        {
+          "chainId": "ClassificationsApplicableCheckbox",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "closedialog111Action": {
+      "chains": [
+        {
+          "chainId": "CloseUpdateBankAccountInExistingSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog11Action": {
+      "chains": [
+        {
+          "chainId": "CancelExistingBusinessClassificationDialogActionChain"
+        }
+      ]
+    },
+    "closedialog11Action2": {
+      "chains": [
+        {
+          "chainId": "CancelUpdateAccountInAddSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog11Action3": {
+      "chains": [
+        {
+          "chainId": "CancelUpdateBankAccountInExistingSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog11Action4": {
+      "chains": [
+        {
+          "chainId": "CancelExistingAccountInExistingSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog11Action5": {
+      "chains": [
+        {
+          "chainId": "CloseExistingAccountInExistingSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog11OjAction": {
+      "chains": [
+        {
+          "chainId": "CloseUpdateAccountInAddSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog120Action": {
+      "chains": [
+        {
+          "chainId": "CancelAddBankAccountInUpdateSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog120Action2": {
+      "chains": [
+        {
+          "chainId": "CloseAddBankAccountInUpdateSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog120Action3": {
+      "chains": [
+        {
+          "chainId": "CancelAddBankAccountInExistingSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog120Action4": {
+      "chains": [
+        {
+          "chainId": "CloseAddBankAccountInExistingSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog12Action": {
+      "chains": [
+        {
+          "chainId": "CancelAddBankAccountInAddSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog12OjAction2": {
+      "chains": [
+        {
+          "chainId": "CloseAddBankAccountInAddSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog13Action": {
+      "chains": [
+        {
+          "chainId": "NavigateBackToSearch"
+        }
+      ]
+    },
+    "closedialog151Action": {
+      "chains": [
+        {
+          "chainId": "CancelPhoneCountryButtonActionChain"
+        }
+      ]
+    },
+    "closedialog151Action10": {
+      "chains": [
+        {
+          "chainId": "okNewAddressPhonecOuntryCode"
+        }
+      ]
+    },
+    "closedialog151Action11": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain14"
+        }
+      ]
+    },
+    "closedialog151Action12": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain15"
+        }
+      ]
+    },
+    "closedialog151Action13": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain17"
+        }
+      ]
+    },
+    "closedialog151Action14": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain18"
+        }
+      ]
+    },
+    "closedialog151Action15": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain20"
+        }
+      ]
+    },
+    "closedialog151Action16": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain21"
+        }
+      ]
+    },
+    "closedialog151Action17": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain23"
+        }
+      ]
+    },
+    "closedialog151Action18": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain24"
+        }
+      ]
+    },
+    "closedialog151Action19": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain26"
+        }
+      ]
+    },
+    "closedialog151Action2": {
+      "chains": [
+        {
+          "chainId": "OkCountryPopupButtonActionChain"
+        }
+      ]
+    },
+    "closedialog151Action20": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain27"
+        }
+      ]
+    },
+    "closedialog151Action21": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain29"
+        }
+      ]
+    },
+    "closedialog151Action22": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain30"
+        }
+      ]
+    },
+    "closedialog151Action23": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain32"
+        }
+      ]
+    },
+    "closedialog151Action24": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain33"
+        }
+      ]
+    },
+    "closedialog151Action25": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain36"
+        }
+      ]
+    },
+    "closedialog151Action26": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain37"
+        }
+      ]
+    },
+    "closedialog151Action27": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain39"
+        }
+      ]
+    },
+    "closedialog151Action28": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain40"
+        }
+      ]
+    },
+    "closedialog151Action29": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain42"
+        }
+      ]
+    },
+    "closedialog151Action3": {
+      "chains": [
+        {
+          "chainId": "CancelPhoneCountryButtonActionChain2"
+        }
+      ]
+    },
+    "closedialog151Action30": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain43"
+        }
+      ]
+    },
+    "closedialog151Action31": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain3"
+        }
+      ]
+    },
+    "closedialog151Action32": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain12"
+        }
+      ]
+    },
+    "closedialog151Action4": {
+      "chains": [
+        {
+          "chainId": "OkExistingAddressFaxCountry"
+        }
+      ]
+    },
+    "closedialog151Action5": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain5"
+        }
+      ]
+    },
+    "closedialog151Action6": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain6"
+        }
+      ]
+    },
+    "closedialog151Action7": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain8"
+        }
+      ]
+    },
+    "closedialog151Action8": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain9"
+        }
+      ]
+    },
+    "closedialog151Action9": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain11"
+        }
+      ]
+    },
+    "closedialog151Click": {
+      "chains": [
+        {
+          "chainId": "ButtonClickChain"
+        }
+      ]
+    },
+    "closedialog15Action": {
+      "chains": [
+        {
+          "chainId": "RequestSubmitConfirm"
+        }
+      ]
+    },
+    "closedialog15Action10": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain"
+        }
+      ]
+    },
+    "closedialog15Action11": {
+      "chains": [
+        {
+          "chainId": "CancelMoreInformationDialog"
+        }
+      ]
+    },
+    "closedialog15Action12": {
+      "chains": [
+        {
+          "chainId": "CloseMoreInformationDialog"
+        }
+      ]
+    },
+    "closedialog15Action13": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain44"
+        }
+      ]
+    },
+    "closedialog15Action14": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain45"
+        }
+      ]
+    },
+    "closedialog15Action15": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain46"
+        }
+      ]
+    },
+    "closedialog15Action16": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain47"
+        }
+      ]
+    },
+    "closedialog15Action17": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain48"
+        }
+      ]
+    },
+    "closedialog15Action18": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain49"
+        }
+      ]
+    },
+    "closedialog15Action2": {
+      "chains": [
+        {
+          "chainId": "ConfirmExitRequest"
+        }
+      ]
+    },
+    "closedialog15Action3": {
+      "chains": [
+        {
+          "chainId": "RejectExitOrCancelRequest"
+        }
+      ]
+    },
+    "closedialog15Action4": {
+      "chains": [
+        {
+          "chainId": "RequestSubmissionConfirmed"
+        }
+      ]
+    },
+    "closedialog15Action5": {
+      "chains": [
+        {
+          "chainId": "RequestSubmissionCancelled"
+        }
+      ]
+    },
+    "closedialog15Action6": {
+      "chains": [
+        {
+          "chainId": "ChangesSavedConfirmation"
+        }
+      ]
+    },
+    "closedialog15Action7": {
+      "chains": [
+        {
+          "chainId": "ConfirmCancelRequest"
+        }
+      ]
+    },
+    "closedialog15Action8": {
+      "chains": [
+        {
+          "chainId": "ButtonActionChain1"
+        }
+      ]
+    },
+    "closedialog15Action9": {
+      "chains": [
+        {
+          "chainId": "ApproveRequestActionChain"
+        }
+      ]
+    },
+    "closedialog1Action": {
+      "chains": [
+        {
+          "chainId": "CloseExistingBusinessClassificationDialogActionChain"
+        }
+      ]
+    },
+    "closedialog201Action": {
+      "chains": [
+        {
+          "chainId": "CancelUpdateBusinessClassificationDialogActionChain"
+        }
+      ]
+    },
+    "closedialog20Action": {
+      "chains": [
+        {
+          "chainId": "CloseUpdateBusinessClassificationDialogActionChain"
+        }
+      ]
+    },
+    "closedialog222Action": {
+      "chains": [
+        {
+          "chainId": "CancelExistingBankAccountInUpdateSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog222Action2": {
+      "chains": [
+        {
+          "chainId": "CloseExistingBankAccountInUpdateSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog222Action3": {
+      "chains": [
+        {
+          "chainId": "CancelUpdateBankAccountInUpdateSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog222Action4": {
+      "chains": [
+        {
+          "chainId": "CloseUpdateBankAccountInUpdateSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog2Action": {
+      "chains": [
+        {
+          "chainId": "CancelUpdateAddressDialogActionChain"
+        }
+      ]
+    },
+    "closedialog2Action2": {
+      "chains": [
+        {
+          "chainId": "CloseUpdateAddressDialogActionChain"
+        }
+      ]
+    },
+    "closedialog2Action3": {
+      "chains": [
+        {
+          "chainId": "CancelExistingAddressDialogActionChain"
+        }
+      ]
+    },
+    "closedialog2Action4": {
+      "chains": [
+        {
+          "chainId": "CloseExistingAddressDialogActionChain"
+        }
+      ]
+    },
+    "closedialog30Action": {
+      "chains": [
+        {
+          "chainId": "CloseExistingSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog30Action2": {
+      "chains": [
+        {
+          "chainId": "CancelExistingSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog3Action": {
+      "chains": [
+        {
+          "chainId": "CancelNewAddressDialogActionChain"
+        }
+      ]
+    },
+    "closedialog3OjAction": {
+      "chains": [
+        {
+          "chainId": "CloseNewAddressDialogActionChain"
+        }
+      ]
+    },
+    "closedialog41Action": {
+      "chains": [
+        {
+          "chainId": "CancelNewBusinessClassificationDialogActionChain"
+        }
+      ]
+    },
+    "closedialog4OjAction": {
+      "chains": [
+        {
+          "chainId": "CloseNewBusinessClassificationDialogActionChain"
+        }
+      ]
+    },
+    "closedialog5Action": {
+      "chains": [
+        {
+          "chainId": "CancelUpdateSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog5OjAction": {
+      "chains": [
+        {
+          "chainId": "CloseUpdateSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog6Action": {
+      "chains": [
+        {
+          "chainId": "CancelNewSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog6OjAction": {
+      "chains": [
+        {
+          "chainId": "CloseNewSiteDialogActionChain"
+        }
+      ]
+    },
+    "closedialog7Action": {
+      "chains": [
+        {
+          "chainId": "CancelUpdateContactsDialogActionChain"
+        }
+      ]
+    },
+    "closedialog7Action2": {
+      "chains": [
+        {
+          "chainId": "CancelExistingContactDialogActionChain"
+        }
+      ]
+    },
+    "closedialog7Action3": {
+      "chains": [
+        {
+          "chainId": "CloseExistingContactDialogActionChain"
+        }
+      ]
+    },
+    "closedialog7OjAction": {
+      "chains": [
+        {
+          "chainId": "CloseUpdateContactDialogActionChain"
+        }
+      ]
+    },
+    "closedialog8Action": {
+      "chains": [
+        {
+          "chainId": "CancelNewContactDialogActionChain"
+        }
+      ]
+    },
+    "closedialog8OjAction": {
+      "chains": [
+        {
+          "chainId": "CloseNewContactDialogActionChain"
+        }
+      ]
+    },
+    "closedialog9Action": {
+      "chains": [
+        {
+          "chainId": "CancelNewAddressInNewContactDialogActionChain"
+        }
+      ]
+    },
+    "closedialog9Action2": {
+      "chains": [
+        {
+          "chainId": "CancelNewAddressInUpdateContactDialogActionChain"
+        }
+      ]
+    },
+    "closedialog9Action3": {
+      "chains": [
+        {
+          "chainId": "CloseNewAddressInUpdateContactDialogActionChain"
+        }
+      ]
+    },
+    "closedialog9Action4": {
+      "chains": [
+        {
+          "chainId": "CancelNewAddressInExistingContactDialogActionChain"
+        }
+      ]
+    },
+    "closedialog9Action5": {
+      "chains": [
+        {
+          "chainId": "CloseNewAddressInExistingContactDialogActionChain"
+        }
+      ]
+    },
+    "closedialog9OjAction": {
+      "chains": [
+        {
+          "chainId": "CloseNewAddressInNewContactDialogActionChain"
+        }
+      ]
+    },
+    "hyperlinkClick10": {
+      "chains": [
+        {
+          "chainId": "OpenExistingAccountDialogInUpdateSiteActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.BankAccountId }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick11": {
+      "chains": [
+        {
+          "chainId": "OpenUpdateAddressDialogActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.supplier_address_id }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick2": {
+      "chains": [
+        {
+          "chainId": "OpenExistingBusinessClassificationDialogActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.ClassificationId }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick3": {
+      "chains": [
+        {
+          "chainId": "OpenUpdateBusinessClassificationDialogActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.classification_id }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick4": {
+      "chains": [
+        {
+          "chainId": "OpenExistingSiteDialogActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.SupplierSiteId }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick5": {
+      "chains": [
+        {
+          "chainId": "OpenExistingContactDialogActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "key": "{{ $current.row.SupplierContactId }}",
+            "current": "{{ $current.row }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick7": {
+      "chains": [
+        {
+          "chainId": "OpenExistingAccountDialogInExistingSiteActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.BankAccountId }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick8": {
+      "chains": [
+        {
+          "chainId": "OpenUpdateAccountDialogInExistingSiteActionChain",
+          "parameters": {
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.account_id }}"
+          }
+        }
+      ]
+    },
+    "hyperlinkClick9": {
+      "chains": [
+        {
+          "chainId": "OpenUpdateAccountDialogInUpdateSiteActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.account_id }}"
+          }
+        }
+      ]
+    },
+    "iconClick": {
+      "chains": [
+        {
+          "chainId": "RemoveAddressActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "current": "{{ $current.row }}",
+            "key": "{{ $current.row.supplier_address_id }}"
+          }
+        }
+      ]
+    },
+    "inputTextValue": {
+      "chains": [
+        {
+          "chainId": "InputTextValueChangeChain",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "itemClick": {
+      "chains": [
+        {
+          "chainId": "ItemClickChain"
+        }
+      ]
+    },
+    "ojButtonOjAction": {
+      "chains": [
+        {
+          "chainId": "BackToSearchScreen"
+        }
+      ]
+    },
+    "ojButtonOjAction2": {
+      "chains": [
+        {
+          "chainId": "OpenNewAddressDialogActionChain"
+        }
+      ]
+    },
+    "ojButtonOjAction3": {
+      "chains": [
+        {
+          "chainId": "OpenNewBusinessClassificationDialogActionChain"
+        }
+      ]
+    },
+    "ojButtonOjAction4": {
+      "chains": [
+        {
+          "chainId": "OpenNewSiteDialogActionChain"
+        }
+      ]
+    },
+    "ojButtonOjAction5": {
+      "chains": [
+        {
+          "chainId": "OpenNewContactDialogActionChain"
+        }
+      ]
+    },
+    "ojButtonOjAction6": {
+      "chains": [
+        {
+          "chainId": "OpenNewAddressInNewContactDialogActionChain"
+        }
+      ]
+    },
+    "ojButtonOjAction8": {
+      "chains": [
+        {
+          "chainId": "OpenNewAccountDialogInAddSiteActionChain"
+        }
+      ]
+    },
+    "ojButtonOjAction9": {
+      "chains": [
+        {
+          "chainId": "DeleteBusinessClassificationActionChain",
+          "parameters": {
+
+            "index": "{{ $current.index }}",
+            "key": "{{ $current.key }}",
+            "current": "{{ $current.row }}"
+          }
+        }
+      ]
+    },
+    "ojComboboxOne10845910171Click": {
+      "chains": [
+        {
+          "chainId": "populatePaymentTermsADPActionChain"
+        }
+      ]
+    },
+    "ojComboboxOne10845910171Click2": {
+      "chains": [
+        {
+          "chainId": "populateBanks"
+        }
+      ]
+    },
+    "ojComboboxOne10845910171Click3": {
+      "chains": [
+        {
+          "chainId": "populateBankBranch"
+        }
+      ]
+    },
+    "ojComboboxOne10845910171Click4": {
+      "chains": [
+        {
+          "chainId": "populateBankBranchforNewAccounts"
+        }
+      ]
+    },
+    "ojComboboxOne10845910171Click5": {
+      "chains": [
+        {
+          "chainId": "populateBankforNewAccounts"
+        }
+      ]
+    },
+    "ojComboboxOne10845910171Click6": {
+      "chains": [
+        {
+          "chainId": "populateBankBranchforExisingAccount"
+        }
+      ]
+    },
+    "ojComboboxOne10845910171Click7": {
+      "chains": [
+        {
+          "chainId": "populateBanksForExistingAccount"
+        }
+      ]
+    },
+    "ojComboboxOne10845910171Value": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain4"
+        }
+      ]
+    },
+    "ojComboboxOne10845910171Value2": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain5",
+          "parameters": {
+            "key": "{{ $event.detail.value.key }}",
+            "data": "{{ $event.detail.value.data }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate12620422210Value": {
+      "chains": [
+        {
+          "chainId": "ValidateExpirationDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042221Value": {
+      "chains": [
+        {
+          "chainId": "validateInactiveDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042223Value": {
+      "chains": [
+        {
+          "chainId": "InputDateValueChangeChain",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042223Value2": {
+      "chains": [
+        {
+          "chainId": "ValidateExpirationDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042224Value": {
+      "chains": [
+        {
+          "chainId": "ValidateExpirationDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042225Value": {
+      "chains": [
+        {
+          "chainId": "ValidateExpirationDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042226Value": {
+      "chains": [
+        {
+          "chainId": "ValidateExpirationDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042227Value": {
+      "chains": [
+        {
+          "chainId": "ValidateExpirationDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042227Value2": {
+      "chains": [
+        {
+          "chainId": "validateInactiveDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042228Value": {
+      "chains": [
+        {
+          "chainId": "ValidateExpirationDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate12620422290Value": {
+      "chains": [
+        {
+          "chainId": "validateContactInactiveDate",
+          "parameters": {
+            "inactiveDate": "{{ $event.detail.value }}",
+            "actionRequested": "{{ \"Update\" }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate12620422290Value2": {
+      "chains": [
+        {
+          "chainId": "validateContactInactiveDate",
+          "parameters": {
+            "inactiveDate": "{{ $event.detail.value }}",
+            "actionRequested": "{{ $variables.popupNewContact.ActionRequested }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate12620422290Value3": {
+      "chains": [
+        {
+          "chainId": "validateContactInactiveDate",
+          "parameters": {
+            "inactiveDate": "{{ $event.detail.value }}",
+            "actionRequested": "{{ \"New\" }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042229Value": {
+      "chains": [
+        {
+          "chainId": "ValidateExpirationDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042229Value2": {
+      "chains": [
+        {
+          "chainId": "validateInactiveDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputDate1262042229Value3": {
+      "chains": [
+        {
+          "chainId": "validateInactiveDate",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputNumber10845910173Value": {
+      "chains": [
+        {
+          "chainId": "InputNumberValueChangeChain",
+          "parameters": {
+            "value": "{{ $variables.postDFF.re_employee_liability_value }}"
+          }
+        }
+      ]
+    },
+    "ojInputNumber1262042221Keypress": {
+      "chains": [
+        {
+          "chainId": "eatNonNumbers",
+          "parameters": {
+            "keyCode": "{{ $event.key }}",
+            "eventPayload": "{{ $event }}"
+          }
+        }
+      ],
+      "preventDefault": "[[ $functions.eatNonNumbers() ]]"
+    },
+    "ojInputText10845910173Value": {
+      "chains": [
+        {
+          "chainId": "CheckForDuplicateEmail",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputText10845910174Value": {
+      "chains": [
+        {
+          "chainId": "InputTextValueChangeChain1",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputText10845910174Value2": {
+      "chains": [
+        {
+          "chainId": "InputTextValueChangeChain2",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputText10845910174Value3": {
+      "chains": [
+        {
+          "chainId": "InputTextValueChangeChain3",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputText10845910174Value4": {
+      "chains": [
+        {
+          "chainId": "InputTextValueChangeChain4",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputText10845910174Value5": {
+      "chains": [
+        {
+          "chainId": "InputTextValueChangeChain5",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputText1262042221Click": {
+      "chains": [
+        {
+          "chainId": "InputTextValueChangeChain"
+        }
+      ]
+    },
+    "ojInputText1262042221Click10": {
+      "chains": [
+        {
+          "chainId": "InputTextClickChain8"
+        }
+      ]
+    },
+    "ojInputText1262042221Click11": {
+      "chains": [
+        {
+          "chainId": "InputTextClickChain9"
+        }
+      ]
+    },
+    "ojInputText1262042221Click12": {
+      "chains": [
+        {
+          "chainId": "InputTextClickChain10"
+        }
+      ]
+    },
+    "ojInputText1262042221Click13": {
+      "chains": [
+        {
+          "chainId": "InputTextClickChain11"
+        }
+      ]
+    },
+    "ojInputText1262042221Click14": {
+      "chains": [
+        {
+          "chainId": "InputTextClickChain12"
+        }
+      ]
+    },
+    "ojInputText1262042221Click15": {
+      "chains": [
+        {
+          "chainId": "InputTextClickChain13"
+        }
+      ]
+    },
+    "ojInputText1262042221Click2": {
+      "chains": [
+        {
+          "chainId": "existingAddressFaxCountryCode"
+        }
+      ]
+    },
+    "ojInputText1262042221Click3": {
+      "chains": [
+        {
+          "chainId": "NewAddressPhoneCountryCode"
+        }
+      ]
+    },
+    "ojInputText1262042221Click4": {
+      "chains": [
+        {
+          "chainId": "faxCountryCodeNewAddress"
+        }
+      ]
+    },
+    "ojInputText1262042221Click5": {
+      "chains": [
+        {
+          "chainId": "OpenExistingPhoneCountryPopup"
+        }
+      ]
+    },
+    "ojInputText1262042221Click6": {
+      "chains": [
+        {
+          "chainId": "InputTextClickChain4"
+        }
+      ]
+    },
+    "ojInputText1262042221Click7": {
+      "chains": [
+        {
+          "chainId": "InputTextClickChain5"
+        }
+      ]
+    },
+    "ojInputText1262042221Click8": {
+      "chains": [
+        {
+          "chainId": "InputTextClickChain6"
+        }
+      ]
+    },
+    "ojInputText1262042221Click9": {
+      "chains": [
+        {
+          "chainId": "InputTextClickChain7"
+        }
+      ]
+    },
+    "ojInputText1262042221Value": {
+      "chains": [
+        {
+          "chainId": "updateAddressPhoneCountryCode",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojInputText1262042221Value2": {
+      "chains": [
+        {
+          "chainId": "InputTextValueChangeChain6",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojSelectSingle12620422233ValueItem": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain7",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "ojSelectSingle12620422233ValueItem2": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain8",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "ojSelectSingle1262042223ValueItem": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "ojSelectSingle1262042223ValueItem2": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain1",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "ojSelectSingle1262042223ValueItem3": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain2",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "ojSelectSingle1262042223ValueItem4": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain3",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "ojSelectSingle1262042223ValueItem5": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain6",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "ojSelectSingle1262042223ValueItem6": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain5"
+        }
+      ]
+    },
+    "panelClick": {
+      "chains": [
+        {
+          "chainId": "PanelClickChain"
+        }
+      ]
+    },
+    "tableFirstSelectedRow": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow10": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain9",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow11": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain10",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow12": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain11",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow13": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain12",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow14": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain13",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow15": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain14",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow16": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain15",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow2": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain1",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow3": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain2",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow4": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain3",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow5": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain4",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow6": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain5",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow7": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain6",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow8": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain7",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "tableFirstSelectedRow9": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain8",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "PageVbEnterChain"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-buttonset-one": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-checkboxset": {
+        "path": "ojs/ojcheckboxset"
+      },
+      "oj-collapsible": {
+        "path": "ojs/ojcollapsible"
+      },
+      "oj-combobox-one": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-dialog": {
+        "path": "ojs/ojdialog"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-highlight-text": {
+        "path": "ojs/ojhighlighttext"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-date-time": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-search": {
+        "path": "ojs/ojinputsearch"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-popup": {
+        "path": "ojs/ojpopup"
+      },
+      "oj-select-one": {
+        "path": "ojs/ojselectcombobox"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-switcher": {
+        "path": "ojs/ojswitcher"
+      },
+      "oj-tab-bar": {
+        "path": "ojs/ojnavigationlist"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-text-area": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+
+    },
+    "modules": {
+      "ojValidationBase": {
+        "path": "ojs/ojvalidation-base"
+      },
+      "ojValidationDateTime": {
+        "path": "ojs/ojvalidation-datetime"
+      },
+      "ojValidationNumber": {
+        "path": "ojs/ojvalidation-number"
+      }
+
+    }
+  }
+}

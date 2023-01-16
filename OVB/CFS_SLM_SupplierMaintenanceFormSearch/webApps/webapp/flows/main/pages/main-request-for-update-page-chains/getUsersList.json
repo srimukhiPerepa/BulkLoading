@@ -1,0 +1,51 @@
+{
+  "root": "callRestGetUsers2",
+  "description": "",
+  "variables": {
+    "CIDVar": {
+      "type": "string",
+      "required": false,
+      "input": "fromCaller"
+    }
+  },
+  "actions": {
+
+    "callRestGetUsers2": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "getScimUser/getUsers2",
+        "requestTransformOptions": {
+          "filter": {
+            "op": "$eq",
+            "attribute": "Resources.userName",
+            "value": "{{ $variables.CIDVar }}"
+          }
+        },
+        "uriParams": {
+          "filter": "{{ \"userName eq \\\"\"+$variables.CIDVar+\"\\\"\" }}"
+        }
+      },
+      "outcomes": {
+
+        "success": "assignVariablesDisplayNameOfUserVar"
+      }
+    },
+    "assignVariablesDisplayNameOfUserVar": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.displayNameOfUserVar": {
+          "source": "{{ $chain.results.callRestGetUsers2.body.Resources[0].displayName }}"
+        }
+      },
+      "outcomes": {
+        "success": "return"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    }
+  }
+}

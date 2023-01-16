@@ -1,0 +1,566 @@
+{
+    "items": [
+        {
+            "ValueId": 261006,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "CLAIM DEPARTMENT PAYMENT",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "CLAIM DEPARTMENT PAYMENT",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-04-13T16:39:27.877+00:00",
+            "CreatedBy": "C987165",
+            "LastUpdateDate": "2022-04-13T16:39:42.936+00:00",
+            "LastUpdatedBy": "C987165",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261006",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261006",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261006/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 261007,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "CORPORATION",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "CORPORATION",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-04-13T16:40:15.523+00:00",
+            "CreatedBy": "C987165",
+            "LastUpdateDate": "2022-04-13T16:40:23.234+00:00",
+            "LastUpdatedBy": "C987165",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261007",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261007",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261007/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 262003,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "FOREIGN",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "FOREIGN",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-04-13T16:38:52.665+00:00",
+            "CreatedBy": "C987165",
+            "LastUpdateDate": "2022-04-13T16:39:07.577+00:00",
+            "LastUpdatedBy": "C987165",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262003",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262003",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262003/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 261002,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "GOVERNMENT AGENCY",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "GOVERNMENT AGENCY",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-04-13T16:36:29.999+00:00",
+            "CreatedBy": "C987165",
+            "LastUpdateDate": "2022-04-13T16:36:51.935+00:00",
+            "LastUpdatedBy": "C987165",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261002",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261002",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261002/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 262005,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "HEALTH CORPORATION",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "HEALTH CORPORATION",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-04-13T16:39:57.398+00:00",
+            "CreatedBy": "C987165",
+            "LastUpdateDate": "2022-04-13T16:40:10.042+00:00",
+            "LastUpdatedBy": "C987165",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262005",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262005",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262005/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 262004,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "INDIVIDUAL",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "INDIVIDUAL",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-04-13T16:39:14.668+00:00",
+            "CreatedBy": "C987165",
+            "LastUpdateDate": "2022-04-13T16:39:24.409+00:00",
+            "LastUpdatedBy": "C987165",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262004",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262004",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262004/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 262002,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "NON REPORTABLE",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "NON REPORTABLE",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-04-13T16:38:05.532+00:00",
+            "CreatedBy": "C987165",
+            "LastUpdateDate": "2022-04-13T16:38:29.737+00:00",
+            "LastUpdatedBy": "C987165",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262002",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262002",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/262002/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 261004,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "PARTNERSHIP",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "PARTNERSHIP",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-04-13T16:37:31.384+00:00",
+            "CreatedBy": "C987165",
+            "LastUpdateDate": "2022-04-13T16:37:53.563+00:00",
+            "LastUpdatedBy": "C987165",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261004",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261004",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261004/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 261003,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "SOLE PROPRIETORSHIP",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "SOLE PROPRIETORSHIP",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-04-13T16:36:57.681+00:00",
+            "CreatedBy": "C987165",
+            "LastUpdateDate": "2022-04-13T16:37:22.720+00:00",
+            "LastUpdatedBy": "C987165",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261003",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261003",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261003/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        },
+        {
+            "ValueId": 261005,
+            "IndependentValue": null,
+            "IndependentValueNumber": null,
+            "IndependentValueDate": null,
+            "IndependentValueTimestamp": null,
+            "Value": "TAX EXEMPT CHARITY",
+            "ValueNumber": null,
+            "ValueDate": null,
+            "ValueTimestamp": null,
+            "TranslatedValue": null,
+            "Description": "TAX EXEMPT CHARITY",
+            "EnabledFlag": "Y",
+            "StartDateActive": null,
+            "EndDateActive": null,
+            "SortOrder": null,
+            "SummaryFlag": null,
+            "DetailPostingAllowed": null,
+            "DetailBudgetingAllowed": null,
+            "AccountType": null,
+            "ControlAccount": null,
+            "ReconciliationFlag": null,
+            "FinancialCategory": null,
+            "ExternalDataSource": null,
+            "CreationDate": "2022-04-13T16:38:32.811+00:00",
+            "CreatedBy": "C987165",
+            "LastUpdateDate": "2022-04-13T16:38:50.300+00:00",
+            "LastUpdatedBy": "C987165",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261005",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261005",
+                    "name": "values",
+                    "kind": "item"
+                },
+                {
+                    "rel": "parent",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure",
+                    "name": "valueSets",
+                    "kind": "item"
+                },
+                {
+                    "rel": "child",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values/261005/child/valuesDFF",
+                    "name": "valuesDFF",
+                    "kind": "collection"
+                }
+            ]
+        }
+    ],
+    "count": 10,
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/valueSets/Legal%20Structure/child/values",
+            "name": "values",
+            "kind": "collection"
+        }
+    ]
+}

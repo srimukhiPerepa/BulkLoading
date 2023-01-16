@@ -1,0 +1,202 @@
+{
+  "root": "forEachInGetSupplierSites",
+  "description": "",
+  "actions": {
+    "forEachInGetSupplierSites": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.getSupplierSites.data }}",
+        "actionId": "resetVariablesFlag1"
+      },
+      "outcomes": {
+        "success": "ifFlag2"
+      }
+    },
+    "forEachInPostSites": {
+      "module": "vb/action/builtin/forEachAction",
+      "parameters": {
+        "items": "{{ $page.variables.postSites.data }}",
+        "actionId": "ifOuterSupplierSiteId"
+      },
+      "outcomes": {
+        "success": "ifFlag1"
+      }
+    },
+    "ifOuterSupplierSiteId": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.outerSupplierSiteId==$current.data.supplier_site_id ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag1",
+        "false": "if6"
+      }
+    },
+    "assignVariablesOuterSupplierSiteId": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.outerSupplierSiteId": {
+          "source": "{{ $current.data.SupplierSiteId }}"
+        }
+      },
+      "outcomes": {
+        "success": "forEachInPostSites"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.re_income_tax_reporting_site_flag==\"No\" || !$current.data.re_income_tax_reporting_site_flag ]]"
+    },
+      "outcomes": {
+        "true": "if3",
+        "false": "assignVariablesFlag2"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.income_tax_reporting_site_flag==\"Yes\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag"
+      }
+    },
+    "assignVariablesFlag": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "assignVariablesFlag2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "assignVariablesFlag1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag1": {
+          "source": "{{ true }}"
+        }
+      },
+      "outcomes": {
+        "success": "if5"
+      }
+    },
+    "resetVariablesFlag1": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$variables.flag1"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesOuterSupplierSiteId"
+      }
+    },
+    "ifFlag1": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag1 ]]"
+      },
+      "outcomes": {
+        "false": "if4"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.IncomeTaxReportingSiteFlag ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag3"
+      }
+    },
+    "assignVariablesFlag3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "if5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.action_requested==\"Update\" ]]"
+      },
+      "outcomes": {
+        "true": "if"
+      }
+    },
+    "if6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.action_requested==\"New\" ]]"
+      },
+      "outcomes": {
+        "true": "if7"
+      }
+    },
+    "if7": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $current.data.re_income_tax_reporting_site_flag==\"Yes\" ]]"
+      },
+      "outcomes": {
+        "true": "assignVariablesFlag4"
+      }
+    },
+    "assignVariablesFlag4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.flag": {
+          "source": "{{ true }}"
+        }
+      }
+    },
+    "ifFlag2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.flag ]]"
+      },
+      "outcomes": {
+        "true": "return2",
+        "false": "return3"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return3": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success",
+        "payload": "{{ Error }}"
+      }
+    }
+  },
+  "variables": {
+    "flag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "flag1": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "outerSupplierSiteId": {
+      "type": "string"
+    }
+
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "description": "",
+  "root": "assignVariablesPopupNewSite",
+  "actions": {
+    "assignVariablesPopupNewSite": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewSite": {
+          "source": {
+            "RePaymentHoldReason": "{{ $variables.value }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    }
+  },
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

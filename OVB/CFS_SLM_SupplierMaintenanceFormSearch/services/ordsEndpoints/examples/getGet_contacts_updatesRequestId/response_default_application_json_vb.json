@@ -1,0 +1,65 @@
+{
+    "items": [
+        {
+            "supplier_contact_id": 300000041597874,
+            "supplier_id": 300000041597861,
+            "request_id": 10000000500,
+            "salutation_code": null,
+            "salutation": null,
+            "first_name": "Linda",
+            "last_name": "Trump",
+            "job_title": null,
+            "administrative_contact_flag": "Yes",
+            "phone_country_code": null,
+            "phone_area_code": null,
+            "phone_number": null,
+            "phone_extension": null,
+            "fax_country_code": null,
+            "fax_area_code": null,
+            "fax_number": null,
+            "mobile_country_code": null,
+            "mobile_area_code": null,
+            "mobile_number": null,
+            "email": "linda@sony.com",
+            "inactive_date": null,
+            "action_requested": "Update",
+            "address_name": null,
+            "contact_purpose": "O-Admin",
+            "re_salutation_code": null,
+            "re_salutation": null,
+            "re_first_name": null,
+            "re_last_name": null,
+            "re_job_title": null,
+            "re_administrative_contact_flag": null,
+            "re_phone_country_code": null,
+            "re_phone_area_code": null,
+            "re_phone_number": null,
+            "re_phone_extension": null,
+            "re_fax_country_code": null,
+            "re_fax_area_code": null,
+            "re_fax_number": null,
+            "re_mobile_country_code": null,
+            "re_mobile_area_code": null,
+            "re_mobile_number": null,
+            "re_email": "sony@linda.com",
+            "re_inactive_date": null,
+            "re_status": "ACTIVE",
+            "re_address_name": null,
+            "status": null
+        }
+    ],
+    "hasMore": false,
+    "limit": 0,
+    "offset": 0,
+    "count": 1,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/cfs_extensions/get_contacts_updates/10000000500"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/cfs_extensions/metadata-catalog/cfs_extensions/get_contacts_updates/item"
+        }
+    ]
+}

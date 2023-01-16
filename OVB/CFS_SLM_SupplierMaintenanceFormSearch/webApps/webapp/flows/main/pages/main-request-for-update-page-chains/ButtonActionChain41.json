@@ -1,0 +1,53 @@
+{
+  "description": "",
+  "root": "resetVariablesGetHcmPhoneCountryCodeADP14",
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGet1113185HcmCountriesLovQ.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGet1113185HcmCountriesLovQ": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleHcmEndpoints/getHcmCountriesLovQ",
+        "uriParams": {
+          "limit": "{{ \"500\" }}",
+          "q": "{{ \"ObsoleteFlag=false;CountryName LIKE \\\"%\" + $page.variables.SearchPhoneCountryVar14 + \"\\\"%\" }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetHcmPhoneCountryCodeADP14"
+      }
+    },
+    "assignVariablesGetHcmPhoneCountryCodeADP14": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getHcmPhoneCountryCodeADP14": {
+          "source": {
+            "data": "{{ $chain.results.callRestGet1113185HcmCountriesLovQ.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    },
+    "resetVariablesGetHcmPhoneCountryCodeADP14": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getHcmPhoneCountryCodeADP14"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGet1113185HcmCountriesLovQ"
+      }
+    }
+  },
+  "variables": {}
+}

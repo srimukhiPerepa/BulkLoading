@@ -1,0 +1,135 @@
+{
+  "description": "",
+  "root": "resetVariablesPopupNewAccounts",
+  "actions": {
+    "assignVariablesPopupNewAccounts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewAccounts": {
+          "source": {
+            "RowIndex": "{{ $variables.index }}",
+            "Country": "{{ $variables.current.country }}",
+            "ReCountry": "{{ $variables.current.re_country }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPopupNewAccounts2"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewAccounts": {
+          "source": {
+            "Bank": "{{ $variables.current.bank }}",
+            "BankBranch": "{{ $variables.current.bank_branch }}",
+            "Country": "{{ $variables.current.country }}",
+            "ReBank": "{{ $variables.current.re_bank }}",
+            "ReBankBranch": "{{ $variables.current.re_bank_branch }}",
+            "ReCountry": "{{ $variables.current.re_country }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesPopupNewAccounts3"
+      }
+    },
+    "assignVariablesPopupNewAccounts2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewAccounts": {
+          "source": {
+            "Country": "{{ $variables.current.country }}",
+            "ReBank": "{{ $variables.current.re_bank }}",
+            "Bank": "{{ $variables.current.bank }}",
+            "ReCountry": "{{ $variables.current.re_country }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariables2"
+      }
+    },
+    "resetVariablesPopupNewAccounts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.AccountsRowIndex"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesPopupNewAccounts"
+      }
+    },
+    "assignVariablesPopupNewAccounts3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.popupNewAccounts": {
+          "source": {
+            "AccountId": "{{ $variables.current.account_id }}",
+            "AccountNumber": "{{ $variables.current.account_number }}",
+            "AllowInternationalPayments": "{{ $variables.current.allow_international_payments }}",
+            "Bank": "{{ $variables.current.bank }}",
+            "BankBranch": "{{ $variables.current.bank_branch }}",
+            "Country": "{{ $variables.current.country }}",
+            "Currency": "{{ $variables.current.currency }}",
+            "IBAN": "{{ $variables.current.iban }}",
+            "InactiveOn": "{{ $variables.current.inactive_on }}",
+            "Primary": "{{ $variables.current.primary_flag }}",
+            "ReAccountNumber": "{{ $variables.current.re_account_number }}",
+            "ReAllowInternationalPayments": "{{ $variables.current.re_allow_international_payments }}",
+            "ReBank": "{{ $variables.current.re_bank }}",
+            "ReBankBranch": "{{ $variables.current.re_bank_branch }}",
+            "ReCountry": "{{ $variables.current.re_country }}",
+            "ReCurrency": "{{ $variables.current.re_currency }}",
+            "ReIBAN": "{{ $variables.current.re_iban }}",
+            "ReInactiveOn": "{{ $variables.current.re_inactive_on }}",
+            "RePrimary": "{{ $variables.current.re_primary_flag }}",
+            "ReUpdateUnpaidInvoices": "{{ $variables.current.re_update_unpaid_invoices }}",
+            "UpdateUnpaidInvoices": "{{ $variables.current.update_unpaid_invoices }}",
+            "ActionRequested": "{{ $variables.current.action_requested }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    },
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog111\" }}"
+        ]
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

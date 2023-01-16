@@ -1,0 +1,818 @@
+{
+  "root": "resetVariablesCfsSmfAddressTblErrorADP",
+  "description": "",
+  "actions": {
+    "runInParallel": {
+      "module": "vb/action/builtin/forkAction",
+      "parameters": {
+        "actions": {
+
+          "callRestGetGetSupplierHeaderErrorMsg": "callRestGetGetSupplierHeaderErrorMsg",
+          "callRestGetGetSupplierDffErrorMsg": "callRestGetGetSupplierDffErrorMsg",
+          "callRestGetGetBusClassficationsErrorMsg": "callRestGetGetBusClassficationsErrorMsg",
+          "callRest": "callRestGetGetContactAddErrorMsg",
+          "callRestGetGetAddressErrorMsg": "callRestGetGetAddressErrorMsg",
+          "callRestGetGetSitesErrorMsg": "callRestGetGetSitesErrorMsg",
+          "callRestGetGetBankAcctsErrorMsg": "callRestGetGetBankAcctsErrorMsg",
+          "callRestGetGetContactsErrorMsg": "callRestGetGetContactsErrorMsg"
+        }
+      },
+      "outcomes": {
+        "join": "return"
+      }
+    },
+    "callRestGetGetSupplierHeaderErrorMsg": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_supplier_header_error_msg",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCfsSmfSupplierHeaderTblErrorADP",
+        "failure": "if8"
+      }
+    },
+    "callRestGetGetSupplierDffErrorMsg": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_supplier_dff_error_msg",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCfsSmfSupplierDffTblErrorADP",
+        "failure": "if7"
+      }
+    },
+    "callRestGetGetBusClassficationsErrorMsg": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_bus_classfications_error_msg",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCfsSmfBusClassificationsTblErrorADP",
+        "failure": "if4"
+      }
+    },
+    "assignVariablesCfsSmfBusClassificationsTblErrorADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.cfsSmfBusClassificationsTblErrorADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetGetBusClassficationsErrorMsg.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventCfsSmfBusClassificationsTblErrorADP"
+      }
+    },
+    "fireDataProviderEventCfsSmfBusClassificationsTblErrorADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.cfsSmfBusClassificationsTblErrorADP ]]"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "callRestGetGetAddressErrorMsg": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_address_error_msg",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCfsSmfAddressTblErrorADP",
+        "failure": "if10"
+      }
+    },
+    "assignVariablesCfsSmfAddressTblErrorADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.cfsSmfAddressTblErrorADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetGetAddressErrorMsg.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventCfsSmfAddressTblErrorADP"
+      }
+    },
+    "fireDataProviderEventCfsSmfAddressTblErrorADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.cfsSmfAddressTblErrorADP ]]"
+      }
+    },
+    "callRestGetGetSitesErrorMsg": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_sites_error_msg",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCfsSmfSitesTblErrorADP",
+        "failure": "if6"
+      }
+    },
+    "assignVariablesCfsSmfSitesTblErrorADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.cfsSmfSitesTblErrorADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetGetSitesErrorMsg.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventCfsSmfSitesTblErrorADP"
+      }
+    },
+    "fireDataProviderEventCfsSmfSitesTblErrorADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.cfsSmfSitesTblErrorADP ]]"
+      }
+    },
+    "callRestGetGetBankAcctsErrorMsg": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_bank_accts_error_msg",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCfsSmfBankAcctsTblErrorADP",
+        "failure": "if3"
+      }
+    },
+    "assignVariablesCfsSmfBankAcctsTblErrorADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.cfsSmfBankAcctsTblErrorADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetGetBankAcctsErrorMsg.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventCfsSmfBankAcctsTblErrorADP"
+      }
+    },
+    "fireDataProviderEventCfsSmfBankAcctsTblErrorADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.cfsSmfBankAcctsTblErrorADP ]]"
+      }
+    },
+    "callRestGetGetContactsErrorMsg": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_contacts_error_msg",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCfsSmfContactsTblErrorADP",
+        "failure": "if5"
+      }
+    },
+    "assignVariablesCfsSmfContactsTblErrorADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.cfsSmfContactsTblErrorADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetGetContactsErrorMsg.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventCfsSmfContactsTblErrorADP"
+      }
+    },
+    "fireDataProviderEventCfsSmfContactsTblErrorADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.cfsSmfContactsTblErrorADP ]]"
+      }
+    },
+    "callRestGetGetContactAddErrorMsg": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGet_contact_add_error_msg",
+        "uriParams": {
+          "RequestId": "{{ $page.variables.requestId }}"
+        }
+      },
+      "outcomes": {
+        "success": "assignVariablesCfsSmfContactAddTblErrorADP",
+        "failure": "if"
+      }
+    },
+    "assignVariablesCfsSmfContactAddTblErrorADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.cfsSmfContactAddTblErrorADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetGetContactAddErrorMsg.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventCfsSmfContactAddTblErrorADP"
+      }
+    },
+    "fireDataProviderEventCfsSmfContactAddTblErrorADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.cfsSmfContactAddTblErrorADP ]]"
+      }
+    },
+    "resetVariablesCfsSmfAddressTblErrorADP": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.cfsSmfAddressTblErrorADP",
+          "$page.variables.cfsSmfBankAcctsTblErrorADP",
+          "$page.variables.cfsSmfBusClassificationsTblErrorADP",
+          "$page.variables.cfsSmfContactsTblErrorADP",
+          "$page.variables.cfsSmfContactAddTblErrorADP",
+          "$page.variables.cfsSmfSitesTblErrorADP"
+        ]
+      },
+      "outcomes": {
+        "success": "runInParallel"
+      }
+    },
+    "assignVariablesCfsSmfSupplierHeaderTblErrorADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.cfsSmfSupplierHeaderTblErrorADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetGetSupplierHeaderErrorMsg.body.items }}"          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventCfsSmfSupplierHeaderTblErrorADP"
+      }
+    },
+    "fireDataProviderEventCfsSmfSupplierHeaderTblErrorADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.cfsSmfSupplierHeaderTblErrorADP ]]"
+      }
+    },
+    "assignVariablesCfsSmfSupplierDffTblErrorADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.cfsSmfSupplierDffTblErrorADP": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetGetSupplierDffErrorMsg.body.items }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "fireDataProviderEventCfsSmfSupplierDffTblErrorADP"
+      }
+    },
+    "fireDataProviderEventCfsSmfSupplierDffTblErrorADP": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.cfsSmfSupplierDffTblErrorADP ]]"
+      }
+    },
+    "if": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetContactAddErrorMsg.status==503 ]]"
+      },
+      "outcomes": {
+
+        "false": "fireNotification",
+        "true": "assignVariablesReTry1"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "Failed to get contact address error information"
+      }
+    },
+    "fireNotification3": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "if10": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetAddressErrorMsg.status==503 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariables3",
+        "false": "fireNotification21"
+      }
+    },
+    "if3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetBankAcctsErrorMsg.status==503 ]]"
+      },
+      "outcomes": {
+        "true": "assignVariables4",
+        "false": "fireNotification5"
+      }
+    },
+    "if4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetBusClassficationsErrorMsg.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification10",
+        "true": "assignVariables5"
+      }
+    },
+    "if5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetContactsErrorMsg.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification7",
+        "true": "assignVariablesReTry5"
+      }
+    },
+    "if6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetSitesErrorMsg.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification13",
+        "true": "assignVariables7"
+      }
+    },
+    "if7": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetSupplierDffErrorMsg.status==503 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification16",
+        "true": "assignVariables2"
+      }
+    },
+    "if8": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.callRestGetGetSupplierHeaderErrorMsg.status==503 ]]"
+      },
+      "outcomes": {
+
+        "false": "fireNotification19",
+        "true": "assignVariables8"
+      }
+    },
+    "assignVariables3": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry2": {
+          "source": "{{ $variables.reTry2+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry2"
+      }
+    },
+    "fireNotification4": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "fireNotification5": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "Failed to get bank accounts error information"
+      }
+    },
+    "assignVariables4": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry3": {
+          "source": "{{ $variables.reTry3+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry3"
+      }
+    },
+    "fireNotification7": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "Failed to get contacts error information"
+      }
+    },
+    "fireNotification8": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "fireNotification10": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "Failed to get business classification error information"
+      }
+    },
+    "assignVariables5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry4": {
+          "source": "{{ $variables.reTry4+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry4"
+      }
+    },
+    "fireNotification11": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "fireNotification13": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "Failed to get sites error information"
+      }
+    },
+    "fireNotification15": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "fireNotification16": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "Failed to get supplier dff error information"
+      }
+    },
+    "assignVariables7": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry6": {
+          "source": "{{ $variables.reTry6+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry6"
+      }
+    },
+    "fireNotification17": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "fireNotification19": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "Failed to get supplier header error information"
+      }
+    },
+    "assignVariables2": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry7": {
+          "source": "{{ $variables.reTry7+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry7"
+      }
+    },
+    "assignVariables8": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry8": {
+          "source": "{{ $variables.reTry8+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry8"
+      }
+    },
+    "fireNotification21": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "message": "Failed to get supplier address error information",
+        "summary": "test"
+      }
+    },
+    "fireNotification22": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    },
+    "assignVariablesReTry1": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry1": {
+          "source": "{{ $variables.reTry1+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry1"
+      }
+    },
+    "ifReTry1": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry1==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall8",
+        "false": "fireNotification25"
+      }
+    },
+    "ifReTry2": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry2==1 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification3",
+        "true": "callFunctionWaitForNextCall7"
+      }
+    },
+    "ifReTry3": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry3==1 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification4",
+        "true": "callFunctionWaitForNextCall6"
+      }
+    },
+    "ifReTry4": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry4==1 ]]"
+      },
+      "outcomes": {
+        "false": "fireNotification8",
+        "true": "callFunctionWaitForNextCall5"
+      }
+    },
+    "assignVariablesReTry5": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.reTry5": {
+          "source": "{{ $variables.reTry5+1 }}"
+        }
+      },
+      "outcomes": {
+        "success": "ifReTry5"
+      }
+    },
+    "ifReTry5": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry5==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall4",
+        "false": "fireNotification11"
+      }
+    },
+    "ifReTry6": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry6==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall3",
+        "false": "fireNotification15"
+      }
+    },
+    "ifReTry7": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry7==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall2",
+        "false": "fireNotification17"
+      }
+    },
+    "ifReTry8": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $variables.reTry8==1 ]]"
+      },
+      "outcomes": {
+        "true": "callFunctionWaitForNextCall",
+        "false": "fireNotification22"
+      }
+    },
+    "callFunctionWaitForNextCall": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetSupplierHeaderErrorMsg"
+      }
+    },
+    "callFunctionWaitForNextCall2": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetSupplierDffErrorMsg"
+      }
+    },
+    "callFunctionWaitForNextCall3": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetSitesErrorMsg"
+      }
+    },
+    "callFunctionWaitForNextCall4": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetContactsErrorMsg"
+      }
+    },
+    "callFunctionWaitForNextCall5": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetBusClassficationsErrorMsg"
+      }
+    },
+    "callFunctionWaitForNextCall6": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetBankAcctsErrorMsg"
+      }
+    },
+    "callFunctionWaitForNextCall7": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetAddressErrorMsg"
+      }
+    },
+    "callFunctionWaitForNextCall8": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "waitForNextCall"
+      },
+      "outcomes": {
+        "success": "callRestGetGetContactAddErrorMsg"
+      }
+    },
+    "fireNotification25": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "test",
+        "message": "[[ $page.variables.ATPErrorMessage ]]"
+      }
+    }
+  },
+  "variables": {
+    "reTry1": {
+      "type": "number",
+      "defaultValue": 0
+    },
+    "reTry2": {
+      "defaultValue": 0,
+      "type": "number"
+    },
+    "reTry3": {
+      "defaultValue": 0,
+      "type": "number"
+    },
+    "reTry4": {
+      "defaultValue": 0,
+      "type": "number"
+    },
+    "reTry5": {
+      "defaultValue": 0,
+      "type": "number"
+    },
+    "reTry6": {
+      "defaultValue": 0,
+      "type": "number"
+    },
+    "reTry7": {
+      "defaultValue": 0,
+      "type": "number"
+    },
+    "reTry8": {
+      "defaultValue": 0,
+      "type": "number"
+    }
+  }
+}

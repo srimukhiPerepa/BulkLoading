@@ -1,0 +1,51 @@
+{
+  "root": "callRestGetPaymentsExternalPayeesPayeeIdChildExternalPartyPaymentMethods",
+  "description": "",
+  "variables": {
+    "PayeeId": {
+      "type": "string",
+      "required": false,
+      "input": "fromCaller"
+    }
+  },
+  "actions": {
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetPaymentsExternalPayeesPayeeIdChildExternalPartyPaymentMethods.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist",
+        "message": "Failed to get Payment Method"
+      },
+      "outcomes": {
+        "success": "return2"
+      }
+    },
+    "callRestGetPaymentsExternalPayeesPayeeIdChildExternalPartyPaymentMethods": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "oracleEndpoints/getPaymentsExternalPayeesPayeeIdChildExternalPartyPaymentMethods",
+        "uriParams": {
+          "PayeeId": "{{ $variables.PayeeId }}"
+        }
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "return"
+      }
+    },
+    "return": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    },
+    "return2": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success"
+      }
+    }
+  }
+}

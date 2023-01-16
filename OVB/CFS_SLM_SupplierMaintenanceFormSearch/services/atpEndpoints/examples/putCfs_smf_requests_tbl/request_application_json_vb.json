@@ -1,0 +1,13 @@
+{
+  "status": "<VALUE>",
+  "requestor": "<VALUE>",
+  "request_date": null,
+  "approver": "<VALUE>",
+  "approval_date": null,
+  "creation_date": null,
+  "last_update_date": null,
+  "created_by": "<VALUE>",
+  "last_updated_by": "<VALUE>",
+  "supplier_id": "<VALUE>",
+  "approver_comment": "<VALUE>"
+}

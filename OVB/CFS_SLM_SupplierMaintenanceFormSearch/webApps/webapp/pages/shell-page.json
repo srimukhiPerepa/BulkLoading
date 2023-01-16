@@ -1,0 +1,83 @@
+{
+
+  "description": "",
+  "routerFlow": "main",
+  "variables": {
+    "messagesADP": {
+      "type": "vb/ArrayDataProvider",
+      "defaultValue": {
+        "idAttribute": "id",
+        "itemType": "page:messageType"
+      }
+    },
+    "messageId": {
+      "type": "number",
+      "defaultValue": 0
+    }
+  },
+  "types": {
+    "messageType": {
+      "id": "string",
+      "severity": "string",
+      "detail": "string",
+      "autoTimeout": "number"
+    }
+  },
+  "chains": {
+  },
+  "eventListeners": {
+    "menu1MenuAction": {
+      "chains": [
+        {
+          "chainId": "MenuSignOutActionChain",
+          "parameters": {
+            "menuId": "{{ $event.detail.selectedValue }}"
+          }
+        }
+      ]
+    },
+    "vbNotification": {
+      "chains": [
+        {
+          "chainId": "showNotification",
+          "parameters": {
+            "eventPayload": "{{ { id: $page.variables.messageId, detail: $event.message, severity: $event.type, autoTimeout: $event.displayMode === 'transient' ? 0 : -1 } }}"
+          }
+        }
+      ]
+    },
+    "onMessageClose": {
+      "chains": [
+        {
+          "chainId": "closeNotificationHandler",
+          "parameters": {
+            "eventMessage": "{{ $event.detail.message }}"
+          }
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-messages": {
+        "path": "ojs/ojmessages"
+      },
+      "oj-menu": {
+        "path": "ojs/ojmenu"
+      },
+      "oj-menu-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-option": {
+        "path": "ojs/ojoption"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-navigation-list": {
+        "path": "ojs/ojnavigationlist"
+      }
+    }
+  }
+}

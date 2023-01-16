@@ -1,0 +1,11 @@
+{
+  "description": "",
+  "root": "callFunction",
+  "actions": {
+    "callFunction": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {}
+    }
+  },
+  "variables": {}
+}

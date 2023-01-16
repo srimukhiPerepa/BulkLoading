@@ -1,0 +1,41 @@
+{
+    "items": [
+        {
+            "CountryName": "United States",
+            "TerritoryCode": "US",
+            "Description": "United States of America",
+            "AlternateTerritoryCode": "en-US",
+            "PhoneCountryCodeId": 300000000271317,
+            "PhoneCountryCode": "1",
+            "CurrencyCode": "USD",
+            "NlsTerritory": "AMERICA",
+            "ObsoleteFlag": false,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/hcmCountriesLov/00020000000255530000000EACED00057708000110D93172E3D5",
+                    "name": "hcmCountriesLov",
+                    "kind": "item"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/hcmCountriesLov/00020000000255530000000EACED00057708000110D93172E3D5",
+                    "name": "hcmCountriesLov",
+                    "kind": "item"
+                }
+            ]
+        }
+    ],
+    "count": 1,
+    "hasMore": false,
+    "limit": 500,
+    "offset": 0,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/hcmCountriesLov",
+            "name": "hcmCountriesLov",
+            "kind": "collection"
+        }
+    ]
+}

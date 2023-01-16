@@ -1,0 +1,60 @@
+{
+  "description": "",
+  "root": "resetVariablesPopupContact",
+  "actions": {
+    "callFunctionOpenDialogFunc": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "openDialogFunc",
+        "params": [
+          "{{ \"#modalDialog8\" }}"
+        ]
+      }
+    },
+    "resetVariablesPopupContact": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.popupContact",
+          "$page.variables.postContactAddress",
+          "$page.variables.SupplierContactId"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGetGenerateContactId"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetGenerateContactId.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetGenerateContactId": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "ordsEndpoints/getGenerate_contact_id"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesSupplierContactId"
+      }
+    },
+    "assignVariablesSupplierContactId": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.SupplierContactId": {
+          "source": "{{ $chain.results.callRestGetGenerateContactId.body.items[0].contact_id }}"
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionOpenDialogFunc"
+      }
+    }
+  },
+  "variables": {}
+}

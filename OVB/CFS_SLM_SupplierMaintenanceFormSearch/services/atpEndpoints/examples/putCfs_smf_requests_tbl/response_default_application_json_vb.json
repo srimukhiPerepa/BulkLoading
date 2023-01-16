@@ -1,0 +1,32 @@
+{
+    "request_id": 1000000000001,
+    "status": "ACTIVE",
+    "requestor": null,
+    "request_date": null,
+    "approver": null,
+    "approval_date": null,
+    "creation_date": null,
+    "last_update_date": null,
+    "created_by": null,
+    "last_updated_by": null,
+    "supplier_id": "300000042390398",
+    "approver_comment": null,
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_requests_tbl/1000000000001"
+        },
+        {
+            "rel": "edit",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_requests_tbl/1000000000001"
+        },
+        {
+            "rel": "describedby",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/metadata-catalog/cfs_smf_requests_tbl/item"
+        },
+        {
+            "rel": "collection",
+            "href": "https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com/ords/extensions/cfs_smf_requests_tbl/"
+        }
+    ]
+}
