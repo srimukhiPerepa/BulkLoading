@@ -1,0 +1,15 @@
+https://geaf59a9f800a70-cfsatpdev.adb.us-ashburn-1.oraclecloudapps.com=${{FD_EXT_INSTANCE_URL}}
+https://geaf59a9f800a70-cfsatpfdev.adb.us-ashburn-1.oraclecloudapps.com=${{FD_EXT_INSTANCE_URL}}
+https://geaf59a9f800a70-cfsatpdev05.adb.us-ashburn-1.oraclecloudapps.com=${{FD_EXT_INSTANCE_URL}}
+https://geaf59a9f800a70-cfsatpdev03.adb.us-ashburn-1.oraclecloudapps.com=${{FD_EXT_INSTANCE_URL}}
+https://fa-etsw-dev1-saasfaprod1.fa.ocs.oraclecloud.com=${{FD_SAAS_INSTANCE_URL}}
+https://fa-etsw-dev4-saasfaprod1.fa.ocs.oraclecloud.com=${{FD_SAAS_INSTANCE_URL}}
+https://fa-etsw-dev5-saasfaprod1.fa.ocs.oraclecloud.com=${{FD_SAAS_INSTANCE_URL}}
+https://fa-etsw-dev3-saasfaprod1.fa.ocs.oraclecloud.com=${{FD_SAAS_INSTANCE_URL}}
+https://apinz-development.constellation.com=${{FD_DOCUMENTUM_BOOMI_URL}}
+https://apinz-integration.constellation.com=${{FD_DOCUMENTUM_BOOMI_URL}}
+https://api-development.constellation.com=${{FD_DOCUMENTUM_TOKEN_URL}}
+https://api-integration.constellation.com=${{FD_DOCUMENTUM_TOKEN_URL}}
+https://cfsoicdev01-id7yz47ag41l-ia.integration.ocp.oraclecloud.com=${{FD_OIC_URL}}
+https://cfsoicdev04-id7yz47ag41l-ia.integration.ocp.oraclecloud.com=${{FD_OIC_URL}}
+https://cfsoicdev03-id7yz47ag41l-ia.integration.ocp.oraclecloud.com=${{FD_OIC_URL}}
