@@ -1,0 +1,9 @@
+---
+routes:
+  - path: /names/{name}
+    methods:
+      - GET
+    backend:
+      type: STOCK_RESPONSE_BACKEND
+      status: 500
+      headers: []
