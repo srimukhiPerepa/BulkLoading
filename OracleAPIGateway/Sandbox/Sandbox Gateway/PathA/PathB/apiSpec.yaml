@@ -4,8 +4,8 @@ routes:
   methods:
   - GET
   backend:
-    type: ORACLE_FUNCTIONS_BACKEND
-    functionId: ocid1.fnfunc.oc1.phx.aaaaaaaaab______xmq
+    type: HTTP_BACKEND
+    url: https://jsonplaceholder.typicode.com
 - path: "/weather"
   methods:
   - GET
