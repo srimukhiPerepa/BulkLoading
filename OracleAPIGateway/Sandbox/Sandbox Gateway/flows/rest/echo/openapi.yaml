@@ -1,7 +1,7 @@
 ---
 openapi: 3.0.1
 info:
-  title: ECH0.2
+  title: ECH0
   version: v01
 servers:
   - url: https://dev-oic-vbcs-poc-idzor6zhmigm-ia.integration.ocp.oraclecloud.com:443/ic/api/integration/v1/flows/rest/ECHO/1.0
