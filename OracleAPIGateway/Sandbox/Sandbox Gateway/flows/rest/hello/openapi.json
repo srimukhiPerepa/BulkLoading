@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "HELLO_WORLD",
-    "version": "v01"
+    "version": "v02"
   },
   "servers": [
     {

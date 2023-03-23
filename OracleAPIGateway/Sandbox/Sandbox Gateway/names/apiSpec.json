@@ -3,7 +3,7 @@
   "loggingPolicies": null,
   "routes": [
     {
-      "path": "/names/{name}",
+      "path": "/names/v1/{name}",
       "methods": [
         "GET"
       ],

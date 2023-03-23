@@ -1,6 +1,6 @@
 ---
 routes:
-- path: "/hello"
+- path: "/hello/v2"
   methods:
   - GET
   backend:
