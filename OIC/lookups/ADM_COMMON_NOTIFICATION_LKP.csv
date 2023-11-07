@@ -1,0 +1,4 @@
+﻿DVM,ADM_COMMON_NOTIFICATION_LKP,Lookup for all interfaces related to ADM to store notification details.
+TrackName,IntegrationRICEId,IntegrationName,SourceSystem,TargetSystem,SuccessNotificationDL,SuccessMailSubject,ErrorNotificationDL,ErrorMailSubject,FromMailId,NotificationFlag,SuccessNotificationFlag,ErrorOICNotificationDL,ErrorOICMailSubject
+MDM-Suppliers,INT-MDM-06B,MK DenialSupplier,ERP,MK Denial,"prachi.sharma26@infosys.com,bijin.krishnan@infosys.com,jeevanya.r@infosys.com",Success Mail for Supplier Registration,"prachi.sharma26@infosys.com, bijin.krishnan@infosys.com",ADM SUPPLIER M K DENIAL SCREENING RESULT -BU-DEV,noreply@oracle.com,,,"prachi.sharma26@infosys.com, bijin.krishnan@infosys.com",OIC ERROR NOTIFICATION  MAIL
+R2R,INT-R2R-11,ADM INT-R2R-11 IN Apply Hold Credit,ERP,ERP,akashkumar.raje@infosys.com,Success,akashkumar.raje@infosys.com,error,no-reply@oracle.com,,,,
