@@ -14,9 +14,9 @@ import javax.ws.rs.core.MediaType;
  
 public class BulkWorkflowPropertiesAndValues
 {
-  protected final String BASE_URL = "${{FD_BASE_URL}}";
-  protected final String USERNAME = "${{FD_USERNAME}}";
-  protected final String PASSWORD = "${{FD_PASSWORD}}";
+  protected String BASE_URL = "${{FD_BASE_URL}}";
+  protected String USERNAME = "${{FD_USERNAME}}";
+  protected String PASSWORD = "${{FD_PASSWORD}}";
 
   public static void main(String[] args)
   {
