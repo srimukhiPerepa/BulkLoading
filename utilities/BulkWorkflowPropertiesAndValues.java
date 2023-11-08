@@ -1,7 +1,3 @@
-evaluate(new File("./FlexDeployRestClient.groovy"))
-evaluate(new File("./Requests/GetTargetGroupById.groovy"))
-evaluate(new File("./Requests/Request.groovy"))
-
 import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
 import flexagon.ff.common.core.utils.FlexJsonUtils;
@@ -18,7 +14,7 @@ import javax.ws.rs.core.MediaType;
  
 public class BulkWorkflowPropertiesAndValues
 {
-  private static final GET_WORKFLOW_RESOURCE = "flexdeploy/rest/v1/workflows/27700536";
+  private static final String GET_WORKFLOW_RESOURCE = "flexdeploy/rest/v1/workflows/27700536";
 
   protected static String BASE_URL;
   protected static String USERNAME;
@@ -28,7 +24,7 @@ public class BulkWorkflowPropertiesAndValues
   {
     if (args == null || args.length < 3)
     {
-      throw new IllegalArgumentException("BASE_URL, USERNAME, and PASSWORD must be passed as arguments.")
+      throw new IllegalArgumentException("BASE_URL, USERNAME, and PASSWORD must be passed as arguments.");
     }
     BASE_URL = args[0];
     USERNAME = args[1];
