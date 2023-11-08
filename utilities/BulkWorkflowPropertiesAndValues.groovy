@@ -14,9 +14,11 @@ import javax.ws.rs.core.MediaType;
  
 public class BulkWorkflowPropertiesAndValues
 {
-  protected String BASE_URL = "${{FD_BASE_URL}}";
-  protected String USERNAME = "${{FD_USERNAME}}";
-  protected String PASSWORD = "${{FD_PASSWORD}}";
+  private static final GET_WORKFLOW_RESOURCE = "flexdeploy/rest/v1/workflows/27700536";
+
+  protected static String BASE_URL = "${{FD_BASE_URL}}";
+  protected static String USERNAME = "${{FD_USERNAME}}";
+  protected static String PASSWORD = "${{FD_PASSWORD}}";
 
   public static void main(String[] args)
   {
@@ -30,7 +32,7 @@ public class BulkWorkflowPropertiesAndValues
   private static FlexRESTClient getClient()
   {
     FlexRESTClient restService = new FlexRESTClient();
-    restService.url(BASE_URL).path("flexdeploy/rest/v1/workflows/27700536").basicauth(USERNAME, PASSWORD).mediatype(MediaType.APPLICATION_JSON).setValidateResponse(true);
+    restService.url(BASE_URL).path(GET_WORKFLOW_RESOURCE).basicauth(USERNAME, PASSWORD).mediatype(MediaType.APPLICATION_JSON).setValidateResponse(true);
     return restService;
   }
 
