@@ -1,5 +1,3 @@
-package requests;
-
 import java.util.Collections;
 import java.util.Map;
 
