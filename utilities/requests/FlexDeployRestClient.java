@@ -6,6 +6,7 @@ import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
 import flexagon.ff.common.core.utils.FlexCommonUtils;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -119,13 +120,9 @@ public class FlexDeployRestClient
     LOG.logInfo(methodName, "Http request returned {0} ", responseCode);
 
     // All other errors should provide a message
-    if (responseCode < 400)
+    if (responseCode >= 400)
     {
-      //if our good(less than 400) status code has an override then throw
-      if (mOverrideCodes.contains(responseCode))
-      {
-        throw new FlexCheckedException("HTTP_REQUEST_FAIL", "Request failed due to overridden status code: " + pResponse.getResponseString());
-      }
+      throw new FlexCheckedException("HTTP_REQUEST_FAIL", "Request failed due to: " + pResponse.getResponseString());
     }
 
     LOG.logFinestExiting(methodName);

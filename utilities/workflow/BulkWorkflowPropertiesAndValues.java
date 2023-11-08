@@ -1,13 +1,15 @@
 package workflow;
 import requests.FlexDeployRestClient;
+import requests.GetTargetGroupById;
 
+import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
 import flexagon.ff.common.core.utils.FlexJsonUtils;
  
 import org.json.JSONObject;
 import org.json.JSONArray;
-  
+
 import java.util.HashMap;
 import java.util.Map;
  
@@ -20,6 +22,7 @@ public class BulkWorkflowPropertiesAndValues
   protected static String PASSWORD;
 
   public static void main(String[] args)
+    throws FlexCheckedException
   {
     if (args == null || args.length < 3)
     {
@@ -41,6 +44,7 @@ public class BulkWorkflowPropertiesAndValues
   }
 
   private static FlexDeployRestClient getClient()
+    throws FlexCheckedException
   {
     FlexDeployRestClient restService = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
     return restService;
