@@ -128,6 +128,15 @@ public class FlexDeployRestClient
     LOG.logFinestExiting(methodName);
   }
 
+  protected static String getUri(String pBaseUri, String pResourceUri)
+  {
+    if (!pResourceUri.startsWith("/"))
+    {
+      pResourceUri = String.format("/%s", pResourceUri);
+    }
+    return pBaseUri + pResourceUri;
+  }
+
   private FlexRESTClient getFlexRestUtil(Request pRequest)
     throws FlexCheckedException
   {
