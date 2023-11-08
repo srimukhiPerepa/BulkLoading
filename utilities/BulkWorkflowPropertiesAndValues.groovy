@@ -21,7 +21,7 @@ public class BulkWorkflowPropertiesAndValues
     FlexRESTClientResponse response = restService.get();
             
     JSONObject jsonResponse = FlexJsonUtils.getJSON(response.getResponseString());
-    println jsonResponse
+    println jsonResponse.toString(2)
   }
 
   private static FlexRESTClient getClient()
