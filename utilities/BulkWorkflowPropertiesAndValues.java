@@ -20,13 +20,21 @@ public class BulkWorkflowPropertiesAndValues
 {
   private static final GET_WORKFLOW_RESOURCE = "flexdeploy/rest/v1/workflows/27700536";
 
-  protected static String BASE_URL = "${{FD_BASE_URL}}";
-  protected static String USERNAME = "${{FD_USERNAME}}";
-  protected static String PASSWORD = "${{FD_PASSWORD}}";
+  protected static String BASE_URL;
+  protected static String USERNAME;
+  protected static String PASSWORD;
 
   public static void main(String[] args)
   {
-    FlexDeployRestClient client = getClient()
+    if (args == null || args.length < 3)
+    {
+      throw new IllegalArgumentException("BASE_URL, USERNAME, and PASSWORD must be passed as arguments.")
+    }
+    BASE_URL = args[0];
+    USERNAME = args[1];
+    PASSWORD = args[2];
+
+    FlexDeployRestClient client = getClient();
 
     GetTargetGroupById tg = new GetTargetGroupById();
     tg.setId("268056");
@@ -34,15 +42,12 @@ public class BulkWorkflowPropertiesAndValues
     FlexRESTClientResponse response = client.get(tg);
             
     JSONObject jsonResponse = FlexJsonUtils.getJSON(response.getResponseString());
-    println jsonResponse.toString(2)
+    System.out.println(jsonResponse.toString(2));
   }
 
   private static FlexDeployRestClient getClient()
   {
     FlexDeployRestClient restService = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
-
-
-    //restService.url(BASE_URL).path(GET_WORKFLOW_RESOURCE).basicauth(USERNAME, PASSWORD).mediatype(MediaType.APPLICATION_JSON).setValidateResponse(true);
     return restService;
   }
 }
