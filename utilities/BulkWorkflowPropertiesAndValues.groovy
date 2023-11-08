@@ -14,6 +14,9 @@ import javax.ws.rs.core.MediaType;
  
 public class BulkWorkflowPropertiesAndValues
 {
+  protected final String BASE_URL = "${{FD_BASE_URL}}"
+  protected final String USERNAME = "${{FD_USERNAME}}"
+  protected final String PASSWORD = "${{FD_PASSWORD}}"
 
   public static void main(String[] args)
   {
@@ -27,7 +30,9 @@ public class BulkWorkflowPropertiesAndValues
   private static FlexRESTClient getClient()
   {
     FlexRESTClient restService = new FlexRESTClient();
-    restService.url("http://fdtlt86.flexagon.azure.com:8000").path("flexdeploy/rest/v1/workflows/27700536").basicauth("jayar", "Welcome1!").mediatype(MediaType.APPLICATION_JSON).setValidateResponse(true);
+    restService.url(BASE_URL).path("flexdeploy/rest/v1/workflows/27700536").basicauth(USERNAME, PASSWORD).mediatype(MediaType.APPLICATION_JSON).setValidateResponse(true);
     return restService;
   }
+
+  private static getCredentialsFromAccount
 }
