@@ -1,3 +1,5 @@
+import FlexDeployRestClient;
+
 import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
 import flexagon.ff.common.core.utils.FlexJsonUtils;
