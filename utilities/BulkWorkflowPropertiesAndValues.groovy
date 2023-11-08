@@ -1,4 +1,6 @@
-import FlexDeployRestClient;
+evaluate(new File("./FlexDeployRestClient.groovy"))
+evaluate(new File("./Requests/GetTargetGroupById.groovy"))
+evaluate(new File("./Requests/Request.groovy"))
 
 import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
