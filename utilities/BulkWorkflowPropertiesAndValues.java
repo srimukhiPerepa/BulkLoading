@@ -8,10 +8,6 @@ import org.json.JSONArray;
 import java.util.HashMap;
 import java.util.Map;
  
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.Form;
-import javax.ws.rs.core.MediaType;
- 
 public class BulkWorkflowPropertiesAndValues
 {
   private static final String GET_WORKFLOW_RESOURCE = "flexdeploy/rest/v1/workflows/27700536";
