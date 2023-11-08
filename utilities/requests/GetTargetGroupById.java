@@ -1,4 +1,4 @@
-package utilites.requests;
+package utilities.requests;
 
 import java.util.Collections;
 import java.util.Map;
