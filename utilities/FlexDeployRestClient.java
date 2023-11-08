@@ -1,4 +1,4 @@
-package utilities;
+import requests.Request;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.logging.FlexLogger;

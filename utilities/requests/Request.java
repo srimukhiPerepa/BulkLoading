@@ -1,4 +1,4 @@
-package utilities.requests;
+package requests;
 
 import flexagon.ff.common.core.logging.FlexLogger;
 
