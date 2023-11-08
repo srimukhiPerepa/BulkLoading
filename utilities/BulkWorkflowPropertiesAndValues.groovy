@@ -1,7 +1,6 @@
 import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
 import flexagon.ff.common.core.utils.FlexJsonUtils;
-import flexagon.fd.model.integration.util.ApiException;
  
 import org.json.JSONObject;
 import org.json.JSONArray;
