@@ -27,7 +27,7 @@ public class BulkWorkflowPropertiesAndValues
   private static FlexRESTClient getClient()
   {
     FlexRESTClient restService = new FlexRESTClient();
-    restService.url("http://fdtlt86.flexagon.azure.com:8000").path("flexdeploy/rest/v1/workflows").basicauth("jayar", "Welcome1!").mediatype(MediaType.APPLICATION_JSON).setValidateResponse(true)
+    restService.url("http://fdtlt86.flexagon.azure.com:8000").path("flexdeploy/rest/v1/workflows/27700536").basicauth("jayar", "Welcome1!").mediatype(MediaType.APPLICATION_JSON).setValidateResponse(true);
     return restService;
   }
 }
