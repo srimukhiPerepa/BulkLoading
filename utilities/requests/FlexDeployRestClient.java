@@ -23,7 +23,7 @@ public class FlexDeployRestClient
   }
 
   private final String mBaseUrl;
-  private final String mQueryParamsString;
+  private final String mQueryParamsString = "";
   private String mAuthHeader;
 
   public FlexDeployRestClient(String pBaseUrl, String pUsername, String pPassword)
