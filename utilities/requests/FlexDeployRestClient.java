@@ -1,4 +1,4 @@
-package utilities.requests;
+package requests;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.logging.FlexLogger;
@@ -28,7 +28,6 @@ public class FlexDeployRestClient
   public FlexDeployRestClient(String pBaseUrl, String pUsername, String pPassword)
     throws FlexCheckedException
   {
-    super();
     mBaseUrl = pBaseUrl.endsWith("/") ? pBaseUrl.substring(0, pBaseUrl.lastIndexOf("/")) : pBaseUrl;
     initAuthHeader(pUsername, pPassword);
   }
