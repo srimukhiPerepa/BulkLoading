@@ -22,17 +22,23 @@ public class BulkWorkflowPropertiesAndValues
 
   public static void main(String[] args)
   {
-    FlexRESTClient restService = getClient()
-    FlexRESTClientResponse response = restService.get();
+    FlexDeployRestClient client = getClient()
+
+    GetTargetGroupById tg = new GetTargetGroupById();
+    tg.setId("268056");
+
+    FlexRESTClientResponse response = client.get(tg);
             
     JSONObject jsonResponse = FlexJsonUtils.getJSON(response.getResponseString());
     println jsonResponse.toString(2)
   }
 
-  private static FlexRESTClient getClient()
+  private static FlexDeployRestClient getClient()
   {
-    FlexRESTClient restService = new FlexRESTClient();
-    restService.url(BASE_URL).path(GET_WORKFLOW_RESOURCE).basicauth(USERNAME, PASSWORD).mediatype(MediaType.APPLICATION_JSON).setValidateResponse(true);
+    FlexDeployRestClient restService = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
+
+
+    //restService.url(BASE_URL).path(GET_WORKFLOW_RESOURCE).basicauth(USERNAME, PASSWORD).mediatype(MediaType.APPLICATION_JSON).setValidateResponse(true);
     return restService;
   }
 }
