@@ -35,6 +35,4 @@ public class BulkWorkflowPropertiesAndValues
     restService.url(BASE_URL).path(GET_WORKFLOW_RESOURCE).basicauth(USERNAME, PASSWORD).mediatype(MediaType.APPLICATION_JSON).setValidateResponse(true);
     return restService;
   }
-
-  private static getCredentialsFromAccount
 }
