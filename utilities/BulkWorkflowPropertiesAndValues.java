@@ -1,6 +1,6 @@
-package fdutilities;
+package utilities;
 
-import fdutilities.FlexDeployRestClient;
+import utilities.FlexDeployRestClient;
 
 import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;

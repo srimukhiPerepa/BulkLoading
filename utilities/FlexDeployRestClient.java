@@ -1,4 +1,4 @@
-package fdutilities;
+package utilities;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.logging.FlexLogger;
