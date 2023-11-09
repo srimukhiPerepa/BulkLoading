@@ -42,7 +42,7 @@ public abstract class Request
   {
     try 
     {
-      return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+      return URLEncoder.encode(value, StandardCharsets.UTF_8);
     } 
     catch(UnsupportedEncodingException uee)
     {
@@ -54,7 +54,7 @@ public abstract class Request
   {
     try 
     {
-      return URLDecoder.decode(value, StandardCharsets.UTF_8.toString());
+      return URLDecoder.decode(value, StandardCharsets.UTF_8);
     } 
     catch(UnsupportedEncodingException uee)
     {
