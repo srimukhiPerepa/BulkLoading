@@ -52,7 +52,7 @@ public class BulkWorkflowPropertiesAndValues
     WORKFLOW_NAME = args[3];
     TARGET_GROUP_CODE = args[4];
 
-    client = getClient();
+    client = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
     JSONObject workflowObject = findWorkflow();
 
     // GetTargetGroupByCode tg = new GetTargetGroupByCode();
@@ -62,19 +62,11 @@ public class BulkWorkflowPropertiesAndValues
     //JSONObject jsonResponse = FlexJsonUtils.getJSON(response.getResponseString());
   }
 
-  private static FlexDeployRestClient getClient()
-    throws FlexCheckedException
-  {
-    LOGGER.info("test3");
-    FlexDeployRestClient restService = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
-    return restService;
-  }
-
   private static JSONObject findWorkflow()
     throws FlexCheckedException
   {
     final String methodName = "findWorkflow";
-    LOG.logFinestEntering(methodName);
+    LOGGER.entering(CLZ_NAM, methodName);
 
     SearchWorkflowByName sw = new SearchWorkflowByName();
     sw.setWorkflowName(WORKFLOW_NAME);
