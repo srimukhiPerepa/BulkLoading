@@ -1,5 +1,7 @@
 package requests;
 
+import workflow.BulkWorkflowPropertiesAndValues;
+
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.logging.FlexLogger;
 import flexagon.ff.common.core.rest.FlexRESTClient;
@@ -16,7 +18,7 @@ import java.util.logging.Logger;
 public class FlexDeployRestClient
 {
   private static final String CLZ_NAM = FlexDeployRestClient.class.getName();
-  public static final Logger logger;
+  public static Logger logger;
 
   static
   {
