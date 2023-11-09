@@ -9,6 +9,10 @@ import java.util.Map;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 
+import java.nio.charset.StandardCharsets;
+import java.net.URLEncoder;
+import java.net.URLDecoder;
+
 public abstract class Request
 {
   private static final String CLZ_NAM = Request.class.getName();
@@ -32,4 +36,12 @@ public abstract class Request
 
   public abstract Map<String, Object> getHeaders();
 
+  public String encodeValue(String value) {
+    return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+  }
+
+  public String decodeValue(String value)
+  {
+    return URLDecoder.decode(value, StandardCharsets.UTF_8.toString());
+  }
 }

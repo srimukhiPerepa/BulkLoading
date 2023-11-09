@@ -30,7 +30,7 @@ public class SearchWorkflowByName
   public Map<String, Object> getQueryParams()
   {
     Map<String, Object> params = new HashMap<>();
-    params.put("workflowName", getWorkflowName());
+    params.put("workflowName", encodeValue(getWorkflowName()));
     return params;
   }
 
