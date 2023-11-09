@@ -14,13 +14,12 @@ import org.json.JSONArray;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
-import java.util.logging.Level;
-import java.util.logging.ConsoleHandler;
+import java.util.logging.*;
  
 public class BulkWorkflowPropertiesAndValues
 {
   private static final String CLZ_NAM = BulkWorkflowPropertiesAndValues.class.getName();
+  private static final Logger PARENT_LOGGER = Logger.getLogger("");
   public static final Logger logger = Logger.getGlobal();
 
   protected static String BASE_URL;
@@ -44,11 +43,10 @@ public class BulkWorkflowPropertiesAndValues
     WORKFLOW_NAME = args[3];
     TARGET_GROUP_CODE = args[4];
 
-		ConsoleHandler consoleHandler = new ConsoleHandler();
-		consoleHandler.setLevel(Level.ALL);
-		logger.addHandler(consoleHandler);
+    Handler defaultConsoleHandler = PARENT_LOGGER.getHandlers()[0];
+    defaultConsoleHandler.setLevel(Level.ALL);
+    PARENT_LOGGER.setLevel(Level.ALL);
     logger.setLevel(Level.ALL);
-    logger.setUseParentHandlers(false);
 
     client = getClient();
     JSONObject workflowObject = findWorkflow();
@@ -78,7 +76,8 @@ public class BulkWorkflowPropertiesAndValues
     FlexRESTClientResponse response = client.get(sw);
 
     String jsonString = response.getResponseObject(String.class);
-    logger.log(Level.FINE, "Workflow response: " + jsonString);
+    logger.info("info Workflow response: " + jsonString);
+    logger.fine("fine Workflow response: " + jsonString);
 
     JSONArray jsonArray = new JSONArray(jsonString);
     if (jsonArray.length() == 0)
