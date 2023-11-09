@@ -24,4 +24,5 @@ Class-Path: /u01/flexdeploy/apache-tomcat-flexdeploy/webapps/flexdeploy/WEB-INF/
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javax.validation_1.2.0.jar
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javax.ws.rs-api-2.0.jar
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javassist-3.26.0-GA.jar
+   /u01/flexdeploy/apache-tomcat-flexdeploy/lib/eclipselink.jar
 Main-Class: workflow.BulkWorkflowPropertiesAndValues
