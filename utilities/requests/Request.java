@@ -8,7 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
@@ -20,7 +20,7 @@ import java.net.URLDecoder;
 public abstract class Request
 {
   private static final String CLZ_NAM = Request.class.getName();
-  private static final FlexLogger LOG = FlexLogger.getLogger(CLZ_NAM);
+  private static final Logger LOGGER = Logger.getGlobal();
 
   public Request()
   {
@@ -43,11 +43,11 @@ public abstract class Request
   public String encodeValue(String value) 
   {
     final String methodName = "encodeValue";
-    LOG.logFinerEntering(methodName, value);
+    LOGGER.entering(CLZ_NAM, methodName, value);
 
     try 
     {
-      LOG.logFinerExiting(methodName);
+      LOGGER.exiting(CLZ_NAM, methodName);
       return URLEncoder.encode(value, StandardCharsets.UTF_8.toString()).replaceAll("\\+", "%20");
     } 
     catch(UnsupportedEncodingException uee)
@@ -59,11 +59,11 @@ public abstract class Request
   public String decodeValue(String value)
   {
     final String methodName = "decodeValue";
-    LOG.logFinerEntering(methodName, value);
+    LOGGER.entering(CLZ_NAM, methodName, value);
 
     try 
     {
-      LOG.logFinerExiting(methodName);
+      LOGGER.exiting(CLZ_NAM, methodName);
       return URLDecoder.decode(value, StandardCharsets.UTF_8.toString());
     } 
     catch(UnsupportedEncodingException uee)
