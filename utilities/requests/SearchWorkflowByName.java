@@ -2,6 +2,7 @@ package requests;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.HashMap;
 
 import javax.ws.rs.client.Entity;
 
@@ -28,7 +29,7 @@ public class SearchWorkflowByName
   @Override
   public Map<String, Object> getQueryParams()
   {
-    HashMap<String, Object> params = new HashMap<>();
+    Map<String, Object> params = new HashMap<>();
     params.put("workflowName", getWorkflowName());
     return params;
   }
