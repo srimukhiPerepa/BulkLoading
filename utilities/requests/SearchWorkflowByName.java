@@ -37,7 +37,7 @@ public class SearchWorkflowByName
   @Override
   public String getResourceUri()
   {
-    return String.format("%s/%s", "flexdeploy/rest/v1/workflows", mName);
+    return "flexdeploy/rest/v1/workflows";
   }
 
   @Override
