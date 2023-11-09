@@ -1,5 +1,6 @@
 package requests;
 
+import workflow.BulkWorkflowPropertiesAndValues;
 import flexagon.ff.common.core.logging.FlexLogger;
 
 import java.io.UnsupportedEncodingException;
@@ -7,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
@@ -41,8 +43,12 @@ public abstract class Request
 
   public String encodeValue(String value) 
   {
+    final String methodName = "encodeValue";
+    logger.entering(CLZ_NAM, methodName, value);
+
     try 
     {
+      logger.exiting(methodName);
       return URLEncoder.encode(value, StandardCharsets.UTF_8.toString()).replaceAll("\\+", "%20");
     } 
     catch(UnsupportedEncodingException uee)
@@ -53,8 +59,12 @@ public abstract class Request
 
   public String decodeValue(String value)
   {
+    final String methodName = "decodeValue";
+    logger.entering(CLZ_NAM, methodName, value);
+
     try 
     {
+      logger.exiting(methodName);
       return URLDecoder.decode(value, StandardCharsets.UTF_8.toString());
     } 
     catch(UnsupportedEncodingException uee)
