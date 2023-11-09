@@ -29,7 +29,7 @@ public class SearchWorkflowByName
   @Override
   public Map<String, Object> getQueryParams()
   {
-    Map<String, Object> params = new HashMap<String, Object>();
+    Map<String, Object> params = new HashMap<>();
     params.put("workflowName", getWorkflowName());
     return params;
   }
