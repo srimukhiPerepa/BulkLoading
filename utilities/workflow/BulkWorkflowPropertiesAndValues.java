@@ -87,6 +87,7 @@ public class BulkWorkflowPropertiesAndValues
     JSONObject wfObject = jsonArray.getJSONObject(0);
     String workflowId = wfObject.get("workflowId").toString();
 
+    LOGGER.exiting(CLZ_NAM, methodName);
     return wfObject;
   }
 }
