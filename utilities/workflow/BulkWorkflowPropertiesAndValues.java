@@ -20,6 +20,7 @@ import java.util.logging.*;
 public class BulkWorkflowPropertiesAndValues
 {
   private static final String CLZ_NAM = BulkWorkflowPropertiesAndValues.class.getName();
+  private static final FlexLogger LOG = FlexLogger.getLogger(CLZ_NAM);
   private static final Logger LOGGER = Logger.getGlobal();
 
   protected static String BASE_URL;
