@@ -12,6 +12,7 @@ import flexagon.ff.common.core.logging.FlexLogger;
 import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
 import flexagon.ff.common.core.utils.FlexJsonUtils;
+import flexagon.ff.common.core.utils.FlexCommonUtils;
  
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -36,6 +37,8 @@ public class BulkWorkflowPropertiesAndValues
   protected static String TARGET_GROUP_CODE;
 
   private static FlexDeployRestClient client;
+  private static List<String> targetEnvironmentCodes = new ArrayList<>(); //In order
+  private static Map<String, List<String>> codeToValue = new HashMap<>(); //key is workflow property code value is List<String> or value for each target property in order
 
   public static void main(String[] args)
     throws FlexCheckedException
@@ -59,10 +62,95 @@ public class BulkWorkflowPropertiesAndValues
     client = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
     String workflowId = findWorkflowId();
     List<PropertyDefinitionPojo> workflowProperties = getWorkflowProperties(workflowId);
+    List<String> lines = FlexFileUtils.read(new File("../examples/workflow_property_values.csv"));
+    processCSV(lines);
 
     // GetTargetGroupByCode tg = new GetTargetGroupByCode();
     // tg.setCode(TARGET_GROUP_CODE);
     // FlexRESTClientResponse response = client.get(tg);
+  }
+
+  private static void processCSV(List<String> pLines)
+    throws FlexCheckedException
+  {
+    final String methodName = "processCSV";
+    LOGGER.entering(CLZ_NAM, methodName, pLines);
+
+    List<String> errors = new ArrayList<>();
+
+    String[] headers = pLines.get(0).split(",");
+    int numEnvironments = 0;
+    for (int i = 15; i < headers.length; i++)
+    {
+      numEnvironments++;
+      targetEnvironmentCodes.add(headers[i]);
+    }
+
+    int numLines = pLines.size();
+    for (int i = 1; i < numLines; i++)
+    {
+      String line = pLines.get(i);
+      String[] tokens = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+      String code = tokens[0];
+      String displayName = tokens[1];
+      String propertyScope = tokens[2];
+      String isRequired = tokens[3];
+      String dataType = tokens[4];
+      String isEncrypted = tokens[5];
+      String displayRows = tokens[6];
+      String displayColumns = tokens[7];
+      String listData = tokens[8];
+      String subDataType = tokens[9];
+      String isDefaultValueExpression = tokens[10];
+      String isMultiselect = tokens[11];
+      String description = tokens[12];
+      String isActive = tokens[13];
+      String defaultValue = tokens[14];
+
+      for (int j = 15; j < numEnvironments + 15; j++)
+      {
+        List<String> valuesForTarget = codeToValue.getOrDefault(code, new ArrayList<>());
+        valuesForTarget.add(tokens[j]);
+        codeToValue.put(code, valuesForTarget);
+      }
+
+      if (FlexCommonUtils.isEmpty(code))
+      {
+        errors.add("Line " + i + " is missing CODE");
+      }
+
+      if (FlexCommonUtils.isEmpty(displayName))
+      {
+        errors.add("Line " + i + " is missing DISPLAY_NAME");
+      }
+
+      if (FlexCommonUtils.isEmpty(propertyScope) || !(propertyScope.equals("TARGET") || propertyScope.equals("PROJECT")))
+      {
+        errors.add("Line " + i + " PROPERTY_SCOPE must be TARGET or PROJECT");
+      }
+
+      if (FlexCommonUtils.isEmpty(isRequired))
+      {
+        errors.add("Line " + i + " is missing REQUIRED");
+      }
+
+      if (FlexCommonUtils.isEmpty(dataType))
+      {
+        errors.add("Line " + i + " is missing DATA_TYPE");
+      }
+
+      if (FlexCommonUtils.isEmpty(isEncrypted))
+      {
+        errors.add("Line " + i + " is missing ENCRYPTED");
+      }
+    }
+
+    if (errors.size() > 0)
+    {
+      throw new FlexCheckedException(errors);
+    }
+
+    LOGGER.exiting(CLZ_NAM, methodName);
   }
 
   private static List<PropertyDefinitionPojo> getWorkflowProperties(String pWorkflowId)
@@ -147,7 +235,7 @@ public class BulkWorkflowPropertiesAndValues
       results.add(propertyDef);
     }
 
-    LOGGER.exiting(CLZ_NAM, methodName);
+    LOGGER.exiting(CLZ_NAM, methodName, results.size());
     return results;
   }
 
