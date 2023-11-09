@@ -4,6 +4,8 @@ import requests.FlexDeployRestClient;
 import requests.GetTargetGroupByCode;
 import requests.SearchWorkflowByName;
 
+import pojo.PropertyDefinitionPojo;
+
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.logging.FlexLogger;
 import flexagon.ff.common.core.rest.FlexRESTClient;
@@ -13,8 +15,11 @@ import flexagon.ff.common.core.utils.FlexJsonUtils;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.logging.*;
  
 public class BulkWorkflowPropertiesAndValues
@@ -51,16 +56,99 @@ public class BulkWorkflowPropertiesAndValues
     TARGET_GROUP_CODE = args[4];
 
     client = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
-    JSONObject workflowObject = findWorkflow();
+    String workflowId = findWorkflow();
+    List<PropertyDefinitionPojo> workflowProperties = getWorkflowProperties(workflowId);
 
     // GetTargetGroupByCode tg = new GetTargetGroupByCode();
     // tg.setCode(TARGET_GROUP_CODE);
     // FlexRESTClientResponse response = client.get(tg);
-
-    //JSONObject jsonResponse = FlexJsonUtils.getJSON(response.getResponseString());
   }
 
-  private static JSONObject findWorkflow()
+  private static List<PropertyDefinitionPojo> getWorkflowProperties(String pWorkflowId)
+  {
+    final String methodName = "getWorkflowProperties";
+    LOGGER.entering(CLZ_NAM, methodName, pWorkflowId);
+
+    List<PropertyDefinitionPojo> results = new ArrayList<>();
+    GetWorkflowPropertiesById wp = new GetWorkflowPropertiesById();
+    wp.setId(workflowId);
+    FlexRESTClientResponse response = client.get(wp);
+
+    String jsonString = response.getResponseObject(String.class);
+    LOGGER.info("Workflow properties response: " + jsonString);
+
+    JSONArray jsonArray = new JSONArray(jsonString);
+    for (int i = 0; i < jsonArray.length(); i++)
+    {
+      JSONObject object = jsonArray.getJSONObject(i);
+      PropertyDefinitionPojo propertyDef = new PropertyDefinitionPojo();
+      boolean isEncrypted = object.getBoolean("isEncrypted");
+      String dataType = object.getString("dataType");
+      Object displayRows = object.get("displayRows");
+      Object displayColumns = object.get("displayColumns");
+      Object listData = object.get("listData");
+      boolean isRequired = object.getBoolean("isRequired");
+      Object subDataType = object.get("subDataType");
+      boolean isDefaultValueExpression = object.getBoolean("isDefaultValueExpression");
+      boolean isMultiselect = object.getBoolean("isMultiselect");
+      Object displayName = object.get("displayName");
+      Object description = object.get("description");
+      String scope = object.getString("scope");
+      boolean isActive = object.getBoolean("isActive");
+      Object defaultValue = object.get("defaultValue");
+      String name = object.getString("name");
+
+      propertyDef.setIsEncrypted(isEncrypted);
+      propertyDef.setIsRequired(isRequired);
+      propertyDef.setIsDefaultValueExpression(isDefaultValueExpression);
+      propertyDef.setIsMultiselect(isMultiselect);
+      propertyDef.setIsActive(isActive);
+      propertyDef.setDataType(dataType);
+      propertyDef.setScope(scope);
+      propertyDef.setCode(name);
+
+      if (displayRows != null)
+      {
+        propertyDef.setDisplayRows(Integer.parseInt(displayRows.toString()));
+      }
+
+      if (displayColumns != null)
+      {
+        propertyDef.setDisplayColumns(Integer.parseInt(displayColumns.toString()));
+      }
+
+      if (listData != null)
+      {
+        propertyDef.setListData(Arrays.asList(listData.trim().split(",")));
+      }
+
+      if (subDataType != null)
+      {
+        propertyDef.setSubDataType(subDataType.toString());
+      }
+
+      if (displayName != null)
+      {
+        propertyDef.setDisplayName(displayName.toString());
+      }
+
+      if (description != null)
+      {
+        propertyDef.setDescription(description.toString());
+      }
+
+      if (defaultValue != null)
+      {
+        propertyDef.setDefaultValue(defaultValue.toString());
+      }
+
+      results.add(propertyDef);
+    }
+
+    LOGGER.exiting(CLZ_NAM, methodName);
+  }
+
+  private static String findWorkflowId()
     throws FlexCheckedException
   {
     final String methodName = "findWorkflow";
@@ -87,7 +175,7 @@ public class BulkWorkflowPropertiesAndValues
     JSONObject wfObject = jsonArray.getJSONObject(0);
     String workflowId = wfObject.get("workflowId").toString();
 
-    LOGGER.exiting(CLZ_NAM, methodName);
-    return wfObject;
+    LOGGER.exiting(CLZ_NAM, methodName, workflowId);
+    return workflowId;
   }
 }
