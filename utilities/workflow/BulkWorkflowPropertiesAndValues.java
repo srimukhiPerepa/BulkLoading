@@ -71,7 +71,6 @@ public class BulkWorkflowPropertiesAndValues
 
     String jsonString = response.getResponseObject(String.class);
     LOGGER.info("Workflow response: " + jsonString);
-    LOG.logInfo(methodName, "Workflow response: " + jsonString);
 
     JSONArray jsonArray = new JSONArray(jsonString);
     if (jsonArray.length() == 0)
