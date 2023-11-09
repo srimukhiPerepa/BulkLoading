@@ -21,6 +21,7 @@ public class BulkWorkflowPropertiesAndValues
 {
   private static final String CLZ_NAM = BulkWorkflowPropertiesAndValues.class.getName();
   private static final FlexLogger LOG = FlexLogger.getLogger(CLZ_NAM);
+  private static final Logger LOGGER = Logger.getGlobal();
 
   protected static String BASE_URL;
   protected static String USERNAME;
@@ -33,6 +34,14 @@ public class BulkWorkflowPropertiesAndValues
   public static void main(String[] args)
     throws FlexCheckedException
   {
+		ConsoleHandler consoleHandler = new ConsoleHandler();
+		consoleHandler.setLevel(Level.ALL);
+		LOGGER.addHandler(consoleHandler);
+		LOGGER.setLevel(Level.ALL);
+		LOGGER.setUseParentHandlers(false);
+
+    LOGGER.info("test1");
+
     if (args == null || args.length < 5)
     {
       throw new IllegalArgumentException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, and TARGET_GROUP_CODE must be passed as arguments.");
@@ -56,6 +65,7 @@ public class BulkWorkflowPropertiesAndValues
   private static FlexDeployRestClient getClient()
     throws FlexCheckedException
   {
+    LOGGER.info("test3");
     FlexDeployRestClient restService = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
     return restService;
   }
@@ -71,7 +81,7 @@ public class BulkWorkflowPropertiesAndValues
     FlexRESTClientResponse response = client.get(sw);
 
     String jsonString = response.getResponseObject(String.class);
-    System.out.println("jere");
+    LOGGER.info("test2 " + jsonString);
     LOG.logInfo(methodName, "Workflow response: " + jsonString);
 
     JSONArray jsonArray = new JSONArray(jsonString);
