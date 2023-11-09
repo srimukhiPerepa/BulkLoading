@@ -109,37 +109,37 @@ public class BulkWorkflowPropertiesAndValues
       propertyDef.setScope(scope);
       propertyDef.setName(name);
 
-      if (!displayRows.equals("null"))
+      if (displayRows != null && !displayRows.toString().equals("null"))
       {
         propertyDef.setDisplayRows(Integer.parseInt(displayRows.toString()));
       }
 
-      if (!displayColumns.equals("null"))
+      if (displayColumns != null && !displayColumns.toString().equals("null"))
       {
         propertyDef.setDisplayColumns(Integer.parseInt(displayColumns.toString()));
       }
 
-      if (!listData.equals("null"))
+      if (listData != null && !listData.toString().equals("null"))
       {
         propertyDef.setListData(Arrays.asList(listData.toString().trim().split(",")));
       }
 
-      if (!subDataType.equals("null"))
+      if (subDataType != null && !subDataType.toString().equals("null"))
       {
         propertyDef.setSubDataType(subDataType.toString());
       }
 
-      if (!displayName.equals("null"))
+      if (displayName != null && !displayName.toString().equals("null"))
       {
         propertyDef.setDisplayName(displayName.toString());
       }
 
-      if (!description.equals("null"))
+      if (description != null && !description.toString().equals("null"))
       {
         propertyDef.setDescription(description.toString());
       }
 
-      if (!defaultValue.equals("null"))
+      if (defaultValue != null && !defaultValue.toString().equals("null"))
       {
         propertyDef.setDefaultValue(defaultValue.toString());
       }
