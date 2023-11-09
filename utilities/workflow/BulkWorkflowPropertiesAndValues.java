@@ -20,7 +20,6 @@ import java.util.logging.*;
 public class BulkWorkflowPropertiesAndValues
 {
   private static final String CLZ_NAM = BulkWorkflowPropertiesAndValues.class.getName();
-  public static final Logger logger = Logger.getGlobal();
   private static final FlexLogger LOG = FlexLogger.getLogger(CLZ_NAM);
 
   protected static String BASE_URL;
@@ -43,12 +42,6 @@ public class BulkWorkflowPropertiesAndValues
     PASSWORD = args[2];
     WORKFLOW_NAME = args[3];
     TARGET_GROUP_CODE = args[4];
-
-		Handler consoleHandler = new ConsoleHandler();
-		consoleHandler.setLevel(Level.ALL);
-		logger.addHandler(consoleHandler);
-    logger.setLevel(Level.ALL);
-    logger.setUseParentHandlers(false);
 
     client = getClient();
     JSONObject workflowObject = findWorkflow();
@@ -78,6 +71,7 @@ public class BulkWorkflowPropertiesAndValues
     FlexRESTClientResponse response = client.get(sw);
 
     String jsonString = response.getResponseObject(String.class);
+    System.out.println("jere");
     LOG.logInfo(methodName, "Workflow response: " + jsonString);
 
     JSONArray jsonArray = new JSONArray(jsonString);

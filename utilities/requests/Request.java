@@ -20,12 +20,11 @@ import java.net.URLDecoder;
 public abstract class Request
 {
   private static final String CLZ_NAM = Request.class.getName();
-  private static Logger logger;
+  private static final FlexLogger LOG = FlexLogger.getLogger(CLZ_NAM);
 
   public Request()
   {
     super();
-    logger = BulkWorkflowPropertiesAndValues.logger;
   }
 
   public abstract Map<String, Object> getQueryParams();
@@ -44,11 +43,11 @@ public abstract class Request
   public String encodeValue(String value) 
   {
     final String methodName = "encodeValue";
-    logger.entering(CLZ_NAM, methodName, value);
+    LOG.logFinerEntering(methodName, value);
 
     try 
     {
-      logger.exiting(CLZ_NAM, methodName);
+      LOG.logFinerExiting(methodName);
       return URLEncoder.encode(value, StandardCharsets.UTF_8.toString()).replaceAll("\\+", "%20");
     } 
     catch(UnsupportedEncodingException uee)
@@ -60,11 +59,11 @@ public abstract class Request
   public String decodeValue(String value)
   {
     final String methodName = "decodeValue";
-    logger.entering(CLZ_NAM, methodName, value);
+    LOG.logFinerEntering(methodName, value);
 
     try 
     {
-      logger.exiting(CLZ_NAM, methodName);
+      LOG.logFinerExiting(methodName);
       return URLDecoder.decode(value, StandardCharsets.UTF_8.toString());
     } 
     catch(UnsupportedEncodingException uee)
