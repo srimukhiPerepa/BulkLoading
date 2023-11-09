@@ -29,7 +29,7 @@ public class BulkWorkflowPropertiesAndValues
   protected static String WORKFLOW_NAME;
   protected static String TARGET_GROUP_CODE;
 
-  private static FlexDeployRestClient client = getClient();
+  private static FlexDeployRestClient client;
 
   public static void main(String[] args)
     throws FlexCheckedException
@@ -51,6 +51,7 @@ public class BulkWorkflowPropertiesAndValues
 		logger.setLevel(Level.ALL);
 		logger.setUseParentHandlers(false);
 
+    client = getClient();
     JSONObject workflowObject = findWorkflow();
 
     // GetTargetGroupByCode tg = new GetTargetGroupByCode();
@@ -68,6 +69,7 @@ public class BulkWorkflowPropertiesAndValues
   }
 
   private static JSONObject findWorkflow()
+    throws FlexCheckedException
   {
     final String methodName = "findWorkflow";
     logger.entering(CLZ_NAM, methodName);
