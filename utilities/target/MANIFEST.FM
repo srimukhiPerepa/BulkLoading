@@ -17,4 +17,10 @@ Class-Path: /u01/flexdeploy/apache-tomcat-flexdeploy/webapps/flexdeploy/WEB-INF/
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/hk2-api-2.2.0.jar
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/hk2-locator-2.2.0.jar
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/hk2-utils-2.2.0.jar
+   /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javax.annotation-api-priority-1.2.jar
+   /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javax.inject-2.2.0-b21.jar
+   /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javax.json_1.0.0.0_1-0.jar
+   /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javax.persistence_2.0.jar
+   /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javax.validation_1.2.0.jar
+   /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javax.ws.rs-api-2.0.jar
 Main-Class: workflow.BulkWorkflowPropertiesAndValues
