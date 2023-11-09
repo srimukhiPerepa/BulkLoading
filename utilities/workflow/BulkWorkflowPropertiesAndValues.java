@@ -1,3 +1,5 @@
+package workflow;
+
 import requests.FlexDeployRestClient;
 import requests.GetTargetGroupById;
 
