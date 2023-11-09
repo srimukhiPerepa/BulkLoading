@@ -14,4 +14,5 @@ Class-Path: /u01/flexdeploy/apache-tomcat-flexdeploy/webapps/flexdeploy/WEB-INF/
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/jersey-media-multipart-2.8.jar
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/jersey-media-sse-2.8.jar
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/jersey-server-2.8.jar
+   /u01/flexdeploy/apache-tomcat-flexdeploy/lib/h2k*.jar
 Main-Class: workflow.BulkWorkflowPropertiesAndValues
