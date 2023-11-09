@@ -5,6 +5,7 @@ import requests.GetTargetGroupByCode;
 import requests.SearchWorkflowByName;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
+import flexagon.ff.common.core.logging.FlexLogger;
 import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
 import flexagon.ff.common.core.utils.FlexJsonUtils;
@@ -77,7 +78,7 @@ public class BulkWorkflowPropertiesAndValues
     FlexRESTClientResponse response = client.get(sw);
 
     String jsonString = response.getResponseObject(String.class);
-    LOG.logInfo("info Workflow response: " + jsonString);
+    LOG.logInfo("Workflow response: " + jsonString);
 
     JSONArray jsonArray = new JSONArray(jsonString);
     if (jsonArray.length() == 0)
