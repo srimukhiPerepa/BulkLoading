@@ -48,7 +48,7 @@ public abstract class Request
 
     try 
     {
-      logger.exiting(methodName);
+      logger.exiting(CLZ_NAM, methodName);
       return URLEncoder.encode(value, StandardCharsets.UTF_8.toString()).replaceAll("\\+", "%20");
     } 
     catch(UnsupportedEncodingException uee)
@@ -64,7 +64,7 @@ public abstract class Request
 
     try 
     {
-      logger.exiting(methodName);
+      logger.exiting(CLZ_NAM, methodName);
       return URLDecoder.decode(value, StandardCharsets.UTF_8.toString());
     } 
     catch(UnsupportedEncodingException uee)
