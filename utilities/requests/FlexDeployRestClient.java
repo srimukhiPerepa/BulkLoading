@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class FlexDeployRestClient
 {
   private static final String CLZ_NAM = FlexDeployRestClient.class.getName();
-  public static Logger logger;
+  private static Logger logger;
 
   static
   {

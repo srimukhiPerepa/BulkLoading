@@ -18,11 +18,12 @@ import java.net.URLDecoder;
 public abstract class Request
 {
   private static final String CLZ_NAM = Request.class.getName();
-  private static final FlexLogger LOG = FlexLogger.getLogger(CLZ_NAM);
+  private static Logger logger;
 
   public Request()
   {
     super();
+    logger = BulkWorkflowPropertiesAndValues.logger;
   }
 
   public abstract Map<String, Object> getQueryParams();
