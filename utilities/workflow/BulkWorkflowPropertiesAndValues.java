@@ -20,6 +20,7 @@ public class BulkWorkflowPropertiesAndValues
 {
   private static final String CLZ_NAM = BulkWorkflowPropertiesAndValues.class.getName();
   public static final Logger logger = Logger.getGlobal();
+  private static final FlexLogger LOG = FlexLogger.getLogger(CLZ_NAM);
 
   protected static String BASE_URL;
   protected static String USERNAME;
@@ -69,15 +70,14 @@ public class BulkWorkflowPropertiesAndValues
     throws FlexCheckedException
   {
     final String methodName = "findWorkflow";
-    logger.entering(CLZ_NAM, methodName);
+    LOG.logFinestEntering(methodName);
 
     SearchWorkflowByName sw = new SearchWorkflowByName();
     sw.setWorkflowName(WORKFLOW_NAME);
     FlexRESTClientResponse response = client.get(sw);
 
     String jsonString = response.getResponseObject(String.class);
-    logger.info("info Workflow response: " + jsonString);
-    logger.fine("fine Workflow response: " + jsonString);
+    LOG.logInfo("info Workflow response: " + jsonString);
 
     JSONArray jsonArray = new JSONArray(jsonString);
     if (jsonArray.length() == 0)
@@ -93,7 +93,7 @@ public class BulkWorkflowPropertiesAndValues
     JSONObject wfObject = jsonArray.getJSONObject(0);
     String workflowId = wfObject.get("workflowId").toString();
 
-    logger.exiting(CLZ_NAM, methodName, wfObject);
+    LOG.logFinerExiting(methodName);
     return wfObject;
   }
 }
