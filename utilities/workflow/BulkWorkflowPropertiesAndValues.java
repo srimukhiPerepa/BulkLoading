@@ -19,7 +19,6 @@ import java.util.logging.*;
 public class BulkWorkflowPropertiesAndValues
 {
   private static final String CLZ_NAM = BulkWorkflowPropertiesAndValues.class.getName();
-  private static final Logger PARENT_LOGGER = Logger.getLogger("");
   public static final Logger logger = Logger.getGlobal();
 
   protected static String BASE_URL;
@@ -42,6 +41,12 @@ public class BulkWorkflowPropertiesAndValues
     PASSWORD = args[2];
     WORKFLOW_NAME = args[3];
     TARGET_GROUP_CODE = args[4];
+
+		Handler consoleHandler = new ConsoleHandler();
+		consoleHandler.setLevel(Level.ALL);
+		logger.addHandler(consoleHandler);
+    logger.setLevel(Level.ALL);
+    logger.setUseParentHandlers(false);
 
     client = getClient();
     JSONObject workflowObject = findWorkflow();
