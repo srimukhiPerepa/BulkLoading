@@ -2,6 +2,8 @@ package requests;
 
 import flexagon.ff.common.core.logging.FlexLogger;
 
+import java.io.UnsupportedEncodingException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -36,12 +38,27 @@ public abstract class Request
 
   public abstract Map<String, Object> getHeaders();
 
-  public String encodeValue(String value) {
-    return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+  public String encodeValue(String value) 
+  {
+    try 
+    {
+      return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+    } 
+    catch(UnsupportedEncodingException uee)
+    {
+      throw new RunTimeException(uee);
+    }
   }
 
   public String decodeValue(String value)
   {
-    return URLDecoder.decode(value, StandardCharsets.UTF_8.toString());
+    try 
+    {
+      return URLDecoder.decode(value, StandardCharsets.UTF_8.toString());
+    } 
+    catch(UnsupportedEncodingException uee)
+    {
+      throw new RunTimeException(uee);
+    }
   }
 }
