@@ -5,38 +5,38 @@ import java.util.Map;
 
 import javax.ws.rs.client.Entity;
 
-public class GetTargetGroupByCode
+public class SearchWorkflowByName
   extends Request
 {
-  private String mCode;
+  private String mName;
 
-  public GetTargetGroupByCode()
+  public SearchWorkflowByName()
   {
     super();
   }
 
-  public String getCode()
+  public String getWorkflowName()
   {
-    return mCode;
+    return mName;
   }
 
-  public void setCode(String pCode)
+  public void setWorkflowName(String pName)
   {
-    this.mCode = pCode;
+    this.mName = pName;
   }
 
   @Override
   public Map<String, Object> getQueryParams()
   {
     HashMap<String, Object> params = new HashMap<>();
-    params.put("targetGroupCode", getCode());
+    params.put("workflowName", getWorkflowName());
     return params;
   }
 
   @Override
   public String getResourceUri()
   {
-    return String.format("%s/%s", "flexdeploy/rest/v2/topology/targetgroup", mCode);
+    return String.format("%s/%s", "flexdeploy/rest/v1/workflows", mName);
   }
 
   @Override

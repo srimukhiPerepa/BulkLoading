@@ -2,6 +2,7 @@ package workflow;
 
 import requests.FlexDeployRestClient;
 import requests.GetTargetGroupByCode;
+import requests.SearchWorkflowByName;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.rest.FlexRESTClient;
@@ -35,10 +36,13 @@ public class BulkWorkflowPropertiesAndValues
 
     FlexDeployRestClient client = getClient();
 
-    GetTargetGroupByCode tg = new GetTargetGroupByCode();
-    tg.setCode("LOCAL");
+    SearchWorkflowByName sw = new SearchWorkflowByName();
+    sw.setWorkflowName("Generic Bulk Upload Workflow Properties");
+    FlexRESTClientResponse response = client.get(sw);
 
-    FlexRESTClientResponse response = client.get(tg);
+    // GetTargetGroupByCode tg = new GetTargetGroupByCode();
+    // tg.setCode("LOCAL");
+    // FlexRESTClientResponse response = client.get(tg);
             
     JSONObject jsonResponse = FlexJsonUtils.getJSON(response.getResponseString());
     System.out.println(jsonResponse.toString(2));
