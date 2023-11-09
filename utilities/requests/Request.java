@@ -46,7 +46,7 @@ public abstract class Request
     } 
     catch(UnsupportedEncodingException uee)
     {
-      throw new RunTimeException(uee);
+      throw new RuntimeException(uee);
     }
   }
 
@@ -58,7 +58,7 @@ public abstract class Request
     } 
     catch(UnsupportedEncodingException uee)
     {
-      throw new RunTimeException(uee);
+      throw new RuntimeException(uee);
     }
   }
 }
