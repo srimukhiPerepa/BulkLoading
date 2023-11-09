@@ -25,4 +25,5 @@ Class-Path: /u01/flexdeploy/apache-tomcat-flexdeploy/webapps/flexdeploy/WEB-INF/
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javax.ws.rs-api-2.0.jar
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/javassist-3.26.0-GA.jar
    /u01/flexdeploy/apache-tomcat-flexdeploy/lib/eclipselink.jar
+   /u01/flexdeploy/apache-tomcat-flexdeploy/lib/mimepull-1.9.3.jar
 Main-Class: workflow.BulkWorkflowPropertiesAndValues
