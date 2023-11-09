@@ -15,7 +15,7 @@ import java.util.Set;
 public class FlexDeployRestClient
 {
   private static final String CLZ_NAM = FlexDeployRestClient.class.getName();
-  private static final FlexLogger LOG = FlexLogger.getLogger(CLZ_NAM);
+  public static final Logger logger;
 
   static
   {
@@ -29,6 +29,7 @@ public class FlexDeployRestClient
   public FlexDeployRestClient(String pBaseUrl, String pUsername, String pPassword)
     throws FlexCheckedException
   {
+    logger = BulkWorkflowPropertiesAndValues.logger;
     mBaseUrl = pBaseUrl.endsWith("/") ? pBaseUrl.substring(0, pBaseUrl.lastIndexOf("/")) : pBaseUrl;
     initAuthHeader(pUsername, pPassword);
   }
@@ -37,27 +38,26 @@ public class FlexDeployRestClient
     throws FlexCheckedException
   {
     final String methodName = "initAuthHeader";
-    LOG.logInfoEntering(methodName);
+    logger.entering(CLZ_NAM, methodName);
 
     String encoded = Base64.getEncoder().encodeToString(String.format("%s:%s", pUsername, pPassword).getBytes());
     mAuthHeader = String.format("Basic %s", encoded);
 
-    LOG.logInfoExiting(methodName);
+    logger.exiting(CLZ_NAM, methodName);
   }
 
   public FlexRESTClientResponse get(Request pRequest)
     throws FlexCheckedException
   {
     final String methodName = "get";
-    LOG.logFineEntering(methodName);
+    logger.entering(CLZ_NAM, methodName);
 
     FlexRESTClient rest = getFlexRestUtil(pRequest);
     FlexRESTClientResponse response = rest.get();
 
     validateResponse(response);
 
-    LOG.logFineExiting(methodName);
-
+    logger.exiting(CLZ_NAM, methodName, response);
     return response;
   }
 
@@ -65,15 +65,14 @@ public class FlexDeployRestClient
     throws FlexCheckedException
   {
     final String methodName = "post";
-    LOG.logFineEntering(methodName);
+    logger.entering(CLZ_NAM, methodName);
 
     FlexRESTClient rest = getFlexRestUtil(pRequest);
     FlexRESTClientResponse response = rest.post(pRequest.getBody());
 
     validateResponse(response);
 
-    LOG.logFineExiting(methodName);
-
+    logger.exiting(CLZ_NAM, methodName, response);
     return response;
   }
 
@@ -81,15 +80,14 @@ public class FlexDeployRestClient
     throws FlexCheckedException
   {
     final String methodName = "put";
-    LOG.logFineEntering(methodName);
+    logger.entering(CLZ_NAM, methodName);
 
     FlexRESTClient rest = getFlexRestUtil(pRequest);
     FlexRESTClientResponse response = rest.put(pRequest.getBody());
 
     validateResponse(response);
 
-    LOG.logFineExiting(methodName);
-
+    logger.exiting(CLZ_NAM, methodName, response);
     return response;
   }
 
@@ -97,15 +95,14 @@ public class FlexDeployRestClient
     throws FlexCheckedException
   {
     final String methodName = "delete";
-    LOG.logFineEntering(methodName);
+    logger.entering(CLZ_NAM, methodName);
 
     FlexRESTClient rest = getFlexRestUtil(pRequest);
     FlexRESTClientResponse response = rest.delete();
 
     validateResponse(response);
 
-    LOG.logFineExiting(methodName);
-
+    logger.exiting(CLZ_NAM, methodName, response);
     return response;
   }
 
@@ -113,11 +110,11 @@ public class FlexDeployRestClient
     throws FlexCheckedException
   {
     final String methodName = "validateResponse";
-    LOG.logFinestEntering(methodName);
+    logger.entering(CLZ_NAM, methodName);
 
     int responseCode = pResponse.getResponseCode();
 
-    LOG.logInfo(methodName, "Http request returned {0} ", responseCode);
+    logger.info("Http request returned " + responseCode)
 
     // All other errors should provide a message
     if (responseCode >= 400)
@@ -125,7 +122,7 @@ public class FlexDeployRestClient
       throw new FlexCheckedException("HTTP_REQUEST_FAIL", "Request failed due to: " + pResponse.getResponseString());
     }
 
-    LOG.logFinestExiting(methodName);
+    logger.exiting(CLZ_NAM, methodName);
   }
 
   protected static String getUri(String pBaseUri, String pResourceUri)
