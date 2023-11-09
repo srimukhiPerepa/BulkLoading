@@ -66,6 +66,7 @@ public class BulkWorkflowPropertiesAndValues
   }
 
   private static List<PropertyDefinitionPojo> getWorkflowProperties(String pWorkflowId)
+    throws FlexCheckedException
   {
     final String methodName = "getWorkflowProperties";
     LOGGER.entering(CLZ_NAM, methodName, pWorkflowId);
@@ -147,6 +148,7 @@ public class BulkWorkflowPropertiesAndValues
     }
 
     LOGGER.exiting(CLZ_NAM, methodName);
+    return results;
   }
 
   private static String findWorkflowId()
