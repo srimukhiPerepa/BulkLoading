@@ -34,7 +34,7 @@ public class GetTargetGroupById
   @Override
   public String getResourceUri()
   {
-    return String.format("%s/%s", "flexdeploy/rest/v1/topology/targetgroup", mId);
+    return String.format("%s/%s", "flexdeploy/rest/v2/topology/targetgroup", mId);
   }
 
   @Override
