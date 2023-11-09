@@ -26,4 +26,9 @@ Class-Path: ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/webapps/flexdeploy/WEB
    ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/javassist-3.26.0-GA.jar
    ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/eclipselink.jar
    ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/mimepull-1.9.3.jar
+   ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/commons-beanutils-1.9.4.jar
+   ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/commons-collections-3.2.2.jar
+   ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/commons-compress-1.21.jar
+   ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/commons-el.jar
+   ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/commons-io-2.11.0.jar
 Main-Class: workflow.BulkWorkflowPropertiesAndValues
