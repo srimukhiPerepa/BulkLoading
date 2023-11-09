@@ -33,6 +33,8 @@ public class BulkWorkflowPropertiesAndValues
     USERNAME = args[1];
     PASSWORD = args[2];
 
+    System.out.println(BASE_URL, USERNAME, PASSWORD);
+
     FlexDeployRestClient client = getClient();
 
     GetTargetGroupById tg = new GetTargetGroupById();
