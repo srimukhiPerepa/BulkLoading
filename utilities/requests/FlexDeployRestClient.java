@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 
 public class FlexDeployRestClient
 {
@@ -113,8 +114,7 @@ public class FlexDeployRestClient
     logger.entering(CLZ_NAM, methodName);
 
     int responseCode = pResponse.getResponseCode();
-
-    logger.info("Http request returned " + responseCode)
+    logger.info("Http request returned " + responseCode);
 
     // All other errors should provide a message
     if (responseCode >= 400)
