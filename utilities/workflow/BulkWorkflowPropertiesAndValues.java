@@ -44,11 +44,12 @@ public class BulkWorkflowPropertiesAndValues
     WORKFLOW_NAME = args[3];
     TARGET_GROUP_CODE = args[4];
 
+		logger.setLevel(Level.ALL);
+		logger.setUseParentHandlers(false);
 		ConsoleHandler consoleHandler = new ConsoleHandler();
 		consoleHandler.setLevel(Level.ALL);
 		logger.addHandler(consoleHandler);
-		logger.setLevel(Level.ALL);
-		logger.setUseParentHandlers(false);
+
 
     client = getClient();
     JSONObject workflowObject = findWorkflow();
