@@ -3,6 +3,7 @@ package workflow;
 import requests.FlexDeployRestClient;
 import requests.GetTargetGroupByCode;
 import requests.SearchWorkflowByName;
+import requests.GetWorkflowPropertiesById;
 
 import pojo.PropertyDefinitionPojo;
 
@@ -56,7 +57,7 @@ public class BulkWorkflowPropertiesAndValues
     TARGET_GROUP_CODE = args[4];
 
     client = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
-    String workflowId = findWorkflow();
+    String workflowId = findWorkflowId();
     List<PropertyDefinitionPojo> workflowProperties = getWorkflowProperties(workflowId);
 
     // GetTargetGroupByCode tg = new GetTargetGroupByCode();
@@ -71,7 +72,7 @@ public class BulkWorkflowPropertiesAndValues
 
     List<PropertyDefinitionPojo> results = new ArrayList<>();
     GetWorkflowPropertiesById wp = new GetWorkflowPropertiesById();
-    wp.setId(workflowId);
+    wp.setId(pWorkflowId);
     FlexRESTClientResponse response = client.get(wp);
 
     String jsonString = response.getResponseObject(String.class);
@@ -105,7 +106,7 @@ public class BulkWorkflowPropertiesAndValues
       propertyDef.setIsActive(isActive);
       propertyDef.setDataType(dataType);
       propertyDef.setScope(scope);
-      propertyDef.setCode(name);
+      propertyDef.setName(name);
 
       if (displayRows != null)
       {
@@ -119,7 +120,7 @@ public class BulkWorkflowPropertiesAndValues
 
       if (listData != null)
       {
-        propertyDef.setListData(Arrays.asList(listData.trim().split(",")));
+        propertyDef.setListData(Arrays.asList(listData.toString().trim().split(",")));
       }
 
       if (subDataType != null)
@@ -151,7 +152,7 @@ public class BulkWorkflowPropertiesAndValues
   private static String findWorkflowId()
     throws FlexCheckedException
   {
-    final String methodName = "findWorkflow";
+    final String methodName = "findWorkflowId";
     LOGGER.entering(CLZ_NAM, methodName);
 
     SearchWorkflowByName sw = new SearchWorkflowByName();

@@ -25,7 +25,7 @@ public class PropertyDefinitionPojo implements Cloneable
   protected Object clone() throws CloneNotSupportedException 
   {
     PropertyDefinitionPojo clone = (PropertyDefinitionPojo) super.clone();
-    clone.setListData(new ArrayList<String>(mListData));
+    clone.setListData(new ArrayList<>(mListData));
     return clone;
   } 
 
