@@ -5,7 +5,6 @@ import requests.GetTargetGroupByCode;
 import requests.SearchWorkflowByName;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
-import flexagon.ff.common.core.logging.FlexLogger;
 import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
 import flexagon.ff.common.core.utils.FlexJsonUtils;
@@ -20,7 +19,6 @@ import java.util.logging.*;
 public class BulkWorkflowPropertiesAndValues
 {
   private static final String CLZ_NAM = BulkWorkflowPropertiesAndValues.class.getName();
-  private static final FlexLogger LOG = FlexLogger.getLogger(CLZ_NAM);
   private static final Logger LOGGER = Logger.getGlobal();
 
   protected static String BASE_URL;
@@ -39,8 +37,6 @@ public class BulkWorkflowPropertiesAndValues
 		LOGGER.addHandler(consoleHandler);
 		LOGGER.setLevel(Level.ALL);
 		LOGGER.setUseParentHandlers(false);
-
-    LOGGER.info("test1");
 
     if (args == null || args.length < 5)
     {
@@ -73,8 +69,7 @@ public class BulkWorkflowPropertiesAndValues
     FlexRESTClientResponse response = client.get(sw);
 
     String jsonString = response.getResponseObject(String.class);
-    LOGGER.info("test2 " + jsonString);
-    LOG.logInfo(methodName, "Workflow response: " + jsonString);
+    LOGGER.info("Workflow response: " + jsonString);
 
     JSONArray jsonArray = new JSONArray(jsonString);
     if (jsonArray.length() == 0)
@@ -90,7 +85,7 @@ public class BulkWorkflowPropertiesAndValues
     JSONObject wfObject = jsonArray.getJSONObject(0);
     String workflowId = wfObject.get("workflowId").toString();
 
-    LOG.logFinerExiting(methodName);
+    LOGGER.exiting(CLZ_NAM, methodName, wfObject);
     return wfObject;
   }
 }
