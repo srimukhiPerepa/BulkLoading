@@ -1,7 +1,7 @@
 package workflow;
 
 import requests.FlexDeployRestClient;
-import requests.GetTargetGroupById;
+import requests.GetTargetGroupByCode;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.rest.FlexRESTClient;
@@ -35,8 +35,8 @@ public class BulkWorkflowPropertiesAndValues
 
     FlexDeployRestClient client = getClient();
 
-    GetTargetGroupById tg = new GetTargetGroupById();
-    tg.setId("268056");
+    GetTargetGroupByCode tg = new GetTargetGroupByCode();
+    tg.setCode("LOCAL");
 
     FlexRESTClientResponse response = client.get(tg);
             
