@@ -79,7 +79,7 @@ public class BulkWorkflowPropertiesAndValues
     FlexRESTClientResponse response = client.get(sw);
 
     String jsonString = response.getResponseObject(String.class);
-    logger.fine("Workflow response: " + jsonString)
+    logger.fine("Workflow response: " + jsonString);
 
     JSONArray jsonArray = new JSONArray(jsonString);
     if (jsonArray.length() == 0)
