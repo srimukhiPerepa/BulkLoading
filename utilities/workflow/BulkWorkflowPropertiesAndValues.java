@@ -13,6 +13,7 @@ import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
 import flexagon.ff.common.core.utils.FlexJsonUtils;
 import flexagon.ff.common.core.utils.FlexCommonUtils;
+import flexagon.ff.common.core.utils.FlexFileUtils;
  
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -23,6 +24,8 @@ import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.*;
+
+import java.io.File;
  
 public class BulkWorkflowPropertiesAndValues
 {
@@ -147,7 +150,7 @@ public class BulkWorkflowPropertiesAndValues
 
     if (errors.size() > 0)
     {
-      throw new FlexCheckedException(errors);
+      throw new FlexCheckedException(errors.toString());
     }
 
     LOGGER.exiting(CLZ_NAM, methodName);
