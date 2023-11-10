@@ -41,8 +41,7 @@ public class BulkWorkflowPropertiesAndValues
   protected static String WORKFLOW_SOURCE;
 
   private static FlexDeployRestClient client;
-  private static List<String> targetEnvironmentCodes = new ArrayList<>(); //In order
-  private static Map<String, List<String>> codeToValue = new HashMap<>(); //key is workflow property code value is List<String> or value for each target property in order
+  private static Map<String, String> codeToValue = new HashMap<>(); //key is code##environment_code, value is target property value
 
   public static void main(String[] args)
     throws FlexCheckedException
@@ -74,16 +73,19 @@ public class BulkWorkflowPropertiesAndValues
     List<String> lines = FlexFileUtils.read(csv);
     List<PropertyDefinitionPojo> updatedWorkflowProperties = processCSV(lines);
 
+    LOGGER.fine("codeToValue mapping: " + codeToValue);
+
     LOGGER.fine("Merging existing workflow properties with incoming properties from " + csv);
     // merge both lists with updatedWorkflowProperties taking precedence if there are duplicates
     List<PropertyDefinitionPojo> mergedWorkflowProperties = new ArrayList<>(existingWorkflowProperties);
     for (int i = 0; i < updatedWorkflowProperties.size(); i++)
     {
       PropertyDefinitionPojo pojo = updatedWorkflowProperties.get(i);
-      if (mergedWorkflowProperties.contains(pojo))
+      int index = mergedWorkflowProperties.indexOf(pojo);
+      if (index != -1)
       {
         LOGGER.info("Workflow Property with code " + pojo.getName() + " already exists in the workflow. Overriding values.");
-        mergedWorkflowProperties.set(i, pojo);
+        mergedWorkflowProperties.set(index, pojo);
       }
       else
       {
@@ -122,13 +124,11 @@ public class BulkWorkflowPropertiesAndValues
     List<String> errors = new ArrayList<>();
 
     String[] headers = pLines.get(0).split(",");
-    int numEnvironments = 0;
+    List<String> environmentCodes = new ArrayList<>();
     for (int i = 15; i < headers.length; i++)
     {
-      numEnvironments++;
-      targetEnvironmentCodes.add(headers[i]);
+      environmentCodes.add(headers[i]);
     }
-    LOGGER.info("Target Environment Codes found based on CSV: " + targetEnvironmentCodes);
 
     int numLines = pLines.size();
     for (int i = 1; i < numLines; i++)
@@ -151,30 +151,30 @@ public class BulkWorkflowPropertiesAndValues
       String isActive = tokens[13];
       String defaultValue = tokens[14];
 
+      PropertyDefinitionPojo pojo = new PropertyDefinitionPojo();
+      pojo.setIsEncrypted(Boolean.valueOf(isEncrypted));
+      pojo.setIsRequired(Boolean.valueOf(isRequired));
+      pojo.setIsDefaultValueExpression(isDefaultValueExpression != null ? Boolean.valueOf(isDefaultValueExpression) : false);
+      pojo.setIsMultiselect(isMultiselect != null ? Boolean.valueOf(isMultiselect) : false);
+      pojo.setIsActive(isActive != null ? Boolean.valueOf(isActive) : true);
+      pojo.setDataType(dataType);
+      pojo.setScope(propertyScope);
+      pojo.setName(code);
+      pojo.setDisplayRows(FlexCommonUtils.isNotEmpty(displayRows) ? Integer.parseInt(displayRows.toString()) : null);
+      pojo.setDisplayColumns(FlexCommonUtils.isNotEmpty(displayColumns) ? Integer.parseInt(displayColumns.toString()) : null);
+      pojo.setListData(FlexCommonUtils.isNotEmpty(listData) ? Arrays.asList(listData.toString().trim().split(",")) : null);
+      pojo.setSubDataType(FlexCommonUtils.isNotEmpty(subDataType) ? subDataType.toString() : null);
+      pojo.setDisplayName(FlexCommonUtils.isNotEmpty(displayName) ? displayName.toString() : null);
+      pojo.setDescription(FlexCommonUtils.isNotEmpty(description) ? description.toString() : null);
+      pojo.setDefaultValue(FlexCommonUtils.isNotEmpty(defaultValue) ? defaultValue.toString() : null);
+
+      results.add(pojo);
+
       for (int j = 0; j < numEnvironments; j++)
       {
-        List<String> valuesForTarget = codeToValue.getOrDefault(code, new ArrayList<>());
-        valuesForTarget.add(tokens[j+15]);
-        codeToValue.put(code, valuesForTarget);
-        
-        PropertyDefinitionPojo pojo = new PropertyDefinitionPojo();
-        pojo.setIsEncrypted(Boolean.valueOf(isEncrypted));
-        pojo.setIsRequired(Boolean.valueOf(isRequired));
-        pojo.setIsDefaultValueExpression(isDefaultValueExpression != null ? Boolean.valueOf(isDefaultValueExpression) : false);
-        pojo.setIsMultiselect(isMultiselect != null ? Boolean.valueOf(isMultiselect) : false);
-        pojo.setIsActive(isActive != null ? Boolean.valueOf(isActive) : true);
-        pojo.setDataType(dataType);
-        pojo.setScope(propertyScope);
-        pojo.setName(code);
-        pojo.setDisplayRows(FlexCommonUtils.isNotEmpty(displayRows) ? Integer.parseInt(displayRows.toString()) : null);
-        pojo.setDisplayColumns(FlexCommonUtils.isNotEmpty(displayColumns) ? Integer.parseInt(displayColumns.toString()) : null);
-        pojo.setListData(FlexCommonUtils.isNotEmpty(listData) ? Arrays.asList(listData.toString().trim().split(",")) : null);
-        pojo.setSubDataType(FlexCommonUtils.isNotEmpty(subDataType) ? subDataType.toString() : null);
-        pojo.setDisplayName(FlexCommonUtils.isNotEmpty(displayName) ? displayName.toString() : null);
-        pojo.setDescription(FlexCommonUtils.isNotEmpty(description) ? description.toString() : null);
-        pojo.setDefaultValue(FlexCommonUtils.isNotEmpty(defaultValue) ? defaultValue.toString() : null);
-
-        results.add(pojo);
+        String key = code + environmentCodes.get(j);
+        String value = tokens[j+15]; //important to add 15 here
+        codeToValue.put(key, value);
       }
 
       if (FlexCommonUtils.isEmpty(code))
