@@ -246,7 +246,7 @@ public class BulkWorkflowPropertiesAndValues
     JSONObject credStoreObject = null;
     for (int i = 0; i < pJsonArray.length(); i++)
     {
-      JSONObject current = pJsonArray.getJSONObject(0);
+      JSONObject current = pJsonArray.getJSONObject(i);
       if ("Local".equals(current.getString("credentialStoreName")))
       {
         credStoreObject = current;
@@ -277,9 +277,7 @@ public class BulkWorkflowPropertiesAndValues
     JSONObject targetGroupObject = null;
     for (int i = 0; i < pJsonArray.length(); i++)
     {
-      JSONObject current = pJsonArray.getJSONObject(0);
-      LOGGER.info("DEBUG: " + pTargetGroupCode + " - " + current.getString("targetGroupCode") + " - " + pTargetGroupCode.equals(current.getString("targetGroupCode")));
-
+      JSONObject current = pJsonArray.getJSONObject(i);
       if (pTargetGroupCode.equals(current.getString("targetGroupCode")))
       {
         targetGroupObject = current;
