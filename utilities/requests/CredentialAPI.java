@@ -3,7 +3,7 @@ package requests;
 import requests.SearchCredentialByName;
 import requests.PatchCredentialById;
 import requests.GetCredentialStoreByName;
-import requests.GetCredentialStoreProviderByName;
+import requests.GetCredentialStoreProviderById;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
@@ -58,20 +58,19 @@ public class CredentialAPI
     return items;
   }
 
-  public JSONArray getLocalCredentialStoreProvider()
+  public JSONObject getLocalCredentialStoreProvider(String pCredentialStoreDefId)
     throws FlexCheckedException
   {
     final String methodName = "getLocalCredentialStoreProvider";
-    LOGGER.entering(CLZ_NAM, methodName);
+    LOGGER.entering(CLZ_NAM, methodName, pCredentialStoreDefId);
 
-    GetCredentialStoreProviderByName gcsp = new GetCredentialStoreProviderByName();
-    gcsp.setName("Local");
+    GetCredentialStoreProviderById gcsp = new GetCredentialStoreProviderById();
+    gcsp.setId(pCredentialStoreDefId);
 
     JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().get(gcsp));
-    JSONArray items = jsonObject.getJSONArray("items");
     
-    LOGGER.exiting(CLZ_NAM, methodName, items);
-    return items;
+    LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
+    return jsonObject;
   }
 
   public JSONObject createCredential(String pJSONRequestBody)

@@ -2,37 +2,34 @@ package requests;
 
 import java.util.Collections;
 import java.util.Map;
-import java.util.HashMap;
 
 import javax.ws.rs.client.Entity;
 
-public class GetCredentialStoreProviderByName
+public class GetCredentialStoreProviderById
   extends Request
 {
-  private String mName;
+  private String mId;
 
-  public GetCredentialStoreProviderByName()
+  public GetCredentialStoreProviderById()
   {
     super();
   }
 
-  public void setName(String pName)
+  public void setId(String pId)
   {
-    this.mName = pName;
+    this.mId = pId;
   }
 
   @Override
   public Map<String, Object> getQueryParams()
   {
-    HashMap<String, Object> params = new HashMap<>();
-    params.put("credentialStoreProviderName", encodeValue(mName));
-    return params;
+    return Collections.emptyMap();
   }
 
   @Override
   public String getResourceUri()
   {
-    return "flexdeploy/rest/v2/administration/security/credentialstore";
+    return String.format("%s/%s", "flexdeploy/rest/v2/administration/security/credentialstore", mId);
   }
 
   @Override

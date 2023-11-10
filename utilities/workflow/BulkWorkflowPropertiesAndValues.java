@@ -80,12 +80,12 @@ public class BulkWorkflowPropertiesAndValues
     JSONArray storesArray = credAPI.getLocalCredentialStore();
     JSONObject localCredentialStoreObject = parseLocalCredentialStoreArray(storesArray);
     localCredStoreId = localCredentialStoreObject.get("credentialStoreId").toString();
+    String localCredStoreDefId = localCredentialStoreObject.get("credentialStoreDefId").toString();
 
     LOGGER.fine("Local Credential Store Id: " + localCredStoreId);
 
-    JSONArray storeProvidersArray = credAPI.getLocalCredentialStoreProvider();
-    JSONObject localCredentialStoreProviderObject = parseLocalCredentialStoreProviderArray(storeProvidersArray);
-    localCredStoreInputDefId = localCredentialStoreProviderObject.getJSONArray("credentialStoreInputDefs").getJSONObject(0).get("credentialStoreInputDefId").toString();
+    JSONObject localCredStoreProviderObject = credAPI.getLocalCredentialStoreProvider(localCredStoreDefId);
+    localCredStoreInputDefId = localCredStoreProviderObject.getJSONArray("credentialStoreInputDefs").getJSONObject(0).get("credentialStoreInputDefId").toString();
 
     LOGGER.fine("Local Credential Store Secret Text Definition Id: " + localCredStoreInputDefId);
 
@@ -201,37 +201,6 @@ public class BulkWorkflowPropertiesAndValues
 
     LOGGER.exiting(CLZ_NAM, methodName, merged);
     return merged;
-  }
-
-  private static JSONObject parseLocalCredentialStoreProviderArray(JSONArray pJsonArray)
-    throws FlexCheckedException
-  {
-    final String methodName = "parseLocalCredentialStoreProviderArray";
-    LOGGER.entering(CLZ_NAM, methodName, pJsonArray);
-
-    if (pJsonArray.length() == 0)
-    {
-      throw new FlexCheckedException("Local credential store provider not found");
-    }
-
-    JSONObject credStoreProviderObject = null;
-    for (int i = 0; i < pJsonArray.length(); i++)
-    {
-      JSONObject current = pJsonArray.getJSONObject(0);
-      if ("Local".equals(current.getString("credentialStoreProviderName")))
-      {
-        credStoreProviderObject = current;
-        break;
-      }
-    }
-
-    if (credStoreProviderObject == null)
-    {
-      throw new FlexCheckedException("Local credential store provider not found");
-    }
-    
-    LOGGER.exiting(CLZ_NAM, methodName, credStoreProviderObject);
-    return credStoreProviderObject;
   }
 
   private static JSONObject parseLocalCredentialStoreArray(JSONArray pJsonArray)
