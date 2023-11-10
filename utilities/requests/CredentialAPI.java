@@ -17,7 +17,7 @@ import java.util.logging.*;
 public class CredentialAPI
   extends BaseAPI
 {
-  private static final String CLZ_NAM = WorkflowAPI.class.getName();
+  private static final String CLZ_NAM = CredentialAPI.class.getName();
   private static final Logger LOGGER = Logger.getGlobal();
 
   public CredentialAPI(String pBaseUrl, String pUsername, String pPassword)

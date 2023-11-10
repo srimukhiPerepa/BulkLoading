@@ -4,6 +4,7 @@ import requests.GetTargetGroupByCode;
 import requests.WorkflowAPI;
 import requests.CredentialAPI;
 import requests.EnvironmentAPI;
+import requests.TargetAPI;
 
 import pojo.PropertyDefinitionPojo;
 import pojo.CredentialScopeEnum;
@@ -39,6 +40,7 @@ public class BulkWorkflowPropertiesAndValues
   protected static String TARGET_GROUP_CODE;
   protected static String WORKFLOW_SOURCE;
 
+  private static String targetGroupId;
   private static String localCredStoreId;
   private static String localCredStoreInputDefId;
   private static List<String> targetEnvironmentCodes = new ArrayList<>();
@@ -49,6 +51,7 @@ public class BulkWorkflowPropertiesAndValues
   private static WorkflowAPI wfAPI;
   private static EnvironmentAPI envAPI;
   private static CredentialAPI credAPI;
+  private static TargetAPI tAPI;
 
   public static void main(String[] args)
     throws FlexCheckedException
@@ -73,11 +76,18 @@ public class BulkWorkflowPropertiesAndValues
     wfAPI = new WorkflowAPI(BASE_URL, USERNAME, PASSWORD);
     envAPI = new EnvironmentAPI(BASE_URL, USERNAME, PASSWORD);
     credAPI =  new CredentialAPI(BASE_URL, USERNAME, PASSWORD);
+    tAPI = new TargetAPI(BASE_URL, USERNAME, PASSWORD);
 
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////PREREQUISITE DATA///////////////////////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-    
+
+    JSONArray targetGroupsArray = tAPI.findTargetGroupByCode(TARGET_GROUP_CODE);
+    JSONObject targetGroupObject = validateTargetGroupsArray(targetGroupsArray);
+    targetGroupId = targetGroupObject.get("targetGroupId").toString();
+
+    LOGGER.fine("Target Group Id: " + targetGroupId);
+
     JSONArray storesArray = credAPI.getLocalCredentialStore();
     JSONObject localCredentialStoreObject = parseLocalCredentialStoreArray(storesArray);
     localCredStoreId = localCredentialStoreObject.get("credentialStoreId").toString();
@@ -132,6 +142,7 @@ public class BulkWorkflowPropertiesAndValues
       String credentialValue = credentialNameToValue.get(credentialName);
       if (credentialObject == null)
       {
+        LOGGER.info("Creating credential " + credentialName);
         // create
         JSONObject postCredentialRequestBody = new JSONObject();
         postCredentialRequestBody.put("credentialName", credentialName);
@@ -150,8 +161,9 @@ public class BulkWorkflowPropertiesAndValues
       }
       else
       {
-        // update - override inputValue only
+        // update - override inputValue and credentialName only
         String credentialId = credentialObject.get("credentialId").toString();
+        LOGGER.info("Updating credential with id " + credentialId + ". New credential name " + credentialName);
         credentialObject.getJSONArray("credentialInputs").getJSONObject(0).put("inputValue", credentialValue);
         credAPI.patchCredentialById(credentialId, credentialObject.toString());
       }
@@ -277,7 +289,29 @@ public class BulkWorkflowPropertiesAndValues
     return wfObject;
   }
 
-    /**
+  private static JSONObject validateTargetGroupsArray(JSONArray pJsonArray)
+    throws FlexCheckedException
+  {
+    final String methodName = "validateTargetGroupsArray";
+    LOGGER.entering(CLZ_NAM, methodName, pJsonArray);
+
+    if (pJsonArray.length() == 0)
+    {
+      throw new FlexCheckedException("No target groups found with code " + TARGET_GROUP_CODE);
+    }
+
+    if (pJsonArray.length() > 1)
+    {
+      throw new FlexCheckedException("More than one target group found with code " + TARGET_GROUP_CODE + ". TARGET_GROUP_CODE must be unique.");
+    }
+
+    JSONObject tgObject = pJsonArray.getJSONObject(0);
+
+    LOGGER.exiting(CLZ_NAM, methodName, tgObject);
+    return tgObject;
+  }
+
+  /**
    * Validates pJsonArray contains only one JSONObject and return the JSONObject
    * pJsonArray - Array of JSONObject containing Workflow Definitions
    */

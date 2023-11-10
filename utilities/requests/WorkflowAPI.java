@@ -43,7 +43,7 @@ public class WorkflowAPI
     throws FlexCheckedException
   {
     final String methodName = "updateWorkflowById";
-    LOGGER.entering(CLZ_NAM, methodName, pWorkflowId);
+    LOGGER.entering(CLZ_NAM, methodName, new Object[]{pWorkflowId, pJSONRequestBody});
 
     UpdateWorkflowById uw = new UpdateWorkflowById();
     uw.setId(pWorkflowId);
