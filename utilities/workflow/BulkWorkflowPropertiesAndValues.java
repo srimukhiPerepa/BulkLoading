@@ -178,6 +178,8 @@ public class BulkWorkflowPropertiesAndValues
     {
       boolean isEncrypted = prop.getIsEncrypted();
       String name = prop.getName();
+
+      LOGGER.info("Patching target property " + name + " (encrypted=" + isEncrypted + ")");
       for (String environmentCode : targetEnvironmentCodes)
       {
         String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
@@ -188,24 +190,24 @@ public class BulkWorkflowPropertiesAndValues
         patchRequestBody.put("isExpression", false);
 
         JSONArray propertiesArray = new JSONArray();
-        JSONObject prop = new JSONObject();
-        prop.put("propertyName", name);
+        JSONObject property = new JSONObject();
+        property.put("propertyName", name);
 
         if (isEncrypted)
         {
           String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
           patchRequestBody.put("credentialId", credentialNameToValue.get(credentialName));
-          prop.put("propertyValue", null);
-          prop.put("credentialId", credentialNameToValue.get(credentialName));
-          prop.put("isExpression", false);
+          property.put("propertyValue", null);
+          property.put("credentialId", credentialNameToValue.get(credentialName));
+          property.put("isExpression", false);
         }
         else 
         {
-          prop.put("propertyValue", targetValue);
-          prop.put("credentialId", null);
-          prop.put("isExpression", false);
+          property.put("propertyValue", targetValue);
+          property.put("credentialId", null);
+          property.put("isExpression", false);
         }
-        propertiesArray.put(prop);
+        propertiesArray.put(property);
         patchRequestBody.put("properties", propertiesArray);
 
         tAPI.patchTargetById(environmentId, targetGroupId, patchRequestBody.toString());
@@ -246,15 +248,15 @@ public class BulkWorkflowPropertiesAndValues
       // Keep track of the workflow properties which are encrypted and store in credentialNameToValue
       if (pojo.getIsEncrypted())
       {
-        String credentialName = pojo.getName().trim();
-        if (credentialName.endsWith("_"))
+        String name = pojo.getName().trim();
+        if (name.endsWith("_"))
         {
-          credentialName = credentialName.substring(0, credentialName.length() - 1);
+          name = name.substring(0, name.length() - 1);
         }
         for (String environmentCode: targetEnvironmentCodes)
         {
           String key = pojo.getName() + environmentCode;
-          String credentialName = String.format("%s_%s_%s", credentialName, TARGET_GROUP_CODE, environmentCode);
+          String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
           credentialNameToValue.put(credentialName, codeToValue.get(key));
         }
       }
