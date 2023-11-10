@@ -93,6 +93,8 @@ public class BulkWorkflowPropertiesAndValues
     }
     workflowObject.put("properties", workflowPropertiesArray);
 
+    LOGGER.info("Final Workflow Object: " + workflowObject.toString(2));
+
     UpdateWorkflowById uw = new UpdateWorkflowById();
     uw.setId(workflowId);
     uw.setJson(workflowObject.toString());
@@ -230,6 +232,7 @@ public class BulkWorkflowPropertiesAndValues
     }
 
     LOGGER.exiting(CLZ_NAM, methodName);
+    return results;
   }
 
   private static List<PropertyDefinitionPojo> getWorkflowProperties(String pWorkflowId)
