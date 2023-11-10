@@ -158,41 +158,13 @@ public class BulkWorkflowPropertiesAndValues
         pojo.setDataType(dataType);
         pojo.setScope(propertyScope);
         pojo.setName(code);
-
-        if (FlexCommonUtils.isNotEmpty(displayRows) && !displayRows.toString().equals("null"))
-        {
-          pojo.setDisplayRows(Integer.parseInt(displayRows.toString()));
-        }
-
-        if (FlexCommonUtils.isNotEmpty(displayColumns) && !displayColumns.toString().equals("null"))
-        {
-          pojo.setDisplayColumns(Integer.parseInt(displayColumns.toString()));
-        }
-
-        if (FlexCommonUtils.isNotEmpty(listData) && !listData.toString().equals("null"))
-        {
-          pojo.setListData(Arrays.asList(listData.toString().trim().split(",")));
-        }
-
-        if (FlexCommonUtils.isNotEmpty(subDataType) && !subDataType.toString().equals("null"))
-        {
-          pojo.setSubDataType(subDataType.toString());
-        }
-
-        if (FlexCommonUtils.isNotEmpty(displayName) && !displayName.toString().equals("null"))
-        {
-          pojo.setDisplayName(displayName.toString());
-        }
-
-        if (FlexCommonUtils.isNotEmpty(description) && !description.toString().equals("null"))
-        {
-          pojo.setDescription(description.toString());
-        }
-
-        if (FlexCommonUtils.isNotEmpty(defaultValue) && !defaultValue.toString().equals("null"))
-        {
-          pojo.setDefaultValue(defaultValue.toString());
-        }
+        pojo.setDisplayRows(FlexCommonUtils.isNotEmpty(displayRows) ? Integer.parseInt(displayRows.toString()) : null);
+        pojo.setDisplayColumns(FlexCommonUtils.isNotEmpty(displayColumns) ? Integer.parseInt(displayColumns.toString()) : null);
+        pojo.setListData(FlexCommonUtils.isNotEmpty(listData) ? Arrays.asList(listData.toString().trim().split(",")) : null);
+        pojo.setSubDataType(FlexCommonUtils.isNotEmpty(subDataType) ? subDataType.toString() : null);
+        pojo.setDisplayName(FlexCommonUtils.isNotEmpty(displayName) ? displayName.toString() : null);
+        pojo.setDescription(FlexCommonUtils.isNotEmpty(description) ? description.toString() : null);
+        pojo.setDefaultValue(FlexCommonUtils.isNotEmpty(defaultValue) ? defaultValue.toString() : null);
       }
 
       if (FlexCommonUtils.isEmpty(code))
