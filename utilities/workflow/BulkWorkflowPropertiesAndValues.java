@@ -207,6 +207,29 @@ public class BulkWorkflowPropertiesAndValues
     return wfObject;
   }
 
+  private static void validateEnvironmentCode(String pEnvironmentCode, List<String> pErrorList)
+    throws FlexCheckedException
+  {
+    final String methodName = "validateEnvironmentCode";
+    LOGGER.entering(CLZ_NAM, methodName, pEnvironmentCode);
+
+    LOGGER.fine("Validating environment with code: " + environmentCode);
+    JSONArray result = envAPI.findEnvironmentByCode(environmentCode);
+    if (result.length() == 0)
+    {
+      // fail
+      pErrorList.add("Environment was not found with environment code " + environmentCode + ". Fix header in CSV file");
+    }
+    else
+    {
+      // success - environment exists
+      String environmentId = result.getJSONObject(0).get("environmentId").toString();
+      environmentCodeToEnvironmentId.put(environmentCode, environmentId);
+    }   
+
+    LOGGER.exiting(CLZ_NAM, methodName);
+  }
+
   private static List<PropertyDefinitionPojo> readAndProcessCSV(List<String> pLines)
     throws FlexCheckedException
   {
@@ -221,12 +244,7 @@ public class BulkWorkflowPropertiesAndValues
     for (int i = 15; i < headers.length; i++)
     {
       String environmentCode = headers[i];
-      LOGGER.fine("Validating environment with code: " + environmentCode);
-      JSONArray result = envAPI.findEnvironmentByCode(environmentCode);
-      if (result.length() == 0)
-      {
-        errors.add("Environment was not found with environment code " + environmentCode + ". Fix header in CSV file");
-      }      
+      validateEnvironmentCode(environmentCode, errors);
       targetEnvironmentCodes.add(environmentCode);
     }
 
@@ -234,6 +252,7 @@ public class BulkWorkflowPropertiesAndValues
     {
       throw new FlexCheckedException(errors.toString());
     }
+    LOGGER.finest("environmentCodeToEnvironmentId map: " + environmentCodeToEnvironmentId);
 
     int numEnvironments = targetEnvironmentCodes.size();
     int numLines = pLines.size();
