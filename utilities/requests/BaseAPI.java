@@ -1,16 +1,19 @@
 package requests;
 
+import flexagon.ff.common.core.exceptions.FlexCheckedException;
+
 public abstract class BaseAPI
 {
-    private FlexDeployRestClient client;
+  private FlexDeployRestClient client;
 
-    public BaseAPI(String pBaseUrl, String pUsername, String pPassword)
-    {
-        client = new FlexDeployRestClient(pBaseUrl, pUsername, pPassword);
-    }
+  public BaseAPI(String pBaseUrl, String pUsername, String pPassword) 
+    throws FlexCheckedException
+  {
+    client = new FlexDeployRestClient(pBaseUrl, pUsername, pPassword);
+  }
 
-    protected FlexDeployRestClient getClient()
-    {
-        return client;
-    }
+  protected FlexDeployRestClient getClient()
+  {
+    return client;
+  }
 }

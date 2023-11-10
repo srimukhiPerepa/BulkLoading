@@ -45,7 +45,7 @@ public class CredentialAPI
     LOGGER.entering(CLZ_NAM, methodName, pCredentialId);
 
     PatchCredentialById pc = new PatchCredentialById();
-    pc.setId(pWorkflowId);
+    pc.setId(pCredentialId);
     pc.setJson(pJSONRequestBody);
     FlexRESTClientResponse response = getClient().put(pc);
 
