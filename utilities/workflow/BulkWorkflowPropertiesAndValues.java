@@ -278,6 +278,8 @@ public class BulkWorkflowPropertiesAndValues
     for (int i = 0; i < pJsonArray.length(); i++)
     {
       JSONObject current = pJsonArray.getJSONObject(0);
+      LOGGER.info("DEBUG: " + current);
+
       if (pTargetGroupCode.equals(current.getString("targetGroupCode")))
       {
         targetGroupObject = current;
