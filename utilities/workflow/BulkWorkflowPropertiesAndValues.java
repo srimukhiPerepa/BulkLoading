@@ -128,13 +128,21 @@ public class BulkWorkflowPropertiesAndValues
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////CREATE/UPDATE CREDENTIALS//////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if (credentialNameToValue.size() == 0)
+    {
+      LOGGER.info("No credentials found to create/update");
+    }
+    else 
+    {
+      LOGGER.fine(credentialNameToValue.size() + " to create/update");
+      LOGGER.fine("credentialNameToValue map: " + credentialNameToValue);
+    }
     CredentialAPI credAPI = new CredentialAPI(BASE_URL, USERNAME, PASSWORD);
     for (String credentialName : credentialNameToValue.keySet())
     {
       JSONArray result = credAPI.findCredentialByName(credentialName);
       LOGGER.info("result: " + result);
     }
-    
   }
 
   /**
