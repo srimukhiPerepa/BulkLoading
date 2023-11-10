@@ -47,7 +47,7 @@ public class TargetAPI
     LOGGER.entering(CLZ_NAM, methodName, new Object[]{pTargetGroupId, pJSONRequestBody});
 
     UpdateTargetGroupById ut = new UpdateTargetGroupById();
-    ut.setId(pWorkflowId);
+    ut.setId(pTargetGroupId);
     ut.setJson(pJSONRequestBody);
     FlexRESTClientResponse response = getClient().put(ut);
 
