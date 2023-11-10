@@ -47,6 +47,7 @@ public class BulkWorkflowPropertiesAndValues
   private static List<String> targetEnvironmentCodes = new ArrayList<>();
   private static Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
   private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential value
+  private static Map<String, String> credentialNameToId = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential id
   private static Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
 
   private static WorkflowAPI wfAPI;
@@ -141,6 +142,7 @@ public class BulkWorkflowPropertiesAndValues
       JSONArray searchResult = credAPI.findCredentialByName(credentialName);
       JSONObject credentialObject = validateCredentialArray(credentialName, searchResult);
       String credentialValue = credentialNameToValue.get(credentialName);
+      String credentialId;
       if (credentialObject == null)
       {
         LOGGER.info("Creating credential " + credentialName);
@@ -158,16 +160,18 @@ public class BulkWorkflowPropertiesAndValues
         inputs.put(input);
         postCredentialRequestBody.put("credentialInputs", inputs);
 
-        credAPI.createCredential(postCredentialRequestBody.toString());
+        credentialId = credAPI.createCredential(postCredentialRequestBody.toString()).get("credentialId").toString();
       }
       else
       {
         // update - override inputValue only
-        String credentialId = credentialObject.get("credentialId").toString();
+        credentialId = credentialObject.get("credentialId").toString();
         LOGGER.info("Updating credential with id " + credentialId + " and credential name " + credentialName);
         credentialObject.getJSONArray("credentialInputs").getJSONObject(0).put("inputValue", credentialValue);
         credAPI.patchCredentialById(credentialId, credentialObject.toString());
       }
+
+      credentialNameToId.put(credentialName, credentialId);
     }
 
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
@@ -192,7 +196,7 @@ public class BulkWorkflowPropertiesAndValues
         if (isEncrypted)
         {
           String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
-          property.put("credentialId", credentialNameToValue.get(credentialName));
+          property.put("credentialId", credentialNameToId.get(credentialName));
         }
         else 
         {

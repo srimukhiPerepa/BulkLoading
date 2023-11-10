@@ -73,7 +73,7 @@ public class CredentialAPI
     return jsonObject;
   }
 
-  public void createCredential(String pJSONRequestBody)
+  public JSONObject createCredential(String pJSONRequestBody)
     throws FlexCheckedException
   {
     final String methodName = "createCredential";
@@ -85,6 +85,7 @@ public class CredentialAPI
     JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().post(cc));
 
     LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
+    return jsonObject;
   }
 
   public void patchCredentialById(String pCredentialId, String pJSONRequestBody)
