@@ -82,7 +82,7 @@ public class CredentialAPI
     CreateCredential cc = new CreateCredential();
     cc.setJson(pJSONRequestBody);
 
-    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().put(cc));
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().post(cc));
 
     LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
   }
@@ -96,8 +96,9 @@ public class CredentialAPI
     PatchCredentialById pc = new PatchCredentialById();
     pc.setId(pCredentialId);
     pc.setJson(pJSONRequestBody);
-    FlexRESTClientResponse response = getClient().patch(pc);
 
-    LOGGER.exiting(CLZ_NAM, methodName);
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().patch(pc));
+
+    LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
   }
 }

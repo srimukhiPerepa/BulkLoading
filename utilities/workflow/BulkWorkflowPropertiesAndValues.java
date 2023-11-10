@@ -127,9 +127,9 @@ public class BulkWorkflowPropertiesAndValues
     for (String credentialName : credentialNameToValue.keySet())
     {
       JSONArray searchResult = credAPI.findCredentialByName(credentialName);
-      JSONObject credential = validateCredentialArray(credentialName, searchResult);
+      JSONObject credentialObject = validateCredentialArray(credentialName, searchResult);
       String credentialValue = credentialNameToValue.get(credentialName);
-      if (credential == null)
+      if (credentialObject == null)
       {
         // create
         JSONObject postCredentialRequestBody = new JSONObject();
@@ -149,7 +149,10 @@ public class BulkWorkflowPropertiesAndValues
       }
       else
       {
-        // update
+        // update - override inputValue only
+        String credentialId = credentialObject.get("credentialId").toString();
+        credentialObject.getJSONArray("credentialInputs").getJSONObject(0).put("inputValue", credentialValue);
+        credAPI.patchCredentialById(credentialId, credentialObject.toString());
       }
     }
   }
