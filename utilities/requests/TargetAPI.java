@@ -81,7 +81,7 @@ public class TargetAPI
     pt.setEnvironmentId(pEnvironmentId);
     pt.setTargetGroupId(pTargetGroupId);
     pt.setJson(pJSONRequestBody);
-    FlexRESTClientResponse response = getClient().put(pt);
+    FlexRESTClientResponse response = getClient().patch(pt);
 
     LOGGER.exiting(CLZ_NAM, methodName);
   }
