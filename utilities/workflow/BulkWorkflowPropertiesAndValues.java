@@ -151,11 +151,10 @@ public class BulkWorkflowPropertiesAndValues
       String isActive = tokens[13];
       String defaultValue = tokens[14];
 
-      int size = (numEnvironments + 15);
-      for (int j = 15; j < size; j++)
+      for (int j = 0; j < numEnvironments; j++)
       {
         List<String> valuesForTarget = codeToValue.getOrDefault(code, new ArrayList<>());
-        valuesForTarget.add(tokens[j]);
+        valuesForTarget.add(tokens[j+15]);
         codeToValue.put(code, valuesForTarget);
         
         PropertyDefinitionPojo pojo = new PropertyDefinitionPojo();
@@ -174,6 +173,8 @@ public class BulkWorkflowPropertiesAndValues
         pojo.setDisplayName(FlexCommonUtils.isNotEmpty(displayName) ? displayName.toString() : null);
         pojo.setDescription(FlexCommonUtils.isNotEmpty(description) ? description.toString() : null);
         pojo.setDefaultValue(FlexCommonUtils.isNotEmpty(defaultValue) ? defaultValue.toString() : null);
+
+        results.add(pojo);
       }
 
       if (FlexCommonUtils.isEmpty(code))
