@@ -161,7 +161,7 @@ public class BulkWorkflowPropertiesAndValues
     throws FlexCheckedException
   {
     final String methodName = "validateCredentialArray";
-    LOGGER.entering(CLZ_NAM, methodName, pCredentialName, pJsonArray);
+    LOGGER.entering(CLZ_NAM, methodName, new Object[]{pCredentialName, pJsonArray});
 
     if (pJsonArray.length() > 1)
     {
