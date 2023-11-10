@@ -1,5 +1,7 @@
 package pojo;
 
+import java.sql.Timestamp;
+
 import java.util.List;
 
 public class CredentialPojo
@@ -25,7 +27,7 @@ public class CredentialPojo
   private Timestamp mUpdatedOn;
   private String mUpdatedBy;
   private Integer mVersionNumber;
-  private List<CredentialInputDataObject> mCredentialInputs;
+  private List<CredentialInputPojo> mCredentialInputs;
 
   public CredentialPojo()
   {
@@ -242,12 +244,12 @@ public class CredentialPojo
     this.mVersionNumber = pVersionNumber;
   }
 
-  public List<CredentialInputDataObject> getCredentialInputs()
+  public List<CredentialInputPojo> getCredentialInputs()
   {
     return this.mCredentialInputs;
   }
 
-  public void setCredentialInputs(List<CredentialInputDataObject> pCredentialInputs)
+  public void setCredentialInputs(List<CredentialInputPojo> pCredentialInputs)
   {
     this.mCredentialInputs = pCredentialInputs;
   }
