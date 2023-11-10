@@ -83,14 +83,8 @@ public class BulkWorkflowPropertiesAndValues
     List<String> lines = FlexFileUtils.read(csv);
     List<PropertyDefinitionPojo> incomingWorkflowProperties = readAndProcessCSV(lines);
     List<PropertyDefinitionPojo> mergedWorkflowProperties = mergeWorkflowProperties(existingWorkflowProperties, incomingWorkflowProperties);
-
+    writeWorkflowPropertiesToWorkflowObject(workflowObject, mergedWorkflowProperties);
     // Write merged results to workflowObject
-    workflowObject.put("properties", new JSONArray()); // clears existing properties
-    for (PropertyDefinitionPojo pojo : mergedWorkflowProperties)
-    {
-      workflowObject.getJSONArray("properties").put(pojo.toJson());
-    }
-    LOGGER.info("Final Workflow Object: " + workflowObject.toString(2));
 
     String workflowId = workflowObject.get("workflowId").toString();
     wfAPI.updateWorkflowById(workflowId, workflowObject.toString());
@@ -122,6 +116,21 @@ public class BulkWorkflowPropertiesAndValues
         // update
       }
     }
+  }
+
+  private static void writeWorkflowPropertiesToWorkflowObject(JSONObject workflowObject, List<PropertyDefinitionPojo> properties)
+  {
+    final String methodName = "writeWorkflowPropertiesToWorkflowObject";
+    LOGGER.entering(CLZ_NAM, methodName);
+
+    workflowObject.put("properties", new JSONArray()); // clears existing properties
+    for (PropertyDefinitionPojo pojo : properties)
+    {
+      workflowObject.getJSONArray("properties").put(pojo.toJson());
+    }
+    LOGGER.info("Final Workflow Object: " + workflowObject.toString(2));
+
+    LOGGER.exiting(CLZ_NAM, methodName);
   }
 
   /**
