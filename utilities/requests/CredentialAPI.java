@@ -5,6 +5,7 @@ import requests.PatchCredentialById;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
+import flexagon.ff.common.core.utils.FlexJsonUtils;
  
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -31,9 +32,8 @@ public class CredentialAPI
 
     SearchCredentialByName sc = new SearchCredentialByName();
     sc.setName(pCredentialName);
-    FlexRESTClientResponse response = getClient().get(sc);
 
-    JSONObject jsonObject = new JSONObject(response.getResponseObject(String.class));
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().get(sc));
     JSONArray items = jsonObject.getJSONArray("items");
     
     LOGGER.exiting(CLZ_NAM, methodName, items);

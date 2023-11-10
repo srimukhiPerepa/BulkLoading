@@ -40,6 +40,7 @@ public class BulkWorkflowPropertiesAndValues
   private static List<String> targetEnvironmentCodes = new ArrayList<>();
   private static Map<String, String> codeToValue = new HashMap<>(); //key is code##environment_code, value is target property value
   private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credential name, value is credential value
+  private static Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
 
   public static void main(String[] args)
     throws FlexCheckedException
@@ -212,15 +213,28 @@ public class BulkWorkflowPropertiesAndValues
     LOGGER.entering(CLZ_NAM, methodName, pLines);
 
     List<PropertyDefinitionPojo> results = new ArrayList<>();
+    EnvironmentAPI envAPI = new EnvironmentAPI(BASE_URL, USERNAME, PASSWORD);
     List<String> errors = new ArrayList<>();
 
     String[] headers = pLines.get(0).split(",");
     for (int i = 15; i < headers.length; i++)
     {
-      targetEnvironmentCodes.add(headers[i]);
+      String environmentCode = headers[i];
+      LOGGER.fine("Validating environment with code: " + environmentCode);
+      JSONObject result = envAPI.findEnvironmentByCode(environmentCode);
+      if (result.length() == 0)
+      {
+        errors.add("Environment was not found with environment code " + environmentCode + ". Fix header in CSV file");
+      }      
+      targetEnvironmentCodes.add(environmentCode);
     }
-    int numEnvironments = targetEnvironmentCodes.size();
+    
+    if (errors.size() > 0)
+    {
+      throw new FlexCheckedException(errors.toString());
+    }
 
+    int numEnvironments = targetEnvironmentCodes.size();
     int numLines = pLines.size();
     for (int i = 1; i < numLines; i++)
     {

@@ -6,12 +6,12 @@ import java.util.HashMap;
 
 import javax.ws.rs.client.Entity;
 
-public class GetTargetGroupByCode
+public class GetEnvironmentByCode
   extends Request
 {
   private String mCode;
 
-  public GetTargetGroupByCode()
+  public GetEnvironmentByCode()
   {
     super();
   }
@@ -25,14 +25,14 @@ public class GetTargetGroupByCode
   public Map<String, Object> getQueryParams()
   {
     HashMap<String, Object> params = new HashMap<>();
-    params.put("targetGroupCode", mCode);
+    params.put("environmentCode", mCode);
     return params;
   }
 
   @Override
   public String getResourceUri()
   {
-    return "flexdeploy/rest/v2/topology/targetgroup";
+    return "flexdeploy/rest/v1/topology/environment";
   }
 
   @Override
