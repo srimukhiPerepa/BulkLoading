@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 
+import java.util.logging.Logger;
+
 public class PropertyDefinitionPojo implements Cloneable
 {
   private static final String CLZ_NAM = PropertyDefinitionPojo.class.getName();
@@ -225,7 +227,7 @@ public class PropertyDefinitionPojo implements Cloneable
     return object;
   }
 
-  private static List<PropertyDefinitionPojo> convertObjectsToPropertyDefinition(JSONArray pJsonArr)
+  public static List<PropertyDefinitionPojo> convertObjectsToPropertyDefinition(JSONArray pJsonArr)
     throws FlexCheckedException
   {
     final String methodName = "convertObjectsToPropertyDefinition";
