@@ -236,9 +236,6 @@ public class PropertyDefinitionPojo implements Cloneable
       if (mName != null) {
           result = 31 * result + mName.hashCode();
       }
-      if (mScope != null) {
-          result = 31 * result + mScope.hashCode();
-      }
       return result;
   }
 }

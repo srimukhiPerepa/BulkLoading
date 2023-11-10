@@ -70,20 +70,24 @@ public class BulkWorkflowPropertiesAndValues
     workflowObject.put("sourceCodeURL", "dummy"); // this is required or validation will fail - sourceCodeURL is not actually used in backend
     String workflowId = workflowObject.get("workflowId").toString();
     List<PropertyDefinitionPojo> existingWorkflowProperties = parseWorkflowProperties(workflowObject.getJSONArray("properties"));
-    List<String> lines = FlexFileUtils.read(new File("../examples/workflow_property_values.csv"));
+    File csv = new File("../examples/workflow_property_values.csv");
+    List<String> lines = FlexFileUtils.read(csv);
     List<PropertyDefinitionPojo> updatedWorkflowProperties = processCSV(lines);
 
+    LOGGER.fine("Merging existing workflow properties with incoming properties from " + csv);
     // merge both lists with updatedWorkflowProperties taking precedence if there are duplicates
-    List<PropertyDefinitionPojo> mergedWorkflowProperties = existingWorkflowProperties;
+    List<PropertyDefinitionPojo> mergedWorkflowProperties = new ArrayList<>(existingWorkflowProperties);
     for (int i = 0; i < updatedWorkflowProperties.size(); i++)
     {
       PropertyDefinitionPojo pojo = updatedWorkflowProperties.get(i);
       if (mergedWorkflowProperties.contains(pojo))
       {
+        LOGGER.info("Workflow Property with code " + pojo.getName() + " already exists in the workflow. Overriding values.");
         mergedWorkflowProperties.set(i, pojo);
       }
       else
       {
+        LOGGER.info("Adding new Workflow Property with code " + pojo.getName());
         mergedWorkflowProperties.add(pojo);
       }
     }
