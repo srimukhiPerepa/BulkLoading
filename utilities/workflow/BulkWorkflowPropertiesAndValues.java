@@ -39,6 +39,7 @@ public class BulkWorkflowPropertiesAndValues
   protected static String PASSWORD;
   protected static String WORKFLOW_NAME;
   protected static String TARGET_GROUP_CODE;
+  protected static String INPUT_CSV_FILE_PATH;
   protected static String WORKFLOW_SOURCE;
 
   private static String targetGroupId;
@@ -64,16 +65,17 @@ public class BulkWorkflowPropertiesAndValues
 		LOGGER.setLevel(Level.ALL);
 		LOGGER.setUseParentHandlers(false);
 
-    if (args == null || args.length < 6)
+    if (args == null || args.length < 7)
     {
-      throw new IllegalArgumentException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, TARGET_GROUP_CODE, and WORKFLOW_SOURCE must be passed as arguments.");
+      throw new IllegalArgumentException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, TARGET_GROUP_CODE, INPUT_CSV_FILE_PATH, and WORKFLOW_SOURCE must be passed as arguments.");
     }
     BASE_URL = args[0];
     USERNAME = args[1];
     PASSWORD = args[2];
     WORKFLOW_NAME = args[3];
     TARGET_GROUP_CODE = args[4];
-    WORKFLOW_SOURCE = args[5];
+    INPUT_CSV_FILE_PATH = args[5];
+    WORKFLOW_SOURCE = args[6];
 
     wfAPI = new WorkflowAPI(BASE_URL, USERNAME, PASSWORD);
     envAPI = new EnvironmentAPI(BASE_URL, USERNAME, PASSWORD);
@@ -114,7 +116,7 @@ public class BulkWorkflowPropertiesAndValues
     JSONArray workflowPropertiesJSONArray = workflowObject.getJSONArray("properties");
     List<PropertyDefinitionPojo> existingWorkflowProperties = PropertyDefinitionPojo.convertObjectsToPropertyDefinition(workflowPropertiesJSONArray);
 
-    File csv = new File("../examples/workflow_property_values.csv");
+    File csv = new File(INPUT_CSV_FILE_PATH);
     List<String> lines = FlexFileUtils.read(csv);
     List<PropertyDefinitionPojo> incomingWorkflowProperties = readAndProcessCSV(lines);
     List<PropertyDefinitionPojo> mergedWorkflowProperties = mergeWorkflowProperties(existingWorkflowProperties, incomingWorkflowProperties);
