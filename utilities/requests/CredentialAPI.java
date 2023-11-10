@@ -33,6 +33,8 @@ public class CredentialAPI
     sc.setName(pCredentialName);
     FlexRESTClientResponse response = getClient().get(sc);
 
+    LOGGER.info("DEBUG: " + response.getResponseObject(String.class));
+
     JSONArray jsonArray = new JSONArray(response.getResponseObject(String.class));
     
     LOGGER.exiting(CLZ_NAM, methodName, jsonArray);
