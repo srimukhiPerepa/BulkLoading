@@ -132,7 +132,7 @@ public class BulkWorkflowPropertiesAndValues
     final String methodName = "mergeWorkflowProperties";
     LOGGER.entering(CLZ_NAM, methodName, new Object[]{existing, incoming});
 
-    List<PropertyDefinitionPojo> merged = new ArrayList<>(existingWorkflowProperties);
+    List<PropertyDefinitionPojo> merged = new ArrayList<>(existing);
     for (int i = 0; i < incoming.size(); i++)
     {
       PropertyDefinitionPojo pojo = incoming.get(i);
