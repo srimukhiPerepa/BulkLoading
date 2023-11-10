@@ -36,7 +36,6 @@ public class BulkWorkflowPropertiesAndValues
   protected static String TARGET_GROUP_CODE;
   protected static String WORKFLOW_SOURCE;
 
-  private static FlexDeployRestClient client;
   private static Map<String, String> codeToValue = new HashMap<>(); //key is code##environment_code, value is target property value
 
   public static void main(String[] args)
@@ -65,8 +64,8 @@ public class BulkWorkflowPropertiesAndValues
     workflowObject.put("sourceCode", WORKFLOW_SOURCE); // this is required for update workflow and get workflow does not return the value
     workflowObject.put("sourceCodeURL", "dummy"); // this is required or validation will fail - sourceCodeURL is not actually used in backend
 
-    JSONArray workflowPropertiesArray = workflowObject.getJSONArray("properties");
-    List<PropertyDefinitionPojo> existingWorkflowProperties = PropertyDefinitionPojo.convertObjectsToPropertyDefinition(workflowPropertiesArray);
+    JSONArray workflowPropertiesJSONArray = workflowObject.getJSONArray("properties");
+    List<PropertyDefinitionPojo> existingWorkflowProperties = PropertyDefinitionPojo.convertObjectsToPropertyDefinition(workflowPropertiesJSONArray);
 
     File csv = new File("../examples/workflow_property_values.csv");
     List<String> lines = FlexFileUtils.read(csv);
@@ -93,13 +92,11 @@ public class BulkWorkflowPropertiesAndValues
     }
 
     // Write merged results to workflowObject
-    JSONArray workflowPropertiesArray = new JSONArray();
+    workflowObject.put("properties", new JSONArray()); // clears existing properties
     for (PropertyDefinitionPojo pojo : mergedWorkflowProperties)
     {
-      workflowPropertiesArray.put(pojo.toJson());
+      workflowObject.getJSONArray("properties").put(pojo.toJson());
     }
-    workflowObject.put("properties", workflowPropertiesArray);
-
     LOGGER.info("Final Workflow Object: " + workflowObject.toString(2));
 
     String workflowId = workflowObject.get("workflowId").toString();

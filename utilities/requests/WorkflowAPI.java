@@ -47,7 +47,7 @@ public class WorkflowAPI
     UpdateWorkflowById uw = new UpdateWorkflowById();
     uw.setId(pWorkflowId);
     uw.setJson(pJSONRequestBody);
-    FlexRESTClientResponse response = client.put(uw);
+    FlexRESTClientResponse response = getClient().put(uw);
 
     LOGGER.exiting(CLZ_NAM, methodName);
   }

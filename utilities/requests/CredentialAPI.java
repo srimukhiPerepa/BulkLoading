@@ -47,7 +47,7 @@ public class CredentialAPI
     PatchCredentialById pc = new PatchCredentialById();
     pc.setId(pWorkflowId);
     pc.setJson(pJSONRequestBody);
-    FlexRESTClientResponse response = client.put(pc);
+    FlexRESTClientResponse response = getClient().put(pc);
 
     LOGGER.exiting(CLZ_NAM, methodName);
   }

@@ -1,15 +1,20 @@
 package pojo;
 
 import flexagon.ff.common.core.utils.FlexCommonUtils;
+import flexagon.ff.common.core.exceptions.FlexCheckedException;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
 
 import java.util.List;
+import java.util.Arrays;
 import java.util.ArrayList;
 
 public class PropertyDefinitionPojo implements Cloneable
 {
+  private static final String CLZ_NAM = PropertyDefinitionPojo.class.getName();
+  private static final Logger LOGGER = Logger.getGlobal();
+
   private String mName; //Property code
   private String mDisplayName;
   private String mScope;
