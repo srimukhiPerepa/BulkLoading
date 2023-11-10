@@ -128,6 +128,7 @@ public class BulkWorkflowPropertiesAndValues
       numEnvironments++;
       targetEnvironmentCodes.add(headers[i]);
     }
+    LOGGER.info("Target Environment Codes found based on CSV: " + targetEnvironmentCodes);
 
     int numLines = pLines.size();
     for (int i = 1; i < numLines; i++)
@@ -150,7 +151,8 @@ public class BulkWorkflowPropertiesAndValues
       String isActive = tokens[13];
       String defaultValue = tokens[14];
 
-      for (int j = 15; j < numEnvironments + 15; j++)
+      int size = (numEnvironments + 15);
+      for (int j = 15; j < size; j++)
       {
         List<String> valuesForTarget = codeToValue.getOrDefault(code, new ArrayList<>());
         valuesForTarget.add(tokens[j]);
@@ -215,7 +217,7 @@ public class BulkWorkflowPropertiesAndValues
       throw new FlexCheckedException(errors.toString());
     }
 
-    LOGGER.exiting(CLZ_NAM, methodName);
+    LOGGER.exiting(CLZ_NAM, methodName, results.size());
     return results;
   }
 

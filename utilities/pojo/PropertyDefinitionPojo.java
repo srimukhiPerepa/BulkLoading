@@ -233,9 +233,7 @@ public class PropertyDefinitionPojo implements Cloneable
   @Override
   public final int hashCode() {
       int result = 17;
-      if (mName != null) {
-          result = 31 * result + mName.hashCode();
-      }
+      result = 31 * result + mName.hashCode();
       return result;
   }
 }
