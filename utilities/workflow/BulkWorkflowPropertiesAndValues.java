@@ -250,13 +250,13 @@ public class BulkWorkflowPropertiesAndValues
       propertyDef.setDataType(dataType);
       propertyDef.setScope(scope);
       propertyDef.setName(name);
-      propertyDef.setDisplayRows(FlexCommonUtils.isNotEmpty(displayRows.toString()) ? Integer.parseInt(displayRows.toString()) : null);
-      propertyDef.setDisplayColumns(FlexCommonUtils.isNotEmpty(displayColumns.toString()) ? Integer.parseInt(displayColumns.toString()) : null);
-      propertyDef.setListData(FlexCommonUtils.isNotEmpty(listData.toString()) ? Arrays.asList(listData.toString().trim().split(",")) : null);
-      propertyDef.setSubDataType(FlexCommonUtils.isNotEmpty(subDataType.toString()) ? subDataType.toString() : null);
-      propertyDef.setDisplayName(FlexCommonUtils.isNotEmpty(displayName.toString()) ? displayName.toString() : null);
-      propertyDef.setDescription(FlexCommonUtils.isNotEmpty(description.toString()) ? description.toString() : null);
-      propertyDef.setDefaultValue(FlexCommonUtils.isNotEmpty(defaultValue.toString()) ? defaultValue.toString() : null);
+      propertyDef.setDisplayRows(FlexCommonUtils.isNotEmpty(displayRows.toString()) && !"null".equals(displayRows.toString()) ? Integer.parseInt(displayRows.toString()) : null);
+      propertyDef.setDisplayColumns(FlexCommonUtils.isNotEmpty(displayColumns.toString()) && !"null".equals(displayColumns.toString()) ? Integer.parseInt(displayColumns.toString()) : null);
+      propertyDef.setListData(FlexCommonUtils.isNotEmpty(listData.toString()) && !"null".equals(listData.toString()) ? Arrays.asList(listData.toString().trim().split(",")) : null);
+      propertyDef.setSubDataType(FlexCommonUtils.isNotEmpty(subDataType.toString()) && !"null".equals(subDataType.toString()) ? subDataType.toString() : null);
+      propertyDef.setDisplayName(FlexCommonUtils.isNotEmpty(displayName.toString()) && !"null".equals(displayName.toString()) ? displayName.toString() : null);
+      propertyDef.setDescription(FlexCommonUtils.isNotEmpty(description.toString()) && !"null".equals(description.toString()) ? description.toString() : null);
+      propertyDef.setDefaultValue(FlexCommonUtils.isNotEmpty(defaultValue.toString()) && !"null".equals(defaultValue.toString()) ? defaultValue.toString() : null);
 
       results.add(propertyDef);
     }
