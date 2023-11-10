@@ -3,7 +3,6 @@ package workflow;
 import requests.FlexDeployRestClient;
 import requests.GetTargetGroupByCode;
 import requests.SearchWorkflowByName;
-import requests.GetWorkflowPropertiesById;
 import requests.UpdateWorkflowById;
 
 import pojo.PropertyDefinitionPojo;
@@ -39,6 +38,7 @@ public class BulkWorkflowPropertiesAndValues
   protected static String PASSWORD;
   protected static String WORKFLOW_NAME;
   protected static String TARGET_GROUP_CODE;
+  protected static String WORKFLOW_SOURCE;
 
   private static FlexDeployRestClient client;
   private static List<String> targetEnvironmentCodes = new ArrayList<>(); //In order
@@ -53,20 +53,22 @@ public class BulkWorkflowPropertiesAndValues
 		LOGGER.setLevel(Level.ALL);
 		LOGGER.setUseParentHandlers(false);
 
-    if (args == null || args.length < 5)
+    if (args == null || args.length < 6)
     {
-      throw new IllegalArgumentException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, and TARGET_GROUP_CODE must be passed as arguments.");
+      throw new IllegalArgumentException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, TARGET_GROUP_CODE, and WORKFLOW_SOURCE must be passed as arguments.");
     }
     BASE_URL = args[0];
     USERNAME = args[1];
     PASSWORD = args[2];
     WORKFLOW_NAME = args[3];
     TARGET_GROUP_CODE = args[4];
+    WORKFLOW_SOURCE = args[5];
 
     client = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
     JSONObject workflowObject = findWorkflow();
+    workflowObject.put("sourceCode", WORKFLOW_SOURCE);
     String workflowId = workflowObject.get("workflowId").toString();
-    List<PropertyDefinitionPojo> existingWorkflowProperties = getWorkflowProperties(workflowId);
+    List<PropertyDefinitionPojo> existingWorkflowProperties = parseWorkflowProperties(workflowObject.getJSONArray("properties"));
     List<String> lines = FlexFileUtils.read(new File("../examples/workflow_property_values.csv"));
     List<PropertyDefinitionPojo> updatedWorkflowProperties = processCSV(lines);
 
@@ -207,22 +209,14 @@ public class BulkWorkflowPropertiesAndValues
     return results;
   }
 
-  private static List<PropertyDefinitionPojo> getWorkflowProperties(String pWorkflowId)
+  private static List<PropertyDefinitionPojo> parseWorkflowProperties(JSONArray pJsonArr)
     throws FlexCheckedException
   {
-    final String methodName = "getWorkflowProperties";
+    final String methodName = "parseWorkflowProperties";
     LOGGER.entering(CLZ_NAM, methodName, pWorkflowId);
 
     List<PropertyDefinitionPojo> results = new ArrayList<>();
-    GetWorkflowPropertiesById wp = new GetWorkflowPropertiesById();
-    wp.setId(pWorkflowId);
-    FlexRESTClientResponse response = client.get(wp);
-
-    String jsonString = response.getResponseObject(String.class);
-    LOGGER.info("Workflow properties response: " + jsonString);
-
-    JSONArray jsonArray = new JSONArray(jsonString);
-    for (int i = 0; i < jsonArray.length(); i++)
+    for (int i = 0; i < pJsonArr.length(); i++)
     {
       JSONObject object = jsonArray.getJSONObject(i);
       PropertyDefinitionPojo propertyDef = new PropertyDefinitionPojo();
