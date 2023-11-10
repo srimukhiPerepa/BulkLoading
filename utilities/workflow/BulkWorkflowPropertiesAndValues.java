@@ -188,6 +188,8 @@ public class BulkWorkflowPropertiesAndValues
         JSONObject patchRequestBody = new JSONObject();
         JSONArray propertiesArray = new JSONArray();
         JSONObject property = new JSONObject();
+        property.put("propertyName", name);
+
         if (isEncrypted)
         {
           String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
