@@ -187,7 +187,6 @@ public class BulkWorkflowPropertiesAndValues
 
         JSONObject patchRequestBody = new JSONObject();
         patchRequestBody.put("propertyName", name);
-        patchRequestBody.put("isExpression", false);
 
         JSONArray propertiesArray = new JSONArray();
         JSONObject property = new JSONObject();
@@ -198,12 +197,10 @@ public class BulkWorkflowPropertiesAndValues
           String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
           patchRequestBody.put("credentialId", credentialNameToValue.get(credentialName));
           property.put("credentialId", credentialNameToValue.get(credentialName));
-          property.put("isExpression", false);
         }
         else 
         {
           property.put("propertyValue", targetValue);
-          property.put("isExpression", false);
         }
         propertiesArray.put(property);
         patchRequestBody.put("properties", propertiesArray);
