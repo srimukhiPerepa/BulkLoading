@@ -4,8 +4,12 @@ import requests.FlexDeployRestClient;
 import requests.GetTargetGroupByCode;
 import requests.SearchWorkflowByName;
 import requests.GetWorkflowPropertiesById;
+import requests.UpdateWorkflowById;
 
 import pojo.PropertyDefinitionPojo;
+
+import com.fasterxml.jackson.databind.ObjectMapper; 
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.logging.FlexLogger;
@@ -63,22 +67,53 @@ public class BulkWorkflowPropertiesAndValues
     TARGET_GROUP_CODE = args[4];
 
     client = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
-    String workflowId = findWorkflowId();
-    List<PropertyDefinitionPojo> workflowProperties = getWorkflowProperties(workflowId);
+    JSONObject workflowObject = findWorkflow();
+    String workflowId = workflowObject.get("workflowId").toString();
+    List<PropertyDefinitionPojo> existingWorkflowProperties = getWorkflowProperties(workflowId);
     List<String> lines = FlexFileUtils.read(new File("../examples/workflow_property_values.csv"));
-    processCSV(lines);
+    List<PropertyDefinitionPojo> updatedWorkflowProperties = processCSV(lines);
+
+    // merge both lists with updatedWorkflowProperties taking precedence if there are duplicates
+    List<PropertyDefinitionPojo> mergedWorkflowProperties = existingWorkflowProperties;
+    for (int i = 0; i < updatedWorkflowProperties.size(); i++)
+    {
+      PropertyDefinitionPojo pojo = updatedWorkflowProperties.get(i);
+      if (mergedWorkflowProperties.contains(pojo))
+      {
+        mergedWorkflowProperties.set(i, pojo);
+      }
+      else
+      {
+        mergedWorkflowProperties.add(pojo);
+      }
+    }
+
+    // Write merged results to workflowObject
+    JSONArray workflowPropertiesArray = new JSONArray();
+    ObjectMapper mapper = new ObjectMapper();
+    for (PropertyDefinitionPojo pojo : mergedWorkflowProperties)
+    {
+      workflowPropertiesArray.put(mapper.writeValueAsString(pojo));
+    }
+    workflowObject.put("properties", workflowPropertiesArray);
+
+    UpdateWorkflowById uw = new UpdateWorkflowById();
+    uw.setId(workflowId);
+    uw.setJson(workflowObject.toString());
+    FlexRESTClientResponse response = client.get(uw);
 
     // GetTargetGroupByCode tg = new GetTargetGroupByCode();
     // tg.setCode(TARGET_GROUP_CODE);
     // FlexRESTClientResponse response = client.get(tg);
   }
 
-  private static void processCSV(List<String> pLines)
+  private static List<PropertyDefinitionPojo> processCSV(List<String> pLines)
     throws FlexCheckedException
   {
     final String methodName = "processCSV";
     LOGGER.entering(CLZ_NAM, methodName, pLines);
 
+    List<PropertyDefinitionPojo> results = new ArrayList<>();
     List<String> errors = new ArrayList<>();
 
     String[] headers = pLines.get(0).split(",");
@@ -115,6 +150,51 @@ public class BulkWorkflowPropertiesAndValues
         List<String> valuesForTarget = codeToValue.getOrDefault(code, new ArrayList<>());
         valuesForTarget.add(tokens[j]);
         codeToValue.put(code, valuesForTarget);
+        
+        PropertyDefinitionPojo pojo = new PropertyDefinitionPojo();
+        pojo.setIsEncrypted(Boolean.valueOf(isEncrypted));
+        pojo.setIsRequired(Boolean.valueOf(isRequired));
+        pojo.setIsDefaultValueExpression(isDefaultValueExpression != null ? Boolean.valueOf(isDefaultValueExpression) : false);
+        pojo.setIsMultiselect(isMultiselect != null ? Boolean.valueOf(isMultiselect) : false);
+        pojo.setIsActive(isActive != null ? Boolean.valueOf(isActive) : true);
+        pojo.setDataType(dataType);
+        pojo.setScope(propertyScope);
+        pojo.setName(code);
+
+        if (displayRows != null && !displayRows.toString().equals("null"))
+        {
+          pojo.setDisplayRows(Integer.parseInt(displayRows.toString()));
+        }
+
+        if (displayColumns != null && !displayColumns.toString().equals("null"))
+        {
+          pojo.setDisplayColumns(Integer.parseInt(displayColumns.toString()));
+        }
+
+        if (listData != null && !listData.toString().equals("null"))
+        {
+          pojo.setListData(Arrays.asList(listData.toString().trim().split(",")));
+        }
+
+        if (subDataType != null && !subDataType.toString().equals("null"))
+        {
+          pojo.setSubDataType(subDataType.toString());
+        }
+
+        if (displayName != null && !displayName.toString().equals("null"))
+        {
+          pojo.setDisplayName(displayName.toString());
+        }
+
+        if (description != null && !description.toString().equals("null"))
+        {
+          pojo.setDescription(description.toString());
+        }
+
+        if (defaultValue != null && !defaultValue.toString().equals("null"))
+        {
+          pojo.setDefaultValue(defaultValue.toString());
+        }
       }
 
       if (FlexCommonUtils.isEmpty(code))
@@ -242,10 +322,10 @@ public class BulkWorkflowPropertiesAndValues
     return results;
   }
 
-  private static String findWorkflowId()
+  private static JSONObject findWorkflow()
     throws FlexCheckedException
   {
-    final String methodName = "findWorkflowId";
+    final String methodName = "findWorkflow";
     LOGGER.entering(CLZ_NAM, methodName);
 
     SearchWorkflowByName sw = new SearchWorkflowByName();
@@ -267,9 +347,8 @@ public class BulkWorkflowPropertiesAndValues
     }
 
     JSONObject wfObject = jsonArray.getJSONObject(0);
-    String workflowId = wfObject.get("workflowId").toString();
-
-    LOGGER.exiting(CLZ_NAM, methodName, workflowId);
-    return workflowId;
+    
+    LOGGER.exiting(CLZ_NAM, methodName, wfObject);
+    return wfObject;
   }
 }

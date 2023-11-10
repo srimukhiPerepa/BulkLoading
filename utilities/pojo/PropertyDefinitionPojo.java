@@ -189,4 +189,26 @@ public class PropertyDefinitionPojo implements Cloneable
   {
     return mDisplayColumns;
   }
+
+  @Override
+  public boolean equals(Object o) {
+      if (o == this)
+          return true;
+      if (!(o instanceof PropertyDefinitionPojo))
+          return false;
+      PropertyDefinitionPojo other = (PropertyDefinitionPojo) o;
+      return this.mName.equals(other.mName);
+  }
+
+  @Override
+  public final int hashCode() {
+      int result = 17;
+      if (mName != null) {
+          result = 31 * result + mName.hashCode();
+      }
+      if (mScope != null) {
+          result = 31 * result + mScope.hashCode();
+      }
+      return result;
+  }
 }
