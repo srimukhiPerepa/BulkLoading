@@ -98,7 +98,7 @@ public class BulkWorkflowPropertiesAndValues
     UpdateWorkflowById uw = new UpdateWorkflowById();
     uw.setId(workflowId);
     uw.setJson(workflowObject.toString());
-    FlexRESTClientResponse response = client.get(uw);
+    FlexRESTClientResponse response = client.post(uw);
 
     // GetTargetGroupByCode tg = new GetTargetGroupByCode();
     // tg.setCode(TARGET_GROUP_CODE);
@@ -250,41 +250,13 @@ public class BulkWorkflowPropertiesAndValues
       propertyDef.setDataType(dataType);
       propertyDef.setScope(scope);
       propertyDef.setName(name);
-
-      if (displayRows != null && !displayRows.toString().equals("null"))
-      {
-        propertyDef.setDisplayRows(Integer.parseInt(displayRows.toString()));
-      }
-
-      if (displayColumns != null && !displayColumns.toString().equals("null"))
-      {
-        propertyDef.setDisplayColumns(Integer.parseInt(displayColumns.toString()));
-      }
-
-      if (listData != null && !listData.toString().equals("null"))
-      {
-        propertyDef.setListData(Arrays.asList(listData.toString().trim().split(",")));
-      }
-
-      if (subDataType != null && !subDataType.toString().equals("null"))
-      {
-        propertyDef.setSubDataType(subDataType.toString());
-      }
-
-      if (displayName != null && !displayName.toString().equals("null"))
-      {
-        propertyDef.setDisplayName(displayName.toString());
-      }
-
-      if (description != null && !description.toString().equals("null"))
-      {
-        propertyDef.setDescription(description.toString());
-      }
-
-      if (defaultValue != null && !defaultValue.toString().equals("null"))
-      {
-        propertyDef.setDefaultValue(defaultValue.toString());
-      }
+      propertyDef.setDisplayRows(FlexCommonUtils.isNotEmpty(displayRows.toString()) ? Integer.parseInt(displayRows.toString()) : null);
+      propertyDef.setDisplayColumns(FlexCommonUtils.isNotEmpty(displayColumns.toString()) ? Integer.parseInt(displayColumns.toString()) : null);
+      propertyDef.setListData(FlexCommonUtils.isNotEmpty(listData.toString()) ? Arrays.asList(listData.toString().trim().split(",")) : null);
+      propertyDef.setSubDataType(FlexCommonUtils.isNotEmpty(subDataType.toString()) ? subDataType.toString() : null);
+      propertyDef.setDisplayName(FlexCommonUtils.isNotEmpty(displayName.toString()) ? displayName.toString() : null);
+      propertyDef.setDescription(FlexCommonUtils.isNotEmpty(description.toString()) ? description.toString() : null);
+      propertyDef.setDefaultValue(FlexCommonUtils.isNotEmpty(defaultValue.toString()) ? defaultValue.toString() : null);
 
       results.add(propertyDef);
     }
