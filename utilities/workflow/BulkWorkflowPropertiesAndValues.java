@@ -41,8 +41,8 @@ public class BulkWorkflowPropertiesAndValues
   private static String localCredStoreId;
   private static String localCredStoreInputDefId;
   private static List<String> targetEnvironmentCodes = new ArrayList<>();
-  private static Map<String, String> codeToValue = new HashMap<>(); //key is code##environment_code, value is target property value
-  private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credential name, value is credential value
+  private static Map<String, String> codeToValue = new HashMap<>(); //key is code+environment_code, value is target property value
+  private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credential_name+environment_code, value is credential value
   private static Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
 
   private static WorkflowAPI wfAPI;
@@ -83,7 +83,7 @@ public class BulkWorkflowPropertiesAndValues
 
     JSONArray storeProvidersArray = credAPI.getLocalCredentialStoreProvider();
     JSONObject localCredentialStoreProviderObject = validateLocalCredentialStoreProviderArray(storeProvidersArray);
-    localCredStoreInputDefId = localCredentialStoreProviderObject.getJSONArray(0).get("credentialStoreInputDefId").toString();
+    localCredStoreInputDefId = localCredentialStoreProviderObject.getJSONArray("credentialStoreInputDefs").getJSONObject(0).get("credentialStoreInputDefId").toString();
 
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////CREATE/UPDATE WORKFLOW_PROPERTIES///////////////////////////////////////////////////////////////////////");
@@ -124,6 +124,7 @@ public class BulkWorkflowPropertiesAndValues
     {
       JSONArray searchResult = credAPI.findCredentialByName(credentialName);
       JSONObject credential = validateCredentialArray(credentialName, searchResult);
+      String credentialValue = credentialNameToValue.get(credentialName);
       if (credential == null)
       {
         // create
