@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.Map;
 
 import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.MediaType;
 
 public class UpdateWorkflowById
   extends Request
