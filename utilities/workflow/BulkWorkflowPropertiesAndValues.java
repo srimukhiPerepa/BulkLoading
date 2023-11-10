@@ -379,13 +379,13 @@ public class BulkWorkflowPropertiesAndValues
     JSONObject targetGroupObject = tAPI.getTargetGroupById(targetGroupId);
     JSONArray targetsArray = targetGroupObject.getJSONArray("targets");
     // convert targetsArray to a list of String so we can use it with Streaming API
-    List<String> converted = IntStream.range(0, targetsArray.length())
+    List<JSONObject> converted = IntStream.range(0, targetsArray.length())
                                   .mapToObj(i -> targetsArray.getJSONObject(i))
                                   .collect(Collectors.toList());
     for (String environmentCode : targetEnvironmentCodes)
     {
       String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
-      boolean isMapped = converted.stream().anyMatch(json -> new JSONObject(json).get("environmentId").toString().equals(environmentId));
+      boolean isMapped = converted.stream().anyMatch(json -> json.get("environmentId").toString().equals(environmentId));
       if (!isMapped)
       {
         pErrorList.add("Environment " + environmentCode + " is not mapped to target group" + TARGET_GROUP_CODE + ". Fix header in CSV file and/or map environment to target group.");
