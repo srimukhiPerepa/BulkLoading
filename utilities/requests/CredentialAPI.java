@@ -18,6 +18,7 @@ public class CredentialAPI
   private static final Logger LOGGER = Logger.getGlobal();
 
   public CredentialAPI(String pBaseUrl, String pUsername, String pPassword)
+    throws FlexCheckedException
   {
     super(pBaseUrl, pUsername, pPassword);
   }

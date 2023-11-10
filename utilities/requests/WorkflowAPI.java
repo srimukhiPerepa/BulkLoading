@@ -18,6 +18,7 @@ public class WorkflowAPI
   private static final Logger LOGGER = Logger.getGlobal();
 
   public WorkflowAPI(String pBaseUrl, String pUsername, String pPassword)
+    throws FlexCheckedException
   {
     super(pBaseUrl, pUsername, pPassword);
   }
