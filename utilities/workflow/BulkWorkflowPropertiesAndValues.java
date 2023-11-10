@@ -8,9 +8,6 @@ import requests.UpdateWorkflowById;
 
 import pojo.PropertyDefinitionPojo;
 
-import com.fasterxml.jackson.databind.ObjectMapper; 
-import com.fasterxml.jackson.databind.ObjectWriter;
-
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.logging.FlexLogger;
 import flexagon.ff.common.core.rest.FlexRESTClient;
@@ -93,7 +90,7 @@ public class BulkWorkflowPropertiesAndValues
     ObjectMapper mapper = new ObjectMapper();
     for (PropertyDefinitionPojo pojo : mergedWorkflowProperties)
     {
-      workflowPropertiesArray.put(mapper.writeValueAsString(pojo));
+      workflowPropertiesArray.put(pojo.toJson());
     }
     workflowObject.put("properties", workflowPropertiesArray);
 

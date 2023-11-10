@@ -1,5 +1,7 @@
 package pojo;
 
+import flexagon.ff.common.core.utils.FlexCommonUtils;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -188,6 +190,31 @@ public class PropertyDefinitionPojo implements Cloneable
   public Integer getDisplayColumns()
   {
     return mDisplayColumns;
+  }
+
+  public JSONObject toJson()
+  {
+    JSONObject object = new JSONObject();
+    // required
+    object.put("isEncrypted", mIsEncrypted);
+    object.put("dataType", mDataType);
+    object.put("isRequired", mIsRequired);
+    object.put("scope", mScope);
+    object.put("name", mName);
+
+    // optional
+    object.put("displayRows", mDisplayRows);
+    object.put("displayColumns", mDisplayColumns);
+    object.put("listData", FlexCommonUtils.isEmpty(mListData) ? null : FlexCommonUtils.toString(mListData, ",", false));
+    object.put("isActive", mIsActive == null ? true : mIsActive); // default is true
+    object.put("subDataType", FlexCommonUtils.isEmpty(mSubDataType) ? "String" : mSubDataType); // default is String
+    object.put("isDefaultValueExpression", mIsDefaultValueExpression == null ? false : mIsDefaultValueExpression); // default is false
+    object.put("isMultiselect", mIsMultiselect == null ? false : mIsMultiselect); // default is false
+    object.put("displayName", mDisplayName);
+    object.put("defaultValue", mDefaultValue);
+    object.put("description", mDescription);
+
+    return object;
   }
 
   @Override
