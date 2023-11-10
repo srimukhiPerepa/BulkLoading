@@ -1,5 +1,6 @@
 package requests;
 
+import requests.GetTargetGroupById;
 import requests.GetTargetGroupByCode;
 import requests.UpdateTargetGroupById;
 
@@ -22,6 +23,21 @@ public class TargetAPI
     throws FlexCheckedException
   {
     super(pBaseUrl, pUsername, pPassword);
+  }
+
+  public JSONArray getTargetGroupById(String pTargetGroupId)
+    throws FlexCheckedException
+  {
+    final String methodName = "getTargetGroupById";
+    LOGGER.entering(CLZ_NAM, methodName, pTargetGroupId);
+
+    GetTargetGroupById gt = new GetTargetGroupById();
+    gt.setId(pTargetGroupId);
+
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().get(gt));
+    
+    LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
+    return jsonObject;
   }
 
   public JSONArray findTargetGroupByCode(String pTargetGroupCode)

@@ -369,6 +369,28 @@ public class BulkWorkflowPropertiesAndValues
     LOGGER.exiting(CLZ_NAM, methodName);
   }
 
+  private static void validateEnvironmentsMappedToTargetGroup(List<String> pErrorList)
+    throws FlexCheckedException
+  {
+    final String methodName = "validateEnviromentsMappedToTargetGroup";
+    LOGGER.entering(CLZ_NAM, methodName);
+
+    JSONObject targetGroupObject = tAPI.getTargetGroupById(targetGroupId);
+    JSONArray targetsArray = targetGroupObject.getJSONArray("targets");
+
+    for (String environmentCode : targetEnvironmentCodes)
+    {
+      String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
+      boolean isMapped = targetsArray.stream().anyMatch(json -> json.get("environmentId").toString().equals(environmentId))
+      if (!isMapped)
+      {
+        pErrorList.add("Environment " + environmentCode + " is not mapped to target group" + TARGET_GROUP_CODE + ". Fix header in CSV file and/or map environment to target group.");
+      }
+    }
+
+    LOGGER.exiting(CLZ_NAM, methodName);
+  }
+
   private static List<PropertyDefinitionPojo> readAndProcessCSV(List<String> pLines)
     throws FlexCheckedException
   {
@@ -385,6 +407,8 @@ public class BulkWorkflowPropertiesAndValues
       validateEnvironmentCode(environmentCode, errors);
       targetEnvironmentCodes.add(environmentCode);
     }
+
+    validateEnvironmentsMappedToTargetGroup(errors);
 
     if (errors.size() > 0)
     {
