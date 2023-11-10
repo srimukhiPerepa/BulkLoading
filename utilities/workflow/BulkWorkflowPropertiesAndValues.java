@@ -61,9 +61,9 @@ public class BulkWorkflowPropertiesAndValues
     TARGET_GROUP_CODE = args[4];
     WORKFLOW_SOURCE = args[5];
 
-    LOGGER.info("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-    LOGGER.info("//////////////////////////////////////////////////CREATE/UPDATE WORKFLOW_PROPERTIES///////////////////////////////////////////////////////////////////////");
-    LOGGER.info("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    System.out.println("//////////////////////////////////////////////////CREATE/UPDATE WORKFLOW_PROPERTIES///////////////////////////////////////////////////////////////////////");
+    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
     WorkflowAPI wfAPI = new WorkflowAPI(BASE_URL, USERNAME, PASSWORD);
     JSONArray workflowsArray = wfAPI.findWorkflowByName(WORKFLOW_NAME);
@@ -124,9 +124,9 @@ public class BulkWorkflowPropertiesAndValues
     String workflowId = workflowObject.get("workflowId").toString();
     wfAPI.updateWorkflowById(workflowId, workflowObject.toString());
 
-    LOGGER.info("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-    LOGGER.info("///////////////////////////////////////////////////////CREATE/UPDATE CREDENTIALS//////////////////////////////////////////////////////////////////////////");
-    LOGGER.info("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    System.out.println("///////////////////////////////////////////////////////CREATE/UPDATE CREDENTIALS//////////////////////////////////////////////////////////////////////////");
+    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
     if (credentialNameToValue.size() == 0)
     {
@@ -140,12 +140,46 @@ public class BulkWorkflowPropertiesAndValues
     CredentialAPI credAPI = new CredentialAPI(BASE_URL, USERNAME, PASSWORD);
     for (String credentialName : credentialNameToValue.keySet())
     {
-      JSONArray result = credAPI.findCredentialByName(credentialName);
-      LOGGER.info("result: " + result);
+      JSONArray searchResult = credAPI.findCredentialByName(credentialName);
+      JSONObject credential = validateCredentialArray(credentialName, searchResult);
+      if (credential == null)
+      {
+        // create
+      }
+      else
+      {
+        // update
+      }
     }
   }
 
   /**
+   * Validates pJsonArray contains zero or more than one JSONObject(s) and return the JSONObject or null
+   * pJsonArray - Array of JSONObject containing Credentials
+   */
+  private static JSONObject validateCredentialArray(String pCredentialName, JSONArray pJsonArray)
+    throws FlexCheckedException
+  {
+    final String methodName = "validateCredentialArray";
+    LOGGER.entering(CLZ_NAM, methodName, pCredentialName, pJsonArray);
+
+    if (pJsonArray.length() > 1)
+    {
+      throw new FlexCheckedException("More than one credential found with name " + pCredentialName + ". Credential Name must be unique.");
+    }
+
+    if (pJsonArray.length() == 0)
+    {
+      LOGGER.exiting(CLZ_NAM, methodName);
+      return null;
+    }
+
+    JSONObject wfObject = pJsonArray.getJSONObject(0);
+    LOGGER.exiting(CLZ_NAM, methodName, wfObject);
+    return wfObject;
+  }
+
+    /**
    * Validates pJsonArray contains only one JSONObject and return the JSONObject
    * pJsonArray - Array of JSONObject containing Workflow Definitions
    */

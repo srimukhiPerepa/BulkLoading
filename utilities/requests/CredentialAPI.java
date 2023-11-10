@@ -33,12 +33,11 @@ public class CredentialAPI
     sc.setName(pCredentialName);
     FlexRESTClientResponse response = getClient().get(sc);
 
-    LOGGER.info("DEBUG: " + response.getResponseObject(String.class));
-
-    JSONArray jsonArray = new JSONArray(response.getResponseObject(String.class));
+    JSONObject jsonObject = new JSONObject(response.getResponseObject(String.class));
+    JSONArray items = jsonObject.getJSONArray("items");
     
-    LOGGER.exiting(CLZ_NAM, methodName, jsonArray);
-    return jsonArray;
+    LOGGER.exiting(CLZ_NAM, methodName, items);
+    return items;
   }
 
   public void patchCredentialById(String pCredentialId, String pJSONRequestBody)
@@ -50,7 +49,7 @@ public class CredentialAPI
     PatchCredentialById pc = new PatchCredentialById();
     pc.setId(pCredentialId);
     pc.setJson(pJSONRequestBody);
-    FlexRESTClientResponse response = getClient().put(pc);
+    FlexRESTClientResponse response = getClient().patch(pc);
 
     LOGGER.exiting(CLZ_NAM, methodName);
   }
