@@ -29,7 +29,7 @@ public class GetCredentialStoreProviderById
   @Override
   public String getResourceUri()
   {
-    return String.format("%s/%s", "flexdeploy/rest/v2/administration/security/credentialstore", mId);
+    return String.format("%s/%s", "flexdeploy/rest/v2/administration/security/credentialstoreprovider", mId);
   }
 
   @Override
