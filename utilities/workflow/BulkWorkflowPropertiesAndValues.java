@@ -382,7 +382,7 @@ public class BulkWorkflowPropertiesAndValues
     for (String environmentCode : targetEnvironmentCodes)
     {
       String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
-      List<String> converted = IntStream.range(0, targetsArray.size())
+      List<String> converted = IntStream.range(0, targetsArray.length())
                                   .mapToObj(i -> targetsArray.getJSONObject(i))
                                   .collect(Collectors.toList());
       boolean isMapped = converted.stream().anyMatch(json -> new JSONObject(json).get("environmentId").toString().equals(environmentId));
