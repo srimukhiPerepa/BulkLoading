@@ -2,6 +2,7 @@ package workflow;
 
 import requests.GetTargetGroupByCode;
 import requests.WorkflowAPI;
+import requests.CredentialAPI;
 
 import pojo.PropertyDefinitionPojo;
 
@@ -36,7 +37,9 @@ public class BulkWorkflowPropertiesAndValues
   protected static String TARGET_GROUP_CODE;
   protected static String WORKFLOW_SOURCE;
 
+  private static List<String> targetEnvironmentCodes = new ArrayList<>();
   private static Map<String, String> codeToValue = new HashMap<>(); //key is code##environment_code, value is target property value
+  private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credential name, value is credential value
 
   public static void main(String[] args)
     throws FlexCheckedException
@@ -58,6 +61,10 @@ public class BulkWorkflowPropertiesAndValues
     TARGET_GROUP_CODE = args[4];
     WORKFLOW_SOURCE = args[5];
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////CREATE/UPDATE WORKFLOW PROPERTIES//////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     WorkflowAPI wfAPI = new WorkflowAPI(BASE_URL, USERNAME, PASSWORD);
     JSONArray workflowsArray = wfAPI.findWorkflowByName(WORKFLOW_NAME);
     JSONObject workflowObject = validateWorkflowArray(workflowsArray);
@@ -78,6 +85,21 @@ public class BulkWorkflowPropertiesAndValues
     for (int i = 0; i < incomingWorkflowProperties.size(); i++)
     {
       PropertyDefinitionPojo pojo = incomingWorkflowProperties.get(i);
+      // Keep track of the workflow properties which are encrypted and store
+      if (pojo.getIsEncrypted())
+      {
+        String credentialName = pojo.getName().trim();
+        if (credentialName.endsWith("_"))
+        {
+          credentialName = credentialName.substring(0, credentialName.length() - 1);
+        }
+        for (String environmentCode: targetEnvironmentCodes)
+        {
+          String key = pojo.getName() + environmentCode;
+          credentialNameToValue.put(credentialName + "_" + environmentCode, codeToValue.get(key));
+        }
+      }
+
       int index = mergedWorkflowProperties.indexOf(pojo);
       if (index != -1)
       {
@@ -101,6 +123,18 @@ public class BulkWorkflowPropertiesAndValues
 
     String workflowId = workflowObject.get("workflowId").toString();
     wfAPI.updateWorkflowById(workflowId, workflowObject.toString());
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////CREATE/UPDATE PROPERTIES///////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    CredentialAPI credAPI = new CredentialAPI(BASE_URL, USERNAME, PASSWORD);
+    for (String credentialName : credentialNameToValue.keySet())
+    {
+      JSONArray result = credAPI.findCredentialByName(credentialName);
+      LOGGER.info("result: " + result);
+    }
+    
   }
 
   /**
@@ -139,12 +173,11 @@ public class BulkWorkflowPropertiesAndValues
     List<String> errors = new ArrayList<>();
 
     String[] headers = pLines.get(0).split(",");
-    List<String> environmentCodes = new ArrayList<>();
     for (int i = 15; i < headers.length; i++)
     {
-      environmentCodes.add(headers[i]);
+      targetEnvironmentCodes.add(headers[i]);
     }
-    int numEnvironments = environmentCodes.size();
+    int numEnvironments = targetEnvironmentCodes.size();
 
     int numLines = pLines.size();
     for (int i = 1; i < numLines; i++)

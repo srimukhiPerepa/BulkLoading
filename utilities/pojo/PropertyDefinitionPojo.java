@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import java.util.logging.Logger;
 
-public class PropertyDefinitionPojo implements Cloneable
+public class PropertyDefinitionPojo
 {
   private static final String CLZ_NAM = PropertyDefinitionPojo.class.getName();
   private static final Logger LOGGER = Logger.getGlobal();
@@ -32,14 +32,6 @@ public class PropertyDefinitionPojo implements Cloneable
   private List<String> mListData;
   private Integer mDisplayRows;
   private Integer mDisplayColumns;
-
-  @Override
-  protected Object clone() throws CloneNotSupportedException 
-  {
-    PropertyDefinitionPojo clone = (PropertyDefinitionPojo) super.clone();
-    clone.setListData(new ArrayList<>(mListData));
-    return clone;
-  } 
 
   public PropertyDefinitionPojo()
   {
