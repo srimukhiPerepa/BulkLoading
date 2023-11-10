@@ -98,7 +98,7 @@ public class BulkWorkflowPropertiesAndValues
     UpdateWorkflowById uw = new UpdateWorkflowById();
     uw.setId(workflowId);
     uw.setJson(workflowObject.toString());
-    FlexRESTClientResponse response = client.post(uw);
+    FlexRESTClientResponse response = client.put(uw);
 
     // GetTargetGroupByCode tg = new GetTargetGroupByCode();
     // tg.setCode(TARGET_GROUP_CODE);
