@@ -83,7 +83,7 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
     JSONArray targetGroupsArray = tAPI.findTargetGroupByCode(TARGET_GROUP_CODE);
-    JSONObject targetGroupObject = parseTargetGroupsArray(targetGroupsArray);
+    JSONObject targetGroupObject = parseTargetGroupsArray(TARGET_GROUP_CODE, targetGroupsArray);
     targetGroupId = targetGroupObject.get("targetGroupId").toString();
 
     LOGGER.fine("Target Group Id: " + targetGroupId);
