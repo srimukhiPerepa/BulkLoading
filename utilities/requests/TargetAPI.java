@@ -25,7 +25,7 @@ public class TargetAPI
     super(pBaseUrl, pUsername, pPassword);
   }
 
-  public JSONArray getTargetGroupById(String pTargetGroupId)
+  public JSONObject getTargetGroupById(String pTargetGroupId)
     throws FlexCheckedException
   {
     final String methodName = "getTargetGroupById";
