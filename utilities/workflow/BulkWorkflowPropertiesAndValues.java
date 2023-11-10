@@ -3,6 +3,7 @@ package workflow;
 import requests.GetTargetGroupByCode;
 import requests.WorkflowAPI;
 import requests.CredentialAPI;
+import requests.EnvironmentAPI;
 
 import pojo.PropertyDefinitionPojo;
 
@@ -228,7 +229,7 @@ public class BulkWorkflowPropertiesAndValues
       }      
       targetEnvironmentCodes.add(environmentCode);
     }
-    
+
     if (errors.size() > 0)
     {
       throw new FlexCheckedException(errors.toString());
