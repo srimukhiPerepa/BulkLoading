@@ -159,37 +159,37 @@ public class BulkWorkflowPropertiesAndValues
         pojo.setScope(propertyScope);
         pojo.setName(code);
 
-        if (displayRows != null && !displayRows.toString().equals("null"))
+        if (FlexCommonUtils.isNotEmpty(displayRows) && !displayRows.toString().equals("null"))
         {
           pojo.setDisplayRows(Integer.parseInt(displayRows.toString()));
         }
 
-        if (displayColumns != null && !displayColumns.toString().equals("null"))
+        if (FlexCommonUtils.isNotEmpty(displayColumns) && !displayColumns.toString().equals("null"))
         {
           pojo.setDisplayColumns(Integer.parseInt(displayColumns.toString()));
         }
 
-        if (listData != null && !listData.toString().equals("null"))
+        if (FlexCommonUtils.isNotEmpty(listData) && !listData.toString().equals("null"))
         {
           pojo.setListData(Arrays.asList(listData.toString().trim().split(",")));
         }
 
-        if (subDataType != null && !subDataType.toString().equals("null"))
+        if (FlexCommonUtils.isNotEmpty(subDataType) && !subDataType.toString().equals("null"))
         {
           pojo.setSubDataType(subDataType.toString());
         }
 
-        if (displayName != null && !displayName.toString().equals("null"))
+        if (FlexCommonUtils.isNotEmpty(displayName) && !displayName.toString().equals("null"))
         {
           pojo.setDisplayName(displayName.toString());
         }
 
-        if (description != null && !description.toString().equals("null"))
+        if (FlexCommonUtils.isNotEmpty(description) && !description.toString().equals("null"))
         {
           pojo.setDescription(description.toString());
         }
 
-        if (defaultValue != null && !defaultValue.toString().equals("null"))
+        if (FlexCommonUtils.isNotEmpty(defaultValue) && !defaultValue.toString().equals("null"))
         {
           pojo.setDefaultValue(defaultValue.toString());
         }
