@@ -185,7 +185,6 @@ public class BulkWorkflowPropertiesAndValues
         String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
         String targetValue = codeToValue.get(name + environmentCode);
 
-        JSONObject patchRequestBody = new JSONObject();
         JSONArray propertiesArray = new JSONArray();
         JSONObject property = new JSONObject();
         property.put("propertyName", name);
@@ -193,7 +192,6 @@ public class BulkWorkflowPropertiesAndValues
         if (isEncrypted)
         {
           String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
-          patchRequestBody.put("credentialId", credentialNameToValue.get(credentialName));
           property.put("credentialId", credentialNameToValue.get(credentialName));
         }
         else 
@@ -201,6 +199,8 @@ public class BulkWorkflowPropertiesAndValues
           property.put("propertyValue", targetValue);
         }
         propertiesArray.put(property);
+
+        JSONObject patchRequestBody = new JSONObject();
         patchRequestBody.put("properties", propertiesArray);
 
         tAPI.patchTargetById(environmentId, targetGroupId, patchRequestBody.toString());
