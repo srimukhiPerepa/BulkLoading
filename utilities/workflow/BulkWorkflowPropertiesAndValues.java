@@ -222,7 +222,7 @@ public class BulkWorkflowPropertiesAndValues
     {
       String environmentCode = headers[i];
       LOGGER.fine("Validating environment with code: " + environmentCode);
-      JSONObject result = envAPI.findEnvironmentByCode(environmentCode);
+      JSONArray result = envAPI.findEnvironmentByCode(environmentCode);
       if (result.length() == 0)
       {
         errors.add("Environment was not found with environment code " + environmentCode + ". Fix header in CSV file");

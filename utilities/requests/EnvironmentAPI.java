@@ -23,7 +23,7 @@ public class EnvironmentAPI
     super(pBaseUrl, pUsername, pPassword);
   }
 
-  public JSONObject findEnvironmentByCode(String pEnvironmentCode)
+  public JSONArray findEnvironmentByCode(String pEnvironmentCode)
     throws FlexCheckedException
   {
     final String methodName = "findEnvironmentByCode";
@@ -31,10 +31,11 @@ public class EnvironmentAPI
 
     GetEnvironmentByCode ge = new GetEnvironmentByCode();
     ge.setCode(pEnvironmentCode);
+    FlexRESTClientResponse response = getClient().get(ge);
 
-    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().get(ge));
+    JSONArray jsonArray = new JSONArray(response.getResponseObject(String.class));
     
-    LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
-    return jsonObject;
+    LOGGER.exiting(CLZ_NAM, methodName, jsonArray);
+    return jsonArray;
   }
 }
