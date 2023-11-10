@@ -132,7 +132,20 @@ public class BulkWorkflowPropertiesAndValues
       if (credential == null)
       {
         // create
-        //credAPI.createCredential();
+        JSONObject postCredentialRequestBody = new JSONObject();
+        postCredentialRequestBody.put("credentialName", credentialName);
+        postCredentialRequestBody.put("isActive", true); // defaulting
+        postCredentialRequestBody.put("credentialScope", "ENVINST"); // defaulting
+        postCredentialRequestBody.put("credentialStoreId", localCredStoreId);
+
+        JSONArray inputs = new JSONArray();
+        JSONObject input = new JSONObject();
+        input.put("inputValue", credentialValue);
+        input.put("credentialStoreInputDefId", localCredStoreInputDefId);
+        inputs.put(input);
+        postCredentialRequestBody.put("credentialInputs", inputs);
+
+        credAPI.createCredential(postCredentialRequestBody.toString());
       }
       else
       {
@@ -373,11 +386,15 @@ public class BulkWorkflowPropertiesAndValues
 
       results.add(pojo);
 
-      for (int j = 0; j < numEnvironments; j++)
+      if ("ENVINST".equals(propertyScope))
       {
-        String key = code + targetEnvironmentCodes.get(j);
-        String value = tokens[j+15]; //important to add 15 here
-        codeToValue.put(key, value);
+        // will only have target property values if scope is ENVINST
+        for (int j = 0; j < numEnvironments; j++)
+        {
+          String key = code + targetEnvironmentCodes.get(j);
+          String value = tokens[j+15]; //important to add 15 here
+          codeToValue.put(key, value);
+        }
       }
 
       if (FlexCommonUtils.isEmpty(code))
