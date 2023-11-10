@@ -136,7 +136,7 @@ public class BulkWorkflowPropertiesAndValues
         JSONObject postCredentialRequestBody = new JSONObject();
         postCredentialRequestBody.put("credentialName", credentialName);
         postCredentialRequestBody.put("isActive", true); // defaulting
-        postCredentialRequestBody.put("credentialScope", CredentialScopeEnum.valueOf("ENVINST")); // defaulting
+        postCredentialRequestBody.put("credentialScope", CredentialScopeEnum.PROPERTY); // defaulting to PROPERTY ("ENVINST" same difference)
         postCredentialRequestBody.put("credentialStoreId", localCredStoreId);
 
         JSONArray inputs = new JSONArray();
