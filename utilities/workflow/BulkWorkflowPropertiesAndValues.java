@@ -38,12 +38,16 @@ public class BulkWorkflowPropertiesAndValues
   protected static String TARGET_GROUP_CODE;
   protected static String WORKFLOW_SOURCE;
 
+  private static String localCredStoreId;
+  private static String localCredStoreInputDefId;
   private static List<String> targetEnvironmentCodes = new ArrayList<>();
   private static Map<String, String> codeToValue = new HashMap<>(); //key is code##environment_code, value is target property value
   private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credential name, value is credential value
   private static Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
 
+  private static WorkflowAPI wfAPI;
   private static EnvironmentAPI envAPI;
+  private static CredentialAPI credAPI;
 
   public static void main(String[] args)
     throws FlexCheckedException
@@ -65,12 +69,26 @@ public class BulkWorkflowPropertiesAndValues
     TARGET_GROUP_CODE = args[4];
     WORKFLOW_SOURCE = args[5];
 
+    wfAPI = new WorkflowAPI(BASE_URL, USERNAME, PASSWORD);
+    envAPI = new EnvironmentAPI(BASE_URL, USERNAME, PASSWORD);
+    credAPI =  new CredentialAPI(BASE_URL, USERNAME, PASSWORD);
+
+    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    System.out.println("//////////////////////////////////////////////////PREREQUISITE DATA///////////////////////////////////////////////////////////////////////////////////////");
+    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    
+    JSONArray storesArray = credAPI.getLocalCredentialStore();
+    JSONObject localCredentialStoreObject = validateLocalCredentialStoreArray(storesArray);
+    localCredStoreId = localCredentialStoreObject.get("credentialStoreId").toString();
+
+    JSONArray storeProvidersArray = credAPI.getLocalCredentialStoreProvider();
+    JSONObject localCredentialStoreProviderObject = validateLocalCredentialStoreProviderArray(storeProvidersArray);
+    localCredStoreInputDefId = localCredentialStoreProviderObject.getJSONArray(0).get("credentialStoreInputDefId").toString();
+
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////CREATE/UPDATE WORKFLOW_PROPERTIES///////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
-    WorkflowAPI wfAPI = new WorkflowAPI(BASE_URL, USERNAME, PASSWORD);
-    envAPI = new EnvironmentAPI(BASE_URL, USERNAME, PASSWORD);
     JSONArray workflowsArray = wfAPI.findWorkflowByName(WORKFLOW_NAME);
     JSONObject workflowObject = validateWorkflowArray(workflowsArray);
     workflowObject.put("sourceCode", WORKFLOW_SOURCE); // this is required for update workflow and get workflow does not return the value
@@ -84,7 +102,6 @@ public class BulkWorkflowPropertiesAndValues
     List<PropertyDefinitionPojo> incomingWorkflowProperties = readAndProcessCSV(lines);
     List<PropertyDefinitionPojo> mergedWorkflowProperties = mergeWorkflowProperties(existingWorkflowProperties, incomingWorkflowProperties);
     writeWorkflowPropertiesToWorkflowObject(workflowObject, mergedWorkflowProperties);
-    // Write merged results to workflowObject
 
     String workflowId = workflowObject.get("workflowId").toString();
     wfAPI.updateWorkflowById(workflowId, workflowObject.toString());
@@ -102,7 +119,7 @@ public class BulkWorkflowPropertiesAndValues
       LOGGER.info(credentialNameToValue.size() + " to create/update");
       LOGGER.fine("credentialNameToValue map: " + credentialNameToValue);
     }
-    CredentialAPI credAPI = new CredentialAPI(BASE_URL, USERNAME, PASSWORD);
+
     for (String credentialName : credentialNameToValue.keySet())
     {
       JSONArray searchResult = credAPI.findCredentialByName(credentialName);
@@ -110,6 +127,7 @@ public class BulkWorkflowPropertiesAndValues
       if (credential == null)
       {
         // create
+        credAPI.createCredential();
       }
       else
       {
@@ -118,6 +136,9 @@ public class BulkWorkflowPropertiesAndValues
     }
   }
 
+  /**
+   * Write properties to Workflow JsonObject
+   */
   private static void writeWorkflowPropertiesToWorkflowObject(JSONObject workflowObject, List<PropertyDefinitionPojo> properties)
   {
     final String methodName = "writeWorkflowPropertiesToWorkflowObject";
@@ -175,6 +196,38 @@ public class BulkWorkflowPropertiesAndValues
 
     LOGGER.exiting(CLZ_NAM, methodName, merged);
     return merged;
+  }
+
+  private static JSONObject validateLocalCredentialStoreProviderArray(JSONArray pJsonArray)
+    throws FlexCheckedException
+  {
+    final String methodName = "validateLocalCredentialStoreProviderArray";
+    LOGGER.entering(CLZ_NAM, methodName, pJsonArray);
+
+    if (pJsonArray.length() != 1)
+    {
+      throw new FlexCheckedException("Local credential store provider not found");
+    }
+
+    JSONObject wfObject = pJsonArray.getJSONObject(0);
+    LOGGER.exiting(CLZ_NAM, methodName, wfObject);
+    return wfObject;
+  }
+
+  private static JSONObject validateLocalCredentialStoreArray(JSONArray pJsonArray)
+    throws FlexCheckedException
+  {
+    final String methodName = "validateLocalCredentialStoreArray";
+    LOGGER.entering(CLZ_NAM, methodName, pJsonArray);
+
+    if (pJsonArray.length() != 1)
+    {
+      throw new FlexCheckedException("Local credential store not found");
+    }
+
+    JSONObject wfObject = pJsonArray.getJSONObject(0);
+    LOGGER.exiting(CLZ_NAM, methodName, wfObject);
+    return wfObject;
   }
 
   /**
