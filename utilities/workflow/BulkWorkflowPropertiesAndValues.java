@@ -83,7 +83,7 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
     JSONArray targetGroupsArray = tAPI.findTargetGroupByCode(TARGET_GROUP_CODE);
-    JSONObject targetGroupObject = validateTargetGroupsArray(targetGroupsArray);
+    JSONObject targetGroupObject = parseTargetGroupsArray(targetGroupsArray);
     targetGroupId = targetGroupObject.get("targetGroupId").toString();
 
     LOGGER.fine("Target Group Id: " + targetGroupId);
@@ -200,7 +200,7 @@ public class BulkWorkflowPropertiesAndValues
     for (int i = 0; i < incoming.size(); i++)
     {
       PropertyDefinitionPojo pojo = incoming.get(i);
-      // Keep track of the workflow properties which are encrypted and store
+      // Keep track of the workflow properties which are encrypted and store in credentialNameToValue
       if (pojo.getIsEncrypted())
       {
         String credentialName = pojo.getName().trim();
@@ -263,6 +263,37 @@ public class BulkWorkflowPropertiesAndValues
     return credStoreObject;
   }
 
+  private static JSONObject parseTargetGroupsArray(String pTargetGroupCode, JSONArray pJsonArray)
+    throws FlexCheckedException
+  {
+    final String methodName = "parseTargetGroupsArray";
+    LOGGER.entering(CLZ_NAM, methodName, new Object[]{pTargetGroupCode, pJsonArray});
+
+    if (pJsonArray.length() == 0)
+    {
+      throw new FlexCheckedException("Target Group not found with targetGroupCode " + pTargetGroupCode);
+    }
+
+    JSONObject targetGroupObject = null;
+    for (int i = 0; i < pJsonArray.length(); i++)
+    {
+      JSONObject current = pJsonArray.getJSONObject(0);
+      if (pTargetGroupCode.equals(current.getString("targetGroupCode")))
+      {
+        targetGroupObject = current;
+        break;
+      }
+    }
+
+    if (targetGroupObject == null)
+    {
+      throw new FlexCheckedException("Target Group not found with code " + pTargetGroupCode);
+    }
+    
+    LOGGER.exiting(CLZ_NAM, methodName, targetGroupObject);
+    return targetGroupObject;
+  }
+
   /**
    * Validates pJsonArray contains zero or more than one JSONObject(s) and return the JSONObject or null
    * pJsonArray - Array of JSONObject containing Credentials
@@ -287,28 +318,6 @@ public class BulkWorkflowPropertiesAndValues
     JSONObject wfObject = pJsonArray.getJSONObject(0);
     LOGGER.exiting(CLZ_NAM, methodName, wfObject);
     return wfObject;
-  }
-
-  private static JSONObject validateTargetGroupsArray(JSONArray pJsonArray)
-    throws FlexCheckedException
-  {
-    final String methodName = "validateTargetGroupsArray";
-    LOGGER.entering(CLZ_NAM, methodName, pJsonArray);
-
-    if (pJsonArray.length() == 0)
-    {
-      throw new FlexCheckedException("No target groups found with code " + TARGET_GROUP_CODE);
-    }
-
-    if (pJsonArray.length() > 1)
-    {
-      throw new FlexCheckedException("More than one target group found with code " + TARGET_GROUP_CODE + ". TARGET_GROUP_CODE must be unique.");
-    }
-
-    JSONObject tgObject = pJsonArray.getJSONObject(0);
-
-    LOGGER.exiting(CLZ_NAM, methodName, tgObject);
-    return tgObject;
   }
 
   /**
