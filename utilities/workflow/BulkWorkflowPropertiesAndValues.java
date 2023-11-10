@@ -1,17 +1,13 @@
 package workflow;
 
-import requests.FlexDeployRestClient;
 import requests.GetTargetGroupByCode;
-import requests.SearchWorkflowByName;
-import requests.UpdateWorkflowById;
+import requests.WorkflowAPI;
 
 import pojo.PropertyDefinitionPojo;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.logging.FlexLogger;
-import flexagon.ff.common.core.rest.FlexRESTClient;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
-import flexagon.ff.common.core.utils.FlexJsonUtils;
 import flexagon.ff.common.core.utils.FlexCommonUtils;
 import flexagon.ff.common.core.utils.FlexFileUtils;
  
@@ -63,24 +59,26 @@ public class BulkWorkflowPropertiesAndValues
     TARGET_GROUP_CODE = args[4];
     WORKFLOW_SOURCE = args[5];
 
-    client = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
-    JSONObject workflowObject = findWorkflow();
-    workflowObject.put("sourceCode", WORKFLOW_SOURCE);
+    WorkflowAPI wfAPI = new WorkflowAPI(BASE_URL, USERNAME, PASSWORD);
+    JSONArray workflowsArray = wfAPI.findWorkflowByName(WORKFLOW_NAME);
+    JSONObject workflowObject = validateWorkflowArray(workflowsArray);
+    workflowObject.put("sourceCode", WORKFLOW_SOURCE); // this is required for update workflow and get workflow does not return the value
     workflowObject.put("sourceCodeURL", "dummy"); // this is required or validation will fail - sourceCodeURL is not actually used in backend
-    String workflowId = workflowObject.get("workflowId").toString();
-    List<PropertyDefinitionPojo> existingWorkflowProperties = parseWorkflowProperties(workflowObject.getJSONArray("properties"));
+
+    JSONArray workflowPropertiesArray = workflowObject.getJSONArray("properties");
+    List<PropertyDefinitionPojo> existingWorkflowProperties = PropertyDefinitionPojo.convertObjectsToPropertyDefinition(workflowPropertiesArray);
+
     File csv = new File("../examples/workflow_property_values.csv");
     List<String> lines = FlexFileUtils.read(csv);
-    List<PropertyDefinitionPojo> updatedWorkflowProperties = processCSV(lines);
+    List<PropertyDefinitionPojo> incomingWorkflowProperties = readAndProcessCSV(lines);
 
     LOGGER.fine("codeToValue mapping: " + codeToValue);
-
     LOGGER.fine("Merging existing workflow properties with incoming properties from " + csv);
-    // merge both lists with updatedWorkflowProperties taking precedence if there are duplicates
+    // merge both lists with incomingWorkflowProperties taking precedence if there are duplicates
     List<PropertyDefinitionPojo> mergedWorkflowProperties = new ArrayList<>(existingWorkflowProperties);
-    for (int i = 0; i < updatedWorkflowProperties.size(); i++)
+    for (int i = 0; i < incomingWorkflowProperties.size(); i++)
     {
-      PropertyDefinitionPojo pojo = updatedWorkflowProperties.get(i);
+      PropertyDefinitionPojo pojo = incomingWorkflowProperties.get(i);
       int index = mergedWorkflowProperties.indexOf(pojo);
       if (index != -1)
       {
@@ -104,20 +102,40 @@ public class BulkWorkflowPropertiesAndValues
 
     LOGGER.info("Final Workflow Object: " + workflowObject.toString(2));
 
-    UpdateWorkflowById uw = new UpdateWorkflowById();
-    uw.setId(workflowId);
-    uw.setJson(workflowObject.toString());
-    FlexRESTClientResponse response = client.put(uw);
-
-    // GetTargetGroupByCode tg = new GetTargetGroupByCode();
-    // tg.setCode(TARGET_GROUP_CODE);
-    // FlexRESTClientResponse response = client.get(tg);
+    String workflowId = workflowObject.get("workflowId").toString();
+    wfAPI.updateWorkflowById(workflowId, workflowObject.toString());
   }
 
-  private static List<PropertyDefinitionPojo> processCSV(List<String> pLines)
+  /**
+   * Validates pJsonArray contains only one JSONObject and return the JSONObject
+   * pJsonArray - Array of JSONObject containing Workflow Definitions
+   */
+  private static JSONObject validateWorkflowArray(JSONArray pJsonArray)
     throws FlexCheckedException
   {
-    final String methodName = "processCSV";
+    final String methodName = "validateWorkflowArray";
+    LOGGER.entering(CLZ_NAM, methodName, pJsonArray);
+
+    if (pJsonArray.length() == 0)
+    {
+      throw new FlexCheckedException("No workflow(s) found with name " + WORKFLOW_NAME);
+    }
+
+    if (pJsonArray.length() > 1)
+    {
+      throw new FlexCheckedException("More than one workflow found with name " + WORKFLOW_NAME + ". WORKFLOW_NAME must be unique.");
+    }
+
+    JSONObject wfObject = pJsonArray.getJSONObject(0);
+
+    LOGGER.exiting(CLZ_NAM, methodName, wfObject);
+    return wfObject;
+  }
+
+  private static List<PropertyDefinitionPojo> readAndProcessCSV(List<String> pLines)
+    throws FlexCheckedException
+  {
+    final String methodName = "readAndProcessCSV";
     LOGGER.entering(CLZ_NAM, methodName, pLines);
 
     List<PropertyDefinitionPojo> results = new ArrayList<>();
@@ -221,85 +239,5 @@ public class BulkWorkflowPropertiesAndValues
 
     LOGGER.exiting(CLZ_NAM, methodName, results.size());
     return results;
-  }
-
-  private static List<PropertyDefinitionPojo> parseWorkflowProperties(JSONArray pJsonArr)
-    throws FlexCheckedException
-  {
-    final String methodName = "parseWorkflowProperties";
-    LOGGER.entering(CLZ_NAM, methodName, pJsonArr);
-
-    List<PropertyDefinitionPojo> results = new ArrayList<>();
-    for (int i = 0; i < pJsonArr.length(); i++)
-    {
-      JSONObject object = pJsonArr.getJSONObject(i);
-      PropertyDefinitionPojo propertyDef = new PropertyDefinitionPojo();
-      boolean isEncrypted = object.getBoolean("isEncrypted");
-      String dataType = object.getString("dataType");
-      Object displayRows = object.get("displayRows");
-      Object displayColumns = object.get("displayColumns");
-      Object listData = object.get("listData");
-      boolean isRequired = object.getBoolean("isRequired");
-      Object subDataType = object.get("subDataType");
-      boolean isDefaultValueExpression = object.getBoolean("isDefaultValueExpression");
-      boolean isMultiselect = object.getBoolean("isMultiselect");
-      Object displayName = object.get("displayName");
-      Object description = object.get("description");
-      String scope = object.getString("scope");
-      boolean isActive = object.getBoolean("isActive");
-      Object defaultValue = object.get("defaultValue");
-      String name = object.getString("name");
-
-      propertyDef.setIsEncrypted(isEncrypted);
-      propertyDef.setIsRequired(isRequired);
-      propertyDef.setIsDefaultValueExpression(isDefaultValueExpression);
-      propertyDef.setIsMultiselect(isMultiselect);
-      propertyDef.setIsActive(isActive);
-      propertyDef.setDataType(dataType);
-      propertyDef.setScope(scope);
-      propertyDef.setName(name);
-      propertyDef.setDisplayRows(FlexCommonUtils.isNotEmpty(displayRows.toString()) && !"null".equals(displayRows.toString()) ? Integer.parseInt(displayRows.toString()) : null);
-      propertyDef.setDisplayColumns(FlexCommonUtils.isNotEmpty(displayColumns.toString()) && !"null".equals(displayColumns.toString()) ? Integer.parseInt(displayColumns.toString()) : null);
-      propertyDef.setListData(FlexCommonUtils.isNotEmpty(listData.toString()) && !"null".equals(listData.toString()) ? Arrays.asList(listData.toString().trim().split(",")) : null);
-      propertyDef.setSubDataType(FlexCommonUtils.isNotEmpty(subDataType.toString()) && !"null".equals(subDataType.toString()) ? subDataType.toString() : null);
-      propertyDef.setDisplayName(FlexCommonUtils.isNotEmpty(displayName.toString()) && !"null".equals(displayName.toString()) ? displayName.toString() : null);
-      propertyDef.setDescription(FlexCommonUtils.isNotEmpty(description.toString()) && !"null".equals(description.toString()) ? description.toString() : null);
-      propertyDef.setDefaultValue(FlexCommonUtils.isNotEmpty(defaultValue.toString()) && !"null".equals(defaultValue.toString()) ? defaultValue.toString() : null);
-
-      results.add(propertyDef);
-    }
-
-    LOGGER.exiting(CLZ_NAM, methodName, results.size());
-    return results;
-  }
-
-  private static JSONObject findWorkflow()
-    throws FlexCheckedException
-  {
-    final String methodName = "findWorkflow";
-    LOGGER.entering(CLZ_NAM, methodName);
-
-    SearchWorkflowByName sw = new SearchWorkflowByName();
-    sw.setWorkflowName(WORKFLOW_NAME);
-    FlexRESTClientResponse response = client.get(sw);
-
-    String jsonString = response.getResponseObject(String.class);
-    LOGGER.info("Workflow response: " + jsonString);
-
-    JSONArray jsonArray = new JSONArray(jsonString);
-    if (jsonArray.length() == 0)
-    {
-      throw new FlexCheckedException("No workflow(s) found with name " + WORKFLOW_NAME);
-    }
-
-    if (jsonArray.length() > 1)
-    {
-      throw new FlexCheckedException("More than one workflow found with name " + WORKFLOW_NAME + ". WORKFLOW_NAME must be unique.");
-    }
-
-    JSONObject wfObject = jsonArray.getJSONObject(0);
-    
-    LOGGER.exiting(CLZ_NAM, methodName, wfObject);
-    return wfObject;
   }
 }

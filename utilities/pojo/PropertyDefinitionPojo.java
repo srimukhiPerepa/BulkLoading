@@ -220,6 +220,56 @@ public class PropertyDefinitionPojo implements Cloneable
     return object;
   }
 
+  private static List<PropertyDefinitionPojo> convertObjectsToPropertyDefinition(JSONArray pJsonArr)
+    throws FlexCheckedException
+  {
+    final String methodName = "convertObjectsToPropertyDefinition";
+    LOGGER.entering(CLZ_NAM, methodName, pJsonArr);
+
+    List<PropertyDefinitionPojo> results = new ArrayList<>();
+    for (int i = 0; i < pJsonArr.length(); i++)
+    {
+      JSONObject object = pJsonArr.getJSONObject(i);
+      PropertyDefinitionPojo propertyDef = new PropertyDefinitionPojo();
+      boolean isEncrypted = object.getBoolean("isEncrypted");
+      String dataType = object.getString("dataType");
+      Object displayRows = object.get("displayRows");
+      Object displayColumns = object.get("displayColumns");
+      Object listData = object.get("listData");
+      boolean isRequired = object.getBoolean("isRequired");
+      Object subDataType = object.get("subDataType");
+      boolean isDefaultValueExpression = object.getBoolean("isDefaultValueExpression");
+      boolean isMultiselect = object.getBoolean("isMultiselect");
+      Object displayName = object.get("displayName");
+      Object description = object.get("description");
+      String scope = object.getString("scope");
+      boolean isActive = object.getBoolean("isActive");
+      Object defaultValue = object.get("defaultValue");
+      String name = object.getString("name");
+
+      propertyDef.setIsEncrypted(isEncrypted);
+      propertyDef.setIsRequired(isRequired);
+      propertyDef.setIsDefaultValueExpression(isDefaultValueExpression);
+      propertyDef.setIsMultiselect(isMultiselect);
+      propertyDef.setIsActive(isActive);
+      propertyDef.setDataType(dataType);
+      propertyDef.setScope(scope);
+      propertyDef.setName(name);
+      propertyDef.setDisplayRows(FlexCommonUtils.isNotEmpty(displayRows.toString()) && !"null".equals(displayRows.toString()) ? Integer.parseInt(displayRows.toString()) : null);
+      propertyDef.setDisplayColumns(FlexCommonUtils.isNotEmpty(displayColumns.toString()) && !"null".equals(displayColumns.toString()) ? Integer.parseInt(displayColumns.toString()) : null);
+      propertyDef.setListData(FlexCommonUtils.isNotEmpty(listData.toString()) && !"null".equals(listData.toString()) ? Arrays.asList(listData.toString().trim().split(",")) : null);
+      propertyDef.setSubDataType(FlexCommonUtils.isNotEmpty(subDataType.toString()) && !"null".equals(subDataType.toString()) ? subDataType.toString() : null);
+      propertyDef.setDisplayName(FlexCommonUtils.isNotEmpty(displayName.toString()) && !"null".equals(displayName.toString()) ? displayName.toString() : null);
+      propertyDef.setDescription(FlexCommonUtils.isNotEmpty(description.toString()) && !"null".equals(description.toString()) ? description.toString() : null);
+      propertyDef.setDefaultValue(FlexCommonUtils.isNotEmpty(defaultValue.toString()) && !"null".equals(defaultValue.toString()) ? defaultValue.toString() : null);
+
+      results.add(propertyDef);
+    }
+
+    LOGGER.exiting(CLZ_NAM, methodName, results.size());
+    return results;
+  }
+
   @Override
   public boolean equals(Object o) {
       if (o == this)
