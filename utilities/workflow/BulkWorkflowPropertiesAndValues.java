@@ -127,10 +127,10 @@ public class BulkWorkflowPropertiesAndValues
   /**
    * Merge both lists with incomingWorkflowProperties taking precedence if there are duplicates
    */
-  private static void mergeWorkflowProperties(List<PropertyDefinitionPojo> existing, List<PropertyDefinitionPojo> incoming)
+  private static List<PropertyDefinitionPojo> mergeWorkflowProperties(List<PropertyDefinitionPojo> existing, List<PropertyDefinitionPojo> incoming)
   {
     final String methodName = "mergeWorkflowProperties";
-    LOGGER.entering(CLZ_NAM, methodName, new Object[]{pCredentialName, pJsonArray});
+    LOGGER.entering(CLZ_NAM, methodName, new Object[]{existing, incoming});
 
     List<PropertyDefinitionPojo> merged = new ArrayList<>(existingWorkflowProperties);
     for (int i = 0; i < incoming.size(); i++)
