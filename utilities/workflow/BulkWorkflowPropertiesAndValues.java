@@ -195,6 +195,11 @@ public class BulkWorkflowPropertiesAndValues
         errors.add("Line " + i + " is missing DATA_TYPE");
       }
 
+      if (FlexCommonUtils.isNotEmpty(subDataType) && !(subDataType.equals("DIRECTORY") || subDataType.equals("JDBCURL") || subDataType.equals("URL")))
+      {
+        errors.add("Line " + i + " SUB_DATA_TYPE must be DIRECTORY, JDBCURL or URL");
+      }
+
       if (FlexCommonUtils.isEmpty(isEncrypted))
       {
         errors.add("Line " + i + " is missing ENCRYPTED");

@@ -210,7 +210,7 @@ public class PropertyDefinitionPojo implements Cloneable
     object.put("displayColumns", mDisplayColumns);
     object.put("listData", FlexCommonUtils.isEmpty(mListData) ? null : FlexCommonUtils.toString(mListData, ",", false));
     object.put("isActive", mIsActive == null ? true : mIsActive); // default is true
-    object.put("subDataType", FlexCommonUtils.isEmpty(mSubDataType) ? "String" : mSubDataType); // default is String
+    object.put("subDataType", FlexCommonUtils.isEmpty(mSubDataType) ? null : mSubDataType);
     object.put("isDefaultValueExpression", mIsDefaultValueExpression == null ? false : mIsDefaultValueExpression); // default is false
     object.put("isMultiselect", mIsMultiselect == null ? false : mIsMultiselect); // default is false
     object.put("displayName", mDisplayName);
