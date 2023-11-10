@@ -382,7 +382,10 @@ public class BulkWorkflowPropertiesAndValues
     for (String environmentCode : targetEnvironmentCodes)
     {
       String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
-      boolean isMapped = targetsArray.stream().anyMatch(json -> json.get("environmentId").toString().equals(environmentId));
+      List<String> converted = IntStream.range(0, targetsArray.size())
+                                  .mapToObj(i -> targetsArray.getJSONObject(i))
+                                  .collect(Collectors.toList());
+      boolean isMapped = converted.stream().anyMatch(json -> new JSONObject(json).get("environmentId").toString().equals(environmentId));
       if (!isMapped)
       {
         pErrorList.add("Environment " + environmentCode + " is not mapped to target group" + TARGET_GROUP_CODE + ". Fix header in CSV file and/or map environment to target group.");
