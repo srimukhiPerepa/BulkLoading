@@ -82,9 +82,11 @@ public class CredentialAPI
 
     CreateCredential cc = new CreateCredential();
     cc.setJson(pJSONRequestBody);
-    FlexRESTClientResponse response = getClient().put(cc);
 
-    LOGGER.exiting(CLZ_NAM, methodName);
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().put(cc));
+
+    LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
+    return jsonObject;
   }
 
   public void patchCredentialById(String pCredentialId, String pJSONRequestBody)
