@@ -188,9 +188,9 @@ public class BulkWorkflowPropertiesAndValues
         errors.add("Line " + i + " is missing DISPLAY_NAME");
       }
 
-      if (FlexCommonUtils.isEmpty(propertyScope) || !(propertyScope.equals("TARGET") || propertyScope.equals("PROJECT")))
+      if (FlexCommonUtils.isEmpty(propertyScope) || !(propertyScope.equals("ENVINST") || propertyScope.equals("PROJECT")))
       {
-        errors.add("Line " + i + " PROPERTY_SCOPE must be TARGET or PROJECT");
+        errors.add("Line " + i + " PROPERTY_SCOPE must be ENVINST or PROJECT");
       }
 
       if (FlexCommonUtils.isEmpty(isRequired))
