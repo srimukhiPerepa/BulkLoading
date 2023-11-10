@@ -197,14 +197,12 @@ public class BulkWorkflowPropertiesAndValues
         {
           String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
           patchRequestBody.put("credentialId", credentialNameToValue.get(credentialName));
-          property.put("propertyValue", null);
           property.put("credentialId", credentialNameToValue.get(credentialName));
           property.put("isExpression", false);
         }
         else 
         {
           property.put("propertyValue", targetValue);
-          property.put("credentialId", null);
           property.put("isExpression", false);
         }
         propertiesArray.put(property);
