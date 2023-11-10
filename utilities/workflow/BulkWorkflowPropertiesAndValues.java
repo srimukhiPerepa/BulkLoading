@@ -213,12 +213,12 @@ public class BulkWorkflowPropertiesAndValues
     throws FlexCheckedException
   {
     final String methodName = "parseWorkflowProperties";
-    LOGGER.entering(CLZ_NAM, methodName, pWorkflowId);
+    LOGGER.entering(CLZ_NAM, methodName, pJsonArr);
 
     List<PropertyDefinitionPojo> results = new ArrayList<>();
     for (int i = 0; i < pJsonArr.length(); i++)
     {
-      JSONObject object = jsonArray.getJSONObject(i);
+      JSONObject object = pJsonArr.getJSONObject(i);
       PropertyDefinitionPojo propertyDef = new PropertyDefinitionPojo();
       boolean isEncrypted = object.getBoolean("isEncrypted");
       String dataType = object.getString("dataType");
