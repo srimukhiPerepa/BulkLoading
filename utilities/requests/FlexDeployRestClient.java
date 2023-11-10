@@ -93,6 +93,21 @@ public class FlexDeployRestClient
     return response;
   }
 
+  public FlexRESTClientResponse patch(Request pRequest)
+    throws FlexCheckedException
+  {
+    final String methodName = "patch";
+    LOGGER.entering(CLZ_NAM, methodName);
+
+    FlexRESTClient rest = getFlexRestUtil(pRequest);
+    FlexRESTClientResponse response = rest.patch(pRequest.getBody());
+
+    validateResponse(response);
+
+    LOGGER.exiting(CLZ_NAM, methodName);
+    return response;
+  }
+
   public FlexRESTClientResponse delete(Request pRequest)
     throws FlexCheckedException
   {
