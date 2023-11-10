@@ -2,6 +2,9 @@ package pojo;
 
 import flexagon.ff.common.core.utils.FlexCommonUtils;
 
+import org.json.JSONObject;
+import org.json.JSONArray;
+
 import java.util.List;
 import java.util.ArrayList;
 

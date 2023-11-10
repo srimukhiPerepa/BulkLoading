@@ -87,7 +87,6 @@ public class BulkWorkflowPropertiesAndValues
 
     // Write merged results to workflowObject
     JSONArray workflowPropertiesArray = new JSONArray();
-    ObjectMapper mapper = new ObjectMapper();
     for (PropertyDefinitionPojo pojo : mergedWorkflowProperties)
     {
       workflowPropertiesArray.put(pojo.toJson());
