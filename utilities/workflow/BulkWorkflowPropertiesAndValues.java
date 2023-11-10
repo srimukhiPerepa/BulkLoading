@@ -45,8 +45,8 @@ public class BulkWorkflowPropertiesAndValues
   private static String localCredStoreId;
   private static String localCredStoreInputDefId;
   private static List<String> targetEnvironmentCodes = new ArrayList<>();
-  private static Map<String, String> codeToValue = new HashMap<>(); //key is code+environment_code, value is target property value
-  private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credential_name+environment_code, value is credential value
+  private static Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
+  private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential value
   private static Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
 
   private static WorkflowAPI wfAPI;
@@ -162,11 +162,53 @@ public class BulkWorkflowPropertiesAndValues
       }
       else
       {
-        // update - override inputValue and credentialName only
+        // update - override inputValue only
         String credentialId = credentialObject.get("credentialId").toString();
-        LOGGER.info("Updating credential with id " + credentialId + ". New credential name " + credentialName);
+        LOGGER.info("Updating credential with id " + credentialId + " and credential name " + credentialName);
         credentialObject.getJSONArray("credentialInputs").getJSONObject(0).put("inputValue", credentialValue);
         credAPI.patchCredentialById(credentialId, credentialObject.toString());
+      }
+    }
+
+    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    System.out.println("///////////////////////////////////////////////////////UPDATE TARGETS//////////////////////////////////////////////////////////////////////////");
+    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    
+    for (PropertyDefinitionPojo prop : mergedWorkflowProperties)
+    {
+      boolean isEncrypted = prop.getIsEncrypted();
+      String name = prop.getName();
+      for (String environmentCode : targetEnvironmentCodes)
+      {
+        String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
+        String targetValue = codeToValue.get(name + environmentCode);
+
+        JSONObject patchRequestBody = new JSONObject();
+        patchRequestBody.put("propertyName", name);
+        patchRequestBody.put("isExpression", false);
+
+        JSONArray propertiesArray = new JSONArray();
+        JSONObject prop = new JSONObject();
+        prop.put("propertyName", name);
+
+        if (isEncrypted)
+        {
+          String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
+          patchRequestBody.put("credentialId", credentialNameToValue.get(credentialName));
+          prop.put("propertyValue", null);
+          prop.put("credentialId", credentialNameToValue.get(credentialName));
+          prop.put("isExpression", false);
+        }
+        else 
+        {
+          prop.put("propertyValue", targetValue);
+          prop.put("credentialId", null);
+          prop.put("isExpression", false);
+        }
+        propertiesArray.put(prop);
+        patchRequestBody.put("properties", propertiesArray);
+
+        tAPI.patchTargetById(environmentId, targetGroupId, patchRequestBody.toString());
       }
     }
   }
@@ -212,7 +254,8 @@ public class BulkWorkflowPropertiesAndValues
         for (String environmentCode: targetEnvironmentCodes)
         {
           String key = pojo.getName() + environmentCode;
-          credentialNameToValue.put(credentialName + "_" + environmentCode, codeToValue.get(key));
+          String credentialName = String.format("%s_%s_%s", credentialName, TARGET_GROUP_CODE, environmentCode);
+          credentialNameToValue.put(credentialName, codeToValue.get(key));
         }
       }
 
@@ -378,7 +421,7 @@ public class BulkWorkflowPropertiesAndValues
 
     JSONObject targetGroupObject = tAPI.getTargetGroupById(targetGroupId);
     JSONArray targetsArray = targetGroupObject.getJSONArray("targets");
-    // convert targetsArray to a list of String so we can use it with Streaming API
+    // convert targetsArray to a List so we can use it with Streaming API
     List<JSONObject> converted = IntStream.range(0, targetsArray.length())
                                   .mapToObj(i -> targetsArray.getJSONObject(i))
                                   .collect(Collectors.toList());
@@ -388,7 +431,7 @@ public class BulkWorkflowPropertiesAndValues
       boolean isMapped = converted.stream().anyMatch(json -> json.get("environmentId").toString().equals(environmentId));
       if (!isMapped)
       {
-        pErrorList.add("Environment " + environmentCode + " is not mapped to target group" + TARGET_GROUP_CODE + ". Fix header in CSV file and/or map environment to target group.");
+        pErrorList.add("Environment " + environmentCode + " is not mapped to target group " + TARGET_GROUP_CODE + " but referenced in CSV file header. Change header in CSV file or map environment to target group");
       }
     }
 

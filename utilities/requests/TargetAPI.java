@@ -3,6 +3,7 @@ package requests;
 import requests.GetTargetGroupById;
 import requests.GetTargetGroupByCode;
 import requests.UpdateTargetGroupById;
+import requests.PatchTargetById;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
@@ -66,6 +67,21 @@ public class TargetAPI
     ut.setId(pTargetGroupId);
     ut.setJson(pJSONRequestBody);
     FlexRESTClientResponse response = getClient().put(ut);
+
+    LOGGER.exiting(CLZ_NAM, methodName);
+  }
+
+  public void patchTargetById(String pEnvironmentId, String pTargetGroupId, String pJSONRequestBody)
+    throws FlexCheckedException
+  {
+    final String methodName = "patchTargetById";
+    LOGGER.entering(CLZ_NAM, methodName, new Object[]{pEnvironmentId, pTargetGroupId, pJSONRequestBody});
+
+    PatchTargetById pt = new PatchTargetById();
+    pt.setEnvironmentId(pEnvironmentId);
+    pt.setTargetGroupId(pTargetGroupId);
+    pt.setJson(pJSONRequestBody);
+    FlexRESTClientResponse response = getClient().put(pt);
 
     LOGGER.exiting(CLZ_NAM, methodName);
   }
