@@ -43,6 +43,8 @@ public class BulkWorkflowPropertiesAndValues
   private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credential name, value is credential value
   private static Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
 
+  private static EnvironmentAPI envAPI;
+
   public static void main(String[] args)
     throws FlexCheckedException
   {
@@ -68,6 +70,7 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
     WorkflowAPI wfAPI = new WorkflowAPI(BASE_URL, USERNAME, PASSWORD);
+    envAPI = new EnvironmentAPI(BASE_URL, USERNAME, PASSWORD);
     JSONArray workflowsArray = wfAPI.findWorkflowByName(WORKFLOW_NAME);
     JSONObject workflowObject = validateWorkflowArray(workflowsArray);
     workflowObject.put("sourceCode", WORKFLOW_SOURCE); // this is required for update workflow and get workflow does not return the value
@@ -79,41 +82,7 @@ public class BulkWorkflowPropertiesAndValues
     File csv = new File("../examples/workflow_property_values.csv");
     List<String> lines = FlexFileUtils.read(csv);
     List<PropertyDefinitionPojo> incomingWorkflowProperties = readAndProcessCSV(lines);
-
-    LOGGER.fine("codeToValue mapping: " + codeToValue);
-    LOGGER.fine("Merging existing workflow properties with incoming properties from " + csv);
-    // merge both lists with incomingWorkflowProperties taking precedence if there are duplicates
-    List<PropertyDefinitionPojo> mergedWorkflowProperties = new ArrayList<>(existingWorkflowProperties);
-    for (int i = 0; i < incomingWorkflowProperties.size(); i++)
-    {
-      PropertyDefinitionPojo pojo = incomingWorkflowProperties.get(i);
-      // Keep track of the workflow properties which are encrypted and store
-      if (pojo.getIsEncrypted())
-      {
-        String credentialName = pojo.getName().trim();
-        if (credentialName.endsWith("_"))
-        {
-          credentialName = credentialName.substring(0, credentialName.length() - 1);
-        }
-        for (String environmentCode: targetEnvironmentCodes)
-        {
-          String key = pojo.getName() + environmentCode;
-          credentialNameToValue.put(credentialName + "_" + environmentCode, codeToValue.get(key));
-        }
-      }
-
-      int index = mergedWorkflowProperties.indexOf(pojo);
-      if (index != -1)
-      {
-        LOGGER.info("Workflow Property with code " + pojo.getName() + " already exists in the workflow. Overriding values.");
-        mergedWorkflowProperties.set(index, pojo);
-      }
-      else
-      {
-        LOGGER.info("Adding new Workflow Property with code " + pojo.getName());
-        mergedWorkflowProperties.add(pojo);
-      }
-    }
+    List<PropertyDefinitionPojo> mergedWorkflowProperties = mergeWorkflowProperties(existingWorkflowProperties, incomingWorkflowProperties);
 
     // Write merged results to workflowObject
     workflowObject.put("properties", new JSONArray()); // clears existing properties
@@ -153,6 +122,50 @@ public class BulkWorkflowPropertiesAndValues
         // update
       }
     }
+  }
+
+  /**
+   * Merge both lists with incomingWorkflowProperties taking precedence if there are duplicates
+   */
+  private static void mergeWorkflowProperties(List<PropertyDefinitionPojo> existing, List<PropertyDefinitionPojo> incoming)
+  {
+    final String methodName = "mergeWorkflowProperties";
+    LOGGER.entering(CLZ_NAM, methodName, new Object[]{pCredentialName, pJsonArray});
+
+    List<PropertyDefinitionPojo> merged = new ArrayList<>(existingWorkflowProperties);
+    for (int i = 0; i < incoming.size(); i++)
+    {
+      PropertyDefinitionPojo pojo = incoming.get(i);
+      // Keep track of the workflow properties which are encrypted and store
+      if (pojo.getIsEncrypted())
+      {
+        String credentialName = pojo.getName().trim();
+        if (credentialName.endsWith("_"))
+        {
+          credentialName = credentialName.substring(0, credentialName.length() - 1);
+        }
+        for (String environmentCode: targetEnvironmentCodes)
+        {
+          String key = pojo.getName() + environmentCode;
+          credentialNameToValue.put(credentialName + "_" + environmentCode, codeToValue.get(key));
+        }
+      }
+
+      int index = merged.indexOf(pojo);
+      if (index != -1)
+      {
+        LOGGER.info("Workflow Property with code " + pojo.getName() + " already exists in the workflow. Overriding values.");
+        merged.set(index, pojo);
+      }
+      else
+      {
+        LOGGER.info("Adding new Workflow Property with code " + pojo.getName());
+        merged.add(pojo);
+      }
+    }
+
+    LOGGER.exiting(CLZ_NAM, methodName, merged);
+    return merged;
   }
 
   /**
@@ -213,18 +226,18 @@ public class BulkWorkflowPropertiesAndValues
     final String methodName = "validateEnvironmentCode";
     LOGGER.entering(CLZ_NAM, methodName, pEnvironmentCode);
 
-    LOGGER.fine("Validating environment with code: " + environmentCode);
-    JSONArray result = envAPI.findEnvironmentByCode(environmentCode);
+    LOGGER.info("Validating environment with code: " + pEnvironmentCode);
+    JSONArray result = envAPI.findEnvironmentByCode(pEnvironmentCode);
     if (result.length() == 0)
     {
       // fail
-      pErrorList.add("Environment was not found with environment code " + environmentCode + ". Fix header in CSV file");
+      pErrorList.add("Environment was not found with environment code " + pEnvironmentCode + ". Fix header in CSV file");
     }
     else
     {
       // success - environment exists
       String environmentId = result.getJSONObject(0).get("environmentId").toString();
-      environmentCodeToEnvironmentId.put(environmentCode, environmentId);
+      environmentCodeToEnvironmentId.put(pEnvironmentCode, environmentId);
     }   
 
     LOGGER.exiting(CLZ_NAM, methodName);
@@ -237,7 +250,6 @@ public class BulkWorkflowPropertiesAndValues
     LOGGER.entering(CLZ_NAM, methodName, pLines);
 
     List<PropertyDefinitionPojo> results = new ArrayList<>();
-    EnvironmentAPI envAPI = new EnvironmentAPI(BASE_URL, USERNAME, PASSWORD);
     List<String> errors = new ArrayList<>();
 
     String[] headers = pLines.get(0).split(",");
@@ -337,6 +349,7 @@ public class BulkWorkflowPropertiesAndValues
         errors.add("Line " + i + " is missing ENCRYPTED");
       }
     }
+    LOGGER.finest("codeToValue mapping: " + codeToValue);
 
     if (errors.size() > 0)
     {
