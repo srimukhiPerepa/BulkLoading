@@ -67,6 +67,7 @@ public class BulkWorkflowPropertiesAndValues
     client = new FlexDeployRestClient(BASE_URL, USERNAME, PASSWORD);
     JSONObject workflowObject = findWorkflow();
     workflowObject.put("sourceCode", WORKFLOW_SOURCE);
+    workflowObject.put("sourceCodeURL", "dummy"); // this is required or validation will fail - sourceCodeURL is not actually used in backend
     String workflowId = workflowObject.get("workflowId").toString();
     List<PropertyDefinitionPojo> existingWorkflowProperties = parseWorkflowProperties(workflowObject.getJSONArray("properties"));
     List<String> lines = FlexFileUtils.read(new File("../examples/workflow_property_values.csv"));
