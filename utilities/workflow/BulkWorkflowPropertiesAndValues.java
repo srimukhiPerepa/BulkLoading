@@ -78,12 +78,16 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
     JSONArray storesArray = credAPI.getLocalCredentialStore();
-    JSONObject localCredentialStoreObject = validateLocalCredentialStoreArray(storesArray);
+    JSONObject localCredentialStoreObject = parseLocalCredentialStoreArray(storesArray);
     localCredStoreId = localCredentialStoreObject.get("credentialStoreId").toString();
 
+    LOGGER.fine("Local Credential Store Id: " + localCredStoreId);
+
     JSONArray storeProvidersArray = credAPI.getLocalCredentialStoreProvider();
-    JSONObject localCredentialStoreProviderObject = validateLocalCredentialStoreProviderArray(storeProvidersArray);
+    JSONObject localCredentialStoreProviderObject = parseLocalCredentialStoreProviderArray(storeProvidersArray);
     localCredStoreInputDefId = localCredentialStoreProviderObject.getJSONArray("credentialStoreInputDefs").getJSONObject(0).get("credentialStoreInputDefId").toString();
+
+    LOGGER.fine("Local Credential Store Secret Text Definition Id: " + localCredStoreInputDefId);
 
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////CREATE/UPDATE WORKFLOW_PROPERTIES///////////////////////////////////////////////////////////////////////");
@@ -199,36 +203,66 @@ public class BulkWorkflowPropertiesAndValues
     return merged;
   }
 
-  private static JSONObject validateLocalCredentialStoreProviderArray(JSONArray pJsonArray)
+  private static JSONObject parseLocalCredentialStoreProviderArray(JSONArray pJsonArray)
     throws FlexCheckedException
   {
-    final String methodName = "validateLocalCredentialStoreProviderArray";
+    final String methodName = "parseLocalCredentialStoreProviderArray";
     LOGGER.entering(CLZ_NAM, methodName, pJsonArray);
 
-    if (pJsonArray.length() != 1)
+    if (pJsonArray.length() == 0)
     {
       throw new FlexCheckedException("Local credential store provider not found");
     }
 
-    JSONObject wfObject = pJsonArray.getJSONObject(0);
-    LOGGER.exiting(CLZ_NAM, methodName, wfObject);
-    return wfObject;
+    JSONObject credStoreProviderObject = null;
+    for (int i = 0; i < pJsonArray.length(); i++)
+    {
+      JSONObject current = pJsonArray.getJSONObject(0);
+      if ("Local".equals(current.getString("credentialStoreProviderName")))
+      {
+        credStoreProviderObject = current;
+        break;
+      }
+    }
+
+    if (credStoreProviderObject == null)
+    {
+      throw new FlexCheckedException("Local credential store provider not found");
+    }
+    
+    LOGGER.exiting(CLZ_NAM, methodName, credStoreProviderObject);
+    return credStoreProviderObject;
   }
 
-  private static JSONObject validateLocalCredentialStoreArray(JSONArray pJsonArray)
+  private static JSONObject parseLocalCredentialStoreArray(JSONArray pJsonArray)
     throws FlexCheckedException
   {
-    final String methodName = "validateLocalCredentialStoreArray";
+    final String methodName = "parseLocalCredentialStoreArray";
     LOGGER.entering(CLZ_NAM, methodName, pJsonArray);
 
-    if (pJsonArray.length() != 1)
+    if (pJsonArray.length() == 0)
     {
       throw new FlexCheckedException("Local credential store not found");
     }
 
-    JSONObject wfObject = pJsonArray.getJSONObject(0);
-    LOGGER.exiting(CLZ_NAM, methodName, wfObject);
-    return wfObject;
+    JSONObject credStoreObject = null;
+    for (int i = 0; i < pJsonArray.length(); i++)
+    {
+      JSONObject current = pJsonArray.getJSONObject(0);
+      if ("Local".equals(current.getString("credentialStoreName")))
+      {
+        credStoreObject = current;
+        break;
+      }
+    }
+
+    if (credStoreObject == null)
+    {
+      throw new FlexCheckedException("Local credential store not found");
+    }
+    
+    LOGGER.exiting(CLZ_NAM, methodName, credStoreObject);
+    return credStoreObject;
   }
 
   /**
