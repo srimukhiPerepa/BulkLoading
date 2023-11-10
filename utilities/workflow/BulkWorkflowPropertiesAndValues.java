@@ -6,6 +6,7 @@ import requests.CredentialAPI;
 import requests.EnvironmentAPI;
 
 import pojo.PropertyDefinitionPojo;
+import pojo.CredentialScopeEnum;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.logging.FlexLogger;
@@ -135,7 +136,7 @@ public class BulkWorkflowPropertiesAndValues
         JSONObject postCredentialRequestBody = new JSONObject();
         postCredentialRequestBody.put("credentialName", credentialName);
         postCredentialRequestBody.put("isActive", true); // defaulting
-        postCredentialRequestBody.put("credentialScope", "ENVINST"); // defaulting
+        postCredentialRequestBody.put("credentialScope", CredentialScopeEnum.valueOf("ENVINST")); // defaulting
         postCredentialRequestBody.put("credentialStoreId", localCredStoreId);
 
         JSONArray inputs = new JSONArray();
