@@ -129,6 +129,7 @@ public class BulkWorkflowPropertiesAndValues
     {
       environmentCodes.add(headers[i]);
     }
+    int numEnvironments = environmentCodes.size();
 
     int numLines = pLines.size();
     for (int i = 1; i < numLines; i++)
