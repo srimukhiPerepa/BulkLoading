@@ -187,6 +187,13 @@ public class BulkWorkflowPropertiesAndValues
     {
       boolean isEncrypted = prop.getIsEncrypted();
       String name = prop.getName();
+      String scope = prop.getScope();
+
+      if (!"ENVINST".equals(scope))
+      {
+        LOGGER.info("Skipping " + scope + " property " + name + " - " + (index++) + " of " + total);
+        continue;
+      }
 
       LOGGER.info("Patching target property " + name + " (encrypted=" + isEncrypted + ") - " + (index++) + " of " + total);
       for (String environmentCode : targetEnvironmentCodes)
