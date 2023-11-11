@@ -26,7 +26,59 @@ import java.util.ArrayList;
 import java.util.logging.*;
 import java.util.stream.*;
 
-import java.io.File;
+import java.io.*;
+
+class TGThread extends Thread
+{
+  // in
+  private String targetGroupCode;
+
+  // out
+  public String targetGroupId;
+
+  public TGThread(String targetGroupCode)
+  {
+    this.targetGroupCode = targetGroupCode;
+  }
+
+  public void run()
+  {
+    try
+    {
+      JSONArray targetGroupsArray = tAPI.findTargetGroupByCode(targetGroupCode);
+      JSONObject targetGroupObject = parseTargetGroupsArray(targetGroupCode, targetGroupsArray);
+      targetGroupId = targetGroupObject.get("targetGroupId").toString();
+    }
+    catch (FlexCheckedException fce)
+    {
+      throw new RuntimeException(fce);
+    }
+  }
+}
+
+class CSThread extends Thread
+{
+  // out
+  public String localCredStoreId;
+  public String localCredStoreInputDefId;
+
+  public void run()
+  {
+    try
+    {
+      JSONArray storesArray = credAPI.getLocalCredentialStore();
+      JSONObject localCredentialStoreObject = parseLocalCredentialStoreArray(storesArray);
+      localCredStoreId = localCredentialStoreObject.get("credentialStoreId").toString();
+      String localCredStoreDefId = localCredentialStoreObject.get("credentialStoreDefId").toString();
+      JSONObject localCredStoreProviderObject = credAPI.getLocalCredentialStoreProvider(localCredStoreDefId);
+      localCredStoreInputDefId = localCredStoreProviderObject.getJSONArray("credentialStoreInputDefs").getJSONObject(0).get("credentialStoreInputDefId").toString();
+    }
+    catch (FlexCheckedException fce)
+    {
+      throw new RuntimeException(fce);
+    }
+  }
+}
  
 public class BulkWorkflowPropertiesAndValues
 {
@@ -86,22 +138,19 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////PREREQUISITE DATA///////////////////////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
-    JSONArray targetGroupsArray = tAPI.findTargetGroupByCode(TARGET_GROUP_CODE);
-    JSONObject targetGroupObject = parseTargetGroupsArray(TARGET_GROUP_CODE, targetGroupsArray);
-    targetGroupId = targetGroupObject.get("targetGroupId").toString();
+    TGThread tgt = new TGThread();
+    CSThread cs = new CSThread();
+    tgt.start();
+    cs.start();
+    tgt.join();
+    cs.join();
+
+    targetGroupId = tgt.targetGroupId;
+    localCredStoreId = cs.localCredStoreId;
+    localCredStoreInputDefId = cs.localCredStoreInputDefId;
 
     LOGGER.fine("Target Group Id: " + targetGroupId);
-
-    JSONArray storesArray = credAPI.getLocalCredentialStore();
-    JSONObject localCredentialStoreObject = parseLocalCredentialStoreArray(storesArray);
-    localCredStoreId = localCredentialStoreObject.get("credentialStoreId").toString();
-    String localCredStoreDefId = localCredentialStoreObject.get("credentialStoreDefId").toString();
-
     LOGGER.fine("Local Credential Store Id: " + localCredStoreId);
-
-    JSONObject localCredStoreProviderObject = credAPI.getLocalCredentialStoreProvider(localCredStoreDefId);
-    localCredStoreInputDefId = localCredStoreProviderObject.getJSONArray("credentialStoreInputDefs").getJSONObject(0).get("credentialStoreInputDefId").toString();
-
     LOGGER.fine("Local Credential Store Secret Text Definition Id: " + localCredStoreInputDefId);
 
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
