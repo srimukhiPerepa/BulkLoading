@@ -89,9 +89,9 @@ public class BulkWorkflowPropertiesAndValues
     cs.start();
     tg.join();
 
-    if (tf.exception != null)
+    if (tg.exception != null)
     {
-      throw tf.exception;
+      throw tg.exception;
     }
 
     targetGroupId = tg.targetGroupId;
