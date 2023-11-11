@@ -21,6 +21,7 @@ public class CSThread extends Thread
   private CredentialAPI credAPI;
 
   // out
+  public Exception exception;
   public String localCredStoreId;
   public String localCredStoreInputDefId;
 
@@ -42,8 +43,10 @@ public class CSThread extends Thread
     }
     catch (FlexCheckedException fce)
     {
-      throw new RuntimeException(fce);
+      exception = fce;
     }
+
+    LOGGER.info(CLZ_NAM + " completed successfully");
   }
 
   private JSONObject parseLocalCredentialStoreArray(JSONArray pJsonArray)

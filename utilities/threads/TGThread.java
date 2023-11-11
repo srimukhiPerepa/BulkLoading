@@ -20,6 +20,7 @@ public class TGThread extends Thread
   private String targetGroupCode;
 
   // out
+  public Exception exception;
   public String targetGroupId;
 
   public TGThread(TargetAPI tAPI, String targetGroupCode)
@@ -38,8 +39,10 @@ public class TGThread extends Thread
     }
     catch (FlexCheckedException fce)
     {
-      throw new RuntimeException(fce);
+      exception = fce;
     }
+
+    LOGGER.info(CLZ_NAM + " completed successfully");
   }
 
   private JSONObject parseTargetGroupsArray(String pTargetGroupCode, JSONArray pJsonArray)

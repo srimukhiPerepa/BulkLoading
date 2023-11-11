@@ -89,6 +89,11 @@ public class BulkWorkflowPropertiesAndValues
     cs.start();
     tg.join();
 
+    if (tf.exception != null)
+    {
+      throw tf.exception;
+    }
+
     targetGroupId = tg.targetGroupId;
     LOGGER.fine("Target Group Id: " + targetGroupId);
 
@@ -96,7 +101,18 @@ public class BulkWorkflowPropertiesAndValues
     WFThread wf = new WFThread(tAPI, wfAPI, envAPI, TARGET_GROUP_CODE, targetGroupId, WORKFLOW_NAME, WORKFLOW_SOURCE, INPUT_CSV_FILE_PATH);
     wf.start();
     cs.join();
+
+    if (cs.exception != null)
+    {
+      throw cs.exception;
+    }
+
     wf.join();
+
+    if (wf.exception != null)
+    {
+      throw wf.exception;
+    }
 
     localCredStoreId = cs.localCredStoreId;
     localCredStoreInputDefId = cs.localCredStoreInputDefId;

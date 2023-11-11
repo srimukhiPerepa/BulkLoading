@@ -41,6 +41,7 @@ public class WFThread extends Thread
   private String csvFilePath;
 
   // out
+  public Exception exception;
   public List<PropertyDefinitionPojo> mergedWorkflowProperties;
   public List<String> targetEnvironmentCodes = new ArrayList<>();
   public Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
@@ -83,8 +84,10 @@ public class WFThread extends Thread
     }
     catch (FlexCheckedException fce)
     {
-      throw new RuntimeException(fce);
+      exception = fce;
     }
+
+    LOGGER.info(CLZ_NAM + " completed successfully");
   }
 
     /**
