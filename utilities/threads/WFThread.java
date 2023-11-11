@@ -2,6 +2,7 @@ package threads;
 
 import requests.TargetAPI;
 import requests.WorkflowAPI;
+import requests.EnvironmentAPI;
 
 import pojo.PropertyDefinitionPojo;
 
@@ -16,6 +17,7 @@ import org.json.JSONArray;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.*;
@@ -31,24 +33,26 @@ public class WFThread extends Thread
   // in
   private TargetAPI tAPI;
   private WorkflowAPI wfAPI;
+  private EnvironmentAPI envAPI;
   private String targetGroupCode;
   private String targetGroupId;
   private String workflowName;
   private String workflowSource;
   private String csvFilePath;
 
-
   // out
-  private List<PropertyDefinitionPojo> mergedWorkflowProperties;
-  private static List<String> targetEnvironmentCodes = new ArrayList<>();
-  private static Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
-  private static Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
+  public List<PropertyDefinitionPojo> mergedWorkflowProperties;
+  public List<String> targetEnvironmentCodes = new ArrayList<>();
+  public Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
+  public Map<String, String> credentialNameToValue = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential value
+  public Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
 
-  public WFThread(TargetAPI tAPI, WorkflowAPI wfAPI, String targetGroupCode, String targetGroupId, 
-                  String workflowName, String workflowSource, String csvFilePath)
+  public WFThread(TargetAPI tAPI, WorkflowAPI wfAPI, EnvironmentAPI envAPI, String targetGroupCode, 
+                  String targetGroupId, String workflowName, String workflowSource, String csvFilePath)
   {
     this.tAPI = tAPI;
     this.wfAPI = wfAPI;
+    this.envAPI = envAPI;
     this.targetGroupCode = targetGroupCode;
     this.targetGroupId = targetGroupId;
     this.workflowName = workflowName;
@@ -303,7 +307,7 @@ public class WFThread extends Thread
         for (String environmentCode: targetEnvironmentCodes)
         {
           String key = pojo.getName() + environmentCode;
-          String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
+          String credentialName = String.format("%s_%s_%s", name, targetGroupCode, environmentCode);
           credentialNameToValue.put(credentialName, codeToValue.get(key));
         }
       }

@@ -44,9 +44,9 @@ public class BulkWorkflowPropertiesAndValues
   private static String localCredStoreInputDefId;
   private static List<String> targetEnvironmentCodes;
   private static Map<String, String> codeToValue; //key is code+environmentCode, value is target property value
-  private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential value
-  private static Map<String, String> credentialNameToId = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential id
+  private static Map<String, String> credentialNameToValue; //key is credentialName_targetGroupCode_environmentCode, value is credential value
   private static Map<String, String> environmentCodeToEnvironmentId;
+  private static Map<String, String> credentialNameToId = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential id
 
   private static WorkflowAPI wfAPI;
   private static EnvironmentAPI envAPI;
@@ -93,7 +93,7 @@ public class BulkWorkflowPropertiesAndValues
     LOGGER.fine("Target Group Id: " + targetGroupId);
 
     // WFThread depends on tg thread to complete
-    WFThread wf = new WFThread(tAPI, wfAPI, TARGET_GROUP_CODE, targetGroupId, WORKFLOW_NAME, WORKFLOW_SOURCE, INPUT_CSV_FILE_PATH);
+    WFThread wf = new WFThread(tAPI, wfAPI, envAPI, TARGET_GROUP_CODE, targetGroupId, WORKFLOW_NAME, WORKFLOW_SOURCE, INPUT_CSV_FILE_PATH);
     wf.start();
     cs.join();
     wf.join();
@@ -102,6 +102,7 @@ public class BulkWorkflowPropertiesAndValues
     localCredStoreInputDefId = cs.localCredStoreInputDefId;
     targetEnvironmentCodes = wf.targetEnvironmentCodes;
     codeToValue = wf.codeToValue;
+    credentialNameToValue = wf.credentialNameToValue;
     environmentCodeToEnvironmentId = wf.environmentCodeToEnvironmentId;
 
     LOGGER.fine("Local Credential Store Id: " + localCredStoreId);
