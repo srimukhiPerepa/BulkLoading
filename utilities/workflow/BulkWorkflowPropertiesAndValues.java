@@ -31,13 +31,15 @@ import java.io.*;
 class TGThread extends Thread
 {
   // in
+  private TargetAPI tAPI;
   private String targetGroupCode;
 
   // out
   public String targetGroupId;
 
-  public TGThread(String targetGroupCode)
+  public TGThread(TargetAPI tAPI, String targetGroupCode)
   {
+    this.tAPI = tAPI;
     this.targetGroupCode = targetGroupCode;
   }
 
@@ -54,13 +56,52 @@ class TGThread extends Thread
       throw new RuntimeException(fce);
     }
   }
+
+  private JSONObject parseTargetGroupsArray(String pTargetGroupCode, JSONArray pJsonArray)
+    throws FlexCheckedException
+  {
+    final String methodName = "parseTargetGroupsArray";
+    LOGGER.entering(CLZ_NAM, methodName, new Object[]{pTargetGroupCode, pJsonArray});
+
+    if (pJsonArray.length() == 0)
+    {
+      throw new FlexCheckedException("Target Group not found with targetGroupCode " + pTargetGroupCode);
+    }
+
+    JSONObject targetGroupObject = null;
+    for (int i = 0; i < pJsonArray.length(); i++)
+    {
+      JSONObject current = pJsonArray.getJSONObject(i);
+      if (pTargetGroupCode.equals(current.getString("targetGroupCode")))
+      {
+        targetGroupObject = current;
+        break;
+      }
+    }
+
+    if (targetGroupObject == null)
+    {
+      throw new FlexCheckedException("Target Group not found with code " + pTargetGroupCode);
+    }
+    
+    LOGGER.exiting(CLZ_NAM, methodName, targetGroupObject);
+    return targetGroupObject;
+  }
 }
 
 class CSThread extends Thread
 {
+  // in
+  private CredentialAPI credAPI;
+
   // out
   public String localCredStoreId;
   public String localCredStoreInputDefId;
+
+  public CSThread(CredentialAPI credAPI)
+  {
+    this.credAPI = credAPI;
+  }
 
   public void run()
   {
@@ -77,6 +118,37 @@ class CSThread extends Thread
     {
       throw new RuntimeException(fce);
     }
+  }
+
+  private JSONObject parseLocalCredentialStoreArray(JSONArray pJsonArray)
+    throws FlexCheckedException
+  {
+    final String methodName = "parseLocalCredentialStoreArray";
+    LOGGER.entering(CLZ_NAM, methodName, pJsonArray);
+
+    if (pJsonArray.length() == 0)
+    {
+      throw new FlexCheckedException("Local credential store not found");
+    }
+
+    JSONObject credStoreObject = null;
+    for (int i = 0; i < pJsonArray.length(); i++)
+    {
+      JSONObject current = pJsonArray.getJSONObject(i);
+      if ("Local".equals(current.getString("credentialStoreName")))
+      {
+        credStoreObject = current;
+        break;
+      }
+    }
+
+    if (credStoreObject == null)
+    {
+      throw new FlexCheckedException("Local credential store not found");
+    }
+    
+    LOGGER.exiting(CLZ_NAM, methodName, credStoreObject);
+    return credStoreObject;
   }
 }
  
@@ -138,8 +210,8 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////PREREQUISITE DATA///////////////////////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
-    TGThread tgt = new TGThread();
-    CSThread cs = new CSThread();
+    TGThread tgt = new TGThread(tAPI, TARGET_GROUP_CODE);
+    CSThread cs = new CSThread(credAPI);
     tgt.start();
     cs.start();
     tgt.join();
@@ -342,68 +414,6 @@ public class BulkWorkflowPropertiesAndValues
 
     LOGGER.exiting(CLZ_NAM, methodName, merged);
     return merged;
-  }
-
-  private static JSONObject parseLocalCredentialStoreArray(JSONArray pJsonArray)
-    throws FlexCheckedException
-  {
-    final String methodName = "parseLocalCredentialStoreArray";
-    LOGGER.entering(CLZ_NAM, methodName, pJsonArray);
-
-    if (pJsonArray.length() == 0)
-    {
-      throw new FlexCheckedException("Local credential store not found");
-    }
-
-    JSONObject credStoreObject = null;
-    for (int i = 0; i < pJsonArray.length(); i++)
-    {
-      JSONObject current = pJsonArray.getJSONObject(i);
-      if ("Local".equals(current.getString("credentialStoreName")))
-      {
-        credStoreObject = current;
-        break;
-      }
-    }
-
-    if (credStoreObject == null)
-    {
-      throw new FlexCheckedException("Local credential store not found");
-    }
-    
-    LOGGER.exiting(CLZ_NAM, methodName, credStoreObject);
-    return credStoreObject;
-  }
-
-  private static JSONObject parseTargetGroupsArray(String pTargetGroupCode, JSONArray pJsonArray)
-    throws FlexCheckedException
-  {
-    final String methodName = "parseTargetGroupsArray";
-    LOGGER.entering(CLZ_NAM, methodName, new Object[]{pTargetGroupCode, pJsonArray});
-
-    if (pJsonArray.length() == 0)
-    {
-      throw new FlexCheckedException("Target Group not found with targetGroupCode " + pTargetGroupCode);
-    }
-
-    JSONObject targetGroupObject = null;
-    for (int i = 0; i < pJsonArray.length(); i++)
-    {
-      JSONObject current = pJsonArray.getJSONObject(i);
-      if (pTargetGroupCode.equals(current.getString("targetGroupCode")))
-      {
-        targetGroupObject = current;
-        break;
-      }
-    }
-
-    if (targetGroupObject == null)
-    {
-      throw new FlexCheckedException("Target Group not found with code " + pTargetGroupCode);
-    }
-    
-    LOGGER.exiting(CLZ_NAM, methodName, targetGroupObject);
-    return targetGroupObject;
   }
 
   /**
