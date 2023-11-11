@@ -1,5 +1,6 @@
 package threads;
 
+import requests.TargetAPI;
 import requests.WorkflowAPI;
 
 import pojo.PropertyDefinitionPojo;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.logging.*;
 
 import java.io.*;
+import java.util.stream.*;
 
 public class WFThread extends Thread
 {
@@ -27,14 +29,28 @@ public class WFThread extends Thread
   private final Logger LOGGER = Logger.getGlobal();
 
   // in
+  private TargetAPI tAPI;
   private WorkflowAPI wfAPI;
+  private String targetGroupCode;
+  private String targetGroupId;
   private String workflowName;
   private String workflowSource;
   private String csvFilePath;
 
-  public WFThread(WorkflowAPI wfAPI, String workflowName, String workflowSource, String csvFilePath)
+
+  // out
+  private List<PropertyDefinitionPojo> mergedWorkflowProperties;
+  private static List<String> targetEnvironmentCodes = new ArrayList<>();
+  private static Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
+  private static Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
+
+  public WFThread(TargetAPI tAPI, WorkflowAPI wfAPI, String targetGroupCode, String targetGroupId, 
+                  String workflowName, String workflowSource, String csvFilePath)
   {
+    this.tAPI = tAPI;
     this.wfAPI = wfAPI;
+    this.targetGroupCode = targetGroupCode;
+    this.targetGroupId = targetGroupId;
     this.workflowName = workflowName;
     this.workflowSource = workflowSource;
     this.csvFilePath = csvFilePath;
@@ -55,7 +71,7 @@ public class WFThread extends Thread
       File csv = new File(csvFilePath);
       List<String> lines = FlexFileUtils.read(csv);
       List<PropertyDefinitionPojo> incomingWorkflowProperties = readAndProcessCSV(lines);
-      List<PropertyDefinitionPojo> mergedWorkflowProperties = mergeWorkflowProperties(existingWorkflowProperties, incomingWorkflowProperties);
+      mergedWorkflowProperties = mergeWorkflowProperties(existingWorkflowProperties, incomingWorkflowProperties);
       writeWorkflowPropertiesToWorkflowObject(workflowObject, mergedWorkflowProperties);
 
       String workflowId = workflowObject.get("workflowId").toString();
@@ -79,12 +95,12 @@ public class WFThread extends Thread
 
     if (pJsonArray.length() == 0)
     {
-      throw new FlexCheckedException("No workflow(s) found with name " + WORKFLOW_NAME);
+      throw new FlexCheckedException("No workflow(s) found with name " + workflowName);
     }
 
     if (pJsonArray.length() > 1)
     {
-      throw new FlexCheckedException("More than one workflow found with name " + WORKFLOW_NAME + ". WORKFLOW_NAME must be unique.");
+      throw new FlexCheckedException("More than one workflow found with name " + workflowName + ". WORKFLOW_NAME must be unique.");
     }
 
     JSONObject wfObject = pJsonArray.getJSONObject(0);
@@ -257,9 +273,72 @@ public class WFThread extends Thread
       boolean isMapped = converted.stream().anyMatch(json -> json.get("environmentId").toString().equals(environmentId));
       if (!isMapped)
       {
-        pErrorList.add("Environment " + environmentCode + " is not mapped to target group " + TARGET_GROUP_CODE + " but referenced in CSV file header. Change header in CSV file or map environment to target group");
+        pErrorList.add("Environment " + environmentCode + " is not mapped to target group " + targetGroupCode + " but referenced in CSV file header. Change header in CSV file or map environment to target group");
       }
     }
+
+    LOGGER.exiting(CLZ_NAM, methodName);
+  }
+
+  /**
+   * Merge both lists with incomingWorkflowProperties taking precedence if there are duplicates
+   */
+  private List<PropertyDefinitionPojo> mergeWorkflowProperties(List<PropertyDefinitionPojo> existing, List<PropertyDefinitionPojo> incoming)
+  {
+    final String methodName = "mergeWorkflowProperties";
+    LOGGER.entering(CLZ_NAM, methodName, new Object[]{existing, incoming});
+
+    List<PropertyDefinitionPojo> merged = new ArrayList<>(existing);
+    for (int i = 0; i < incoming.size(); i++)
+    {
+      PropertyDefinitionPojo pojo = incoming.get(i);
+      // Keep track of the workflow properties which are encrypted and store in credentialNameToValue
+      if (pojo.getIsEncrypted())
+      {
+        String name = pojo.getName().trim();
+        if (name.endsWith("_"))
+        {
+          name = name.substring(0, name.length() - 1);
+        }
+        for (String environmentCode: targetEnvironmentCodes)
+        {
+          String key = pojo.getName() + environmentCode;
+          String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
+          credentialNameToValue.put(credentialName, codeToValue.get(key));
+        }
+      }
+
+      int index = merged.indexOf(pojo);
+      if (index != -1)
+      {
+        LOGGER.info("Workflow Property with code " + pojo.getName() + " already exists in the workflow. Overriding values.");
+        merged.set(index, pojo);
+      }
+      else
+      {
+        LOGGER.info("Adding new Workflow Property with code " + pojo.getName());
+        merged.add(pojo);
+      }
+    }
+
+    LOGGER.exiting(CLZ_NAM, methodName, merged);
+    return merged;
+  }
+
+  /**
+   * Write properties to Workflow JsonObject
+   */
+  private static void writeWorkflowPropertiesToWorkflowObject(JSONObject workflowObject, List<PropertyDefinitionPojo> properties)
+  {
+    final String methodName = "writeWorkflowPropertiesToWorkflowObject";
+    LOGGER.entering(CLZ_NAM, methodName);
+
+    workflowObject.put("properties", new JSONArray()); // clears existing properties
+    for (PropertyDefinitionPojo pojo : properties)
+    {
+      workflowObject.getJSONArray("properties").put(pojo.toJson());
+    }
+    LOGGER.info("Final Workflow Object: " + workflowObject.toString(2));
 
     LOGGER.exiting(CLZ_NAM, methodName);
   }

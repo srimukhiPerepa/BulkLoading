@@ -42,11 +42,11 @@ public class BulkWorkflowPropertiesAndValues
   private static String targetGroupId;
   private static String localCredStoreId;
   private static String localCredStoreInputDefId;
-  private static List<String> targetEnvironmentCodes = new ArrayList<>();
-  private static Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
+  private static List<String> targetEnvironmentCodes;
+  private static Map<String, String> codeToValue; //key is code+environmentCode, value is target property value
   private static Map<String, String> credentialNameToValue = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential value
   private static Map<String, String> credentialNameToId = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential id
-  private static Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
+  private static Map<String, String> environmentCodeToEnvironmentId;
 
   private static WorkflowAPI wfAPI;
   private static EnvironmentAPI envAPI;
@@ -83,21 +83,27 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////PREREQUISITE DATA///////////////////////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 
-    WFThread wf = new WFThread(wfAPI, WORKFLOW_NAME, WORKFLOW_SOURCE, INPUT_CSV_FILE_PATH);
     TGThread tg = new TGThread(tAPI, TARGET_GROUP_CODE);
     CSThread cs = new CSThread(credAPI);
-    wf.start();
     tg.start();
     cs.start();
     tg.join();
+
+    targetGroupId = tg.targetGroupId;
+    LOGGER.fine("Target Group Id: " + targetGroupId);
+
+    // WFThread depends on tg thread to complete
+    WFThread wf = new WFThread(tAPI, wfAPI, TARGET_GROUP_CODE, targetGroupId, WORKFLOW_NAME, WORKFLOW_SOURCE, INPUT_CSV_FILE_PATH);
+    wf.start();
     cs.join();
     wf.join();
 
-    targetGroupId = tg.targetGroupId;
     localCredStoreId = cs.localCredStoreId;
     localCredStoreInputDefId = cs.localCredStoreInputDefId;
+    targetEnvironmentCodes = wf.targetEnvironmentCodes;
+    codeToValue = wf.codeToValue;
+    environmentCodeToEnvironmentId = wf.environmentCodeToEnvironmentId;
 
-    LOGGER.fine("Target Group Id: " + targetGroupId);
     LOGGER.fine("Local Credential Store Id: " + localCredStoreId);
     LOGGER.fine("Local Credential Store Secret Text Definition Id: " + localCredStoreInputDefId);
 
@@ -166,7 +172,7 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
     // parallel loop to update target properties
-    mergedWorkflowProperties.stream().parallel().forEach(prop ->
+    wf.mergedWorkflowProperties.stream().parallel().forEach(prop ->
       {
         try
         {
@@ -206,69 +212,6 @@ public class BulkWorkflowPropertiesAndValues
         }
       }
     );
-  }
-
-  /**
-   * Write properties to Workflow JsonObject
-   */
-  private static void writeWorkflowPropertiesToWorkflowObject(JSONObject workflowObject, List<PropertyDefinitionPojo> properties)
-  {
-    final String methodName = "writeWorkflowPropertiesToWorkflowObject";
-    LOGGER.entering(CLZ_NAM, methodName);
-
-    workflowObject.put("properties", new JSONArray()); // clears existing properties
-    for (PropertyDefinitionPojo pojo : properties)
-    {
-      workflowObject.getJSONArray("properties").put(pojo.toJson());
-    }
-    LOGGER.info("Final Workflow Object: " + workflowObject.toString(2));
-
-    LOGGER.exiting(CLZ_NAM, methodName);
-  }
-
-  /**
-   * Merge both lists with incomingWorkflowProperties taking precedence if there are duplicates
-   */
-  private static List<PropertyDefinitionPojo> mergeWorkflowProperties(List<PropertyDefinitionPojo> existing, List<PropertyDefinitionPojo> incoming)
-  {
-    final String methodName = "mergeWorkflowProperties";
-    LOGGER.entering(CLZ_NAM, methodName, new Object[]{existing, incoming});
-
-    List<PropertyDefinitionPojo> merged = new ArrayList<>(existing);
-    for (int i = 0; i < incoming.size(); i++)
-    {
-      PropertyDefinitionPojo pojo = incoming.get(i);
-      // Keep track of the workflow properties which are encrypted and store in credentialNameToValue
-      if (pojo.getIsEncrypted())
-      {
-        String name = pojo.getName().trim();
-        if (name.endsWith("_"))
-        {
-          name = name.substring(0, name.length() - 1);
-        }
-        for (String environmentCode: targetEnvironmentCodes)
-        {
-          String key = pojo.getName() + environmentCode;
-          String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
-          credentialNameToValue.put(credentialName, codeToValue.get(key));
-        }
-      }
-
-      int index = merged.indexOf(pojo);
-      if (index != -1)
-      {
-        LOGGER.info("Workflow Property with code " + pojo.getName() + " already exists in the workflow. Overriding values.");
-        merged.set(index, pojo);
-      }
-      else
-      {
-        LOGGER.info("Adding new Workflow Property with code " + pojo.getName());
-        merged.add(pojo);
-      }
-    }
-
-    LOGGER.exiting(CLZ_NAM, methodName, merged);
-    return merged;
   }
 
   /**
