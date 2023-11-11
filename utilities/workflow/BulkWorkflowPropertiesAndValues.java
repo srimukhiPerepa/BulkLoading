@@ -138,15 +138,18 @@ public class BulkWorkflowPropertiesAndValues
       LOGGER.fine("credentialNameToValue map: " + credentialNameToValue);
     }
 
+    int index = 1;
+    int total = credentialNameToValue.size();
     for (String credentialName: credentialNameToValue.keySet())
     {
       JSONArray searchResult = credAPI.findCredentialByName(credentialName);
       JSONObject credentialObject = validateCredentialArray(credentialName, searchResult);
       String credentialValue = credentialNameToValue.get(credentialName);
       String credentialId;
+
+      LOGGER.info("Creating/updating credential " + credentialName + " " + (index++) " of " + total);
       if (credentialObject == null)
       {
-        LOGGER.info("Creating credential " + credentialName);
         // create
         JSONObject postCredentialRequestBody = new JSONObject();
         postCredentialRequestBody.put("credentialName", credentialName);
@@ -167,7 +170,6 @@ public class BulkWorkflowPropertiesAndValues
       {
         // update - override inputValue only
         credentialId = credentialObject.get("credentialId").toString();
-        LOGGER.info("Updating credential with id " + credentialId + " and credential name " + credentialName);
         credentialObject.getJSONArray("credentialInputs").getJSONObject(0).put("inputValue", credentialValue);
         credAPI.patchCredentialById(credentialId, credentialObject.toString());
       }
@@ -179,12 +181,14 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("///////////////////////////////////////////////////////UPDATE TARGETS//////////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
+    index = 1;
+    total = wf.mergedWorkflowProperties.size();
     for (PropertyDefinitionPojo prop : wf.mergedWorkflowProperties)
     {
       boolean isEncrypted = prop.getIsEncrypted();
       String name = prop.getName();
 
-      LOGGER.info("Patching target property " + name + " (encrypted=" + isEncrypted + ")");
+      LOGGER.info("Patching target property " + name + " (encrypted=" + isEncrypted + ") - " + (index++) + " of " + total);
       for (String environmentCode : targetEnvironmentCodes)
       {
         String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
