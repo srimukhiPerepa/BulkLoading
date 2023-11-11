@@ -183,7 +183,7 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
     // parallel loop to update target properties
-    mergedWorkflowProperties.stream().parallel.forEach(prop ->
+    mergedWorkflowProperties.stream().parallel().forEach(prop ->
       {
         boolean isEncrypted = prop.getIsEncrypted();
         String name = prop.getName();
