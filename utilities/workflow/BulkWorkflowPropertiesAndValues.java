@@ -139,79 +139,83 @@ public class BulkWorkflowPropertiesAndValues
       LOGGER.fine("credentialNameToValue map: " + credentialNameToValue);
     }
 
-    for (String credentialName : credentialNameToValue.keySet())
-    {
-      JSONArray searchResult = credAPI.findCredentialByName(credentialName);
-      JSONObject credentialObject = validateCredentialArray(credentialName, searchResult);
-      String credentialValue = credentialNameToValue.get(credentialName);
-      String credentialId;
-      if (credentialObject == null)
+    // parallel loop to create or update credentials
+    credentialNameToValue.keySet().stream().parallel().forEach(credentialName ->
       {
-        LOGGER.info("Creating credential " + credentialName);
-        // create
-        JSONObject postCredentialRequestBody = new JSONObject();
-        postCredentialRequestBody.put("credentialName", credentialName);
-        postCredentialRequestBody.put("isActive", true); // defaulting
-        postCredentialRequestBody.put("credentialScope", CredentialScopeEnum.PROPERTY); // defaulting to PROPERTY ("ENVINST" same difference)
-        postCredentialRequestBody.put("credentialStoreId", localCredStoreId);
+        JSONArray searchResult = credAPI.findCredentialByName(credentialName);
+        JSONObject credentialObject = validateCredentialArray(credentialName, searchResult);
+        String credentialValue = credentialNameToValue.get(credentialName);
+        String credentialId;
+        if (credentialObject == null)
+        {
+          LOGGER.info("Creating credential " + credentialName);
+          // create
+          JSONObject postCredentialRequestBody = new JSONObject();
+          postCredentialRequestBody.put("credentialName", credentialName);
+          postCredentialRequestBody.put("isActive", true); // defaulting
+          postCredentialRequestBody.put("credentialScope", CredentialScopeEnum.PROPERTY); // defaulting to PROPERTY ("ENVINST" same difference)
+          postCredentialRequestBody.put("credentialStoreId", localCredStoreId);
 
-        JSONArray inputs = new JSONArray();
-        JSONObject input = new JSONObject();
-        input.put("inputValue", credentialValue);
-        input.put("credentialStoreInputDefId", localCredStoreInputDefId);
-        inputs.put(input);
-        postCredentialRequestBody.put("credentialInputs", inputs);
+          JSONArray inputs = new JSONArray();
+          JSONObject input = new JSONObject();
+          input.put("inputValue", credentialValue);
+          input.put("credentialStoreInputDefId", localCredStoreInputDefId);
+          inputs.put(input);
+          postCredentialRequestBody.put("credentialInputs", inputs);
 
-        credentialId = credAPI.createCredential(postCredentialRequestBody.toString()).get("credentialId").toString();
+          credentialId = credAPI.createCredential(postCredentialRequestBody.toString()).get("credentialId").toString();
+        }
+        else
+        {
+          // update - override inputValue only
+          credentialId = credentialObject.get("credentialId").toString();
+          LOGGER.info("Updating credential with id " + credentialId + " and credential name " + credentialName);
+          credentialObject.getJSONArray("credentialInputs").getJSONObject(0).put("inputValue", credentialValue);
+          credAPI.patchCredentialById(credentialId, credentialObject.toString());
+        }
+
+        credentialNameToId.put(credentialName, credentialId);
       }
-      else
-      {
-        // update - override inputValue only
-        credentialId = credentialObject.get("credentialId").toString();
-        LOGGER.info("Updating credential with id " + credentialId + " and credential name " + credentialName);
-        credentialObject.getJSONArray("credentialInputs").getJSONObject(0).put("inputValue", credentialValue);
-        credAPI.patchCredentialById(credentialId, credentialObject.toString());
-      }
-
-      credentialNameToId.put(credentialName, credentialId);
-    }
+    );
 
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     System.out.println("///////////////////////////////////////////////////////UPDATE TARGETS//////////////////////////////////////////////////////////////////////////");
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
-    for (PropertyDefinitionPojo prop : mergedWorkflowProperties)
-    {
-      boolean isEncrypted = prop.getIsEncrypted();
-      String name = prop.getName();
-
-      LOGGER.info("Patching target property " + name + " (encrypted=" + isEncrypted + ")");
-      for (String environmentCode : targetEnvironmentCodes)
+    // parallel loop to update target properties
+    mergedWorkflowProperties.stream().parallel.forEach(prop ->
       {
-        String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
-        String targetValue = codeToValue.get(name + environmentCode);
+        boolean isEncrypted = prop.getIsEncrypted();
+        String name = prop.getName();
 
-        JSONArray propertiesArray = new JSONArray();
-        JSONObject property = new JSONObject();
-        property.put("propertyName", name);
-
-        if (isEncrypted)
+        LOGGER.info("Patching target property " + name + " (encrypted=" + isEncrypted + ")");
+        for (String environmentCode : targetEnvironmentCodes)
         {
-          String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
-          property.put("credentialId", credentialNameToId.get(credentialName));
-        }
-        else 
-        {
-          property.put("propertyValue", targetValue);
-        }
-        propertiesArray.put(property);
+          String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
+          String targetValue = codeToValue.get(name + environmentCode);
 
-        JSONObject patchRequestBody = new JSONObject();
-        patchRequestBody.put("properties", propertiesArray);
+          JSONArray propertiesArray = new JSONArray();
+          JSONObject property = new JSONObject();
+          property.put("propertyName", name);
 
-        tAPI.patchTargetById(environmentId, targetGroupId, patchRequestBody.toString());
+          if (isEncrypted)
+          {
+            String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
+            property.put("credentialId", credentialNameToId.get(credentialName));
+          }
+          else 
+          {
+            property.put("propertyValue", targetValue);
+          }
+          propertiesArray.put(property);
+
+          JSONObject patchRequestBody = new JSONObject();
+          patchRequestBody.put("properties", propertiesArray);
+
+          tAPI.patchTargetById(environmentId, targetGroupId, patchRequestBody.toString());
+        }
       }
-    }
+    );
   }
 
   /**
