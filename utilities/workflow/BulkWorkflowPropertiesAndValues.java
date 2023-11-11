@@ -169,7 +169,6 @@ public class BulkWorkflowPropertiesAndValues
           }
           else
           {
-            LOGGER.info("Updating credential " + credentialName);
             // update - override inputValue only
             credentialId = credentialObject.get("credentialId").toString();
             LOGGER.info("Updating credential with id " + credentialId + " and credential name " + credentialName);
