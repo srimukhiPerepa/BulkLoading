@@ -147,7 +147,7 @@ public class BulkWorkflowPropertiesAndValues
       String credentialValue = credentialNameToValue.get(credentialName);
       String credentialId;
 
-      LOGGER.info("Creating/updating credential " + credentialName + " " + (index++) " of " + total);
+      LOGGER.info("Creating/updating credential " + credentialName + " " + (index++) + " of " + total);
       if (credentialObject == null)
       {
         // create
