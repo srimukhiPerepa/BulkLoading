@@ -30,6 +30,9 @@ import java.io.*;
 
 class TGThread extends Thread
 {
+  private final String CLZ_NAM = TGThread.class.getName();
+  private final Logger LOGGER = Logger.getGlobal();
+
   // in
   private TargetAPI tAPI;
   private String targetGroupCode;
@@ -91,6 +94,9 @@ class TGThread extends Thread
 
 class CSThread extends Thread
 {
+  private final String CLZ_NAM = TGThread.class.getName();
+  private final Logger LOGGER = Logger.getGlobal();
+
   // in
   private CredentialAPI credAPI;
 
