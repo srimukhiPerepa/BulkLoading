@@ -187,7 +187,7 @@ public class BulkWorkflowPropertiesAndValues
   private static TargetAPI tAPI;
 
   public static void main(String[] args)
-    throws FlexCheckedException
+    throws Exception
   {
 		ConsoleHandler consoleHandler = new ConsoleHandler();
 		consoleHandler.setLevel(Level.ALL);
