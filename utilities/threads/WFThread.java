@@ -332,7 +332,7 @@ public class WFThread extends Thread
   /**
    * Write properties to Workflow JsonObject
    */
-  private static void writeWorkflowPropertiesToWorkflowObject(JSONObject workflowObject, List<PropertyDefinitionPojo> properties)
+  private void writeWorkflowPropertiesToWorkflowObject(JSONObject workflowObject, List<PropertyDefinitionPojo> properties)
   {
     final String methodName = "writeWorkflowPropertiesToWorkflowObject";
     LOGGER.entering(CLZ_NAM, methodName);
