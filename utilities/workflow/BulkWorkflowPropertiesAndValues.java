@@ -94,7 +94,7 @@ class TGThread extends Thread
 
 class CSThread extends Thread
 {
-  private final String CLZ_NAM = TGThread.class.getName();
+  private final String CLZ_NAM = CSThread.class.getName();
   private final Logger LOGGER = Logger.getGlobal();
 
   // in
