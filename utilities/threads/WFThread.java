@@ -147,6 +147,7 @@ public class WFThread extends Thread
     {
       String line = pLines.get(i);
       String[] tokens = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+      int tokensLength = tokens.length;
       String code = tokens[0];
       String displayName = tokens[1];
       String propertyScope = tokens[2];
@@ -186,17 +187,24 @@ public class WFThread extends Thread
       {
         if (tokens.length < (15 + numEnvironments))
         {
-          errors.add("Line " + i + " is missing target values. There should be "+ numEnvironments + " column values after DEFAULT_VALUE");
+          LOGGER.warning("Line " + i + " is missing target values. Missing values will be set to empty string");
         }
-        else
+
+        // will only have target property values if scope is ENVINST
+        for (int j = 0; j < numEnvironments; j++)
         {
-          // will only have target property values if scope is ENVINST
-          for (int j = 0; j < numEnvironments; j++)
+          String key = code + targetEnvironmentCodes.get(j);
+          // important to add 15 here which is after DEFAULT_VALUE column
+          String value = "";
+          try
           {
-            String key = code + targetEnvironmentCodes.get(j);
-            String value = tokens[j+15]; //important to add 15 here
-            codeToValue.put(key, value);
+            value = tokens[j+15];
           }
+          catch (ArrayIndexOutOfBoundsException aio)
+          {
+            //ignore
+          }
+          codeToValue.put(key, value);
         }
       }
 
