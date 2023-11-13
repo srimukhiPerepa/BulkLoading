@@ -184,12 +184,19 @@ public class WFThread extends Thread
 
       if ("ENVINST".equals(propertyScope))
       {
-        // will only have target property values if scope is ENVINST
-        for (int j = 0; j < numEnvironments; j++)
+        if (tokens.length < (15 + numEnvironments))
         {
-          String key = code + targetEnvironmentCodes.get(j);
-          String value = tokens[j+15]; //important to add 15 here
-          codeToValue.put(key, value);
+          errors.add("Line " + i + " is missing target values. There should be "+ numEnvironments + " column values after DEFAULT_VALUE");
+        }
+        else
+        {
+          // will only have target property values if scope is ENVINST
+          for (int j = 0; j < numEnvironments; j++)
+          {
+            String key = code + targetEnvironmentCodes.get(j);
+            String value = tokens[j+15]; //important to add 15 here
+            codeToValue.put(key, value);
+          }
         }
       }
 
