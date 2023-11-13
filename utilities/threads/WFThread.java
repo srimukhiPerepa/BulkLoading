@@ -67,10 +67,6 @@ public class WFThread extends Thread
     {
       JSONArray workflowsArray = wfAPI.findWorkflowByName(workflowName);
       JSONObject workflowObject = validateWorkflowArray(workflowsArray);
-      // FlexCommonUtils.buildStringFromChunks seems to replace " with \" which would cause updateWorkflow to fail because
-      // sourceXML we are passing in does not match value stored in database. We'll replace that now.
-
-      workflowSource = workflowSource.replace("\\\"", "\"");
       workflowObject.put("sourceCode", workflowSource); // this is required for update workflow and get workflow does not return the value
       workflowObject.put("sourceCodeURL", "dummy"); // this is required or validation will fail - sourceCodeURL is not actually used in backend
 
