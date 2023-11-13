@@ -41,9 +41,9 @@ public class CSThread extends Thread
       JSONObject localCredStoreProviderObject = credAPI.getLocalCredentialStoreProvider(localCredStoreDefId);
       localCredStoreInputDefId = localCredStoreProviderObject.getJSONArray("credentialStoreInputDefs").getJSONObject(0).get("credentialStoreInputDefId").toString();
     }
-    catch (FlexCheckedException fce)
+    catch (Exception ex)
     {
-      exception = fce;
+      exception = ex;
     }
 
     LOGGER.info(CLZ_NAM + " completed successfully");

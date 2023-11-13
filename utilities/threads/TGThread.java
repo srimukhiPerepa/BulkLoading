@@ -37,9 +37,9 @@ public class TGThread extends Thread
       JSONObject targetGroupObject = parseTargetGroupsArray(targetGroupCode, targetGroupsArray);
       targetGroupId = targetGroupObject.get("targetGroupId").toString();
     }
-    catch (FlexCheckedException fce)
+    catch (Exception ex)
     {
-      exception = fce;
+      exception = ex;
     }
 
     LOGGER.info(CLZ_NAM + " completed successfully");

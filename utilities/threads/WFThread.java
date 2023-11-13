@@ -82,9 +82,9 @@ public class WFThread extends Thread
       String workflowId = workflowObject.get("workflowId").toString();
       wfAPI.updateWorkflowById(workflowId, workflowObject.toString());
     }
-    catch (FlexCheckedException fce)
+    catch (Exception ex)
     {
-      exception = fce;
+      exception = ex;
     }
 
     LOGGER.info(CLZ_NAM + " completed successfully");
