@@ -42,7 +42,7 @@ public class WFThread extends Thread
 
   // out
   public Exception exception;
-  public List<PropertyDefinitionPojo> mergedWorkflowProperties;
+  public List<PropertyDefinitionPojo> mergedWorkflowProperties = new ArrayList<>();
   public List<String> targetEnvironmentCodes = new ArrayList<>();
   public Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
   public Map<String, String> credentialNameToValue = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential value
