@@ -25,6 +25,8 @@ import java.util.logging.*;
 import java.io.*;
 import java.util.stream.*;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
 public class WFThread extends Thread
 {
   private final String CLZ_NAM = WFThread.class.getName();
@@ -47,6 +49,33 @@ public class WFThread extends Thread
   public Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
   public Map<String, String> credentialNameToValue = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential value
   public Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
+
+  private static class JSONObjectSerializer extends StdSerializer<JSONObject> {
+
+      JSONObjectSerializer(){
+          this(null);
+      }
+
+      JSONObjectSerializer(Class<JSONObject> t) {
+          super(t);
+      }
+
+      @Override public void serialize(JSONObject value, JsonGenerator gen, SerializerProvider provider) throws IOException {
+          gen.writeStartObject();
+          value.keys().forEachRemaining(key-> {
+              try {
+                  gen.writeStringField(key,value.getString(key));
+              } catch (IOException ex){
+                  throw new RuntimeException("Encountered an error serializing the JSONObject.",ex);
+              }
+          });
+          gen.writeEndObject();
+      }
+
+      private static SimpleModule toModule(){
+          return new SimpleModule().addSerializer(JSONObject.class, new JSONObjectSerializer());
+      }
+  }
 
   public WFThread(TargetAPI tAPI, WorkflowAPI wfAPI, EnvironmentAPI envAPI, String targetGroupCode, 
                   String targetGroupId, String workflowName, String workflowSource, String csvFilePath)
@@ -80,7 +109,10 @@ public class WFThread extends Thread
       writeWorkflowPropertiesToWorkflowObject(workflowObject, mergedWorkflowProperties);
 
       String workflowId = workflowObject.get("workflowId").toString();
-      String payloadString = new org.codehaus.jackson.map.ObjectMapper().writeValueAsString(workflowObject);
+      ObjectMapper mapper = new ObjectMapper()
+        .registerModule(JSONObjectSerializer.toModule())
+        .writerWithDefaultPrettyPrinter();
+      String payloadString = mapper.writeValueAsString(workflowObject);
       wfAPI.updateWorkflowById(workflowId, payloadString);
     }
     catch (Exception ex)
