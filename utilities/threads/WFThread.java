@@ -50,33 +50,6 @@ public class WFThread extends Thread
   public Map<String, String> credentialNameToValue = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential value
   public Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
 
-  private static class JSONObjectSerializer extends StdSerializer<JSONObject> {
-
-      JSONObjectSerializer(){
-          this(null);
-      }
-
-      JSONObjectSerializer(Class<JSONObject> t) {
-          super(t);
-      }
-
-      @Override public void serialize(JSONObject value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-          gen.writeStartObject();
-          value.keys().forEachRemaining(key-> {
-              try {
-                  gen.writeStringField(key,value.getString(key));
-              } catch (IOException ex){
-                  throw new RuntimeException("Encountered an error serializing the JSONObject.",ex);
-              }
-          });
-          gen.writeEndObject();
-      }
-
-      private static SimpleModule toModule(){
-          return new SimpleModule().addSerializer(JSONObject.class, new JSONObjectSerializer());
-      }
-  }
-
   public WFThread(TargetAPI tAPI, WorkflowAPI wfAPI, EnvironmentAPI envAPI, String targetGroupCode, 
                   String targetGroupId, String workflowName, String workflowSource, String csvFilePath)
   {
@@ -108,11 +81,53 @@ public class WFThread extends Thread
       mergedWorkflowProperties = mergeWorkflowProperties(existingWorkflowProperties, incomingWorkflowProperties);
       writeWorkflowPropertiesToWorkflowObject(workflowObject, mergedWorkflowProperties);
 
+      Map<String, Object> params = new HashMap<>();
+      Iterator<String> keys = jsonObject.keys();
+
+      /**
+       * WorkflowPojo
+       * private Long mWorkflowId;
+       * private String mWorkflowName;
+       * private String mWorkflowType;
+       * private String mGroup;
+       * private String mSubgroup;
+       * private String mDescription;
+       * private Boolean mIsActive;
+       * private Long mActiveVersionId;
+       * private String mActiveVersionName;
+       * private List<PluginOperationPojo> mPluginOperations = new ArrayList<PluginOperationPojo>();
+       * private String mSourceCodeURL;
+       * private String mSourceCode;
+       * private List<PropertyDefinitionPojo> mProperties;
+       * 
+       */
+      while(keys.hasNext()) 
+      {
+          String key = keys.next();
+          if (jsonObject.get(key) instanceof JSONArray) 
+          {
+            JSONArray array = jsonObject.getJSONArray(key);
+            Map<String, Object> subParams = new HashMap<>();
+            for (int i = 0; i < array.length; i++)
+            {
+              JSONObject innerJsonObject = array.getJSONObject(i);
+              Iterator<String> innerKeys = innerJsonObject.keys();
+              while (innerKeys.hasNext())
+              {
+                String innerKey = innerKeys.next();
+                subParams.put(innerKey, innerJsonObject.get(innerKey).toString());
+              }
+            }
+            params.put(key, subParams);
+          }
+          else 
+          {
+            params.put(key, jsonObject.get(key).toString());
+          }
+      }
+      
       String workflowId = workflowObject.get("workflowId").toString();
-      ObjectMapper mapper = new ObjectMapper()
-        .registerModule(JSONObjectSerializer.toModule())
-        .writerWithDefaultPrettyPrinter();
-      String payloadString = mapper.writeValueAsString(workflowObject);
+      String payloadString = new ObjectMapper().writeValueAsString(params);
       wfAPI.updateWorkflowById(workflowId, payloadString);
     }
     catch (Exception ex)
