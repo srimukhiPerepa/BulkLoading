@@ -20,8 +20,6 @@ import java.util.logging.*;
 import java.util.stream.*;
 import java.io.*;
 
-import org.codehaus.jackson.map.ObjectMapper;
-
 public class WFThread extends Thread
 {
   private final String CLZ_NAM = WFThread.class.getName();
@@ -75,58 +73,8 @@ public class WFThread extends Thread
       List<PropertyDefinitionPojo> incomingWorkflowProperties = readAndProcessCSV(lines);
       mergedWorkflowProperties = mergeWorkflowProperties(existingWorkflowProperties, incomingWorkflowProperties);
       writeWorkflowPropertiesToWorkflowObject(workflowObject, mergedWorkflowProperties);
-
-      Map<String, Object> params = new HashMap<>();
-      Iterator<String> keys = workflowObject.keys();
-
-      /**
-       * WorkflowPojo
-       * private Long mWorkflowId;
-       * private String mWorkflowName;
-       * private String mWorkflowType;
-       * private String mGroup;
-       * private String mSubgroup;
-       * private String mDescription;
-       * private Boolean mIsActive;
-       * private Long mActiveVersionId;
-       * private String mActiveVersionName;
-       * private List<PluginOperationPojo> mPluginOperations = new ArrayList<PluginOperationPojo>();
-       * private String mSourceCodeURL;
-       * private String mSourceCode;
-       * private List<PropertyDefinitionPojo> mProperties;
-       * 
-       */
-      // while(keys.hasNext()) 
-      // {
-      //     String key = keys.next();
-      //     if (workflowObject.get(key) instanceof JSONArray) 
-      //     {
-      //       JSONArray array = workflowObject.getJSONArray(key);
-      //       Map<String, Object> subParams = new HashMap<>();
-      //       for (int i = 0; i < array.length(); i++)
-      //       {
-      //         JSONObject innerJsonObject = array.getJSONObject(i);
-      //         Iterator<String> innerKeys = innerJsonObject.keys();
-      //         while (innerKeys.hasNext())
-      //         {
-      //           String innerKey = innerKeys.next();
-      //           subParams.put(innerKey, innerJsonObject.get(innerKey).toString());
-      //         }
-      //       }
-      //       params.put(key, subParams);
-      //     }
-      //     else 
-      //     {
-      //       params.put(key, workflowObject.get(key).toString());
-      //     }
-      // }
-
-      // for (Map.Entry<String, Object> entry : params.entrySet()) {
-      //   System.out.println("params: " + entry.getKey() + ":" + entry.getValue().toString());
-      // }
       
       String workflowId = workflowObject.get("workflowId").toString();
-      // String payloadString = new ObjectMapper().writeValueAsString(params);
       wfAPI.updateWorkflowById(workflowId, workflowObject.toString());
     }
     catch (Exception ex)
