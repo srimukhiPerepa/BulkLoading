@@ -80,7 +80,8 @@ public class WFThread extends Thread
       writeWorkflowPropertiesToWorkflowObject(workflowObject, mergedWorkflowProperties);
 
       String workflowId = workflowObject.get("workflowId").toString();
-      wfAPI.updateWorkflowById(workflowId, workflowObject.toString());
+      String payloadString = new org.codehaus.jackson.map.ObjectMapper().writeValueAsString(workflowObject);
+      wfAPI.updateWorkflowById(workflowId, payloadString);
     }
     catch (Exception ex)
     {
