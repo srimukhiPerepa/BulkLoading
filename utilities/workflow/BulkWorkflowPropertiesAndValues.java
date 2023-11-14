@@ -91,7 +91,7 @@ public class BulkWorkflowPropertiesAndValues
 
     if (tg.exception != null)
     {
-      throw tg.exception;
+      throw new Exception(tg.exception.getMessage());
     }
 
     targetGroupId = tg.targetGroupId;
@@ -104,14 +104,14 @@ public class BulkWorkflowPropertiesAndValues
 
     if (cs.exception != null)
     {
-      throw cs.exception;
+      throw new Exception(cs.exception.getMessage());
     }
 
     wf.join();
 
     if (wf.exception != null)
     {
-      throw wf.exception;
+      throw new Exception(wf.exception.getMessage());
     }
 
     localCredStoreId = cs.localCredStoreId;
