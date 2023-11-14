@@ -96,33 +96,37 @@ public class WFThread extends Thread
        * private List<PropertyDefinitionPojo> mProperties;
        * 
        */
-      while(keys.hasNext()) 
-      {
-          String key = keys.next();
-          if (workflowObject.get(key) instanceof JSONArray) 
-          {
-            JSONArray array = workflowObject.getJSONArray(key);
-            Map<String, Object> subParams = new HashMap<>();
-            for (int i = 0; i < array.length(); i++)
-            {
-              JSONObject innerJsonObject = array.getJSONObject(i);
-              Iterator<String> innerKeys = innerJsonObject.keys();
-              while (innerKeys.hasNext())
-              {
-                String innerKey = innerKeys.next();
-                subParams.put(innerKey, innerJsonObject.get(innerKey).toString());
-              }
-            }
-            params.put(key, subParams);
-          }
-          else 
-          {
-            params.put(key, workflowObject.get(key).toString());
-          }
-      }
+      // while(keys.hasNext()) 
+      // {
+      //     String key = keys.next();
+      //     if (workflowObject.get(key) instanceof JSONArray) 
+      //     {
+      //       JSONArray array = workflowObject.getJSONArray(key);
+      //       Map<String, Object> subParams = new HashMap<>();
+      //       for (int i = 0; i < array.length(); i++)
+      //       {
+      //         JSONObject innerJsonObject = array.getJSONObject(i);
+      //         Iterator<String> innerKeys = innerJsonObject.keys();
+      //         while (innerKeys.hasNext())
+      //         {
+      //           String innerKey = innerKeys.next();
+      //           subParams.put(innerKey, innerJsonObject.get(innerKey).toString());
+      //         }
+      //       }
+      //       params.put(key, subParams);
+      //     }
+      //     else 
+      //     {
+      //       params.put(key, workflowObject.get(key).toString());
+      //     }
+      // }
+
+      // for (Map.Entry<String, Object> entry : params.entrySet()) {
+      //   System.out.println("params: " + entry.getKey() + ":" + entry.getValue().toString());
+      // }
       
       String workflowId = workflowObject.get("workflowId").toString();
-      String payloadString = new ObjectMapper().writeValueAsString(params);
+      // String payloadString = new ObjectMapper().writeValueAsString(params);
       wfAPI.updateWorkflowById(workflowId, payloadString);
     }
     catch (Exception ex)
