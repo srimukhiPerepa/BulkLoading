@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="Unicode"?>
+<ns0:WorkFlow xmlns:ns1="http://flexagon.com/flexdeploy/workflow/common" xmlns:ns0="http://flexagon.com/flexdeploy/workflow">
+   <ns1:Name>OIC Package Deploy Solutions</ns1:Name>
+   <ns1:Description>Package deploy is separate for SG and MG as both needs to maintain separate properties</ns1:Description>
+   <ns0:Inputs>
+      <ns0:Variable>
+         <ns1:Name>AD_OIC_UPD_CONNECTIONS</ns1:Name>
+         <ns1:Type>String</ns1:Type>
+         <ns0:returnAsOutput>false</ns0:returnAsOutput>
+         <ns1:isConstant>false</ns1:isConstant>
+         <ns1:InitialValue>NONE</ns1:InitialValue>
+         <ns1:DisplayName>Update Connection Mode</ns1:DisplayName>
+         <ns1:Required>true</ns1:Required>
+         <ns1:ListData>ALL,NONE,SPECIFIC</ns1:ListData>
+         <ns1:Multiselect>false</ns1:Multiselect>
+      </ns0:Variable>
+      <ns0:Variable>
+         <ns1:Name>AD_OIC_CONNECITON_LIST</ns1:Name>
+         <ns1:Type>String</ns1:Type>
+         <ns0:returnAsOutput>false</ns0:returnAsOutput>
+         <ns1:isConstant>false</ns1:isConstant>
+         <ns1:DisplayName>Connection list</ns1:DisplayName>
+      </ns0:Variable>
+   </ns0:Inputs>
+   <ns0:Steps>
+      <ns0:Step>
+         <ns1:Name>Missing Connection Ids for SPECIFIC mode</ns1:Name>
+         <ns1:StepId>1</ns1:StepId>
+         <ns0:If>
+            <ns0:Condition>
+               <ns0:Expression>AD_OIC_UPD_CONNECTIONS.equals(&quot;SPECIFIC&quot;) &amp;&amp; (AD_OIC_CONNECITON_LIST == null || AD_OIC_CONNECITON_LIST.trim().equals(&quot;&quot;))</ns0:Expression>
+            </ns0:Condition>
+            <ns0:Steps>
+               <ns0:Step>
+                  <ns1:Name>RaiseFault</ns1:Name>
+                  <ns1:StepId>1.1</ns1:StepId>
+                  <ns0:RaiseFault>
+                     <ns0:FaultName>SPECIFIC</ns0:FaultName>
+                     <ns0:FaultDetail>When mode is SPECIFIC, connection ids are required</ns0:FaultDetail>
+                  </ns0:RaiseFault>
+               </ns0:Step>
+            </ns0:Steps>
+         </ns0:If>
+      </ns0:Step>
+      <ns0:Step>
+         <ns1:Name>Copy connectionPlan</ns1:Name>
+         <ns1:StepId>2</ns1:StepId>
+         <ns0:InvokePlugin>
+            <ns0:PluginName>FlexagonFilePlugin</ns0:PluginName>
+            <ns0:PluginOperation>copy</ns0:PluginOperation>
+            <ns0:EndpointInstanceOverrideExpression>false</ns0:EndpointInstanceOverrideExpression>
+            <ns0:InvokePluginTypeVersion>v2</ns0:InvokePluginTypeVersion>
+            <ns0:consumesArtifacts>true</ns0:consumesArtifacts>
+            <ns0:producesArtifacts>false</ns0:producesArtifacts>
+            <ns0:EndpointSelection>
+               <ns0:EndpointSelectionChoice>All</ns0:EndpointSelectionChoice>
+            </ns0:EndpointSelection>
+            <ns0:EndpointExecutionChoice>Any</ns0:EndpointExecutionChoice>
+            <ns0:PluginInputs>
+               <ns0:PluginInput>
+                  <ns0:Name>FDFILE_INP_FILE_FILTER</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+                  <ns0:Text>*.properties</ns0:Text>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDFILE_INP_FILE_FILTER_EXCLUDED</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDFILE_INP_SOURCE_PATH</ns0:Name>
+                  <ns0:ValueType>Expression</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+                  <ns0:Value>
+                     <ns0:Expression>FD_ARTIFACTS_DIR</ns0:Expression>
+                  </ns0:Value>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDFILE_INP_TARGET_PATH</ns0:Name>
+                  <ns0:ValueType>Expression</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+                  <ns0:Value>
+                     <ns0:Expression>FD_TEMP_DIR</ns0:Expression>
+                  </ns0:Value>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDFILE_INP_CLEAN_DIRECTORY</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>Boolean</ns1:Type>
+                  <ns0:Text>false</ns0:Text>
+               </ns0:PluginInput>
+            </ns0:PluginInputs>
+            <ns0:UserInputs/>
+            <ns0:PluginOutputs/>
+            <ns0:UserOutputs/>
+         </ns0:InvokePlugin>
+      </ns0:Step>
+      <ns0:Step>
+         <ns1:Name>Clone Attachments</ns1:Name>
+         <ns1:StepId>3</ns1:StepId>
+         <ns0:InvokePlugin>
+            <ns0:PluginName>FlexagonGITPlugin</ns0:PluginName>
+            <ns0:PluginOperation>clone</ns0:PluginOperation>
+            <ns0:EndpointInstanceOverrideExpression>false</ns0:EndpointInstanceOverrideExpression>
+            <ns0:InvokePluginTypeVersion>v2</ns0:InvokePluginTypeVersion>
+            <ns0:consumesArtifacts>false</ns0:consumesArtifacts>
+            <ns0:producesArtifacts>false</ns0:producesArtifacts>
+            <ns0:EndpointSelection>
+               <ns0:EndpointSelectionChoice>All</ns0:EndpointSelectionChoice>
+            </ns0:EndpointSelection>
+            <ns0:EndpointExecutionChoice>Any</ns0:EndpointExecutionChoice>
+            <ns0:PluginInputs>
+               <ns0:PluginInput>
+                  <ns0:Name>FDGIT_INP_INSTANCE_CODE</ns0:Name>
+                  <ns0:ValueType>Expression</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+                  <ns0:Value>
+                     <ns0:Expression>FDBLD_GIT_SOURCE1_INSTANCE</ns0:Expression>
+                  </ns0:Value>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDGIT_INP_DEST_SUBFOLDER</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDGIT_INP_BRANCH</ns0:Name>
+                  <ns0:ValueType>Expression</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+                  <ns0:Value>
+                     <ns0:Expression>FDBLD_STREAM_NAME</ns0:Expression>
+                  </ns0:Value>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDGIT_INP_DEPTH</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>Integer</ns1:Type>
+                  <ns0:Text></ns0:Text>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDGIT_INP_SPARSE_CHECKOUT_FOLDERS</ns0:Name>
+                  <ns0:ValueType>Expression</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+                  <ns0:Value>
+                     <ns0:Expression>&quot;/OIC/ConnectionAttachmentsOverride/&quot; + FD_ENVIRONMENT_CODE + &quot;/attachments,OIC/ConnectionAttachmentsOverride/GLOBAL/attachments&quot;</ns0:Expression>
+                  </ns0:Value>
+               </ns0:PluginInput>
+            </ns0:PluginInputs>
+            <ns0:UserInputs/>
+            <ns0:PluginOutputs/>
+            <ns0:UserOutputs/>
+         </ns0:InvokePlugin>
+      </ns0:Step>
+      <ns0:Step>
+         <ns1:Name>Attachments</ns1:Name>
+         <ns1:StepId>4</ns1:StepId>
+         <ns0:InvokePlugin>
+            <ns0:PluginName>FlexagonShellPlugin</ns0:PluginName>
+            <ns0:PluginOperation>execute</ns0:PluginOperation>
+            <ns0:EndpointInstanceOverrideExpression>false</ns0:EndpointInstanceOverrideExpression>
+            <ns0:InvokePluginTypeVersion>v2</ns0:InvokePluginTypeVersion>
+            <ns0:consumesArtifacts>false</ns0:consumesArtifacts>
+            <ns0:producesArtifacts>false</ns0:producesArtifacts>
+            <ns0:EndpointSelection>
+               <ns0:EndpointSelectionChoice>All</ns0:EndpointSelectionChoice>
+            </ns0:EndpointSelection>
+            <ns0:EndpointExecutionChoice>Any</ns0:EndpointExecutionChoice>
+            <ns0:PluginInputs>
+               <ns0:PluginInput>
+                  <ns0:Name>FDSHELL_INP_CODE_SNIPPET</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+                  <ns0:Text>GBL_SRC_DIR=$FD_TEMP_DIR/OIC/ConnectionAttachmentsOverride/GLOBAL
+ENV_SRC_DIR=$FD_TEMP_DIR/OIC/ConnectionAttachmentsOverride/$FD_ENVIRONMENT_CODE
+DST_DIR=$FD_TEMP_DIR/OIC_Attachments
+
+mkdir -p $DST_DIR
+if [ -d $GBL_SRC_DIR ]
+then
+        cp -r $GBL_SRC_DIR/* $DST_DIR
+fi
+
+if [ -d $ENV_SRC_DIR ]
+then
+        cp -r $ENV_SRC_DIR/* $DST_DIR
+fi
+
+cd $DST_DIR
+MULTIPLE_FILES_FOR_CONNECTION_ID=$(find . -type f | cut -f1-3 -d&quot;/&quot; | sort | uniq -c | grep -v &quot; 1 &quot; | wc -l)
+if [ $MULTIPLE_FILES_FOR_CONNECTION_ID -gt 0 ]
+then
+        echo &quot;Multiple files found for single connection/property in $DST_DIR&quot;
+        exit 99
+fi</ns0:Text>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDSHELL_INP_STOP_ON_ERROR</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>Boolean</ns1:Type>
+                  <ns0:Text>false</ns0:Text>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDSHELL_INP_DISABLE_ECHO</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>Boolean</ns1:Type>
+                  <ns0:Text>false</ns0:Text>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDSHELL_INP_RESTRICT_ENVIRONMENT</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDSHELL_INP_NO_SECURE_VARIABLES</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>Boolean</ns1:Type>
+                  <ns0:Text>false</ns0:Text>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDSHELL_INP_LOCK</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+               </ns0:PluginInput>
+            </ns0:PluginInputs>
+            <ns0:UserInputs/>
+            <ns0:PluginOutputs/>
+            <ns0:UserOutputs/>
+         </ns0:InvokePlugin>
+      </ns0:Step>
+      <ns0:Step>
+         <ns1:Name>packageDeploy</ns1:Name>
+         <ns1:StepId>5</ns1:StepId>
+         <ns0:InvokePlugin>
+            <ns0:PluginName>FlexagonOICPlugin</ns0:PluginName>
+            <ns0:PluginOperation>packageDeploy</ns0:PluginOperation>
+            <ns0:EndpointInstanceOverrideExpression>false</ns0:EndpointInstanceOverrideExpression>
+            <ns0:InvokePluginTypeVersion>v2</ns0:InvokePluginTypeVersion>
+            <ns0:consumesArtifacts>true</ns0:consumesArtifacts>
+            <ns0:producesArtifacts>false</ns0:producesArtifacts>
+            <ns0:EndpointSelection>
+               <ns0:EndpointSelectionChoice>All</ns0:EndpointSelectionChoice>
+            </ns0:EndpointSelection>
+            <ns0:EndpointExecutionChoice>Any</ns0:EndpointExecutionChoice>
+            <ns0:PluginInputs>
+               <ns0:PluginInput>
+                  <ns0:Name>FDOIC_INP_CLOUD_ACCOUNT_CODE</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDOIC_INP_REPLACE_INTEGRATION</ns0:Name>
+                  <ns0:ValueType>Expression</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>Boolean</ns1:Type>
+                  <ns0:Value>
+                     <ns0:Expression>true</ns0:Expression>
+                  </ns0:Value>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDOIC_INP_CONNECTION_PLAN</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDOIC_INP_PARTIAL_DEPLOY_DELAY</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>Integer</ns1:Type>
+                  <ns0:Text>0</ns0:Text>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDOIC_INP_UPDATE_CONNECTION_MODE</ns0:Name>
+                  <ns0:ValueType>Expression</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+                  <ns0:Value>
+                     <ns0:Expression>AD_OIC_UPD_CONNECTIONS</ns0:Expression>
+                  </ns0:Value>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDOIC_INP_UPDATE_CONNECTION_LIST</ns0:Name>
+                  <ns0:ValueType>Expression</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+                  <ns0:Value>
+                     <ns0:Expression>AD_OIC_CONNECITON_LIST</ns0:Expression>
+                  </ns0:Value>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDOIC_INP_ATTACHMENT_OVERRIDE_DIRECTORY</ns0:Name>
+                  <ns0:ValueType>Expression</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>String</ns1:Type>
+                  <ns0:Value>
+                     <ns0:Expression>&quot;${FD_TEMP_DIR}/OIC_Attachments&quot;</ns0:Expression>
+                  </ns0:Value>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDOIC_INP_START_SCHEDULES</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>Boolean</ns1:Type>
+                  <ns0:Text>true</ns0:Text>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDOIC_INP_ENABLE_TRACING</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>Boolean</ns1:Type>
+                  <ns0:Text>true</ns0:Text>
+               </ns0:PluginInput>
+               <ns0:PluginInput>
+                  <ns0:Name>FDOIC_INP_ENABLE_PAYLOAD_TRACING</ns0:Name>
+                  <ns0:ValueType>Text</ns0:ValueType>
+                  <ns0:Encrypted>false</ns0:Encrypted>
+                  <ns1:Type>Boolean</ns1:Type>
+                  <ns0:Text>true</ns0:Text>
+               </ns0:PluginInput>
+            </ns0:PluginInputs>
+            <ns0:UserInputs/>
+            <ns0:PluginOutputs/>
+            <ns0:UserOutputs/>
+         </ns0:InvokePlugin>
+      </ns0:Step>
+   </ns0:Steps>
+</ns0:WorkFlow>

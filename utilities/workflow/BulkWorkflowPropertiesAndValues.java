@@ -11,6 +11,7 @@ import pojo.CredentialScopeEnum;
 import threads.*;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
+import flexagon.ff.common.core.utils.FlexCommonUtils;
 import flexagon.ff.common.core.logging.FlexLogger;
  
 import org.json.JSONObject;
@@ -73,6 +74,8 @@ public class BulkWorkflowPropertiesAndValues
     TARGET_GROUP_CODE = args[4];
     INPUT_CSV_FILE_PATH = args[5];
     WORKFLOW_SOURCE = args[6];
+
+    validate();
 
     wfAPI = new WorkflowAPI(BASE_URL, USERNAME, PASSWORD);
     envAPI = new EnvironmentAPI(BASE_URL, USERNAME, PASSWORD);
@@ -222,6 +225,27 @@ public class BulkWorkflowPropertiesAndValues
         tAPI.patchTargetById(environmentId, targetGroupId, patchRequestBody.toString());
       }
     }
+  }
+
+  private static void validate()
+    throws Exception
+  {
+    final String methodName = "validate";
+    LOGGER.entering(CLZ_NAM, methodName);
+
+    if (FlexCommonUtils.isEmpty(BASE_URL) || FlexCommonUtils.isEmpty(USERNAME) || FlexCommonUtils.isEmpty(PASSWORD) || FlexCommonUtils.isEmpty(WORKFLOW_NAME)
+        || FlexCommonUtils.isEmpty(TARGET_GROUP_CODE) || FlexCommonUtils.isEmpty(INPUT_CSV_FILE_PATH) || FlexCommonUtils.isEmpty(WORKFLOW_SOURCE))
+    {
+      throw new RuntimeException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, TARGET_GROUP_CODE, INPUT_CSV_FILE_PATH, and WORKFLOW_SOURCE cannot be empty");
+    }
+    
+    // WORKFLOW_SOURCE cannot have ` special character or will fail
+    if (WORKFLOW_SOURCE.contains("`"))
+    {
+      throw new RuntimeException("WORKFLOW_SOURCE cannot contain the special character `");
+    }
+
+    LOGGER.exiting(CLZ_NAM, methodName);
   }
 
   /**
