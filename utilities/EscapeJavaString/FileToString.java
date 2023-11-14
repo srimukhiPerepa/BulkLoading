@@ -1,6 +1,15 @@
 import java.io.*;
 import org.apache.commons.text.StringEscapeUtils;
  
+/**
+ * Usage:
+ * 1. Put your Workflow XML source in Source.xml file
+ * 2. Compile from this directory
+ *    javac -cp ".;./commons-lang3-3.13.0.jar;./commons-text-1.11.0.jar" FileToString.java
+ * 3. Execute from this directory
+ *    java -cp ".;./commons-lang3-3.13.0.jar;./commons-text-1.11.0.jar" FileToString
+ * 4. out.xml will now have a single line escaped string that can be used with Update Workflow API
+ */
 public class FileToString 
 {
   public static void main(String[] args)
