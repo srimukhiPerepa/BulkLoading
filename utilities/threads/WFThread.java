@@ -127,7 +127,7 @@ public class WFThread extends Thread
       
       String workflowId = workflowObject.get("workflowId").toString();
       // String payloadString = new ObjectMapper().writeValueAsString(params);
-      wfAPI.updateWorkflowById(workflowId, payloadString);
+      wfAPI.updateWorkflowById(workflowId, workflowObject.toString());
     }
     catch (Exception ex)
     {
