@@ -15,15 +15,8 @@ import flexagon.ff.common.core.utils.FlexFileUtils;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.logging.*;
-
+import java.util.*;
 import java.io.*;
-import java.util.stream.*;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -82,7 +75,7 @@ public class WFThread extends Thread
       writeWorkflowPropertiesToWorkflowObject(workflowObject, mergedWorkflowProperties);
 
       Map<String, Object> params = new HashMap<>();
-      Iterator<String> keys = jsonObject.keys();
+      Iterator<String> keys = workflowObject.keys();
 
       /**
        * WorkflowPojo
@@ -104,9 +97,9 @@ public class WFThread extends Thread
       while(keys.hasNext()) 
       {
           String key = keys.next();
-          if (jsonObject.get(key) instanceof JSONArray) 
+          if (workflowObject.get(key) instanceof JSONArray) 
           {
-            JSONArray array = jsonObject.getJSONArray(key);
+            JSONArray array = workflowObject.getJSONArray(key);
             Map<String, Object> subParams = new HashMap<>();
             for (int i = 0; i < array.length; i++)
             {
@@ -122,7 +115,7 @@ public class WFThread extends Thread
           }
           else 
           {
-            params.put(key, jsonObject.get(key).toString());
+            params.put(key, workflowObject.get(key).toString());
           }
       }
       
