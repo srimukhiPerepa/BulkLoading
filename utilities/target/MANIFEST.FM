@@ -32,4 +32,5 @@ Class-Path: ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/webapps/flexdeploy/WEB
    ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/commons-el.jar
    ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/commons-io-2.11.0.jar
    ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/jackson-mapper-lgpl-1.9.13.jar
+   ${{FLEXDEPLOY_HOME}}/apache-tomcat-flexdeploy/lib/jackson-core-lgpl-1.9.13.jar
 Main-Class: workflow.BulkWorkflowPropertiesAndValues
