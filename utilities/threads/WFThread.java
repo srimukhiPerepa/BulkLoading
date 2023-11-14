@@ -103,7 +103,7 @@ public class WFThread extends Thread
           {
             JSONArray array = workflowObject.getJSONArray(key);
             Map<String, Object> subParams = new HashMap<>();
-            for (int i = 0; i < array.length; i++)
+            for (int i = 0; i < array.length(); i++)
             {
               JSONObject innerJsonObject = array.getJSONObject(i);
               Iterator<String> innerKeys = innerJsonObject.keys();
