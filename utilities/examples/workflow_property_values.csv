@@ -3,3 +3,4 @@ FDBULK_TEST_STRING,Test String,ENVINST,true,String,false,2,100,,,,,,true,DummyDe
 FDBULK_TEST_BOOLEAN,Test Boolean,ENVINST,true,Boolean,false,,,,,,,,true,,false,false,true
 FDBULK_TEST_INTEGER,Test Integer,ENVINST,false,Integer,false,,,,,,,,true,,
 FDBULK_TEST_DOUBLE,Test Double,ENVINST,false,Double,false,,,,,,,,true,,1.1,2.1,3.1
+FDBULK_TEST_ENCRYPT,Test String Encrypted,ENVINST,false,String,true,,,,,,,,true,,X,Y,Z
