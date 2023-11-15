@@ -198,7 +198,6 @@ public class BulkWorkflowPropertiesAndValues
         continue;
       }
 
-      LOGGER.info("Patching target property " + name + " (encrypted=" + isEncrypted + ") - " + (index++) + " of " + total);
       for (String environmentCode : targetEnvironmentCodes)
       {
         String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
@@ -211,10 +210,17 @@ public class BulkWorkflowPropertiesAndValues
         if (isEncrypted)
         {
           String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
+          // If credential is not CSV then credentialName will not be a key in credentialNameToId map
+          if (!credentialNameToId.containsKey(credentialName))
+          {
+            continue;
+          }
+          LOGGER.info("Patching target property " + name + " (credential) - " + (index++) + " of " + total);
           property.put("credentialId", credentialNameToId.get(credentialName));
         }
         else 
         {
+          LOGGER.info("Patching target property " + name + " - " + (index++) + " of " + total);
           property.put("propertyValue", targetValue);
         }
         propertiesArray.put(property);
