@@ -273,7 +273,7 @@ public class PropertyKeyDefinitionDataObject
     return object;
   }
 
-  public PropertyKeyDefinitionDataObject fromJson(JSONObject pJson)
+  public static PropertyKeyDefinitionDataObject fromJson(JSONObject pJson)
     throws FlexCheckedException
   {
     final String methodName = "fromJson";
@@ -283,8 +283,8 @@ public class PropertyKeyDefinitionDataObject
     String displayName = pJson.getString("displayName");
     String description = pJson.getString("description");
     String subDataType = pJson.getString("propertyKeySubDatatype");
-    Integer minValue = pJson.getInt("minValue");
-    Integer maxValue = pJson.getInt("maxValue");
+    Long minValue = pJson.getLong("minValue");
+    Long maxValue = pJson.getLong("maxValue");
     String listData = pJson.getString("listData");
     Boolean isMultiselect = pJson.getBoolean("isMultiselect");
     Integer displayRows = pJson.getInt("displayRows");
@@ -315,7 +315,7 @@ public class PropertyKeyDefinitionDataObject
     propertyKeyDef.setDisplayColumns(displayColumns);
     propertyKeyDef.setValidator1(validator1);
     propertyKeyDef.setDefaultValue(defaultValue);
-    propertyKeyDef.setIsDefaultExpression(isDefaultValueExpression);
+    propertyKeyDef.setIsDefaultExpression(isDefaultExpression);
     propertyKeyDef.setLength(length);
 
     LOGGER.exiting(CLZ_NAM, methodName, propertyKeyDef);

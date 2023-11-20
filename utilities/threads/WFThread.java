@@ -64,7 +64,7 @@ public class WFThread extends Thread
       JSONObject propertySetObject = validateWorkflowPropertySetArray(propertySetArray);
       String propertySetId = propertySetObject.get("propertySetId").toString();
 
-      JSONArray propertySetKeyDefsJSONArray = workflowObject.getJSONArray("propertySetKeyDefs");
+      JSONArray propertySetKeyDefsJSONArray = propertySetObject.getJSONArray("propertySetKeyDefs");
       List<PropertySetKeyDefDataObject> existingPropertySetKeyDefs = PropertySetKeyDefDataObject.convertJSONArrayToObjects(propertySetKeyDefsJSONArray);
 
       File csv = new File(csvFilePath);
@@ -81,14 +81,14 @@ public class WFThread extends Thread
         {
           // create
           JSONObject requestBody = propKeyDef.toJson();
-          pAPI.createPropertyKeyDefinition(requestBody);
+          pAPI.createPropertyKeyDefinition(requestBody.toString());
         }
         else
         {
           // patch
           String propertyKeyDefinitionId = propKeyDef.getPropertyDefinitionId().toString();
           JSONObject requestBody = propKeyDef.toJson();
-          pAPI.patchPropertyKeyDefinitionById(propertyKeyDefinitionId, requestBody);
+          pAPI.patchPropertyKeyDefinitionById(propertyKeyDefinitionId, requestBody.toString());
         }
       }
 
@@ -188,7 +188,7 @@ public class WFThread extends Thread
       String isDefaultExpression = tokens[18];
       String length = tokens[19];
 
-      PropertyKeyDefinitionDataObject pojo = PropertyKeyDefinitionDataObject();
+      PropertyKeyDefinitionDataObject pojo = new PropertyKeyDefinitionDataObject();
       // required excluding propertyDefinitionId
       pojo.setPropertyKeyName(propertyKeyName);
       pojo.setPropertyScope(propertyScope);
