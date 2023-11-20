@@ -91,7 +91,7 @@ public class WFThread extends Thread
           JSONObject response = pAPI.createPropertyKeyDefinition(requestBody.toString());
           // update mergedPropertyKeyDefinitions
           mergedPropertyKeyDefinitions.add(PropertyKeyDefinitionDataObject.fromJson(response));
-          propertyKeyDef.setPropertyDefinitionId(response.getLong("propertyDefinitionId"));
+          propKeyDef.setPropertyDefinitionId(response.getLong("propertyDefinitionId"));
         }
         else
         {
@@ -101,7 +101,7 @@ public class WFThread extends Thread
           pAPI.patchPropertyKeyDefinitionById(propertyKeyDefinitionId, requestBody.toString());
           // update mergedPropertyKeyDefinitions
           mergedPropertyKeyDefinitions.set(index - 2, propKeyDef);
-          propertyKeyDef.setPropertyDefinitionId(Long.valueOf(propertyKeyDefinitionId));
+          propKeyDef.setPropertyDefinitionId(Long.valueOf(propertyKeyDefinitionId));
         }
 
         // update propertyKeyDefinitionId for incomingPropertyKeyDefinitions

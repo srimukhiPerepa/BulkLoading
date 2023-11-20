@@ -86,8 +86,6 @@ public class PropertySetKeyDefDataObject
       if (!(o instanceof PropertySetKeyDefDataObject))
           return false;
       PropertySetKeyDefDataObject other = (PropertySetKeyDefDataObject) o;
-      System.out.println(this);
-      System.out.println(other);
       return Long.compare(this.mPropertySetId, other.mPropertySetId) == 0 && Long.compare(this.mPropertyDefinitionId, other.mPropertyDefinitionId) == 0;
   }
 
