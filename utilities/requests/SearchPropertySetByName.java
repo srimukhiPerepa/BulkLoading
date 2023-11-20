@@ -25,7 +25,7 @@ public class SearchPropertySetByName
   public Map<String, Object> getQueryParams()
   {
     Map<String, Object> params = new HashMap<>();
-    params.put("propertyKeyName", mName);
+    params.put("propertySetName", mName);
     return params;
   }
 
