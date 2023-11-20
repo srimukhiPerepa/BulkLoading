@@ -211,11 +211,11 @@ public class WFThread extends Thread
       {
         pojo.setPropertyKeySubDatatype(propertyKeySubDataType);
       }
-      if (minValue != null)
+      if (FlexCommonUtils.isNotEmpty(minValue))
       {
         pojo.setMinValue(Long.valueOf(minValue));
       }
-      if (maxValue != null)
+      if (FlexCommonUtils.isNotEmpty(maxValue))
       {
         pojo.setMaxValue(Long.valueOf(maxValue));
       }
@@ -223,15 +223,15 @@ public class WFThread extends Thread
       {
         pojo.setListData(listData);
       }
-      if (isMultiselect != null)
+      if (FlexCommonUtils.isNotEmpty(isMultiselect))
       {
         pojo.setIsMultiselect(Boolean.valueOf(isMultiselect));
       }
-      if (displayRows != null)
+      if (FlexCommonUtils.isNotEmpty(displayRows))
       {
         pojo.setDisplayRows(Integer.valueOf(displayRows));
       }
-      if (displayColumns != null)
+      if (FlexCommonUtils.isNotEmpty(displayColumns))
       {
         pojo.setDisplayColumns(Integer.valueOf(displayColumns));
       }
@@ -243,11 +243,11 @@ public class WFThread extends Thread
       {
         pojo.setDefaultValue(defaultValue);
       }
-      if (isDefaultExpression != null)
+      if (FlexCommonUtils.isNotEmpty(isDefaultExpression))
       {
         pojo.setIsDefaultExpression(Boolean.valueOf(isDefaultExpression));
       }
-      if (length != null)
+      if (FlexCommonUtils.isNotEmpty(length))
       {
         pojo.setLength(Long.valueOf(length));
       }
