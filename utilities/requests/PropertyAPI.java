@@ -85,7 +85,7 @@ public class PropertyAPI
     PatchPropertyKeyDefinitionById pkd = new PatchPropertyKeyDefinitionById();
     pkd.setId(pPropertyKeyDefinitionId);
     pkd.setJson(pJSONRequestBody);
-    FlexRESTClientResponse response = getClient().put(ups);
+    FlexRESTClientResponse response = getClient().put(pkd);
 
     LOGGER.exiting(CLZ_NAM, methodName);
   }

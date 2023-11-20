@@ -93,8 +93,8 @@ public class WFThread extends Thread
         }
       }
 
-      writeWorkflowPropertySetKeyDefs(propertySetObject, mergeWorkflowPropertySets(existingPropertySetKeyDefs, incomingPropertyKeyDefinitions));
-      pAPI.updatePropertySetById(propertySetId, propertySetObject);
+      writeWorkflowPropertySetKeyDefs(propertySetObject, mergeWorkflowPropertySets(propertySetId, existingPropertySetKeyDefs, incomingPropertyKeyDefinitions));
+      pAPI.updatePropertySetById(propertySetId, propertySetObject.toString());
     }
     catch (Exception ex)
     {
@@ -338,10 +338,10 @@ public class WFThread extends Thread
   /**
    * Merge both lists with incomingWorkflowProperties taking precedence if there are duplicates
    */
-  private List<PropertySetKeyDefDataObject> mergeWorkflowPropertySets(Long propertySetId, List<PropertySetKeyDefDataObject> existing, List<PropertyKeyDefinitionDataObject> incoming)
+  private List<PropertySetKeyDefDataObject> mergeWorkflowPropertySets(String propertySetId, List<PropertySetKeyDefDataObject> existing, List<PropertyKeyDefinitionDataObject> incoming)
   {
     final String methodName = "mergeWorkflowPropertySets";
-    LOGGER.entering(CLZ_NAM, methodName, new Object[]{existing, incoming});
+    LOGGER.entering(CLZ_NAM, methodName, new Object[]{propertySetId, existing, incoming});
 
     List<PropertySetKeyDefDataObject> merged = new ArrayList<>(existing);
     for (int i = 0; i < incoming.size(); i++)
@@ -364,7 +364,7 @@ public class WFThread extends Thread
       }
 
       PropertySetKeyDefDataObject tempPropSetKey = new PropertySetKeyDefDataObject();
-      tempPropSetKey.setPropertySetId(propertySetId);
+      tempPropSetKey.setPropertySetId(Long.valueOf(propertySetId));
       tempPropSetKey.setPropertyDefinitionId(propKeyDefPojo.getPropertyDefinitionId());
 
       int index = merged.indexOf(tempPropSetKey);
