@@ -82,7 +82,9 @@ public class WFThread extends Thread
         {
           // create
           JSONObject requestBody = propKeyDef.toJson();
-          pAPI.createPropertyKeyDefinition(requestBody.toString());
+          JSONObject response = pAPI.createPropertyKeyDefinition(requestBody.toString());
+          // set propertyDefinitionId
+          propKeyDef.setPropertyDefinitionId(response.getLong("propertyDefinitionId"));
         }
         else
         {
