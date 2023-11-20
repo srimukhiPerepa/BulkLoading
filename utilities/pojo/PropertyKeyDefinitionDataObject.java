@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class PropertyKeyDefinitionDataObject
-  extends FlexDataObject
 {
   private static final String CLZ_NAM = PropertyKeyDefinitionDataObject.class.getName();
   private static final Logger LOGGER = Logger.getGlobal();
@@ -284,12 +283,12 @@ public class PropertyKeyDefinitionDataObject
     String displayName = pJson.getString("displayName");
     String description = pJson.getString("description");
     String subDataType = pJson.getString("propertyKeySubDatatype");
-    Integer minValue = pJson.getInteger("minValue");
-    Integer maxValue = pJson.getInteger("maxValue");
+    Integer minValue = pJson.getInt("minValue");
+    Integer maxValue = pJson.getInt("maxValue");
     String listData = pJson.getString("listData");
     Boolean isMultiselect = pJson.getBoolean("isMultiselect");
-    Integer displayRows = pJson.getInteger("displayRows");
-    Integer displayColumns = pJson.getInteger("displayColumns");
+    Integer displayRows = pJson.getInt("displayRows");
+    Integer displayColumns = pJson.getInt("displayColumns");
     String validator1 = pJson.getString("validator1");
     String defaultValue = pJson.getString("defaultValue");
     Boolean isDefaultExpression = pJson.getBoolean("isDefaultExpression");

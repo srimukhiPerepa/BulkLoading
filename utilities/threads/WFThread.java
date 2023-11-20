@@ -5,6 +5,7 @@ import requests.PropertyAPI;
 import requests.EnvironmentAPI;
 
 import pojo.PropertyKeyDefinitionDataObject;
+import pojo.PropertySetKeyDefDataObject;
 
 import threads.*;
 
@@ -271,7 +272,7 @@ public class WFThread extends Thread
 
       if (FlexCommonUtils.isNotEmpty(propertyKeySubDataType) && !(subDataType.equals("DIRECTORY") || subDataType.equals("JDBCURL") || subDataType.equals("URL")))
       {
-        errors.add("Line " + i + " SUB_DATA_TYPE must be DIRECTORY, JDBCURL or URL");
+        errors.add("Line " + i + " PROPERTY_KEY_SUB_DATA_TYPE must be DIRECTORY, JDBCURL or URL");
       }
     }
     LOGGER.finest("codeToValue mapping: " + codeToValue);

@@ -9,6 +9,7 @@ import requests.CreatePropertyKeyDefinition;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
+import flexagon.ff.common.core.utils.FlexJsonUtils;
  
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -35,9 +36,9 @@ public class PropertyAPI
 
     SearchPropertySetByName sps = new SearchPropertySetByName();
     sps.setName(pWorkflowName);
-    FlexRESTClientResponse response = getClient().get(sw);
+    FlexRESTClientResponse response = getClient().get(sps);
 
-    JSONObject jsonObject = response.getResponseObject(String.class);
+    JSONObject jsonObject = new JSONObject(response.getResponseObject(String.class));
     JSONArray items = jsonObject.getJSONArray("items");
     
     LOGGER.exiting(CLZ_NAM, methodName, items);
@@ -54,7 +55,7 @@ public class PropertyAPI
     spkd.setName(pPropertyKeyName);
     FlexRESTClientResponse response = getClient().get(spkd);
 
-    JSONObject jsonObject = response.getResponseObject(String.class);
+    JSONObject jsonObject = new JSONObject(response.getResponseObject(String.class));
     JSONArray items = jsonObject.getJSONArray("items");
     
     LOGGER.exiting(CLZ_NAM, methodName, items);
