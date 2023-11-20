@@ -333,7 +333,7 @@ public class PropertyKeyDefinitionDataObject
     {
       JSONObject object = pJsonArr.getJSONObject(i);
       PropertyKeyDefinitionDataObject propertyKeyDef = fromJson(object);
-      results.add(propertyDef);
+      results.add(propertyKeyDef);
     }
 
     LOGGER.exiting(CLZ_NAM, methodName, results.size());
