@@ -6,6 +6,7 @@ import requests.EnvironmentAPI;
 
 import pojo.PropertyKeyDefinitionDataObject;
 import pojo.PropertySetKeyDefDataObject;
+import pojo.PropertyTypeEnum;
 
 import threads.*;
 
@@ -205,8 +206,8 @@ public class WFThread extends Thread
       pojo.setMaxValue(Long.valueOf(maxValue));
       pojo.setListData(listData);
       pojo.setIsMultiselect(Boolean.valueOf(isMultiselect));
-      pojo.setDisplayRows(Long.valueOf(displayRows));
-      pojo.setDisplayColumns(Long.valueOf(displayColumns));
+      pojo.setDisplayRows(Integer.valueOf(displayRows));
+      pojo.setDisplayColumns(Integer.valueOf(displayColumns));
       pojo.setValidator1(validator1);
       pojo.setDefaultValue(defaultValue);
       pojo.setIsDefaultExpression(Boolean.valueOf(isDefaultExpression));
@@ -270,7 +271,7 @@ public class WFThread extends Thread
         errors.add("Line " + i + " is missing PROPERTY_KEY_DATA_TYPE");
       }
 
-      if (FlexCommonUtils.isNotEmpty(propertyKeySubDataType) && !(subDataType.equals("DIRECTORY") || subDataType.equals("JDBCURL") || subDataType.equals("URL")))
+      if (FlexCommonUtils.isNotEmpty(propertyKeySubDataType) && !(propertyKeySubDataType.equals("DIRECTORY") || propertyKeySubDataType.equals("JDBCURL") || propertyKeySubDataType.equals("URL")))
       {
         errors.add("Line " + i + " PROPERTY_KEY_SUB_DATA_TYPE must be DIRECTORY, JDBCURL or URL");
       }
@@ -349,14 +350,14 @@ public class WFThread extends Thread
       // Keep track of the workflow properties which are encrypted and store in credentialNameToValue
       if (propKeyDefPojo.getIsEncrypted())
       {
-        String name = propKeyDefPojo.getName().trim();
+        String name = propKeyDefPojo.getPropertyKeyName().trim();
         if (name.endsWith("_"))
         {
           name = name.substring(0, name.length() - 1);
         }
         for (String environmentCode: targetEnvironmentCodes)
         {
-          String key = propKeyDefPojo.getName() + environmentCode;
+          String key = propKeyDefPojo.getPropertyKeyName() + environmentCode;
           String credentialName = String.format("%s_%s_%s", name, targetGroupCode, environmentCode);
           credentialNameToValue.put(credentialName, codeToValue.get(key));
         }
