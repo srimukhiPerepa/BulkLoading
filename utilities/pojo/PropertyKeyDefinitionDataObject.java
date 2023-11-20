@@ -362,7 +362,7 @@ public class PropertyKeyDefinitionDataObject
       if (!(o instanceof PropertyKeyDefinitionDataObject))
           return false;
       PropertyKeyDefinitionDataObject other = (PropertyKeyDefinitionDataObject) o;
-      return Long.compare(this.getPropertyDefinitionId(), other.getPropertyDefinitionId()) == 0;
+      return Long.compare(this.mPropertyDefinitionId, other.mPropertyDefinitionId) == 0;
   }
 
   @Override
