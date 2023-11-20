@@ -125,10 +125,10 @@ public class WFThread extends Thread
     }
 
     JSONObject wfObject = pJsonArray.getJSONObject(0);
-    String propertyKeyName = wfObject.getString("propertyKeyName");
-    if (!workflowName.equals(propertyKeyName))
+    String propertySetName = wfObject.getString("propertySetName");
+    if (!workflowName.equals(propertySetName))
     {
-      throw new FlexCheckedException("Workflow Name " + workflowName + " does not exactly match propertyKeyName " + propertyKeyName);
+      throw new FlexCheckedException("Workflow Name " + workflowName + " does not exactly match propertySetName " + propertySetName);
     }
 
 
