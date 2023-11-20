@@ -102,7 +102,7 @@ public class WFThread extends Thread
           mergedPropertyKeyDefinitions.set(index - 2, propKeyDef);
         }
 
-        // update propertyKeyDefinition for incomingPropertyKeyDefinitions
+        // update propertyKeyDefinitionId for incomingPropertyKeyDefinitions
         incomingPropertyKeyDefinitions.set(index - 2, propKeyDef);
       }
 
