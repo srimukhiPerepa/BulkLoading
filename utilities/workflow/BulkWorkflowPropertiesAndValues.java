@@ -1,11 +1,11 @@
 package workflow;
 
-import requests.WorkflowAPI;
+import requests.PropertyAPI;
 import requests.CredentialAPI;
 import requests.EnvironmentAPI;
 import requests.TargetAPI;
 
-import pojo.PropertyDefinitionPojo;
+import pojo.PropertyKeyDefinitionDataObject;
 import pojo.CredentialScopeEnum;
 
 import threads.*;
@@ -49,7 +49,7 @@ public class BulkWorkflowPropertiesAndValues
   private static Map<String, String> environmentCodeToEnvironmentId;
   private static Map<String, String> credentialNameToId = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential id
 
-  private static WorkflowAPI wfAPI;
+  private static PropertyAPI pAPI;
   private static EnvironmentAPI envAPI;
   private static CredentialAPI credAPI;
   private static TargetAPI tAPI;
@@ -63,9 +63,9 @@ public class BulkWorkflowPropertiesAndValues
 		LOGGER.setLevel(Level.ALL);
 		LOGGER.setUseParentHandlers(false);
 
-    if (args == null || args.length < 7)
+    if (args == null || args.length < 6)
     {
-      throw new IllegalArgumentException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, TARGET_GROUP_CODE, INPUT_CSV_FILE_PATH, and WORKFLOW_SOURCE must be passed as arguments.");
+      throw new IllegalArgumentException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, TARGET_GROUP_CODE and INPUT_CSV_FILE_PATH must be passed as arguments.");
     }
     BASE_URL = args[0];
     USERNAME = args[1];
@@ -73,11 +73,10 @@ public class BulkWorkflowPropertiesAndValues
     WORKFLOW_NAME = args[3];
     TARGET_GROUP_CODE = args[4];
     INPUT_CSV_FILE_PATH = args[5];
-    WORKFLOW_SOURCE = args[6];
 
     validate();
 
-    wfAPI = new WorkflowAPI(BASE_URL, USERNAME, PASSWORD);
+    pAPI = new PropertyAPI(BASE_URL, USERNAME, PASSWORD);
     envAPI = new EnvironmentAPI(BASE_URL, USERNAME, PASSWORD);
     credAPI =  new CredentialAPI(BASE_URL, USERNAME, PASSWORD);
     tAPI = new TargetAPI(BASE_URL, USERNAME, PASSWORD);
@@ -101,7 +100,7 @@ public class BulkWorkflowPropertiesAndValues
     LOGGER.fine("Target Group Id: " + targetGroupId);
 
     // WFThread depends on tg thread to complete
-    WFThread wf = new WFThread(tAPI, wfAPI, envAPI, TARGET_GROUP_CODE, targetGroupId, WORKFLOW_NAME, WORKFLOW_SOURCE, INPUT_CSV_FILE_PATH);
+    WFThread wf = new WFThread(tAPI, pAPI, envAPI, TARGET_GROUP_CODE, targetGroupId, WORKFLOW_NAME, WORKFLOW_SOURCE, INPUT_CSV_FILE_PATH);
     wf.start();
     cs.join();
 
@@ -185,42 +184,43 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
     index = 1;
-    total = wf.mergedWorkflowProperties.size();
-    for (PropertyDefinitionPojo prop : wf.mergedWorkflowProperties)
+    total = wf.incomingPropertyKeyDefinitions.size();
+    for (PropertyKeyDefinitionDataObject prop : wf.incomingPropertyKeyDefinitions)
     {
+      String propertyKeyName = prop.getPropertyKeyName();
+      String scope = prop.getPropertyScope();
       boolean isEncrypted = prop.getIsEncrypted();
-      String name = prop.getName();
-      String scope = prop.getScope();
+
 
       if (!"ENVINST".equals(scope))
       {
-        LOGGER.info("Skipping " + scope + " property " + name + " - " + (index++) + " of " + total);
+        LOGGER.info("Skipping " + scope + " property " + propertyKeyName + " - " + (index++) + " of " + total);
         continue;
       }
 
       for (String environmentCode : targetEnvironmentCodes)
       {
         String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
-        String targetValue = codeToValue.get(name + environmentCode);
+        String targetValue = codeToValue.get(propertyKeyName + environmentCode);
 
         JSONArray propertiesArray = new JSONArray();
         JSONObject property = new JSONObject();
-        property.put("propertyName", name);
+        property.put("propertyName", propertyKeyName);
 
         if (isEncrypted)
         {
-          String credentialName = String.format("%s_%s_%s", name, TARGET_GROUP_CODE, environmentCode);
+          String credentialName = String.format("%s_%s_%s", propertyKeyName, TARGET_GROUP_CODE, environmentCode);
           // If credential is not CSV then credentialName will not be a key in credentialNameToId map
           if (!credentialNameToId.containsKey(credentialName))
           {
             continue;
           }
-          LOGGER.info("Patching target property " + name + " (credential) - " + (index++) + " of " + total);
+          LOGGER.info("Patching target property " + propertyKeyName + " (credential) - " + (index++) + " of " + total);
           property.put("credentialId", credentialNameToId.get(credentialName));
         }
         else 
         {
-          LOGGER.info("Patching target property " + name + " - " + (index++) + " of " + total);
+          LOGGER.info("Patching target property " + propertyKeyName + " - " + (index++) + " of " + total);
           property.put("propertyValue", targetValue);
         }
         propertiesArray.put(property);
@@ -240,15 +240,9 @@ public class BulkWorkflowPropertiesAndValues
     LOGGER.entering(CLZ_NAM, methodName);
 
     if (FlexCommonUtils.isEmpty(BASE_URL) || FlexCommonUtils.isEmpty(USERNAME) || FlexCommonUtils.isEmpty(PASSWORD) || FlexCommonUtils.isEmpty(WORKFLOW_NAME)
-        || FlexCommonUtils.isEmpty(TARGET_GROUP_CODE) || FlexCommonUtils.isEmpty(INPUT_CSV_FILE_PATH) || FlexCommonUtils.isEmpty(WORKFLOW_SOURCE))
+        || FlexCommonUtils.isEmpty(TARGET_GROUP_CODE) || FlexCommonUtils.isEmpty(INPUT_CSV_FILE_PATH))
     {
-      throw new RuntimeException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, TARGET_GROUP_CODE, INPUT_CSV_FILE_PATH, and WORKFLOW_SOURCE cannot be empty");
-    }
-    
-    // WORKFLOW_SOURCE cannot have ` special character or will fail
-    if (WORKFLOW_SOURCE.contains("`"))
-    {
-      throw new RuntimeException("WORKFLOW_SOURCE cannot contain the special character `");
+      throw new RuntimeException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, TARGET_GROUP_CODE and INPUT_CSV_FILE_PATH cannot be empty");
     }
 
     LOGGER.exiting(CLZ_NAM, methodName);
