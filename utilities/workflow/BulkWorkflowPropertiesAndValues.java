@@ -100,7 +100,7 @@ public class BulkWorkflowPropertiesAndValues
     LOGGER.fine("Target Group Id: " + targetGroupId);
 
     // WFThread depends on tg thread to complete
-    WFThread wf = new WFThread(tAPI, pAPI, envAPI, TARGET_GROUP_CODE, targetGroupId, WORKFLOW_NAME, WORKFLOW_SOURCE, INPUT_CSV_FILE_PATH);
+    WFThread wf = new WFThread(tAPI, pAPI, envAPI, TARGET_GROUP_CODE, targetGroupId, WORKFLOW_NAME, INPUT_CSV_FILE_PATH);
     wf.start();
     cs.join();
 

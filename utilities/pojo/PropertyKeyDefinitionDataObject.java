@@ -299,9 +299,9 @@ public class PropertyKeyDefinitionDataObject
     propertyKeyDef.setPropertyKeyName(pJson.getString("propertyKeyName"));
     propertyKeyDef.setPropertyScope(pJson.getString("propertyScope"));
     propertyKeyDef.setPropertyKeyDatatype(PropertyTypeEnum.valueOf(pJson.getString("propertyKeyDataType")));
-    propertyKeyDef.setIsRequired(isRequired);
-    propertyKeyDef.setIsEncrypted(isEncrypted);
-    propertyKeyDef.setIsActive(isActive);
+    propertyKeyDef.setIsRequired(Boolean.valueOf(pJson.getString("isRequired")));
+    propertyKeyDef.setIsEncrypted(Boolean.valueOf(pJson.getString("isEncrypted")));
+    propertyKeyDef.setIsActive(Boolean.valueOf(pJson.getString("isActive")));
 
     // optional
     propertyKeyDef.setDisplayName(displayName);
