@@ -98,6 +98,7 @@ public class WFThread extends Thread
     }
     catch (Exception ex)
     {
+      ex.printStackTrace();
       exception = ex;
     }
 
@@ -130,7 +131,6 @@ public class WFThread extends Thread
     {
       throw new FlexCheckedException("Workflow Name " + workflowName + " does not exactly match propertySetName " + propertySetName);
     }
-
 
     LOGGER.exiting(CLZ_NAM, methodName, wfObject);
     return wfObject;
@@ -199,19 +199,58 @@ public class WFThread extends Thread
       pojo.setIsActive(Boolean.valueOf(isActive));
 
       // optional
-      pojo.setDisplayName(displayName);
-      pojo.setDescription(description);
-      pojo.setPropertyKeySubDatatype(propertyKeySubDataType);
-      pojo.setMinValue(Long.valueOf(minValue));
-      pojo.setMaxValue(Long.valueOf(maxValue));
-      pojo.setListData(listData);
-      pojo.setIsMultiselect(Boolean.valueOf(isMultiselect));
-      pojo.setDisplayRows(Integer.valueOf(displayRows));
-      pojo.setDisplayColumns(Integer.valueOf(displayColumns));
-      pojo.setValidator1(validator1);
-      pojo.setDefaultValue(defaultValue);
-      pojo.setIsDefaultExpression(Boolean.valueOf(isDefaultExpression));
-      pojo.setLength(Long.valueOf(length));
+      if (displayName != null)
+      {
+        pojo.setDisplayName(displayName);
+      }
+      if (description != null)
+      {
+        pojo.setDescription(description);
+      }
+      if (propertyKeySubDataType != null)
+      {
+        pojo.setPropertyKeySubDatatype(propertyKeySubDataType);
+      }
+      if (minValue != null)
+      {
+        pojo.setMinValue(Long.valueOf(minValue));
+      }
+      if (maxValue != null)
+      {
+        pojo.setMaxValue(Long.valueOf(maxValue));
+      }
+      if (listData != null)
+      {
+        pojo.setListData(listData);
+      }
+      if (isMultiselect != null)
+      {
+        pojo.setIsMultiselect(Boolean.valueOf(isMultiselect));
+      }
+      if (displayRows != null)
+      {
+        pojo.setDisplayRows(Integer.valueOf(displayRows));
+      }
+      if (displayColumns != null)
+      {
+        pojo.setDisplayColumns(Integer.valueOf(displayColumns));
+      }
+      if (validator1 != null)
+      {
+        pojo.setValidator1(validator1);
+      }
+      if (defaultValue != null)
+      {
+        pojo.setDefaultValue(defaultValue);
+      }
+      if (isDefaultExpression != null)
+      {
+        pojo.setIsDefaultExpression(Boolean.valueOf(isDefaultExpression));
+      }
+      if (length != null)
+      {
+        pojo.setLength(Long.valueOf(length));
+      }
 
       results.add(pojo);
 

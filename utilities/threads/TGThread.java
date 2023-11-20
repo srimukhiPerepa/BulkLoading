@@ -39,6 +39,7 @@ public class TGThread extends Thread
     }
     catch (Exception ex)
     {
+      ex.printStackTrace();
       exception = ex;
     }
 

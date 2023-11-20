@@ -43,6 +43,7 @@ public class CSThread extends Thread
     }
     catch (Exception ex)
     {
+      ex.printStackTrace();
       exception = ex;
     }
 
