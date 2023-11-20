@@ -250,7 +250,7 @@ public class PropertyKeyDefinitionDataObject
     object.put("propertyDefinitionId", mPropertyDefinitionId);
     object.put("propertyKeyName", mPropertyKeyName);
     object.put("propertyScope", mPropertyScope);
-    object.put("propertyKeyDataType", mPropertyKeyDatatype);
+    object.put("propertyKeyDatatype", mPropertyKeyDatatype);
     object.put("isRequired", mIsRequired);
     object.put("isEncrypted", mIsEncrypted);
     object.put("isActive", mIsActive);
@@ -298,7 +298,7 @@ public class PropertyKeyDefinitionDataObject
     propertyKeyDef.setPropertyDefinitionId(pJson.getLong("propertyDefinitionId"));
     propertyKeyDef.setPropertyKeyName(pJson.getString("propertyKeyName"));
     propertyKeyDef.setPropertyScope(pJson.getString("propertyScope"));
-    propertyKeyDef.setPropertyKeyDatatype(PropertyTypeEnum.valueOf(pJson.getString("propertyKeyDataType")));
+    propertyKeyDef.setPropertyKeyDatatype(PropertyTypeEnum.valueOf(pJson.getString("propertyKeyDatatype")));
     propertyKeyDef.setIsRequired(Boolean.valueOf(pJson.getString("isRequired")));
     propertyKeyDef.setIsEncrypted(Boolean.valueOf(pJson.getString("isEncrypted")));
     propertyKeyDef.setIsActive(Boolean.valueOf(pJson.getString("isActive")));
