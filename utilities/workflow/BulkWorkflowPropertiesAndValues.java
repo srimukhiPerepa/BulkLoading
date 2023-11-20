@@ -184,8 +184,8 @@ public class BulkWorkflowPropertiesAndValues
     System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
     index = 1;
-    total = wf.incomingPropertyKeyDefinitions.size();
-    for (PropertyKeyDefinitionDataObject prop : wf.incomingPropertyKeyDefinitions)
+    total = wf.mergedPropertyKeyDefinitions.size();
+    for (PropertyKeyDefinitionDataObject prop : wf.mergedPropertyKeyDefinitions)
     {
       String propertyKeyName = prop.getPropertyKeyName();
       String scope = prop.getPropertyScope();

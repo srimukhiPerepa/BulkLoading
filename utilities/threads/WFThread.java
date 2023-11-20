@@ -38,7 +38,7 @@ public class WFThread extends Thread
 
   // out
   public Exception exception;
-  public List<PropertyKeyDefinitionDataObject> incomingPropertyKeyDefinitions = new ArrayList<>();
+  public List<PropertyKeyDefinitionDataObject> mergedPropertyKeyDefinitions = new ArrayList<>();
   public List<String> targetEnvironmentCodes = new ArrayList<>();
   public Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
   public Map<String, String> credentialNameToValue = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential value
@@ -67,10 +67,16 @@ public class WFThread extends Thread
 
       JSONArray propertySetKeyDefsJSONArray = propertySetObject.getJSONArray("propertySetKeyDefs");
       List<PropertySetKeyDefDataObject> existingPropertySetKeyDefs = PropertySetKeyDefDataObject.convertJSONArrayToObjects(propertySetKeyDefsJSONArray);
+      for (PropertySetKeyDefDataObject propertySet : existingPropertySetKeyDefs)
+      {
+        String propertyDefinitionId = propertySet.getPropertyDefinitionId().toString();
+        JSONObject response = pAPI.getPropertyKeyDefinitionById(propertyDefinitionId);
+        mergedPropertyKeyDefinitions.add(PropertyKeyDefinitionDataObject.fromJson(response));
+      }
 
       File csv = new File(csvFilePath);
       List<String> lines = FlexFileUtils.read(csv);
-      incomingPropertyKeyDefinitions = readAndProcessCSV(lines);
+      List<PropertyKeyDefinitionDataObject> incomingPropertyKeyDefinitions = readAndProcessCSV(lines);
       int index = 1;
       for (PropertyKeyDefinitionDataObject propKeyDef : incomingPropertyKeyDefinitions)
       {
@@ -83,8 +89,8 @@ public class WFThread extends Thread
           // create
           JSONObject requestBody = propKeyDef.toJson();
           JSONObject response = pAPI.createPropertyKeyDefinition(requestBody.toString());
-          // set propertyDefinitionId
-          propKeyDef.setPropertyDefinitionId(response.getLong("propertyDefinitionId"));
+          // update mergedPropertyKeyDefinitions
+          mergedPropertyKeyDefinitions.add(PropertyKeyDefinitionDataObject.fromJson(response));
         }
         else
         {
@@ -92,13 +98,9 @@ public class WFThread extends Thread
           String propertyKeyDefinitionId = searchResult.getJSONObject(0).get("propertyDefinitionId").toString();
           JSONObject requestBody = propKeyDef.toJson();
           pAPI.patchPropertyKeyDefinitionById(propertyKeyDefinitionId, requestBody.toString());
-
-          // set propertyDefinitionId
-          propKeyDef.setPropertyDefinitionId(Long.valueOf(propertyKeyDefinitionId));
+          // update mergedPropertyKeyDefinitions
+          mergedPropertyKeyDefinitions.set(index - 2, propKeyDef);
         }
-
-        // update incomingPropertyKeyDefinitions
-        incomingPropertyKeyDefinitions.set(index - 2, propKeyDef);
       }
 
       writeWorkflowPropertySetKeyDefs(propertySetObject, mergeWorkflowPropertySets(propertySetId, existingPropertySetKeyDefs, incomingPropertyKeyDefinitions));

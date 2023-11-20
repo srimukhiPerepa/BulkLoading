@@ -76,6 +76,20 @@ public class PropertyAPI
     LOGGER.exiting(CLZ_NAM, methodName);
   }
 
+  public JSONObject getPropertyKeyDefinitionById(String pPropertyKeyDefinitionId)
+    throws FlexCheckedException
+  {
+    final String methodName = "getPropertyKeyDefinitionById";
+    LOGGER.entering(CLZ_NAM, methodName, pPropertyKeyDefinitionId);
+
+    GetPropertyKeyDefinitionById gpkd = new GetPropertyKeyDefinitionById();
+    gpkd.setId(pPropertyKeyDefinitionId);
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().put(gpkd));
+
+    LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
+    return jsonObject;
+  }
+
   public void patchPropertyKeyDefinitionById(String pPropertyKeyDefinitionId, String pJSONRequestBody)
     throws FlexCheckedException
   {
