@@ -84,7 +84,8 @@ public class PropertyAPI
 
     GetPropertyKeyDefinitionById gpkd = new GetPropertyKeyDefinitionById();
     gpkd.setId(pPropertyKeyDefinitionId);
-    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().put(gpkd));
+    
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().get(gpkd));
 
     LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
     return jsonObject;
