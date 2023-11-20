@@ -87,7 +87,7 @@ public class WFThread extends Thread
         else
         {
           // patch
-          String propertyKeyDefinitionId = propKeyDef.getPropertyDefinitionId().toString();
+          String propertyKeyDefinitionId = searchResult.get("propertyDefinitionId").toString();
           JSONObject requestBody = propKeyDef.toJson();
           pAPI.patchPropertyKeyDefinitionById(propertyKeyDefinitionId, requestBody.toString());
         }
