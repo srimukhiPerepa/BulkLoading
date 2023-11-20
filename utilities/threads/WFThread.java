@@ -197,7 +197,7 @@ public class WFThread extends Thread
       pojo.setIsRequired(Boolean.valueOf(isRequired));
       pojo.setIsEncrypted(Boolean.valueOf(isEncrypted));
       pojo.setIsActive(Boolean.valueOf(isActive));
-      pojo.setIsAllowsVariant(true); // defaulting to true
+      pojo.setIsAllowsVariant(true); // defaulting to true on create
 
       // optional
       if (displayName != null)

@@ -79,7 +79,8 @@ public class PropertySetKeyDefDataObject
   }
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(Object o) 
+  {
       if (o == this)
           return true;
       if (!(o instanceof PropertySetKeyDefDataObject))
@@ -89,10 +90,17 @@ public class PropertySetKeyDefDataObject
   }
 
   @Override
-  public final int hashCode() {
+  public final int hashCode() 
+  {
       int result = 17;
       result = 31 * result + mPropertySetId.hashCode();
       result = 31 * result + mPropertyDefinitionId.hashCode();
       return result;
+  }
+
+  @Override
+  public String toString() 
+  {
+    return "PropertySetKeyDefDataObject={PropertySetId=" + mPropertySetId + ", PropertyDefinitionId=" + mPropertyDefinitionId + "}";
   }
 }
