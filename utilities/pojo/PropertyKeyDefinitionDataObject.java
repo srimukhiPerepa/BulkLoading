@@ -24,6 +24,7 @@ public class PropertyKeyDefinitionDataObject
   private String mDisplayName;
   private Integer mDisplayRows;
   private Boolean mIsActive;
+  private Boolean mIsAllowsVariant;
   private Boolean mIsDefaultExpression;
   private Boolean mIsEncrypted;
   private Boolean mIsMultiselect;
@@ -111,6 +112,16 @@ public class PropertyKeyDefinitionDataObject
   public void setIsActive(Boolean pIsActive)
   {
     this.mIsActive = pIsActive;
+  }
+
+  public Boolean getIsAllowsVariant()
+  {
+    return this.mIsAllowsVariant;
+  }
+
+  public void setIsAllowsVariant(Boolean pIsAllowsVariant)
+  {
+    this.mIsAllowsVariant = pIsAllowsVariant;
   }
 
   public Boolean getIsDefaultExpression()
@@ -254,6 +265,7 @@ public class PropertyKeyDefinitionDataObject
     object.put("isRequired", mIsRequired);
     object.put("isEncrypted", mIsEncrypted);
     object.put("isActive", mIsActive);
+    object.put("isAllowsVariant", mIsAllowsVariant);
 
     // optional
     object.put("displayName", mDisplayName);
@@ -302,6 +314,8 @@ public class PropertyKeyDefinitionDataObject
     propertyKeyDef.setIsRequired(Boolean.valueOf(pJson.getString("isRequired")));
     propertyKeyDef.setIsEncrypted(Boolean.valueOf(pJson.getString("isEncrypted")));
     propertyKeyDef.setIsActive(Boolean.valueOf(pJson.getString("isActive")));
+    propertyKeyDef.setIsAllowsVariant(Boolean.valueOf(pJson.getString("isAllowsVariant")));
+
 
     // optional
     propertyKeyDef.setDisplayName(displayName);
