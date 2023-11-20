@@ -101,6 +101,9 @@ public class WFThread extends Thread
           // update mergedPropertyKeyDefinitions
           mergedPropertyKeyDefinitions.set(index - 2, propKeyDef);
         }
+
+        // update propertyKeyDefinition for incomingPropertyKeyDefinitions
+        incomingPropertyKeyDefinitions.set(index - 2, propKeyDef);
       }
 
       writeWorkflowPropertySetKeyDefs(propertySetObject, mergeWorkflowPropertySets(propertySetId, existingPropertySetKeyDefs, incomingPropertyKeyDefinitions));
