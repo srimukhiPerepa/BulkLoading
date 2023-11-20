@@ -292,19 +292,12 @@ public class PropertyKeyDefinitionDataObject
     LOGGER.entering(CLZ_NAM, methodName, pJson);
 
     PropertyKeyDefinitionDataObject propertyKeyDef = new PropertyKeyDefinitionDataObject();
-    String displayName = pJson.getString("displayName");
-    String description = pJson.getString("description");
-    String subDataType = pJson.getString("propertyKeySubDatatype");
-    Long minValue = pJson.getLong("minValue");
-    Long maxValue = pJson.getLong("maxValue");
-    String listData = pJson.getString("listData");
-    Boolean isMultiselect = pJson.getBoolean("isMultiselect");
-    Integer displayRows = pJson.getInt("displayRows");
-    Integer displayColumns = pJson.getInt("displayColumns");
-    String validator1 = pJson.getString("validator1");
-    String defaultValue = pJson.getString("defaultValue");
-    Boolean isDefaultExpression = pJson.getBoolean("isDefaultExpression");
-    Long length = pJson.getLong("length");
+    String displayName = pJson.optString("displayName");
+    String description = pJson.optString("description");
+    String subDataType = pJson.optString("propertyKeySubDatatype");
+    String listData = pJson.optString("listData");
+    String validator1 = pJson.optString("validator1");
+    String defaultValue = pJson.optString("defaultValue");
 
     // required
     propertyKeyDef.setPropertyDefinitionId(pJson.getLong("propertyDefinitionId"));
@@ -321,16 +314,38 @@ public class PropertyKeyDefinitionDataObject
     propertyKeyDef.setDisplayName(displayName);
     propertyKeyDef.setDescription(description);
     propertyKeyDef.setPropertyKeySubDatatype(subDataType);
-    propertyKeyDef.setMinValue(minValue);
-    propertyKeyDef.setMaxValue(maxValue);
-    propertyKeyDef.setListData(listData);
-    propertyKeyDef.setIsMultiselect(isMultiselect);
-    propertyKeyDef.setDisplayRows(displayRows);
-    propertyKeyDef.setDisplayColumns(displayColumns);
     propertyKeyDef.setValidator1(validator1);
     propertyKeyDef.setDefaultValue(defaultValue);
-    propertyKeyDef.setIsDefaultExpression(isDefaultExpression);
-    propertyKeyDef.setLength(length);
+
+    if (!pJson.isNull("minValue"))
+    {
+      propertyKeyDef.setMinValue(pJson.getLong("minValue"));
+    }
+    if (!pJson.isNull("maxValue"))
+    {
+      propertyKeyDef.setMaxValue(pJson.getLong("maxValue"));
+    }
+    propertyKeyDef.setListData(listData);
+    if (!pJson.isNull("isMultiselect"))
+    {
+      propertyKeyDef.setIsMultiselect(pJson.getBoolean("isMultiselect"));
+    }
+    if (!pJson.isNull("displayRows"))
+    {
+      propertyKeyDef.setDisplayRows(pJson.getInt("displayRows"));
+    }
+    if (!pJson.isNull("displayColumns"))
+    {
+      propertyKeyDef.setDisplayColumns(pJson.getInt("displayColumns"));
+    }
+    if (!pJson.isNull("isDefaultExpression"))
+    {
+      propertyKeyDef.setIsDefaultExpression(pJson.getBoolean("isDefaultExpression"));
+    }
+    if (!pJson.isNull("length"))
+    {
+      propertyKeyDef.setLength(pJson.getLong("length"));
+    }
 
     LOGGER.exiting(CLZ_NAM, methodName, propertyKeyDef);
     return propertyKeyDef;
