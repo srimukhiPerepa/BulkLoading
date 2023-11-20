@@ -1,6 +1,6 @@
 PROPERTY_KEY_NAME,PROPERTY_SCOPE,PROPERTY_KEY_DATA_TYPE,IS_REQUIRED,IS_ENCRYPTED,IS_ACTIVE,DISPLAY_NAME,DESCRIPTION,PROPERTY_KEY_SUB_DATA_TYPE,MIN_VALUE,MAX_VALUE,LIST_DATA,IS_MULTISELECT,DISPLAY_ROWS,DISPLAY_COLUMNS,VALIDATOR1,DEFAULT_VALUE,IS_DEFAULT_EXPRESSION,LENGTH,DEVELOPMENT,TEST,PROD
-FDBULK_TEST_STRING,ENVINST,String,true,false,true,Test String,Test String Description 1,,,,,,,,,,,,A,B,C
-FDBULK_TEST_BOOLEAN,ENVINST,String,false,false,true,Test Boolean,Test Boolean Description 1,,,,,,,,,,,,false,false,true
-FDBULK_TEST_INTEGER,ENVINST,String,false,false,true,Test Integer,Test Integer Description 1,,,,,,,,,,,,1,2,3
-FDBULK_TEST_DOUBLE,ENVINST,String,false,false,true,Test Double,Test Double Description 1,,,,,,,,,,,,1.1,2.1,3.1
-FDBULK_TEST_ENCRYPT,ENVINST,String,true,true,true,Test Encrypted,Test Encrypted Description 1,,,,,,,,,,,,1.1,2.1,3.1
+FDBULK_TEST_STRING,ENVINST,String,true,false,true,Test String,Test String Description 1,,,,,,,,,,,,,A,B,C
+FDBULK_TEST_BOOLEAN,ENVINST,String,false,false,true,Test Boolean,Test Boolean Description 1,,,,,,,,,,,,,false,false,true
+FDBULK_TEST_INTEGER,ENVINST,String,false,false,true,Test Integer,Test Integer Description 1,,,,,,,,,,,,,1,2,3
+FDBULK_TEST_DOUBLE,ENVINST,String,false,false,true,Test Double,Test Double Description 1,,,,,,,,,,,,,1.1,2.1,3.1
+FDBULK_TEST_ENCRYPT,ENVINST,String,true,true,true,Test Encrypted,Test Encrypted Description 1,,,,,,,,,,,,,1.1,2.1,3.1
