@@ -191,7 +191,6 @@ public class BulkWorkflowPropertiesAndValues
       String scope = prop.getPropertyScope();
       boolean isEncrypted = prop.getIsEncrypted();
 
-
       if (!"ENVINST".equals(scope))
       {
         LOGGER.info("Skipping " + scope + " property " + propertyKeyName + " - " + (index++) + " of " + total);

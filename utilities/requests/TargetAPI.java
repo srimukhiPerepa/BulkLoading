@@ -66,9 +66,10 @@ public class TargetAPI
     UpdateTargetGroupById ut = new UpdateTargetGroupById();
     ut.setId(pTargetGroupId);
     ut.setJson(pJSONRequestBody);
-    FlexRESTClientResponse response = getClient().put(ut);
 
-    LOGGER.exiting(CLZ_NAM, methodName);
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().put(ut));
+
+    LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
   }
 
   public void patchTargetById(String pEnvironmentId, String pTargetGroupId, String pJSONRequestBody)
@@ -81,8 +82,9 @@ public class TargetAPI
     pt.setEnvironmentId(pEnvironmentId);
     pt.setTargetGroupId(pTargetGroupId);
     pt.setJson(pJSONRequestBody);
-    FlexRESTClientResponse response = getClient().patch(pt);
 
-    LOGGER.exiting(CLZ_NAM, methodName);
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().patch(pt));
+
+    LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
   }
 }
