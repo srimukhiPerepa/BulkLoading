@@ -28,7 +28,7 @@ public class CredentialThread extends Thread
 
   // out
   public Exception exception;
-  public Map<String, Long> credentialNameToId = new HashMap<>;
+  public Map<String, Long> credentialNameToId = new HashMap<>();
 
   public CredentialThread(CredentialAPI credAPI, String localCredStoreId, String localCredStoreInputDefId, Map<String, String> credentialNameToValue)
   {

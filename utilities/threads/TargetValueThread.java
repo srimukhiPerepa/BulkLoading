@@ -74,7 +74,7 @@ public class TargetValueThread extends Thread
             String credentialName = String.format("%s_%s_%s", propertyKeyName, TARGET_GROUP_CODE, environmentCode);
             while (credentialNameToId == null)
             {
-              LOGGER.fine("Waiting 3 seconds for credentialNameToId map to populate...")
+              LOGGER.fine("Waiting 3 seconds for credentialNameToId map to populate...");
               Thread.sleep(3);
             }
 
