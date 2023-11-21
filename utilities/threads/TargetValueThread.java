@@ -22,20 +22,24 @@ public class TargetValueThread extends Thread
 
   // in
   private TargetAPI tAPI;
+  private String targetGroupCode;
+  private String targetGroupId;
   private List<PropertyKeyDefinitionDataObject> propertyKeyDefinitions;
   private List<String> targetEnvironmentCodes;
   private Map<String, String> codeToValue; //key is code+environmentCode, value is target property value
   private Map<String, String> credentialNameToValue; //key is credentialName_targetGroupCode_environmentCode, value is credential value
   private Map<String, String> environmentCodeToEnvironmentId;
-  public Map<String, Long> credentialNameToId;
+  public Map<String, String> credentialNameToId;
 
   // out
   public Exception exception;
 
-  public TargetValueThread(TargetAPI tAPI, List<String> targetEnvironmentCodes, Map<String, String> codeToValue, Map<String, String> credentialNameToValue, 
-                          Map<String, String> environmentCodeToEnvironmentId)
+  public TargetValueThread(TargetAPI tAPI, String targetGroupCode, String targetGroupId, List<String> targetEnvironmentCodes, Map<String, String> codeToValue, 
+                          Map<String, String> credentialNameToValue, Map<String, String> environmentCodeToEnvironmentId)
   {
     this.tAPI = tAPI;
+    this.targetGroupCode = targetGroupCode;
+    this.targetGroupId = targetGroupId;
     this.targetEnvironmentCodes = targetEnvironmentCodes;
     this.codeToValue = codeToValue;
     this.credentialNameToValue = credentialNameToValue;
@@ -48,7 +52,7 @@ public class TargetValueThread extends Thread
     {
       int index = 1;
       int total = propertyKeyDefinitions.size() * targetEnvironmentCodes.size();
-      for (PropertyKeyDefinitionDataObject prop : wf.mergedPropertyKeyDefinitions)
+      for (PropertyKeyDefinitionDataObject prop : propertyKeyDefinitions)
       {
         String propertyKeyName = prop.getPropertyKeyName();
         String scope = prop.getPropertyScope();
@@ -71,7 +75,7 @@ public class TargetValueThread extends Thread
 
           if (isEncrypted)
           {
-            String credentialName = String.format("%s_%s_%s", propertyKeyName, TARGET_GROUP_CODE, environmentCode);
+            String credentialName = String.format("%s_%s_%s", propertyKeyName, targetGroupCode, environmentCode);
             while (credentialNameToId == null)
             {
               LOGGER.fine("Waiting 3 seconds for credentialNameToId map to populate...");

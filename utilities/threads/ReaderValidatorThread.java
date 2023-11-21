@@ -12,7 +12,6 @@ import threads.*;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.utils.FlexCommonUtils;
-import flexagon.ff.common.core.utils.FlexFileUtils;
  
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -71,7 +70,7 @@ public class ReaderValidatorThread extends Thread
 
       LOGGER.info("Validating header in CSV file: " + lines.get(0));
       List<String> errors = new ArrayList<>();
-      String[] headers = pLines.get(0).split(",");
+      String[] headers = lines.get(0).split(",");
       // startIdx is the start of ENVIRONMENT_CODE columns - After LENGTH column
       int startIdx = IntStream.range(0, headers.length)
                         .filter(i -> headers[i].toUpperCase().equals("LENGTH"))
@@ -141,11 +140,11 @@ public class ReaderValidatorThread extends Thread
     return wfObject;
   }
 
-  private List<PropertyKeyDefinitionDataObject> readAndProcessCSV(List<String> pLines)
+  private List<PropertyKeyDefinitionDataObject> readAndProcessCSV(int startIdx, List<String> pLines)
     throws FlexCheckedException
   {
     final String methodName = "readAndProcessCSV";
-    LOGGER.entering(CLZ_NAM, methodName, pLines);
+    LOGGER.entering(CLZ_NAM, methodName, startIdx);
 
     List<PropertyKeyDefinitionDataObject> results = new ArrayList<>();
     List<String> errors = new ArrayList<>();
@@ -270,14 +269,14 @@ public class ReaderValidatorThread extends Thread
       // Keep track of the encrypted properties and store value
       if (Boolean.valueOf(isEncrypted))
       {
-        String name = propKeyDefPojo.getPropertyKeyName().trim();
+        String name = propertyKeyName;
         if (name.endsWith("_"))
         {
           name = name.substring(0, name.length() - 1);
         }
         for (String environmentCode: targetEnvironmentCodes)
         {
-          String key = propKeyDefPojo.getPropertyKeyName() + environmentCode;
+          String key = propertyKeyName + environmentCode;
           String credentialName = String.format("%s_%s_%s", name, targetGroupCode, environmentCode);
           credentialNameToValue.put(credentialName, codeToValue.get(key));
         }

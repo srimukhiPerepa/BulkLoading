@@ -1,8 +1,6 @@
 package threads;
 
-import requests.TargetAPI;
 import requests.PropertyAPI;
-import requests.EnvironmentAPI;
 
 import pojo.PropertyKeyDefinitionDataObject;
 import pojo.PropertySetKeyDefDataObject;
@@ -12,7 +10,6 @@ import threads.*;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.utils.FlexCommonUtils;
-import flexagon.ff.common.core.utils.FlexFileUtils;
  
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -33,14 +30,16 @@ public class PropertyThread extends Thread
   private final Logger LOGGER = Logger.getGlobal();
 
   // in
+  private PropertyAPI pAPI;
   private List<PropertyKeyDefinitionDataObject> propertyKeyDefinitions;
   private JSONObject propertySetObject;
 
   // out
   public Exception exception;
 
-  public PropertyThread(List<PropertyKeyDefinitionDataObject> propertyKeyDefinitions, JSONObject propertySetObject)
+  public PropertyThread(PropertyAPI pAPI, List<PropertyKeyDefinitionDataObject> propertyKeyDefinitions, JSONObject propertySetObject)
   {
+    this.pAPI = pAPI;
     this.propertyKeyDefinitions = propertyKeyDefinitions;
     this.propertySetObject = propertySetObject;
   }
@@ -59,9 +58,9 @@ public class PropertyThread extends Thread
                                   .collect(Collectors.toList());
       List<PropertySetKeyDefDataObject> allPropertySetKeyDefs = converted.stream()
                                   .map(json -> {
-                                    Long propertySetId = Long.valueOf(json.get("propertySetId").toString());
+                                    Long propSetId = Long.valueOf(json.get("propertySetId").toString());
                                     Long propertyDefinitionId = Long.valueOf(json.get("propertyDefinitionId").toString());
-                                    return new PropertySetKeyDefDataObject(propertySetId, propertyDefinitionId);
+                                    return new PropertySetKeyDefDataObject(propSetId, propertyDefinitionId);
                                   })
                                   .collect(Collectors.toList());
 
@@ -80,7 +79,7 @@ public class PropertyThread extends Thread
           allPropertySetKeyDefs.add(propertySetKeyDef);
         }
 
-        LOGGER.info("Creating/updating property key definition " + propertyKeyName + " " + (index++) + " of " + incomingPropertyKeyDefinitions.size());
+        LOGGER.info("Creating/updating property key definition " + propertyKeyName + " " + (index++) + " of " + propertyKeyDefinitions.size());
         if (searchResult.length() == 0)
         {
           // create

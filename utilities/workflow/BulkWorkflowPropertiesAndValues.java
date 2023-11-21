@@ -13,6 +13,7 @@ import threads.*;
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.utils.FlexCommonUtils;
 import flexagon.ff.common.core.logging.FlexLogger;
+import flexagon.ff.common.core.utils.FlexFileUtils;
  
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -22,7 +23,6 @@ import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.*;
-import java.util.stream.*;
 
 import java.io.*;
 
@@ -93,7 +93,7 @@ public class BulkWorkflowPropertiesAndValues
       throw new Exception(readerValidatorThread.exception.getMessage());
     }
 
-    PropertyThread propertyThread = new PropertyThread(readerValidatorThread.incomingPropertyKeyDefinitions, readerValidatorThread.propertySetObject);
+    PropertyThread propertyThread = new PropertyThread(pAPI, readerValidatorThread.incomingPropertyKeyDefinitions, readerValidatorThread.propertySetObject);
     propertyThread.start();
     cs.join();
     if (cs.exception != null)
@@ -104,7 +104,7 @@ public class BulkWorkflowPropertiesAndValues
     CredentialThread credentialThread = new CredentialThread(credAPI, cs.localCredStoreId, cs.localCredStoreInputDefId, readerValidatorThread.credentialNameToValue);
     credentialThread.start();
     
-    TargetValueThread targetValueThread = new TargetValueThread(tAPI, readerValidatorThread.targetEnvironmentCodes, readerValidatorThread.codeToValue,
+    TargetValueThread targetValueThread = new TargetValueThread(tAPI, TARGET_GROUP_CODE, tg.targetGroupId, readerValidatorThread.targetEnvironmentCodes, readerValidatorThread.codeToValue,
                                                                 readerValidatorThread.credentialNameToValue, readerValidatorThread.environmentCodeToEnvironmentId);
     credentialThread.start();
     credentialThread.join();

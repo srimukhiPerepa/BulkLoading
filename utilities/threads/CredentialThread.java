@@ -28,7 +28,7 @@ public class CredentialThread extends Thread
 
   // out
   public Exception exception;
-  public Map<String, Long> credentialNameToId = new HashMap<>();
+  public Map<String, String> credentialNameToId = new HashMap<>();
 
   public CredentialThread(CredentialAPI credAPI, String localCredStoreId, String localCredStoreInputDefId, Map<String, String> credentialNameToValue)
   {
@@ -99,4 +99,31 @@ public class CredentialThread extends Thread
 
     LOGGER.info(CLZ_NAM + " completed successfully");
   }
+
+  /**
+   * Validates pJsonArray contains zero or more than one JSONObject(s) and return the JSONObject or null
+   * pJsonArray - Array of JSONObject containing Credentials
+   */
+  private static JSONObject validateCredentialArray(String pCredentialName, JSONArray pJsonArray)
+    throws FlexCheckedException
+  {
+    final String methodName = "validateCredentialArray";
+    LOGGER.entering(CLZ_NAM, methodName, new Object[]{pCredentialName, pJsonArray});
+
+    if (pJsonArray.length() > 1)
+    {
+      throw new FlexCheckedException("More than one credential found with name " + pCredentialName + ". Credential Name must be unique.");
+    }
+
+    if (pJsonArray.length() == 0)
+    {
+      LOGGER.exiting(CLZ_NAM, methodName);
+      return null;
+    }
+
+    JSONObject wfObject = pJsonArray.getJSONObject(0);
+    LOGGER.exiting(CLZ_NAM, methodName, wfObject);
+    return wfObject;
+  }
+}
 }

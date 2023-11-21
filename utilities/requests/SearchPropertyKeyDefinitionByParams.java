@@ -16,16 +16,6 @@ public class SearchPropertyKeyDefinitionByParams
     super();
   }
 
-  public void setLimit(int pLimit)
-  {
-    this.mLimit = pLimit;
-  }
-
-  public void setOffset(int pOffset)
-  {
-    this.mOffset = pOffset;
-  }
-
   public void setQueryParams(Map<String, Object> pParams)
   {
     this.mParams = pParams;

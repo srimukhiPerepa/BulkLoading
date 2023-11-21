@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 import java.util.logging.*;
+import java.util.Map;
 
 public class PropertyAPI
   extends BaseAPI
