@@ -71,7 +71,7 @@ public class BulkWorkflowPropertiesAndValues
     credAPI =  new CredentialAPI(BASE_URL, USERNAME, PASSWORD);
     tAPI = new TargetAPI(BASE_URL, USERNAME, PASSWORD);
 
-    File csv = new File(csvFilePath);
+    File csv = new File(INPUT_CSV_FILE_PATH);
     List<String> lines = FlexFileUtils.read(csv);
 
     TargetGroupThread tg = new TargetGroupThread(tAPI, TARGET_GROUP_CODE);

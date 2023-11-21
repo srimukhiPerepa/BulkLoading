@@ -2,6 +2,8 @@ package threads;
 
 import requests.TargetAPI;
 
+import pojo.*;
+
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
  
 import org.json.JSONObject;

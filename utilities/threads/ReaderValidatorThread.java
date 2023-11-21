@@ -94,7 +94,7 @@ public class ReaderValidatorThread extends Thread
       LOGGER.finest("environmentCodeToEnvironmentId map: " + environmentCodeToEnvironmentId);
 
       LOGGER.info("Validating rest of CSV...");
-      incomingPropertyKeyDefinitions = readAndProcessCSV(lines);
+      incomingPropertyKeyDefinitions = readAndProcessCSV(startIdx, lines);
 
       LOGGER.finest("targetEnvironmentCodes map: " + codeToValue);
       LOGGER.finest("codeToValue map: " + codeToValue);

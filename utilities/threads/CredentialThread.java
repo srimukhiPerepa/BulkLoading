@@ -104,7 +104,7 @@ public class CredentialThread extends Thread
    * Validates pJsonArray contains zero or more than one JSONObject(s) and return the JSONObject or null
    * pJsonArray - Array of JSONObject containing Credentials
    */
-  private static JSONObject validateCredentialArray(String pCredentialName, JSONArray pJsonArray)
+  private JSONObject validateCredentialArray(String pCredentialName, JSONArray pJsonArray)
     throws FlexCheckedException
   {
     final String methodName = "validateCredentialArray";
