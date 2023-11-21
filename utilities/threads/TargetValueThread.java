@@ -5,6 +5,7 @@ import requests.TargetAPI;
 import pojo.*;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
+import flexagon.ff.common.core.utils.FlexCommonUtils;
  
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -93,7 +94,14 @@ public class TargetValueThread extends Thread
             }
             
             LOGGER.info(String.format("Patching target property %s (credential) to environment %s - %d of %d", propertyKeyName, environmentCode, index++, total));
-            property.put("credentialId", credentialNameToId.get(credentialName));
+            String credentialId = credentialNameToId.get(credentialName);
+
+            if (FlexCommonUtils.isEmpty(credentialId))
+            {
+              throw new FlexCheckedException("CredentialId cannot be empty. Check credentialNameToId map for credentialName " + credentialName);
+            }
+
+            property.put("credentialId", credentialId);
           }
           else 
           {

@@ -90,6 +90,8 @@ public class CredentialThread extends Thread
 
         credentialNameToId.put(credentialName, credentialId);
       }
+
+      LOGGER.info("credentialNameToId map: " + credentialNameToId);
     }
     catch (Exception ex)
     {

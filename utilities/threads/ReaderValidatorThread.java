@@ -240,9 +240,9 @@ public class ReaderValidatorThread extends Thread
         pojo.setLength(Long.valueOf(length));
       }
 
-      results.add(pojo);
-
-      // If TARGET property, keep track of propertyKeyName->value for each environment
+      // If TARGET (ENVINST) property, keep track of:
+      //  propertyKeyName->value for each environment
+      //  credentialName->credentialValue for each environment
       if ("ENVINST".equals(propertyScope))
       {
         if (tokens.length < (startIdx + numEnvironments))
@@ -250,9 +250,10 @@ public class ReaderValidatorThread extends Thread
           LOGGER.warning("Line " + i + " is missing target values. Missing values will be set to empty string");
         }
 
+        String key;
         for (int j = 0; j < numEnvironments; j++)
         {
-          String key = propertyKeyName + targetEnvironmentCodes.get(j);
+          key = propertyKeyName + targetEnvironmentCodes.get(j);
           String value = "";
           try
           {
@@ -262,23 +263,16 @@ public class ReaderValidatorThread extends Thread
           {
             //ignore
           }
-          codeToValue.put(key, value);
-        }
-      }
 
-      // Keep track of the encrypted properties and store value
-      if (Boolean.valueOf(isEncrypted))
-      {
-        String name = propertyKeyName;
-        if (name.endsWith("_"))
-        {
-          name = name.substring(0, name.length() - 1);
-        }
-        for (String environmentCode: targetEnvironmentCodes)
-        {
-          String key = propertyKeyName + environmentCode;
-          String credentialName = String.format("%s_%s_%s", name, targetGroupCode, environmentCode);
-          credentialNameToValue.put(credentialName, codeToValue.get(key));
+          if (Boolean.valueOf(isEncrypted))
+          {
+            String credentialName = String.format("%s_%s_%s", propertyKeyName, targetGroupCode, environmentCode);
+            credentialNameToValue.put(credentialName, value);
+          }
+          else
+          {
+            codeToValue.put(key, value);
+          }
         }
       }
 
@@ -316,6 +310,8 @@ public class ReaderValidatorThread extends Thread
       {
         errors.add("Line " + i + " PROPERTY_KEY_SUB_DATA_TYPE must be DIRECTORY, JDBCURL or URL");
       }
+
+      results.add(pojo);
     }
 
     if (errors.size() > 0)
