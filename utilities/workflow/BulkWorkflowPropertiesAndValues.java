@@ -220,7 +220,7 @@ public class BulkWorkflowPropertiesAndValues
         }
         else 
         {
-          LOGGER.info(tring.format("Patching target property %s to environment %s - %d of %d)", propertyKeyName, environmentCode, index++, total));
+          LOGGER.info(String.format("Patching target property %s to environment %s - %d of %d)", propertyKeyName, environmentCode, index++, total));
           property.put("propertyValue", targetValue);
         }
         propertiesArray.put(property);
