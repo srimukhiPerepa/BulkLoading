@@ -162,11 +162,13 @@ public class WFThread extends Thread
 
     String[] headers = pLines.get(0).split(",");
     // startIdx is the start of ENVIRONMENT_CODE columns - After LENGTH column
-    int startIdx = IntStream.range(0, headers.length())
+    int startIdx = IntStream.range(0, headers.length)
                       .filter(i -> headers[i].toUpperCase().equals("LENGTH"))
                       .findFirst()
                       .orElse(headers.length);
     startIdx++;
+    LOGGER.finest("startIdx: " + startIdx);
+
     for (int i = startIdx; i < headers.length; i++)
     {
       String environmentCode = headers[i];
