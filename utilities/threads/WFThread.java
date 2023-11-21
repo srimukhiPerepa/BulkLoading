@@ -161,7 +161,13 @@ public class WFThread extends Thread
     List<String> errors = new ArrayList<>();
 
     String[] headers = pLines.get(0).split(",");
-    for (int i = 20; i < headers.length; i++)
+    // startIdx is the start of ENVIRONMENT_CODE columns - After LENGTH column
+    int startIdx = IntStream.range(0, headers.length())
+                      .filter(i -> headers[i].toUpperCase().equals("LENGTH"))
+                      .findFirst()
+                      .orElse(headers.length);
+    startIdx++;
+    for (int i = startIdx; i < headers.length; i++)
     {
       String environmentCode = headers[i];
       validateEnvironmentCode(environmentCode, errors);
@@ -272,7 +278,7 @@ public class WFThread extends Thread
 
       if ("ENVINST".equals(propertyScope))
       {
-        if (tokens.length < (20 + numEnvironments))
+        if (tokens.length < (startIdx + numEnvironments))
         {
           LOGGER.warning("Line " + i + " is missing target values. Missing values will be set to empty string");
         }
@@ -281,11 +287,10 @@ public class WFThread extends Thread
         for (int j = 0; j < numEnvironments; j++)
         {
           String key = propertyKeyName + targetEnvironmentCodes.get(j);
-          // important to add 20 here which is after LENGTH column
           String value = "";
           try
           {
-            value = tokens[j+20];
+            value = tokens[j+startIdx];
           }
           catch (ArrayIndexOutOfBoundsException aio)
           {
