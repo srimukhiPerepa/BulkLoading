@@ -65,15 +65,16 @@ public class PropertyThread extends Thread
                                   .collect(Collectors.toList());
 
 
-      LOGGER.info("Iterating on incoming property key definitions...");
+      LOGGER.info("Iterating on incoming property key definition(s)...");
       int index = 1;
+      int size = propertyKeyDefinitions.size();
       // This iterates on property key definitions from CSV file
       for (PropertyKeyDefinitionDataObject propKeyDef : propertyKeyDefinitions)
       {
         String propertyKeyName = propKeyDef.getPropertyKeyName();
         JSONArray searchResult = pAPI.findPropertyKeyDefinitionByName(propertyKeyName);
 
-        LOGGER.info("Creating/updating property key definition " + propertyKeyName + " " + (index++) + " of " + propertyKeyDefinitions.size());
+        LOGGER.info("Creating/updating property key definition " + propertyKeyName + " " + (index++) + " of " + size);
         if (searchResult.length() == 0)
         {
           // create
