@@ -36,12 +36,14 @@ public class TargetValueThread extends Thread
   // out
   public Exception exception;
 
-  public TargetValueThread(TargetAPI tAPI, String targetGroupCode, String targetGroupId, List<String> targetEnvironmentCodes, Map<String, String> codeToValue, 
+  public TargetValueThread(TargetAPI tAPI, String targetGroupCode, String targetGroupId, List<PropertyKeyDefinitionDataObject> propertyKeyDefinitions,
+                          List<String> targetEnvironmentCodes, Map<String, String> codeToValue, 
                           Map<String, String> credentialNameToValue, Map<String, String> environmentCodeToEnvironmentId)
   {
     this.tAPI = tAPI;
     this.targetGroupCode = targetGroupCode;
     this.targetGroupId = targetGroupId;
+    this.propertyKeyDefinitions = propertyKeyDefinitions;
     this.targetEnvironmentCodes = targetEnvironmentCodes;
     this.codeToValue = codeToValue;
     this.credentialNameToValue = credentialNameToValue;

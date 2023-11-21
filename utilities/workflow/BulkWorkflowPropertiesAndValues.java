@@ -45,7 +45,7 @@ public class BulkWorkflowPropertiesAndValues
   private static TargetAPI tAPI;
 
   public static void main(String[] args)
-    throws Exception
+    throws Throwable
   {
 		ConsoleHandler consoleHandler = new ConsoleHandler();
 		consoleHandler.setLevel(Level.ALL);
@@ -82,7 +82,7 @@ public class BulkWorkflowPropertiesAndValues
 
     if (targetGroupThread.exception != null)
     {
-      throw new Exception(targetGroupThread.exception.getMessage());
+      throw new RuntimeException(targetGroupThread.exception.getMessage());
     }
 
     // Must complete TargetGroupThread before STARTING ReaderValidatorThread
@@ -91,7 +91,7 @@ public class BulkWorkflowPropertiesAndValues
     readerValidatorThread.join();
     if (readerValidatorThread.exception != null)
     {
-      throw new Exception(readerValidatorThread.exception.getMessage());
+      throw new RuntimeException(readerValidatorThread.exception.getMessage());
     }
 
     // Must complete ReaderValidatorThread before STARTING PropertyThread
@@ -100,7 +100,7 @@ public class BulkWorkflowPropertiesAndValues
     credentialStoreThread.join();
     if (credentialStoreThread.exception != null)
     {
-      throw new Exception(credentialStoreThread.exception.getMessage());
+      throw new RuntimeException(credentialStoreThread.exception.getMessage());
     }
 
     CredentialThread credentialThread = new CredentialThread(credAPI, credentialStoreThread.localCredStoreId, credentialStoreThread.localCredStoreInputDefId, readerValidatorThread.credentialNameToValue);
@@ -109,11 +109,12 @@ public class BulkWorkflowPropertiesAndValues
     propertyThread.join();
     if (propertyThread.exception != null)
     {
-      throw new Exception(propertyThread.exception.getMessage());
+      throw new RuntimeException(propertyThread.exception.getMessage());
     }
 
     // Must complete PropertyThread before STARTING TargetValueThread
-    TargetValueThread targetValueThread = new TargetValueThread(tAPI, TARGET_GROUP_CODE, targetGroupThread.targetGroupId, readerValidatorThread.targetEnvironmentCodes, readerValidatorThread.codeToValue,
+    TargetValueThread targetValueThread = new TargetValueThread(tAPI, TARGET_GROUP_CODE, targetGroupThread.targetGroupId, readerValidatorThread.incomingPropertyKeyDefinitions,
+                                                                readerValidatorThread.targetEnvironmentCodes, readerValidatorThread.codeToValue,
                                                                 readerValidatorThread.credentialNameToValue, readerValidatorThread.environmentCodeToEnvironmentId);
     targetValueThread.start();
 
@@ -121,14 +122,14 @@ public class BulkWorkflowPropertiesAndValues
     credentialThread.join();
     if (credentialThread.exception != null)
     {
-      throw new Exception(credentialThread.exception.getMessage());
+      throw new RuntimeException(credentialThread.exception.getMessage());
     }
 
     targetValueThread.credentialNameToId = credentialThread.credentialNameToId;
     targetValueThread.join();
     if (targetValueThread.exception != null)
     {
-      throw new Exception(targetValueThread.exception.getMessage());
+      throw new RuntimeException(targetValueThread.exception.getMessage());
     }
   }
 
