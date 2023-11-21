@@ -10,9 +10,12 @@ import org.json.JSONArray;
 import java.util.List;
 import java.util.logging.*;
 
-public class TGThread extends Thread
+/**
+ * Thread to retrieve targetGroupId given targetGroupCode
+ */
+public class TargetGroupThread extends Thread
 {
-  private final String CLZ_NAM = TGThread.class.getName();
+  private final String CLZ_NAM = TargetGroupThread.class.getName();
   private final Logger LOGGER = Logger.getGlobal();
 
   // in
@@ -23,7 +26,7 @@ public class TGThread extends Thread
   public Exception exception;
   public String targetGroupId;
 
-  public TGThread(TargetAPI tAPI, String targetGroupCode)
+  public TargetGroupThread(TargetAPI tAPI, String targetGroupCode)
   {
     this.tAPI = tAPI;
     this.targetGroupCode = targetGroupCode;
@@ -36,6 +39,8 @@ public class TGThread extends Thread
       JSONArray targetGroupsArray = tAPI.findTargetGroupByCode(targetGroupCode);
       JSONObject targetGroupObject = parseTargetGroupsArray(targetGroupCode, targetGroupsArray);
       targetGroupId = targetGroupObject.get("targetGroupId").toString();
+
+      LOGGER.info("Target Group Id: " + targetGroupId);
     }
     catch (Exception ex)
     {

@@ -22,7 +22,12 @@ public class PropertySetKeyDefDataObject
 
   public PropertySetKeyDefDataObject()
   {
-    super();
+  }
+
+  public PropertySetKeyDefDataObject(Long pPropertySetId, Long pPropertyDefinitionId)
+  {
+    mPropertySetId = pPropertySetId;
+    mPropertyDefinitionId = pPropertyDefinitionId;
   }
 
   public Long getPropertySetId()

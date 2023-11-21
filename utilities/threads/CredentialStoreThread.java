@@ -12,9 +12,12 @@ import java.util.logging.*;
 
 import java.io.*;
 
-public class CSThread extends Thread
+/**
+ * Thread to retrieve Local Credential store Ids
+ */
+public class CredentialStoreThread extends Thread
 {
-  private final String CLZ_NAM = CSThread.class.getName();
+  private final String CLZ_NAM = CredentialStoreThread.class.getName();
   private final Logger LOGGER = Logger.getGlobal();
 
   // in
@@ -25,7 +28,7 @@ public class CSThread extends Thread
   public String localCredStoreId;
   public String localCredStoreInputDefId;
 
-  public CSThread(CredentialAPI credAPI)
+  public CredentialStoreThread(CredentialAPI credAPI)
   {
     this.credAPI = credAPI;
   }
@@ -40,6 +43,9 @@ public class CSThread extends Thread
       String localCredStoreDefId = localCredentialStoreObject.get("credentialStoreDefId").toString();
       JSONObject localCredStoreProviderObject = credAPI.getLocalCredentialStoreProvider(localCredStoreDefId);
       localCredStoreInputDefId = localCredStoreProviderObject.getJSONArray("credentialStoreInputDefs").getJSONObject(0).get("credentialStoreInputDefId").toString();
+
+      LOGGER.fine("Local Credential Store Id: " + localCredStoreId);
+      LOGGER.fine("Local Credential Store Secret Text Definition Id: " + localCredStoreInputDefId);
     }
     catch (Exception ex)
     {

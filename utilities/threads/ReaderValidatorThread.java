@@ -22,9 +22,13 @@ import java.util.logging.*;
 import java.util.stream.*;
 import java.io.*;
 
-public class WFThread extends Thread
+/**
+ * Thread to read CSV lines and validate each row
+ * Also return helper lists/maps for quick lookup of values. This way CSV is only read once.
+ */
+public class ReaderValidatorThread extends Thread
 {
-  private final String CLZ_NAM = WFThread.class.getName();
+  private final String CLZ_NAM = ReaderValidatorThread.class.getName();
   private final Logger LOGGER = Logger.getGlobal();
 
   // in
@@ -34,18 +38,19 @@ public class WFThread extends Thread
   private String targetGroupCode;
   private String targetGroupId;
   private String workflowName;
-  private String csvFilePath;
+  private List<String> lines;
 
   // out
   public Exception exception;
-  public List<PropertyKeyDefinitionDataObject> mergedPropertyKeyDefinitions = new ArrayList<>();
   public List<String> targetEnvironmentCodes = new ArrayList<>();
   public Map<String, String> codeToValue = new HashMap<>(); //key is code+environmentCode, value is target property value
   public Map<String, String> credentialNameToValue = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential value
   public Map<String, String> environmentCodeToEnvironmentId = new HashMap<>();
+  public List<PropertyKeyDefinitionDataObject> incomingPropertyKeyDefinitions; // PropertyKeyDefinitions only from CSV
+  public JSONObject propertySetObject;
 
-  public WFThread(TargetAPI tAPI, PropertyAPI pAPI, EnvironmentAPI envAPI, String targetGroupCode, 
-                  String targetGroupId, String workflowName, String csvFilePath)
+  public ReaderValidatorThread(TargetAPI tAPI, PropertyAPI pAPI, EnvironmentAPI envAPI, String targetGroupCode, 
+                                String targetGroupId, String workflowName, List<String> lines)
   {
     this.tAPI = tAPI;
     this.pAPI = pAPI;
@@ -53,63 +58,48 @@ public class WFThread extends Thread
     this.targetGroupCode = targetGroupCode;
     this.targetGroupId = targetGroupId;
     this.workflowName = workflowName;
-    this.csvFilePath = csvFilePath;
+    this.lines = lines;
   }
 
   public void run()
   {
     try
     {
-      // Check if property set exists with the passed workflowName
+      LOGGER.info("Valdating workflowName " + workflowName + " points to one and only one PropertySet");
       JSONArray propertySetArray = pAPI.findPropertySetByName(workflowName);
-      JSONObject propertySetObject = validateWorkflowPropertySetArray(propertySetArray);
-      String propertySetId = propertySetObject.get("propertySetId").toString();
+      propertySetObject = validateWorkflowPropertySetArray(propertySetArray);
 
-      JSONArray propertySetKeyDefsJSONArray = propertySetObject.getJSONArray("propertySetKeyDefs");
-      List<PropertySetKeyDefDataObject> existingPropertySetKeyDefs = PropertySetKeyDefDataObject.convertJSONArrayToObjects(propertySetKeyDefsJSONArray);
-      for (PropertySetKeyDefDataObject propertySet : existingPropertySetKeyDefs)
+      LOGGER.info("Validating header in CSV file: " + lines.get(0));
+      List<String> errors = new ArrayList<>();
+      String[] headers = pLines.get(0).split(",");
+      // startIdx is the start of ENVIRONMENT_CODE columns - After LENGTH column
+      int startIdx = IntStream.range(0, headers.length)
+                        .filter(i -> headers[i].toUpperCase().equals("LENGTH"))
+                        .findFirst()
+                        .orElse(headers.length);
+      startIdx++;
+      LOGGER.finest("startIdx: " + startIdx);
+
+      for (int i = startIdx; i < headers.length; i++)
       {
-        String propertyDefinitionId = propertySet.getPropertyDefinitionId().toString();
-        JSONObject response = pAPI.getPropertyKeyDefinitionById(propertyDefinitionId);
-        mergedPropertyKeyDefinitions.add(PropertyKeyDefinitionDataObject.fromJson(response));
+        String environmentCode = headers[i];
+        validateEnvironmentCode(environmentCode, errors);
+        targetEnvironmentCodes.add(environmentCode);
       }
+      validateEnvironmentsMappedToTargetGroup(errors);
 
-      File csv = new File(csvFilePath);
-      List<String> lines = FlexFileUtils.read(csv);
-      List<PropertyKeyDefinitionDataObject> incomingPropertyKeyDefinitions = readAndProcessCSV(lines);
-      int index = 1;
-      for (PropertyKeyDefinitionDataObject propKeyDef : incomingPropertyKeyDefinitions)
+      if (errors.size() > 0)
       {
-        String propertyKeyName = propKeyDef.getPropertyKeyName();
-        JSONArray searchResult = pAPI.findPropertyKeyDefinitionByName(propertyKeyName);
-
-        LOGGER.info("Creating/updating property key definition " + propertyKeyName + " " + (index++) + " of " + incomingPropertyKeyDefinitions.size());
-        if (searchResult.length() == 0)
-        {
-          // create
-          JSONObject requestBody = propKeyDef.toJson();
-          JSONObject response = pAPI.createPropertyKeyDefinition(requestBody.toString());
-          // update mergedPropertyKeyDefinitions
-          mergedPropertyKeyDefinitions.add(PropertyKeyDefinitionDataObject.fromJson(response));
-          propKeyDef.setPropertyDefinitionId(response.getLong("propertyDefinitionId"));
-        }
-        else
-        {
-          // patch
-          String propertyKeyDefinitionId = searchResult.getJSONObject(0).get("propertyDefinitionId").toString();
-          JSONObject requestBody = propKeyDef.toJson();
-          pAPI.patchPropertyKeyDefinitionById(propertyKeyDefinitionId, requestBody.toString());
-          // update mergedPropertyKeyDefinitions
-          mergedPropertyKeyDefinitions.set(index - 2, propKeyDef);
-          propKeyDef.setPropertyDefinitionId(Long.valueOf(propertyKeyDefinitionId));
-        }
-
-        // update propertyKeyDefinitionId for incomingPropertyKeyDefinitions
-        incomingPropertyKeyDefinitions.set(index - 2, propKeyDef);
+        throw new FlexCheckedException(errors.toString());
       }
+      LOGGER.finest("environmentCodeToEnvironmentId map: " + environmentCodeToEnvironmentId);
 
-      writeWorkflowPropertySetKeyDefs(propertySetObject, mergeWorkflowPropertySets(propertySetId, existingPropertySetKeyDefs, incomingPropertyKeyDefinitions));
-      pAPI.updatePropertySetById(propertySetId, propertySetObject.toString());
+      LOGGER.info("Validating rest of CSV...");
+      incomingPropertyKeyDefinitions = readAndProcessCSV(lines);
+
+      LOGGER.finest("targetEnvironmentCodes map: " + codeToValue);
+      LOGGER.finest("codeToValue map: " + codeToValue);
+      LOGGER.finest("credentialNameToValue map: " + credentialNameToValue);
     }
     catch (Exception ex)
     {
@@ -160,30 +150,6 @@ public class WFThread extends Thread
     List<PropertyKeyDefinitionDataObject> results = new ArrayList<>();
     List<String> errors = new ArrayList<>();
 
-    String[] headers = pLines.get(0).split(",");
-    // startIdx is the start of ENVIRONMENT_CODE columns - After LENGTH column
-    int startIdx = IntStream.range(0, headers.length)
-                      .filter(i -> headers[i].toUpperCase().equals("LENGTH"))
-                      .findFirst()
-                      .orElse(headers.length);
-    startIdx++;
-    LOGGER.finest("startIdx: " + startIdx);
-
-    for (int i = startIdx; i < headers.length; i++)
-    {
-      String environmentCode = headers[i];
-      validateEnvironmentCode(environmentCode, errors);
-      targetEnvironmentCodes.add(environmentCode);
-    }
-
-    validateEnvironmentsMappedToTargetGroup(errors);
-
-    if (errors.size() > 0)
-    {
-      throw new FlexCheckedException(errors.toString());
-    }
-    LOGGER.finest("environmentCodeToEnvironmentId map: " + environmentCodeToEnvironmentId);
-
     int numEnvironments = targetEnvironmentCodes.size();
     int numLines = pLines.size();
     for (int i = 1; i < numLines; i++)
@@ -207,10 +173,9 @@ public class WFThread extends Thread
       String displayRows = tokens[13];
       String displayColumns = tokens[14];
       String validator1 = tokens[15];
-      String dataType = tokens[16];
-      String defaultValue = tokens[17];
-      String isDefaultExpression = tokens[18];
-      String length = tokens[19];
+      String defaultValue = tokens[16];
+      String isDefaultExpression = tokens[17];
+      String length = tokens[18];
 
       PropertyKeyDefinitionDataObject pojo = new PropertyKeyDefinitionDataObject();
       // required excluding propertyDefinitionId
@@ -278,6 +243,7 @@ public class WFThread extends Thread
 
       results.add(pojo);
 
+      // If TARGET property, keep track of propertyKeyName->value for each environment
       if ("ENVINST".equals(propertyScope))
       {
         if (tokens.length < (startIdx + numEnvironments))
@@ -285,7 +251,6 @@ public class WFThread extends Thread
           LOGGER.warning("Line " + i + " is missing target values. Missing values will be set to empty string");
         }
 
-        // will only have target property values if scope is ENVINST
         for (int j = 0; j < numEnvironments; j++)
         {
           String key = propertyKeyName + targetEnvironmentCodes.get(j);
@@ -302,11 +267,26 @@ public class WFThread extends Thread
         }
       }
 
+      // Keep track of the encrypted properties and store value
+      if (Boolean.valueOf(isEncrypted))
+      {
+        String name = propKeyDefPojo.getPropertyKeyName().trim();
+        if (name.endsWith("_"))
+        {
+          name = name.substring(0, name.length() - 1);
+        }
+        for (String environmentCode: targetEnvironmentCodes)
+        {
+          String key = propKeyDefPojo.getPropertyKeyName() + environmentCode;
+          String credentialName = String.format("%s_%s_%s", name, targetGroupCode, environmentCode);
+          credentialNameToValue.put(credentialName, codeToValue.get(key));
+        }
+      }
+
       if (FlexCommonUtils.isEmpty(propertyKeyName))
       {
         errors.add("Line " + i + " is missing PROPERTY_KEY_NAME");
       }
-
 
       if (FlexCommonUtils.isEmpty(propertyScope) || !(propertyScope.equals("ENVINST") || propertyScope.equals("PROJECT")))
       {
@@ -338,7 +318,6 @@ public class WFThread extends Thread
         errors.add("Line " + i + " PROPERTY_KEY_SUB_DATA_TYPE must be DIRECTORY, JDBCURL or URL");
       }
     }
-    LOGGER.finest("codeToValue mapping: " + codeToValue);
 
     if (errors.size() > 0)
     {
@@ -393,73 +372,6 @@ public class WFThread extends Thread
         pErrorList.add("Environment " + environmentCode + " is not mapped to target group " + targetGroupCode + " but referenced in CSV file header. Change header in CSV file or map environment to target group");
       }
     }
-
-    LOGGER.exiting(CLZ_NAM, methodName);
-  }
-
-  /**
-   * Merge both lists with incomingWorkflowProperties taking precedence if there are duplicates
-   */
-  private List<PropertySetKeyDefDataObject> mergeWorkflowPropertySets(String propertySetId, List<PropertySetKeyDefDataObject> existing, List<PropertyKeyDefinitionDataObject> incoming)
-  {
-    final String methodName = "mergeWorkflowPropertySets";
-    LOGGER.entering(CLZ_NAM, methodName, new Object[]{propertySetId, existing, incoming});
-
-    List<PropertySetKeyDefDataObject> merged = new ArrayList<>(existing);
-    for (int i = 0; i < incoming.size(); i++)
-    {
-      PropertyKeyDefinitionDataObject propKeyDefPojo = incoming.get(i);
-      // Keep track of the workflow properties which are encrypted and store in credentialNameToValue
-      if (propKeyDefPojo.getIsEncrypted())
-      {
-        String name = propKeyDefPojo.getPropertyKeyName().trim();
-        if (name.endsWith("_"))
-        {
-          name = name.substring(0, name.length() - 1);
-        }
-        for (String environmentCode: targetEnvironmentCodes)
-        {
-          String key = propKeyDefPojo.getPropertyKeyName() + environmentCode;
-          String credentialName = String.format("%s_%s_%s", name, targetGroupCode, environmentCode);
-          credentialNameToValue.put(credentialName, codeToValue.get(key));
-        }
-      }
-
-      PropertySetKeyDefDataObject tempPropSetKey = new PropertySetKeyDefDataObject();
-      tempPropSetKey.setPropertySetId(Long.valueOf(propertySetId));
-      tempPropSetKey.setPropertyDefinitionId(propKeyDefPojo.getPropertyDefinitionId());
-
-      int index = merged.indexOf(tempPropSetKey);
-      if (index != -1)
-      {
-        LOGGER.info("Workflow Property Key Definition with code " + propKeyDefPojo.getPropertyKeyName() + " already exists in the workflow. Overriding values.");
-        merged.set(index, tempPropSetKey);
-      }
-      else
-      {
-        LOGGER.info("Adding new Workflow Property Key Definition with code " + propKeyDefPojo.getPropertyKeyName());
-        merged.add(tempPropSetKey);
-      }
-    }
-
-    LOGGER.exiting(CLZ_NAM, methodName, merged);
-    return merged;
-  }
-
-  /**
-   * Write properties to PropertSet JsonObject
-   */
-  private void writeWorkflowPropertySetKeyDefs(JSONObject propertySetObject, List<PropertySetKeyDefDataObject> properties)
-  {
-    final String methodName = "writeWorkflowPropertySetKeyDefs";
-    LOGGER.entering(CLZ_NAM, methodName);
-
-    propertySetObject.put("propertySetKeyDefs", new JSONArray()); // clears existing properties
-    for (PropertySetKeyDefDataObject pojo : properties)
-    {
-      propertySetObject.getJSONArray("propertySetKeyDefs").put(pojo.toJson());
-    }
-    LOGGER.info("Final Workflow Property Set Object: " + propertySetObject.toString(2));
 
     LOGGER.exiting(CLZ_NAM, methodName);
   }

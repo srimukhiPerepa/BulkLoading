@@ -6,6 +6,7 @@ import requests.SearchPropertyKeyDefinitionByName;
 import requests.PatchPropertyKeyDefinitionById;
 import requests.GetPropertyKeyDefinitionById;
 import requests.CreatePropertyKeyDefinition;
+import requests.SearchPropertyKeyDefinitionByParams;
 
 import flexagon.ff.common.core.exceptions.FlexCheckedException;
 import flexagon.ff.common.core.rest.FlexRESTClientResponse;
@@ -45,6 +46,21 @@ public class PropertyAPI
     return items;
   }
 
+  public JSONObject searchPropertyKeyDefinitionByParams(Map<String, Object> pParams)
+    throws FlexCheckedException
+  {
+    final String methodName = "searchPropertyKeyDefinitionByParams";
+    LOGGER.entering(CLZ_NAM, methodName, pParams);
+
+    SearchPropertyKeyDefinitionByParams spk = new SearchPropertyKeyDefinitionByParams();
+    spk.setQueryParams(pParams);
+
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().get(spk));
+    
+    LOGGER.exiting(CLZ_NAM, methodName, jsonObject);
+    return jsonObject;
+  }
+
   public JSONArray findPropertyKeyDefinitionByName(String pPropertyKeyName)
     throws FlexCheckedException
   {
@@ -53,9 +69,8 @@ public class PropertyAPI
 
     SearchPropertyKeyDefinitionByName spkd = new SearchPropertyKeyDefinitionByName();
     spkd.setName(pPropertyKeyName);
-    FlexRESTClientResponse response = getClient().get(spkd);
 
-    JSONObject jsonObject = new JSONObject(response.getResponseObject(String.class));
+    JSONObject jsonObject = FlexJsonUtils.getJSON(getClient().get(spkd));
     JSONArray items = jsonObject.getJSONArray("items");
     
     LOGGER.exiting(CLZ_NAM, methodName, items);

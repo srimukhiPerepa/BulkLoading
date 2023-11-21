@@ -38,16 +38,6 @@ public class BulkWorkflowPropertiesAndValues
   protected static String WORKFLOW_NAME;
   protected static String TARGET_GROUP_CODE;
   protected static String INPUT_CSV_FILE_PATH;
-  protected static String WORKFLOW_SOURCE;
-
-  private static String targetGroupId;
-  private static String localCredStoreId;
-  private static String localCredStoreInputDefId;
-  private static List<String> targetEnvironmentCodes;
-  private static Map<String, String> codeToValue; //key is code+environmentCode, value is target property value
-  private static Map<String, String> credentialNameToValue; //key is credentialName_targetGroupCode_environmentCode, value is credential value
-  private static Map<String, String> environmentCodeToEnvironmentId;
-  private static Map<String, String> credentialNameToId = new HashMap<>(); //key is credentialName_targetGroupCode_environmentCode, value is credential id
 
   private static PropertyAPI pAPI;
   private static EnvironmentAPI envAPI;
@@ -81,12 +71,11 @@ public class BulkWorkflowPropertiesAndValues
     credAPI =  new CredentialAPI(BASE_URL, USERNAME, PASSWORD);
     tAPI = new TargetAPI(BASE_URL, USERNAME, PASSWORD);
 
-    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-    System.out.println("//////////////////////////////////////////////////PREREQUISITE DATA///////////////////////////////////////////////////////////////////////////////////////");
-    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    File csv = new File(csvFilePath);
+    List<String> lines = FlexFileUtils.read(csv);
 
-    TGThread tg = new TGThread(tAPI, TARGET_GROUP_CODE);
-    CSThread cs = new CSThread(credAPI);
+    TargetGroupThread tg = new TargetGroupThread(tAPI, TARGET_GROUP_CODE);
+    CredentialStoreThread cs = new CredentialStoreThread(credAPI);
     tg.start();
     cs.start();
     tg.join();
@@ -96,140 +85,39 @@ public class BulkWorkflowPropertiesAndValues
       throw new Exception(tg.exception.getMessage());
     }
 
-    targetGroupId = tg.targetGroupId;
-    LOGGER.fine("Target Group Id: " + targetGroupId);
+    ReaderValidatorThread readerValidatorThread = new ReaderValidatorThread(tAPI, pAPI, envAPI, TARGET_GROUP_CODE, tg.targetGroupId, WORKFLOW_NAME, lines);
+    readerValidatorThread.start();
+    readerValidatorThread.join();
+    if (readerValidatorThread.exception != null)
+    {
+      throw new Exception(readerValidatorThread.exception.getMessage());
+    }
 
-    // WFThread depends on tg thread to complete
-    WFThread wf = new WFThread(tAPI, pAPI, envAPI, TARGET_GROUP_CODE, targetGroupId, WORKFLOW_NAME, INPUT_CSV_FILE_PATH);
-    wf.start();
+    PropertyThread propertyThread = new PropertyThread(readerValidatorThread.incomingPropertyKeyDefinitions, readerValidatorThread.propertySetObject);
+    propertyThread.start();
     cs.join();
-
     if (cs.exception != null)
     {
       throw new Exception(cs.exception.getMessage());
     }
 
-    wf.join();
-
-    if (wf.exception != null)
-    {
-      throw new Exception(wf.exception.getMessage());
-    }
-
-    localCredStoreId = cs.localCredStoreId;
-    localCredStoreInputDefId = cs.localCredStoreInputDefId;
-    targetEnvironmentCodes = wf.targetEnvironmentCodes;
-    codeToValue = wf.codeToValue;
-    credentialNameToValue = wf.credentialNameToValue;
-    environmentCodeToEnvironmentId = wf.environmentCodeToEnvironmentId;
-
-    LOGGER.fine("Local Credential Store Id: " + localCredStoreId);
-    LOGGER.fine("Local Credential Store Secret Text Definition Id: " + localCredStoreInputDefId);
-
-    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-    System.out.println("///////////////////////////////////////////////////////CREATE/UPDATE CREDENTIALS//////////////////////////////////////////////////////////////////////////");
-    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    CredentialThread credentialThread = new CredentialThread(credAPI, cs.localCredStoreId, cs.localCredStoreInputDefId, readerValidatorThread.credentialNameToValue);
+    credentialThread.start();
     
-    if (credentialNameToValue.size() == 0)
+    TargetValueThread targetValueThread = new TargetValueThread(tAPI, readerValidatorThread.targetEnvironmentCodes, readerValidatorThread.codeToValue,
+                                                                readerValidatorThread.credentialNameToValue, readerValidatorThread.environmentCodeToEnvironmentId);
+    credentialThread.start();
+    credentialThread.join();
+    if (credentialThread.exception != null)
     {
-      LOGGER.info("No credentials found to create/update");
-    }
-    else 
-    {
-      LOGGER.info(credentialNameToValue.size() + " to create/update");
-      LOGGER.fine("credentialNameToValue map: " + credentialNameToValue);
-    }
-
-    int index = 1;
-    int total = credentialNameToValue.size();
-    for (String credentialName: credentialNameToValue.keySet())
-    {
-      JSONArray searchResult = credAPI.findCredentialByName(credentialName);
-      JSONObject credentialObject = validateCredentialArray(credentialName, searchResult);
-      String credentialValue = credentialNameToValue.get(credentialName);
-      String credentialId;
-
-      LOGGER.info("Creating/updating credential " + credentialName + " " + (index++) + " of " + total);
-      if (credentialObject == null)
-      {
-        // create
-        JSONObject postCredentialRequestBody = new JSONObject();
-        postCredentialRequestBody.put("credentialName", credentialName);
-        postCredentialRequestBody.put("isActive", true); // defaulting
-        postCredentialRequestBody.put("credentialScope", CredentialScopeEnum.PROPERTY); // defaulting to PROPERTY ("ENVINST" same difference)
-        postCredentialRequestBody.put("credentialStoreId", localCredStoreId);
-
-        JSONArray inputs = new JSONArray();
-        JSONObject input = new JSONObject();
-        input.put("inputValue", credentialValue);
-        input.put("credentialStoreInputDefId", localCredStoreInputDefId);
-        inputs.put(input);
-        postCredentialRequestBody.put("credentialInputs", inputs);
-
-        credentialId = credAPI.createCredential(postCredentialRequestBody.toString()).get("credentialId").toString();
-      }
-      else
-      {
-        // update - override inputValue only
-        credentialId = credentialObject.get("credentialId").toString();
-        credentialObject.getJSONArray("credentialInputs").getJSONObject(0).put("inputValue", credentialValue);
-        credAPI.patchCredentialById(credentialId, credentialObject.toString());
-      }
-
-      credentialNameToId.put(credentialName, credentialId);
+      throw new Exception(credentialThread.exception.getMessage());
     }
 
-    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-    System.out.println("///////////////////////////////////////////////////////UPDATE TARGETS//////////////////////////////////////////////////////////////////////////");
-    System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-    
-    index = 1;
-    total = wf.mergedPropertyKeyDefinitions.size() * targetEnvironmentCodes.size();
-    for (PropertyKeyDefinitionDataObject prop : wf.mergedPropertyKeyDefinitions)
+    targetValueThread.credentialNameToId = credentialThread.credentialNameToId;
+    targetValueThread.join();
+    if (targetValueThread.exception != null)
     {
-      String propertyKeyName = prop.getPropertyKeyName();
-      String scope = prop.getPropertyScope();
-      boolean isEncrypted = prop.getIsEncrypted();
-
-      if (!"ENVINST".equals(scope))
-      {
-        LOGGER.info("Skipping " + scope + " property " + propertyKeyName + " - " + (index++) + " of " + total);
-        continue;
-      }
-
-      for (String environmentCode : targetEnvironmentCodes)
-      {
-        String environmentId = environmentCodeToEnvironmentId.get(environmentCode);
-        String targetValue = codeToValue.get(propertyKeyName + environmentCode);
-
-        JSONArray propertiesArray = new JSONArray();
-        JSONObject property = new JSONObject();
-        property.put("propertyName", propertyKeyName);
-
-        if (isEncrypted)
-        {
-          String credentialName = String.format("%s_%s_%s", propertyKeyName, TARGET_GROUP_CODE, environmentCode);
-          // If credential is not CSV then credentialName will not be a key in credentialNameToId map
-          if (!credentialNameToId.containsKey(credentialName))
-          {
-            continue;
-          }
-          
-          LOGGER.info(String.format("Patching target property %s (credential) to environment %s - %d of %d", propertyKeyName, environmentCode, index++, total));
-          property.put("credentialId", credentialNameToId.get(credentialName));
-        }
-        else 
-        {
-          LOGGER.info(String.format("Patching target property %s to environment %s - %d of %d", propertyKeyName, environmentCode, index++, total));
-          property.put("propertyValue", targetValue);
-        }
-        propertiesArray.put(property);
-
-        JSONObject patchRequestBody = new JSONObject();
-        patchRequestBody.put("properties", propertiesArray);
-
-        tAPI.patchTargetById(environmentId, targetGroupId, patchRequestBody.toString());
-      }
+      throw new Exception(targetValueThread.exception.getMessage());
     }
   }
 
