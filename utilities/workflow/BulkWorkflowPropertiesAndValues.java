@@ -74,18 +74,19 @@ public class BulkWorkflowPropertiesAndValues
     File csv = new File(INPUT_CSV_FILE_PATH);
     List<String> lines = FlexFileUtils.read(csv);
 
-    TargetGroupThread tg = new TargetGroupThread(tAPI, TARGET_GROUP_CODE);
-    CredentialStoreThread cs = new CredentialStoreThread(credAPI);
-    tg.start();
-    cs.start();
-    tg.join();
+    TargetGroupThread targetGroupThread = new TargetGroupThread(tAPI, TARGET_GROUP_CODE);
+    CredentialStoreThread credentialStoreThread = new CredentialStoreThread(credAPI);
+    targetGroupThread.start();
+    credentialStoreThread.start();
+    targetGroupThread.join();
 
-    if (tg.exception != null)
+    if (targetGroupThread.exception != null)
     {
-      throw new Exception(tg.exception.getMessage());
+      throw new Exception(targetGroupThread.exception.getMessage());
     }
 
-    ReaderValidatorThread readerValidatorThread = new ReaderValidatorThread(tAPI, pAPI, envAPI, TARGET_GROUP_CODE, tg.targetGroupId, WORKFLOW_NAME, lines);
+    // Must complete TargetGroupThread before STARTING ReaderValidatorThread
+    ReaderValidatorThread readerValidatorThread = new ReaderValidatorThread(tAPI, pAPI, envAPI, TARGET_GROUP_CODE, targetGroupThread.targetGroupId, WORKFLOW_NAME, lines);
     readerValidatorThread.start();
     readerValidatorThread.join();
     if (readerValidatorThread.exception != null)
@@ -93,20 +94,30 @@ public class BulkWorkflowPropertiesAndValues
       throw new Exception(readerValidatorThread.exception.getMessage());
     }
 
+    // Must complete ReaderValidatorThread before STARTING PropertyThread
     PropertyThread propertyThread = new PropertyThread(pAPI, readerValidatorThread.incomingPropertyKeyDefinitions, readerValidatorThread.propertySetObject);
     propertyThread.start();
-    cs.join();
-    if (cs.exception != null)
+    credentialStoreThread.join();
+    if (credentialStoreThread.exception != null)
     {
-      throw new Exception(cs.exception.getMessage());
+      throw new Exception(credentialStoreThread.exception.getMessage());
     }
 
-    CredentialThread credentialThread = new CredentialThread(credAPI, cs.localCredStoreId, cs.localCredStoreInputDefId, readerValidatorThread.credentialNameToValue);
+    CredentialThread credentialThread = new CredentialThread(credAPI, credentialStoreThread.localCredStoreId, credentialStoreThread.localCredStoreInputDefId, readerValidatorThread.credentialNameToValue);
     credentialThread.start();
     
-    TargetValueThread targetValueThread = new TargetValueThread(tAPI, TARGET_GROUP_CODE, tg.targetGroupId, readerValidatorThread.targetEnvironmentCodes, readerValidatorThread.codeToValue,
+    propertyThread.join();
+    if (propertyThread.exception != null)
+    {
+      throw new Exception(propertyThread.exception.getMessage());
+    }
+
+    // Must complete PropertyThread before STARTING TargetValueThread
+    TargetValueThread targetValueThread = new TargetValueThread(tAPI, TARGET_GROUP_CODE, targetGroupThread.targetGroupId, readerValidatorThread.targetEnvironmentCodes, readerValidatorThread.codeToValue,
                                                                 readerValidatorThread.credentialNameToValue, readerValidatorThread.environmentCodeToEnvironmentId);
-    credentialThread.start();
+    targetValueThread.start();
+
+    // Must complete CredentialThread before COMPLETING TargetValueThread
     credentialThread.join();
     if (credentialThread.exception != null)
     {
