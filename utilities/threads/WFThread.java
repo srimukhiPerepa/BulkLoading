@@ -207,10 +207,9 @@ public class WFThread extends Thread
       String displayRows = tokens[13];
       String displayColumns = tokens[14];
       String validator1 = tokens[15];
-      String dataType = tokens[16];
-      String defaultValue = tokens[17];
-      String isDefaultExpression = tokens[18];
-      String length = tokens[19];
+      String defaultValue = tokens[16];
+      String isDefaultExpression = tokens[17];
+      String length = tokens[18];
 
       PropertyKeyDefinitionDataObject pojo = new PropertyKeyDefinitionDataObject();
       // required excluding propertyDefinitionId
