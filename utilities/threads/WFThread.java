@@ -292,7 +292,7 @@ public class WFThread extends Thread
           String value = "";
           try
           {
-            value = tokens[j+startIdx];
+            value = tokens[j+startIdx+1];
           }
           catch (ArrayIndexOutOfBoundsException aio)
           {

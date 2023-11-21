@@ -215,12 +215,12 @@ public class BulkWorkflowPropertiesAndValues
             continue;
           }
           
-          LOGGER.info(String.format("Patching target property %s (credential) to environment %s - %d of %d)", propertyKeyName, environmentCode, index++, total));
+          LOGGER.info(String.format("Patching target property %s (credential) to environment %s - %d of %d", propertyKeyName, environmentCode, index++, total));
           property.put("credentialId", credentialNameToId.get(credentialName));
         }
         else 
         {
-          LOGGER.info(String.format("Patching target property %s to environment %s - %d of %d)", propertyKeyName, environmentCode, index++, total));
+          LOGGER.info(String.format("Patching target property %s to environment %s - %d of %d", propertyKeyName, environmentCode, index++, total));
           property.put("propertyValue", targetValue);
         }
         propertiesArray.put(property);
