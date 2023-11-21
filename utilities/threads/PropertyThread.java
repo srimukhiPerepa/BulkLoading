@@ -73,12 +73,6 @@ public class PropertyThread extends Thread
         String propertyKeyName = propKeyDef.getPropertyKeyName();
         JSONArray searchResult = pAPI.findPropertyKeyDefinitionByName(propertyKeyName);
 
-        PropertySetKeyDefDataObject propertySetKeyDef = new PropertySetKeyDefDataObject(propertySetIdLong, propKeyDef.getPropertyDefinitionId());
-        if (!allPropertySetKeyDefs.contains(propertySetKeyDef))
-        {
-          allPropertySetKeyDefs.add(propertySetKeyDef);
-        }
-
         LOGGER.info("Creating/updating property key definition " + propertyKeyName + " " + (index++) + " of " + propertyKeyDefinitions.size());
         if (searchResult.length() == 0)
         {
@@ -94,6 +88,13 @@ public class PropertyThread extends Thread
           String propertyKeyDefinitionId = searchResult.getJSONObject(0).get("propertyDefinitionId").toString();
           JSONObject requestBody = propKeyDef.toJson();
           pAPI.patchPropertyKeyDefinitionById(propertyKeyDefinitionId, requestBody.toString());
+          propKeyDef.setPropertyDefinitionId(Long.valueOf("propertyKeyDefinitionId"));
+        }
+
+        PropertySetKeyDefDataObject propertySetKeyDef = new PropertySetKeyDefDataObject(propertySetIdLong, propKeyDef.getPropertyDefinitionId());
+        if (!allPropertySetKeyDefs.contains(propertySetKeyDef))
+        {
+          allPropertySetKeyDefs.add(propertySetKeyDef);
         }
       }
 
