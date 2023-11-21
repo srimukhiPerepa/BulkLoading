@@ -250,10 +250,11 @@ public class ReaderValidatorThread extends Thread
           LOGGER.warning("Line " + i + " is missing target values. Missing values will be set to empty string");
         }
 
-        String key;
+        String key, environmentCode;
         for (int j = 0; j < numEnvironments; j++)
         {
-          key = propertyKeyName + targetEnvironmentCodes.get(j);
+          environmentCode = targetEnvironmentCodes.get(j);
+          key = propertyKeyName + environmentCode;
           String value = "";
           try
           {
