@@ -126,4 +126,3 @@ public class CredentialThread extends Thread
     return wfObject;
   }
 }
-}
