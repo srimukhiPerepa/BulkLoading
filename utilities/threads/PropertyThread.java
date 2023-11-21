@@ -88,7 +88,7 @@ public class PropertyThread extends Thread
           String propertyKeyDefinitionId = searchResult.getJSONObject(0).get("propertyDefinitionId").toString();
           JSONObject requestBody = propKeyDef.toJson();
           pAPI.patchPropertyKeyDefinitionById(propertyKeyDefinitionId, requestBody.toString());
-          propKeyDef.setPropertyDefinitionId(Long.valueOf("propertyKeyDefinitionId"));
+          propKeyDef.setPropertyDefinitionId(Long.valueOf(propertyKeyDefinitionId));
         }
 
         PropertySetKeyDefDataObject propertySetKeyDef = new PropertySetKeyDefDataObject(propertySetIdLong, propKeyDef.getPropertyDefinitionId());
