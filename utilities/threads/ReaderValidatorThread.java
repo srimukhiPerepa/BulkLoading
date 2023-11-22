@@ -263,6 +263,7 @@ public class ReaderValidatorThread extends Thread
           catch (ArrayIndexOutOfBoundsException aio)
           {
             //ignore
+            LOGGER.warning(String.format("No value found for row %s and column %s. Empty string will be used as the value", propertyKeyName, environmentCode));
           }
 
           if (Boolean.valueOf(isEncrypted))
