@@ -96,7 +96,7 @@ public class ReaderValidatorThread extends Thread
       LOGGER.info("Validating rest of CSV...");
       incomingPropertyKeyDefinitions = readAndProcessCSV(startIdx, lines);
 
-      LOGGER.finest("targetEnvironmentCodes map: " + codeToValue);
+      LOGGER.finest("targetEnvironmentCodes map: " + targetEnvironmentCodes);
       LOGGER.finest("codeToValue map: " + codeToValue);
       LOGGER.finest("credentialNameToValue map: " + credentialNameToValue);
     }
