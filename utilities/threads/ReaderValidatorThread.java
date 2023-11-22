@@ -258,7 +258,7 @@ public class ReaderValidatorThread extends Thread
           String value = "";
           try
           {
-            value = tokens[j+startIdx+1];
+            value = tokens[j+startIdx];
           }
           catch (ArrayIndexOutOfBoundsException aio)
           {
