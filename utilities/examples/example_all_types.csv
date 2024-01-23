@@ -4,3 +4,4 @@ FDBULK_TEST_BOOLEAN,ENVINST,String,false,false,true,Test Boolean,Test Boolean De
 FDBULK_TEST_INTEGER,ENVINST,String,false,false,true,Test Integer,Test Integer Description 1,,,,,,,,,,,,4,5,6
 FDBULK_TEST_DOUBLE,ENVINST,String,false,false,true,Test Double,Test Double Description 1,,,,,,,,,,,,4.1,5.1,6.1
 FDBULK_TEST_ENCRYPT,ENVINST,String,true,true,true,Test Encrypted,Test Encrypted Description 1,,,,,,,,,,,,DEV_SECRET,TEST_SECRET,PROD_SECRET
+FDBULK_TEST_ENCRYPT_PASSWORD,ENVINST,String,true,true,true,Test Password,Test Password Description 1,,,,,,,,,,,,DEV,TEST,PROD

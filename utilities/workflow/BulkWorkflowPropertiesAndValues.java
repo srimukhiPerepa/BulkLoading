@@ -1,37 +1,23 @@
 package workflow;
 
-import requests.PropertyAPI;
+import flexagon.ff.common.core.utils.FlexCommonUtils;
+import flexagon.ff.common.core.utils.FlexFileUtils;
 import requests.CredentialAPI;
 import requests.EnvironmentAPI;
+import requests.PropertyAPI;
 import requests.TargetAPI;
-
-import pojo.PropertyKeyDefinitionDataObject;
-import pojo.CredentialScopeEnum;
-
 import threads.*;
 
-import flexagon.ff.common.core.exceptions.FlexCheckedException;
-import flexagon.ff.common.core.utils.FlexCommonUtils;
-import flexagon.ff.common.core.logging.FlexLogger;
-import flexagon.ff.common.core.utils.FlexFileUtils;
- 
-import org.json.JSONObject;
-import org.json.JSONArray;
-
-import java.util.HashMap;
-import java.util.Map;
+import java.io.File;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.logging.*;
-
-import java.io.*;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BulkWorkflowPropertiesAndValues
 {
   private static final String CLZ_NAM = BulkWorkflowPropertiesAndValues.class.getName();
-  private static final FlexLogger LOG = FlexLogger.getLogger(CLZ_NAM);
   private static final Logger LOGGER = Logger.getGlobal();
-
   protected static String BASE_URL;
   protected static String USERNAME;
   protected static String PASSWORD;
@@ -47,11 +33,11 @@ public class BulkWorkflowPropertiesAndValues
   public static void main(String[] args)
     throws Throwable
   {
-		ConsoleHandler consoleHandler = new ConsoleHandler();
-		consoleHandler.setLevel(Level.ALL);
-		LOGGER.addHandler(consoleHandler);
-		LOGGER.setLevel(Level.ALL);
-		LOGGER.setUseParentHandlers(false);
+    ConsoleHandler consoleHandler = new ConsoleHandler();
+    consoleHandler.setLevel(Level.ALL);
+    LOGGER.addHandler(consoleHandler);
+    LOGGER.setLevel(Level.ALL);
+    LOGGER.setUseParentHandlers(false);
 
     if (args == null || args.length < 6)
     {
@@ -133,15 +119,12 @@ public class BulkWorkflowPropertiesAndValues
     }
   }
 
-  private static void validate()
-    throws Exception
-  {
+  private static void validate() {
     final String methodName = "validate";
     LOGGER.entering(CLZ_NAM, methodName);
 
     if (FlexCommonUtils.isEmpty(BASE_URL) || FlexCommonUtils.isEmpty(USERNAME) || FlexCommonUtils.isEmpty(PASSWORD) || FlexCommonUtils.isEmpty(WORKFLOW_NAME)
-        || FlexCommonUtils.isEmpty(TARGET_GROUP_CODE) || FlexCommonUtils.isEmpty(INPUT_CSV_FILE_PATH))
-    {
+            || FlexCommonUtils.isEmpty(TARGET_GROUP_CODE) || FlexCommonUtils.isEmpty(INPUT_CSV_FILE_PATH)) {
       throw new RuntimeException("BASE_URL, USERNAME, PASSWORD, WORKFLOW_NAME, TARGET_GROUP_CODE and INPUT_CSV_FILE_PATH cannot be empty");
     }
 
