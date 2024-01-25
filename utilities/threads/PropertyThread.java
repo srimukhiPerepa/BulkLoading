@@ -86,7 +86,8 @@ public class PropertyThread extends Thread
         else
         {
           // patch
-          String propertyKeyDefinitionId = searchResult.getJSONObject(0).get("propertyDefinitionId").toString();
+          int searchResultIndex = searchResult.length() == 1 ? 0 : IntStream.range(0, searchResult.length()).filter(i -> searchResult.getJSONObject(i).getString("propertyKeyName").equals(propertyKeyName)).findFirst().getAsInt();
+          String propertyKeyDefinitionId = searchResult.getJSONObject(searchResultIndex).get("propertyDefinitionId").toString();
           JSONObject requestBody = propKeyDef.toJson();
           pAPI.patchPropertyKeyDefinitionById(propertyKeyDefinitionId, requestBody.toString());
           propKeyDef.setPropertyDefinitionId(Long.valueOf(propertyKeyDefinitionId));

@@ -155,7 +155,6 @@ public class ReaderValidatorThread extends Thread
     {
       String line = pLines.get(i);
       String[] tokens = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-      int tokensLength = tokens.length;
       String propertyKeyName = tokens[0];
       String propertyScope = tokens[1];
       String propertyKeyDataType = tokens[2];
